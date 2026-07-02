@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+*.zip
+*.bmp
+*.jpeg
+*.jpg
+*.png
+*.pdf
+*.docx
+!ITR Responsibility (1).docx
+*.xls
+*.lnk
+New folder*/
+CMT_DASHBOARD/
+cmt_punch_report.html
+PS5_Project_Dashboard*.html
+dashboard_desktop.py.py
+dashboard.py.py
+dashboard_server.py
+create_form*.py
+create_final.py
+fix_cable_table.py
+update_dashboard.ps1
