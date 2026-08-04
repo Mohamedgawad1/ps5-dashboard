@@ -864,49 +864,6 @@ def build_inspection_data(excel_path):
 
 
 # ====================================================================
-#  3c) DPR Summary File (EIT SUMMERY sheet)
-# ====================================================================
-def build_eit_subsystem_data(excel_path):
-    if not excel_path:
-        return None
-
-    df = pd.read_excel(excel_path, sheet_name='EIT SUMMERY', header=None, skiprows=3)
-    df = df.iloc[:, :10]
-    df.columns = ['subsystem', 'E_itrs', 'E_closed', 'E_remain',
-                   'I_itrs', 'I_closed', 'I_remain',
-                   'T_itrs', 'T_closed', 'T_remain']
-    df = df.dropna(subset=['subsystem'])
-    df = df[df['subsystem'].astype(str).str.startswith('PS5')]
-    for c in df.columns[1:]:
-        df[c] = pd.to_numeric(df[c], errors='coerce').fillna(0).astype(int)
-
-    totals = {
-        'E': {'itrs': int(df['E_itrs'].sum()), 'closed': int(df['E_closed'].sum())},
-        'I': {'itrs': int(df['I_itrs'].sum()), 'closed': int(df['I_closed'].sum())},
-        'T': {'itrs': int(df['T_itrs'].sum()), 'closed': int(df['T_closed'].sum())},
-    }
-    for d in totals.values():
-        d['remain'] = d['itrs'] - d['closed']
-        d['pct'] = round(d['closed'] / d['itrs'] * 100, 1) if d['itrs'] else 0
-
-    # Top 15 subsystems by total ITRs remaining (biggest remaining work)
-    df['total_remain'] = df['E_remain'] + df['I_remain'] + df['T_remain']
-    df['total_itrs'] = df['E_itrs'] + df['I_itrs'] + df['T_itrs']
-    top = df.sort_values('total_itrs', ascending=False).head(15)
-
-    table_rows = []
-    for _, r in top.iterrows():
-        table_rows.append({
-            'subsystem': r['subsystem'],
-            'E_itrs': int(r['E_itrs']), 'E_closed': int(r['E_closed']), 'E_remain': int(r['E_remain']),
-            'I_itrs': int(r['I_itrs']), 'I_closed': int(r['I_closed']), 'I_remain': int(r['I_remain']),
-            'T_itrs': int(r['T_itrs']), 'T_closed': int(r['T_closed']), 'T_remain': int(r['T_remain']),
-        })
-
-    return {'totals': totals, 'table': table_rows}
-
-
-# ====================================================================
 #  3d) Universal Search Index (Asset / Task ID -> everything)
 # ====================================================================
 def build_search_index(ov_path, punch_path, rfi_path):
@@ -1363,9 +1320,14 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   box-shadow:var(--shadow);}
 .tabbtn{padding:9px 18px;border-radius:10px;cursor:pointer;font-size:11px;font-weight:700;
   color:var(--text3);transition:all .25s;border:none;background:none;
-  text-transform:uppercase;letter-spacing:0.8px;}
+  text-transform:uppercase;letter-spacing:0.8px;display:inline-flex;align-items:center;gap:7px;}
+.tabbtn .t-icon{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:7px;background:var(--card2);border:1px solid var(--border);font-size:12px;
+  transition:all .25s;}
 .tabbtn:hover{background:var(--card2);color:var(--text2);}
+.tabbtn:hover .t-icon{background:var(--gold-bg);border-color:rgba(200,148,10,0.4);transform:scale(1.1);}
 .tabbtn.active{background:var(--gold);color:#fff;box-shadow:0 2px 10px rgba(200,148,10,0.3);}
+.tabbtn.active .t-icon{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.35);color:#fff;}
 .tabpage{display:none;}
 #tab-main-dashboard.tabpage.active{display:flex;}
 .tabpage.active{display:block;}
@@ -1435,11 +1397,10 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   <div class="grp">Export Tables</div>
   <label><input type="checkbox" data-target="sec-export-punch" checked> 1. Punch Closing Status</label>
   <label><input type="checkbox" data-target="sec-export-cable" checked> 2. Cable / CMT Status</label>
-  <label><input type="checkbox" data-target="sec-export-subsystem" checked> 3. Subsystem Handover</label>
-  <label><input type="checkbox" data-target="sec-export-elec" checked> 4. E - Electrical</label>
-  <label><input type="checkbox" data-target="sec-export-inst" checked> 5. I - Instrumentation</label>
-  <label><input type="checkbox" data-target="sec-export-tele" checked> 6. T - Telecom</label>
-  <label><input type="checkbox" data-target="sec-export-rfi" checked> 7. RFI Inspection Summary</label>
+  <label><input type="checkbox" data-target="sec-export-elec" checked> 3. E - Electrical</label>
+  <label><input type="checkbox" data-target="sec-export-inst" checked> 4. I - Instrumentation</label>
+  <label><input type="checkbox" data-target="sec-export-tele" checked> 5. T - Telecom</label>
+  <label><input type="checkbox" data-target="sec-export-rfi" checked> 6. RFI Inspection Summary</label>
   <label><input type="checkbox" data-target="sec-cmt-qc-punch" checked> CMT &amp; QC Punch Summary</label>
 
   <div class="grp">Punch List</div>
@@ -1450,6 +1411,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   <label><input type="checkbox" data-target="sec-punch-breakdown" checked> Breakdown (Category/Discipline)</label>
   <label><input type="checkbox" data-target="sec-punch-subsystems" checked> Top Subsystems</label>
   <label><input type="checkbox" data-target="sec-punch-recent" checked> Recent Punches (Details)</label>
+  <label><input type="checkbox" data-target="sec-punch-tracking" checked> Punch Tracking &amp; Closure</label>
 
   <div class="grp">RFI / Inspection Register</div>
   <label><input type="checkbox" data-target="sec-rfi-kpi" checked> RFI Summary</label>
@@ -1460,10 +1422,6 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   <label><input type="checkbox" data-target="sec-rfi-type" checked> Inspection Type</label>
   <label><input type="checkbox" data-target="sec-rfi-subsystems" checked> Top Subsystems</label>
   <label><input type="checkbox" data-target="sec-rfi-recent" checked> Recent RFIs (Details)</label>
-
-  <div class="grp">DPR Summary (EIT)</div>
-  <label><input type="checkbox" data-target="sec-dpr-eit" checked> E/I/T Progress &amp; Top Subsystems</label>
-  <label><input type="checkbox" data-target="sec-punch-tracking" checked> Punch Tracking &amp; Closure</label>
 </div>
 
 <!-- ================= MAIN ================= -->
@@ -1714,47 +1672,9 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     </div>
   </div>
 
-  <!-- ===== Export: Subsystem Handover ===== -->
-  <div class="section active" id="sec-export-subsystem">
-    <div class="section-title">3. Subsystem Handover Status &amp; Backlog (E/I/T)</div>
-    <div class="section-title" style="font-size:14px;margin-top:10px;">⚡ E — Electrical</div>
-    <div class="eit-toolbar">
-      <button class="btn-export" onclick="exportSubsystemExcel('E')">⬇️ Download E - Electrical Excel</button>
-    </div>
-    <div class="eit-table-wrap">
-      <table class="eit-table" id="subsystemTableE" style="min-width:500px;font-size:12px;">
-        <thead><tr><th style="text-align:left;">Subsystem</th><th>Total</th><th>Closed</th><th>Remain</th></tr></thead>
-        <tbody id="subsystemBodyE"></tbody>
-        <tfoot id="subsystemFootE"></tfoot>
-      </table>
-    </div>
-    <div class="section-title" style="font-size:14px;margin-top:15px;">🔧 I — Instrumentation</div>
-    <div class="eit-toolbar">
-      <button class="btn-export" onclick="exportSubsystemExcel('I')">⬇️ Download I - Instrumentation Excel</button>
-    </div>
-    <div class="eit-table-wrap">
-      <table class="eit-table" id="subsystemTableI" style="min-width:500px;font-size:12px;">
-        <thead><tr><th style="text-align:left;">Subsystem</th><th>Total</th><th>Closed</th><th>Remain</th></tr></thead>
-        <tbody id="subsystemBodyI"></tbody>
-        <tfoot id="subsystemFootI"></tfoot>
-      </table>
-    </div>
-    <div class="section-title" style="font-size:14px;margin-top:15px;">📡 T — Telecom</div>
-    <div class="eit-toolbar">
-      <button class="btn-export" onclick="exportSubsystemExcel('T')">⬇️ Download T - Telecom Excel</button>
-    </div>
-    <div class="eit-table-wrap">
-      <table class="eit-table" id="subsystemTableT" style="min-width:500px;font-size:12px;">
-        <thead><tr><th style="text-align:left;">Subsystem</th><th>Total</th><th>Closed</th><th>Remain</th></tr></thead>
-        <tbody id="subsystemBodyT"></tbody>
-        <tfoot id="subsystemFootT"></tfoot>
-      </table>
-    </div>
-  </div>
-
   <!-- ===== Export: E - Electrical ===== -->
     <div class="section active" id="sec-export-elec">
-    <div class="section-title">4. E - Electrical &mdash; Status &amp; Backlog (by Description)</div>
+    <div class="section-title">3. E - Electrical &mdash; Status &amp; Backlog (by Description)</div>
     <div class="eit-toolbar">
       <button class="btn-export" onclick="exportDescExcel('E')">Download E - Electrical Excel</button>
     </div>
@@ -1770,7 +1690,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
 
   <!-- ===== Export: I - Instrumentation ===== -->
     <div class="section active" id="sec-export-inst">
-    <div class="section-title">5. I - Instrumentation &mdash; Status &amp; Backlog (by Description)</div>
+    <div class="section-title">4. I - Instrumentation &mdash; Status &amp; Backlog (by Description)</div>
     <div class="eit-toolbar">
       <button class="btn-export" onclick="exportDescExcel('I')">Download I - Instrumentation Excel</button>
     </div>
@@ -1786,7 +1706,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
 
   <!-- ===== Export: T - Telecom ===== -->
     <div class="section active" id="sec-export-tele">
-    <div class="section-title">6. T - Telecom &mdash; Status &amp; Backlog (by Description)</div>
+    <div class="section-title">5. T - Telecom &mdash; Status &amp; Backlog (by Description)</div>
     <div class="eit-toolbar">
       <button class="btn-export" onclick="exportDescExcel('T')">Download T - Telecom Excel</button>
     </div>
@@ -1802,7 +1722,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
 
   <!-- ===== Export: RFI Inspection Summary ===== -->
   <div class="section active" id="sec-export-rfi">
-    <div class="section-title">7. RFI Inspection Summary — By Discipline</div>
+    <div class="section-title">6. RFI Inspection Summary — By Discipline</div>
     <div class="eit-toolbar">
       <button class="btn-export" onclick="exportRfiInspectionExcel()">⬇️ Download RFI Inspection Excel</button>
     </div>
@@ -1992,34 +1912,6 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     </div>
   </div>
 
-  <!-- ===== DPR: EIT ITRs Backlog Tracking ===== -->
-  <div class="section active" id="sec-dpr-eit">
-    <div class="section-title">📊 EIT ITRs Backlog Tracking (Project-wide)</div>
-    <div class="kpi-row" id="dprEitKpis"></div>
-    <div class="chart-row">
-      <div class="chart-card" style="flex:2;">
-        <h3>Top 15 Subsystems — Total ITRs (E+I+T)</h3>
-        <canvas id="chartDprEitTop"></canvas>
-      </div>
-    </div>
-    <div class="chart-card">
-      <h3>Backlog Table — Top 15 Subsystems</h3>
-      <div style="max-height:420px;overflow:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:12px;">
-          <thead>
-            <tr style="background:var(--panel2);color:var(--teal);">
-              <th style="padding:6px;text-align:left;">Subsystem</th>
-              <th style="padding:6px;">E Total</th><th style="padding:6px;">E Closed</th><th style="padding:6px;">E Remain</th>
-              <th style="padding:6px;">I Total</th><th style="padding:6px;">I Closed</th><th style="padding:6px;">I Remain</th>
-              <th style="padding:6px;">T Total</th><th style="padding:6px;">T Closed</th><th style="padding:6px;">T Remain</th>
-            </tr>
-          </thead>
-          <tbody id="dprEitTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
   <!-- ===== Punch Tracking & Closure ===== -->
   <div class="section active" id="sec-punch-tracking">
     <div class="section-title">📌 Punch Tracking &amp; Closure</div>
@@ -2051,7 +1943,6 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
 const ITR = __ITR_JSON__;
 const PUNCH = __PUNCH_JSON__;
 const RFI = __RFI_JSON__;
-const DPR_EIT = __DPR_EIT_JSON__;
 const EIT_TABLE = __EIT_TABLE_JSON__;
 const EIT_DESC = __EIT_DESC_JSON__;
 const EIT_PAGES = __EIT_PAGES_JSON__;
@@ -2849,69 +2740,7 @@ function exportPunchStatusExcel(){
   downloadExcel(html, 'Punch_Closing_Status');
 }
 
-// ---------- 3. Subsystem Handover Status & Backlog (E / I / T) ----------
-(function(){
-  if(!DPR_EIT || !DPR_EIT.table) return;
-  const rows = DPR_EIT.table;
-  const colors = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
-  const discNames = {'E':'E — Electrical','I':'I — Instrumentation','T':'T — Telecom'};
-
-  ['E','I','T'].forEach(code => {
-    const discRows = rows.filter(r => r[code+'_itrs'] > 0);
-    const bodyId = 'subsystemBody'+code;
-    const footId = 'subsystemFoot'+code;
-    const bg = colors[code];
-    document.getElementById(bodyId).innerHTML = discRows.map(r => `
-      <tr>
-        <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;font-size:12px;">${r.subsystem}</td>
-        <td style="border:1px solid #d4d4d4;background:${bg};text-align:center;">${r[code+'_itrs']}</td>
-        <td style="border:1px solid #d4d4d4;background:${bg};color:#1d6f42;font-weight:700;text-align:center;">${r[code+'_closed']}</td>
-        <td style="border:1px solid #d4d4d4;background:${bg};${r[code+'_remain']>0?'color:#C00000;font-weight:700':''};text-align:center;">${r[code+'_remain']}</td>
-      </tr>`).join('');
-    const t = discRows.reduce((a,r) => ({total:a.total+r[code+'_itrs'], closed:a.closed+r[code+'_closed'], remain:a.remain+r[code+'_remain']}), {total:0,closed:0,remain:0});
-    document.getElementById(footId).innerHTML = `<tr style="background:#404040;color:#fff;font-weight:800;">
-      <td style="border:1px solid #222;padding:7px;text-align:left;">TOTAL ${discNames[code]}</td>
-      <td style="border:1px solid #222;text-align:center;">${t.total}</td>
-      <td style="border:1px solid #222;text-align:center;">${t.closed}</td>
-      <td style="border:1px solid #222;text-align:center;${t.remain>0?'color:#ff9b9b':''}">${t.remain}</td>
-    </tr>`;
-  });
-})();
-
-function exportSubsystemExcel(code){
-  if(!DPR_EIT || !DPR_EIT.table) return;
-  const rows = DPR_EIT.table.filter(r => r[code+'_itrs'] > 0);
-  const titles = {'E':'E — Electrical','I':'I — Instrumentation','T':'T — Telecom'};
-  const colors = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
-  let html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
-    '<head><meta charset="UTF-8">' +
-    '<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Sheet1</x:Name>' +
-    '<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->' +
-    '<style>td,th{font-family:Arial,sans-serif;font-size:12px;vertical-align:middle;}.hdr{background:#ED7D31;color:#000;font-weight:bold;text-align:center;border:1px solid #9c4a14;padding:8px;}</style>' +
-    '</head><body>' +
-    '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;min-width:400px;">' +
-    '<tr><th colspan="4" class="hdr" style="font-size:14px;">EACOP PIPELINE PROJECT &mdash; Subsystem Handover &mdash; ' + titles[code] + '</th></tr>' +
-    '<tr><th class="hdr" style="text-align:left;">Subsystem</th><th class="hdr">Total</th><th class="hdr">Closed</th><th class="hdr">Remain</th></tr>';
-  const bg = colors[code];
-  rows.forEach(r => {
-    html += '<tr>' +
-      '<td style="text-align:left;border:1px solid #bbb;font-weight:bold;font-size:12px;">' + r.subsystem + '</td>' +
-      '<td style="border:1px solid #bbb;text-align:center;background:' + bg + ';">' + r[code+'_itrs'] + '</td>' +
-      '<td style="border:1px solid #bbb;text-align:center;background:' + bg + ';color:#1d6f42;font-weight:bold;">' + r[code+'_closed'] + '</td>' +
-      '<td style="border:1px solid #bbb;text-align:center;background:' + bg + ';' + (r[code+'_remain']>0?'color:#C00000;font-weight:bold':'') + ';">' + r[code+'_remain'] + '</td>' +
-    '</tr>';
-  });
-  const t = rows.reduce((a,r) => ({total:a.total+r[code+'_itrs'], closed:a.closed+r[code+'_closed'], remain:a.remain+r[code+'_remain']}), {total:0,closed:0,remain:0});
-  html += '<tr style="background:#404040;color:#fff;font-weight:bold;">' +
-    '<td style="border:1px solid #222;text-align:left;padding:7px;">TOTAL ' + titles[code] + '</td>' +
-    '<td style="border:1px solid #222;text-align:center;">' + t.total + '</td>' +
-    '<td style="border:1px solid #222;text-align:center;">' + t.closed + '</td>' +
-    '<td style="border:1px solid #222;text-align:center;' + (t.remain>0?'color:#ff9b9b':'') + ';">' + t.remain + '</td>' +
-  '</tr></table></body></html>';
-  downloadExcel(html, 'Subsystem_Handover_' + code);
-}
-
-// ---------- 4,5,6. E / I / T Description Status Tables ----------
+// ---------- 3,4,5. E / I / T Description Status Tables ----------
 (function(){
   if(!EIT_DESC) return;
   function pct(a,b){ return b ? ((a/b*100).toFixed(1)) : 0; }
@@ -3349,46 +3178,6 @@ function exportRfiDetailExcel(){
   downloadExcel(html, 'RFI_Detail_by_Asset');
 }
 
-// ---------- DPR: EIT ITRs Backlog Tracking ----------
-if(DPR_EIT){
-  (function(){
-    const c = document.getElementById('dprEitKpis');
-    const map = {E:{name:'Electrical (E)',color:'gold'}, I:{name:'Instrumentation (I)',color:'teal'}, T:{name:'Telecom (T)',color:'pink'}};
-    Object.entries(DPR_EIT.totals).forEach(([k,v])=>{
-      const div = document.createElement('div');
-      div.className = 'kpi ' + map[k].color;
-      div.innerHTML = `<div class="val">${v.closed} / ${v.itrs}</div>
-        <div class="lbl">${map[k].name} — ${v.pct}% Closed (Remain: ${v.remain})</div>
-        <div class="progress-bar"><div class="progress-fill" style="width:${v.pct}%"></div></div>`;
-      c.appendChild(div);
-    });
-  })();
-
-  new Chart(document.getElementById('chartDprEitTop'), {
-    type:'bar',
-    data:{
-      labels: DPR_EIT.table.map(r=>r.subsystem),
-      datasets:[
-        {label:'Electrical', data: DPR_EIT.table.map(r=>r.E_itrs), backgroundColor:'#2563eb'},
-        {label:'Instrumentation', data: DPR_EIT.table.map(r=>r.I_itrs), backgroundColor:'#7c3aed'},
-        {label:'Telecom', data: DPR_EIT.table.map(r=>r.T_itrs), backgroundColor:'#0891b2'},
-      ]
-    },
-    options:{ indexAxis:'y', plugins:{legend:{position:'bottom'}}, scales:{x:{stacked:true, beginAtZero:true}, y:{stacked:true}} }
-  });
-
-  document.getElementById('dprEitTableBody').innerHTML = DPR_EIT.table.map(r=>`
-    <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:6px;">${r.subsystem}</td>
-      <td style="padding:6px;text-align:center;">${r.E_itrs}</td><td style="padding:6px;text-align:center;">${r.E_closed}</td><td style="padding:6px;text-align:center;color:var(--accent);">${r.E_remain}</td>
-      <td style="padding:6px;text-align:center;">${r.I_itrs}</td><td style="padding:6px;text-align:center;">${r.I_closed}</td><td style="padding:6px;text-align:center;color:var(--accent);">${r.I_remain}</td>
-      <td style="padding:6px;text-align:center;">${r.T_itrs}</td><td style="padding:6px;text-align:center;">${r.T_closed}</td><td style="padding:6px;text-align:center;color:var(--accent);">${r.T_remain}</td>
-    </tr>`).join('');
-} else {
-  document.getElementById('sec-dpr-eit').innerHTML =
-    "<div class=\"section-title\">⚠️ DPR Summary file not found (needs sheet 'EIT SUMMERY')</div>";
-}
-
 // ---------- Punch Tracking & Closure ----------
 if(PUNCH){
   (function(){
@@ -3667,27 +3456,55 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
   if(!bar || !container || !order.length) return;
 
   // Build tab buttons
+  var pageIcons = [
+    {match:/^dashboard$/i, icon:'🎯'},
+    {match:/subsystem report/i, icon:'🗂️'},
+    {match:/electrical/i, icon:'⚡'},
+    {match:/instrumentation/i, icon:'🔧'},
+    {match:/telecom/i, icon:'📡'},
+    {match:/cable routes/i, icon:'🧵'},
+    {match:/route chains/i, icon:'🔗'},
+    {match:/panel connections/i, icon:'🖥️'},
+    {match:/itr tasks/i, icon:'✅'},
+    {match:/punch list/i, icon:'📌'},
+    {match:/qc punch/i, icon:'🛠️'},
+    {match:/inspection/i, icon:'🔍'},
+    {match:/subsystem summary/i, icon:'📈'},
+  ];
+  function pageIcon(name){
+    for(var i=0;i<pageIcons.length;i++) if(pageIcons[i].match.test(name)) return pageIcons[i].icon;
+    return '📄';
+  }
+  function tabBtnHtml(name){
+    return '<span class="t-icon">' + pageIcon(name) + '</span>' + name;
+  }
   var btn = document.createElement('button');
   btn.className = 'tabbtn active';
-  btn.textContent = '🏠 Main Dashboard';
+  btn.innerHTML = '<span class="t-icon">🏠</span>Main Dashboard';
   btn.dataset.tab = 'tab-main-dashboard';
   bar.appendChild(btn);
   order.forEach(function(name, idx){
     var b = document.createElement('button');
     b.className = 'tabbtn';
     b.dataset.tab = 'tab-' + idx;
-    b.textContent = '📄 ' + name;
+    b.innerHTML = tabBtnHtml(name);
     bar.appendChild(b);
   });
 
-  // Build page divs
+  // Build page divs (KPI row + charts + table)
+  var pageCharts = {};
   var pagesCache = {};
+  var PAL = ['#2563eb','#7c3aed','#0891b2','#1a8a4a','#c8940a','#c53030','#ec4899','#f97316','#14b8a6','#6366f1','#84cc16','#06b6d4','#ef4444','#8b5cf6'];
+  var HEADER_RE = /equipment|description|status|discipline|subsystem|task|panel|level|cable|metric|type|role|tag|state|category|punch|inspection|rfi|direction|route|asset|close|complete|number|name|unit|wire|from|to|fed|length|raised|serial/i;
+
   order.forEach(function(name, idx){
     var div = document.createElement('div');
     div.className = 'tabpage';
     div.id = 'tab-' + idx;
     div.innerHTML =
-      '<div class="section-title">📊 ' + name + '</div>' +
+      '<div class="section-title">' + pageIcon(name) + ' ' + name + '</div>' +
+      '<div class="kpi-row" id="pkpi-' + idx + '"></div>' +
+      '<div class="chart-row" id="pcharts-' + idx + '"></div>' +
       '<div class="chart-card">' +
         '<div class="eit-page-toolbar">' +
           '<input type="text" placeholder="Search ' + name + '..." data-search="' + idx + '">' +
@@ -3701,23 +3518,85 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
   function esc(s){
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
+  function parseNum(v){
+    var n = parseFloat(String(v).replace(/[^0-9.\-]/g,''));
+    return isNaN(n) ? 0 : n;
+  }
+  function fmt(n){ return (n>=10000 ? (n/1000).toFixed(1)+'k' : Math.round(n).toLocaleString()); }
+  function kpiCard(icon,val,lbl,cls){
+    return '<div class="kpi ' + (cls||'') + '"><div class="icon">' + icon + '</div><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div></div>';
+  }
+  function progressBar(pct, extra){
+    return '<div class="progress-bar" style="height:10px;background:#e7dfcf;border-radius:6px;overflow:hidden;margin-top:8px;">' +
+      '<div class="progress-fill" style="height:100%;width:' + Math.min(100,Math.max(0,pct)) + '%;background:linear-gradient(90deg,' + (pct>=80?'#1a8a4a':pct>=50?'#f59e0b':'#c53030') + ',' + (pct>=80?'#22c55e':pct>=50?'#fbbf24':'#ef4444') + ');border-radius:6px;transition:width .8s;"></div></div>' + (extra||'');
+  }
 
-  function renderPage(idx, filter){
-    var rows = pages[order[idx]] || [];
-    var filtered = rows;
-    if(filter){
-      var q = filter.toLowerCase();
-      filtered = rows.filter(function(r){ return r.join(' ').toLowerCase().indexOf(q) >= 0; });
+  // ---- generic header detection ----
+  function findHeader(rows){
+    for(var i=1;i<Math.min(rows.length,15);i++){
+      var row = rows[i]||[];
+      var ne = row.filter(function(c){ return String(c).trim()!==''; });
+      if(ne.length>=3){
+        var kws = ne.filter(function(c){ return HEADER_RE.test(String(c)); });
+        if(kws.length>=2) return {idx:i, headers:ne.slice(0,row.length)};
+      }
     }
-    document.getElementById('count-' + idx).textContent = filtered.length + ' / ' + rows.length + ' rows';
-    if(!filtered.length){
-      document.getElementById('wrap-' + idx).innerHTML = '<div style="padding:20px;color:var(--muted);">No results</div>';
-      return;
+    return null;
+  }
+  function toRecords(rows, hIdx, headers){
+    var recs = [];
+    for(var i=hIdx+1;i<rows.length;i++){
+      var row = rows[i]||[];
+      var vals = [];
+      for(var c=0;c<headers.length;c++) vals.push(row[c]!==undefined ? String(row[c]).trim() : '');
+      var ne = vals.filter(function(v){ return v!==''; });
+      if(ne.length<2) continue;
+      if(/^total/i.test(vals.join(' '))) continue;
+      if(/^(total|subtotal)$/i.test(ne[0])) continue;
+      var rec = {};
+      for(var k=0;k<headers.length;k++) rec['c'+k] = vals[k];
+      recs.push(rec);
+    }
+    return recs;
+  }
+  function countBy(recs, col){
+    var m = {};
+    recs.forEach(function(r){
+      var k = r[col]||'';
+      if(!k) return;
+      k = k.split(/[,;]/)[0].trim();
+      if(k) m[k]=(m[k]||0)+1;
+    });
+    return m;
+  }
+  function sumCol(recs, col){
+    var s=0;
+    recs.forEach(function(r){ s+=parseNum(r[col]); });
+    return s;
+  }
+  function pickCol(headers, pats){
+    for(var p=0;p<pats.length;p++){
+      for(var i=0;i<headers.length;i++){
+        if(new RegExp(pats[p],'i').test(String(headers[i]))) return i;
+      }
+    }
+    return -1;
+  }
+  function isClosedish(v){
+    return /(closed|complete|done|accepted)/i.test(v) && !/open/i.test(v) && !/not complete|to be completed/i.test(v);
+  }
+
+  // ---- fallback raw table ----
+  function renderRawTable(idx, rows){
+    var filtered = rows;
+    if(pagesCache[idx].filter){
+      var q = pagesCache[idx].filter.toLowerCase();
+      filtered = rows.filter(function(r){ return r.join(' ').toLowerCase().indexOf(q)>=0; });
     }
     var maxCols = 0;
-    filtered.forEach(function(r){ if(r.length > maxCols) maxCols = r.length; });
+    filtered.forEach(function(r){ if(r.length>maxCols) maxCols=r.length; });
     var html = '<table><thead><tr>';
-    for(var c=0;c<maxCols;c++) html += '<th>' + (c===0 ? '#' : 'Col '+c) + '</th>';
+    for(var c=0;c<maxCols;c++) html += '<th>' + (c===0?'#':'Col '+c) + '</th>';
     html += '</tr></thead><tbody>';
     filtered.forEach(function(r, ri){
       html += '<tr><td>' + (ri+1) + '</td>';
@@ -3725,14 +3604,286 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
       html += '</tr>';
     });
     html += '</tbody></table>';
-    document.getElementById('wrap-' + idx).innerHTML = html;
+    document.getElementById('wrap-'+idx).innerHTML = html;
+    document.getElementById('count-'+idx).textContent = filtered.length + ' / ' + rows.length + ' rows';
+  }
+
+  // ---- data table with real headers ----
+  function renderTable(idx, rows, headers, recs){
+    var filtered = recs;
+    var f = pagesCache[idx].filter;
+    if(f){
+      var q = f.toLowerCase();
+      filtered = recs.filter(function(r){
+        for(var k=0;k<headers.length;k++) if(r['c'+k].toLowerCase().indexOf(q)>=0) return true;
+        return false;
+      });
+    }
+    document.getElementById('count-'+idx).textContent = filtered.length + ' / ' + rows.length + ' rows';
+    if(!filtered.length){
+      document.getElementById('wrap-'+idx).innerHTML = '<div style="padding:20px;color:var(--muted);">No results</div>';
+      return;
+    }
+    var html = '<table><thead><tr><th>#</th>';
+    headers.forEach(function(h){ html += '<th>' + esc(h) + '</th>'; });
+    html += '</tr></thead><tbody>';
+    filtered.forEach(function(r, ri){
+      html += '<tr><td>' + (ri+1) + '</td>';
+      for(var k=0;k<headers.length;k++){
+        var v = r['c'+k];
+        var extra = '';
+        if(isClosedish(v)) extra = ' style="color:#1a8a4a;font-weight:700;"';
+        else if(/open|originated|to be completed|pending/i.test(v)) extra = ' style="color:#c53030;font-weight:700;"';
+        html += '<td' + extra + '>' + esc(v) + '</td>';
+      }
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('wrap-'+idx).innerHTML = html;
+  }
+
+  function initChart(idx, canvasId, type, labels, datasets, isBar){
+    var el = document.getElementById(canvasId);
+    if(!el) return null;
+    var chart = new Chart(el.getContext('2d'), {
+      type: type,
+      data: { labels: labels, datasets: datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position:'bottom', labels:{ color:'#6b5e4d', font:{size:11}, boxWidth:12 } },
+          tooltip: { backgroundColor:'#2c2416', titleColor:'#f5f0e8', bodyColor:'#f5f0e8' }
+        },
+        scales: isBar ? {
+          x: { ticks:{ color:'#6b5e4d' }, grid:{ color:'rgba(107,94,77,0.12)' }, stacked:false },
+          y: { beginAtZero:true, ticks:{ color:'#6b5e4d' }, grid:{ color:'rgba(107,94,77,0.12)' } }
+        } : {}
+      }
+    });
+    if(!pageCharts[idx]) pageCharts[idx] = [];
+    pageCharts[idx].push(chart);
+    return chart;
+  }
+
+  function buildTablePage(idx, name, rows){
+    pagesCache[idx] = pagesCache[idx] || {filter:''};
+    var hdr = findHeader(rows);
+    if(!hdr){ renderRawTable(idx, rows); return; }
+    var headers = hdr.headers;
+    var recs = toRecords(rows, hdr.idx, headers);
+    pagesCache[idx].rows = rows;
+    pagesCache[idx].headers = headers;
+    pagesCache[idx].recs = recs;
+
+    var statusCol = pickCol(headers, ['status','state','workflow','close','accept','complete']);
+    var subCol = pickCol(headers, ['subsystem']);
+    var catCol = pickCol(headers, ['category','task type','type','role','direction','level','scope']);
+    var lenCol = pickCol(headers, ['length','km']);
+    var totalCol = pickCol(headers, ['total','itrs','tasks']);
+
+    var closedCount = 0;
+    if(statusCol>=0) recs.forEach(function(r){ if(isClosedish(r['c'+statusCol])) closedCount++; });
+    else if(totalCol>=0 && pickCol(headers,['closed'])>=0) closedCount = sumCol(recs, 'c'+pickCol(headers,['closed']));
+    var pct = recs.length ? Math.round(closedCount/recs.length*100) : 0;
+
+    var kpis = [
+      kpiCard('📊', fmt(recs.length), 'Total Records'),
+      kpiCard('✅', fmt(closedCount), 'Closed / Done', 'teal'),
+      kpiCard('📈', pct+'%', 'Completion', 'gold'),
+    ];
+    if(lenCol>=0) kpis.push(kpiCard('🧵', (sumCol(recs,'c'+lenCol)/1000).toFixed(1)+' km', 'Total ' + esc(headers[lenCol])));
+    if(subCol>=0){
+      var uniqSubs = Object.keys(countBy(recs, 'c'+subCol)).length;
+      kpis.push(kpiCard('🗂️', fmt(uniqSubs), 'Unique Subsystems', 'blue'));
+    }
+    document.getElementById('pkpi-'+idx).innerHTML = '<div class="kpi-row">' + kpis.join('') + '</div>';
+
+    var charts = '';
+    var chartCards = [];
+    if(statusCol>=0){
+      var cm = Object.entries(countBy(recs, 'c'+statusCol)).sort(function(a,b){return b[1]-a[1];});
+      var slice = cm.slice(0,8);
+      chartCards.push({id:'ch-d-'+idx, title:'Breakdown by ' + esc(headers[statusCol]), type:'doughnut',
+        labels: slice.map(function(e){return e[0];}),
+        data: slice.map(function(e){return e[1];}),
+        sum: cm.reduce(function(a,e){return a+e[1];},0)});
+    }
+    var barCol = subCol>=0 ? subCol : catCol;
+    if(barCol>=0){
+      var bm = Object.entries(countBy(recs, 'c'+barCol)).sort(function(a,b){return b[1]-a[1];}).slice(0,15);
+      chartCards.push({id:'ch-b-'+idx, title:'Top 15 by ' + esc(headers[barCol]), type:'bar',
+        labels: bm.map(function(e){return e[0];}),
+        data: bm.map(function(e){return e[1];})});
+    }
+    if(totalCol>=0 && catCol>=0){
+      // stacked total by category
+      var tm = Object.entries(countBy(recs, 'c'+catCol)).sort(function(a,b){return b[1]-a[1];}).slice(0,8);
+      chartCards.push({id:'ch-c-'+idx, title:'Records by ' + esc(headers[catCol]), type:'doughnut',
+        labels: tm.map(function(e){return e[0];}),
+        data: tm.map(function(e){return e[1];})});
+    }
+    chartCards.forEach(function(cc){
+      var isBar = cc.type==='bar';
+      charts += '<div class="chart-card" style="flex:' + (isBar?1.7:1) + ';min-width:280px;"><h3>' + cc.title + '</h3>' +
+        '<div style="height:300px;position:relative;"><canvas id="' + cc.id + '"></canvas></div></div>';
+      var cols = PAL.slice(0, cc.labels.length);
+      var ds = isBar ?
+        [{label:cc.title.replace(/Top 15 by /,'').replace(/Records by /,''), data:cc.data, backgroundColor:'rgba(37,99,235,0.75)', borderColor:'#2563eb', borderWidth:1, borderRadius:5}] :
+        [{data:cc.data, backgroundColor:cols, borderColor:'#fffcf7', borderWidth:2, hoverOffset:6}];
+      initChart(idx, cc.id, cc.type, cc.labels, ds, isBar);
+    });
+    if(chartCards.length) document.getElementById('pcharts-'+idx).innerHTML = charts;
+    renderTable(idx, rows, headers, recs);
+  }
+
+  // ---- Dashboard sheet: KPI blocks + table blocks ----
+  function buildDashboardPage(idx, rows){
+    pagesCache[idx] = pagesCache[idx] || {filter:''};
+    var kpis = [];
+    var blocks = [];
+    for(var i=0;i<rows.length;i++){
+      var first = String(rows[i][0]||'').trim();
+      if(/^metric$/i.test(first)){
+        for(var j=i+1;j<rows.length;j++){
+          var r = rows[j];
+          var lbl = String(r[0]||'').trim();
+          if(!lbl || r.length<2 || /^[^A-Za-z]/.test(lbl)) break;
+          kpis.push({lbl:lbl, done:parseNum(r[1]), total:parseNum(r[2])});
+        }
+      }
+      if(/^(discipline|subsystem|inspection type)$/i.test(first)){
+        var hdrRow = rows[i].filter(function(c){ return String(c).trim()!==''; });
+        var bRows = [];
+        for(var j2=i+1;j2<rows.length;j2++){
+          var r2 = rows[j2];
+          var f2 = String(r2[0]||'').trim();
+          if(!f2 || /^total$/i.test(f2)) break;
+          if(/^[A-Z]{2,}[\s]*$/.test(f2) && r2[1]===undefined) break;
+          bRows.push(r2.slice(0,hdrRow.length));
+        }
+        blocks.push({headers:hdrRow, rows:bRows, title:first});
+      }
+    }
+    var kpiHtml = kpis.map(function(k){
+      var p = k.total ? Math.round(k.done/k.total*100) : 0;
+      return '<div class="kpi"><div class="icon">' + (p>=80?'✅':p>=50?'📈':'⏳') + '</div>' +
+        '<div class="val">' + fmt(k.done) + ' / ' + fmt(k.total) + '</div>' +
+        '<div class="lbl">' + esc(k.lbl) + '</div>' + progressBar(p) + '</div>';
+    }).join('');
+    document.getElementById('pkpi-'+idx).innerHTML = '<div class="kpi-row">' + kpiHtml + '</div>';
+
+    var charts = '';
+    blocks.forEach(function(b, bi){
+      var headers = b.headers;
+      var recs = toRecords(b.rows, -1, headers);
+      var col = pickCol(headers, ['discipline','subsystem','inspection type']);
+      if(col<0) return;
+      var cm = Object.entries(countBy(recs, 'c'+col)).sort(function(a,b){return b[1]-a[1];});
+      if(!cm.length) return;
+      var isSub = /subsystem/i.test(String(headers[col]));
+      var slice = cm.slice(0, isSub?15:8);
+      var totalAll = cm.reduce(function(a,e){return a+e[1];},0);
+      var isBar = isSub;
+      charts += '<div class="chart-card" style="flex:' + (isBar?1.7:1) + ';min-width:280px;"><h3>' + esc(b.title) + ' (by ' + esc(headers[col]) + ')</h3>' +
+        '<div style="height:300px;position:relative;"><canvas id="ch-dd-' + idx + '-' + bi + '"></canvas></div></div>';
+      var ds = isBar ?
+        [{label:esc(headers[col]), data:slice.map(function(e){return e[1];}), backgroundColor:'rgba(200,148,10,0.75)', borderColor:'#c8940a', borderWidth:1, borderRadius:5}] :
+        [{data:slice.map(function(e){return e[1];}), backgroundColor:PAL.slice(0,slice.length), borderColor:'#fffcf7', borderWidth:2, hoverOffset:6}];
+      initChart(idx, 'ch-dd-'+idx+'-'+bi, isBar?'bar':'doughnut',
+        slice.map(function(e){return e[0].length>28 ? e[0].slice(0,28)+'…' : e[0];}), ds, isBar);
+    });
+    if(charts) document.getElementById('pcharts-'+idx).innerHTML = charts;
+    document.getElementById('count-'+idx).textContent = rows.length + ' rows';
+    renderRawTable(idx, rows);
+  }
+
+  // ---- Subsystem Report: per-subsystem metric cards ----
+  function buildSubsystemReportPage(idx, rows){
+    pagesCache[idx] = pagesCache[idx] || {filter:''};
+    var blocks = [];
+    var cur = null;
+    for(var i=0;i<rows.length;i++){
+      var first = String(rows[i][0]||'').trim();
+      if(first.indexOf('▸')===0){ cur = {name:first.replace(/^▸\s*/,''), metrics:[]}; blocks.push(cur); continue; }
+      if(cur && /^metric$/i.test(first)){
+        for(var j=i+1;j<rows.length;j++){
+          var r = rows[j];
+          var lbl = String(r[0]||'').trim();
+          if(!lbl) break;
+          cur.metrics.push({lbl:lbl, open:parseNum(r[8]), closed:parseNum(r[9])});
+        }
+      }
+    }
+    var kpiHtml = blocks.map(function(b){
+      var tot=0, cl=0;
+      b.metrics.forEach(function(m){ tot+=m.open+m.closed; cl+=m.closed; });
+      var p = tot ? Math.round(cl/tot*100) : 0;
+      return '<div class="kpi"><div class="icon">' + (p>=80?'✅':'🗂️') + '</div>' +
+        '<div class="val" style="font-size:14px;">' + esc(b.name) + '</div>' +
+        '<div class="lbl">' + cl + ' / ' + tot + ' closed · ' + p + '%</div>' + progressBar(p) + '</div>';
+    }).join('');
+    document.getElementById('pkpi-'+idx).innerHTML = '<div class="kpi-row">' + kpiHtml + '</div>';
+    document.getElementById('count-'+idx).textContent = blocks.length + ' subsystems';
+    renderRawTable(idx, rows);
+  }
+
+  // ---- Subsystem Summary Combined: progress bars ----
+  function buildSubsystemSummaryPage(idx, rows){
+    pagesCache[idx] = pagesCache[idx] || {filter:''};
+    var hdr = findHeader(rows);
+    if(!hdr){ renderRawTable(idx, rows); return; }
+    var headers = hdr.headers;
+    var recs = toRecords(rows, hdr.idx, headers);
+    pagesCache[idx].rows = rows; pagesCache[idx].headers = headers; pagesCache[idx].recs = recs;
+    var nameCol = pickCol(headers, ['subsystem','name']);
+    var closedCol = pickCol(headers, ['closed']);
+    var totalCol = pickCol(headers, ['total','itrs']);
+    var pctCol = pickCol(headers, ['close','%']);
+    var sorted = recs.slice().sort(function(a,b){ return parseNum(b['c'+pctCol]) - parseNum(a['c'+pctCol]); });
+    var top = sorted.slice(0,20);
+    var totC = sumCol(recs,'c'+closedCol), totT = sumCol(recs,'c'+totalCol);
+    var gPct = totT ? Math.round(totC/totT*100) : 0;
+    document.getElementById('pkpi-'+idx).innerHTML = '<div class="kpi-row">' +
+      kpiCard('🗂️', fmt(recs.length), 'Subsystems') +
+      kpiCard('📋', fmt(totT), 'Total Tasks', 'gold') +
+      kpiCard('✅', fmt(totC), 'Closed Tasks', 'teal') +
+      kpiCard('📈', gPct+'%', 'Overall Completion', 'blue') + '</div>';
+    var html = '<div style="padding:18px;">' + top.map(function(r, i){
+      var p = Math.min(100, parseNum(r['c'+pctCol]));
+      return '<div style="margin-bottom:12px;">' +
+        '<div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:#2c2416;margin-bottom:4px;">' +
+          '<span>' + esc(r['c'+nameCol]) + '</span>' +
+          '<span>' + (r['c'+closedCol]||'0') + ' / ' + (r['c'+totalCol]||'0') + ' — ' + p.toFixed(1) + '%</span></div>' +
+        progressBar(p) + '</div>';
+    }).join('') + '</div>';
+    var charts = '<div class="chart-card"><h3>Top 20 Subsystems — Completion</h3>' + html + '</div>';
+    var cm = countBy(recs, 'c'+pctCol);
+    var doneC = recs.filter(function(r){ return parseNum(r['c'+pctCol])>=100; }).length;
+    charts += '<div class="chart-card" style="flex:1;min-width:260px;"><h3>Complete vs Incomplete</h3>' +
+      '<div style="height:280px;position:relative;"><canvas id="ch-s-' + idx + '"></canvas></div></div>';
+    document.getElementById('pcharts-'+idx).innerHTML = '<div class="chart-row">' + charts + '</div>';
+    initChart(idx, 'ch-s-'+idx, 'doughnut', ['Complete (100%)','Incomplete'],
+      [{data:[doneC, recs.length-doneC], backgroundColor:['#1a8a4a','#c8940a'], borderColor:'#fffcf7', borderWidth:2}], false);
+    renderTable(idx, rows, headers, recs);
+  }
+
+  // ---- route dispatch ----
+  function buildPage(idx, name, rows){
+    if(/^dashboard$/i.test(name)) return buildDashboardPage(idx, rows);
+    if(/subsystem report/i.test(name)) return buildSubsystemReportPage(idx, rows);
+    if(/subsystem summary/i.test(name)) return buildSubsystemSummaryPage(idx, rows);
+    return buildTablePage(idx, name, rows);
   }
 
   order.forEach(function(name, idx){
     document.querySelector('[data-search="' + idx + '"]').addEventListener('input', function(e){
-      renderPage(idx, e.target.value);
+      pagesCache[idx] = pagesCache[idx] || {};
+      pagesCache[idx].filter = e.target.value;
+      var pc = pagesCache[idx];
+      if(pc.recs) renderTable(idx, pc.rows, pc.headers, pc.recs);
+      else renderRawTable(idx, pages[order[idx]] || []);
     });
-    renderPage(idx, '');
+    buildPage(idx, name, pages[name] || []);
   });
 
   // Tab switching
@@ -3751,7 +3902,7 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
 """
 
 
-def build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, cable_tracker_data, output_path):
+def build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, cable_tracker_data, output_path):
     html = HTML_TEMPLATE
     html = html.replace('__ITR_JSON__', json.dumps(itr_data, ensure_ascii=False))
     html = html.replace('__PUNCH_JSON__', json.dumps(punch_data, ensure_ascii=False) if punch_data else 'null')
@@ -3769,7 +3920,6 @@ def build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_t
     html = html.replace('__PUNCH_WEEKLY_TOTAL__', str(punch_data['weekly_total']) if punch_data else '0')
     html = html.replace('__PUNCH_MONTHLY_TOTAL__', str(punch_data['monthly_total']) if punch_data else '0')
     html = html.replace('__RFI_TOTAL__', str(rfi_data['total_rfi']) if rfi_data else '0')
-    html = html.replace('__DPR_EIT_JSON__', json.dumps(dpr_eit_data, ensure_ascii=False) if dpr_eit_data else 'null')
     html = html.replace('__SEARCH_INDEX_JSON__', json.dumps(search_index, ensure_ascii=False))
     html = html.replace('__EIT_TABLE_JSON__', json.dumps(eit_table_data, ensure_ascii=False) if eit_table_data else 'null')
     html = html.replace('__EIT_DESC_JSON__', json.dumps(eit_table_data.get('eit_desc', {}), ensure_ascii=False) if eit_table_data else 'null')
@@ -3886,7 +4036,6 @@ def main():
     ov_path = find_file(['ovtasks'])
     punch_path = find_file(['punch', 'list', 'register']) or find_file(['punch', 'list'])
     rfi_path = find_file(['inspection', 'register'])
-    dpr_path = find_file(['completions', 'dpr'])
 
     if not ov_path:
         print(f"[ERROR] ovTasks file not found in {DOWNLOADS}")
@@ -3896,13 +4045,11 @@ def main():
     print(f"ovTasks file       : {ov_path}")
     print(f"Punch List         : {punch_path if punch_path else 'NOT FOUND'}")
     print(f"Inspection Register: {rfi_path if rfi_path else 'NOT FOUND'}")
-    print(f"DPR Summary file   : {dpr_path if dpr_path else 'NOT FOUND'}")
 
     itr_data = build_itr_data(ov_path, today_override)
     eit_table_data = build_itr_breakdown_table(ov_path)
     punch_data = build_punch_data(punch_path) if punch_path else None
     rfi_data = build_inspection_data(rfi_path) if rfi_path else None
-    dpr_eit_data = build_eit_subsystem_data(dpr_path) if dpr_path else None
     cmt_qc_punch_data = build_cmt_qc_punch_data()
     cable_ov_data = build_cable_ov_data(ov_path)
     cable_tracker_data = build_cable_tracker_data()
@@ -3912,7 +4059,7 @@ def main():
     print("\nBuilding universal search index (Asset Tag -> ITR / RFI / Punch)...")
     search_index = build_search_index(ov_path, punch_path, rfi_path)
 
-    build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, cable_tracker_data, OUTPUT_HTML)
+    build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, cable_tracker_data, OUTPUT_HTML)
 
     # نسخة تانية باسم PS5_Project_Dashboard.html (للمشاركة المباشرة)
     import shutil
