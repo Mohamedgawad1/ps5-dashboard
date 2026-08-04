@@ -1411,15 +1411,6 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   <div class="grp">DPR Summary (EIT)</div>
   <label><input type="checkbox" data-target="sec-dpr-eit" checked> E/I/T Progress &amp; Top Subsystems</label>
   <label><input type="checkbox" data-target="sec-punch-tracking" checked> Punch Tracking &amp; Closure</label>
-
-  <div class="grp">Update</div>
-  <div style="margin-top:8px;">
-    <button onclick="location.reload()" style="width:100%;padding:8px 12px;background:linear-gradient(135deg,#1b5e20,#4caf50);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">🔄 Refresh Dashboard</button>
-  </div>
-  <div style="margin-top:8px;">
-    <button onclick="copyUpdateCmd()" style="width:100%;padding:8px 12px;background:linear-gradient(135deg,#0d47a1,#2196f3);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">📤 Update from PC</button>
-  </div>
-  <div id="updateCmdBox" style="display:none;margin-top:8px;padding:8px;background:#111;border-radius:6px;font-size:11px;color:#0f0;word-break:break-all;"></div>
 </div>
 
 <!-- ================= MAIN ================= -->
@@ -1428,6 +1419,11 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     <div>
       <h1>📊 PS5 — EACOP Project Dashboard</h1>
       <div class="sub">ITR Closures & Punch List | Data last updated: __NOW__</div>
+      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;">
+        <button onclick="location.reload()" style="padding:8px 16px;background:linear-gradient(135deg,#1b5e20,#4caf50);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">🔄 Refresh</button>
+        <button onclick="copyUpdateCmd()" style="padding:8px 16px;background:linear-gradient(135deg,#0d47a1,#2196f3);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">📤 Update from PC</button>
+      </div>
+      <div id="updateCmdBox" style="display:none;margin-top:10px;padding:10px;background:#111;border-radius:6px;font-size:12px;color:#0f0;word-break:break-all;max-width:520px;"></div>
     </div>
     <div style="font-size:38px;">⚙️</div>
   </div>
@@ -3919,31 +3915,35 @@ def main():
         json.dump(sms_data, f)
     print(f"  SMS data saved: {sms_out}")
 
-    # ---- Auto upload to GitHub if token file exists ----
-    import subprocess, tempfile, base64
+    # ---- Auto upload to GitHub via git (handles large files) ----
     token_file = os.path.join(os.path.dirname(__file__) or '.', 'github_token.txt')
     if os.path.exists(token_file):
         try:
             token = open(token_file, 'r').read().strip()
             if token:
                 print("\n  Uploading to GitHub...")
-                repo = "mohamedgawad1/ps5-dashboard"
-                for path, local in [("index.html", OUTPUT_HTML), ("sms_data.json", sms_out)]:
-                    content = base64.b64encode(open(local, 'rb').read()).decode()
-                    api = f"https://api.github.com/repos/{repo}/contents/{path}"
-                    req = urllib.request.Request(api, method='GET')
-                    req.add_header('Authorization', f'token {token}')
-                    sha = None
-                    try:
-                        with urllib.request.urlopen(req, timeout=10) as r:
-                            sha = json.loads(r.read()).get('sha')
-                    except: pass
-                    payload = json.dumps({"message":"auto update","content":content,"sha":sha,"branch":"main"}).encode()
-                    req2 = urllib.request.Request(api, data=payload, method='PUT')
-                    req2.add_header('Authorization', f'token {token}')
-                    req2.add_header('Content-Type', 'application/json')
-                    with urllib.request.urlopen(req2, timeout=30) as r:
-                        print(f"  Uploaded: {repo}/{path}")
+                import subprocess
+                base = os.path.dirname(os.path.abspath(__file__)) or '.'
+                files_to_commit = ['index.html', 'sms_data.json', 'phone_sms.py', 'test_sms.py', 'cpp_agi_dashboard.py', 'update_dashboard.bat']
+                # ensure local repo exists
+                if not os.path.exists(os.path.join(base, '.git')):
+                    subprocess.run(['git', 'init'], cwd=base, capture_output=True)
+                    subprocess.run(['git', 'remote', 'add', 'origin', 'https://github.com/mohamedgawad1/ps5-dashboard.git'], cwd=base, capture_output=True)
+                # set token in URL for this push only
+                push_url = f"https://{token}@github.com/mohamedgawad1/ps5-dashboard.git"
+                cmds = [
+                    ['git', 'add'] + files_to_commit,
+                    ['git', '-c', 'http.postBuffer=104857600', 'commit', '-m', f'auto update {datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}', '--no-verify'],
+                    ['git', '-c', 'http.postBuffer=104857600', 'push', '--force', push_url, 'HEAD:main'],
+                ]
+                for cmd in cmds:
+                    r = subprocess.run(cmd, cwd=base, capture_output=True, text=True, timeout=300)
+                    err = (r.stderr or '').strip()
+                    if r.returncode != 0 and 'nothing to commit' not in err and 'Everything up-to-date' not in err:
+                        if cmd[0] == 'git' and cmd[1] == 'push':
+                            print(f"  git push output: {err[-300:]}")
+                            raise RuntimeError(err[-300:])
+                print("  Uploaded via git: index.html, sms_data.json")
         except Exception as e:
             print(f"  Upload failed: {e}")
 
