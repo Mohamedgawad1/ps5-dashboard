@@ -1214,109 +1214,136 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content="900">
-<title>PS5 Project Dashboard</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<title>PS5 - CPP AGI Completion Progress Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
 :root{
-  --bgmain:#0b1120; --panel:#131a2b; --panel2:#1a2236;
-  --accent:#ff4d8d; --gold:#ffb627; --teal:#00e0c6; --blue:#3da8ff; --purple:#9b59f6;
-  --text:#e8ecf7; --muted:#8a93ad; --border:#232c44;
+  --bg:#f5f0e8; --bg2:#ede7db; --card:#fffcf7; --card2:#faf6ee; --card3:#f0ead9;
+  --border:#d9d0c1; --border2:#c4b9a7;
+  --text:#2c2416; --text2:#6b5e4d; --text3:#9a8d7c;
+  --gold:#c8940a; --gold2:#a67808; --gold-bg:rgba(200,148,10,0.1);
+  --green:#1a8a4a; --green2:#15803d; --green-bg:rgba(26,138,74,0.08);
+  --red:#c53030; --red2:#b91c1c; --red-bg:rgba(197,48,48,0.08);
+  --blue:#2563eb; --blue2:#1d4ed8; --blue-bg:rgba(37,99,235,0.08);
+  --cyan:#0891b2; --purple:#7c3aed; --pink:#ec4899;
+  --shadow:0 1px 4px rgba(44,36,22,0.06);
+  --shadow-lg:0 8px 30px rgba(44,36,22,0.1);
+  --bgmain:var(--bg); --panel:var(--card); --panel2:var(--card2);
+  --accent:var(--red); --teal:var(--green); --muted:var(--text2);
 }
-*{box-sizing:border-box;font-family:'Segoe UI',Tahoma,Arial,sans-serif;margin:0;padding:0;}
+*{box-sizing:border-box;margin:0;padding:0;}
 body{
-  background:radial-gradient(circle at 20% 0%, #16203a 0%, #0b1120 55%);
-  color:var(--text);display:flex;
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;-webkit-font-smoothing:antialiased;
 }
 
-/* ---------- Sidebar ---------- */
-.sidebar{
-  width:240px;min-height:100vh;
-  background:#0e1626;
-  color:#fff;padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;
-  border-right:1px solid var(--border);
-}
-.sidebar h2{font-size:17px;margin-bottom:18px;display:flex;align-items:center;gap:8px;
-  letter-spacing:.5px;color:var(--teal);}
-.sidebar label{
-  display:flex;align-items:center;gap:8px;padding:9px 8px;border-radius:8px;
-  cursor:pointer;font-size:13px;margin-bottom:3px;transition:.15s;color:var(--muted);
-}
-.sidebar label:hover{background:rgba(255,255,255,.06);color:#fff;}
-.sidebar input{accent-color:var(--teal);width:16px;height:16px;}
-.sidebar .grp{margin-top:20px;font-size:11px;opacity:.6;text-transform:uppercase;
-  letter-spacing:1.5px;border-bottom:1px solid var(--border);padding-bottom:4px;color:var(--gold);}
-
-/* ---------- Main ---------- */
-.main{flex:1;padding:24px 32px;}
+/* ---------- Sticky Header (KENT PLC style) ---------- */
 .header{
-  background:linear-gradient(120deg,#161f38 0%, #0e1626 100%);
-  color:#fff;padding:22px 30px;border-radius:16px;margin-bottom:24px;
-  display:flex;justify-content:space-between;align-items:center;
-  border:1px solid var(--border);position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#fffcf7 0%,#faf6ee 50%,#f5f0e8 100%);
+  border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 12px rgba(44,36,22,0.08);
 }
-.header::after{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 90% 10%, rgba(0,224,198,.15), transparent 60%);
-}
-.header h1{font-size:24px;letter-spacing:.5px;}
-.header .sub{font-size:12px;opacity:.7;margin-top:4px;color:var(--muted);}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:18px 36px 8px;flex-wrap:wrap;gap:8px;}
+.header h1{font-size:22px;font-weight:800;color:var(--text);}
+.header h1 span{color:var(--gold);}
+.header-badge{display:flex;gap:8px;align-items:center;}
+.header-badge .tag{background:var(--gold-bg);color:var(--gold);font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid rgba(200,148,10,0.25);}
+.header-badge .live{background:var(--green-bg);color:var(--green);font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid rgba(26,138,74,0.25);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.header .subtitle{color:var(--text2);font-size:13px;padding:0 36px 8px;}
+.header .meta{display:flex;gap:8px;padding:0 36px 14px;flex-wrap:wrap;align-items:center;}
+.header .meta span{font-size:10px;color:var(--text2);background:var(--card2);padding:4px 12px;border-radius:6px;border:1px solid var(--border);font-weight:600;}
+.hdr-btn{padding:7px 16px;border:none;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700;background:var(--green);color:#fff;box-shadow:0 2px 8px rgba(26,138,74,.25);transition:.15s;}
+.hdr-btn:hover{transform:translateY(-1px);}
+.hdr-btn.blue{background:var(--blue);box-shadow:0 2px 8px rgba(37,99,235,.25);}
 
+/* ---------- Main layout ---------- */
+#tab-main-dashboard{display:flex;align-items:flex-start;}
+.sidebar{
+  width:248px;flex-shrink:0;min-height:calc(100vh - 150px);
+  background:var(--card);color:var(--text);padding:20px 16px;
+  position:sticky;top:128px;margin:24px 0 24px 24px;
+  border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);
+}
+.sidebar h2{font-size:15px;margin-bottom:16px;display:flex;align-items:center;gap:8px;
+  letter-spacing:.5px;color:var(--gold);}
+.sidebar label{
+  display:flex;align-items:center;gap:8px;padding:8px 8px;border-radius:8px;
+  cursor:pointer;font-size:12px;margin-bottom:2px;transition:.15s;color:var(--text2);
+}
+.sidebar label:hover{background:var(--card2);color:var(--text);}
+.sidebar input{accent-color:var(--gold);width:15px;height:15px;}
+.sidebar .grp{margin-top:16px;font-size:10px;opacity:.7;text-transform:uppercase;
+  letter-spacing:1.2px;border-bottom:1px solid var(--border);padding-bottom:4px;color:var(--gold);}
+
+.main{flex:1;min-width:0;padding:24px 32px;}
+
+/* ---------- Sections ---------- */
 .section{display:none;}
-.section.active{display:block;}
+.section.active{display:block;animation:panelIn .3s ease;}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-.kpi-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:22px;}
+.kpi-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
 .kpi{
-  flex:1;min-width:170px;background:var(--panel);border-radius:14px;padding:20px;
+  flex:1;min-width:170px;background:var(--card);border-radius:14px;padding:18px 16px;
   text-align:center;border:1px solid var(--border);
-  border-top:4px solid var(--purple);position:relative;overflow:hidden;
-  transition:transform .2s, border-color .2s;
+  border-top:4px solid var(--blue);position:relative;overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .2s, box-shadow .2s;
 }
-.kpi:hover{transform:translateY(-4px);border-color:var(--teal);}
-.kpi.gold{border-top-color:var(--gold);}
-.kpi.teal{border-top-color:var(--teal);}
-.kpi.pink{border-top-color:var(--accent);}
-.kpi.blue{border-top-color:var(--blue);}
-.kpi .icon{font-size:24px;margin-bottom:6px;}
-.kpi .val{font-size:32px;font-weight:800;color:#fff;letter-spacing:.5px;}
-.kpi .lbl{font-size:12px;color:var(--muted);margin-top:4px;}
+.kpi:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.kpi.gold{border-top-color:var(--gold);} .kpi.gold .val{color:var(--gold);}
+.kpi.teal{border-top-color:var(--green);} .kpi.teal .val{color:var(--green);}
+.kpi.pink{border-top-color:var(--red);} .kpi.pink .val{color:var(--red);}
+.kpi.blue{border-top-color:var(--blue);} .kpi.blue .val{color:var(--blue);}
+.kpi.purple{border-top-color:var(--purple);} .kpi.purple .val{color:var(--purple);}
+.kpi .icon{font-size:22px;margin-bottom:6px;}
+.kpi .val{font-size:30px;font-weight:900;letter-spacing:-1px;color:var(--text);}
+.kpi .lbl{font-size:11px;color:var(--text3);margin-top:4px;font-weight:600;}
 
-.chart-row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:22px;}
+.chart-row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px;}
 .chart-card{
-  flex:1;min-width:340px;background:var(--panel);border-radius:14px;padding:20px;
-  border:1px solid var(--border);
+  flex:1;min-width:340px;background:var(--card);border-radius:14px;padding:20px;
+  border:1px solid var(--border);box-shadow:var(--shadow);transition:box-shadow .25s;
 }
-.chart-card h3{font-size:15px;color:var(--teal);margin-bottom:12px;font-weight:700;}
+.chart-card:hover{box-shadow:var(--shadow-lg);}
+.chart-card h3{font-size:11px;color:var(--text3);margin-bottom:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;}
 canvas{max-height:300px;}
 
 .section-title{
-  font-size:19px;color:#fff;font-weight:800;margin:8px 0 16px;
-  border-left:6px solid var(--accent);padding-left:12px;
+  font-size:17px;color:var(--text);font-weight:800;margin:10px 0 14px;
+  border-left:5px solid var(--gold);padding-left:12px;
   display:flex;align-items:center;gap:8px;
 }
-.progress-bar{height:10px;background:#0e1626;border-radius:6px;overflow:hidden;margin-top:8px;border:1px solid var(--border);}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));}
-.footer{text-align:center;padding:16px;color:var(--muted);font-size:12px;}
+.progress-bar{height:9px;background:var(--card3);border-radius:6px;overflow:hidden;margin-top:8px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--green),#22c55e);border-radius:6px;}
+.footer{text-align:center;padding:16px;color:var(--text3);font-size:12px;}
 
-/* tables on dark theme */
-table{color:var(--text);}
-thead tr{background:var(--panel2) !important;}
+/* ---------- Tables (light theme) ---------- */
+table{color:var(--text);border-collapse:collapse;font-size:12px;}
+thead tr{background:var(--card2) !important;}
+table th{color:var(--gold);border-bottom:2px solid var(--gold);font-weight:700;
+  font-size:10px;text-transform:uppercase;letter-spacing:0.6px;}
 tbody tr{border-bottom:1px solid var(--border) !important;}
-input#rfiSearch{background:var(--panel2);border:1px solid var(--border) !important;color:#fff;}
-input#rfiSearch::placeholder{color:var(--muted);}
+tbody tr:hover td{background:rgba(200,148,10,0.04);}
+input#rfiSearch{background:var(--card);border:2px solid var(--border) !important;color:var(--text);}
+input#rfiSearch::placeholder{color:var(--text3);}
 
 /* ---------- EIT ITR Description Table (Excel-style, matches reference sheet) ---------- */
-.eit-toolbar{display:flex;justify-content:flex-end;margin-bottom:12px;}
+.eit-toolbar{display:flex;justify-content:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
 .btn-export{
-  background:linear-gradient(120deg,#1d6f42,#2e9e5b);color:#fff;border:none;
-  padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;
-  display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(46,158,91,.35);
+  background:var(--green);color:#fff;border:none;
+  padding:9px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(26,138,74,.25);
   transition:.15s;
 }
-.btn-export:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(46,158,91,.5);}
+.btn-export:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,138,74,.35);}
 .eit-table-wrap{background:#fff;border-radius:10px;overflow:auto;max-height:640px;
-  border:1px solid #c9c9c9;}
+  border:1px solid var(--border);box-shadow:var(--shadow);}
 table.eit-table{width:100%;border-collapse:collapse;font-size:13px;color:#111;}
 table.eit-table th{
   background:#ED7D31;color:#000;font-weight:800;padding:10px 8px;text-align:center;
@@ -1333,29 +1360,62 @@ table.eit-table td.balance-zero{color:#1d6f42;font-weight:700;}
 tr.eit-total-row td{background:#404040 !important;color:#fff;font-weight:800;border:1px solid #222;}
 tr.eit-total-row td.balance-pos{color:#ff9b9b;}
 
-/* ===== Tab bar ===== */
-.tabbar{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;gap:4px;background:#0a0f1e;border-bottom:2px solid var(--teal);padding:8px 12px;}
-.tabbtn{background:#161f38;color:#cfe3ff;border:1px solid #2a3a5f;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;}
-.tabbtn:hover{background:#1e2b4d;}
-.tabbtn.active{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;border-color:transparent;}
+/* ===== Tab bar (KENT PLC style) ===== */
+.tabbar{display:flex;flex-wrap:wrap;gap:4px;max-width:1640px;margin:16px auto 0;
+  padding:6px;background:var(--card);border:1px solid var(--border);border-radius:14px;
+  box-shadow:var(--shadow);}
+.tabbtn{padding:9px 18px;border-radius:10px;cursor:pointer;font-size:11px;font-weight:700;
+  color:var(--text3);transition:all .25s;border:none;background:none;
+  text-transform:uppercase;letter-spacing:0.8px;}
+.tabbtn:hover{background:var(--card2);color:var(--text2);}
+.tabbtn.active{background:var(--gold);color:#fff;box-shadow:0 2px 10px rgba(200,148,10,0.3);}
 .tabpage{display:none;}
+#tab-main-dashboard.tabpage.active{display:flex;}
 .tabpage.active{display:block;}
 .eit-page-toolbar{display:flex;align-items:center;gap:10px;margin:16px 0 10px;flex-wrap:wrap;}
-.eit-page-toolbar input{padding:8px 12px;border:1px solid var(--border);border-radius:6px;background:var(--panel2);color:#fff;font-size:13px;flex:1;min-width:200px;}
-.eit-page-toolbar .count{color:var(--muted);font-size:12px;white-space:nowrap;}
-.eit-page-table-wrap{overflow:auto;max-height:70vh;border:1px solid var(--border);border-radius:8px;background:var(--panel2);}
-.eit-page-table-wrap table{border-collapse:collapse;width:100%;font-size:12px;}
-.eit-page-table-wrap th{position:sticky;top:0;background:#1e2b4d;color:#fff;font-weight:700;padding:8px;text-align:left;border:1px solid #2a3a5f;white-space:nowrap;}
-.eit-page-table-wrap td{padding:6px 8px;border:1px solid #232c44;color:#cfe3ff;white-space:nowrap;max-width:380px;overflow:hidden;text-overflow:ellipsis;}
-.eit-page-table-wrap tr:nth-child(even) td{background:rgba(255,255,255,.03);}
-.eit-page-table-wrap tr:hover td{background:rgba(0,224,198,.08);}
+.eit-page-toolbar input{padding:10px 14px;border:2px solid var(--border);border-radius:10px;
+  background:var(--card);color:var(--text);font-size:13px;flex:1;min-width:200px;
+  outline:none;font-family:inherit;transition:border-color .25s, box-shadow .25s;}
+.eit-page-toolbar input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(200,148,10,0.1);}
+.eit-page-toolbar .count{color:var(--text3);font-size:12px;white-space:nowrap;font-weight:600;}
+.eit-page-table-wrap{overflow:auto;max-height:70vh;border:1px solid var(--border);
+  border-radius:12px;background:var(--card);box-shadow:var(--shadow);}
+.eit-page-table-wrap table{border-collapse:collapse;width:100%;font-size:12px;color:var(--text);}
+.eit-page-table-wrap th{position:sticky;top:0;background:var(--card2);color:var(--gold);
+  font-weight:700;padding:8px;text-align:left;border-bottom:2px solid var(--gold);
+  white-space:nowrap;font-size:10px;text-transform:uppercase;letter-spacing:0.6px;}
+.eit-page-table-wrap td{padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text);
+  white-space:nowrap;max-width:380px;overflow:hidden;text-overflow:ellipsis;}
+.eit-page-table-wrap tr:nth-child(even) td{background:var(--card2);}
+.eit-page-table-wrap tr:hover td{background:rgba(200,148,10,0.06);}
 .eit-kpi-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:14px;}
-.eit-kpi{background:linear-gradient(135deg,#161f38,#1e2b4d);border:1px solid #2a3a5f;border-radius:8px;padding:12px;text-align:center;}
-.eit-kpi .kpi-v{font-size:22px;font-weight:800;color:var(--teal);}
-.eit-kpi .kpi-l{font-size:11px;color:var(--muted);margin-top:4px;}
+.eit-kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;
+  text-align:center;box-shadow:var(--shadow);}
+.eit-kpi .kpi-v{font-size:22px;font-weight:900;color:var(--green);}
+.eit-kpi .kpi-l{font-size:11px;color:var(--text3);margin-top:4px;font-weight:600;}
 </style>
 </head>
 <body>
+
+<div class="header" id="mainHeader">
+  <div class="header-top">
+    <h1><span>PS5</span> — CPP AGI Completion Progress Dashboard</h1>
+    <div class="header-badge">
+      <span class="tag">PS5 - Tanzania</span>
+      <span class="live">LIVE</span>
+    </div>
+  </div>
+  <div class="subtitle">ITR Closures & Punch List | EACOP PS5 Project | Data last updated: __NOW__</div>
+  <div class="meta">
+    <span>Tasks: __TOTAL_TASKS__</span>
+    <span>Closed: __TOTAL_CLOSED__</span>
+    <span>Punch List: __PUNCH_TOTAL__</span>
+    <span>RFIs: __RFI_TOTAL__</span>
+    <button onclick="location.reload()" style="padding:6px 14px;background:linear-gradient(135deg,#1a8a4a,#22c55e);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;">🔄 Refresh</button>
+    <button onclick="copyUpdateCmd()" style="padding:6px 14px;background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;">📤 Update from PC</button>
+  </div>
+  <div id="updateCmdBox" style="display:none;margin:0 36px 14px;padding:10px;background:#2c2416;border-radius:6px;font-size:12px;color:#0f0;word-break:break-all;max-width:560px;"></div>
+</div>
 
 <div class="tabbar" id="mainTabBar"></div>
 
@@ -1364,7 +1424,6 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
 <!-- ================= SIDEBAR ================= -->
 <div class="sidebar">
   <h2>🛢️ PS5 Dashboard</h2>
-
   <div class="grp">🔍 Search</div>
   <label><input type="checkbox" data-target="sec-search" checked> Asset / Task ID Search</label>
 
@@ -1415,26 +1474,12 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
 
 <!-- ================= MAIN ================= -->
 <div class="main">
-  <div class="header">
-    <div>
-      <h1>📊 PS5 — EACOP Project Dashboard</h1>
-      <div class="sub">ITR Closures & Punch List | Data last updated: __NOW__</div>
-      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;">
-        <button onclick="location.reload()" style="padding:8px 16px;background:linear-gradient(135deg,#1b5e20,#4caf50);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">🔄 Refresh</button>
-        <button onclick="copyUpdateCmd()" style="padding:8px 16px;background:linear-gradient(135deg,#0d47a1,#2196f3);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">📤 Update from PC</button>
-      </div>
-      <div id="updateCmdBox" style="display:none;margin-top:10px;padding:10px;background:#111;border-radius:6px;font-size:12px;color:#0f0;word-break:break-all;max-width:520px;"></div>
-    </div>
-    <div style="font-size:38px;">⚙️</div>
-  </div>
-
-  <!-- ===== Universal Search ===== -->
   <div class="section active" id="sec-search">
     <div class="section-title">🔍 Universal Asset / Task ID Search — ITR + RFI + Punch (Combined, No Conflicts)</div>
     <div class="chart-card">
       <input id="universalSearch" type="text" placeholder="Type Asset Tag or Task ID (e.g. PS5-25-DM-3100A-CH01 or T-00232-0952)..."
         style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:14px;
-        background:var(--panel2);color:#fff;margin-bottom:6px;">
+        background:var(--panel2);color:var(--text);margin-bottom:6px;">
       <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">
         Library size: <b id="searchLibSize" style="color:var(--teal);"></b> assets indexed.
         Type at least 3 characters.
@@ -1534,7 +1579,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
         <button class="btn-export" onclick="exportSubsystemToExcel()">⬇️ Download Excel</button>
       </div>
       <input id="subsystemSearchInput" type="text" placeholder="Search subsystem..."
-        style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--panel2);color:#fff;margin-bottom:12px;">
+        style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--panel2);color:var(--text);margin-bottom:12px;">
       <div style="max-height:600px;overflow:auto;">
         <table class="eit-table" id="subsystemTable" style="min-width:700px;">
           <thead>
@@ -1594,7 +1639,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     <div class="section-title" style="margin-top:20px;">Per-Asset Detail — Search &amp; Filter</div>
     <div class="chart-card">
       <input id="cmtQcSearchInput" type="text" placeholder="Search by Asset / Subsystem / Description..."
-        style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--panel2);color:#fff;margin-bottom:12px;">
+        style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--panel2);color:var(--text);margin-bottom:12px;">
       <div style="max-height:500px;overflow:auto;">
         <table id="cmtQcDetailTable" style="width:100%;border-collapse:collapse;font-size:12px;">
           <thead>
@@ -1722,7 +1767,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     <div class="eit-table-wrap">
       <table class="eit-table" id="elecDescTable" style="min-width:600px;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;">
         <thead id="elecDescHead">
-          <tr><th colspan="6" style="background:linear-gradient(135deg,#1e3a5f,#2c3e50);color:#fff;padding:14px 12px;font-size:14px;font-weight:700;letter-spacing:1px;border:1px solid #1a252f;">⚡ E - Electrical &mdash; CPP AGI Progress (by Description)</th></tr>
+          <tr><th colspan="6" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:14px 12px;font-size:14px;font-weight:700;letter-spacing:1px;border:1px solid #1a252f;">⚡ E - Electrical &mdash; CPP AGI Progress (by Description)</th></tr>
         </thead>
         <tbody id="elecDescBody"></tbody>
       </table>
@@ -1738,7 +1783,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     <div class="eit-table-wrap">
       <table class="eit-table" id="instDescTable" style="min-width:600px;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;">
         <thead id="instDescHead">
-          <tr><th colspan="6" style="background:linear-gradient(135deg,#2d5016,#3a6b1e);color:#fff;padding:14px 12px;font-size:14px;font-weight:700;letter-spacing:1px;border:1px solid #1e3a0e;">🔧 I - Instrumentation &mdash; CPP AGI Progress (by Description)</th></tr>
+          <tr><th colspan="6" style="background:linear-gradient(135deg,#2d5016,#7c3aed);color:#fff;padding:14px 12px;font-size:14px;font-weight:700;letter-spacing:1px;border:1px solid #1e3a0e;">🔧 I - Instrumentation &mdash; CPP AGI Progress (by Description)</th></tr>
         </thead>
         <tbody id="instDescBody"></tbody>
       </table>
@@ -1754,7 +1799,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     <div class="eit-table-wrap">
       <table class="eit-table" id="teleDescTable" style="min-width:600px;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;">
         <thead id="teleDescHead">
-          <tr><th colspan="6" style="background:linear-gradient(135deg,#5a5a5a,#7a7a7a);color:#fff;padding:14px 12px;font-size:14px;font-weight:700;letter-spacing:1px;border:1px solid #444;">📡 T - Telecom &mdash; CPP AGI Progress (by Description)</th></tr>
+          <tr><th colspan="6" style="background:linear-gradient(135deg,#5a5a5a,#0891b2);color:#fff;padding:14px 12px;font-size:14px;font-weight:700;letter-spacing:1px;border:1px solid #444;">📡 T - Telecom &mdash; CPP AGI Progress (by Description)</th></tr>
         </thead>
         <tbody id="teleDescBody"></tbody>
       </table>
@@ -1858,7 +1903,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center;">
         <input id="punchSearchInput" type="text" placeholder="Filter by PL ID / Subsystem / Description..."
           style="flex:1;min-width:220px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;
-          font-size:13px;background:var(--panel2);color:#fff;">
+          font-size:13px;background:var(--panel2);color:var(--text);">
         <div id="punchCatBtns" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
       </div>
       <div style="max-height:500px;overflow:auto;">
@@ -2047,15 +2092,15 @@ const RFI_MAP  = SEARCH_INDEX.rfi_map || {};
 const SUB_MAP  = SEARCH_INDEX.sub_map || {};
 const PRI_MAP  = SEARCH_INDEX.pri_map || {};
 const TID_MAP  = SEARCH_INDEX.tid_map || {};
-const palette = ['#9b59f6','#3da8ff','#ff4d8d','#ffb627','#00e0c6','#7c8cff','#ff8a3d'];
-const MS_STATUS_COLORS = {'Closed':'#00e0c6','Submitted':'#3da8ff','To be completed':'#ffb627','Other':'#8a93ad'};
+const palette = ['#2563eb','#7c3aed','#c8940a','#1a8a4a','#c53030','#0891b2','#ec4899'];
+const MS_STATUS_COLORS = {'Closed':'#1a8a4a','Submitted':'#2563eb','To be completed':'#c8940a','Other':'#9a8d7c'};
 const MS_STATUS_ORDER = ['Closed','Submitted','To be completed','Other'];
 
 // ---------- Global Chart.js + datalabels setup ----------
 Chart.register(ChartDataLabels);
-Chart.defaults.font.family = "'Segoe UI', Tahoma, Arial, sans-serif";
-Chart.defaults.color = '#8a93ad';
-Chart.defaults.borderColor = '#232c44';
+Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+Chart.defaults.color = '#6b5e4d';
+Chart.defaults.borderColor = '#d9d0c1';
 Chart.defaults.plugins.datalabels.display = false; // off by default, enabled per-chart below
 
 const DL_PIE = {  // for pie/doughnut: show value + %
@@ -2091,9 +2136,9 @@ document.querySelectorAll('.sidebar input[type=checkbox]').forEach(cb=>{
 function multiChart(id, rows, type='bar'){
   const labels = rows.map(r=>r.label);
   const series = [
-    {key:'E', name:'Electrical (E)', color:'#9b59f6'},
-    {key:'I', name:'Instrumentation (I)', color:'#00e0c6'},
-    {key:'T', name:'Telecom (T)', color:'#ff4d8d'},
+    {key:'E', name:'Electrical (E)', color:'#2563eb'},
+    {key:'I', name:'Instrumentation (I)', color:'#7c3aed'},
+    {key:'T', name:'Telecom (T)', color:'#0891b2'},
   ];
   new Chart(document.getElementById(id), {
     type:type,
@@ -2119,9 +2164,9 @@ function combinedChart(id, itrRows, punchRows, rfiRows, type='line'){
   const labels = Array.from(new Set([...Object.keys(itrMap), ...Object.keys(punchMap), ...Object.keys(rfiMap)])).sort();
 
   const series = [
-    {name:'ITR Closed', color:'#9b59f6', map:itrMap},
-    {name:'Punch Raised', color:'#ff4d8d', map:punchMap},
-    {name:'RFI Submitted', color:'#3da8ff', map:rfiMap},
+    {name:'ITR Closed', color:'#1a8a4a', map:itrMap},
+    {name:'Punch Raised', color:'#c53030', map:punchMap},
+    {name:'RFI Submitted', color:'#2563eb', map:rfiMap},
   ];
   new Chart(document.getElementById(id), {
     type:type,
@@ -2163,8 +2208,8 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
     type:'bar',
     data:{ labels: ITR.eit_summary.map(s=>s.label),
       datasets:[
-        {label:'Closed', data: ITR.eit_summary.map(s=>s.closed), backgroundColor:'#00e0c6', datalabels: DL_BAR},
-        {label:'Total', data: ITR.eit_summary.map(s=>s.total), backgroundColor:'#2a3450', datalabels: {display:false}}
+        {label:'Closed', data: ITR.eit_summary.map(s=>s.closed), backgroundColor:'#1a8a4a', datalabels: DL_BAR},
+        {label:'Total', data: ITR.eit_summary.map(s=>s.total), backgroundColor:'#d9d0c1', datalabels: {display:false}}
       ]},
     options:{ plugins:{legend:{position:'bottom'}}, scales:{y:{beginAtZero:true}} }
   });
@@ -2212,11 +2257,11 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
     const d = msMap[ms];
     const rowTotal = d.E + d.I + d.T;
     html += `<tr>
-      <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;color:#c00;background:#1a1a2e;">${ms}</td>
+      <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;color:#c00;background:#f5f0e8;">${ms}</td>
       <td style="text-align:center;border:1px solid #d4d4d4;background:#FCE4D6;color:#c00;">${d.E || '-'}</td>
       <td style="text-align:center;border:1px solid #d4d4d4;background:#FFF2CC;color:#c00;">${d.I || '-'}</td>
       <td style="text-align:center;border:1px solid #d4d4d4;background:#D9D9D9;color:#c00;">${d.T || '-'}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;font-weight:bold;color:#c00;background:#1a1a2e;">${rowTotal}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;font-weight:bold;color:#c00;background:#f5f0e8;">${rowTotal}</td>
     </tr>`;
   });
   body.innerHTML = html;
@@ -2242,7 +2287,7 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
       rows.forEach((r, i) => {
         const bg = discBg[r.disc] || '#fff';
         const isFull = r.pct >= 100;
-        const rowBg = isFull ? '#1b5e20' : '#1a1a2e';
+        const rowBg = isFull ? '#1b5e20' : '#fffcf7';
         const pctColor = isFull ? '#00e676' : '#c00';
         html += `<tr style="background:${rowBg};">
           <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;color:${isFull ? '#00e676' : '#c00'};">${i === 0 ? sub : ''}</td>
@@ -2514,7 +2559,7 @@ function exportEitTableToExcel(){
       r[0].toLowerCase().includes(query) || r[1].toLowerCase().includes(query) ||
       r[5].toLowerCase().includes(query) || r[7].toLowerCase().includes(query)
     );
-    const statusColor = {'Open':'#ff4d8d','Closed':'#00e0c6','':'#8a93ad'};
+    const statusColor = {'Open':'#c53030','Closed':'#1a8a4a','':'#9a8d7c'};
     document.getElementById('cmtQcDetailBody').innerHTML = rows.map(r => {
       const cmtStatus = parseStatus(r[4]);
       const qcStatus  = parseStatus(r[6]);
@@ -2535,8 +2580,8 @@ function exportEitTableToExcel(){
       const cmtOpen = hasOpen(cmtStatus); const qcOpen = hasOpen(qcStatus);
       const cmtClosed = allClosed(cmtStatus); const qcClosed = allClosed(qcStatus);
       let rowBg = '', assetColor = 'var(--gold)';
-      if(cmtOpen || qcOpen){ rowBg = 'rgba(255,77,141,.06)'; assetColor = '#ff4d8d'; }
-      else if((cmtClosed && cmtStatus.length) || (qcClosed && qcStatus.length)){ rowBg = 'rgba(0,230,118,.06)'; assetColor = '#00e676'; }
+      if(cmtOpen || qcOpen){ rowBg = 'rgba(197,48,48,.06)'; assetColor = '#c53030'; }
+      else if((cmtClosed && cmtStatus.length) || (qcClosed && qcStatus.length)){ rowBg = 'rgba(26,138,74,.06)'; assetColor = '#1a8a4a'; }
       return `<tr style="border-bottom:1px solid var(--border);background:${rowBg};">
         <td style="padding:5px;font-weight:700;color:${assetColor};">${r[0]||'-'}</td>
         <td style="padding:5px;font-size:11px;color:var(--muted);">${r[1]||'-'}</td>
@@ -2891,18 +2936,18 @@ function exportSubsystemExcel(code){
   if(!EIT_DESC) return;
   function pct(a,b){ return b ? ((a/b*100).toFixed(1)) : 0; }
   const config = [
-    {bodyId:'elecDescBody', headBg:'#1e3a5f', rowBg:'#f0f5fb', label:'E - Electrical', border:'#c8d6e5'},
-    {bodyId:'instDescBody', headBg:'#2d5016', rowBg:'#f2fbe8', label:'I - Instrumentation', border:'#c5e0b3'},
-    {bodyId:'teleDescBody', headBg:'#5a5a5a', rowBg:'#f0f0f0', label:'T - Telecom', border:'#cccccc'},
+    {bodyId:'elecDescBody', headBg:'#2563eb', rowBg:'#f0f5fb', label:'E - Electrical', border:'#c8d6e5'},
+    {bodyId:'instDescBody', headBg:'#7c3aed', rowBg:'#f2fbe8', label:'I - Instrumentation', border:'#c5e0b3'},
+    {bodyId:'teleDescBody', headBg:'#0891b2', rowBg:'#f0f0f0', label:'T - Telecom', border:'#cccccc'},
   ];
 
   const colHeaders = `
-    <th style="background:${'#2c3e50'};color:#fff;padding:10px 8px;font-size:12px;font-weight:700;text-align:left;border:1px solid #1a252f;letter-spacing:0.5px;">Description</th>
-    <th style="background:${'#2c3e50'};color:#fff;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #1a252f;letter-spacing:0.5px;">Total Tasks</th>
-    <th style="background:${'#2c3e50'};color:#fff;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #1a252f;letter-spacing:0.5px;">Closed</th>
-    <th style="background:${'#2c3e50'};color:#fff;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #1a252f;letter-spacing:0.5px;">Pending</th>
-    <th style="background:${'#2c3e50'};color:#fff;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #1a252f;letter-spacing:0.5px;">% Completion</th>
-    <th style="background:${'#2c3e50'};color:#fff;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #1a252f;letter-spacing:0.5px;">Open A-Punch</th>`;
+    <th style="background:${'#2c2416'};color:#f5f0e8;padding:10px 8px;font-size:12px;font-weight:700;text-align:left;border:1px solid #6b5e4d;letter-spacing:0.5px;">Description</th>
+    <th style="background:${'#2c2416'};color:#f5f0e8;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #6b5e4d;letter-spacing:0.5px;">Total Tasks</th>
+    <th style="background:${'#2c2416'};color:#f5f0e8;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #6b5e4d;letter-spacing:0.5px;">Closed</th>
+    <th style="background:${'#2c2416'};color:#f5f0e8;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #6b5e4d;letter-spacing:0.5px;">Pending</th>
+    <th style="background:${'#2c2416'};color:#f5f0e8;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #6b5e4d;letter-spacing:0.5px;">% Completion</th>
+    <th style="background:${'#2c2416'};color:#f5f0e8;padding:10px 8px;font-size:12px;font-weight:700;text-align:center;border:1px solid #6b5e4d;letter-spacing:0.5px;">Open A-Punch</th>`;
 
   config.forEach(cfg => {
     const rows = EIT_DESC[cfg.bodyId === 'elecDescBody' ? 'E' : cfg.bodyId === 'instDescBody' ? 'I' : 'T'] || [];
@@ -2915,7 +2960,7 @@ function exportSubsystemExcel(code){
       const p = pct(r.closed, r.total);
       const altBg = idx % 2 === 0 ? cfg.rowBg : '#ffffff';
       html += `<tr style="background:${altBg};transition:background 0.2s;" onmouseover="this.style.background='${cfg.headBg}22'" onmouseout="this.style.background='${altBg}'">
-        <td style="border:1px solid ${cfg.border};padding:8px 6px;font-weight:600;text-align:left;font-size:12px;color:#1a1a2e;">${r.desc}</td>
+        <td style="border:1px solid ${cfg.border};padding:8px 6px;font-weight:600;text-align:left;font-size:12px;color:#2c2416;">${r.desc}</td>
         <td style="border:1px solid ${cfg.border};text-align:center;padding:8px 6px;font-size:12px;font-weight:600;">${r.total}</td>
         <td style="border:1px solid ${cfg.border};text-align:center;padding:8px 6px;font-size:12px;"><span style="display:inline-block;padding:2px 10px;border-radius:8px;background:rgba(29,111,66,0.12);color:#1d6f42;font-weight:700;">${r.closed}</span></td>
         <td style="border:1px solid ${cfg.border};text-align:center;padding:8px 6px;font-size:12px;">${pending > 0 ? `<span style="display:inline-block;padding:2px 10px;border-radius:8px;background:rgba(192,0,0,0.1);color:#C00000;font-weight:700;">${pending}</span>` : '<span style="color:#1d6f42;">0</span>'}</td>
@@ -2931,20 +2976,20 @@ function exportSubsystemExcel(code){
       </tr>`;
     });
     const tPct = pct(closed, total);
-    html += `<tr style="background:#1a1a2e;color:#fff;font-weight:800;">
-      <td style="border:1px solid #222;padding:10px 8px;text-align:left;font-size:13px;">TOTAL ${cfg.label}</td>
-      <td style="border:1px solid #222;text-align:center;padding:10px 8px;font-size:13px;">${total}</td>
-      <td style="border:1px solid #222;text-align:center;padding:10px 8px;font-size:13px;color:#00e676;">${closed}</td>
-      <td style="border:1px solid #222;text-align:center;padding:10px 8px;font-size:13px;${total-closed > 0 ? 'color:#ff4d8d;' : ''}">${total - closed}</td>
-      <td style="border:1px solid #222;text-align:center;padding:10px 8px;font-size:13px;">
+    html += `<tr style="background:#2c2416;color:#fff;font-weight:800;">
+      <td style="border:1px solid #6b5e4d;padding:10px 8px;text-align:left;font-size:13px;">TOTAL ${cfg.label}</td>
+      <td style="border:1px solid #6b5e4d;text-align:center;padding:10px 8px;font-size:13px;">${total}</td>
+      <td style="border:1px solid #6b5e4d;text-align:center;padding:10px 8px;font-size:13px;color:#22c55e;">${closed}</td>
+      <td style="border:1px solid #6b5e4d;text-align:center;padding:10px 8px;font-size:13px;${total-closed > 0 ? 'color:#f87171;' : ''}">${total - closed}</td>
+      <td style="border:1px solid #6b5e4d;text-align:center;padding:10px 8px;font-size:13px;">
         <div style="display:flex;align-items:center;gap:6px;justify-content:center;">
-          <div style="flex:1;max-width:70px;height:8px;background:#333;border-radius:4px;overflow:hidden;">
-            <div style="height:100%;width:${tPct}%;background:${tPct >= 80 ? '#00e676' : tPct >= 50 ? '#f39c12' : '#ff4d8d'};border-radius:4px;"></div>
+          <div style="flex:1;max-width:70px;height:8px;background:#6b5e4d;border-radius:4px;overflow:hidden;">
+            <div style="height:100%;width:${tPct}%;background:${tPct >= 80 ? '#22c55e' : tPct >= 50 ? '#f59e0b' : '#f87171'};border-radius:4px;"></div>
           </div>
           <span style="font-weight:700;font-size:12px;color:#fff;">${tPct}%</span>
         </div>
       </td>
-      <td style="border:1px solid #222;text-align:center;padding:10px 8px;font-size:13px;">-</td>
+      <td style="border:1px solid #6b5e4d;text-align:center;padding:10px 8px;font-size:13px;">-</td>
     </tr>`;
     document.getElementById(cfg.bodyId).innerHTML = html;
     if(!window.__eitDescStore) window.__eitDescStore = {};
@@ -3017,13 +3062,13 @@ if(PUNCH){
   new Chart(document.getElementById('chartPunchSub'), {
     type:'bar',
     data:{ labels: PUNCH.top_subsystems.map(r=>r.label),
-      datasets:[{ label:'Punch Items', data: PUNCH.top_subsystems.map(r=>r.count), backgroundColor:'#6a2c91', borderRadius:6, datalabels: {...DL_BAR, anchor:'end', align:'right'} }]},
+      datasets:[{ label:'Punch Items', data: PUNCH.top_subsystems.map(r=>r.count), backgroundColor:'#7c3aed', borderRadius:6, datalabels: {...DL_BAR, anchor:'end', align:'right'} }]},
     options:{ indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{beginAtZero:true}} }
   });
   // ---- Recent Punches Table (sec-punch-recent) ----
   (function(){
-    const catColors = {'A':'#ff4d8d','B':'#ffb627','C':'#3da8ff','':' #8a93ad'};
-    const statusColor = {'Open':'#ff4d8d','Closed':'#00e0c6','Title':'#8a93ad'};
+    const catColors = {'A':'#c53030','B':'#c8940a','C':'#2563eb','':' #9a8d7c'};
+    const statusColor = {'Open':'#c53030','Closed':'#1a8a4a','Title':'#9a8d7c'};
     let activeCat = 'All';
 
     const allCats = ['All', ...Object.keys(PUNCH.cat_counts).sort()];
@@ -3032,14 +3077,14 @@ if(PUNCH){
       const btn = document.createElement('button');
       btn.textContent = cat === 'All' ? '📋 All' : `Cat ${cat}`;
       btn.dataset.cat = cat;
-      const col = cat==='All' ? '#00e0c6' : (catColors[cat]||'#8a93ad');
+      const col = cat==='All' ? '#1a8a4a' : (catColors[cat]||'#9a8d7c');
       btn.style.cssText = `padding:6px 14px;border-radius:20px;border:2px solid ${col};
         background:${cat==='All'?col+'33':'transparent'};color:${col};font-weight:700;
         font-size:12px;cursor:pointer;transition:.15s;`;
       btn.addEventListener('click',()=>{
         activeCat = cat;
         document.querySelectorAll('#punchCatBtns button').forEach(b=>{
-          const bc = b.dataset.cat==='All' ? '#00e0c6' : (catColors[b.dataset.cat]||'#8a93ad');
+          const bc = b.dataset.cat==='All' ? '#1a8a4a' : (catColors[b.dataset.cat]||'#9a8d7c');
           b.style.background = b.dataset.cat===cat ? bc+'33' : 'transparent';
         });
         renderPunchTable();
@@ -3057,11 +3102,11 @@ if(PUNCH){
         (r.desc||'').toLowerCase().includes(q) ||
         (r.rfi_no||'').toLowerCase().includes(q)
       );
-      const catBg = {'A':'rgba(255,77,141,.10)','B':'rgba(255,182,39,.10)','C':'rgba(61,168,255,.10)'};
+      const catBg = {'A':'rgba(197,48,48,.08)','B':'rgba(200,148,10,.08)','C':'rgba(37,99,235,.08)'};
       document.getElementById('punchRecentBody').innerHTML = rows.map(r=>{
         const cat = (r.cat||'').toString().trim();
-        const sc = statusColor[r.status]||'#8a93ad';
-        const cc = catColors[cat]||'#8a93ad';
+        const sc = statusColor[r.status]||'#9a8d7c';
+        const cc = catColors[cat]||'#9a8d7c';
         const bg = catBg[cat]||'';
         return `<tr style="border-bottom:1px solid var(--border);background:${bg};">
           <td style="padding:7px;color:var(--gold);font-weight:700;">${r.plid||'-'}</td>
@@ -3160,7 +3205,7 @@ if(RFI){
   new Chart(document.getElementById('chartRfiSub'), {
     type:'bar',
     data:{ labels: RFI.top_subsystems.map(r=>r.label),
-      datasets:[{ label:'RFI Count', data: RFI.top_subsystems.map(r=>r.count), backgroundColor:'#2980ff', borderRadius:6, datalabels: {...DL_BAR, anchor:'end', align:'right'} }]},
+      datasets:[{ label:'RFI Count', data: RFI.top_subsystems.map(r=>r.count), backgroundColor:'#2563eb', borderRadius:6, datalabels: {...DL_BAR, anchor:'end', align:'right'} }]},
     options:{ indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{beginAtZero:true}} }
   });
 
@@ -3168,7 +3213,7 @@ if(RFI){
   function renderRfiTable(rows){
     const statusColor = {
       'Accepted':'#16a085', 'Accepted with Punch':'#f4b942',
-      'Open':'#ff4d8d', 'Hold by EACOP':'#2980ff', 'No RFI Yet':'#999', 'Other':'#999'
+      'Open':'#c53030', 'Hold by EACOP':'#2563eb', 'No RFI Yet':'#999', 'Other':'#999'
     };
     document.getElementById('rfiTableBody').innerHTML = rows.map(r=>`
       <tr style="border-bottom:1px solid #eee;">
@@ -3344,9 +3389,9 @@ if(DPR_EIT){
     data:{
       labels: DPR_EIT.table.map(r=>r.subsystem),
       datasets:[
-        {label:'Electrical', data: DPR_EIT.table.map(r=>r.E_itrs), backgroundColor:'#ffb627'},
-        {label:'Instrumentation', data: DPR_EIT.table.map(r=>r.I_itrs), backgroundColor:'#00e0c6'},
-        {label:'Telecom', data: DPR_EIT.table.map(r=>r.T_itrs), backgroundColor:'#ff4d8d'},
+        {label:'Electrical', data: DPR_EIT.table.map(r=>r.E_itrs), backgroundColor:'#2563eb'},
+        {label:'Instrumentation', data: DPR_EIT.table.map(r=>r.I_itrs), backgroundColor:'#7c3aed'},
+        {label:'Telecom', data: DPR_EIT.table.map(r=>r.T_itrs), backgroundColor:'#0891b2'},
       ]
     },
     options:{ indexAxis:'y', plugins:{legend:{position:'bottom'}}, scales:{x:{stacked:true, beginAtZero:true}, y:{stacked:true}} }
@@ -3390,7 +3435,7 @@ if(PUNCH){
   new Chart(document.getElementById('chartPunchBacklog'), {
     type:'bar',
     data:{ labels: PUNCH.top_subsystems.map(r=>r.label),
-      datasets:[{ label:'Open Punch Items', data: PUNCH.top_subsystems.map(r=>r.count), backgroundColor:'#ff4d8d', borderRadius:6, datalabels:{...DL_BAR, anchor:'end', align:'right'} }]},
+      datasets:[{ label:'Open Punch Items', data: PUNCH.top_subsystems.map(r=>r.count), backgroundColor:'#c53030', borderRadius:6, datalabels:{...DL_BAR, anchor:'end', align:'right'} }]},
     options:{ indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{beginAtZero:true}} }
   });
 
@@ -3401,8 +3446,8 @@ if(PUNCH){
     data:{
       labels: discLabels,
       datasets:[
-        {label:'Open', data: discLabels.map(k=>PUNCH.disc_counts_open[k]||0), backgroundColor:'#ff4d8d', datalabels: DL_BAR},
-        {label:'Closed', data: discLabels.map(k=>PUNCH.disc_counts_closed[k]||0), backgroundColor:'#00e0c6', datalabels: DL_BAR},
+        {label:'Open', data: discLabels.map(k=>PUNCH.disc_counts_open[k]||0), backgroundColor:'#c53030', datalabels: DL_BAR},
+        {label:'Closed', data: discLabels.map(k=>PUNCH.disc_counts_closed[k]||0), backgroundColor:'#1a8a4a', datalabels: DL_BAR},
       ]
     },
     options:{ plugins:{legend:{position:'bottom'}}, scales:{y:{beginAtZero:true}} }
@@ -3416,11 +3461,11 @@ if(PUNCH){
 document.getElementById('searchLibSize').innerText = Object.keys(SI).length.toLocaleString();
 
 const statusColors = {
-  'Closed':'#00e0c6','To be completed':'#ffb627','Submitted':'#3da8ff',
-  'Accepted':'#00e0c6','Accepted with Punch':'#ffb627','Open':'#ff4d8d',
-  'Hold by EACOP':'#3da8ff','No RFI Yet':'#8a93ad','Other':'#8a93ad','Rejected':'#ff4d8d',
+  'Closed':'#1a8a4a','To be completed':'#c8940a','Submitted':'#2563eb',
+  'Accepted':'#1a8a4a','Accepted with Punch':'#c8940a','Open':'#c53030',
+  'Hold by EACOP':'#2563eb','No RFI Yet':'#9a8d7c','Other':'#9a8d7c','Rejected':'#c53030',
 };
-const discColors = {'E':'#ffb627','I':'#00e0c6','T':'#ff4d8d'};
+const discColors = {'E':'#2563eb','I':'#7c3aed','T':'#0891b2'};
 const MS_LOOKUP = Object.fromEntries((ITR.milestone_summary||[]).map(s=>[s.raw, s]));
 let msSearchCharts = [];
 
@@ -3484,7 +3529,7 @@ function renderSearchResults(query){
     <div style="border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:14px;background:var(--panel2);">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
         <div style="font-size:15px;font-weight:800;color:var(--gold);">🎯 ${s.label} — Progress (CPP AGI)</div>
-        <div style="font-size:13px;color:#fff;font-weight:700;">${s.closed} / ${s.total} Closed — ${s.pct}%</div>
+        <div style="font-size:13px;color:var(--text);font-weight:700;">${s.closed} / ${s.total} Closed — ${s.pct}%</div>
       </div>
       <div class="progress-bar"><div class="progress-fill" style="width:${s.pct}%"></div></div>
       <div style="margin-top:12px;"><canvas id="msSearchChart${idx}" height="90"></canvas></div>
@@ -3498,21 +3543,21 @@ function renderSearchResults(query){
     const closedTasks = srcs.itr.filter(it=>it.closed).length;
     const pendingTasks= totalTasks - closedTasks;
     const first = srcs.itr[0] || {};
-    const discColor = discColors[first.d] || '#8a93ad';
+    const discColor = discColors[first.d] || '#9a8d7c';
 
     const itrRows = srcs.itr.map(it=>`
       <tr style="border-bottom:1px solid var(--border);background:${it.closed?'rgba(0,230,118,.04)':'rgba(255,77,141,.03)'}">
         <td style="padding:5px;color:var(--gold);font-weight:700;">${it.id||'-'}</td>
         <td style="padding:5px;">${it.ty||'-'}</td>
-        <td style="padding:5px;">${badge(it.disc||it.d||'-', discColors[it.d]||'#8a93ad')}</td>
+        <td style="padding:5px;">${badge(it.disc||it.d||'-', discColors[it.d]||'#9a8d7c')}</td>
         <td style="padding:5px;">
           ${it.closed
-            ? '<span style="color:#00e676;font-weight:800;">✅ Closed</span>'
-            : `<span style="color:#ff4d8d;font-weight:700;">⏳ ${it.st||'Pending'}</span>`}
+            ? '<span style="color:#1a8a4a;font-weight:800;">✅ Closed</span>'
+            : `<span style="color:#c53030;font-weight:700;">⏳ ${it.st||'Pending'}</span>`}
         </td>
-        <td style="padding:5px;color:${it.cd?'#00e0c6':'var(--muted)'};">${it.cd||'-'}</td>
+        <td style="padding:5px;color:${it.cd?'#1a8a4a':'var(--muted)'};">${it.cd||'-'}</td>
         <td style="padding:5px;color:var(--muted);font-size:11px;">${(it.sub||'').split(' - ')[0]||'-'}</td>
-        <td style="padding:5px;">${it.ms?badge('🎯 '+it.ms,'#ffb627'):'-'}</td>
+        <td style="padding:5px;">${it.ms?badge('🎯 '+it.ms,'#c8940a'):'-'}</td>
       </tr>`).join('');
 
     const rfiRows = srcs.rfi.map(r=>`
@@ -3520,7 +3565,7 @@ function renderSearchResults(query){
         <td style="padding:5px;color:var(--blue);font-weight:700;">${r.rfi_no||'-'}</td>
         <td style="padding:5px;">${r.discipline||'-'}</td>
         <td style="padding:5px;">${(r.type||'-').slice(0,20)}</td>
-        <td style="padding:5px;">${badge(r.status, statusColors[r.status]||'#8a93ad')}</td>
+        <td style="padding:5px;">${badge(r.status, statusColors[r.status]||'#9a8d7c')}</td>
         <td style="padding:5px;">${r.date||'-'}</td>
       </tr>`).join('');
 
@@ -3529,7 +3574,7 @@ function renderSearchResults(query){
         <td style="padding:5px;color:var(--accent);font-weight:700;">${p.plid||'-'}</td>
         <td style="padding:5px;">${p.discipline||'-'}</td>
         <td style="padding:5px;">${p.category||'-'}</td>
-        <td style="padding:5px;">${badge(p.status, statusColors[p.status]||'#ff4d8d')}</td>
+        <td style="padding:5px;">${badge(p.status, statusColors[p.status]||'#c53030')}</td>
         <td style="padding:5px;">${p.rfi_no||'-'}</td>
         <td style="padding:5px;">${p.date||'-'}</td>
         <td style="padding:5px;color:var(--muted);">${p.desc||'-'}</td>
@@ -3542,11 +3587,11 @@ function renderSearchResults(query){
           <div style="font-size:17px;font-weight:800;color:var(--teal);">📍 ${tag}</div>
           <div style="font-size:12px;margin-top:4px;">
             ${badge(first.disc||first.d||'Unknown', discColor)}
-            <span style="color:#00e676;font-weight:700;margin-left:6px;">✅ ${closedTasks} Closed</span>
-            ${pendingTasks>0?`<span style="color:#ff4d8d;font-weight:700;margin-left:4px;">⏳ ${pendingTasks} Pending</span>`:''}
-            ${first.ms ? badge('🎯 '+first.ms,'#ffb627') : ''}
+            <span style="color:#1a8a4a;font-weight:700;margin-left:6px;">✅ ${closedTasks} Closed</span>
+            ${pendingTasks>0?`<span style="color:#c53030;font-weight:700;margin-left:4px;">⏳ ${pendingTasks} Pending</span>`:''}
+            ${first.ms ? badge('🎯 '+first.ms,'#c8940a') : ''}
             ${first.res ? `<span style="color:var(--muted);font-size:11px;margin-left:6px;">${first.res}</span>` : ''}
-            ${first.precom ? badge('🔌 '+first.precom,'#9b59f6') : ''}
+            ${first.precom ? badge('🔌 '+first.precom,'#7c3aed') : ''}
           </div>
         </div>
         <div style="text-align:right;font-size:11px;color:var(--muted);">
@@ -3557,7 +3602,7 @@ function renderSearchResults(query){
 
       <!-- ITR -->
       <div style="margin-bottom:12px;">
-        <div style="font-weight:700;color:#fff;font-size:13px;margin-bottom:6px;">
+        <div style="font-weight:700;color:var(--text);font-size:13px;margin-bottom:6px;">
           🧪 ITR / Tasks <span style="color:var(--gold)">(${srcs.itr.length})</span></div>
         ${srcs.itr.length ? `<div style="overflow-x:auto;">
           <table style="width:100%;font-size:12px;border-collapse:collapse;min-width:600px;">
@@ -3575,7 +3620,7 @@ function renderSearchResults(query){
 
       <!-- RFI -->
       <div style="margin-bottom:12px;">
-        <div style="font-weight:700;color:#fff;font-size:13px;margin-bottom:6px;">
+        <div style="font-weight:700;color:var(--text);font-size:13px;margin-bottom:6px;">
           📝 RFI <span style="color:var(--blue)">(${srcs.rfi.length})</span></div>
         ${srcs.rfi.length ? `<div style="overflow-x:auto;">
           <table style="width:100%;font-size:12px;border-collapse:collapse;min-width:500px;">
@@ -3591,7 +3636,7 @@ function renderSearchResults(query){
 
       <!-- Punch -->
       <div>
-        <div style="font-weight:700;color:#fff;font-size:13px;margin-bottom:6px;">
+        <div style="font-weight:700;color:var(--text);font-size:13px;margin-bottom:6px;">
           📌 Punch List <span style="color:var(--accent)">(${srcs.punch.length})</span></div>
         ${srcs.punch.length ? `<div style="overflow-x:auto;">
           <table style="width:100%;font-size:12px;border-collapse:collapse;min-width:700px;">
