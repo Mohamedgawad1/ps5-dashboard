@@ -1296,23 +1296,28 @@ input#rfiSearch::placeholder{color:var(--text3);}
   transition:.15s;
 }
 .btn-export:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,138,74,.35);}
-.eit-table-wrap{background:#fff;border-radius:10px;overflow:auto;max-height:640px;
+.eit-table-wrap{background:var(--card);border-radius:12px;overflow:auto;max-height:640px;
   border:1px solid var(--border);box-shadow:var(--shadow);}
-table.eit-table{width:100%;border-collapse:collapse;font-size:13px;color:#111;}
+table.eit-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;color:var(--text);}
 table.eit-table th{
-  background:#ED7D31;color:#000;font-weight:800;padding:10px 8px;text-align:center;
-  border:1px solid #9c4a14;position:sticky;top:0;z-index:2;
+  background:var(--card2);color:var(--gold);font-weight:800;padding:10px 8px;text-align:center;
+  border:none;border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:3;
+  font-size:10px;text-transform:uppercase;letter-spacing:0.6px;white-space:nowrap;
 }
-table.eit-table td{padding:7px 10px;border:1px solid #d4d4d4;text-align:center;}
-table.eit-table td.desc-cell{text-align:left;}
-table.eit-table td.type-cell{font-weight:800;color:#000;white-space:nowrap;}
-tr.type-E td.type-cell, tr.type-E{background:#FCE4D6;}
-tr.type-I td.type-cell, tr.type-I{background:#FFF2CC;}
-tr.type-T td.type-cell, tr.type-T{background:#D9D9D9;}
-table.eit-table td.balance-pos{color:#C00000;font-weight:700;}
-table.eit-table td.balance-zero{color:#1d6f42;font-weight:700;}
-tr.eit-total-row td{background:#404040 !important;color:#fff;font-weight:800;border:1px solid #222;}
-tr.eit-total-row td.balance-pos{color:#ff9b9b;}
+table.eit-table td{padding:7px 10px;border:none;border-bottom:1px solid var(--border);text-align:center;
+  color:var(--text);white-space:nowrap;}
+table.eit-table td.desc-cell{text-align:left;white-space:normal;}
+table.eit-table td.type-cell{font-weight:800;color:var(--text2);white-space:nowrap;}
+table.eit-table tr:nth-child(even) td{background:var(--card2);}
+table.eit-table tbody tr:hover td{background:rgba(200,148,10,0.06);}
+tr.type-E td.type-cell{color:var(--blue);}
+tr.type-I td.type-cell{color:#d97706;}
+tr.type-T td.type-cell{color:var(--purple);}
+table.eit-table td.balance-pos{color:var(--red);font-weight:700;}
+table.eit-table td.balance-zero{color:var(--green);font-weight:700;}
+tr.eit-total-row td{background:var(--card3) !important;color:var(--text);font-weight:800;
+  border-top:2px solid var(--gold);border-bottom:1px solid var(--border);}
+tr.eit-total-row td.balance-pos{color:var(--red);}
 
 /* ===== Tab bar (KENT PLC style) ===== */
 .tabbar{display:flex;flex-wrap:wrap;gap:4px;max-width:1640px;margin:16px auto 0;
@@ -2142,11 +2147,11 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
     const d = msMap[ms];
     const rowTotal = d.E + d.I + d.T;
     html += `<tr>
-      <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;color:#c00;background:#f5f0e8;">${ms}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;background:#FCE4D6;color:#c00;">${d.E || '-'}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;background:#FFF2CC;color:#c00;">${d.I || '-'}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;background:#D9D9D9;color:#c00;">${d.T || '-'}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;font-weight:bold;color:#c00;background:#f5f0e8;">${rowTotal}</td>
+      <td style="text-align:left;border:1px solid var(--border);font-weight:bold;color:var(--red);background:var(--card3);">${ms}</td>
+      <td style="text-align:center;border:1px solid var(--border);background:#FCE4D6;color:var(--red);">${d.E || '-'}</td>
+      <td style="text-align:center;border:1px solid var(--border);background:#FFF2CC;color:var(--red);">${d.I || '-'}</td>
+      <td style="text-align:center;border:1px solid var(--border);background:#D9D9D9;color:var(--red);">${d.T || '-'}</td>
+      <td style="text-align:center;border:1px solid var(--border);font-weight:bold;color:var(--red);background:var(--card3);">${rowTotal}</td>
     </tr>`;
   });
   body.innerHTML = html;
@@ -2170,17 +2175,17 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
     subs.forEach(sub => {
       const rows = filtered.filter(r => r.subsystem === sub);
       rows.forEach((r, i) => {
-        const bg = discBg[r.disc] || '#fff';
+        const bg = discBg[r.disc] || 'transparent';
         const isFull = r.pct >= 100;
-        const rowBg = isFull ? '#1b5e20' : '#fffcf7';
-        const pctColor = isFull ? '#00e676' : '#c00';
+        const rowBg = isFull ? 'var(--green-bg)' : '';
+        const pctColor = isFull ? 'var(--green2)' : 'var(--red)';
         html += `<tr style="background:${rowBg};">
-          <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;color:${isFull ? '#00e676' : '#c00'};">${i === 0 ? sub : ''}</td>
-          <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};color:#c00;">${r.discipline}</td>
-          <td style="text-align:center;border:1px solid #d4d4d4;color:#c00;">${r.total}</td>
-          <td style="text-align:center;border:1px solid #d4d4d4;color:#c00;font-weight:700;">${r.closed}</td>
-          <td style="text-align:center;border:1px solid #d4d4d4;color:#c00;">${r.open}</td>
-          <td style="text-align:center;border:1px solid #d4d4d4;color:${pctColor};font-weight:700;">${r.pct}%</td>
+          <td style="text-align:left;border:1px solid var(--border);font-weight:bold;color:${isFull ? 'var(--green2)' : 'var(--text)'};">${i === 0 ? sub : ''}</td>
+          <td style="text-align:center;border:1px solid var(--border);background:${bg};color:var(--red);">${r.discipline}</td>
+          <td style="text-align:center;border:1px solid var(--border);color:var(--text);">${r.total}</td>
+          <td style="text-align:center;border:1px solid var(--border);color:var(--green);font-weight:700;">${r.closed}</td>
+          <td style="text-align:center;border:1px solid var(--border);color:var(--red);">${r.open}</td>
+          <td style="text-align:center;border:1px solid var(--border);color:${pctColor};font-weight:700;">${r.pct}%</td>
         </tr>`;
       });
     });
@@ -2299,14 +2304,14 @@ function exportEitTableToExcel(){
   const bg = {'E-Electrical':'#FCE4D6','I-Instrumentation':'#FFF2CC','T-Telecom':'#D9D9D9'};
   // Table 1: By discipline
   document.getElementById('cableCmtOrigBody').innerHTML = CABLE.map(r => {
-    const b = bg[r.disc] || '#fff';
+    const b = bg[r.disc] || 'transparent';
     return `<tr style="background:${b};">
-      <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;">${r.disc}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;">${r.total}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#1d6f42;font-weight:700;">${r.cmt_close}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;${r.cmt_open>0?'color:#C00000;font-weight:700':''}">${r.cmt_open}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#1d6f42;font-weight:700;">${r.static_close}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;${r.static_open>0?'color:#C00000;font-weight:700':''}">${r.static_open}</td>
+      <td style="text-align:left;border:1px solid var(--border);font-weight:bold;">${r.disc}</td>
+      <td style="text-align:center;border:1px solid var(--border);">${r.total}</td>
+      <td style="text-align:center;border:1px solid var(--border);color:var(--green);font-weight:700;">${r.cmt_close}</td>
+      <td style="text-align:center;border:1px solid var(--border);${r.cmt_open>0?'color:var(--red);font-weight:700':''}">${r.cmt_open}</td>
+      <td style="text-align:center;border:1px solid var(--border);color:var(--green);font-weight:700;">${r.static_close}</td>
+      <td style="text-align:center;border:1px solid var(--border);${r.static_open>0?'color:var(--red);font-weight:700':''}">${r.static_open}</td>
       <td style="text-align:center;border:1px solid #d4d4d4;">
         <div style="background:#d9d9d9;border-radius:4px;height:18px;min-width:60px;position:relative;">
           <div style="position:absolute;left:0;top:0;height:100%;width:${r.pct_cmt}%;background:linear-gradient(90deg,#70ad47,#a9d18e);border-radius:4px;"></div>
@@ -2324,15 +2329,15 @@ function exportEitTableToExcel(){
   const t = CABLE.reduce((a,r) => ({total:a.total+r.total, cmt_close:a.cmt_close+r.cmt_close, cmt_open:a.cmt_open+r.cmt_open, static_close:a.static_close+r.static_close, static_open:a.static_open+r.static_open}), {total:0,cmt_close:0,cmt_open:0,static_close:0,static_open:0});
   t.pct_cmt = t.total ? Math.round(t.cmt_close/t.total*100) : 0;
   t.pct_static = t.total ? Math.round(t.static_close/t.total*100) : 0;
-  document.getElementById('cableCmtOrigFoot').innerHTML = `<tr style="background:#404040;color:#fff;font-weight:800;">
-    <td style="border:1px solid #222;padding:7px;text-align:left;">TOTAL CABLE / CMT</td>
-    <td style="border:1px solid #222;text-align:center;">${t.total}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.cmt_close}</td>
-    <td style="border:1px solid #222;text-align:center;${t.cmt_open>0?'color:#ff9b9b':''}">${t.cmt_open}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.static_close}</td>
-    <td style="border:1px solid #222;text-align:center;${t.static_open>0?'color:#ff9b9b':''}">${t.static_open}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.pct_cmt}%</td>
-    <td style="border:1px solid #222;text-align:center;">${t.pct_static}%</td>
+  document.getElementById('cableCmtOrigFoot').innerHTML = `<tr style="background:var(--card3);color:var(--text);font-weight:800;border-top:2px solid var(--gold);">
+    <td style="border:1px solid var(--border);padding:7px;text-align:left;">TOTAL CABLE / CMT</td>
+    <td style="border:1px solid var(--border);text-align:center;">${t.total}</td>
+    <td style="border:1px solid var(--border);text-align:center;">${t.cmt_close}</td>
+    <td style="border:1px solid var(--border);text-align:center;${t.cmt_open>0?'color:var(--red)':''}">${t.cmt_open}</td>
+    <td style="border:1px solid var(--border);text-align:center;">${t.static_close}</td>
+    <td style="border:1px solid var(--border);text-align:center;${t.static_open>0?'color:var(--red)':''}">${t.static_open}</td>
+    <td style="border:1px solid var(--border);text-align:center;">${t.pct_cmt}%</td>
+    <td style="border:1px solid var(--border);text-align:center;">${t.pct_static}%</td>
   </tr>`;
   window.__cableTrackerByDisc = CABLE;
   // Table 2: By scope — stacked E/I/T per scope
@@ -2343,23 +2348,23 @@ function exportEitTableToExcel(){
   scopeNames.forEach(sc => {
     const rowsOf = SCOPE.filter(r => r.scope === sc);
     rowsOf.forEach((r, i) => {
-      const bg = scopeBg[r.disc] || '#fff';
+      const bg = scopeBg[r.disc] || 'transparent';
       scopeHtml += `<tr>
-        <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;">${i === 0 ? sc : ''}</td>
-        <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};">${r.discipline}</td>
-        <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};">${r.total}</td>
-        <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};color:#1d6f42;font-weight:700;">${r.cmt_close}</td>
-        <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};color:#1d6f42;font-weight:700;">${r.static_close}</td>
+        <td style="text-align:left;border:1px solid var(--border);font-weight:bold;">${i === 0 ? sc : ''}</td>
+        <td style="text-align:center;border:1px solid var(--border);background:${bg};">${r.discipline}</td>
+        <td style="text-align:center;border:1px solid var(--border);background:${bg};">${r.total}</td>
+        <td style="text-align:center;border:1px solid var(--border);background:${bg};color:var(--green);font-weight:700;">${r.cmt_close}</td>
+        <td style="text-align:center;border:1px solid var(--border);background:${bg};color:var(--green);font-weight:700;">${r.static_close}</td>
       </tr>`;
     });
     // Scope subtotal
     const st = rowsOf[0];
-    scopeHtml += `<tr style="background:#404040;color:#fff;font-weight:800;">
-      <td style="border:1px solid #222;padding:7px;text-align:left;">${sc} — Total</td>
-      <td style="border:1px solid #222;text-align:center;"></td>
-      <td style="border:1px solid #222;text-align:center;">${st._scope_total}</td>
-      <td style="border:1px solid #222;text-align:center;">${st._scope_cmt}</td>
-      <td style="border:1px solid #222;text-align:center;">${st._scope_static}</td>
+    scopeHtml += `<tr style="background:var(--card3);color:var(--text);font-weight:800;border-top:2px solid var(--gold);">
+      <td style="border:1px solid var(--border);padding:7px;text-align:left;">${sc} — Total</td>
+      <td style="border:1px solid var(--border);text-align:center;"></td>
+      <td style="border:1px solid var(--border);text-align:center;">${st._scope_total}</td>
+      <td style="border:1px solid var(--border);text-align:center;">${st._scope_cmt}</td>
+      <td style="border:1px solid var(--border);text-align:center;">${st._scope_static}</td>
     </tr>`;
   });
   document.getElementById('cableScopeBody').innerHTML = scopeHtml;
@@ -2374,14 +2379,14 @@ function exportEitTableToExcel(){
   // Table 1: Summary
   const summaryBg = {'CMT Punch (A,B,C)':'#FCE4D6','QC Punch (A,B,C)':'#FFF2CC'};
   document.getElementById('cmtQcSummaryBody').innerHTML = CMT_QC[0].rows.map(r =>
-    `<tr style="background:${summaryBg[r[0]]||'#fff'}">
-      <td style="font-weight:bold;text-align:left;border:1px solid #d4d4d4;">${r[0]}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;">${r[1]}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#1d6f42;font-weight:700;">${r[2]}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#C00000;font-weight:700;">${r[3]}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;">${r[4]}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#1d6f42;font-weight:700;">${r[5]}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#C00000;font-weight:700;">${r[6]}</td>
+    `<tr style="background:${summaryBg[r[0]]||'transparent'}">
+      <td style="font-weight:bold;text-align:left;border:1px solid var(--border);">${r[0]}</td>
+      <td style="text-align:center;border:1px solid var(--border);">${r[1]}</td>
+      <td style="text-align:center;border:1px solid var(--border);color:var(--green);font-weight:700;">${r[2]}</td>
+      <td style="text-align:center;border:1px solid var(--border);color:var(--red);font-weight:700;">${r[3]}</td>
+      <td style="text-align:center;border:1px solid var(--border);">${r[4]}</td>
+      <td style="text-align:center;border:1px solid var(--border);color:var(--green);font-weight:700;">${r[5]}</td>
+      <td style="text-align:center;border:1px solid var(--border);color:var(--red);font-weight:700;">${r[6]}</td>
     </tr>`
   ).join('');
 
@@ -2391,14 +2396,14 @@ function exportEitTableToExcel(){
     a4:a.a4+(+r[4]||0), a5:a.a5+(+r[5]||0), a6:a.a6+(+r[6]||0)
   }), {a1:0,a2:0,a3:0,a4:0,a5:0,a6:0});
   document.getElementById('cmtQcSummaryBody').innerHTML +=
-    `<tr style="background:#404040;color:#fff;font-weight:800;">
-      <td style="border:1px solid #222;padding:7px;text-align:left;">TOTAL</td>
-      <td style="border:1px solid #222;text-align:center;">${t.a1}</td>
-      <td style="border:1px solid #222;text-align:center;">${t.a2}</td>
-      <td style="border:1px solid #222;text-align:center;color:#ff9b9b;">${t.a3}</td>
-      <td style="border:1px solid #222;text-align:center;">${t.a4}</td>
-      <td style="border:1px solid #222;text-align:center;">${t.a5}</td>
-      <td style="border:1px solid #222;text-align:center;color:#ff9b9b;">${t.a6}</td>
+    `<tr style="background:var(--card3);color:var(--text);font-weight:800;border-top:2px solid var(--gold);">
+      <td style="border:1px solid var(--border);padding:7px;text-align:left;">TOTAL</td>
+      <td style="border:1px solid var(--border);text-align:center;">${t.a1}</td>
+      <td style="border:1px solid var(--border);text-align:center;">${t.a2}</td>
+      <td style="border:1px solid var(--border);text-align:center;color:var(--red);">${t.a3}</td>
+      <td style="border:1px solid var(--border);text-align:center;">${t.a4}</td>
+      <td style="border:1px solid var(--border);text-align:center;">${t.a5}</td>
+      <td style="border:1px solid var(--border);text-align:center;color:var(--red);">${t.a6}</td>
     </tr>`;
 
   // Table 2: Per-Asset Detail
@@ -2689,12 +2694,12 @@ function downloadExcel(html, filename){
 
   const discColors = {'Electrical (E)':'#FCE4D6','Instrumentation (I)':'#FFF2CC','Telecom (T)':'#D9D9D9'};
   document.getElementById('punchStatusBody').innerHTML = rows.map(r => `
-    <tr style="background:${discColors[r.disc]||'#fff'}">
-      <td style="font-weight:bold;text-align:center;border:1px solid #d4d4d4;">${r.disc}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;">${r.total}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#C00000;font-weight:700;">${r.open}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#1d6f42;font-weight:700;">${r.closed}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;">
+    <tr style="background:${discColors[r.disc]||'transparent'}">
+      <td style="font-weight:bold;text-align:center;border:1px solid var(--border);">${r.disc}</td>
+      <td style="text-align:center;border:1px solid var(--border);">${r.total}</td>
+      <td style="text-align:center;border:1px solid var(--border);color:var(--red);font-weight:700;">${r.open}</td>
+      <td style="text-align:center;border:1px solid var(--border);color:var(--green);font-weight:700;">${r.closed}</td>
+      <td style="text-align:center;border:1px solid var(--border);">
         <div style="background:#d9d9d9;border-radius:4px;height:18px;min-width:60px;position:relative;">
           <div style="position:absolute;left:0;top:0;height:100%;width:${r.pct}%;background:linear-gradient(90deg,#70ad47,#a9d18e);border-radius:4px;"></div>
           <div style="position:relative;font-size:11px;font-weight:700;line-height:18px;">${r.pct}%</div>
@@ -2704,12 +2709,12 @@ function downloadExcel(html, filename){
 
   const t = rows.reduce((a,r) => ({total:a.total+r.total, open:a.open+r.open, closed:a.closed+r.closed}), {total:0,open:0,closed:0});
   t.pct = t.total ? Math.round(t.closed/t.total*100) : 0;
-  document.getElementById('punchStatusFoot').innerHTML = `<tr style="background:#404040;color:#fff;font-weight:800;">
-    <td style="border:1px solid #222;padding:7px;text-align:center;">GRAND TOTAL</td>
-    <td style="border:1px solid #222;text-align:center;">${t.total}</td>
-    <td style="border:1px solid #222;text-align:center;color:#ff9b9b;">${t.open}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.closed}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.pct}%</td>
+  document.getElementById('punchStatusFoot').innerHTML = `<tr style="background:var(--card3);color:var(--text);font-weight:800;border-top:2px solid var(--gold);">
+    <td style="border:1px solid var(--border);padding:7px;text-align:center;">GRAND TOTAL</td>
+    <td style="border:1px solid var(--border);text-align:center;">${t.total}</td>
+    <td style="border:1px solid var(--border);text-align:center;color:var(--red);">${t.open}</td>
+    <td style="border:1px solid var(--border);text-align:center;">${t.closed}</td>
+    <td style="border:1px solid var(--border);text-align:center;">${t.pct}%</td>
   </tr>`;
 
   window.__punchStatusData = {rows, total: t};
@@ -3025,11 +3030,11 @@ if(RFI){
       'Open':'#c53030', 'Hold by EACOP':'#2563eb', 'No RFI Yet':'#999', 'Other':'#999'
     };
     document.getElementById('rfiTableBody').innerHTML = rows.map(r=>`
-      <tr style="border-bottom:1px solid #eee;">
+      <tr style="border-bottom:1px solid var(--border);">
         <td style="padding:7px;">${r.asset}</td>
         <td style="padding:7px;">${r.rfi_no||'-'}</td>
         <td style="padding:7px;">${r.disc}</td>
-        <td style="padding:7px;color:${statusColor[r.status]||'#333'};font-weight:600;">${r.status}</td>
+        <td style="padding:7px;color:${statusColor[r.status]||'var(--text)'};font-weight:600;">${r.status}</td>
         <td style="padding:7px;">${r.date}</td>
       </tr>`).join('');
   }
@@ -3059,21 +3064,21 @@ if(RFI){
   const rows = data.rows;
   body.innerHTML = rows.map(r => {
     return '<tr>' +
-      '<td style="border:1px solid #d4d4d4;text-align:center;font-weight:bold;background:' + (r.discipline=='E'?'#FCE4D6':r.discipline=='I'?'#FFF2CC':'#D9D9D9') + ';">' + r.discipline + '</td>' +
-      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.assets + '</td>' +
-      '<td style="border:1px solid #d4d4d4;text-align:center;background:#e8f5e9;font-weight:700;font-size:14px;color:' + (r.laying_accepted>0?'#1d6f42':'#999') + ';">' + (r.laying_accepted>0?'✅ ':'❌ ') + r.laying_accepted + '/' + r.laying_submitted + '</td>' +
-      '<td style="border:1px solid #d4d4d4;text-align:center;background:#e8f5e9;font-weight:700;font-size:14px;color:' + (r.testing_accepted>0?'#1d6f42':'#999') + ';">' + (r.testing_accepted>0?'✅ ':'❌ ') + r.testing_accepted + '/' + r.testing_submitted + '</td>' +
-      '<td style="border:1px solid #d4d4d4;text-align:center;background:#e8f5e9;font-weight:700;font-size:14px;color:' + (r.term_accepted>0?'#1d6f42':'#999') + ';">' + (r.term_accepted>0?'✅ ':'❌ ') + r.term_accepted + '/' + r.term_submitted + '</td>' +
+      '<td style="border:1px solid var(--border);text-align:center;font-weight:bold;background:' + (r.discipline=='E'?'#FCE4D6':r.discipline=='I'?'#FFF2CC':'#D9D9D9') + ';">' + r.discipline + '</td>' +
+      '<td style="border:1px solid var(--border);text-align:center;">' + r.assets + '</td>' +
+      '<td style="border:1px solid var(--border);text-align:center;background:var(--green-bg);font-weight:700;font-size:14px;color:' + (r.laying_accepted>0?'var(--green)':'var(--text3)') + ';">' + (r.laying_accepted>0?'✅ ':'❌ ') + r.laying_accepted + '/' + r.laying_submitted + '</td>' +
+      '<td style="border:1px solid var(--border);text-align:center;background:var(--green-bg);font-weight:700;font-size:14px;color:' + (r.testing_accepted>0?'var(--green)':'var(--text3)') + ';">' + (r.testing_accepted>0?'✅ ':'❌ ') + r.testing_accepted + '/' + r.testing_submitted + '</td>' +
+      '<td style="border:1px solid var(--border);text-align:center;background:var(--green-bg);font-weight:700;font-size:14px;color:' + (r.term_accepted>0?'var(--green)':'var(--text3)') + ';">' + (r.term_accepted>0?'✅ ':'❌ ') + r.term_accepted + '/' + r.term_submitted + '</td>' +
     '</tr>';
   }).join('');
 
   const t = data.totals;
-  foot.innerHTML = '<tr style="background:#404040;color:#fff;font-weight:800;">' +
-    '<td style="border:1px solid #222;padding:7px;text-align:center;">GRAND TOTAL</td>' +
-    '<td style="border:1px solid #222;text-align:center;">' + t.total_assets + '</td>' +
-    '<td style="border:1px solid #222;text-align:center;color:#86efac;">✅ ' + t.laying_accepted + '</td>' +
-    '<td style="border:1px solid #222;text-align:center;color:#86efac;">✅ ' + t.testing_accepted + '</td>' +
-    '<td style="border:1px solid #222;text-align:center;color:#86efac;">✅ ' + t.term_accepted + '</td>' +
+  foot.innerHTML = '<tr style="background:var(--card3);color:var(--text);font-weight:800;border-top:2px solid var(--gold);">' +
+    '<td style="border:1px solid var(--border);padding:7px;text-align:center;">GRAND TOTAL</td>' +
+    '<td style="border:1px solid var(--border);text-align:center;">' + t.total_assets + '</td>' +
+    '<td style="border:1px solid var(--border);text-align:center;color:var(--green);">✅ ' + t.laying_accepted + '</td>' +
+    '<td style="border:1px solid var(--border);text-align:center;color:var(--green);">✅ ' + t.testing_accepted + '</td>' +
+    '<td style="border:1px solid var(--border);text-align:center;color:var(--green);">✅ ' + t.term_accepted + '</td>' +
   '</tr>';
 })();
 
@@ -3123,14 +3128,14 @@ function exportRfiInspectionExcel(){
   function render(data){
     body.innerHTML = data.map(r =>
       '<tr>' +
-        '<td style="border:1px solid #ddd;padding:3px 4px;">' + r.asset + '</td>' +
-        '<td style="border:1px solid #ddd;padding:3px 4px;">' + (r.subsystem||'') + '</td>' +
-        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;background:' + (discBg[r.disc]||'') + ';font-weight:600;">' + r.disc + '</td>' +
-        '<td style="border:1px solid #ddd;padding:3px 4px;">' + r.desc.slice(0,60) + '</td>' +
-        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;">' + r.scope.slice(0,25) + '</td>' +
-        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.laying_rfi?'#1d6f42':'#999') + ';">' + (r.laying_rfi?'✅':'❌') + '</td>' +
-        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.testing_rfi?'#1d6f42':'#999') + ';">' + (r.testing_rfi?'✅':'❌') + '</td>' +
-        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.term_rfi?'#1d6f42':'#999') + ';">' + (r.term_rfi?'✅':'❌') + '</td>' +
+        '<td style="border:1px solid var(--border);padding:3px 4px;">' + r.asset + '</td>' +
+        '<td style="border:1px solid var(--border);padding:3px 4px;">' + (r.subsystem||'') + '</td>' +
+        '<td style="border:1px solid var(--border);padding:3px 4px;text-align:center;background:' + (discBg[r.disc]||'') + ';font-weight:600;">' + r.disc + '</td>' +
+        '<td style="border:1px solid var(--border);padding:3px 4px;">' + r.desc.slice(0,60) + '</td>' +
+        '<td style="border:1px solid var(--border);padding:3px 4px;">' + r.scope.slice(0,25) + '</td>' +
+        '<td style="border:1px solid var(--border);padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.laying_rfi?'var(--green)':'var(--text3)') + ';">' + (r.laying_rfi?'✅':'❌') + '</td>' +
+        '<td style="border:1px solid var(--border);padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.testing_rfi?'var(--green)':'var(--text3)') + ';">' + (r.testing_rfi?'✅':'❌') + '</td>' +
+        '<td style="border:1px solid var(--border);padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.term_rfi?'var(--green)':'var(--text3)') + ';">' + (r.term_rfi?'✅':'❌') + '</td>' +
       '</tr>'
     ).join('');
     count.innerText = 'Showing ' + data.length + ' / ' + ALL.length + ' assets';
