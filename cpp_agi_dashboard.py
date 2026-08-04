@@ -17,7 +17,10 @@
 """
 
 import os
+import sys
 import json
+import datetime
+import urllib.request
 import webbrowser
 
 try:
@@ -58,7 +61,7 @@ def norm_discipline(v):
 def find_file(prefix_keywords):
     for f in os.listdir(DOWNLOADS):
         if f.startswith('~$'):
-            continue  # ملف مؤقت من Excel (lock file) - تجاهله
+            continue
         low = f.lower()
         if low.endswith('.xlsx') and all(k.lower() in low for k in prefix_keywords):
             return os.path.join(DOWNLOADS, f)
@@ -82,7 +85,7 @@ def safe_read_excel(path, **kwargs):
 
 
 # ====================================================================
-def build_itr_data(excel_path):
+def build_itr_data(excel_path, today_override=None):
     df = safe_read_excel(excel_path, sheet_name='Exported from SC')
 
     total_project_tasks = len(df)
@@ -113,7 +116,8 @@ def build_itr_data(excel_path):
     closed['disc'] = closed['Discipline (Summary)'].astype(str).str.strip().map(disc_short).fillna('Other')
     submitted['disc'] = submitted['Discipline (Summary)'].astype(str).str.strip().map(disc_short).fillna('Other')
 
-    now = closed['Closing Date'].max()
+    now = pd.Timestamp(today_override) if today_override else closed['Closing Date'].max()
+    print(f"  Today's date used: {now.strftime('%Y-%m-%d')}" + (" (override)" if today_override else " (from data)"))
     total_closed_project = len(closed)
 
     def pivot_disc(data, col):
@@ -139,33 +143,45 @@ def build_itr_data(excel_path):
     today_submitted = submitted[submitted['Closing Date'].dt.date == now.date()].copy()
     hourly_submitted = int(today_submitted.shape[0])
 
-    # ---- Daily (Last 30 Days) for Closed ----
+    # ---- Daily (Last 30 Days) for Closed (CPP AGI E/I/T only) ----
+    eit_mask = (closed['disc'].isin(['E','I','T'])) & (closed['Responsible Company (Summary)'] == RESPONSIBLE_COMPANY)
     closed['date'] = closed['Closing Date'].dt.strftime('%Y-%m-%d')
-    daily = pivot_disc(closed, 'date')
+    daily = pivot_disc(closed[eit_mask], 'date')
     daily = sorted(daily, key=lambda r: r['label'])[-30:]
-    daily_total = hourly_total
+    daily_total = int(eit_mask.sum())
 
-    # ---- Daily (Last 30 Days) for Submitted ----
+    # ---- Fill in all dates in last 30 days even with 0 ----
+    if daily:
+        all_dates = pd.date_range(end=now.date(), periods=30).strftime('%Y-%m-%d').tolist()
+        found = {r['label']: r for r in daily}
+        daily = [found.get(d, {'label': d, 'E': 0, 'I': 0, 'T': 0, 'Total': 0}) for d in all_dates]
+
+    # ---- Daily (Last 30 Days) for Submitted (CPP AGI E/I/T only) ----
+    sub_eit_mask = (submitted['disc'].isin(['E','I','T'])) & (submitted['Responsible Company (Summary)'] == RESPONSIBLE_COMPANY)
     submitted['date'] = submitted['Closing Date'].dt.strftime('%Y-%m-%d')
-    daily_submitted = pivot_disc(submitted, 'date')
+    daily_submitted = pivot_disc(submitted[sub_eit_mask], 'date')
     daily_submitted = sorted(daily_submitted, key=lambda r: r['label'])[-30:]
+    if daily_submitted:
+        daily_submitted = [found.get(d, {'label': d, 'E': 0, 'I': 0, 'T': 0, 'Total': 0}) for d in all_dates]
+    else:
+        daily_submitted = [{'label': d, 'E': 0, 'I': 0, 'T': 0, 'Total': 0} for d in all_dates]
 
-    # ---- Weekly for Closed ----
+    # ---- Weekly for Closed (CPP AGI E/I/T only) ----
     closed['week'] = closed['Closing Date'].dt.to_period('W').apply(
         lambda r: r.start_time.strftime('%Y-%m-%d'))
-    weekly = pivot_disc(closed, 'week')
+    weekly = pivot_disc(closed[eit_mask], 'week')
     weekly = sorted(weekly, key=lambda r: r['label'])[-16:]
 
     week_start = (now - pd.Timedelta(days=now.weekday())).normalize()
-    weekly_total = int((closed['Closing Date'] >= week_start).sum())
+    weekly_total = int((closed[eit_mask]['Closing Date'] >= week_start).sum())
 
-    # ---- Monthly for Closed ----
+    # ---- Monthly for Closed (CPP AGI E/I/T only) ----
     closed['month'] = closed['Closing Date'].dt.strftime('%Y-%m')
-    monthly = pivot_disc(closed, 'month')
+    monthly = pivot_disc(closed[eit_mask], 'month')
     monthly = sorted(monthly, key=lambda r: r['label'])
 
-    monthly_total = int(((closed['Closing Date'].dt.year == now.year) &
-                          (closed['Closing Date'].dt.month == now.month)).sum())
+    monthly_total = int(((closed[eit_mask]['Closing Date'].dt.year == now.year) &
+                          (closed[eit_mask]['Closing Date'].dt.month == now.month)).sum())
 
 
     # ---- E&I&T لـ CPP AGI (Summary cards) — 3 كروت فقط: E / I / T ----
@@ -213,6 +229,46 @@ def build_itr_data(excel_path):
     total_sub = int((eit['Task State'] == 'Submitted').sum())
     today_str = now.strftime('%Y-%m-%d')
 
+    # ---- Subsystem summary: E/I/T per subsystem ----
+    subsystem_summary = []
+    eit['sub_raw'] = eit['Systemization - Subsystem (Summary)'].apply(
+        lambda v: v.strip() if isinstance(v, str) and v.strip() else 'Unknown')
+    for sub_name in sorted(eit['sub_raw'].unique()):
+        sub_df = eit[eit['sub_raw'] == sub_name]
+        for code, label in GROUPS:
+            s = sub_df[sub_df['disc_norm'] == code]
+            tot = len(s)
+            if tot == 0:
+                continue
+            cls = int((s['Task State'] == 'Closed').sum())
+            opn = tot - cls
+            subsystem_summary.append({
+                'subsystem': sub_name, 'disc': code, 'discipline': label,
+                'total': tot, 'closed': cls, 'open': opn,
+                'pct': round(cls / tot * 100, 1) if tot else 0,
+            })
+
+    # ---- Today's closures by milestone ----
+    today_all = df[(df['Task State'] == 'Closed') &
+                      (pd.to_datetime(df['Closing Date'], errors='coerce').dt.date == now.date())].copy()
+    today_all['disc_norm'] = today_all['Discipline (Summary)'].astype(str).str.strip().map(disc_short).fillna('Other')
+    today_all['ms_raw'] = today_all['Subsystem Priority'].apply(
+        lambda v: v.strip() if isinstance(v, str) and v.strip() else 'Unknown')
+    today_closed_eit = today_all[today_all['disc_norm'].isin(['E', 'I', 'T']) &
+                                     (today_all['Responsible Company (Summary)'] == RESPONSIBLE_COMPANY)]
+    today_milestone = []
+    for ms in sorted(today_closed_eit['ms_raw'].unique()):
+        ms_df = today_closed_eit[today_closed_eit['ms_raw'] == ms]
+        ms_label = ms.replace('PS5 - ', '').replace('PS5-', '')
+        mc = int(len(ms_df))
+        for code, label in GROUPS:
+            s = ms_df[ms_df['disc_norm'] == code]
+            today_milestone.append({
+                'milestone': ms_label, 'disc': code, 'discipline': label,
+                'count': int(len(s)),
+            })
+    today_milestone_total = int(len(today_closed_eit))
+
     # ---- Asset-based metrics (E&I&T CPP AGI) ----
     eit_assets = eit.groupby('Asset - Tag').agg(
         has_closed=('Task State', lambda s: (s == 'Closed').any()),
@@ -242,8 +298,8 @@ def build_itr_data(excel_path):
         bl_total = int(json.load(open(CACHE_FILE)).get('total', total_sub))
         bl_sub_assets = int(json.load(open(CACHE_FILE)).get('sub_assets', submitted_assets))
         bl_cls_assets = int(json.load(open(CACHE_FILE)).get('cls_assets', closed_assets))
-    hourly_submitted = max(0, total_sub - bl_total)
-    today_submitted_assets = max(0, submitted_assets - bl_sub_assets)
+    hourly_submitted = 0
+    today_submitted_assets = 0
     today_closed_assets = max(0, closed_assets - bl_cls_assets)
     with open(CACHE_FILE, 'w') as cf:
         json.dump({'total': total_sub, 'date': today_str,
@@ -277,6 +333,9 @@ def build_itr_data(excel_path):
         'total_project_tasks': total_project_tasks,
         'eit_summary': eit_summary,
         'milestone_summary': milestone_summary,
+        'subsystem_summary': subsystem_summary,
+        'today_milestone': today_milestone,
+        'today_milestone_total': today_milestone_total,
         # Asset-based
         'total_assets_eit': total_assets_eit,
         'submitted_assets': submitted_assets,
@@ -428,6 +487,73 @@ def build_cable_ov_data(ov_path):
 
 
 # ====================================================================
+#  2c) Cable tracker من Pre_Com_Cable_ITR_Tracker.xlsx (PS5 sheet)
+# ====================================================================
+def build_cable_tracker_data():
+    path = os.path.join(os.path.dirname(__file__) or '.', 'Pre_Com_Cable_ITR_Tracker.xlsx')
+    if not os.path.exists(path):
+        print("  Cable tracker file NOT found")
+        return None
+    df = pd.read_excel(path, sheet_name='PS5', header=None, skiprows=2)
+    df.columns = ['Subsystem','Asset_Tag','Vlookup','Description','Scope','Disc',
+                  'Laid_Date','LAYING_RFI','TESTING_RFI','TERM_RFI','CMT','Static_CMT','Remarks']
+    df = df[df['Disc'].notna()].copy()
+    discs = {'E': 'E-Electrical', 'I': 'I-Instrumentation', 'T': 'T-Telecom'}
+    rows = []
+    for code, label in discs.items():
+        sub = df[df['Disc'] == code]
+        tot = len(sub)
+        cmt_close = int(sub['CMT'].notna().sum())
+        cmt_open = tot - cmt_close
+        static_close = int(sub['Static_CMT'].notna().sum())
+        static_open = tot - static_close
+        laying = int(sub['LAYING_RFI'].notna().sum())
+        testing = int(sub['TESTING_RFI'].notna().sum())
+        rows.append({
+            'disc': label, 'total': tot,
+            'cmt_close': cmt_close, 'cmt_open': cmt_open,
+            'static_close': static_close, 'static_open': static_open,
+            'laying_rfi': laying, 'testing_rfi': testing,
+            'pct_cmt': round(cmt_close / tot * 100, 1) if tot else 0,
+            'pct_static': round(static_close / tot * 100, 1) if tot else 0,
+        })
+    print(f"  Cable tracker (PS5): E={rows[0]['total']}, I={rows[1]['total']}, T={rows[2]['total']}")
+    # Scope summary — flat per-discipline rows (E/I/T stacked vertically)
+    scope_rows = []
+    for scope in sorted(df['Scope'].dropna().unique()):
+        sub = df[df['Scope'] == scope]
+        scope_tot = len(sub)
+        scope_cmt = int(sub['CMT'].notna().sum())
+        scope_static = int(sub['Static_CMT'].notna().sum())
+        for code, label in [('E', 'E — Electrical'), ('I', 'I — Instrumentation'), ('T', 'T — Telecom')]:
+            s = sub[sub['Disc'] == code]
+            tot = len(s)
+            cmt = int(s['CMT'].notna().sum())
+            st = int(s['Static_CMT'].notna().sum())
+            scope_rows.append({
+                'scope': scope, 'disc': code, 'discipline': label,
+                'total': tot, 'cmt_close': cmt, 'static_close': st,
+                'pct_cmt': round(cmt / tot * 100, 1) if tot else 0,
+                'pct_static': round(st / tot * 100, 1) if tot else 0,
+                '_scope_total': scope_tot, '_scope_cmt': scope_cmt, '_scope_static': scope_static,
+            })
+    print(f"  Cable tracker scopes: {len(scope_rows)} scope groups")
+    # Raw detail rows for RFI detail table
+    detail_rows = []
+    for _, r in df.iterrows():
+        detail_rows.append({
+            'asset': r['Asset_Tag'],
+            'subsystem': r['Subsystem'],
+            'desc': r['Description'] if pd.notna(r['Description']) else '',
+            'disc': r['Disc'],
+            'scope': r['Scope'] if pd.notna(r['Scope']) else '',
+            'laying_rfi': 1 if pd.notna(r['LAYING_RFI']) else 0,
+            'testing_rfi': 1 if pd.notna(r['TESTING_RFI']) else 0,
+            'term_rfi': 1 if pd.notna(r['TERM_RFI']) else 0,
+        })
+    return {'by_disc': rows, 'by_scope': scope_rows, 'detail': detail_rows}
+
+# ====================================================================
 #  3) Punch List من PUNCH_LIST_REGISTER
 # ====================================================================
 def build_punch_data(excel_path):
@@ -577,7 +703,13 @@ def build_inspection_data(excel_path):
             return 'Open'
         return 'Other'
 
-    df['status_norm'] = df['Status Of RFI '].apply(norm_status)
+    status_col = 'Status Of RFI '
+    if status_col not in df.columns:
+        for c in df.columns:
+            if 'status' in str(c).lower() and 'rfi' in str(c).lower():
+                status_col = c
+                break
+    df['status_norm'] = df[status_col].apply(norm_status)
 
     # ---- Normalize Inspection Type ----
     def norm_type(v):
@@ -670,6 +802,41 @@ def build_inspection_data(excel_path):
             'date': r['Inspection Date'].strftime('%Y-%m-%d'),
         })
 
+    # ---- RFI Inspection Summary (by Discipline, 3 columns: Laying / Testing / Termination) ----
+    def sum_rfi(sub_df):
+        laying_submitted = int(sub_df[sub_df['type_norm'].isin(['Pulling', 'Installation'])]['QC RFI#'].notna().sum())
+        laying_accepted = int(sub_df[sub_df['type_norm'].isin(['Pulling', 'Installation']) & (sub_df['status_norm'].isin(['Accepted', 'Accepted with Punch']))]['QC RFI#'].notna().sum())
+        testing_submitted = int(sub_df[sub_df['type_norm'] == 'Testing']['QC RFI#'].notna().sum())
+        testing_accepted = int(sub_df[(sub_df['type_norm'] == 'Testing') & (sub_df['status_norm'].isin(['Accepted', 'Accepted with Punch']))]['QC RFI#'].notna().sum())
+        term_submitted = int(sub_df['QC RFI#.1'].notna().sum())
+        term_accepted = int(sub_df[sub_df['QC RFI#.1'].notna()].apply(
+            lambda r: norm_status(r.get(' RFI STATUS', None)) in ('Accepted', 'Accepted with Punch') if pd.notna(r.get(' RFI STATUS', None)) else False, axis=1
+        ).sum())
+        return {
+            'discipline': sub_df['disc'].iloc[0] if not sub_df.empty else 'Other',
+            'assets': sub_df['Asset - Tag'].nunique(),
+            'laying_submitted': laying_submitted,
+            'laying_accepted': laying_accepted,
+            'testing_submitted': testing_submitted,
+            'testing_accepted': testing_accepted,
+            'term_submitted': term_submitted,
+            'term_accepted': term_accepted,
+        }
+
+    rfi_summary_rows = []
+    for disc_code in ['E', 'I', 'T']:
+        sub_df = df[df['disc'] == disc_code]
+        if sub_df.empty:
+            continue
+        rfi_summary_rows.append(sum_rfi(sub_df))
+
+    total_laying_sub = sum(r['laying_submitted'] for r in rfi_summary_rows)
+    total_laying_acc = sum(r['laying_accepted'] for r in rfi_summary_rows)
+    total_testing_sub = sum(r['testing_submitted'] for r in rfi_summary_rows)
+    total_testing_acc = sum(r['testing_accepted'] for r in rfi_summary_rows)
+    total_term_sub = sum(r['term_submitted'] for r in rfi_summary_rows)
+    total_term_acc = sum(r['term_accepted'] for r in rfi_summary_rows)
+
     return {
         'total_assets': total_assets,
         'total_rfi': total_rfi_submitted,
@@ -681,6 +848,18 @@ def build_inspection_data(excel_path):
         'monthly': monthly, 'monthly_total': monthly_total,
         'top_subsystems': top_sub.to_dict('records'),
         'recent': recent_records,
+        'inspection_summary': {
+            'rows': rfi_summary_rows,
+            'totals': {
+                'total_assets': sum(r['assets'] for r in rfi_summary_rows),
+                'laying_submitted': total_laying_sub,
+                'laying_accepted': total_laying_acc,
+                'testing_submitted': total_testing_sub,
+                'testing_accepted': total_testing_acc,
+                'term_submitted': total_term_sub,
+                'term_accepted': total_term_acc,
+            }
+        } if rfi_summary_rows else None,
     }
 
 
@@ -982,7 +1161,7 @@ def build_completed_rfi_table(ov_path, punch_path, rfi_path):
             'closed_pl': closed,
             'open_pl': total - closed,
             'all_closed': total == closed
-        }
+    }
 
     # 2) Inspection Register: RFI No -> Asset Tags
     rdf = pd.read_excel(rfi_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
@@ -1153,9 +1332,34 @@ table.eit-table td.balance-pos{color:#C00000;font-weight:700;}
 table.eit-table td.balance-zero{color:#1d6f42;font-weight:700;}
 tr.eit-total-row td{background:#404040 !important;color:#fff;font-weight:800;border:1px solid #222;}
 tr.eit-total-row td.balance-pos{color:#ff9b9b;}
+
+/* ===== Tab bar ===== */
+.tabbar{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;gap:4px;background:#0a0f1e;border-bottom:2px solid var(--teal);padding:8px 12px;}
+.tabbtn{background:#161f38;color:#cfe3ff;border:1px solid #2a3a5f;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;}
+.tabbtn:hover{background:#1e2b4d;}
+.tabbtn.active{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;border-color:transparent;}
+.tabpage{display:none;}
+.tabpage.active{display:block;}
+.eit-page-toolbar{display:flex;align-items:center;gap:10px;margin:16px 0 10px;flex-wrap:wrap;}
+.eit-page-toolbar input{padding:8px 12px;border:1px solid var(--border);border-radius:6px;background:var(--panel2);color:#fff;font-size:13px;flex:1;min-width:200px;}
+.eit-page-toolbar .count{color:var(--muted);font-size:12px;white-space:nowrap;}
+.eit-page-table-wrap{overflow:auto;max-height:70vh;border:1px solid var(--border);border-radius:8px;background:var(--panel2);}
+.eit-page-table-wrap table{border-collapse:collapse;width:100%;font-size:12px;}
+.eit-page-table-wrap th{position:sticky;top:0;background:#1e2b4d;color:#fff;font-weight:700;padding:8px;text-align:left;border:1px solid #2a3a5f;white-space:nowrap;}
+.eit-page-table-wrap td{padding:6px 8px;border:1px solid #232c44;color:#cfe3ff;white-space:nowrap;max-width:380px;overflow:hidden;text-overflow:ellipsis;}
+.eit-page-table-wrap tr:nth-child(even) td{background:rgba(255,255,255,.03);}
+.eit-page-table-wrap tr:hover td{background:rgba(0,224,198,.08);}
+.eit-kpi-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:14px;}
+.eit-kpi{background:linear-gradient(135deg,#161f38,#1e2b4d);border:1px solid #2a3a5f;border-radius:8px;padding:12px;text-align:center;}
+.eit-kpi .kpi-v{font-size:22px;font-weight:800;color:var(--teal);}
+.eit-kpi .kpi-l{font-size:11px;color:var(--muted);margin-top:4px;}
 </style>
 </head>
 <body>
+
+<div class="tabbar" id="mainTabBar"></div>
+
+<div id="tab-main-dashboard" class="tabpage active">
 
 <!-- ================= SIDEBAR ================= -->
 <div class="sidebar">
@@ -1182,6 +1386,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   <label><input type="checkbox" data-target="sec-export-elec" checked> 4. E - Electrical</label>
   <label><input type="checkbox" data-target="sec-export-inst" checked> 5. I - Instrumentation</label>
   <label><input type="checkbox" data-target="sec-export-tele" checked> 6. T - Telecom</label>
+  <label><input type="checkbox" data-target="sec-export-rfi" checked> 7. RFI Inspection Summary</label>
   <label><input type="checkbox" data-target="sec-cmt-qc-punch" checked> CMT &amp; QC Punch Summary</label>
 
   <div class="grp">Punch List</div>
@@ -1206,6 +1411,15 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   <div class="grp">DPR Summary (EIT)</div>
   <label><input type="checkbox" data-target="sec-dpr-eit" checked> E/I/T Progress &amp; Top Subsystems</label>
   <label><input type="checkbox" data-target="sec-punch-tracking" checked> Punch Tracking &amp; Closure</label>
+
+  <div class="grp">Update</div>
+  <div style="margin-top:8px;">
+    <button onclick="location.reload()" style="width:100%;padding:8px 12px;background:linear-gradient(135deg,#1b5e20,#4caf50);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">🔄 Refresh Dashboard</button>
+  </div>
+  <div style="margin-top:8px;">
+    <button onclick="copyUpdateCmd()" style="width:100%;padding:8px 12px;background:linear-gradient(135deg,#0d47a1,#2196f3);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">📤 Update from PC</button>
+  </div>
+  <div id="updateCmdBox" style="display:none;margin-top:8px;padding:8px;background:#111;border-radius:6px;font-size:11px;color:#0f0;word-break:break-all;"></div>
 </div>
 
 <!-- ================= MAIN ================= -->
@@ -1297,6 +1511,52 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     <div class="chart-row"><div class="chart-card" style="flex:2;"><canvas id="chartMilestone"></canvas></div></div>
   </div>
 
+  <!-- ===== Today's Closures by Milestone ===== -->
+  <div class="section active" id="sec-today-milestone">
+    <div class="section-title">📅 Today Closures by Milestone (CPP AGI E/I/T) — Total: <span id="todayMsTotal"></span></div>
+    <div class="chart-card">
+      <table class="eit-table" id="todayMsTable" style="min-width:600px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Milestone</th>
+            <th>E — Electrical</th>
+            <th>I — Instrumentation</th>
+            <th>T — Telecom</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="todayMsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== Subsystem Summary — CPP AGI ===== -->
+  <div class="section active" id="sec-subsystem">
+    <div class="section-title">📊 Subsystem Summary — CPP AGI E/I/T</div>
+    <div class="chart-card">
+      <div class="eit-toolbar">
+        <button class="btn-export" onclick="exportSubsystemToExcel()">⬇️ Download Excel</button>
+      </div>
+      <input id="subsystemSearchInput" type="text" placeholder="Search subsystem..."
+        style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--panel2);color:#fff;margin-bottom:12px;">
+      <div style="max-height:600px;overflow:auto;">
+        <table class="eit-table" id="subsystemTable" style="min-width:700px;">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Subsystem</th>
+              <th>Discipline</th>
+              <th>Total</th>
+              <th>Closed</th>
+              <th>Open</th>
+              <th>% Closed</th>
+            </tr>
+          </thead>
+          <tbody id="subsystemBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== EIT ITR Description Table (Excel-style) ===== -->
   <div class="section active" id="sec-eit-table">
     <div class="section-title">📋 ITR Description Table — E / I / T (<span id="eitCutoffLbl"></span>)</div>
@@ -1357,6 +1617,9 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
         </table>
       </div>
       <div id="cmtQcDetailCount" style="margin-top:8px;font-size:12px;color:var(--muted);text-align:right;"></div>
+      <div style="margin-top:10px;">
+        <button class="btn-export" onclick="exportCmtQcDetailExcel()">⬇️ Download Per-Asset Detail Excel</button>
+      </div>
     </div>
   </div>
 
@@ -1389,11 +1652,29 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
       <table class="eit-table" id="cableCmtOrigTable" style="min-width:700px;">
         <thead>
           <tr>
-            <th>ITR Description</th><th>Total Tasks</th><th>Closed</th><th>Balance</th><th>% Closed</th>
+            <th>Discipline</th><th>Total</th><th>CMT Close</th><th>CMT Open</th><th>Static Close</th><th>Static Open</th><th>% CMT</th><th>% Static</th>
           </tr>
         </thead>
         <tbody id="cableCmtOrigBody"></tbody>
         <tfoot id="cableCmtOrigFoot"></tfoot>
+      </table>
+    </div>
+    <div class="section-title" style="margin-top:20px;font-size:16px;">Conformity Check &amp; Static Test Summary by Scope (E / I / T)</div>
+    <div class="eit-toolbar">
+      <button class="btn-export" onclick="exportCableScopeExcel()">⬇️ Download Scope Summary Excel</button>
+    </div>
+    <div class="eit-table-wrap">
+      <table class="eit-table" id="cableScopeTable" style="min-width:500px;font-size:11px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Scope</th>
+            <th style="text-align:center;">Discipline</th>
+            <th style="text-align:center;">Total</th>
+            <th style="text-align:center;">CMT Close</th>
+            <th style="text-align:center;">Static Close</th>
+          </tr>
+        </thead>
+        <tbody id="cableScopeBody"></tbody>
       </table>
     </div>
   </div>
@@ -1401,21 +1682,37 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   <!-- ===== Export: Subsystem Handover ===== -->
   <div class="section active" id="sec-export-subsystem">
     <div class="section-title">3. Subsystem Handover Status &amp; Backlog (E/I/T)</div>
+    <div class="section-title" style="font-size:14px;margin-top:10px;">⚡ E — Electrical</div>
     <div class="eit-toolbar">
-      <button class="btn-export" onclick="exportSubsystemExcel()">Download Subsystem Handover Excel</button>
+      <button class="btn-export" onclick="exportSubsystemExcel('E')">⬇️ Download E - Electrical Excel</button>
     </div>
     <div class="eit-table-wrap">
-      <table class="eit-table" id="subsystemTable" style="min-width:900px;font-size:12px;">
-        <thead>
-          <tr>
-            <th style="text-align:left;">Subsystem</th>
-            <th>E Total</th><th>E Closed</th><th>E Remain</th>
-            <th>I Total</th><th>I Closed</th><th>I Remain</th>
-            <th>T Total</th><th>T Closed</th><th>T Remain</th>
-          </tr>
-        </thead>
-        <tbody id="subsystemBody"></tbody>
-        <tfoot id="subsystemFoot"></tfoot>
+      <table class="eit-table" id="subsystemTableE" style="min-width:500px;font-size:12px;">
+        <thead><tr><th style="text-align:left;">Subsystem</th><th>Total</th><th>Closed</th><th>Remain</th></tr></thead>
+        <tbody id="subsystemBodyE"></tbody>
+        <tfoot id="subsystemFootE"></tfoot>
+      </table>
+    </div>
+    <div class="section-title" style="font-size:14px;margin-top:15px;">🔧 I — Instrumentation</div>
+    <div class="eit-toolbar">
+      <button class="btn-export" onclick="exportSubsystemExcel('I')">⬇️ Download I - Instrumentation Excel</button>
+    </div>
+    <div class="eit-table-wrap">
+      <table class="eit-table" id="subsystemTableI" style="min-width:500px;font-size:12px;">
+        <thead><tr><th style="text-align:left;">Subsystem</th><th>Total</th><th>Closed</th><th>Remain</th></tr></thead>
+        <tbody id="subsystemBodyI"></tbody>
+        <tfoot id="subsystemFootI"></tfoot>
+      </table>
+    </div>
+    <div class="section-title" style="font-size:14px;margin-top:15px;">📡 T — Telecom</div>
+    <div class="eit-toolbar">
+      <button class="btn-export" onclick="exportSubsystemExcel('T')">⬇️ Download T - Telecom Excel</button>
+    </div>
+    <div class="eit-table-wrap">
+      <table class="eit-table" id="subsystemTableT" style="min-width:500px;font-size:12px;">
+        <thead><tr><th style="text-align:left;">Subsystem</th><th>Total</th><th>Closed</th><th>Remain</th></tr></thead>
+        <tbody id="subsystemBodyT"></tbody>
+        <tfoot id="subsystemFootT"></tfoot>
       </table>
     </div>
   </div>
@@ -1466,6 +1763,52 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
         <tbody id="teleDescBody"></tbody>
       </table>
     </div>
+  </div>
+
+  <!-- ===== Export: RFI Inspection Summary ===== -->
+  <div class="section active" id="sec-export-rfi">
+    <div class="section-title">7. RFI Inspection Summary — By Discipline</div>
+    <div class="eit-toolbar">
+      <button class="btn-export" onclick="exportRfiInspectionExcel()">⬇️ Download RFI Inspection Excel</button>
+    </div>
+    <div class="eit-table-wrap">
+      <table class="eit-table" id="rfiInspectionTable" style="min-width:700px;font-size:12px;">
+        <thead>
+          <tr>
+            <th>Discipline</th>
+            <th>Assets</th>
+            <th>LAYING RFI ✓</th>
+            <th>TESTING RFI ✓</th>
+            <th>TERMINATION RFI ✓</th>
+          </tr>
+        </thead>
+        <tbody id="rfiInspectionBody"></tbody>
+        <tfoot id="rfiInspectionFoot"></tfoot>
+      </table>
+    </div>
+    <div class="section-title" style="margin-top:20px;font-size:15px;">📋 RFI Detail — From Pre_Com_Cable_ITR_Tracker (PS5)</div>
+    <div class="eit-toolbar">
+      <input id="rfiDetailSearch" type="text" placeholder="🔍 Search Asset Tag / Subsystem..." style="flex:1;max-width:300px;padding:6px 10px;border:1px solid #ccc;border-radius:6px;font-size:12px;">
+      <button class="btn-export" onclick="exportRfiDetailExcel()">⬇️ Download Excel</button>
+    </div>
+    <div class="eit-table-wrap" style="max-height:450px;overflow:auto;">
+      <table class="eit-table" id="rfiDetailTable" style="min-width:800px;font-size:10px;">
+        <thead>
+          <tr style="position:sticky;top:0;z-index:2;background:var(--panel2);color:var(--teal);">
+            <th style="text-align:left;padding:4px 5px;">Asset Tag</th>
+            <th style="text-align:left;padding:4px 5px;">Subsystem</th>
+            <th style="padding:4px 5px;">Disc</th>
+            <th style="text-align:left;padding:4px 5px;">Description</th>
+            <th style="padding:4px 5px;">Scope</th>
+            <th style="padding:4px 5px;">LAYING RFI</th>
+            <th style="padding:4px 5px;">TESTING RFI</th>
+            <th style="padding:4px 5px;">TERMINATION RFI</th>
+          </tr>
+        </thead>
+        <tbody id="rfiDetailBody"></tbody>
+      </table>
+    </div>
+    <div id="rfiDetailCount" style="margin-top:6px;font-size:11px;color:var(--muted);text-align:right;"></div>
   </div>
 
   <!-- ===== Punch List KPI ===== -->
@@ -1663,6 +2006,10 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
   <div class="footer">Auto-generated dashboard — CPP AGI / EACOP PS5 Project</div>
 </div>
 
+</div><!-- /tab-main-dashboard -->
+
+<div id="tab-container"></div>
+
 
 
 <script>
@@ -1672,6 +2019,7 @@ const RFI = __RFI_JSON__;
 const DPR_EIT = __DPR_EIT_JSON__;
 const EIT_TABLE = __EIT_TABLE_JSON__;
 const EIT_DESC = __EIT_DESC_JSON__;
+const EIT_PAGES = __EIT_PAGES_JSON__;
 
 // Reset daily counts if today_label doesn't match real time
 (function(){
@@ -1696,6 +2044,7 @@ const EIT_DESC = __EIT_DESC_JSON__;
 })();
 const CMT_QC_PUNCH = __CMT_QC_PUNCH_JSON__;
 const CABLE_OV = __CABLE_OV_JSON__;
+const CABLE_TRACKER = __CABLE_TRACKER_JSON__;
 const SEARCH_INDEX = __SEARCH_INDEX_JSON__;
 const SI       = SEARCH_INDEX.index   || SEARCH_INDEX;
 const RFI_MAP  = SEARCH_INDEX.rfi_map || {};
@@ -1850,6 +2199,99 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
   });
 })();
 
+// ---------- Today Closures by Milestone ----------
+(function(){
+  const tm = ITR.today_milestone || [];
+  const total = ITR.today_milestone_total || 0;
+  document.getElementById('todayMsTotal').innerText = total;
+  const body = document.getElementById('todayMsBody');
+  if (!body) return;
+  const msMap = {};
+  tm.forEach(r => {
+    if (!msMap[r.milestone]) msMap[r.milestone] = {E:0, I:0, T:0};
+    msMap[r.milestone][r.disc] = r.count;
+  });
+  let html = '';
+  Object.keys(msMap).sort().forEach(ms => {
+    const d = msMap[ms];
+    const rowTotal = d.E + d.I + d.T;
+    html += `<tr>
+      <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;color:#c00;background:#1a1a2e;">${ms}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;background:#FCE4D6;color:#c00;">${d.E || '-'}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;background:#FFF2CC;color:#c00;">${d.I || '-'}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;background:#D9D9D9;color:#c00;">${d.T || '-'}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;font-weight:bold;color:#c00;background:#1a1a2e;">${rowTotal}</td>
+    </tr>`;
+  });
+  body.innerHTML = html;
+})();
+
+// ---------- Subsystem Summary ----------
+(function(){
+  const data = ITR.subsystem_summary || [];
+  const body = document.getElementById('subsystemBody');
+  if (!body || !data.length) return;
+  const discBg = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
+  window._subsystemData = data;
+  function render(filter) {
+    let filtered = data;
+    if (filter) {
+      const q = filter.toLowerCase();
+      filtered = data.filter(r => r.subsystem.toLowerCase().includes(q) || r.discipline.toLowerCase().includes(q));
+    }
+    const subs = [...new Set(filtered.map(r => r.subsystem))];
+    let html = '';
+    subs.forEach(sub => {
+      const rows = filtered.filter(r => r.subsystem === sub);
+      rows.forEach((r, i) => {
+        const bg = discBg[r.disc] || '#fff';
+        const isFull = r.pct >= 100;
+        const rowBg = isFull ? '#1b5e20' : '#1a1a2e';
+        const pctColor = isFull ? '#00e676' : '#c00';
+        html += `<tr style="background:${rowBg};">
+          <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;color:${isFull ? '#00e676' : '#c00'};">${i === 0 ? sub : ''}</td>
+          <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};color:#c00;">${r.discipline}</td>
+          <td style="text-align:center;border:1px solid #d4d4d4;color:#c00;">${r.total}</td>
+          <td style="text-align:center;border:1px solid #d4d4d4;color:#c00;font-weight:700;">${r.closed}</td>
+          <td style="text-align:center;border:1px solid #d4d4d4;color:#c00;">${r.open}</td>
+          <td style="text-align:center;border:1px solid #d4d4d4;color:${pctColor};font-weight:700;">${r.pct}%</td>
+        </tr>`;
+      });
+    });
+    body.innerHTML = html;
+  }
+  render('');
+  document.getElementById('subsystemSearchInput').addEventListener('input', function(){ render(this.value); });
+})();
+
+function copyUpdateCmd(){
+  var box = document.getElementById('updateCmdBox');
+  if(box.style.display === 'block'){ box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  box.innerHTML = '<b>To update dashboard from PC:</b><br><br>' +
+    '1. Put new Excel files in:<br>C:\\Users\\mylap\\OneDrive\\Dashboard\\<br><br>' +
+    '2. Run:<br>python cpp_agi_dashboard.py<br><br>' +
+    '3. Or double-click:<br>update_dashboard.bat<br><br>' +
+    '<b>To send SMS from phone (Termux):</b><br><br>' +
+    'curl -s https://mohamedgawad1.github.io/ps5-dashboard/phone_sms.py -o ~/sms.py && python ~/sms.py<br><br>' +
+    '<button onclick="navigator.clipboard.writeText(\'curl -s https://mohamedgawad1.github.io/ps5-dashboard/phone_sms.py -o ~/sms.py && python ~/sms.py\');this.textContent=\'Copied!\'" ' +
+    'style="margin-top:6px;padding:6px 12px;background:#4caf50;color:#fff;border:none;border-radius:4px;cursor:pointer;">📋 Copy SMS Command</button>';
+}
+
+function exportSubsystemToExcel(){
+  const data = window._subsystemData || ITR.subsystem_summary || [];
+  if(!data.length) return;
+  let csv = 'Subsystem,Discipline,Total,Closed,Open,% Closed\n';
+  data.forEach(r => {
+    csv += `"${r.subsystem}","${r.discipline}",${r.total},${r.closed},${r.open},${r.pct}%\n`;
+  });
+  const blob = new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Subsystem_Summary_CPP_AGI.csv';
+  a.click();
+}
+
 // ---------- EIT ITR Description Table (Excel-style) ----------
 (function(){
   if(!EIT_TABLE) return;
@@ -1936,43 +2378,83 @@ function exportEitTableToExcel(){
   XLSX.writeFile(wb, `EIT_ITR_Description_${today}.xlsx`);
 }
 
-// ---------- Cable CMT (filtered from EIT_TABLE) ----------
+// ---------- Cable CMT (from Pre_Com_Cable_ITR_Tracker) ----------
 (function(){
-  if(!EIT_TABLE) return;
-  const cableKeywords = ['cable','Cable','CABLE','Cable Tray','Heat Tracing'];
-  const cableRows = EIT_TABLE.rows.filter(r =>
-    r.type === 'E-Electrical' && cableKeywords.some(k => r.desc.includes(k))
-  );
-  document.getElementById('cableCmtOrigBody').innerHTML = cableRows.map(r => `
-    <tr style="background:#FCE4D6;">
-      <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;">${r.type}</td>
-      <td style="text-align:left;border:1px solid #d4d4d4;">${r.desc}</td>
+  const TRACKER = CABLE_TRACKER;
+  if(!TRACKER) return;
+  const CABLE = TRACKER.by_disc;
+  const SCOPE = TRACKER.by_scope;
+  const bg = {'E-Electrical':'#FCE4D6','I-Instrumentation':'#FFF2CC','T-Telecom':'#D9D9D9'};
+  // Table 1: By discipline
+  document.getElementById('cableCmtOrigBody').innerHTML = CABLE.map(r => {
+    const b = bg[r.disc] || '#fff';
+    return `<tr style="background:${b};">
+      <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;">${r.disc}</td>
       <td style="text-align:center;border:1px solid #d4d4d4;">${r.total}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;color:#1d6f42;font-weight:700;">${r.approved}</td>
-      <td style="text-align:center;border:1px solid #d4d4d4;${r.balance>0?'color:#C00000;font-weight:700':''}">${r.balance}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;color:#1d6f42;font-weight:700;">${r.cmt_close}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;${r.cmt_open>0?'color:#C00000;font-weight:700':''}">${r.cmt_open}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;color:#1d6f42;font-weight:700;">${r.static_close}</td>
+      <td style="text-align:center;border:1px solid #d4d4d4;${r.static_open>0?'color:#C00000;font-weight:700':''}">${r.static_open}</td>
       <td style="text-align:center;border:1px solid #d4d4d4;">
         <div style="background:#d9d9d9;border-radius:4px;height:18px;min-width:60px;position:relative;">
-          <div style="position:absolute;left:0;top:0;height:100%;width:${r.pct}%;background:linear-gradient(90deg,#70ad47,#a9d18e);border-radius:4px;"></div>
-          <div style="position:relative;font-size:11px;font-weight:700;line-height:18px;">${r.pct}%</div>
+          <div style="position:absolute;left:0;top:0;height:100%;width:${r.pct_cmt}%;background:linear-gradient(90deg,#70ad47,#a9d18e);border-radius:4px;"></div>
+          <div style="position:relative;font-size:11px;font-weight:700;line-height:18px;">${r.pct_cmt}%</div>
         </div>
       </td>
-    </tr>`).join('');
-
-  const t = cableRows.reduce((a,r) => ({total:a.total+r.total, approved:a.approved+r.approved, balance:a.balance+r.balance}), {total:0,approved:0,balance:0});
-  t.pct = t.total ? Math.round(t.approved/t.total*100) : 0;
+      <td style="text-align:center;border:1px solid #d4d4d4;">
+        <div style="background:#d9d9d9;border-radius:4px;height:18px;min-width:60px;position:relative;">
+          <div style="position:absolute;left:0;top:0;height:100%;width:${r.pct_static}%;background:linear-gradient(90deg,#70ad47,#a9d18e);border-radius:4px;"></div>
+          <div style="position:relative;font-size:11px;font-weight:700;line-height:18px;">${r.pct_static}%</div>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+  const t = CABLE.reduce((a,r) => ({total:a.total+r.total, cmt_close:a.cmt_close+r.cmt_close, cmt_open:a.cmt_open+r.cmt_open, static_close:a.static_close+r.static_close, static_open:a.static_open+r.static_open}), {total:0,cmt_close:0,cmt_open:0,static_close:0,static_open:0});
+  t.pct_cmt = t.total ? Math.round(t.cmt_close/t.total*100) : 0;
+  t.pct_static = t.total ? Math.round(t.static_close/t.total*100) : 0;
   document.getElementById('cableCmtOrigFoot').innerHTML = `<tr style="background:#404040;color:#fff;font-weight:800;">
-    <td style="border:1px solid #222;padding:7px;text-align:left;" colspan="2">TOTAL CABLE / CMT</td>
+    <td style="border:1px solid #222;padding:7px;text-align:left;">TOTAL CABLE / CMT</td>
     <td style="border:1px solid #222;text-align:center;">${t.total}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.approved}</td>
-    <td style="border:1px solid #222;text-align:center;${t.balance>0?'color:#ff9b9b':''}">${t.balance}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.pct}%</td>
+    <td style="border:1px solid #222;text-align:center;">${t.cmt_close}</td>
+    <td style="border:1px solid #222;text-align:center;${t.cmt_open>0?'color:#ff9b9b':''}">${t.cmt_open}</td>
+    <td style="border:1px solid #222;text-align:center;">${t.static_close}</td>
+    <td style="border:1px solid #222;text-align:center;${t.static_open>0?'color:#ff9b9b':''}">${t.static_open}</td>
+    <td style="border:1px solid #222;text-align:center;">${t.pct_cmt}%</td>
+    <td style="border:1px solid #222;text-align:center;">${t.pct_static}%</td>
   </tr>`;
-
-  window.__cableCmtData = {rows: cableRows, total: t};
+  window.__cableTrackerByDisc = CABLE;
+  // Table 2: By scope — stacked E/I/T per scope
+  if(!document.getElementById('cableScopeBody')) return;
+  const scopeBg = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
+  let scopeHtml = '';
+  const scopeNames = [...new Set(SCOPE.map(r => r.scope))];
+  scopeNames.forEach(sc => {
+    const rowsOf = SCOPE.filter(r => r.scope === sc);
+    rowsOf.forEach((r, i) => {
+      const bg = scopeBg[r.disc] || '#fff';
+      scopeHtml += `<tr>
+        <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;">${i === 0 ? sc : ''}</td>
+        <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};">${r.discipline}</td>
+        <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};">${r.total}</td>
+        <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};color:#1d6f42;font-weight:700;">${r.cmt_close}</td>
+        <td style="text-align:center;border:1px solid #d4d4d4;background:${bg};color:#1d6f42;font-weight:700;">${r.static_close}</td>
+      </tr>`;
+    });
+    // Scope subtotal
+    const st = rowsOf[0];
+    scopeHtml += `<tr style="background:#404040;color:#fff;font-weight:800;">
+      <td style="border:1px solid #222;padding:7px;text-align:left;">${sc} — Total</td>
+      <td style="border:1px solid #222;text-align:center;"></td>
+      <td style="border:1px solid #222;text-align:center;">${st._scope_total}</td>
+      <td style="border:1px solid #222;text-align:center;">${st._scope_cmt}</td>
+      <td style="border:1px solid #222;text-align:center;">${st._scope_static}</td>
+    </tr>`;
+  });
+  document.getElementById('cableScopeBody').innerHTML = scopeHtml;
+  window.__cableScopeData = SCOPE;
 })();
 
-
-// ---------- CMT & QC Punch Summary ----------
+// ---------- CMT & QC Punch Summary ----------// ---------- CMT & QC Punch Summary ----------
 (function(){
   const CMT_QC = CMT_QC_PUNCH;
   if(!CMT_QC || !CMT_QC.length) return;
@@ -2009,6 +2491,7 @@ function exportEitTableToExcel(){
 
   // Table 2: Per-Asset Detail
   const detailRows = CMT_QC[1].rows;
+  window.__cmtQcDetailData = detailRows;
 
   function parseStatus(s){
     if(!s || s === 'No Data' || s === '') return [];
@@ -2076,39 +2559,146 @@ function exportEitTableToExcel(){
   renderCmtQcDetail('');
 })();
 
-function exportCableCmtExcelOrig(){
-  const d = window.__cableCmtData;
-  if(!d){ alert('No data'); return; }
-  let html = buildExcelHeader('Cable / CMT — Closed Status & Backlog');
-  // Override header row for 6 columns
-  html = html.slice(0, html.lastIndexOf('</tr>')) +
-    '  <th class="hdr" style="text-align:left;">Discipline</th>' +
-    '  <th class="hdr" style="text-align:left;">ITR Description</th>' +
-    '  <th class="hdr">Total Tasks</th>' +
-    '  <th class="hdr">Closed</th>' +
-    '  <th class="hdr">Balance</th>' +
-    '  <th class="hdr">% Closed</th>' +
+function exportCmtQcDetailExcel(){
+  const cmtqc = window.__cmtQcDetailData;
+  if(!cmtqc || !cmtqc.length){ alert("No Per-Asset Detail data available"); return; }
+  let html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+    '<head><meta charset="UTF-8">' +
+    '<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Sheet1</x:Name>' +
+    '<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->' +
+    '<style>td,th{font-family:Arial,sans-serif;font-size:12px;vertical-align:middle;}.hdr{background:#ED7D31;color:#000;font-weight:bold;text-align:center;border:1px solid #9c4a14;padding:8px;}.bg_e{background:#FCE4D6;}.bg_i{background:#FFF2CC;}.bg_t{background:#D9D9D9;}</style>' +
+    '</head><body>' +
+    '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;min-width:800px;">' +
+    '<tr><th colspan="8" class="hdr" style="font-size:14px;">EACOP PIPELINE PROJECT &mdash; CMT & QC Punch — Per-Asset Detail</th></tr>' +
+    '<tr>' +
+    '  <th class="hdr" style="text-align:left;">Asset</th>' +
+    '  <th class="hdr" style="text-align:left;">Subsystem</th>' +
+    '  <th class="hdr">Priority</th>' +
+    '  <th class="hdr">Discipline</th>' +
+    '  <th class="hdr">CMT (A,B,C)</th>' +
+    '  <th class="hdr" style="text-align:left;">CMT Description</th>' +
+    '  <th class="hdr">QC (A,B,C)</th>' +
+    '  <th class="hdr" style="text-align:left;">QC Description</th>' +
     '</tr>';
-  // Fix colspan
-  html = html.replace('colspan="5"', 'colspan="6"');
-  d.rows.forEach(r => {
-    html += `<tr>
-      <td style="border:1px solid #bbb;text-align:left;font-weight:bold;">${r.type}</td>
-      <td style="border:1px solid #bbb;text-align:left;">${r.desc}</td>
-      <td style="border:1px solid #bbb;text-align:center;">${r.total}</td>
-      <td style="border:1px solid #bbb;text-align:center;color:#1d6f42;font-weight:bold;">${r.approved}</td>
-      <td style="border:1px solid #bbb;text-align:center;${r.balance>0?'color:#C00000;font-weight:bold':''}">${r.balance}</td>
-      <td style="border:1px solid #bbb;text-align:center;">${r.pct}%</td>
-    </tr>`;
+  const bgMap = {'Electrical (E)':'bg_e','Instrumentation (I)':'bg_i','Telecom (T)':'bg_t'};
+  cmtqc.forEach(r => {
+    const cls = bgMap[r[3]] || '';
+    html += '<tr class="' + cls + '">' +
+      '<td style="border:1px solid #d4d4d4;font-weight:bold;">' + (r[0]||'') + '</td>' +
+      '<td style="border:1px solid #d4d4d4;">' + (r[1]||'') + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + (r[2]||'') + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + (r[3]||'') + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + (r[4]||'') + '</td>' +
+      '<td style="border:1px solid #d4d4d4;">' + (r[5]||'') + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + (r[6]||'') + '</td>' +
+      '<td style="border:1px solid #d4d4d4;">' + (r[7]||'') + '</td>' +
+    '</tr>';
   });
-  html += `<tr style="background:#404040;color:#fff;font-weight:bold;">
-    <td style="border:1px solid #222;text-align:left;padding:7px;" colspan="2">TOTAL CABLE / CMT</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.total}</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.approved}</td>
-    <td style="border:1px solid #222;text-align:center;${d.total.balance>0?'color:#ff9b9b':''}">${d.total.balance}</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.pct}%</td>
-  </tr>`;
-  downloadExcel(html, 'Cable_CMT_Status');
+  html += '</table></body></html>';
+  const blob = new Blob(['\ufeff' + html], {type:'application/vnd.ms-excel;charset=utf-8'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'CMT_QC_Per_Asset_Detail.xls';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function exportCableCmtExcelOrig(){
+  const d = window.__cableTrackerByDisc;
+  if(!d){ alert('No data'); return; }
+  let html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+    '<head><meta charset="UTF-8">' +
+    '<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Sheet1</x:Name>' +
+    '<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->' +
+    '<style>td,th{font-family:Arial,sans-serif;font-size:12px;vertical-align:middle;}.hdr{background:#ED7D31;color:#000;font-weight:bold;text-align:center;border:1px solid #9c4a14;padding:8px;}</style>' +
+    '</head><body>' +
+    '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;min-width:600px;">' +
+    '<tr><th colspan="8" class="hdr" style="font-size:14px;">EACOP PIPELINE PROJECT &mdash; Cable / CMT Status by Discipline</th></tr>' +
+    '<tr>' +
+    '  <th class="hdr" style="text-align:left;">Discipline</th>' +
+    '  <th class="hdr">Total</th>' +
+    '  <th class="hdr">CMT Close</th>' +
+    '  <th class="hdr">CMT Open</th>' +
+    '  <th class="hdr">Static Close</th>' +
+    '  <th class="hdr">Static Open</th>' +
+    '  <th class="hdr">% CMT</th>' +
+    '  <th class="hdr">% Static</th>' +
+    '</tr>';
+  const bgMap = {'E-Electrical':'#FCE4D6','I-Instrumentation':'#FFF2CC','T-Telecom':'#D9D9D9'};
+  d.forEach(r => {
+    const bg = bgMap[r.disc]||'#fff';
+    html += '<tr style="background:' + bg + ';">' +
+      '<td style="border:1px solid #d4d4d4;text-align:left;font-weight:bold;">' + r.disc + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.total + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.cmt_close + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.cmt_open + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.static_close + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.static_open + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.pct_cmt + '%</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.pct_static + '%</td>' +
+    '</tr>';
+  });
+  const t = d.reduce((a,r) => ({total:a.total+r.total,cmt_close:a.cmt_close+r.cmt_close,cmt_open:a.cmt_open+r.cmt_open,static_close:a.static_close+r.static_close,static_open:a.static_open+r.static_open}), {total:0,cmt_close:0,cmt_open:0,static_close:0,static_open:0});
+  t.pct_cmt = t.total ? Math.round(t.cmt_close/t.total*100) : 0;
+  t.pct_static = t.total ? Math.round(t.static_close/t.total*100) : 0;
+  html += '<tr style="background:#404040;color:#fff;font-weight:800;">' +
+    '<td style="border:1px solid #222;padding:7px;text-align:left;">TOTAL CABLE / CMT</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.total + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.cmt_close + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.cmt_open + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.static_close + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.static_open + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.pct_cmt + '%</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.pct_static + '%</td>' +
+  '</tr>' +
+  '</table></body></html>';
+  downloadExcel(html, 'Cable_CMT_Discipline');
+}
+
+function exportCableScopeExcel(){
+  const d = window.__cableScopeData;
+  if(!d){ alert('No data'); return; }
+  const scopeBg = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
+  let html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+    '<head><meta charset="UTF-8">' +
+    '<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Sheet1</x:Name>' +
+    '<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->' +
+    '<style>td,th{font-family:Arial,sans-serif;font-size:12px;vertical-align:middle;}.hdr{background:#ED7D31;color:#000;font-weight:bold;text-align:center;border:1px solid #9c4a14;padding:8px;}</style>' +
+    '</head><body>' +
+    '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;min-width:600px;">' +
+    '<tr><th colspan="5" class="hdr" style="font-size:14px;">EACOP PIPELINE PROJECT &mdash; CMT & Static Test Summary by Scope (E / I / T)</th></tr>' +
+    '<tr>' +
+    '  <th class="hdr" style="text-align:left;">Scope</th>' +
+    '  <th class="hdr">Discipline</th>' +
+    '  <th class="hdr">Total</th>' +
+    '  <th class="hdr">CMT Close</th>' +
+    '  <th class="hdr">Static Close</th>' +
+    '</tr>';
+  const scopeNames = [...new Set(d.map(r => r.scope))];
+  scopeNames.forEach(sc => {
+    const rowsOf = d.filter(r => r.scope === sc);
+    rowsOf.forEach(r => {
+      const bg = scopeBg[r.disc] || '#fff';
+      html += '<tr style="background:' + bg + ';">' +
+        '<td style="border:1px solid #d4d4d4;text-align:left;font-weight:bold;">' + r.scope + '</td>' +
+        '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.discipline + '</td>' +
+        '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.total + '</td>' +
+        '<td style="border:1px solid #d4d4d4;text-align:center;color:#1d6f42;font-weight:bold;">' + r.cmt_close + '</td>' +
+        '<td style="border:1px solid #d4d4d4;text-align:center;color:#1d6f42;font-weight:bold;">' + r.static_close + '</td>' +
+      '</tr>';
+    });
+    const st = rowsOf[0];
+    html += '<tr style="background:#404040;color:#fff;font-weight:bold;">' +
+      '<td style="border:1px solid #222;text-align:left;padding:7px;">' + sc + ' — Total</td>' +
+      '<td style="border:1px solid #222;text-align:center;"></td>' +
+      '<td style="border:1px solid #222;text-align:center;">' + st._scope_total + '</td>' +
+      '<td style="border:1px solid #222;text-align:center;">' + st._scope_cmt + '</td>' +
+      '<td style="border:1px solid #222;text-align:center;">' + st._scope_static + '</td>' +
+    '</tr>';
+  });
+  html += '</table></body></html>';
+  downloadExcel(html, 'CMT_Static_Scope_Summary');
 }
 
 
@@ -2238,79 +2828,66 @@ function exportPunchStatusExcel(){
   downloadExcel(html, 'Punch_Closing_Status');
 }
 
-// ---------- 3. Subsystem Handover Status & Backlog ----------
+// ---------- 3. Subsystem Handover Status & Backlog (E / I / T) ----------
 (function(){
   if(!DPR_EIT || !DPR_EIT.table) return;
   const rows = DPR_EIT.table;
-  const E_color = '#FCE4D6', I_color = '#FFF2CC', T_color = '#D9D9D9';
+  const colors = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
+  const discNames = {'E':'E — Electrical','I':'I — Instrumentation','T':'T — Telecom'};
 
-  document.getElementById('subsystemBody').innerHTML = rows.map(r => `
-    <tr>
-      <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;font-size:12px;">${r.subsystem}</td>
-      <td style="border:1px solid #d4d4d4;background:${E_color};">${r.E_itrs}</td>
-      <td style="border:1px solid #d4d4d4;background:${E_color};color:#1d6f42;font-weight:700;">${r.E_closed}</td>
-      <td style="border:1px solid #d4d4d4;background:${E_color};${r.E_remain>0?'color:#C00000;font-weight:700':''}">${r.E_remain}</td>
-      <td style="border:1px solid #d4d4d4;background:${I_color};">${r.I_itrs}</td>
-      <td style="border:1px solid #d4d4d4;background:${I_color};color:#1d6f42;font-weight:700;">${r.I_closed}</td>
-      <td style="border:1px solid #d4d4d4;background:${I_color};${r.I_remain>0?'color:#C00000;font-weight:700':''}">${r.I_remain}</td>
-      <td style="border:1px solid #d4d4d4;background:${T_color};">${r.T_itrs}</td>
-      <td style="border:1px solid #d4d4d4;background:${T_color};color:#1d6f42;font-weight:700;">${r.T_closed}</td>
-      <td style="border:1px solid #d4d4d4;background:${T_color};${r.T_remain>0?'color:#C00000;font-weight:700':''}">${r.T_remain}</td>
-    </tr>`).join('');
-
-  const t = rows.reduce((a,r) => ({
-    E_itrs:a.E_itrs+r.E_itrs, E_closed:a.E_closed+r.E_closed, E_remain:a.E_remain+r.E_remain,
-    I_itrs:a.I_itrs+r.I_itrs, I_closed:a.I_closed+r.I_closed, I_remain:a.I_remain+r.I_remain,
-    T_itrs:a.T_itrs+r.T_itrs, T_closed:a.T_closed+r.T_closed, T_remain:a.T_remain+r.T_remain,
-  }), {E_itrs:0,E_closed:0,E_remain:0, I_itrs:0,I_closed:0,I_remain:0, T_itrs:0,T_closed:0,T_remain:0});
-
-  document.getElementById('subsystemFoot').innerHTML = `<tr style="background:#404040;color:#fff;font-weight:800;">
-    <td style="border:1px solid #222;padding:7px;text-align:left;">GRAND TOTAL</td>
-    <td style="border:1px solid #222;text-align:center;">${t.E_itrs}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.E_closed}</td>
-    <td style="border:1px solid #222;text-align:center;${t.E_remain>0?'color:#ff9b9b':''}">${t.E_remain}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.I_itrs}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.I_closed}</td>
-    <td style="border:1px solid #222;text-align:center;${t.I_remain>0?'color:#ff9b9b':''}">${t.I_remain}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.T_itrs}</td>
-    <td style="border:1px solid #222;text-align:center;">${t.T_closed}</td>
-    <td style="border:1px solid #222;text-align:center;${t.T_remain>0?'color:#ff9b9b':''}">${t.T_remain}</td>
-  </tr>`;
-
-  window.__subsystemData = {rows, total: t};
-})();
-
-function exportSubsystemExcel(){
-  const d = window.__subsystemData;
-  if(!d){ alert('No data'); return; }
-  let html = buildExcelHeader('Subsystem Handover Status & Backlog (E/I/T)');
-  d.rows.forEach(r => {
-    html += `<tr>
-      <td style="text-align:left;border:1px solid #bbb;font-weight:bold;font-size:12px;">${r.subsystem}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#FCE4D6;">${r.E_itrs}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#FCE4D6;color:#1d6f42;font-weight:bold;">${r.E_closed}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#FCE4D6;${r.E_remain>0?'color:#C00000;font-weight:bold':''}">${r.E_remain}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#FFF2CC;">${r.I_itrs}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#FFF2CC;color:#1d6f42;font-weight:bold;">${r.I_closed}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#FFF2CC;${r.I_remain>0?'color:#C00000;font-weight:bold':''}">${r.I_remain}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#D9D9D9;">${r.T_itrs}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#D9D9D9;color:#1d6f42;font-weight:bold;">${r.T_closed}</td>
-      <td style="border:1px solid #bbb;text-align:center;background:#D9D9D9;${r.T_remain>0?'color:#C00000;font-weight:bold':''}">${r.T_remain}</td>
+  ['E','I','T'].forEach(code => {
+    const discRows = rows.filter(r => r[code+'_itrs'] > 0);
+    const bodyId = 'subsystemBody'+code;
+    const footId = 'subsystemFoot'+code;
+    const bg = colors[code];
+    document.getElementById(bodyId).innerHTML = discRows.map(r => `
+      <tr>
+        <td style="text-align:left;border:1px solid #d4d4d4;font-weight:bold;font-size:12px;">${r.subsystem}</td>
+        <td style="border:1px solid #d4d4d4;background:${bg};text-align:center;">${r[code+'_itrs']}</td>
+        <td style="border:1px solid #d4d4d4;background:${bg};color:#1d6f42;font-weight:700;text-align:center;">${r[code+'_closed']}</td>
+        <td style="border:1px solid #d4d4d4;background:${bg};${r[code+'_remain']>0?'color:#C00000;font-weight:700':''};text-align:center;">${r[code+'_remain']}</td>
+      </tr>`).join('');
+    const t = discRows.reduce((a,r) => ({total:a.total+r[code+'_itrs'], closed:a.closed+r[code+'_closed'], remain:a.remain+r[code+'_remain']}), {total:0,closed:0,remain:0});
+    document.getElementById(footId).innerHTML = `<tr style="background:#404040;color:#fff;font-weight:800;">
+      <td style="border:1px solid #222;padding:7px;text-align:left;">TOTAL ${discNames[code]}</td>
+      <td style="border:1px solid #222;text-align:center;">${t.total}</td>
+      <td style="border:1px solid #222;text-align:center;">${t.closed}</td>
+      <td style="border:1px solid #222;text-align:center;${t.remain>0?'color:#ff9b9b':''}">${t.remain}</td>
     </tr>`;
   });
-  html += `<tr style="background:#404040;color:#fff;font-weight:bold;">
-    <td style="border:1px solid #222;text-align:left;padding:7px;">GRAND TOTAL</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.E_itrs}</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.E_closed}</td>
-    <td style="border:1px solid #222;text-align:center;${d.total.E_remain>0?'color:#ff9b9b':''}">${d.total.E_remain}</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.I_itrs}</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.I_closed}</td>
-    <td style="border:1px solid #222;text-align:center;${d.total.I_remain>0?'color:#ff9b9b':''}">${d.total.I_remain}</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.T_itrs}</td>
-    <td style="border:1px solid #222;text-align:center;">${d.total.T_closed}</td>
-    <td style="border:1px solid #222;text-align:center;${d.total.T_remain>0?'color:#ff9b9b':''}">${d.total.T_remain}</td>
-  </tr>`;
-  downloadExcel(html, 'Subsystem_Handover_Status');
+})();
+
+function exportSubsystemExcel(code){
+  if(!DPR_EIT || !DPR_EIT.table) return;
+  const rows = DPR_EIT.table.filter(r => r[code+'_itrs'] > 0);
+  const titles = {'E':'E — Electrical','I':'I — Instrumentation','T':'T — Telecom'};
+  const colors = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
+  let html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+    '<head><meta charset="UTF-8">' +
+    '<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Sheet1</x:Name>' +
+    '<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->' +
+    '<style>td,th{font-family:Arial,sans-serif;font-size:12px;vertical-align:middle;}.hdr{background:#ED7D31;color:#000;font-weight:bold;text-align:center;border:1px solid #9c4a14;padding:8px;}</style>' +
+    '</head><body>' +
+    '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;min-width:400px;">' +
+    '<tr><th colspan="4" class="hdr" style="font-size:14px;">EACOP PIPELINE PROJECT &mdash; Subsystem Handover &mdash; ' + titles[code] + '</th></tr>' +
+    '<tr><th class="hdr" style="text-align:left;">Subsystem</th><th class="hdr">Total</th><th class="hdr">Closed</th><th class="hdr">Remain</th></tr>';
+  const bg = colors[code];
+  rows.forEach(r => {
+    html += '<tr>' +
+      '<td style="text-align:left;border:1px solid #bbb;font-weight:bold;font-size:12px;">' + r.subsystem + '</td>' +
+      '<td style="border:1px solid #bbb;text-align:center;background:' + bg + ';">' + r[code+'_itrs'] + '</td>' +
+      '<td style="border:1px solid #bbb;text-align:center;background:' + bg + ';color:#1d6f42;font-weight:bold;">' + r[code+'_closed'] + '</td>' +
+      '<td style="border:1px solid #bbb;text-align:center;background:' + bg + ';' + (r[code+'_remain']>0?'color:#C00000;font-weight:bold':'') + ';">' + r[code+'_remain'] + '</td>' +
+    '</tr>';
+  });
+  const t = rows.reduce((a,r) => ({total:a.total+r[code+'_itrs'], closed:a.closed+r[code+'_closed'], remain:a.remain+r[code+'_remain']}), {total:0,closed:0,remain:0});
+  html += '<tr style="background:#404040;color:#fff;font-weight:bold;">' +
+    '<td style="border:1px solid #222;text-align:left;padding:7px;">TOTAL ' + titles[code] + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.total + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.closed + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;' + (t.remain>0?'color:#ff9b9b':'') + ';">' + t.remain + '</td>' +
+  '</tr></table></body></html>';
+  downloadExcel(html, 'Subsystem_Handover_' + code);
 }
 
 // ---------- 4,5,6. E / I / T Description Status Tables ----------
@@ -2614,10 +3191,141 @@ if(RFI){
     renderRfiTable(filtered);
   });
 } else {
-  ['sec-rfi-kpi','sec-rfi-status','sec-rfi-daily','sec-rfi-weekly','sec-rfi-monthly','sec-rfi-type','sec-rfi-subsystems','sec-rfi-recent']
+  ['sec-rfi-kpi','sec-rfi-status','sec-rfi-daily','sec-rfi-weekly','sec-rfi-monthly','sec-rfi-type','sec-rfi-subsystems','sec-rfi-recent','sec-export-rfi']
     .forEach(id=>{
       document.getElementById(id).innerHTML = '<div class="section-title">⚠️ Inspection Register file not found</div>';
     });
+}
+
+// ---- RFI Inspection Summary table (export section 7) ----
+(function(){
+  const data = RFI && RFI.inspection_summary;
+  const body = document.getElementById('rfiInspectionBody');
+  const foot = document.getElementById('rfiInspectionFoot');
+  if(!data || !data.rows || !data.rows.length){
+    if(body) body.innerHTML = '<tr><td colspan="5" style="color:#999;text-align:center;padding:20px;">No inspection data available</td></tr>';
+    return;
+  }
+  const rows = data.rows;
+  body.innerHTML = rows.map(r => {
+    return '<tr>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;font-weight:bold;background:' + (r.discipline=='E'?'#FCE4D6':r.discipline=='I'?'#FFF2CC':'#D9D9D9') + ';">' + r.discipline + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;">' + r.assets + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;background:#e8f5e9;font-weight:700;font-size:14px;color:' + (r.laying_accepted>0?'#1d6f42':'#999') + ';">' + (r.laying_accepted>0?'✅ ':'❌ ') + r.laying_accepted + '/' + r.laying_submitted + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;background:#e8f5e9;font-weight:700;font-size:14px;color:' + (r.testing_accepted>0?'#1d6f42':'#999') + ';">' + (r.testing_accepted>0?'✅ ':'❌ ') + r.testing_accepted + '/' + r.testing_submitted + '</td>' +
+      '<td style="border:1px solid #d4d4d4;text-align:center;background:#e8f5e9;font-weight:700;font-size:14px;color:' + (r.term_accepted>0?'#1d6f42':'#999') + ';">' + (r.term_accepted>0?'✅ ':'❌ ') + r.term_accepted + '/' + r.term_submitted + '</td>' +
+    '</tr>';
+  }).join('');
+
+  const t = data.totals;
+  foot.innerHTML = '<tr style="background:#404040;color:#fff;font-weight:800;">' +
+    '<td style="border:1px solid #222;padding:7px;text-align:center;">GRAND TOTAL</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.total_assets + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;color:#86efac;">✅ ' + t.laying_accepted + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;color:#86efac;">✅ ' + t.testing_accepted + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;color:#86efac;">✅ ' + t.term_accepted + '</td>' +
+  '</tr>';
+})();
+
+function exportRfiInspectionExcel(){
+  const data = RFI && RFI.inspection_summary;
+  if(!data || !data.rows || !data.rows.length){ alert('No data'); return; }
+  let html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+    '<head><meta charset="UTF-8">' +
+    '<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Sheet1</x:Name>' +
+    '<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->' +
+    '<style>td,th{font-family:Arial,sans-serif;font-size:12px;vertical-align:middle;}.hdr{background:#ED7D31;color:#000;font-weight:bold;text-align:center;border:1px solid #9c4a14;padding:8px;}</style>' +
+    '</head><body>' +
+    '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;min-width:500px;">' +
+    '<tr><th colspan="5" class="hdr" style="font-size:14px;">EACOP PIPELINE PROJECT &mdash; RFI Inspection Summary &mdash; By Discipline</th></tr>' +
+    '<tr><th class="hdr">Discipline</th><th class="hdr">Assets</th><th class="hdr">LAYING RFI ✓</th><th class="hdr">TESTING RFI ✓</th><th class="hdr">TERMINATION RFI ✓</th></tr>';
+  data.rows.forEach(r => {
+    html += '<tr>' +
+      '<td style="border:1px solid #bbb;text-align:center;font-weight:bold;">' + r.discipline + '</td>' +
+      '<td style="border:1px solid #bbb;text-align:center;">' + r.assets + '</td>' +
+      '<td style="border:1px solid #bbb;text-align:center;background:#e8f5e9;font-weight:bold;">' + (r.laying_accepted>0?'✅ ':'❌ ') + r.laying_accepted + '/' + r.laying_submitted + '</td>' +
+      '<td style="border:1px solid #bbb;text-align:center;background:#e8f5e9;font-weight:bold;">' + (r.testing_accepted>0?'✅ ':'❌ ') + r.testing_accepted + '/' + r.testing_submitted + '</td>' +
+      '<td style="border:1px solid #bbb;text-align:center;background:#e8f5e9;font-weight:bold;">' + (r.term_accepted>0?'✅ ':'❌ ') + r.term_accepted + '/' + r.term_submitted + '</td>' +
+    '</tr>';
+  });
+  const t = data.totals;
+  html += '<tr style="background:#404040;color:#fff;font-weight:bold;">' +
+    '<td style="border:1px solid #222;text-align:center;">GRAND TOTAL</td>' +
+    '<td style="border:1px solid #222;text-align:center;">' + t.total_assets + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">✅ ' + t.laying_accepted + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">✅ ' + t.testing_accepted + '</td>' +
+    '<td style="border:1px solid #222;text-align:center;">✅ ' + t.term_accepted + '</td>' +
+  '</tr></table></body></html>';
+  downloadExcel(html, 'RFI_Inspection_Summary');
+}
+
+// ---- RFI Detail table (per asset from cable tracker) ----
+(function(){
+  const ALL = CABLE_TRACKER && CABLE_TRACKER.detail;
+  const body = document.getElementById('rfiDetailBody');
+  const count = document.getElementById('rfiDetailCount');
+  const search = document.getElementById('rfiDetailSearch');
+  if(!ALL || !ALL.length){
+    if(body) body.innerHTML = '<tr><td colspan="8" style="color:#999;text-align:center;padding:20px;">No cable tracker data</td></tr>';
+    return;
+  }
+  const discBg = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
+  function render(data){
+    body.innerHTML = data.map(r =>
+      '<tr>' +
+        '<td style="border:1px solid #ddd;padding:3px 4px;">' + r.asset + '</td>' +
+        '<td style="border:1px solid #ddd;padding:3px 4px;">' + (r.subsystem||'') + '</td>' +
+        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;background:' + (discBg[r.disc]||'') + ';font-weight:600;">' + r.disc + '</td>' +
+        '<td style="border:1px solid #ddd;padding:3px 4px;">' + r.desc.slice(0,60) + '</td>' +
+        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;">' + r.scope.slice(0,25) + '</td>' +
+        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.laying_rfi?'#1d6f42':'#999') + ';">' + (r.laying_rfi?'✅':'❌') + '</td>' +
+        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.testing_rfi?'#1d6f42':'#999') + ';">' + (r.testing_rfi?'✅':'❌') + '</td>' +
+        '<td style="border:1px solid #ddd;padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.term_rfi?'#1d6f42':'#999') + ';">' + (r.term_rfi?'✅':'❌') + '</td>' +
+      '</tr>'
+    ).join('');
+    count.innerText = 'Showing ' + data.length + ' / ' + ALL.length + ' assets';
+  }
+  render(ALL);
+    if(search){
+    search.addEventListener('input', function(){
+      const q = this.value.trim().toLowerCase();
+      const filtered = !q ? ALL : ALL.filter(r =>
+        r.asset.toLowerCase().includes(q) ||
+        (r.subsystem||'').toLowerCase().includes(q) ||
+        (r.desc||'').toLowerCase().includes(q) ||
+        (r.scope||'').toLowerCase().includes(q) ||
+        (r.disc||'').toLowerCase().includes(q));
+      render(filtered);
+    });
+  }
+})();
+
+function exportRfiDetailExcel(){
+  const d = CABLE_TRACKER && CABLE_TRACKER.detail;
+  if(!d || !d.length){ alert('No data'); return; }
+  let html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+    '<head><meta charset="UTF-8">' +
+    '<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Sheet1</x:Name>' +
+    '<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->' +
+    '<style>td,th{font-family:Arial,sans-serif;font-size:11px;vertical-align:middle;}.hdr{background:#ED7D31;color:#000;font-weight:bold;text-align:center;border:1px solid #9c4a14;padding:6px;}</style>' +
+    '</head><body>' +
+    '<table border="1" cellspacing="0" cellpadding="4" style="border-collapse:collapse;">' +
+    '<tr><th colspan="8" class="hdr" style="font-size:13px;">EACOP PIPELINE PROJECT &mdash; RFI Detail by Asset (Cable Tracker) &mdash; ' + d.length + ' items</th></tr>' +
+    '<tr><th class="hdr" style="text-align:left;">Asset Tag</th><th class="hdr" style="text-align:left;">Subsystem</th><th class="hdr">Disc</th><th class="hdr" style="text-align:left;">Description</th><th class="hdr">Scope</th><th class="hdr">LAYING RFI</th><th class="hdr">TESTING RFI</th><th class="hdr">TERMINATION RFI</th></tr>';
+  d.forEach(r => {
+    html += '<tr>' +
+      '<td style="border:1px solid #ccc;padding:3px 5px;">' + r.asset + '</td>' +
+      '<td style="border:1px solid #ccc;padding:3px 5px;">' + (r.subsystem||'') + '</td>' +
+      '<td style="border:1px solid #ccc;padding:3px 5px;text-align:center;">' + r.disc + '</td>' +
+      '<td style="border:1px solid #ccc;padding:3px 5px;">' + r.desc + '</td>' +
+      '<td style="border:1px solid #ccc;padding:3px 5px;text-align:center;">' + r.scope + '</td>' +
+      '<td style="border:1px solid #ccc;padding:3px 5px;text-align:center;font-weight:bold;">' + (r.laying_rfi?'✅':'❌') + '</td>' +
+      '<td style="border:1px solid #ccc;padding:3px 5px;text-align:center;font-weight:bold;">' + (r.testing_rfi?'✅':'❌') + '</td>' +
+      '<td style="border:1px solid #ccc;padding:3px 5px;text-align:center;font-weight:bold;">' + (r.term_rfi?'✅':'❌') + '</td>' +
+    '</tr>';
+  });
+  html += '</table></body></html>';
+  downloadExcel(html, 'RFI_Detail_by_Asset');
 }
 
 // ---------- DPR: EIT ITRs Backlog Tracking ----------
@@ -2928,13 +3636,101 @@ renderSearchResults('');
 document.getElementById('universalSearch').addEventListener('input', e=>{
   renderSearchResults(e.target.value);
 });
+
+// ---------- Extra Tabs (PS5 EIT CPP AGI Dashboard sheets) ----------
+(function(){
+  var pages = EIT_PAGES || {};
+  var order = Object.keys(pages);
+  var bar = document.getElementById('mainTabBar');
+  var container = document.getElementById('tab-container');
+  if(!bar || !container || !order.length) return;
+
+  // Build tab buttons
+  var btn = document.createElement('button');
+  btn.className = 'tabbtn active';
+  btn.textContent = '🏠 Main Dashboard';
+  btn.dataset.tab = 'tab-main-dashboard';
+  bar.appendChild(btn);
+  order.forEach(function(name, idx){
+    var b = document.createElement('button');
+    b.className = 'tabbtn';
+    b.dataset.tab = 'tab-' + idx;
+    b.textContent = '📄 ' + name;
+    bar.appendChild(b);
+  });
+
+  // Build page divs
+  var pagesCache = {};
+  order.forEach(function(name, idx){
+    var div = document.createElement('div');
+    div.className = 'tabpage';
+    div.id = 'tab-' + idx;
+    div.innerHTML =
+      '<div class="section-title">📊 ' + name + '</div>' +
+      '<div class="chart-card">' +
+        '<div class="eit-page-toolbar">' +
+          '<input type="text" placeholder="Search ' + name + '..." data-search="' + idx + '">' +
+          '<span class="count" id="count-' + idx + '"></span>' +
+        '</div>' +
+        '<div class="eit-page-table-wrap" id="wrap-' + idx + '"></div>' +
+      '</div>';
+    container.appendChild(div);
+  });
+
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function renderPage(idx, filter){
+    var rows = pages[order[idx]] || [];
+    var filtered = rows;
+    if(filter){
+      var q = filter.toLowerCase();
+      filtered = rows.filter(function(r){ return r.join(' ').toLowerCase().indexOf(q) >= 0; });
+    }
+    document.getElementById('count-' + idx).textContent = filtered.length + ' / ' + rows.length + ' rows';
+    if(!filtered.length){
+      document.getElementById('wrap-' + idx).innerHTML = '<div style="padding:20px;color:var(--muted);">No results</div>';
+      return;
+    }
+    var maxCols = 0;
+    filtered.forEach(function(r){ if(r.length > maxCols) maxCols = r.length; });
+    var html = '<table><thead><tr>';
+    for(var c=0;c<maxCols;c++) html += '<th>' + (c===0 ? '#' : 'Col '+c) + '</th>';
+    html += '</tr></thead><tbody>';
+    filtered.forEach(function(r, ri){
+      html += '<tr><td>' + (ri+1) + '</td>';
+      for(var c=0;c<maxCols;c++) html += '<td>' + esc(r[c]||'') + '</td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('wrap-' + idx).innerHTML = html;
+  }
+
+  order.forEach(function(name, idx){
+    document.querySelector('[data-search="' + idx + '"]').addEventListener('input', function(e){
+      renderPage(idx, e.target.value);
+    });
+    renderPage(idx, '');
+  });
+
+  // Tab switching
+  function switchTab(id){
+    document.querySelectorAll('.tabbtn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === id); });
+    document.querySelectorAll('.tabpage').forEach(function(p){ p.classList.toggle('active', p.id === id); });
+  }
+  document.querySelectorAll('.tabbtn').forEach(function(b){
+    b.addEventListener('click', function(){ switchTab(this.dataset.tab); });
+  });
+  switchTab('tab-main-dashboard');
+})();
 </script>
 </body>
 </html>
 """
 
 
-def build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, output_path):
+def build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, cable_tracker_data, output_path):
     html = HTML_TEMPLATE
     html = html.replace('__ITR_JSON__', json.dumps(itr_data, ensure_ascii=False))
     html = html.replace('__PUNCH_JSON__', json.dumps(punch_data, ensure_ascii=False) if punch_data else 'null')
@@ -2943,7 +3739,7 @@ def build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_t
     html = html.replace('__TODAY_LABEL__', itr_data['today_label'])
     html = html.replace('__TOTAL_CLOSED__', str(itr_data['total_closed_project']))
     html = html.replace('__TOTAL_TASKS__', str(itr_data['total_project_tasks']))
-    html = html.replace('__HOURLY_TOTAL__', str(itr_data['hourly_total']))
+    html = html.replace('__HOURLY_TOTAL__', str(itr_data['hourly_closed_eit']))
     html = html.replace('__HOURLY_SUBMITTED__', str(itr_data['hourly_submitted']))
     html = html.replace('__WEEKLY_TOTAL__', str(itr_data['weekly_total']))
     html = html.replace('__MONTHLY_TOTAL__', str(itr_data['monthly_total']))
@@ -2958,6 +3754,38 @@ def build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_t
     html = html.replace('__EIT_DESC_JSON__', json.dumps(eit_table_data.get('eit_desc', {}), ensure_ascii=False) if eit_table_data else 'null')
     html = html.replace('__CMT_QC_PUNCH_JSON__', json.dumps(cmt_qc_punch_data, ensure_ascii=False) if cmt_qc_punch_data else 'null')
     html = html.replace('__CABLE_OV_JSON__', json.dumps(cable_ov_data, ensure_ascii=False) if cable_ov_data else 'null')
+    html = html.replace('__CABLE_TRACKER_JSON__', json.dumps(cable_tracker_data, ensure_ascii=False) if cable_tracker_data else 'null')
+
+    # ---- Extra pages from PS5 EIT CPP AGI Dashboard.xlsx ----
+    eit_pages = {}
+    try:
+        eit_xlsx = os.path.join(DOWNLOADS, 'PS5 EIT CPP AGI Dashboard.xlsx')
+        if os.path.exists(eit_xlsx):
+            xls = pd.ExcelFile(eit_xlsx)
+            for sheet in xls.sheet_names:
+                df = pd.read_excel(xls, sheet_name=sheet, header=None)
+                rows = []
+                for _, row in df.iterrows():
+                    vals = []
+                    for v in row.tolist():
+                        if v is None:
+                            vals.append('')
+                        elif isinstance(v, float) and v.is_integer():
+                            vals.append(str(int(v)))
+                        elif hasattr(v, 'date'):
+                            vals.append(str(v.date()))
+                        else:
+                            s = str(v).strip()
+                            vals.append(s if s != 'nan' else '')
+                    while vals and vals[-1] == '':
+                        vals.pop()
+                    if any(vals):
+                        rows.append(vals)
+                eit_pages[sheet] = rows
+            print(f"  Extra pages loaded: {len(eit_pages)} sheets from PS5 EIT CPP AGI Dashboard.xlsx")
+    except Exception as e:
+        print(f"  Extra pages skipped: {e}")
+    html = html.replace('__EIT_PAGES_JSON__', json.dumps(eit_pages, ensure_ascii=False))
 
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html)
@@ -3015,6 +3843,21 @@ def build_cmt_qc_punch_data():
 #  MAIN
 # ====================================================================
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description='PS5 Project Dashboard Generator')
+    parser.add_argument('--date', type=str, default=None,
+                        help='Override today date (YYYY-MM-DD). Default: max date in data')
+    args = parser.parse_args()
+
+    today_override = None
+    if args.date:
+        try:
+            datetime.datetime.strptime(args.date, '%Y-%m-%d')
+            today_override = args.date
+        except ValueError:
+            print(f"[ERROR] Invalid date format: {args.date}. Use YYYY-MM-DD")
+            return
+
     print("=" * 60)
     print("   PS5 Project Dashboard Generator")
     print("=" * 60)
@@ -3034,33 +3877,80 @@ def main():
     print(f"Inspection Register: {rfi_path if rfi_path else 'NOT FOUND'}")
     print(f"DPR Summary file   : {dpr_path if dpr_path else 'NOT FOUND'}")
 
-    itr_data = build_itr_data(ov_path)
+    itr_data = build_itr_data(ov_path, today_override)
     eit_table_data = build_itr_breakdown_table(ov_path)
     punch_data = build_punch_data(punch_path) if punch_path else None
     rfi_data = build_inspection_data(rfi_path) if rfi_path else None
     dpr_eit_data = build_eit_subsystem_data(dpr_path) if dpr_path else None
     cmt_qc_punch_data = build_cmt_qc_punch_data()
     cable_ov_data = build_cable_ov_data(ov_path)
+    cable_tracker_data = build_cable_tracker_data()
 
     master_path = find_file(['master', 'tracker', 'eit']) or find_file(['PS5 Master tracker'])
     inspection_path = find_file(['inspection', 'register'])
     print("\nBuilding universal search index (Asset Tag -> ITR / RFI / Punch)...")
     search_index = build_search_index(ov_path, punch_path, rfi_path)
 
-    build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, OUTPUT_HTML)
+    build_html(itr_data, punch_data, rfi_data, dpr_eit_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, cable_tracker_data, OUTPUT_HTML)
 
     # نسخة تانية باسم PS5_Project_Dashboard.html (للمشاركة المباشرة)
     import shutil
     shutil.copy(OUTPUT_HTML, OUTPUT_HTML2)
     print(f"  Also saved: {OUTPUT_HTML2}")
 
+    # ---- Save SMS data (fallback for phone) ----
+    sms_out = os.path.join(os.path.dirname(__file__) or '.', 'sms_data.json')
+    today = itr_data.get('today_label', datetime.datetime.now().strftime('%Y-%m-%d'))
+    eit_summary = itr_data.get('eit_summary', [])
+    sms_data = {
+        'hourly_closed_eit': itr_data.get('hourly_closed_eit', 0),
+        'today_submitted_assets': itr_data.get('today_submitted_assets', 0),
+        'today_closed': itr_data.get('hourly_closed_eit', 0),
+        'today_submitted': itr_data.get('today_submitted_assets', 0),
+        'total_closed': itr_data.get('total_closed_eit', 0),
+        'total_open': itr_data.get('total_tasks_eit', 0) - itr_data.get('total_closed_eit', 0),
+        'eit_summary': eit_summary,
+        'date': today,
+    }
+    for d in eit_summary:
+        code = d['label'][0]
+        sms_data[code.lower()] = {'total': d['total'], 'closed': d['closed'], 'open': d['total'] - d['closed']}
+    with open(sms_out, 'w') as f:
+        json.dump(sms_data, f)
+    print(f"  SMS data saved: {sms_out}")
+
+    # ---- Auto upload to GitHub if token file exists ----
+    import subprocess, tempfile, base64
+    token_file = os.path.join(os.path.dirname(__file__) or '.', 'github_token.txt')
+    if os.path.exists(token_file):
+        try:
+            token = open(token_file, 'r').read().strip()
+            if token:
+                print("\n  Uploading to GitHub...")
+                repo = "mohamedgawad1/ps5-dashboard"
+                for path, local in [("index.html", OUTPUT_HTML), ("sms_data.json", sms_out)]:
+                    content = base64.b64encode(open(local, 'rb').read()).decode()
+                    api = f"https://api.github.com/repos/{repo}/contents/{path}"
+                    req = urllib.request.Request(api, method='GET')
+                    req.add_header('Authorization', f'token {token}')
+                    sha = None
+                    try:
+                        with urllib.request.urlopen(req, timeout=10) as r:
+                            sha = json.loads(r.read()).get('sha')
+                    except: pass
+                    payload = json.dumps({"message":"auto update","content":content,"sha":sha,"branch":"main"}).encode()
+                    req2 = urllib.request.Request(api, data=payload, method='PUT')
+                    req2.add_header('Authorization', f'token {token}')
+                    req2.add_header('Content-Type', 'application/json')
+                    with urllib.request.urlopen(req2, timeout=30) as r:
+                        print(f"  Uploaded: {repo}/{path}")
+        except Exception as e:
+            print(f"  Upload failed: {e}")
+
     print("\n" + "=" * 60)
     print("  Dashboard built successfully!")
     print(f"  File: {OUTPUT_HTML}")
     print("=" * 60)
-
-    # webbrowser.open('file://' + OUTPUT_HTML)
-    # input("\nPress Enter to exit...")
 
 
 if __name__ == "__main__":
