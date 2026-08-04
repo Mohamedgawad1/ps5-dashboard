@@ -3890,6 +3890,7 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
   function switchTab(id){
     document.querySelectorAll('.tabbtn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === id); });
     document.querySelectorAll('.tabpage').forEach(function(p){ p.classList.toggle('active', p.id === id); });
+    (pageCharts[id]||[]).forEach(function(c){ try{ c.resize(); }catch(e){} });
   }
   document.querySelectorAll('.tabbtn').forEach(function(b){
     b.addEventListener('click', function(){ switchTab(this.dataset.tab); });
