@@ -1257,12 +1257,9 @@ body{
 .header .subtitle{color:var(--text2);font-size:13px;padding:0 36px 8px;}
 .header .meta{display:flex;gap:8px;padding:0 36px 14px;flex-wrap:wrap;align-items:center;}
 .header .meta span{font-size:10px;color:var(--text2);background:var(--card2);padding:4px 12px;border-radius:6px;border:1px solid var(--border);font-weight:600;}
-.hdr-btn{padding:7px 16px;border:none;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700;background:var(--green);color:#fff;box-shadow:0 2px 8px rgba(26,138,74,.25);transition:.15s;}
-.hdr-btn:hover{transform:translateY(-1px);}
-.hdr-btn.blue{background:var(--blue);box-shadow:0 2px 8px rgba(37,99,235,.25);}
 
 /* ---------- Main layout ---------- */
-#tab-main-dashboard{display:flex;align-items:flex-start;}
+#tab-main-dashboard.tabpage.active{display:flex;align-items:flex-start;}
 .sidebar{
   width:248px;flex-shrink:0;min-height:calc(100vh - 150px);
   background:var(--card);color:var(--text);padding:20px 16px;
@@ -1411,10 +1408,7 @@ tr.eit-total-row td.balance-pos{color:#ff9b9b;}
     <span>Closed: __TOTAL_CLOSED__</span>
     <span>Punch List: __PUNCH_TOTAL__</span>
     <span>RFIs: __RFI_TOTAL__</span>
-    <button onclick="location.reload()" style="padding:6px 14px;background:linear-gradient(135deg,#1a8a4a,#22c55e);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;">🔄 Refresh</button>
-    <button onclick="copyUpdateCmd()" style="padding:6px 14px;background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;">📤 Update from PC</button>
   </div>
-  <div id="updateCmdBox" style="display:none;margin:0 36px 14px;padding:10px;background:#2c2416;border-radius:6px;font-size:12px;color:#0f0;word-break:break-all;max-width:560px;"></div>
 </div>
 
 <div class="tabbar" id="mainTabBar"></div>
@@ -2304,20 +2298,6 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
   render('');
   document.getElementById('subsystemSearchInput').addEventListener('input', function(){ render(this.value); });
 })();
-
-function copyUpdateCmd(){
-  var box = document.getElementById('updateCmdBox');
-  if(box.style.display === 'block'){ box.style.display = 'none'; return; }
-  box.style.display = 'block';
-  box.innerHTML = '<b>To update dashboard from PC:</b><br><br>' +
-    '1. Put new Excel files in:<br>C:\\Users\\mylap\\OneDrive\\Dashboard\\<br><br>' +
-    '2. Run:<br>python cpp_agi_dashboard.py<br><br>' +
-    '3. Or double-click:<br>update_dashboard.bat<br><br>' +
-    '<b>To send SMS from phone (Termux):</b><br><br>' +
-    'curl -s https://mohamedgawad1.github.io/ps5-dashboard/phone_sms.py -o ~/sms.py && python ~/sms.py<br><br>' +
-    '<button onclick="navigator.clipboard.writeText(\'curl -s https://mohamedgawad1.github.io/ps5-dashboard/phone_sms.py -o ~/sms.py && python ~/sms.py\');this.textContent=\'Copied!\'" ' +
-    'style="margin-top:6px;padding:6px 12px;background:#4caf50;color:#fff;border:none;border-radius:4px;cursor:pointer;">📋 Copy SMS Command</button>';
-}
 
 function exportSubsystemToExcel(){
   const data = window._subsystemData || ITR.subsystem_summary || [];
