@@ -3499,6 +3499,7 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
   // Build page divs (KPI row + charts + table)
   var pageCharts = {};
   var pagesCache = {};
+  var builtIdx = {};
   var PAL = ['#2563eb','#7c3aed','#0891b2','#1a8a4a','#c8940a','#c53030','#ec4899','#f97316','#14b8a6','#6366f1','#84cc16','#06b6d4','#ef4444','#8b5cf6'];
   var HEADER_RE = /equipment|description|status|discipline|subsystem|task|panel|level|cable|metric|type|role|tag|state|category|punch|inspection|rfi|direction|route|asset|close|complete|number|name|unit|wire|from|to|fed|length|raised|serial/i;
 
@@ -3592,25 +3593,30 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
   }
 
   // ---- fallback raw table ----
+  var ROW_CAP = 800;
   function renderRawTable(idx, rows){
     var filtered = rows;
     if(pagesCache[idx].filter){
       var q = pagesCache[idx].filter.toLowerCase();
       filtered = rows.filter(function(r){ return r.join(' ').toLowerCase().indexOf(q)>=0; });
     }
+    var total = filtered.length;
+    var limited = filtered.slice(0, ROW_CAP);
     var maxCols = 0;
-    filtered.forEach(function(r){ if(r.length>maxCols) maxCols=r.length; });
+    limited.forEach(function(r){ if(r.length>maxCols) maxCols=r.length; });
     var html = '<table><thead><tr>';
     for(var c=0;c<maxCols;c++) html += '<th>' + (c===0?'#':'Col '+c) + '</th>';
     html += '</tr></thead><tbody>';
-    filtered.forEach(function(r, ri){
+    limited.forEach(function(r, ri){
       html += '<tr><td>' + (ri+1) + '</td>';
       for(var c=0;c<maxCols;c++) html += '<td>' + esc(r[c]||'') + '</td>';
       html += '</tr>';
     });
     html += '</tbody></table>';
+    if(total > ROW_CAP) html += '<div style="padding:10px;text-align:center;font-size:12px;color:var(--text3);">' +
+      'Showing first ' + ROW_CAP.toLocaleString() + ' of ' + total.toLocaleString() + ' rows — use search to filter.</div>';
     document.getElementById('wrap-'+idx).innerHTML = html;
-    document.getElementById('count-'+idx).textContent = filtered.length + ' / ' + rows.length + ' rows';
+    document.getElementById('count-'+idx).textContent = total + ' / ' + rows.length + ' rows';
   }
 
   // ---- data table with real headers ----
@@ -3629,10 +3635,12 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
       document.getElementById('wrap-'+idx).innerHTML = '<div style="padding:20px;color:var(--muted);">No results</div>';
       return;
     }
+    var total = filtered.length;
+    var limited = filtered.slice(0, ROW_CAP);
     var html = '<table><thead><tr><th>#</th>';
     headers.forEach(function(h){ html += '<th>' + esc(h) + '</th>'; });
     html += '</tr></thead><tbody>';
-    filtered.forEach(function(r, ri){
+    limited.forEach(function(r, ri){
       html += '<tr><td>' + (ri+1) + '</td>';
       for(var k=0;k<headers.length;k++){
         var v = r['c'+k];
@@ -3644,6 +3652,8 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
       html += '</tr>';
     });
     html += '</tbody></table>';
+    if(total > ROW_CAP) html += '<div style="padding:10px;text-align:center;font-size:12px;color:var(--text3);">' +
+      'Showing first ' + ROW_CAP.toLocaleString() + ' of ' + total.toLocaleString() + ' rows — use search to filter.</div>';
     document.getElementById('wrap-'+idx).innerHTML = html;
   }
 
@@ -3882,20 +3892,25 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
 
   order.forEach(function(name, idx){
     document.querySelector('[data-search="' + idx + '"]').addEventListener('input', function(e){
+      if(!builtIdx['tab-'+idx]){ builtIdx['tab-'+idx] = true; buildPage(idx, name, pages[name] || []); }
       pagesCache[idx] = pagesCache[idx] || {};
       pagesCache[idx].filter = e.target.value;
       var pc = pagesCache[idx];
       if(pc.recs) renderTable(idx, pc.rows, pc.headers, pc.recs);
       else renderRawTable(idx, pages[order[idx]] || []);
     });
-    buildPage(idx, name, pages[name] || []);
   });
 
-  // Tab switching
+  // Tab switching (lazy build: a page is built only the first time it is opened)
   function switchTab(id){
     document.querySelectorAll('.tabbtn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === id); });
     document.querySelectorAll('.tabpage').forEach(function(p){ p.classList.toggle('active', p.id === id); });
-    (pageCharts[id]||[]).forEach(function(c){ try{ c.resize(); }catch(e){} });
+    var num = parseInt(id.split('-')[1], 10);
+    if(!isNaN(num) && !builtIdx[id] && order[num]){
+      builtIdx[id] = true;
+      buildPage(num, order[num], pages[order[num]] || []);
+    }
+    (pageCharts[num]||[]).forEach(function(c){ try{ c.resize(); }catch(e){} });
   }
   document.querySelectorAll('.tabbtn').forEach(function(b){
     b.addEventListener('click', function(){ switchTab(this.dataset.tab); });
@@ -3939,7 +3954,10 @@ def build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt
         eit_xlsx = os.path.join(DOWNLOADS, 'PS5 EIT CPP AGI Dashboard.xlsx')
         if os.path.exists(eit_xlsx):
             xls = pd.ExcelFile(eit_xlsx)
+            skip_sheets = {'data - punch list', 'data - qc punch register', 'data - inspection', 'subsystem summary combined'}
             for sheet in xls.sheet_names:
+                if sheet.strip().lower() in skip_sheets:
+                    continue
                 df = pd.read_excel(xls, sheet_name=sheet, header=None)
                 rows = []
                 for _, row in df.iterrows():
