@@ -2436,7 +2436,8 @@ function exportEitTableToExcel(){
       r[5].toLowerCase().includes(query) || r[7].toLowerCase().includes(query)
     );
     const statusColor = {'Open':'#c53030','Closed':'#1a8a4a','':'#9a8d7c'};
-    document.getElementById('cmtQcDetailBody').innerHTML = rows.map(r => {
+    const limitedRows = rows.slice(0, 800);
+    document.getElementById('cmtQcDetailBody').innerHTML = limitedRows.map(r => {
       const cmtStatus = parseStatus(r[4]);
       const qcStatus  = parseStatus(r[6]);
       const cmtColors = {'Open':'#ff5252','Closed':'#69f0ae','':'#8a93ad'};
@@ -2469,7 +2470,9 @@ function exportEitTableToExcel(){
         <td style="padding:5px;font-size:11px;color:var(--muted);max-width:280px;">${(r[7]||'').slice(0,120)}${(r[7]||'').length>120?'...':''}</td>
       </tr>`;
     }).join('');
-    document.getElementById('cmtQcDetailCount').innerText = `Showing ${rows.length} record(s)`;
+    document.getElementById('cmtQcDetailCount').innerText = rows.length > 800
+      ? `Showing first 800 of ${rows.length} record(s) — use search to filter`
+      : `Showing ${rows.length} record(s)`;
   }
 
   document.getElementById('cmtQcSearchInput').addEventListener('input', e => renderCmtQcDetail(e.target.value));
@@ -3126,7 +3129,8 @@ function exportRfiInspectionExcel(){
   }
   const discBg = {'E':'#FCE4D6','I':'#FFF2CC','T':'#D9D9D9'};
   function render(data){
-    body.innerHTML = data.map(r =>
+    const shown = data.slice(0, 800);
+    body.innerHTML = shown.map(r =>
       '<tr>' +
         '<td style="border:1px solid var(--border);padding:3px 4px;">' + r.asset + '</td>' +
         '<td style="border:1px solid var(--border);padding:3px 4px;">' + (r.subsystem||'') + '</td>' +
@@ -3138,7 +3142,9 @@ function exportRfiInspectionExcel(){
         '<td style="border:1px solid var(--border);padding:3px 4px;text-align:center;font-size:13px;font-weight:700;color:' + (r.term_rfi?'var(--green)':'var(--text3)') + ';">' + (r.term_rfi?'✅':'❌') + '</td>' +
       '</tr>'
     ).join('');
-    count.innerText = 'Showing ' + data.length + ' / ' + ALL.length + ' assets';
+    count.innerText = data.length > 800
+      ? 'Showing first 800 of ' + data.length + ' / ' + ALL.length + ' assets — use search to filter'
+      : 'Showing ' + data.length + ' / ' + ALL.length + ' assets';
   }
   render(ALL);
     if(search){
@@ -3842,51 +3848,10 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     renderRawTable(idx, rows);
   }
 
-  // ---- Subsystem Summary Combined: progress bars ----
-  function buildSubsystemSummaryPage(idx, rows){
-    pagesCache[idx] = pagesCache[idx] || {filter:''};
-    var hdr = findHeader(rows);
-    if(!hdr){ renderRawTable(idx, rows); return; }
-    var headers = hdr.headers;
-    var recs = toRecords(rows, hdr.idx, headers);
-    pagesCache[idx].rows = rows; pagesCache[idx].headers = headers; pagesCache[idx].recs = recs;
-    var nameCol = pickCol(headers, ['subsystem','name']);
-    var closedCol = pickCol(headers, ['closed']);
-    var totalCol = pickCol(headers, ['total','itrs']);
-    var pctCol = pickCol(headers, ['close','%']);
-    var sorted = recs.slice().sort(function(a,b){ return parseNum(b['c'+pctCol]) - parseNum(a['c'+pctCol]); });
-    var top = sorted.slice(0,20);
-    var totC = sumCol(recs,'c'+closedCol), totT = sumCol(recs,'c'+totalCol);
-    var gPct = totT ? Math.round(totC/totT*100) : 0;
-    document.getElementById('pkpi-'+idx).innerHTML = '<div class="kpi-row">' +
-      kpiCard('🗂️', fmt(recs.length), 'Subsystems') +
-      kpiCard('📋', fmt(totT), 'Total Tasks', 'gold') +
-      kpiCard('✅', fmt(totC), 'Closed Tasks', 'teal') +
-      kpiCard('📈', gPct+'%', 'Overall Completion', 'blue') + '</div>';
-    var html = '<div style="padding:18px;">' + top.map(function(r, i){
-      var p = Math.min(100, parseNum(r['c'+pctCol]));
-      return '<div style="margin-bottom:12px;">' +
-        '<div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:#2c2416;margin-bottom:4px;">' +
-          '<span>' + esc(r['c'+nameCol]) + '</span>' +
-          '<span>' + (r['c'+closedCol]||'0') + ' / ' + (r['c'+totalCol]||'0') + ' — ' + p.toFixed(1) + '%</span></div>' +
-        progressBar(p) + '</div>';
-    }).join('') + '</div>';
-    var charts = '<div class="chart-card"><h3>Top 20 Subsystems — Completion</h3>' + html + '</div>';
-    var cm = countBy(recs, 'c'+pctCol);
-    var doneC = recs.filter(function(r){ return parseNum(r['c'+pctCol])>=100; }).length;
-    charts += '<div class="chart-card" style="flex:1;min-width:260px;"><h3>Complete vs Incomplete</h3>' +
-      '<div style="height:280px;position:relative;"><canvas id="ch-s-' + idx + '"></canvas></div></div>';
-    document.getElementById('pcharts-'+idx).innerHTML = '<div class="chart-row">' + charts + '</div>';
-    initChart(idx, 'ch-s-'+idx, 'doughnut', ['Complete (100%)','Incomplete'],
-      [{data:[doneC, recs.length-doneC], backgroundColor:['#1a8a4a','#c8940a'], borderColor:'#fffcf7', borderWidth:2}], false);
-    renderTable(idx, rows, headers, recs);
-  }
-
   // ---- route dispatch ----
   function buildPage(idx, name, rows){
     if(/^dashboard$/i.test(name)) return buildDashboardPage(idx, rows);
     if(/subsystem report/i.test(name)) return buildSubsystemReportPage(idx, rows);
-    if(/subsystem summary/i.test(name)) return buildSubsystemSummaryPage(idx, rows);
     return buildTablePage(idx, name, rows);
   }
 
