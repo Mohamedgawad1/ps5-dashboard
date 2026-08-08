@@ -2177,13 +2177,13 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
       rows.forEach((r, i) => {
         const bg = discBg[r.disc] || 'transparent';
         const isFull = r.total > 0 && (r.pct >= 100 || r.closed === r.total);
-        const rowBg = isFull ? 'linear-gradient(90deg,#cdeeda,#e8f9ee)' : '';
-        const rowBorder = isFull ? '#9fd9b3' : 'var(--border)';
-        const done = isFull ? '#14532d' : '';
-        const pctColor = isFull ? '#14532d' : (r.pct >= 50 ? 'var(--green)' : 'var(--red)');
+        const rowBg = isFull ? 'linear-gradient(90deg,#7cd49b,#a9e6c2)' : '';
+        const rowBorder = isFull ? '#4aa872' : 'var(--border)';
+        const done = isFull ? '#0d3a20' : '';
+        const pctColor = isFull ? '#0d3a20' : (r.pct >= 50 ? 'var(--green)' : 'var(--red)');
         html += `<tr style="background:${rowBg};">
           <td style="text-align:left;border:1px solid ${rowBorder};font-weight:bold;color:${done || 'var(--text)'};">${i === 0 ? sub : ''}</td>
-          <td style="text-align:center;border:1px solid ${rowBorder};background:${isFull ? '#c2e7d2' : bg};color:${done || 'var(--red)'};">${r.discipline}</td>
+          <td style="text-align:center;border:1px solid ${rowBorder};background:${isFull ? '#5fc287' : bg};color:${done || 'var(--red)'};">${r.discipline}</td>
           <td style="text-align:center;border:1px solid ${rowBorder};color:${done || 'var(--text)'};">${r.total}</td>
           <td style="text-align:center;border:1px solid ${rowBorder};color:${done || 'var(--green)'};font-weight:700;">${r.closed}</td>
           <td style="text-align:center;border:1px solid ${rowBorder};color:${done || 'var(--red)'};">${r.open}</td>
