@@ -2176,16 +2176,18 @@ multiChart('chartMonthly', ITR.monthly, 'bar');
       const rows = filtered.filter(r => r.subsystem === sub);
       rows.forEach((r, i) => {
         const bg = discBg[r.disc] || 'transparent';
-        const isFull = r.pct >= 100;
-        const rowBg = isFull ? 'var(--green-bg)' : '';
-        const pctColor = isFull ? 'var(--green2)' : 'var(--red)';
+        const isFull = r.total > 0 && (r.pct >= 100 || r.closed === r.total);
+        const rowBg = isFull ? 'linear-gradient(90deg,#cdeeda,#e8f9ee)' : '';
+        const rowBorder = isFull ? '#9fd9b3' : 'var(--border)';
+        const done = isFull ? '#14532d' : '';
+        const pctColor = isFull ? '#14532d' : (r.pct >= 50 ? 'var(--green)' : 'var(--red)');
         html += `<tr style="background:${rowBg};">
-          <td style="text-align:left;border:1px solid var(--border);font-weight:bold;color:${isFull ? 'var(--green2)' : 'var(--text)'};">${i === 0 ? sub : ''}</td>
-          <td style="text-align:center;border:1px solid var(--border);background:${bg};color:var(--red);">${r.discipline}</td>
-          <td style="text-align:center;border:1px solid var(--border);color:var(--text);">${r.total}</td>
-          <td style="text-align:center;border:1px solid var(--border);color:var(--green);font-weight:700;">${r.closed}</td>
-          <td style="text-align:center;border:1px solid var(--border);color:var(--red);">${r.open}</td>
-          <td style="text-align:center;border:1px solid var(--border);color:${pctColor};font-weight:700;">${r.pct}%</td>
+          <td style="text-align:left;border:1px solid ${rowBorder};font-weight:bold;color:${done || 'var(--text)'};">${i === 0 ? sub : ''}</td>
+          <td style="text-align:center;border:1px solid ${rowBorder};background:${isFull ? '#c2e7d2' : bg};color:${done || 'var(--red)'};">${r.discipline}</td>
+          <td style="text-align:center;border:1px solid ${rowBorder};color:${done || 'var(--text)'};">${r.total}</td>
+          <td style="text-align:center;border:1px solid ${rowBorder};color:${done || 'var(--green)'};font-weight:700;">${r.closed}</td>
+          <td style="text-align:center;border:1px solid ${rowBorder};color:${done || 'var(--red)'};">${r.open}</td>
+          <td style="text-align:center;border:1px solid ${rowBorder};color:${pctColor};font-weight:700;">${r.pct}%</td>
         </tr>`;
       });
     });
