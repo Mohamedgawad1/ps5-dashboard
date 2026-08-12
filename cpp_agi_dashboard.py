@@ -1212,6 +1212,9 @@ body{
 .header-badge .live{background:var(--green-bg);color:var(--green);font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid rgba(26,138,74,0.25);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
 .header .subtitle{color:var(--text2);font-size:13px;padding:0 36px 8px;}
+.header .clock-line{color:var(--gold);font-size:13px;font-weight:700;padding:0 36px 4px;letter-spacing:0.3px;}
+.header .today-line{color:var(--text);font-size:13px;font-weight:700;padding:0 36px 10px;display:flex;gap:4px;align-items:center;flex-wrap:wrap;}
+.header .today-line .hl{color:var(--green);background:var(--green-bg);padding:2px 8px;border-radius:6px;font-weight:800;}
 .header .meta{display:flex;gap:8px;padding:0 36px 14px;flex-wrap:wrap;align-items:center;}
 .header .meta span{font-size:10px;color:var(--text2);background:var(--card2);padding:4px 12px;border-radius:6px;border:1px solid var(--border);font-weight:600;}
 
@@ -1370,6 +1373,8 @@ tr.eit-total-row td.balance-pos{color:var(--red);}
     </div>
   </div>
   <div class="subtitle">ITR Closures & Punch List | EACOP PS5 Project | Data last updated: __NOW__</div>
+  <div class="clock-line">🕒 <span id="liveClock">Loading…</span></div>
+  <div class="today-line">📅 TODAY ITR closed <span class="hl" id="todayClosed">0</span>, TOTAL <span class="hl" id="totalClosed">0</span>, Progress: <span class="hl" id="totalPct">0.00</span>%</div>
   <div class="meta">
     <span>Tasks: __TOTAL_TASKS__</span>
     <span>Closed: __TOTAL_CLOSED__</span>
@@ -1971,6 +1976,30 @@ const EIT_PAGES = __EIT_PAGES_JSON__;
       if(lbl && lbl.textContent === 'Today Closed') el.textContent = '0';
       if(lbl && lbl.textContent === 'Today Submitted') el.textContent = '0';
     });
+  }
+})();
+
+// Live clock + TODAY header line (updates with time & date)
+(function(){
+  const clockEl = document.getElementById('liveClock');
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function updateClock(){
+    if(!clockEl) return;
+    const t = new Date();
+    const p = n => String(n).padStart(2,'0');
+    const y = t.getFullYear(), m = p(t.getMonth()+1), d = p(t.getDate());
+    clockEl.textContent = days[t.getDay()] + ', ' + y + '-' + m + '-' + d + ' — ' + p(t.getHours()) + ':' + p(t.getMinutes()) + ':' + p(t.getSeconds());
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  if(ITR){
+    const setTxt = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+    setTxt('todayClosed', ITR.hourly_closed_eit || 0);
+    const tot = ITR.total_closed_eit || 0;
+    const all = ITR.total_tasks_eit || 0;
+    setTxt('totalClosed', tot);
+    setTxt('totalPct', all ? (tot / all * 100).toFixed(2) : '0.00');
   }
 })();
 const CMT_QC_PUNCH = __CMT_QC_PUNCH_JSON__;
