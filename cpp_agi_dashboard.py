@@ -34,6 +34,7 @@ except ImportError:
 #  إعدادات
 # ====================================================================
 DOWNLOADS = r"C:\Users\mylap\OneDrive\Desktop\dashboard"
+DOWNLOADS2 = r"C:\Users\mylap\Downloads\asset and punch"
 OUTPUT_HTML = os.path.join(DOWNLOADS, "index.html")
 OUTPUT_HTML2 = os.path.join(DOWNLOADS, "PS5_Project_Dashboard.html")
 
@@ -59,12 +60,20 @@ def norm_discipline(v):
 #  1) إيجاد الملفات تلقائياً
 # ====================================================================
 def find_file(prefix_keywords):
-    for f in os.listdir(DOWNLOADS):
-        if f.startswith('~$'):
+    candidates = []
+    for folder in [DOWNLOADS, DOWNLOADS2]:
+        if not os.path.isdir(folder):
             continue
-        low = f.lower()
-        if low.endswith('.xlsx') and all(k.lower() in low for k in prefix_keywords):
-            return os.path.join(DOWNLOADS, f)
+        for f in os.listdir(folder):
+            if f.startswith('~$'):
+                continue
+            low = f.lower()
+            if low.endswith('.xlsx') and all(k.lower() in low for k in prefix_keywords):
+                full = os.path.join(folder, f)
+                candidates.append((os.path.getmtime(full), full))
+    if candidates:
+        candidates.sort(key=lambda x: x[0], reverse=True)
+        return candidates[0][1]
     return None
 
 
