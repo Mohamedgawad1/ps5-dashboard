@@ -1455,7 +1455,6 @@ tr.eit-total-row td.balance-pos{color:var(--red);}
     <div class="section-title">Project Overview</div>
     <div class="kpi-row">
       <div class="kpi"><div class="icon">✅</div><div class="val">__TOTAL_CLOSED__</div><div class="lbl">Total ITRs Closed</div></div>
-      <div class="kpi teal"><div class="icon">⚡</div><div class="val">__EIT_CLOSED__ / __EIT_TOTAL__</div><div class="lbl">CPP AGI EIT — Total ITRs Closed</div></div>
       <div class="kpi gold"><div class="icon">📋</div><div class="val">__TOTAL_TASKS__</div><div class="lbl">Total Project Tasks</div></div>
       <div class="kpi pink"><div class="icon">📌</div><div class="val">__PUNCH_TOTAL__</div><div class="lbl">Total Punch List Items</div></div>
       <div class="kpi blue"><div class="icon">📝</div><div class="val">__RFI_TOTAL__</div><div class="lbl">Total RFIs Submitted</div></div>
@@ -3929,10 +3928,6 @@ def build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt
     html = html.replace('__TODAY_LABEL__', itr_data['today_label'])
     html = html.replace('__TOTAL_CLOSED__', str(itr_data['total_closed_project']))
     html = html.replace('__TOTAL_TASKS__', str(itr_data['total_project_tasks']))
-    eit_closed = sum(s['closed'] for s in itr_data.get('eit_summary', []))
-    eit_total = sum(s['total'] for s in itr_data.get('eit_summary', []))
-    html = html.replace('__EIT_CLOSED__', str(eit_closed))
-    html = html.replace('__EIT_TOTAL__', str(eit_total))
     html = html.replace('__HOURLY_TOTAL__', str(itr_data['hourly_closed_eit']))
     html = html.replace('__HOURLY_SUBMITTED__', str(itr_data['hourly_submitted']))
     html = html.replace('__WEEKLY_TOTAL__', str(itr_data['weekly_total']))
