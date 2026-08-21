@@ -125,8 +125,8 @@ def build_itr_data(excel_path, today_override=None):
     closed['disc'] = closed['Discipline (Summary)'].astype(str).str.strip().map(disc_short).fillna('Other')
     submitted['disc'] = submitted['Discipline (Summary)'].astype(str).str.strip().map(disc_short).fillna('Other')
 
-    now = pd.Timestamp(today_override) if today_override else pd.Timestamp(datetime.datetime.now().date())
-    print(f"  Today's date used: {now.strftime('%Y-%m-%d')}" + (" (override)" if today_override else " (system date)"))
+    now = pd.Timestamp(today_override) if today_override else closed['Closing Date'].max()
+    print(f"  Today's date used: {now.strftime('%Y-%m-%d')}" + (" (override)" if today_override else " (from data)"))
     total_closed_project = len(closed)
 
     def pivot_disc(data, col):
