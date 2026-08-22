@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a237e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EIT Cables">
+<meta name="description" content="CPP AGI E&I&T Cable Schedule - 4870 cables with PDF links">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<title>CPP AGI - EIT Cables</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;color:#333;-webkit-tap-highlight-color:transparent}
+.header{background:linear-gradient(135deg,#0d1b4a,#1a237e,#283593);color:#fff;padding:14px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.header h1{font-size:15px;font-weight:700;letter-spacing:.3px}
+.header .sub{font-size:11px;opacity:.75;margin-top:3px}
+.stats-bar{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.stat{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:14px;font-size:10px;font-weight:600;backdrop-filter:blur(4px)}
+.stat.linked{background:rgba(76,175,80,.4)}
+.search-box{padding:10px 16px;background:#fff;position:sticky;top:0;z-index:99;box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.search-wrap{display:flex;gap:8px;align-items:center}
+.search-wrap input{flex:1;padding:12px 14px;border:2px solid #e0e0e0;border-radius:12px;font-size:14px;outline:none;transition:border .2s}
+.search-wrap input:focus{border-color:#1a237e}
+.btn-search{background:#1a237e;color:#fff;border:none;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap}
+.btn-search:active{background:#0d1b4a}
+.btn-clear{background:#e53935;color:#fff;border:none;padding:12px 14px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;display:none}
+.btn-clear.show{display:block}
+.btn-clear:active{background:#c62828}
+.filter-row{margin-top:8px;display:flex;gap:8px}
+.filter-row select{flex:1;padding:9px 10px;border:2px solid #e0e0e0;border-radius:10px;font-size:13px;background:#fff;outline:none;appearance:auto}
+.filter-row select:focus{border-color:#1a237e}
+.table-wrap{padding:0 10px 90px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08)}
+thead{background:#1a237e;color:#fff;position:sticky;top:100px;z-index:10}
+th{padding:11px 8px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.3px}
+td{padding:9px 8px;border-bottom:1px solid #f0f0f0;font-size:12px;vertical-align:top;line-height:1.4}
+tr:active{background:#f5f5ff}
+.link{color:#1565c0;text-decoration:none;font-weight:700;cursor:pointer;word-break:break-all}
+.link:active{color:#0d47a1}
+.no-link{color:#bbb;font-weight:400;word-break:break-all}
+.row-num{color:#aaa;font-size:11px;text-align:center;width:30px}
+.sub-cell{max-width:140px;font-size:11px;color:#555}
+.from-cell,.to-cell{max-width:160px}
+.fab{position:fixed;bottom:24px;right:20px;background:linear-gradient(135deg,#1a237e,#283593);color:#fff;border:none;border-radius:16px;padding:14px 20px;font-size:13px;font-weight:600;box-shadow:0 4px 16px rgba(26,35,126,.4);cursor:pointer;z-index:100;display:flex;align-items:center;gap:6px}
+.fab svg{width:18px;height:18px;fill:#fff}
+.count-badge{background:#e53935;color:#fff;border-radius:10px;padding:2px 8px;font-size:11px;margin-left:6px;font-weight:700}
+.install-header{display:none;background:linear-gradient(135deg,#1b5e20,#388e3c);color:#fff;padding:10px 16px;cursor:pointer;position:sticky;top:0;z-index:101;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.install-header.show{display:flex;align-items:center;justify-content:space-between}
+.install-header .install-text{font-size:13px;font-weight:600}
+.install-header .install-sub{font-size:10px;opacity:.8}
+.install-header .install-actions{display:flex;gap:8px;align-items:center}
+.install-header .btn-install{background:#fff;color:#1b5e20;border:none;padding:8px 18px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap}
+.install-header .btn-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;padding:0 4px;line-height:1}
+.install-banner{display:none;background:linear-gradient(135deg,#1b5e20,#2e7d32);color:#fff;padding:12px 16px;position:fixed;bottom:0;left:0;right:0;z-index:200;box-shadow:0 -2px 12px rgba(0,0,0,.3);animation:slideUp .3s ease}
+.install-banner.show{display:flex;align-items:center;justify-content:space-between}
+.install-btn{background:#fff;color:#1b5e20;border:none;padding:8px 16px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer}
+.install-dismiss{background:none;border:none;color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;padding:4px 8px}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.show{display:flex}
+.modal{background:#fff;border-radius:16px;padding:24px;max-width:340px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.modal h3{font-size:16px;color:#1a237e;margin-bottom:8px}
+.modal p{font-size:13px;color:#666;margin-bottom:16px;line-height:1.5}
+.modal .steps{text-align:left;margin:16px 0;font-size:12px;color:#444}
+.modal .steps div{padding:6px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:8px;align-items:flex-start}
+.modal .steps .num{background:#1a237e;color:#fff;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
+.modal .btn-ok{background:#1a237e;color:#fff;border:none;padding:10px 30px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer}
+#loading{text-align:center;padding:60px 20px;color:#999}
+#loading .spinner{width:36px;height:36px;border:3px solid #e0e0e0;border-top-color:#1a237e;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:40px;color:#999;font-size:14px}
+.refresh-btn{background:#ff9800;color:#fff;border:none;border-radius:50%;width:48px;height:48px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.3);position:fixed;bottom:24px;left:20px;z-index:100}
+.refresh-btn:active{background:#f57c00}
+.refresh-btn.spinning svg{animation:spinRefresh 1s linear infinite}
+@keyframes spinRefresh{to{transform:rotate(360deg)}}
+.print-btn{background:#1565c0;color:#fff;border:none;border-radius:50%;width:48px;height:48px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.3);position:fixed;bottom:24px;left:80px;z-index:100}
+.print-btn:active{background:#0d47a1}
+.upload-btn{background:#2e7d32;color:#fff;border:none;border-radius:50%;width:48px;height:48px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.3);position:fixed;bottom:24px;left:140px;z-index:100}
+.upload-btn:active{background:#1b5e20}
+.upload-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;align-items:center;justify-content:center;padding:20px}
+.upload-modal.show{display:flex}
+.upload-box{background:#fff;border-radius:16px;padding:24px;max-width:360px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.upload-box h3{font-size:16px;color:#2e7d32;margin-bottom:12px}
+.upload-drop{border:3px dashed #2e7d32;border-radius:12px;padding:30px 20px;margin:12px 0;cursor:pointer;transition:background .2s}
+.upload-drop:hover,.upload-drop.over{background:#e8f5e9}
+.upload-drop svg{width:40px;height:40px;fill:#2e7d32;margin-bottom:8px}
+.upload-drop p{font-size:13px;color:#666}
+.upload-drop .hint{font-size:11px;color:#999;margin-top:4px}
+#uploadFileInput{display:none}
+.upload-progress{display:none;margin:12px 0}
+.upload-progress .bar-bg{background:#e0e0e0;border-radius:8px;height:8px;overflow:hidden}
+.upload-progress .bar{background:#2e7d32;height:100%;width:0%;transition:width .3s;border-radius:8px}
+.upload-progress .status{font-size:12px;color:#666;margin-top:6px}
+.upload-result{margin:12px 0;text-align:left;max-height:200px;overflow-y:auto}
+.upload-result .file-result{padding:8px;margin:4px 0;border-radius:8px;font-size:12px;background:#f5f5f5}
+.upload-result .file-result .name{font-weight:700;color:#333}
+.upload-result .file-result .tags{color:#2e7d32;margin-top:4px}
+.upload-result .file-result .error{color:#c62828}
+.upload-box .btn-close{background:#e53935;color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;margin-top:12px}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;z-index:200;display:none;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.toast.show{display:block}
+@media print{
+  .header,.search-box,.fab,.refresh-btn,.print-btn,.upload-btn,.install-header,.install-banner,.toast,.modal-overlay,.upload-modal{display:none!important}
+  .table-wrap{padding:0}
+  table{box-shadow:none;border:1px solid #ccc}
+  thead{position:static;background:#1a237e;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  td,th{font-size:10px;padding:6px 4px}
+}
+</style>
+</head>
+<body>
+
+<div class="install-header" id="installHeader">
+  <div>
+    <div class="install-text">&#128229; Install EIT Cables App</div>
+    <div class="install-sub">Tap to install on your phone</div>
+  </div>
+  <div class="install-actions">
+    <button class="btn-install" onclick="installApp()">INSTALL</button>
+    <button class="btn-close" onclick="dismissInstall()">&times;</button>
+  </div>
+</div>
+
+<div class="header">
+  <h1>CPP AGI - EIT Cable Schedule <span class="count-badge" id="count">0</span></h1>
+  <div class="sub">CPP AGI E&I&T | PS5 Project</div>
+  <div class="stats-bar" id="statsBar"></div>
+</div>
+
+<div class="search-box">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search by Subsystem, Asset Tag, From, To, RFI..." inputmode="search">
+    <button class="btn-clear" id="clearBtn" onclick="clearSearch()">&#10005;</button>
+    <button class="btn-search" onclick="applyFilters()">&#128269; Search</button>
+  </div>
+  <div class="filter-row">
+    <select id="subFilter" onchange="applyFilters()">
+      <option value="">All Subsystems</option>
+    </select>
+    <select id="discFilter" onchange="applyFilters()">
+      <option value="">All Disciplines</option>
+      <option value="E">E - Electrical</option>
+      <option value="I">I - Instrumentation</option>
+      <option value="T">T - Telecom</option>
+      <option value="TH">TH - Trace Heating</option>
+    </select>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th class="row-num">#</th><th>Subsystem</th><th>Asset Tag</th><th>From</th><th>To</th><th>RFI#</th></tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div id="loading"><div class="spinner"></div>Loading cables...</div>
+</div>
+
+<button class="refresh-btn" id="refreshBtn" onclick="startRefresh()" title="Update Data">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+</button>
+<button class="print-btn" onclick="printTable()" title="Print">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+</button>
+<button class="upload-btn" onclick="openUploadModal()" title="Upload PDF">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+</button>
+<div class="toast" id="toast"></div>
+
+<div class="install-banner" id="installBanner">
+  <span style="font-size:13px;font-weight:600">Install EIT Cables App</span>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button class="install-btn" onclick="installApp()">Install</button>
+    <button class="install-dismiss" onclick="dismissInstall()">&times;</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="installModal">
+  <div class="modal">
+    <h3>&#128241; Install on Android</h3>
+    <p>To install this app on your phone:</p>
+    <div class="steps">
+      <div><span class="num">1</span>Open this page in <b>Chrome</b></div>
+      <div><span class="num">2</span>Tap the <b>INSTALL</b> button above</div>
+      <div><span class="num">3</span>Or tap <b>3 dots menu</b> (top right)</div>
+      <div><span class="num">4</span>Tap <b>"Add to Home screen"</b></div>
+      <div><span class="num">5</span>Tap <b>"Install"</b> to confirm</div>
+    </div>
+    <p style="font-size:11px;color:#999;margin-top:8px">The app icon will appear on your home screen</p>
+    <button class="btn-ok" onclick="closeModal()">Got it!</button>
+  </div>
+</div>
+
+<div class="upload-modal" id="uploadModal">
+  <div class="upload-box">
+    <h3>&#128228; Upload PDF</h3>
+    <div class="upload-drop" id="uploadDrop" onclick="document.getElementById('uploadFileInput').click()">
+      <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+      <p>Tap to select PDF files</p>
+      <div class="hint">Asset Tags will be scanned automatically</div>
+    </div>
+    <input type="file" id="uploadFileInput" accept=".pdf" multiple>
+    <div class="upload-progress" id="uploadProgress">
+      <div class="bar-bg"><div class="bar" id="uploadBar"></div></div>
+      <div class="status" id="uploadStatus">Uploading...</div>
+    </div>
+    <div class="upload-result" id="uploadResult"></div>
+    <button class="btn-close" onclick="closeUploadModal()">Close</button>
+  </div>
+</div>
+
+<script>
+let allData = [];
+let filtered = [];
+let deferredPrompt = null;
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').then(reg => {
+    console.log('SW registered');
+  });
+}
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (!localStorage.getItem('installDismissed')) {
+    document.getElementById('installHeader').classList.add('show');
+    document.getElementById('installBanner').classList.add('show');
+  }
+});
+
+function installApp() {
+  if (!deferredPrompt) {
+    document.getElementById('installModal').classList.add('show');
+    return;
+  }
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(r => {
+    deferredPrompt = null;
+    document.getElementById('installHeader').classList.remove('show');
+    document.getElementById('installBanner').classList.remove('show');
+  });
+}
+
+function dismissInstall() {
+  localStorage.setItem('installDismissed', '1');
+  document.getElementById('installHeader').classList.remove('show');
+  document.getElementById('installBanner').classList.remove('show');
+}
+
+function closeModal() {
+  document.getElementById('installModal').classList.remove('show');
+}
+
+window.addEventListener('appinstalled', () => {
+  document.getElementById('installHeader').classList.remove('show');
+  document.getElementById('installBanner').classList.remove('show');
+});
+
+fetch('/data').then(r => r.json()).then(data => {
+  allData = data;
+  filtered = data;
+
+  const linked = data.filter(d => d.link).length;
+  const eCount = data.filter(d => d.asset_tag.match(/PS5-\d{2}-[A-Z]{2}/)).length;
+
+  document.getElementById('statsBar').innerHTML =
+    '<span class="stat">' + data.length + ' Cables</span>' +
+    '<span class="stat linked">' + linked + ' PDF Links</span>';
+
+  buildSubsystemFilter(data);
+  render(data);
+  document.getElementById('loading').style.display = 'none';
+});
+
+function buildSubsystemFilter(data) {
+  const subs = [...new Set(data.map(d => d.subsystem).filter(s => s))].sort();
+  const sel = document.getElementById('subFilter');
+  sel.innerHTML = '<option value="">All Subsystems (' + subs.length + ')</option>';
+  subs.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s; opt.textContent = s;
+    sel.appendChild(opt);
+  });
+}
+
+function render(data) {
+  const tbody = document.getElementById('tbody');
+  if (data.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">No results found</td></tr>';
+    document.getElementById('count').textContent = '0';
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < data.length; i++) {
+    const d = data[i];
+    const tr = document.createElement('tr');
+
+    const linkHtml = d.link
+      ? '<a class="link" href="' + d.link + '" target="_blank" rel="noopener">' + d.asset_tag + '</a>'
+      : '<span class="no-link">' + d.asset_tag + '</span>';
+
+    let rfiHtml = '';
+    if (d.rfi) {
+      const statusColor = (d.rfi_status || '').toUpperCase().includes('ACCEPTED') ? '#2e7d32' : '#c62828';
+      if (d.rfi_pdf) {
+        rfiHtml = '<a href="' + d.rfi_pdf + '" target="_blank" rel="noopener" style="color:' + statusColor + ';font-weight:700;font-size:11px;text-decoration:underline" title="' + d.rfi_status + '">' + d.rfi + '</a>';
+      } else {
+        rfiHtml = '<span style="color:' + statusColor + ';font-weight:600;font-size:11px" title="' + d.rfi_status + '">' + d.rfi + '</span>';
+      }
+    } else {
+      rfiHtml = '<span style="color:#ccc">-</span>';
+    }
+
+    tr.innerHTML =
+      '<td class="row-num">' + (i+1) + '</td>' +
+      '<td class="sub-cell">' + (d.subsystem || '-') + '</td>' +
+      '<td>' + linkHtml + '</td>' +
+      '<td class="from-cell">' + (d.from || '-') + '</td>' +
+      '<td class="to-cell">' + (d.to || '-') + '</td>' +
+      '<td>' + rfiHtml + '</td>';
+    fragment.appendChild(tr);
+  }
+  tbody.innerHTML = '';
+  tbody.appendChild(fragment);
+  document.getElementById('count').textContent = data.length;
+}
+
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const sub = document.getElementById('subFilter').value;
+  const disc = document.getElementById('discFilter').value;
+
+  filtered = allData.filter(d => {
+    if (sub && d.subsystem !== sub) return false;
+    if (disc) {
+      const tag = d.asset_tag.toUpperCase();
+      if (disc === 'E' && !tag.match(/PS5-\d{2}-(IG|IK|IE|IV|IU|ISR|IDH|BE|BI)-/)) return false;
+      if (disc === 'I' && !tag.match(/PS5-\d{2}-(BI|FIT|FCV|FY|FG|PT|TT|LT|LTG|PA|FGH)-/)) return false;
+      if (disc === 'T' && !tag.match(/PS5-\d{2}-(SY|IN|GU|PA)-/)) return false;
+      if (disc === 'TH' && !tag.match(/PS5-\d{2}-IG-/)) return false;
+    }
+    if (q) {
+      const hay = (d.subsystem + ' ' + d.asset_tag + ' ' + d.from + ' ' + d.to + ' ' + d.rfi).toLowerCase();
+      const words = q.split(/\s+/);
+      return words.every(w => hay.includes(w));
+    }
+    return true;
+  });
+  render(filtered);
+
+  const subFilter = document.getElementById('subFilter');
+  if (q && subFilter.value === '') {
+    const matchingSubs = [...new Set(allData.filter(d => {
+      return (d.subsystem + ' ' + d.asset_tag + ' ' + d.from + ' ' + d.to).toLowerCase().includes(q);
+    }).map(d => d.subsystem).filter(s => s))].sort();
+
+    if (matchingSubs.length > 0 && matchingSubs.length <= 5) {
+      subFilter.innerHTML = '<option value="">Matching Subsystems (' + matchingSubs.length + ')</option>';
+      matchingSubs.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s; opt.textContent = s;
+        subFilter.appendChild(opt);
+      });
+    } else if (matchingSubs.length > 5) {
+      subFilter.innerHTML = '<option value="">All Subsystems (' + matchingSubs.length + ' match)</option>';
+      matchingSubs.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s; opt.textContent = s;
+        subFilter.appendChild(opt);
+      });
+    }
+  }
+}
+
+const searchInput = document.getElementById('search');
+const clearBtn = document.getElementById('clearBtn');
+let debounce;
+searchInput.addEventListener('input', () => {
+  clearBtn.classList.toggle('show', searchInput.value.length > 0);
+  clearTimeout(debounce);
+  debounce = setTimeout(applyFilters, 200);
+});
+
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    applyFilters();
+  }
+});
+
+function clearSearch() {
+  searchInput.value = '';
+  clearBtn.classList.remove('show');
+  document.getElementById('discFilter').value = '';
+  buildSubsystemFilter(allData);
+  applyFilters();
+  searchInput.focus();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+let refreshPoll = null;
+function startRefresh() {
+  const btn = document.getElementById('refreshBtn');
+  if (btn.classList.contains('spinning')) return;
+  btn.classList.add('spinning');
+  showToast('Updating data... Please wait');
+
+  fetch('/refresh').then(r => r.json()).then(d => {
+    refreshPoll = setInterval(checkRefresh, 3000);
+  }).catch(() => {
+    btn.classList.remove('spinning');
+    showToast('Error connecting to server');
+  });
+}
+
+function checkRefresh() {
+  fetch('/refresh-status').then(r => r.json()).then(d => {
+    if (!d.running) {
+      clearInterval(refreshPoll);
+      document.getElementById('refreshBtn').classList.remove('spinning');
+      if (d.last) {
+        showToast('Data updated! Reloading...');
+        setTimeout(() => location.reload(), 1500);
+      } else {
+        showToast('Update failed');
+      }
+    }
+  });
+}
+
+function printTable() {
+  window.print();
+}
+
+function openUploadModal() {
+  document.getElementById('uploadModal').classList.add('show');
+  document.getElementById('uploadResult').innerHTML = '';
+  document.getElementById('uploadProgress').style.display = 'none';
+}
+
+function closeUploadModal() {
+  document.getElementById('uploadModal').classList.remove('show');
+}
+
+const uploadDrop = document.getElementById('uploadDrop');
+const uploadFileInput = document.getElementById('uploadFileInput');
+
+uploadDrop.addEventListener('dragover', e => { e.preventDefault(); uploadDrop.classList.add('over'); });
+uploadDrop.addEventListener('dragleave', () => uploadDrop.classList.remove('over'));
+uploadDrop.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadDrop.classList.remove('over');
+  handleUpload(e.dataTransfer.files);
+});
+uploadFileInput.addEventListener('change', e => {
+  if (e.target.files.length) handleUpload(e.target.files);
+  e.target.value = '';
+});
+
+function handleUpload(files) {
+  const progress = document.getElementById('uploadProgress');
+  const bar = document.getElementById('uploadBar');
+  const status = document.getElementById('uploadStatus');
+  const result = document.getElementById('uploadResult');
+
+  progress.style.display = 'block';
+  result.innerHTML = '';
+  bar.style.width = '0%';
+  status.textContent = 'Uploading ' + files.length + ' file(s)...';
+
+  const formData = new FormData();
+  for (let i = 0; i < files.length; i++) {
+    formData.append('files', files[i]);
+  }
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/upload', true);
+
+  xhr.upload.onprogress = e => {
+    if (e.lengthComputable) {
+      bar.style.width = Math.round(e.loaded / e.total * 50) + '%';
+    }
+  };
+
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      bar.style.width = '100%';
+      const data = JSON.parse(xhr.responseText);
+      status.textContent = 'Done! ' + data.results.length + ' file(s) processed. Rebuilding data...';
+      let html = '';
+      data.results.forEach(r => {
+        if (r.status === 'ok') {
+          html += '<div class="file-result"><div class="name">' + r.name + '</div>';
+          html += '<div class="tags">Found ' + r.total_tags + ' tags (' + r.new_tags + ' new): ' + (r.tags || []).slice(0, 5).join(', ') + (r.total_tags > 5 ? '...' : '') + '</div></div>';
+        } else {
+          html += '<div class="file-result"><div class="name">' + r.name + '</div>';
+          html += '<div class="error">' + r.reason + '</div></div>';
+        }
+      });
+      result.innerHTML = html;
+      setTimeout(() => { location.reload(); }, 3000);
+    } else {
+      bar.style.width = '100%';
+      status.textContent = 'Upload failed!';
+    }
+  };
+
+  xhr.onerror = () => { bar.style.width = '100%'; status.textContent = 'Connection error!'; };
+  xhr.send(formData);
+}
+</script>
+</body>
+</html>

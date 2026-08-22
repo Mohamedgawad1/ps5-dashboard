@@ -21,3 +21,57 @@ create_form*.py
 create_final.py
 fix_cable_table.py
 update_dashboard.ps1
+
+# Large data files
+*.xlsx
+!mobile_app/**
+_temp/
+data.json
+asset_tag_mapping.json
+tag_index.json
+inspection_data.json
+dashboard_data.json
+rfi_pdf_map.json
+eit_pages.json
+subsystems.csv
+update_log.txt
+auto_sync_log.txt
+tunnel_url.txt
+status.txt
+EIT_URL.txt
+
+# Binaries
+cloudflared.exe
+ngrok.exe
+bore.exe
+
+# Sensitive
+github_token.txt
+
+# Debug/temp scripts
+check_*.py
+debug_*.py
+test_*.py
+_*.py
+_*.ps1
+_*.csv
+_*.json
+scan_all.py
+scan_pdfs.py
+scan_ps5.py
+smart_match.py
+build_index.py
+serve_dashboard.py
+serveo*.txt
+tunnel*.txt
+tunnel*.py
+tunnel_*.txt
+show_url.py
+show_url.bat
+search2.ps1
+search_fit.ps1
+generate_*.py
+make_*.py
+kentplc_dashboard.py
+cpp_agi_dashboard_*.py
+Update Tracker.bat
