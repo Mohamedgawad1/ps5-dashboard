@@ -1179,8 +1179,45 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="900">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>PS5 - CPP AGI Completion Progress Dashboard</title>
+<script>
+/* Smart auto-update: check server for newer version, force-reload bypassing cache */
+(function(){
+  var BUILD='__NOW__';
+  var KEY='ps5dash_lm_'+location.pathname;
+  function bust(){
+    try{
+      var u=new URL(location.href);
+      u.searchParams.set('v',Date.now());
+      location.replace(u.href);
+    }catch(e){ location.reload(true); }
+  }
+  function check(){
+    try{
+      if(location.protocol==='file:')return;
+      var u=new URL(location.href);
+      u.searchParams.set('chk',Date.now());
+      fetch(u.href,{method:'HEAD',cache:'no-store'}).then(function(r){
+        var lm=r.headers.get('last-modified');
+        if(!lm)return;
+        var prev=localStorage.getItem(KEY);
+        if(prev&&prev!==lm){
+          localStorage.setItem(KEY,lm);
+          bust();
+        }else if(!prev){
+          localStorage.setItem(KEY,lm);
+        }
+      }).catch(function(){});
+    }catch(e){}
+  }
+  setTimeout(check,20000);
+  setInterval(check,60000);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden)check(); });
+})();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
