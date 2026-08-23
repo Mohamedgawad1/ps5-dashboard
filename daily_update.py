@@ -166,54 +166,66 @@ def main():
             }
     log(f"  {len(ovtasks)} unique tags")
 
-    log("Reading Inspection Register RFI (col 8 + col 13)...")
+    log("Scanning RFI PDFs for asset tags (content-based matching)...")
+    import fitz
+    TAG_RE = re.compile(r'PS5-[\w]+-[\w]+-[\w]+(?:-[\w]+)?')
+    rfi_pdfs = [f for f in os.listdir(WIRING_DIR) if f.startswith('CPP-RFI') and f.endswith('.pdf')]
+    rfi_tag_map = {}
+    rfi_scanned = 0
+    for fname in rfi_pdfs:
+        fpath = os.path.join(WIRING_DIR, fname)
+        try:
+            doc = fitz.open(fpath)
+            text = ''.join(page.get_text() for page in doc)
+            doc.close()
+            tags = set(t.replace(' ', '') for t in TAG_RE.findall(text))
+            for t in tags:
+                if t not in rfi_tag_map:
+                    rfi_tag_map[t] = []
+                rfi_tag_map[t].append(fname)
+            rfi_scanned += 1
+        except:
+            pass
+    log(f"  Scanned {rfi_scanned} RFI PDFs | Found {sum(len(v) for v in rfi_tag_map.values())} tag-RFI links ({len(rfi_tag_map)} unique tags)")
+
+    log("Reading Inspection Register RFI (col 13 = Glanding & Termination)...")
     df_ir = pd.read_excel(os.path.join('_temp', 'PS-5 INSPECTION REGISTER.xlsx'),
                           'PS-5 EIT INSPECTION REGISTER', header=None)
-    rfi_pdfs = [f for f in os.listdir(WIRING_DIR) if f.startswith('CPP-RFI')]
     gl_map = {}
     rfi_matched = 0
-    rfi_pdf_norm = {}
-    for f in rfi_pdfs:
-        norm = f.replace('.pdf', '').replace('.PDF', '').replace(' ', '').replace('-', '').replace('_', '').lower()
-        rfi_pdf_norm[norm] = f
-    rfi_pdf_by_num = {}
-    for f in rfi_pdfs:
-        num_m = re.search(r'(\d{4})', f)
-        if num_m:
-            num = num_m.group(1)
-            rfi_pdf_by_num[num] = f
 
     def find_rfi_pdf(rfi_text):
-        rfi_clean = rfi_text.replace('/', '').replace(' ', '')
+        rfi_clean = rfi_text.replace('/', '-').replace(' ', '')
+        for f in rfi_pdfs:
+            fn_clean = f.replace('.pdf', '').replace('.PDF', '').replace(' ', '')
+            if rfi_clean == fn_clean:
+                return f
         rfi_norm = rfi_clean.replace('-', '').replace('_', '').lower()
         for f in rfi_pdfs:
-            if rfi_clean == f.replace('.pdf', '').replace('.PDF', '').replace(' ', ''):
+            fn_norm = f.replace('.pdf', '').replace('.PDF', '').replace(' ', '').replace('-', '').replace('_', '').lower()
+            if rfi_norm == fn_norm:
                 return f
-        if rfi_norm in rfi_pdf_norm:
-            return rfi_pdf_norm[rfi_norm]
         num_m = re.search(r'(\d{4})$', rfi_clean)
         if num_m:
             num = num_m.group(1)
-            if num in rfi_pdf_by_num:
-                return rfi_pdf_by_num[num]
+            for f in rfi_pdfs:
+                if num in f:
+                    return f
         return None
 
     for i in range(6, len(df_ir)):
         tag = clean_tag(df_ir.iloc[i, 1]) if pd.notna(df_ir.iloc[i, 1]) else ''
         if not tag.startswith('PS5-'): continue
-        rfi_8 = str(df_ir.iloc[i, 8]).strip() if pd.notna(df_ir.iloc[i, 8]) else ''
-        if not rfi_8 or rfi_8 == 'nan': rfi_8 = ''
         gl_rfi = str(df_ir.iloc[i, 13]).strip() if pd.notna(df_ir.iloc[i, 13]) else ''
         if not gl_rfi or gl_rfi == 'nan': gl_rfi = ''
         gl_st = str(df_ir.iloc[i, 14]).strip() if pd.notna(df_ir.iloc[i, 14]) else ''
-        best_rfi = rfi_8 or gl_rfi
-        if not best_rfi: continue
-        found_pdf = find_rfi_pdf(best_rfi)
+        if not gl_rfi: continue
+        found_pdf = find_rfi_pdf(gl_rfi)
         rfi_pdf = f'/pdf/{found_pdf}' if found_pdf else ''
         if found_pdf: rfi_matched += 1
         if tag not in gl_map or (rfi_pdf and not gl_map[tag].get('rfi_pdf')):
-            gl_map[tag] = {'rfi': best_rfi, 'status': gl_st, 'rfi_pdf': rfi_pdf}
-    log(f"  Inspection: {len(gl_map)} assets | Matched to PDF: {rfi_matched}")
+            gl_map[tag] = {'rfi': gl_rfi, 'status': gl_st, 'rfi_pdf': rfi_pdf}
+    log(f"  Glanding Register: {len(gl_map)} assets | Matched to PDF: {rfi_matched}")
 
     log("Parsing cable schedules...")
     cables = []
@@ -266,10 +278,19 @@ def main():
 
         base = re.sub(r'-CL\d+$|-CH\d+$|-CD\d+$', '', c['cable'])
         gl = gl_map.get(c['cable'], gl_map.get(base))
+        rfi_pdf = gl['rfi_pdf'] if gl else ''
+        rfi_num = gl['rfi'] if gl else ''
+        rfi_st = gl['status'] if gl else ''
+        all_rfi = []
+        if c['cable'] in rfi_tag_map:
+            all_rfi = [f'/pdf/{f}' for f in rfi_tag_map[c['cable']]]
+            if not rfi_pdf:
+                rfi_pdf = all_rfi[0]
+                rfi_num = rfi_tag_map[c['cable']][0].replace('.pdf', '')
 
         data.append({'subsystem': sub, 'asset_tag': c['cable'], 'from': from_str, 'to': to_str,
-                     'link': link, 'rfi': gl['rfi'] if gl else '', 'rfi_status': gl['status'] if gl else '',
-                     'rfi_pdf': gl['rfi_pdf'] if gl else ''})
+                     'link': link, 'rfi': rfi_num, 'rfi_status': rfi_st,
+                     'rfi_pdf': rfi_pdf, 'all_rfi_pdfs': all_rfi if len(all_rfi) > 1 else []})
 
     for tag, info in ovtasks.items():
         if tag in cable_tags: continue
@@ -277,9 +298,19 @@ def main():
         sub = info['subsystem'] or asset_sub.get(tag, '')
         base = re.sub(r'-CL\d+$|-CH\d+$|-CD\d+$', '', tag)
         gl = gl_map.get(tag, gl_map.get(base))
+        rfi_pdf = gl['rfi_pdf'] if gl else ''
+        rfi_num = gl['rfi'] if gl else ''
+        rfi_st = gl['status'] if gl else ''
+        all_rfi = []
+        if tag in rfi_tag_map:
+            all_rfi = [f'/pdf/{f}' for f in rfi_tag_map[tag]]
+            if not rfi_pdf:
+                rfi_pdf = all_rfi[0]
+                rfi_num = rfi_tag_map[tag][0].replace('.pdf', '')
+
         data.append({'subsystem': sub, 'asset_tag': tag, 'from': '', 'to': '',
-                     'link': link, 'rfi': gl['rfi'] if gl else '', 'rfi_status': gl['status'] if gl else '',
-                     'rfi_pdf': gl['rfi_pdf'] if gl else '',
+                     'link': link, 'rfi': rfi_num, 'rfi_status': rfi_st,
+                     'rfi_pdf': rfi_pdf, 'all_rfi_pdfs': all_rfi if len(all_rfi) > 1 else [],
                      'discipline': info['discipline'], 'description': info['description']})
 
     with open('data.json', 'w', encoding='utf-8') as f:

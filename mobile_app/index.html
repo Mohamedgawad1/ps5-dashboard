@@ -267,11 +267,12 @@ fetch('/data').then(r => r.json()).then(data => {
   filtered = data;
 
   const linked = data.filter(d => d.link).length;
-  const eCount = data.filter(d => d.asset_tag.match(/PS5-\d{2}-[A-Z]{2}/)).length;
+  const rfiCount = data.filter(d => d.rfi_pdf).length;
 
   document.getElementById('statsBar').innerHTML =
-    '<span class="stat">' + data.length + ' Cables</span>' +
-    '<span class="stat linked">' + linked + ' PDF Links</span>';
+    '<span class="stat">' + data.length + ' Assets</span>' +
+    '<span class="stat linked">' + linked + ' PDF</span>' +
+    '<span class="stat" style="background:rgba(255,152,0,.4)">' + rfiCount + ' RFI</span>';
 
   buildSubsystemFilter(data);
   render(data);
@@ -310,7 +311,14 @@ function render(data) {
     let rfiHtml = '';
     if (d.rfi) {
       const statusColor = (d.rfi_status || '').toUpperCase().includes('ACCEPTED') ? '#2e7d32' : '#c62828';
-      if (d.rfi_pdf) {
+      const allPdfs = d.all_rfi_pdfs || [];
+      if (allPdfs.length > 1) {
+        rfiHtml = allPdfs.map((p, idx) => {
+          const name = p.replace('/pdf/', '').replace('.pdf', '');
+          const short = name.split('-').slice(-1)[0];
+          return '<a href="' + p + '" target="_blank" rel="noopener" style="color:' + statusColor + ';font-weight:700;font-size:10px;text-decoration:underline;display:inline-block;margin:1px 2px;padding:1px 4px;background:#f0f0f0;border-radius:4px" title="' + name + '">RFI-' + short + '</a>';
+        }).join(' ');
+      } else if (d.rfi_pdf) {
         rfiHtml = '<a href="' + d.rfi_pdf + '" target="_blank" rel="noopener" style="color:' + statusColor + ';font-weight:700;font-size:11px;text-decoration:underline" title="' + d.rfi_status + '">' + d.rfi + '</a>';
       } else {
         rfiHtml = '<span style="color:' + statusColor + ';font-weight:600;font-size:11px" title="' + d.rfi_status + '">' + d.rfi + '</span>';
@@ -348,7 +356,8 @@ function applyFilters() {
       if (disc === 'TH' && !tag.match(/PS5-\d{2}-IG-/)) return false;
     }
     if (q) {
-      const hay = (d.subsystem + ' ' + d.asset_tag + ' ' + d.from + ' ' + d.to + ' ' + d.rfi).toLowerCase();
+      const allRfi = (d.all_rfi_pdfs || []).map(p => p.replace('/pdf/','').replace('.pdf','')).join(' ');
+      const hay = (d.subsystem + ' ' + d.asset_tag + ' ' + d.from + ' ' + d.to + ' ' + d.rfi + ' ' + allRfi).toLowerCase();
       const words = q.split(/\s+/);
       return words.every(w => hay.includes(w));
     }
