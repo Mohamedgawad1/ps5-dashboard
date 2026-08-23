@@ -163,6 +163,20 @@ def main():
     rfi_pdfs = [f for f in os.listdir(WIRING_DIR) if f.startswith('CPP-RFI')]
     gl_map = {}
     rfi_matched = 0
+    # Build normalized RFI PDF lookup for flexible matching
+    rfi_pdf_norm = {}
+    for f in rfi_pdfs:
+        norm = f.replace('.pdf', '').replace('.PDF', '').replace(' ', '').replace('-', '').replace('_', '').lower()
+        rfi_pdf_norm[norm] = f
+    # Also keep last 4 digits index
+    rfi_pdf_by_num = {}
+    import re as _re
+    for f in rfi_pdfs:
+        num_m = _re.search(r'(\d{4})', f)
+        if num_m:
+            num = num_m.group(1)
+            rfi_pdf_by_num[num] = f
+
     for i in range(6, len(df_ir)):
         tag = clean_tag(df_ir.iloc[i, 1]) if pd.notna(df_ir.iloc[i, 1]) else ''
         if not tag.startswith('PS5-'): continue
@@ -170,20 +184,24 @@ def main():
         gl_st = str(df_ir.iloc[i, 14]).strip() if pd.notna(df_ir.iloc[i, 14]) else ''
         if not gl_rfi or gl_rfi == 'nan': continue
         rfi_clean = gl_rfi.replace('/', '').replace(' ', '')
+        rfi_norm = rfi_clean.replace('-', '').replace('_', '').lower()
         found_pdf = None
+        # 1. Exact match
         for f in rfi_pdfs:
             if rfi_clean == f.replace('.pdf', '').replace('.PDF', '').replace(' ', ''):
                 found_pdf = f
                 break
+        # 2. Normalized match (ignore dashes, case)
         if not found_pdf:
-            import re as _re
+            if rfi_norm in rfi_pdf_norm:
+                found_pdf = rfi_pdf_norm[rfi_norm]
+        # 3. Last 4 digits match
+        if not found_pdf:
             num_m = _re.search(r'(\d{4})$', rfi_clean)
             if num_m:
                 num = num_m.group(1)
-                for f in rfi_pdfs:
-                    if f.replace('.pdf', '').endswith(num):
-                        found_pdf = f
-                        break
+                if num in rfi_pdf_by_num:
+                    found_pdf = rfi_pdf_by_num[num]
         rfi_pdf = f'/pdf/{found_pdf}' if found_pdf else ''
         if found_pdf: rfi_matched += 1
         gl_map[tag] = {'rfi': gl_rfi, 'status': gl_st, 'rfi_pdf': rfi_pdf}
