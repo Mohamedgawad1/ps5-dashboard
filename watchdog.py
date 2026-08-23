@@ -6,6 +6,8 @@ import subprocess
 import time
 import os
 import sys
+import re
+import threading
 from datetime import datetime
 
 BASE = r"C:\Users\mylap\OneDrive\Desktop\dashboard"
@@ -33,8 +35,23 @@ def start_process(name, cmd):
         kwargs = {"cwd": BASE}
         if sys.platform == 'win32':
             kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
+        if name == "tunnel_backup":
+            kwargs["stdout"] = subprocess.PIPE
+            kwargs["stderr"] = subprocess.STDOUT
         p = subprocess.Popen(cmd, **kwargs)
         log(f"STARTED {name} (PID {p.pid})")
+        if name == "tunnel_backup":
+            def read_output(proc):
+                try:
+                    for line in iter(proc.stdout.readline, b''):
+                        text = line.decode('utf-8', errors='replace').strip()
+                        if 'trycloudflare.com' in text:
+                            urls = re.findall(r'https://[^\s]+\.trycloudflare\.com', text)
+                            if urls:
+                                log(f"TUNNEL URL: {urls[0]}")
+                except Exception:
+                    pass
+            threading.Thread(target=read_output, args=(p,), daemon=True).start()
         return p
     except Exception as e:
         log(f"FAILED to start {name}: {e}")
