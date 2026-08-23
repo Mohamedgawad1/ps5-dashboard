@@ -14,7 +14,8 @@ LOG = os.path.join(BASE, "watchdog_log.txt")
 PROCESSES = {
     "server": ["python", os.path.join(BASE, "mobile_app", "server.py")],
     "auto_sync": ["python", os.path.join(BASE, "auto_sync_rfi.py")],
-    "tunnel_quick": [os.path.join(BASE, "cloudflared.exe"), "tunnel", "--url", "http://localhost:8080"],
+    "tunnel_named": [os.path.join(BASE, "cloudflared.exe"), "tunnel", "run", "cpp-eit"],
+    "tunnel_backup": [os.path.join(BASE, "cloudflared.exe"), "tunnel", "--url", "http://localhost:8080"],
 }
 
 def log(msg):
@@ -32,10 +33,6 @@ def start_process(name, cmd):
         kwargs = {"cwd": BASE}
         if sys.platform == 'win32':
             kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
-        if name == "tunnel_quick":
-            logfile = open(os.path.join(BASE, "tunnel_quick.log"), "w")
-            kwargs["stdout"] = logfile
-            kwargs["stderr"] = subprocess.STDOUT
         p = subprocess.Popen(cmd, **kwargs)
         log(f"STARTED {name} (PID {p.pid})")
         return p
@@ -43,35 +40,19 @@ def start_process(name, cmd):
         log(f"FAILED to start {name}: {e}")
         return None
 
-def save_tunnel_url():
-    logfile = os.path.join(BASE, "tunnel_quick.log")
-    url_file = os.path.join(BASE, "tunnel_url.txt")
-    if not os.path.exists(logfile):
-        return
-    try:
-        import re
-        with open(logfile, "r", errors="ignore") as f:
-            for line in f:
-                m = re.search(r'(https://[a-z0-9-]+\.trycloudflare\.com)', line)
-                if m:
-                    url = m.group(1)
-                    with open(url_file, "w") as out:
-                        out.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Current URL: {url}\n")
-                    log(f"TUNNEL URL: {url}")
-                    return
-    except:
-        pass
+FIXED_URL = "https://app.mohamedgawwad.is-a.dev"
+FIXED_URL_HTTP = "http://app.mohamedgawwad.is-a.dev"
 
 def main():
     log("=" * 50)
     log("Watchdog started - keeping everything alive")
+    log(f"Fixed URL: {FIXED_URL}")
 
     procs = {}
     for name, cmd in PROCESSES.items():
         procs[name] = start_process(name, cmd)
         time.sleep(1)
 
-    save_tunnel_url()
     check_count = 0
 
     while True:
@@ -83,13 +64,10 @@ def main():
             if p is None or not is_running(p):
                 log(f"RESTARTING {name}")
                 procs[name] = start_process(name, cmd)
-                time.sleep(2)
-                if name == "tunnel_quick":
-                    time.sleep(15)
-                    save_tunnel_url()
+                time.sleep(3)
 
-        if check_count % 10 == 0:
-            save_tunnel_url()
+        if check_count % 240 == 0:
+            log(f"Watchdog alive - {check_count} checks. URL: {FIXED_URL}")
 
 if __name__ == "__main__":
     main()
