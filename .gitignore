@@ -21,3 +21,13 @@ create_form*.py
 create_final.py
 fix_cable_table.py
 update_dashboard.ps1
+github_token.txt
+*.exe
+_temp/
+WIRING - MASTER/
+auto_sync_log.txt
+update_log.txt
+tunnel*.txt
+serveo*.txt
+scan_content_*.txt
+opencode.json
