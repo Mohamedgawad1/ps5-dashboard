@@ -152,11 +152,12 @@ def build_itr_data(excel_path, today_override=None):
     today_submitted = submitted[submitted['Closing Date'].dt.date == now.date()].copy()
     hourly_submitted = int(today_submitted.shape[0])
 
-    # ---- Daily (Last 30 Days) for Closed (all disciplines & companies) ----
+    # ---- Daily (Last 30 Days) for Closed (CPP AGI E/I/T only) ----
+    eit_mask = (closed['disc'].isin(['E','I','T'])) & (closed['Responsible Company (Summary)'] == RESPONSIBLE_COMPANY)
     closed['date'] = closed['Closing Date'].dt.strftime('%Y-%m-%d')
-    daily = pivot_disc(closed, 'date')
+    daily = pivot_disc(closed[eit_mask], 'date')
     daily = sorted(daily, key=lambda r: r['label'])[-30:]
-    daily_total = int(len(closed))
+    daily_total = int(eit_mask.sum())
 
     # ---- Fill in all dates in last 30 days even with 0 ----
     all_dates = pd.date_range(end=now.date(), periods=30).strftime('%Y-%m-%d').tolist()
@@ -164,9 +165,10 @@ def build_itr_data(excel_path, today_override=None):
         found = {r['label']: r for r in daily}
         daily = [found.get(d, {'label': d, 'E': 0, 'I': 0, 'T': 0, 'Total': 0}) for d in all_dates]
 
-    # ---- Daily (Last 30 Days) for Submitted (all disciplines & companies) ----
+    # ---- Daily (Last 30 Days) for Submitted (CPP AGI E/I/T only) ----
+    sub_eit_mask = (submitted['disc'].isin(['E','I','T'])) & (submitted['Responsible Company (Summary)'] == RESPONSIBLE_COMPANY)
     submitted['date'] = submitted['Closing Date'].dt.strftime('%Y-%m-%d')
-    daily_submitted = pivot_disc(submitted, 'date')
+    daily_submitted = pivot_disc(submitted[sub_eit_mask], 'date')
     daily_submitted = sorted(daily_submitted, key=lambda r: r['label'])[-30:]
     if daily_submitted:
         found_sub = {r['label']: r for r in daily_submitted}
@@ -174,22 +176,22 @@ def build_itr_data(excel_path, today_override=None):
     else:
         daily_submitted = [{'label': d, 'E': 0, 'I': 0, 'T': 0, 'Total': 0} for d in all_dates]
 
-    # ---- Weekly for Closed (all disciplines & companies) ----
+    # ---- Weekly for Closed (CPP AGI E/I/T only) ----
     closed['week'] = closed['Closing Date'].dt.to_period('W').apply(
         lambda r: r.start_time.strftime('%Y-%m-%d'))
-    weekly = pivot_disc(closed, 'week')
+    weekly = pivot_disc(closed[eit_mask], 'week')
     weekly = sorted(weekly, key=lambda r: r['label'])[-16:]
 
     week_start = (now - pd.Timedelta(days=now.weekday())).normalize()
-    weekly_total = int((closed['Closing Date'] >= week_start).sum())
+    weekly_total = int((closed[eit_mask]['Closing Date'] >= week_start).sum())
 
-    # ---- Monthly for Closed (all disciplines & companies) ----
+    # ---- Monthly for Closed (CPP AGI E/I/T only) ----
     closed['month'] = closed['Closing Date'].dt.strftime('%Y-%m')
-    monthly = pivot_disc(closed, 'month')
+    monthly = pivot_disc(closed[eit_mask], 'month')
     monthly = sorted(monthly, key=lambda r: r['label'])
 
-    monthly_total = int(((closed['Closing Date'].dt.year == now.year) &
-                          (closed['Closing Date'].dt.month == now.month)).sum())
+    monthly_total = int(((closed[eit_mask]['Closing Date'].dt.year == now.year) &
+                          (closed[eit_mask]['Closing Date'].dt.month == now.month)).sum())
 
 
     # ---- E&I&T لـ CPP AGI (Summary cards) — 3 كروت فقط: E / I / T ----
@@ -3978,7 +3980,7 @@ def build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt
     html = html.replace('__EIT_CLOSED__', str(eit_closed))
     html = html.replace('__EIT_TOTAL__', str(eit_total))
     html = html.replace('__TOTAL_TASKS__', str(itr_data['total_project_tasks']))
-    html = html.replace('__HOURLY_TOTAL__', str(itr_data['hourly_total']))
+    html = html.replace('__HOURLY_TOTAL__', str(itr_data['hourly_closed_eit']))
     html = html.replace('__HOURLY_SUBMITTED__', str(itr_data['hourly_submitted']))
     html = html.replace('__WEEKLY_TOTAL__', str(itr_data['weekly_total']))
     html = html.replace('__MONTHLY_TOTAL__', str(itr_data['monthly_total']))
