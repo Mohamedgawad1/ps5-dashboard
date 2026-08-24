@@ -113,6 +113,19 @@ class AppHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_error(404, f'PDF not found: {filename}')
             return
 
+        if path == '/tunnel-url':
+            url_file = os.path.join(PARENT_DIR, 'tunnel_url.txt')
+            url = ''
+            if os.path.exists(url_file):
+                with open(url_file, 'r') as f:
+                    url = f.read().strip()
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/plain; charset=utf-8')
+            self.send_header('Cache-Control', 'no-cache')
+            self.end_headers()
+            self.wfile.write(url.encode('utf-8'))
+            return
+
         if path == '/':
             self.path = '/index.html'
 

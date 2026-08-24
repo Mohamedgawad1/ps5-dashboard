@@ -274,6 +274,17 @@ fetch('/data').then(r => r.json()).then(data => {
     '<span class="stat linked">' + linked + ' PDF</span>' +
     '<span class="stat" style="background:rgba(255,152,0,.4)">' + rfiCount + ' RFI</span>';
 
+  fetch('/tunnel-url').then(r => r.text()).then(url => {
+    if (url) {
+      document.getElementById('statsBar').innerHTML +=
+        '<span class="stat" style="background:rgba(0,150,255,.35);cursor:pointer" onclick="copyTunnel(\'' + url + '\')" title="Tap to copy">' + url.replace('https://', '') + '</span>';
+    }
+  }).catch(() => {});
+
+  function copyTunnel(url) {
+    navigator.clipboard.writeText(url).then(() => showToast('Link copied!'));
+  }
+
   buildSubsystemFilter(data);
   render(data);
   document.getElementById('loading').style.display = 'none';

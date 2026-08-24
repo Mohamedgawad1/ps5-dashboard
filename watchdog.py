@@ -48,7 +48,49 @@ def start_process(name, cmd):
                         if 'trycloudflare.com' in text:
                             urls = re.findall(r'https://[^\s]+\.trycloudflare\.com', text)
                             if urls:
-                                log(f"TUNNEL URL: {urls[0]}")
+                                url = urls[0]
+                                log(f"TUNNEL URL: {url}")
+                                try:
+                                    with open(os.path.join(BASE, "tunnel_url.txt"), "w") as f:
+                                        f.write(url)
+                                except Exception:
+                                    pass
+                                try:
+                                    desktop = os.path.join(os.environ['USERPROFILE'], 'OneDrive', 'Desktop')
+                                    html_path = os.path.join(desktop, 'EIT App URL.html')
+                                    html = f'''<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>EIT App - Current URL</title>
+<meta http-equiv="refresh" content="120">
+<style>
+body{{font-family:Segoe UI,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:linear-gradient(135deg,#0d1b4a,#1a237e);color:#fff}}
+.box{{text-align:center;padding:30px 40px;background:rgba(255,255,255,.1);border-radius:16px;backdrop-filter:blur(10px)}}
+h2{{margin-bottom:16px}}
+a{{color:#64ffda;font-size:16px;text-decoration:none;word-break:break-all;display:block;margin:8px 0}}
+a:hover{{text-decoration:underline}}
+.label{{font-size:11px;opacity:.5;margin-top:4px}}
+hr{{border:none;border-top:1px solid rgba(255,255,255,.15);margin:16px 0}}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>CPP AGI - EIT Cables</h2>
+<div class="label">Remote (Quick Tunnel)</div>
+<a href="{url}" target="_blank">{url}</a>
+<hr>
+<div class="label">Local (this PC)</div>
+<a href="http://localhost:8080" target="_blank">http://localhost:8080</a>
+<hr>
+<div class="label">Auto-refreshes every 2 min</div>
+</div>
+</body>
+</html>'''
+                                    with open(html_path, 'w', encoding='utf-8') as f:
+                                        f.write(html)
+                                except Exception:
+                                    pass
                 except Exception:
                     pass
             threading.Thread(target=read_output, args=(p,), daemon=True).start()

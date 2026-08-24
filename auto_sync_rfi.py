@@ -1,7 +1,7 @@
 """
-Auto-sync: scans ALL Downloads subfolders for PDFs (especially CPP-RFI).
+Auto-sync: scans ALL Downloads subfolders for PDFs (wiring + RFI).
 Checks every 30 seconds for new files.
-Full rebuild every 2 hours.
+Full rebuild every hour.
 """
 import os
 import shutil
@@ -18,9 +18,11 @@ SERVER_DIR = Path(r"C:\Users\mylap\OneDrive\Desktop\dashboard")
 SKIP_PATTERNS = ['mohamed', 'cv', 'attendance', 'punch', 'punchlist',
                  'oil.pdf', 'task datasheet', 'document_control',
                  '1784709', '1786128', 'resume', 'letter', 'contract',
-                 'invoice', 'receipt', 'photo', 'image', 'screenshot']
+                 'invoice', 'receipt', 'photo', 'image', 'screenshot',
+                 'poster', 'flyer', 'brochure', 'catalog', 'manual',
+                 'schedule', 'timetable', 'grades', 'exam', 'quiz']
 
-REBUILD_INTERVAL = 7200  # 2 hours in seconds
+REBUILD_INTERVAL = 3600  # 1 hour in seconds
 seen_files = set()
 
 def log(msg):
@@ -49,8 +51,6 @@ def sync_all_from_downloads():
         if fname.lower() in master_lower:
             continue
         if any(p in fname.lower() for p in SKIP_PATTERNS):
-            continue
-        if not fname.lower().startswith("cpp-rfi"):
             continue
         dest = MASTER / fname
         if not dest.exists():
