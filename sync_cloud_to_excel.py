@@ -227,36 +227,53 @@ def index_ids(ws, idc, start=2):
     return rows_by_id
 
 
-def _num(v):
-    """Numeric value of a possibly-formula cell from a data_only workbook."""
-    if v is None or isinstance(v, str):
+PLATFORM_HTML_URL = ('https://raw.githubusercontent.com/Mohamedgawad1/'
+                     'PS5-COMPLETION-PLATFORM/main/index.html')
+LOCAL_HTML = os.path.join(HERE, '..', 'PS5-COMPLETION-PLATFORM', 'index.html')
+
+
+def _load_rfc_from_platform():
+    """Parse the RFC array from the platform HTML (same source as page 7)."""
+    txt = None
+    # Try local clone first
+    if os.path.isfile(LOCAL_HTML):
         try:
-            return float(str(v).strip() or 0)
-        except ValueError:
-            return 0.0
-    return float(v)
+            with open(LOCAL_HTML, 'r', encoding='utf-8', errors='ignore') as f:
+                txt = f.read()
+        except Exception:
+            pass
+    # Fallback: download from GitHub
+    if txt is None:
+        try:
+            req = urllib.request.Request(PLATFORM_HTML_URL)
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                txt = resp.read().decode('utf-8', errors='ignore')
+        except Exception:
+            return {}
+    idx = txt.find('RFC=[')
+    if idx < 0:
+        return {}
+    end = txt.find('],ITRT=', idx)
+    if end < 0:
+        return {}
+    try:
+        entries = json.loads(txt[idx + 4:end + 1])
+    except Exception:
+        return {}
+    return {e.get('sid', ''): e for e in entries if e.get('sid')}
 
 
 def sync_prc_status(src, wb, rep):
     """Make 'PRC STATUS' reflect platform page 7 (COMPLETE):
-    effective TOTAL % + RFC SIGNED per subsystem, green mark at 100%."""
+    effective TOTAL % + RFC SIGNED per subsystem, green mark at 100%.
+    Reads from the platform HTML (same data source as page 7) to guarantee
+    exact parity — avoids Excel cached-formula mismatches."""
     if 'PRC STATUS' not in wb.sheetnames:
         return
-    wbd = openpyxl.load_workbook(src, data_only=True)
-    try:
-        rws = wbd['RFC PROGRESS']
-        eff = {}
-        for kfull, r in index_ids(rws, RFC_ID_COL,
-                                  start=RFC_DATA_ROW).items():
-            sid = kfull.split(' - ')[0].strip()
-            sT = sC = 0.0
-            for tc, cc in RFC_DISC_COLS.values():
-                sT += _num(rws.cell(r, tc).value)
-                sC += _num(rws.cell(r, cc).value)
-            eff[sid] = (round(sC / sT * 100) if sT > 0 else None,
-                        n(rws.cell(r, 7).value))
-    finally:
-        wbd.close()
+    rfc_map = _load_rfc_from_platform()
+    if not rfc_map:
+        print('[sync] WARNING: could not load RFC data from platform')
+        return
 
     pws = wb['PRC STATUS']
 
@@ -267,10 +284,12 @@ def sync_prc_status(src, wb, rep):
                 return c
         c = pws.max_column + 1
         pws.cell(row, c).value = title
+        pws.cell(row, c).font = Font(size=9, bold=True)
         return c
 
     c_tot = find_or_make('TOTAL %')
     c_sig = find_or_make('RFC SIGNED')
+    c_wd = find_or_make('WD STATUS')
 
     empty = 0
     for r in range(3, pws.max_row + 1):
@@ -282,7 +301,13 @@ def sync_prc_status(src, wb, rep):
             continue
         empty = 0
         sid = v.split(' - ')[0].strip()
-        tot, signed = eff.get(sid, (None, ''))
+        entry = rfc_map.get(sid)
+        if not entry:
+            continue
+        tot = entry.get('tot')
+        signed = entry.get('signed', '')
+        wd = entry.get('wd', '')
+
         cell = pws.cell(r, c_tot)
         if tot is not None and n(cell.value) != str(tot):
             cell.value = tot
@@ -293,11 +318,19 @@ def sync_prc_status(src, wb, rep):
             if cur != 'FFC6EFCE':
                 apply_fill(pws, r, c_tot, 'FFC6EFCE')
                 rep['prc'] += 1
+
         scell = pws.cell(r, c_sig)
         sv = signed.strip() if signed else ''
         if sv and n(scell.value) != sv:
             scell.value = sv
             scell.font = Font(size=9)
+            rep['prc'] += 1
+
+        wcell = pws.cell(r, c_wd)
+        wv = wd.strip() if wd else ''
+        if wv and n(wcell.value) != wv:
+            wcell.value = wv
+            wcell.font = Font(size=9)
             rep['prc'] += 1
 
 
