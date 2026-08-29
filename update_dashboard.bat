@@ -9,9 +9,7 @@ echo  %date% %time%
 echo ============================================
 echo.
 
-echo [1/3] Building data.json + platform...
-python daily_update.py
-if %errorlevel% neq 0 goto :err
+echo [1/3] Building platform...
 python cpp_agi_dashboard.py
 if %errorlevel% neq 0 goto :err
 
