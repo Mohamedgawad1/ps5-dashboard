@@ -16,6 +16,7 @@ LOG = os.path.join(BASE, "watchdog_log.txt")
 PROCESSES = {
     "server": ["python", os.path.join(BASE, "mobile_app", "server.py")],
     "auto_sync": ["python", os.path.join(BASE, "auto_sync_rfi.py")],
+    "cloud_sync": ["python", os.path.join(BASE, "cloud_auto_update.py")],
     "tunnel_named": [os.path.join(BASE, "cloudflared.exe"), "tunnel", "run", "cpp-eit"],
     "tunnel_backup": [os.path.join(BASE, "cloudflared.exe"), "tunnel", "--url", "http://localhost:8080"],
 }
