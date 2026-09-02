@@ -56,6 +56,8 @@ ITR_MAP = {
     'TAG': 'Asset - Tag',
     'DISC': 'Discipline',
     'TASK TYPE': 'Task Type (Name)',
+    'DESCRIPTION': 'Description',
+    'TEST FORM': 'Test Form - Description',
     'ASSET DESCRIPTION': 'Asset - Description',
     'STATE': 'Task State',
     'CLOSING DATE': 'Closing Date',
@@ -96,6 +98,19 @@ def n(v):
     return '' if v is None else str(v).strip()
 
 
+def _emb_token():
+    try:
+        p = os.path.join(HERE, '..', 'PS5-COMPLETION-PLATFORM', 'index.html')
+        with open(p, encoding='utf-8', errors='ignore') as f:
+            txt = f.read()
+        m = re.search(r"var EMB=\(function\(\)\{var a='([\d,]+)'\.split", txt)
+        if not m:
+            return None
+        return ''.join(chr(int(x) + 7) for x in m.group(1).split(','))
+    except Exception:
+        return None
+
+
 def fetch_state(path=None):
     if path:
         try:
@@ -104,6 +119,22 @@ def fetch_state(path=None):
         except Exception as e:
             print(f'[cloud] state file read failed: {e}')
             return None
+    emb = _emb_token()
+    if emb:
+        try:
+            api = ('https://api.github.com/repos/Mohamedgawad1/'
+                   'PS5-COMPLETION-PLATFORM/contents/platform_state.json?t='
+                   + str(int(time.time())))
+            req = urllib.request.Request(
+                api,
+                headers={'Authorization': 'token ' + emb,
+                         'Accept': 'application/vnd.github.raw+json',
+                         'User-Agent': 'ps5-sync'})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                if r.status == 200:
+                    return json.loads(r.read().decode('utf-8'))
+        except Exception as e:
+            print(f'[cloud] API fetch failed ({e}) - trying raw')
     try:
         req = urllib.request.Request(STATE_URL, headers={'User-Agent': 'ps5-sync'})
         with urllib.request.urlopen(req, timeout=30) as r:
@@ -126,15 +157,21 @@ def save_seen(h):
         json.dump({'hash': h, 'time': time.strftime('%Y-%m-%d %H:%M:%S')}, f)
 
 
+_MONTHS = {m: str(i + 1).zfill(2) for i, m in enumerate(
+    ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY',
+     'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'])}
 DATE_RE = re.compile(r'PS-5\s*COMPLETIONS\s*DPR\s*SUMMERY\s*-\s*'
-                     r'(\d{1,2})-(\d{1,2})-(\d{2,4})\.xlsx$', re.I)
+                     r'(\d{1,2})\s*-\s*([A-Z]+|\d{1,2})\s*-\s*(\d{2,4})'
+                     r'\.xlsx$', re.I)
 
 
 def _date_key(m):
-    """(year, month, day) tuple sortable as strings."""
+    """(year, month, day) tuple sortable as strings. Accepts both
+    DD-MM-YY (25-08-26) and DD-MONTH-YYYY (02-SEPTEMBER-2026)."""
     dd, mm, yy = m.group(1), m.group(2), m.group(3)
+    mm = _MONTHS.get(mm.upper(), mm.zfill(2))
     yy = yy if len(yy) == 4 else '20' + yy
-    return (yy, mm.zfill(2), dd.zfill(2))
+    return (yy, mm, dd.zfill(2))
 
 
 def find_target():
@@ -388,8 +425,9 @@ def run_once(force, state_file=None, target=None):
         print(f'[sync] cannot open "{os.path.basename(src)}" ({e}) - '
               f'close Excel / check the file. NOTHING was changed.')
         return
-    rep = {'written': 0, 'notes': 0, 'colors': 0, 'skipped_formula': [],
-           'skipped_derived': [], 'no_row': [], 'no_col': []}
+    rep = {'written': 0, 'notes': 0, 'colors': 0, 'added': 0,
+           'skipped_formula': [], 'skipped_derived': [], 'no_row': [],
+           'no_col': []}
 
     # ---- detailed sheets -------------------------------------------------
     for psheet, (tgt, idh, cmap) in TARGET_SHEET.items():
@@ -403,6 +441,20 @@ def run_once(force, state_file=None, target=None):
             rep['no_col'].append(f'{tgt}: ID column {idh!r} missing')
             continue
         rows_by_id = index_ids(ws, idc)
+        nxt = [max(rows_by_id.values()) + 1] if rows_by_id else [2]
+
+        def row_for(rid):
+            r = rows_by_id.get(n(rid).upper())
+            if r:
+                return r
+            r = nxt[0]
+            ws.cell(r, idc).value = rid
+            ws.cell(r, idc).font = Font(size=9)
+            rows_by_id[n(rid).upper()] = r
+            nxt[0] += 1
+            rep['added'] += 1
+            return r
+
         colmap = {}
         for pcol, etitle in cmap.items():
             ec = header_index(ws, etitle)
@@ -413,10 +465,7 @@ def run_once(force, state_file=None, target=None):
         note_c = ensure_note_col(ws) if notes.get(psheet) else None
 
         for rid, ed in (cells.get(psheet, {}) or {}).items():
-            r = rows_by_id.get(n(rid).upper())
-            if not r:
-                rep['no_row'].append(f'{psheet}/{rid}')
-                continue
+            r = row_for(rid)
             for pcol, val in ed.items():
                 ec = colmap.get(pcol)
                 if not ec:
@@ -430,15 +479,12 @@ def run_once(force, state_file=None, target=None):
                 cell.font = Font(size=9)
                 rep['written'] += 1
         for rid, val in (notes.get(psheet, {}) or {}).items():
-            r = rows_by_id.get(n(rid).upper())
-            if not r:
-                rep['no_row'].append(f'{psheet}-note/{rid}')
-                continue
+            r = row_for(rid)
             ws.cell(r, note_c).value = val
             ws.cell(r, note_c).font = Font(size=9)
             rep['notes'] += 1
         for rid, col in (colors.get(psheet, {}) or {}).items():
-            r = rows_by_id.get(n(rid).upper())
+            r = row_for(rid)
             if r:
                 apply_fill(ws, r, 1, col)
                 rep['colors'] += 1
@@ -452,6 +498,20 @@ def run_once(force, state_file=None, target=None):
         ids = {k.split(' - ')[0].strip(): v
                for k, v in index_ids(ws, RFC_ID_COL,
                                      start=RFC_DATA_ROW).items()}
+        nrfc = [max(ids.values()) + 1] if ids else [RFC_DATA_ROW]
+
+        def row_for(rid):
+            r = ids.get(n(rid).upper())
+            if r:
+                return r
+            r = nrfc[0]
+            ws.cell(r, RFC_ID_COL).value = str(rid)
+            ws.cell(r, RFC_ID_COL).font = Font(size=9)
+            ids[n(rid).upper()] = r
+            nrfc[0] += 1
+            rep['added'] += 1
+            return r
+
         walk_holder = [None]
 
         def get_walk():
@@ -478,10 +538,7 @@ def run_once(force, state_file=None, target=None):
             rep['written'] += 1
 
         for rid, ed in (cells.get(sh, {}) or {}).items():
-            r = ids.get(n(rid).upper())
-            if not r:
-                rep['no_row'].append(f'{sh}/{rid}')
-                continue
+            r = row_for(rid)
             for pcol, val in ed.items():
                 mkey = re.match(r'^([A-T]) (TOTAL|CLOSED)$', pcol)
                 if mkey and mkey.group(1) in RFC_DISC_COLS:
@@ -497,16 +554,13 @@ def run_once(force, state_file=None, target=None):
                 else:
                     rep['no_col'].append(f'{sh}: {pcol} unmapped')
         for rid, val in (notes.get(sh, {}) or {}).items():
-            r = ids.get(n(rid).upper())
-            if not r:
-                rep['no_row'].append(f'{sh}-note/{rid}')
-                continue
+            r = row_for(rid)
             nc = ensure_note_col(ws)
             ws.cell(r, nc).value = val
             ws.cell(r, nc).font = Font(size=9)
             rep['notes'] += 1
         for rid, col in (colors.get(sh, {}) or {}).items():
-            r = ids.get(n(rid).upper())
+            r = row_for(rid)
             if r:
                 apply_fill(ws, r, 1, col)
                 rep['colors'] += 1
@@ -516,7 +570,8 @@ def run_once(force, state_file=None, target=None):
     sync_prc_status(src, wb, rep)
 
     # ---- nothing changed? do not touch the workbook at all ---------------
-    if not (rep['written'] or rep['notes'] or rep['colors'] or rep['prc']):
+    if not (rep['written'] or rep['notes'] or rep['colors'] or rep['prc']
+            or rep['added']):
         wb.close()
         save_seen(h) if not state_file else None
         print('[sync] no effective changes - workbook untouched')
@@ -559,7 +614,7 @@ def run_once(force, state_file=None, target=None):
     lines = [
         f"sync {time.strftime('%Y-%m-%d %H:%M:%S')} -> {os.path.basename(src)}",
         f"written={rep['written']} notes={rep['notes']} "
-        f"colors={rep['colors']} prc={rep['prc']}"]
+        f"colors={rep['colors']} prc={rep['prc']} added={rep['added']}"]
     if rep['skipped_derived']:
         lines.append('derived(auto in Excel, not written): '
                      + ', '.join(rep['skipped_derived'][:20]))
