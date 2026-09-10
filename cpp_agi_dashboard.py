@@ -86,7 +86,8 @@ def _cache_key(path, kwargs):
 
 def _fast_read_excel(path, sheet_name=None, header=0, skiprows=0):
     """Read one worksheet via openpyxl read_only + pandas (much faster than pandas default).
-    Mirrors pandas semantics: skiprows apply first, then header=N uses row N as labels."""
+    Mirrors pandas semantics: skiprows apply first, then header=N uses row N as labels;
+    duplicate column labels get '.1', '.2', ... suffixes like pandas does."""
     import openpyxl
     wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
     try:
@@ -100,7 +101,18 @@ def _fast_read_excel(path, sheet_name=None, header=0, skiprows=0):
         return pd.DataFrame()
     if header is None:
         return pd.DataFrame(rows)
-    return pd.DataFrame(rows[header + 1:], columns=list(rows[header]))
+    raw_cols = list(rows[header])
+    cols = []
+    seen = {}
+    for c in raw_cols:
+        c = c if c is not None else ''
+        if c in seen:
+            seen[c] += 1
+            cols.append(f'{c}.{seen[c]}')
+        else:
+            seen[c] = 0
+            cols.append(c)
+    return pd.DataFrame(rows[header + 1:], columns=cols)
 
 def safe_read_excel(path, **kwargs):
     """Read Excel with caching + fallback copy if file is locked."""
