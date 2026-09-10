@@ -844,7 +844,9 @@ def build_inspection_data(excel_path, ov_path=None):
         out['asset'] = out[table_col].fillna('').astype(str)
         out['closed'] = out['asset'].isin(closed_tags)
         out['date'] = out['Inspection Date'].dt.strftime('%Y-%m-%d')
-        sel = out[['task_id', 'asset', 'rfi_no', 'disc', 'status_norm', 'date', 'itr_type', 'closed']]
+        desc_col = 'Description' if 'Description' in out.columns else None
+        out['eht'] = out[desc_col].astype(str).str.contains('EHT', case=False, na=False) if desc_col else False
+        sel = out[['task_id', 'asset', 'rfi_no', 'disc', 'status_norm', 'date', 'itr_type', 'closed', 'eht']]
         return sel.rename(columns={'status_norm': 'status'}).to_dict('records')
 
     all_rfi = rfi_frame(dated)
@@ -3969,9 +3971,244 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     renderRawTable(idx, rows);
   }
 
+  // ---- RFI STATUS: RFIs grouped by No (Weekly / Monthly / EHT) ----
+  var RFI_PAGE_CSS = '.rfi-toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px;width:100%;}' +
+    '.rfi-sel,.rfi-toolbar input[type=text],.rfi-toolbar input[type=date]{padding:6px 10px;border:1px solid #ddd6c4;border-radius:8px;background:#fffdf8;font-family:inherit;color:#26221b;}' +
+    '.rfi-cols{display:flex;gap:16px;flex-wrap:wrap;width:100%;}' +
+    '.rfi-card{flex:1 1 380px;min-width:320px;}' +
+    '.rfi-table-wrap{overflow:auto;max-height:420px;}' +
+    '.rfi-table{width:100%;border-collapse:collapse;font-size:13px;background:#fffdf8;}' +
+    '.rfi-table th{background:#26221b;color:#f7f0e2;padding:8px 10px;text-align:left;position:sticky;top:0;z-index:1;}' +
+    '.rfi-table td{padding:7px 10px;border-bottom:1px solid #ece5d4;}' +
+    '.rfi-group-row{cursor:pointer;} .rfi-group-row:hover{background:#f3ecdb;}' +
+    '.rfi-no{font-weight:600;} .rfi-closed{color:#1a8a4a;font-weight:600;} .rfi-can{color:#2563eb;font-weight:700;}' +
+    '.rfi-total td{background:#f0e9d8;font-weight:700;border-top:2px solid #d8ceb4;}' +
+    '.rfi-detail-row .rfi-detail{background:#fbf7ec;padding:10px;border-left:3px solid #2563eb;margin:4px 0;}' +
+    '.rfi-detail-head{font-weight:700;margin-bottom:8px;} .rfi-detail-table{max-height:260px;}' +
+    '.rfi-badge{display:inline-block;padding:2px 8px;border-radius:10px;color:#fff;font-size:11px;margin-left:6px;}' +
+    '.rfi-empty{padding:20px;color:#9a8d7c;text-align:center;} .rfi-eht-lbl{font-size:13px;color:#6b5e4d;display:inline-flex;gap:6px;align-items:center;}' +
+    '.rfi-total .progress-bar{width:120px;}';
+  function buildRfiStatusPage(idx, rows){
+    pagesCache[idx] = pagesCache[idx] || {};
+    var t = document.getElementById('tab-' + idx);
+    var defTb = t.querySelector('.eit-page-toolbar');
+    if (defTb) defTb.style.display = 'none';
+    var all = (RFI && RFI.rfi_all) ? RFI.rfi_all : [];
+    var S = pagesCache[idx];
+    if(!S.s){
+      S.s = { date: isoDay(new Date()), disc:'ALL', type:'ALL', eht:'ALL', q:'' };
+    }
+    var st = S.s;
+
+    function isoDay(d){
+      var mo = String(d.getMonth()+1).padStart(2,'0');
+      var da = String(d.getDate()).padStart(2,'0');
+      return d.getFullYear() + '-' + mo + '-' + da;
+    }
+    function parseDay(s){ var p = String(s).split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
+    function addDays(d, n){ var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate()+n); return x; }
+    function mondayOf(d){ var x = addDays(d, 0); var wd = x.getDay(); x.setDate(x.getDate() + (wd===0 ? -6 : 1-wd)); return x; }
+    function fmtDate(d){ var mo = String(d.getMonth()+1).padStart(2,'0'), da = String(d.getDate()).padStart(2,'0'); return d.getFullYear()+'-'+mo+'-'+da; }
+
+    var DATE = parseDay(st.date);
+    var MONDAY = mondayOf(DATE);
+    var SUNDAY = addDays(MONDAY, 6);
+    var M_START = new Date(DATE.getFullYear(), DATE.getMonth(), 1);
+    var M_END = new Date(DATE.getFullYear(), DATE.getMonth()+1, 0);
+    var EHT_START = (st.eht === 'Month') ? M_START : MONDAY;
+    var EHT_END   = (st.eht === 'Month') ? M_END : SUNDAY;
+
+    var DISC_WORDS = {E:'ELECT', I:'INSTR', T:'TELECOM'};
+    function passFilter(r){
+      var qx = st.q.toLowerCase();
+      if(qx){
+        var hay = [r.rfi_no, r.task_id, r.asset, r.disc, r.date].join(' ').toLowerCase();
+        if(hay.indexOf(qx) < 0) return false;
+      }
+      if(st.disc !== 'ALL'){
+        var d0 = String(r.disc||'').toUpperCase();
+        var ok0 = d0.indexOf(DISC_WORDS[st.disc]) === 0 || d0.indexOf(st.disc) === 0;
+        if(!ok0) return false;
+      }
+      if(st.type !== 'ALL' && String(r.itr_type||'') !== st.type) return false;
+      return true;
+    }
+    function inRange(r){
+      return !!r.date && r.date >= EHT_START.toISOString().slice(0,10) && r.date <= fmtDate(EHT_END);
+    }
+    function inWeekRec(r, s, e){
+      var a = fmtDate(s), b = fmtDate(e);
+      return !!r.date && r.date >= a && r.date <= b;
+    }
+    function inMonthRec(r, s, e){
+      var a = fmtDate(s), b = fmtDate(e);
+      return !!r.date && r.date >= a && r.date <= b;
+    }
+    function isEht(r){ return !!(r.eht); }
+
+    function groupRfi(list){
+      var map = {};
+      list.forEach(function(r){
+        if(!r || !r.rfi_no) return;
+        var key = String(r.rfi_no).trim();
+        if(!map[key]){
+          map[key] = {rfi:key, type:r.itr_type||'?', disc:r.disc||'', tasks:0, closed:0, first:r.date, last:r.date, rows:[]};
+        }
+        var g = map[key];
+        g.tasks++;
+        if(r.closed) g.closed++;
+        if(!g.type || g.type==='?') g.type = r.itr_type||'?';
+        if(r.disc && g.disc.indexOf(r.disc) < 0) g.disc += (g.disc ? ' / ' : '') + r.disc;
+        if(r.date){
+          if(!g.first || r.date < g.first) g.first = r.date;
+          if(!g.last || r.date > g.last) g.last = r.date;
+        }
+        g.rows.push(r);
+      });
+      return Object.keys(map).map(function(k){
+        var g = map[k];
+        g.canClose = g.tasks - g.closed;
+        g.pct = g.tasks ? Math.round(g.closed / g.tasks * 100) : 0;
+        g.first = g.first || '-';
+        g.last = g.last || '-';
+        return g;
+      }).sort(function(a,b){ return b.tasks - a.tasks; });
+    }
+
+    var base = all.filter(passFilter);
+    var weeklyList = groupRfi(base.filter(function(r){ return inWeekRec(r, MONDAY, SUNDAY); }));
+    var monthlyList = groupRfi(base.filter(function(r){ return inMonthRec(r, M_START, M_END); }));
+    var ehtList = groupRfi(base.filter(function(r){ return isEht(r) && inRange(r); }));
+
+    function sumClose(list){
+      var t=0, c=0;
+      list.forEach(function(g){ t+=g.tasks; c+=g.closed; });
+      return {tasks:t, closed:c, can:t-c};
+    }
+    var wk = sumClose(weeklyList), mo = sumClose(monthlyList), eh = sumClose(ehtList);
+
+    // ---- KPIs ----
+    var kpi = kpiCard('🗓️', fmt(wk.tasks), 'Tasks this week', '') +
+              kpiCard('✅', fmt(wk.can), 'Can close this week', '') +
+              kpiCard('🔒', fmt(wk.closed), 'Closed before (week)', '') +
+              kpiCard('🔢', fmt(monthlyList.length), 'RFIs this month', '');
+    document.getElementById('pkpi-' + idx).innerHTML = '<div class="kpi-row">' + kpi + '</div>';
+    document.getElementById('count-' + idx).textContent = base.length + ' RFI task rows · week ' + fmtDate(MONDAY) + ' → ' + fmtDate(SUNDAY);
+
+    // ---- toolbar ----
+    function sel(name, opt, label){
+      var o = '<select id="rfi-' + name + '-' + idx + '" class="rfi-sel"><option value="ALL">' + label + ': All</option>';
+      opt.forEach(function(v){ o += '<option value="' + v + '"' + (st[name]===v?' selected':'') + '>' + v + '</option>'; });
+      return o + '</select>';
+    }
+    var tbHtml =
+      '<div class="rfi-toolbar">' +
+        '<button class="btn-export" onclick="buildRfiStatusPage(' + idx + ',[])">🔄 Refresh</button>' +
+        '<input type="date" id="rfi-date-' + idx + '" value="' + st.date + '" title="Pick day — weekly & monthly tables follow it">' +
+        '<input type="text" id="rfi-search-' + idx + '" value="' + st.q + '" placeholder="🔍 Search RFI No / Asset / Task ID" style="min-width:230px;">' +
+        sel('disc', ['E','I','T'], 'Discipline') +
+        sel('type', ['Static Test','Conformity Check'], 'ITR Type') +
+        '<label class="rfi-eht-lbl">EHT scope:
+          <select id="rfi-eht-' + idx + '" class="rfi-sel">
+            <option value="ALL">Any</option>
+            <option value="Week"' + (st.eht==='Week'?' selected':'') + '>EHT Week</option>
+            <option value="Month"' + (st.eht==='Month'?' selected':'') + '>EHT Month</option>
+          </select>
+        </label>' +
+        '<button class="btn-export" onclick="exportRfiStatusExcel(' + idx + ')">⬇️ Export Excel</button>' +
+      '</div>';
+    var chartsWrap = document.getElementById('pcharts-' + idx);
+    chartsWrap.innerHTML = tbHtml;
+    chartsWrap.style.flexWrap = 'wrap';
+    chartsWrap.style.alignItems = 'flex-start';
+
+    function wire(){
+      var d = document.getElementById('rfi-date-' + idx);
+      if (d) d.addEventListener('change', function(){ st.date = d.value; buildRfiStatusPage(idx, []); });
+      var sb = document.getElementById('rfi-search-' + idx);
+      if (sb) sb.addEventListener('keyup', function(){ st.q = sb.value; buildRfiStatusPage(idx, []); });
+      var dd = document.getElementById('rfi-disc-' + idx);
+      if (dd) dd.addEventListener('change', function(){ st.disc = dd.value; buildRfiStatusPage(idx, []); });
+      var td = document.getElementById('rfi-type-' + idx);
+      if (td) td.addEventListener('change', function(){ st.type = td.value; buildRfiStatusPage(idx, []); });
+      var ed = document.getElementById('rfi-eht-' + idx);
+      if (ed) ed.addEventListener('change', function(){ st.eht = ed.value; buildRfiStatusPage(idx, []); });
+    }
+    wire();
+
+    // ---- tables ----
+    function groupTable(title, list, color){
+      if(!list.length){ return '<div class="chart-card" style="min-width:320px;"><h3>' + title + '</h3><div class="rfi-empty">No RFIs in range.</div></div>'; }
+      var s = sumClose(list);
+      var head = '<tr><th>#</th><th>RFI No</th><th>ITR Type</th><th>Disc.</th><th>Total Tasks</th><th>Closed Before</th><th>Can Close Now</th><th>Progress</th><th>·</th></tr>';
+      var body = list.map(function(g, i){
+        var r = '<tr class="rfi-group-row" onclick="toggleRfiDetail(this)" data-rfi="' + esc(g.rfi) + '" data-tab="' + idx + '">';
+        r += '<td>' + (i+1) + '</td>';
+        r += '<td class="rfi-no">' + esc(g.rfi) + '</td>';
+        r += '<td>' + esc(g.type) + '</td>';
+        r += '<td>' + esc(g.disc) + '</td>';
+        r += '<td><b>' + g.tasks + '</b></td>';
+        r += '<td class="rfi-closed">' + g.closed + '</td>';
+        r += '<td class="rfi-can"><b>' + g.canClose + '</b></td>';
+        r += '<td>' + progressBar(g.pct, '<span class="rfi-pp">' + g.pct + '%</span>') + '</td>';
+        r += '<td>▾</td></tr>';
+        r += '<tr class="rfi-detail-row" style="display:none;"><td colspan="9"><div class="rfi-detail"></div></td></tr>';
+        return r;
+      }).join('');
+      var f = '<tr class="rfi-total"><td colspan="4">Total</td><td><b>' + s.tasks + '</b></td><td>' + s.closed + '</td><td><b>' + s.can + '</b></td><td colspan="2">' + progressBar(s.tasks?Math.round(s.closed/s.tasks*100):0) + '</td></tr>';
+      return '<div class="chart-card rfi-card" style="border-top:4px solid ' + color + ';">' +
+        '<div class="section-title">' + title + ' <span class="rfi-badge">' + list.length + ' RFIs</span></div>' +
+        '<div class="rfi-table-wrap"><table class="rfi-table"><thead>' + head + '</thead><tbody>' + body + f + '</tbody></table></div></div>';
+    }
+    var html = '<div class="rfi-cols">' + groupTable('📅 Weekly — ' + fmtDate(MONDAY) + ' → ' + fmtDate(SUNDAY), weeklyList, '#2563eb') +
+                        groupTable('🗓️ Monthly — ' + M_START.getFullYear() + '-' + (M_START.getMonth()+1<10?'0':'') + (M_START.getMonth()+1), monthlyList, '#7c3aed') +
+                        groupTable('⚡ EHT — ' + (st.eht==='Month' ? 'Monthly' : 'Weekly'), ehtList, '#c8940a') + '</div>';
+    document.getElementById('wrap-' + idx).innerHTML = html + '<style>' + RFI_PAGE_CSS + '</style>';
+    if(!window.__rfiCtx) window.__rfiCtx = {};
+    window.__rfiCtx[idx] = {mon: fmtDate(MONDAY), sun: fmtDate(SUNDAY)};
+  }
+  function toggleRfiDetail(tr){
+    var dr = tr.nextElementSibling;
+    if(!dr) return;
+    var opened = dr.style.display === 'table-row';
+    dr.style.display = opened ? 'none' : 'table-row';
+    if(opened) return;
+    var tab = tr.getAttribute('data-tab');
+    var rfiNo = tr.getAttribute('data-rfi');
+    var found = (RFI && RFI.rfi_all || []).filter(function(r){ return String(r.rfi_no).trim() === rfiNo; });
+    var rows = found.map(function(r){
+      return '<tr><td>' + esc(r.asset||'') + '</td><td>' + esc(r.task_id||'') + '</td><td>' + esc(r.status||'') + '</td>' +
+             '<td>' + esc(r.date||'') + '</td><td>' + (r.closed ? '<span class="rfi-badge" style="background:#1a8a4a;">CLOSED</span>' : '<span class="rfi-badge" style="background:#c53030;">OPEN</span>') + '</td></tr>';
+    }).join('');
+    dr.querySelector('.rfi-detail').innerHTML =
+      '<div class="rfi-detail-head">' + esc(rfiNo) + ' — ' + found.length + ' task rows</div>' +
+      '<table class="rfi-table rfi-detail-table"><thead><tr><th>Asset Tag</th><th>Task ID</th><th>Status</th><th>Date</th><th>Closure</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+  function exportRfiStatusExcel(idx){
+    var all = (RFI && RFI.rfi_all) ? RFI.rfi_all : [];
+    function buildRows(list){
+      var out = [['RFI No','ITR Type','Discipline','First Date','Last Date','Total Tasks','Closed Before','Can Close Now']];
+      list.forEach(function(g){
+        out.push([g.rfi, g.type, g.disc, g.first, g.last, g.tasks, g.closed, g.canClose]);
+      });
+      return out;
+    }
+    var today = new Date();
+    var mo = String(today.getMonth()+1).padStart(2,'0'), da = String(today.getDate()).padStart(2,'0');
+    var fname = 'RFI_STATUS_' + today.getFullYear() + '-' + mo + '-' + da + '.csv';
+    var ctx = (window.__rfiCtx && window.__rfiCtx[idx]) || {mon:'', sun:''};
+    var rows = buildRows(groupRfi(all.filter(function(r){ return !!r.date && r.date >= ctx.mon && r.date <= ctx.sun; })));
+    var csv = '\uFEFF' + rows.map(function(r){ return r.map(esc).join(','); }).join('\n');
+    var a = document.createElement('a');
+    a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+    a.download = fname;
+    a.click();
+  }
+
   // ---- route dispatch ----
   function buildPage(idx, name, rows){
     if(/^dashboard$/i.test(name)) return buildDashboardPage(idx, rows);
+    if(/^rfi status$/i.test(name)) return buildRfiStatusPage(idx, rows);
     if(/subsystem report/i.test(name)) return buildSubsystemReportPage(idx, rows);
     return buildTablePage(idx, name, rows);
   }
