@@ -920,7 +920,6 @@ def build_inspection_data(excel_path, ov_path=None):
 
     def rfi_frame(data):
         out = data.copy()
-        out['rfi_no'] = out['QC RFI#'].fillna(out['QC RFI#.1']).fillna('').astype(str)
         out['task_id'] = out['Task ID'].fillna('').astype(str)
         pref = out['task_id'].str.extract(r'^T-(?P<p>\d+)')['p']
         out['itr_type'] = pref.map(itr_type_map).fillna('')
@@ -929,7 +928,18 @@ def build_inspection_data(excel_path, ov_path=None):
         out['date'] = out['Inspection Date'].dt.strftime('%Y-%m-%d')
         desc_col = 'Description' if 'Description' in out.columns else None
         out['eht'] = out[desc_col].astype(str).str.contains('EHT', case=False, na=False) if desc_col else False
-        sel = out[['task_id', 'asset', 'rfi_no', 'disc', 'status_norm', 'date', 'itr_type', 'closed', 'eht']]
+        keep = out[['task_id', 'asset', 'disc', 'status_norm', 'date', 'itr_type', 'closed', 'eht']].copy()
+        c8 = out['QC RFI#'].fillna('').astype(str).str.strip()
+        c13 = out['QC RFI#.1'].fillna('').astype(str).str.strip()
+        a = keep.copy(); a['rfi_no'] = c8
+        parts = [a]
+        b = keep.copy(); b['rfi_no'] = c13
+        bmask = (c13 != '') & (c13 != c8)
+        if bmask.any():
+            parts.append(b[bmask])
+        res = pd.concat(parts, ignore_index=True)
+        res = res[res['rfi_no'] != '']
+        sel = res[['task_id', 'asset', 'rfi_no', 'disc', 'status_norm', 'date', 'itr_type', 'closed', 'eht']]
         return sel.rename(columns={'status_norm': 'status'}).to_dict('records')
 
     all_rfi = rfi_frame(dated)
