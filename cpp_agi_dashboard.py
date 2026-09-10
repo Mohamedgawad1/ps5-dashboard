@@ -51,8 +51,8 @@ CLOUD_LINKS = {
 
 def sync_cloud_files():
     """Downloads every CLOUD_LINKS file into CLOUD_CACHE (always newest).
-    Uses PowerShell because it handles OneDrive's TLS / redirect flow
-    reliably without requiring a login session."""
+    Generates a temporary .ps1 script for PowerShell because it handles
+    OneDrive's TLS/redirect flow without requiring a login session."""
     if not CLOUD_LINKS:
         return
     try:
@@ -60,38 +60,49 @@ def sync_cloud_files():
     except OSError:
         return
 
+    D34 = chr(34)   # "
+    D36 = chr(36)   # $
+
     for keywords, (fname, url) in CLOUD_LINKS.items():
         dest = os.path.join(CLOUD_CACHE, fname)
-        ps_cmd = (
-            "try { "
-            f"  Invoke-WebRequest -Uri '{url}' "
-            f"  -OutFile '{dest}' "
-            "-UseBasicParsing -MaximumRedirection 8 -TimeoutSec 180 "
-            "-Headers @{\"User-Agent\"=\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/125.0 Safari/537.36\"} "
-            "-ErrorAction Stop;"
-            f"  $b = [System.IO.File]::ReadAllBytes('{dest}');"
-            "  if ($b.Length -ge 2 -and $b[0] -eq 0x50 -and $b[1] -eq 0x4B) {"
-            f"    Write-Output ('CloudOK:{0}' -f $b.Length);"
-            "  } else {"
-            f"    Write-Output ('CloudERR:not-xlsx:{0}' -f $b.Length);"
-            "    Remove-Item -Force '{dest}' -ErrorAction SilentlyContinue;"
-            "  }"
-            "} catch {"
-            f"  Write-Output ('CloudERR:{0}' -f $_.Exception.Message);"
-            "}"
-        )
+        ps1  = os.path.join(CLOUD_CACHE, '_dl.ps1')
         try:
+            with open(ps1, 'w', encoding='utf-8') as f:
+                f.write(D36 + 'url  = ' + D34 + url  + D34 + '\n')
+                f.write(D36 + 'dest = ' + D34 + dest + D34 + '\n')
+                f.write('try {\n')
+                f.write('  Invoke-WebRequest -Uri ' + D36 + 'url -OutFile ' + D36 + 'dest '
+                        '-UseBasicParsing -MaximumRedirection 8 -TimeoutSec 180 '
+                        '-Headers @{' + D34 + 'User-Agent' + D34 + '=' + D34 +
+                        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/125.0 Safari/537.36'
+                        + D34 + '} -ErrorAction Stop\n')
+                f.write('  ' + D36 + 'b = [System.IO.File]::ReadAllBytes(' + D36 + 'dest)\n')
+                f.write('  if (' + D36 + 'b.Length -ge 4 -and ' + D36 + 'b[0] -eq 0x50 -and '
+                        + D36 + 'b[1] -eq 0x4B) {\n')
+                f.write('    Write-Output (' + D34 + 'CLOK:{0}' + D34 + ' -f '
+                        + D36 + 'b.Length)\n')
+                f.write('  } else {\n')
+                f.write('    Write-Output (' + D34 + 'CLFAIL:not-xlsx:{0}' + D34 + ' -f '
+                        + D36 + 'b.Length)\n')
+                f.write('    Remove-Item -Force ' + D36 + 'dest -ErrorAction SilentlyContinue\n')
+                f.write('  }\n')
+                f.write('} catch {\n')
+                f.write('  Write-Output (' + D34 + 'CLFAIL:{0}' + D34 + ' -f '
+                        + D36 + '_.Exception.Message)\n')
+                f.write('}\n')
+
             import subprocess
             r = subprocess.run(
-                ['powershell', '-NoProfile', '-Command', ps_cmd],
-                capture_output=True, text=True, timeout=210
+                ['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ps1],
+                capture_output=True, text=True, timeout=240
             )
             out = (r.stdout or '').strip()
-            if out.startswith('CloudOK:'):
+            if out.startswith('CLOK:'):
                 size = int(out.split(':', 1)[1])
-                print(f"  Cloud -> {fname} ({size:,} bytes) [from {url[:60]}...]")
+                print(f"  Cloud -> {fname} ({size:,} bytes)")
             else:
-                print(f"  [WARN] Cloud download issue ({fname}): {out}")
+                err_msg = out or r.stderr.strip()[:200]
+                print(f"  [WARN] Cloud ({fname}): {err_msg}")
         except Exception as e:
             print(f"  [WARN] Cloud download failed ({fname}): {e}")
 
