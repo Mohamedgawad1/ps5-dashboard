@@ -4108,7 +4108,21 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     '.rfi-total .progress-bar{width:120px;}' +
     '.rfi-nos{display:flex;flex-wrap:wrap;gap:4px;padding:6px 0 10px;max-height:74px;overflow:auto;}' +
     '.rfi-chip{font-size:11px;font-weight:600;color:#2563eb;background:#eef3ff;border:1px solid #c9d8ff;padding:2px 8px;border-radius:12px;white-space:nowrap;}' +
-    '.rfi-chip:hover{background:#dfe9ff;}';
+    '.rfi-chip:hover{background:#dfe9ff;}' +
+    '.rfi-refresh-btn{background:#2563eb;border-radius:50%;width:42px;height:42px;padding:0;justify-content:center;box-shadow:0 4px 14px rgba(37,99,235,.3);} ' +
+    '.rfi-refresh-btn:active{transform:rotate(180deg);transition:.2s;}' +
+    '.rfi-date-lbl{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#6b5e4d;}';
+  function rfiForceRefresh(idx){
+    try{
+      var st = pagesCache[idx] && pagesCache[idx].s;
+      if(st) sessionStorage.setItem('ps5_rfi_state_' + idx, JSON.stringify(st));
+    }catch(e){}
+    try{
+      var u = new URL(location.href);
+      u.searchParams.set('v', Date.now());
+      location.replace(u.href);
+    }catch(e){ location.reload(true); }
+  }
   function buildRfiStatusPage(idx, rows){
     pagesCache[idx] = pagesCache[idx] || {};
     var t = document.getElementById('tab-' + idx);
@@ -4118,6 +4132,10 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     var S = pagesCache[idx];
     if(!S.s){
       S.s = { date: isoDay(new Date()), disc:'ALL', type:'ALL', eht:'ALL', q:'' };
+      try{
+        var saved = sessionStorage.getItem('ps5_rfi_state_' + idx);
+        if(saved){ S.s = Object.assign(S.s, JSON.parse(saved)); }
+      }catch(e){}
     }
     var st = S.s;
 
@@ -4229,7 +4247,7 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     }
     var tbHtml =
       '<div class="rfi-toolbar">' +
-        '<button class="btn-export" onclick="buildRfiStatusPage(' + idx + ',[])">🔄 Refresh</button>' +
+        '<button class="btn-export rfi-refresh-btn" onclick="rfiForceRefresh(' + idx + ')" title="Reload latest cloud build">🔄 Refresh</button>' +
         '<input type="date" id="rfi-date-' + idx + '" value="' + st.date + '" title="Pick day — weekly & monthly tables follow it">' +
         '<input type="text" id="rfi-search-' + idx + '" value="' + st.q + '" placeholder="🔍 Search RFI No / Asset / Task ID" style="min-width:230px;">' +
         sel('disc', ['E','I','T'], 'Discipline') +
