@@ -84,36 +84,6 @@ def _cache_key(path, kwargs):
     return (os.path.normcase(os.path.abspath(path)),
             str(sorted((k, str(v)) for k, v in kwargs.items())))
 
-def _fast_read_excel(path, sheet_name=None, header=0, skiprows=0):
-    """Read one worksheet via openpyxl read_only + pandas (much faster than pandas default).
-    Mirrors pandas semantics: skiprows apply first, then header=N uses row N as labels;
-    duplicate column labels get '.1', '.2', ... suffixes like pandas does."""
-    import openpyxl
-    wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
-    try:
-        ws = wb[sheet_name] if sheet_name else wb[wb.sheetnames[0]]
-        rows = list(ws.iter_rows(values_only=True))
-    finally:
-        wb.close()
-    if skiprows:
-        rows = rows[skiprows:]
-    if not rows:
-        return pd.DataFrame()
-    if header is None:
-        return pd.DataFrame(rows)
-    raw_cols = list(rows[header])
-    cols = []
-    seen = {}
-    for c in raw_cols:
-        c = c if c is not None else ''
-        if c in seen:
-            seen[c] += 1
-            cols.append(f'{c}.{seen[c]}')
-        else:
-            seen[c] = 0
-            cols.append(c)
-    return pd.DataFrame(rows[header + 1:], columns=cols)
-
 def safe_read_excel(path, **kwargs):
     """Read Excel with caching + fallback copy if file is locked."""
     if path is None:
@@ -122,14 +92,8 @@ def safe_read_excel(path, **kwargs):
     if key in _EXCEL_CACHE:
         return _EXCEL_CACHE[key].copy()
     import shutil, tempfile
-    def _read():
-        try:
-            return _fast_read_excel(path, **kwargs)
-        except Exception as e:
-            print(f"  [fast-read failed ({e}); retrying with pandas]")
-            return pd.read_excel(path, **kwargs)
     try:
-        df = _read()
+        df = pd.read_excel(path, **kwargs)
     except PermissionError:
         tmp = os.path.join(tempfile.gettempdir(), 'ov_tmp.xlsx')
         try:
