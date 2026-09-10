@@ -38,6 +38,42 @@ DOWNLOADS2 = r"C:\Users\mylap\Downloads\asset and punch"
 OUTPUT_HTML = os.path.join(DOWNLOADS, "index.html")
 OUTPUT_HTML2 = os.path.join(DOWNLOADS, "PS5_Project_Dashboard.html")
 
+# ---- Cloud source: download the continuously-updated file straight from OneDrive ----
+# In every build, synced_cloud_file(prefix_keywords) downloads the freshest copy of the
+# linked file (no local stale copy), then find_file() prefers it.
+CLOUD_CACHE = r"C:\Users\mylap\AppData\Local\Temp\opencode\cloud_sync"
+CLOUD_LINKS = {
+    # keywords to match in find_file() -> (local filename, download URL)
+    ('inspection', 'register'): ('PS-5 INSPECTION REGISTER (cloud).xlsx',
+                                 'https://onedrive.live.com/:x:/g/personal/C6BFB870664E7A27/IQAM5D92qo2KR681-fyG9xmvAajJGCOqpybnOzd22WgpB68?download=1'),
+}
+
+
+def sync_cloud_files():
+    """Downloads every CLOUD_LINKS file into CLOUD_CACHE (always newest)."""
+    if not CLOUD_LINKS:
+        return
+    try:
+        os.makedirs(CLOUD_CACHE, exist_ok=True)
+    except OSError:
+        return
+    for keywords, (fname, url) in CLOUD_LINKS.items():
+        dest = os.path.join(CLOUD_CACHE, fname)
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'})
+            with urllib.request.urlopen(req, timeout=180) as r:
+                data = r.read()
+            # Only replace when the header bytes actually look like an xlsx (not a sign-in page)
+            if len(data) >= 4 and data[:2] == b'PK':
+                with open(dest, 'wb') as f:
+                    f.write(data)
+                print(f"  Cloud link -> {fname} ({len(data):,} bytes)")
+            else:
+                print(f"  [WARN] Cloud link response was not a workbook: {fname}")
+        except Exception as e:
+            print(f"  [WARN] Cloud download failed ({fname}): {e}")
+
+
 RESPONSIBLE_COMPANY = "CPP AGI"
 DISCIPLINES = {
     'E - Electrical':       'Electrical (E)',
@@ -61,7 +97,7 @@ def norm_discipline(v):
 # ====================================================================
 def find_file(prefix_keywords):
     candidates = []
-    for folder in [DOWNLOADS, DOWNLOADS2]:
+    for folder in [CLOUD_CACHE, DOWNLOADS, DOWNLOADS2]:
         if not os.path.isdir(folder):
             continue
         for f in os.listdir(folder):
@@ -4386,6 +4422,8 @@ def main():
     print("=" * 60)
     print("   PS5 Project Dashboard Generator")
     print("=" * 60)
+
+    sync_cloud_files()
 
     ov_path = find_file(['ovtasks'])
     punch_path = find_file(['punch', 'list', 'register']) or find_file(['punch', 'list'])
