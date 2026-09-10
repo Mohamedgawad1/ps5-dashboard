@@ -683,9 +683,32 @@ def build_punch_data(excel_path):
 # ====================================================================
 #  3b) RFI / Inspection Register
 # ====================================================================
-def build_inspection_data(excel_path):
+def build_inspection_data(excel_path, ov_path=None):
     if not excel_path:
         return None
+
+    # ---- Build ITR Type Map from ovTasks (Task ID prefix -> ITR Type) ----
+    itr_type_map = {}
+    closed_tags = set()
+    if ov_path:
+        try:
+            odf = pd.read_excel(ov_path, sheet_name='Exported from SC')
+            for _, r in odf.iterrows():
+                tid = str(r.get('Task ID', '')).strip()
+                ttype = str(r.get('Task Type (Name)', '')).strip()
+                tag = str(r.get('Asset - Tag', '')).strip()
+                state = str(r.get('Task State', '')).strip()
+                if tid.startswith('T-'):
+                    parts = tid.split('-')
+                    if len(parts) >= 3:
+                        prefix = parts[1]
+                        if prefix not in itr_type_map:
+                            itr_type_map[prefix] = ttype
+                if tag and tag.lower() != 'nan' and state == 'Closed':
+                    closed_tags.add(tag)
+            print(f"  ITR Type Map: {len(itr_type_map)} prefixes | Closed tags: {len(closed_tags)}")
+        except Exception as e:
+            print(f"  [WARN] Could not load ovTasks for ITR type map: {e}")
 
     df = pd.read_excel(excel_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
     df = df.dropna(subset=['Asset - Tag'])
@@ -798,19 +821,32 @@ def build_inspection_data(excel_path):
                .head(10).reset_index())
     top_sub.columns = ['label', 'count']
 
-    # ---- recent RFI records for drill-down table ----
-    recent = dated.sort_values('Inspection Date', ascending=False).head(100)
+    # ---- ALL RFI records (for RFI STATUS page) + recent 100 ----
     table_col = 'Asset - Tag'
-    recent_records = []
-    for _, r in recent.iterrows():
+
+    def make_rfi_record(r):
         rfi_val = str(r.get('QC RFI#', '') or '') if pd.notna(r.get('QC RFI#')) else str(r.get('QC RFI#.1', '') or '')
-        recent_records.append({
-            'asset': str(r.get(table_col, '')),
+        task_id = str(r.get('Task ID', '') or '')
+        itr_type = ''
+        if task_id.startswith('T-'):
+            prefix = task_id.split('-')[1] if len(task_id.split('-')) >= 3 else ''
+            itr_type = itr_type_map.get(prefix, '')
+        asset = str(r.get(table_col, ''))
+        is_closed = asset in closed_tags if asset else False
+        return {
+            'task_id': task_id,
+            'asset': asset,
             'rfi_no': rfi_val,
             'disc': r.get('disc', ''),
             'status': r.get('status_norm', ''),
             'date': r['Inspection Date'].strftime('%Y-%m-%d'),
-        })
+            'itr_type': itr_type,
+            'closed': is_closed,
+        }
+
+    all_rfi = [make_rfi_record(r) for _, r in dated.iterrows()]
+    recent = dated.sort_values('Inspection Date', ascending=False).head(100)
+    recent_records = [make_rfi_record(r) for _, r in recent.iterrows()]
 
     # ---- RFI Inspection Summary (by Discipline, 3 columns: Laying / Testing / Termination) ----
     def sum_rfi(sub_df):
@@ -858,6 +894,9 @@ def build_inspection_data(excel_path):
         'monthly': monthly, 'monthly_total': monthly_total,
         'top_subsystems': top_sub.to_dict('records'),
         'recent': recent_records,
+        'rfi_all': all_rfi,
+        'closed_tags_count': len(closed_tags),
+        'itr_type_map': itr_type_map,
         'inspection_summary': {
             'rows': rfi_summary_rows,
             'totals': {
@@ -4121,7 +4160,7 @@ def main():
     itr_data = build_itr_data(ov_path, today_override)
     eit_table_data = build_itr_breakdown_table(ov_path)
     punch_data = build_punch_data(punch_path) if punch_path else None
-    rfi_data = build_inspection_data(rfi_path) if rfi_path else None
+    rfi_data = build_inspection_data(rfi_path, ov_path) if rfi_path else None
     cmt_qc_punch_data = build_cmt_qc_punch_data()
     cable_ov_data = build_cable_ov_data(ov_path)
     cable_tracker_data = build_cable_tracker_data()
