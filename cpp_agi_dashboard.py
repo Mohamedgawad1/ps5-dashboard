@@ -79,18 +79,30 @@ def find_file(prefix_keywords):
 
 # ====================================================================
 #  2) ITR Closures من ovTasks
+_EXCEL_CACHE = {}
+def _cache_key(path, kwargs):
+    return (os.path.normcase(os.path.abspath(path)),
+            str(sorted((k, str(v)) for k, v in kwargs.items())))
+
 def safe_read_excel(path, **kwargs):
-    """Read Excel with fallback copy if file is locked."""
+    """Read Excel with caching + fallback copy if file is locked."""
+    if path is None:
+        return None
+    key = _cache_key(path, kwargs)
+    if key in _EXCEL_CACHE:
+        return _EXCEL_CACHE[key].copy()
     import shutil, tempfile
     try:
-        return pd.read_excel(path, **kwargs)
+        df = pd.read_excel(path, **kwargs)
     except PermissionError:
         tmp = os.path.join(tempfile.gettempdir(), 'ov_tmp.xlsx')
         try:
             shutil.copy2(path, tmp)
         except PermissionError:
             pass
-        return pd.read_excel(tmp, **kwargs)
+        df = pd.read_excel(tmp, **kwargs)
+    _EXCEL_CACHE[key] = df
+    return df.copy()
 
 
 # ====================================================================
@@ -504,7 +516,7 @@ def build_cable_tracker_data():
     if not os.path.exists(path):
         print("  Cable tracker file NOT found")
         return None
-    df = pd.read_excel(path, sheet_name='PS5', header=None, skiprows=2)
+    df = safe_read_excel(path, sheet_name='PS5', header=None, skiprows=2)
     df.columns = ['Subsystem','Asset_Tag','Vlookup','Description','Scope','Disc',
                   'Laid_Date','LAYING_RFI','TESTING_RFI','TERM_RFI','CMT','Static_CMT','Remarks']
     df = df[df['Disc'].notna()].copy()
@@ -570,7 +582,7 @@ def build_punch_data(excel_path):
     if not excel_path:
         return None
 
-    raw = pd.read_excel(excel_path, sheet_name='MP Register', header=None, skiprows=6)
+    raw = safe_read_excel(excel_path, sheet_name='MP Register', header=None, skiprows=6)
     # الأعمدة حسب الهيدر:
     # 0 MPL No | 1 PL ID | 4 CPP SCOPE | 5 Subsystem | 6 Area | 7 TAG
     # 8 Punch Desc | 9 Cat | 10 Discipline | 13 Raised Date | 20 Status
@@ -692,7 +704,7 @@ def build_inspection_data(excel_path, ov_path=None):
     closed_tags = set()
     if ov_path:
         try:
-            odf = pd.read_excel(ov_path, sheet_name='Exported from SC')
+            odf = safe_read_excel(ov_path, sheet_name='Exported from SC')
             for _, r in odf.iterrows():
                 tid = str(r.get('Task ID', '')).strip()
                 ttype = str(r.get('Task Type (Name)', '')).strip()
@@ -710,7 +722,7 @@ def build_inspection_data(excel_path, ov_path=None):
         except Exception as e:
             print(f"  [WARN] Could not load ovTasks for ITR type map: {e}")
 
-    df = pd.read_excel(excel_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
+    df = safe_read_excel(excel_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
     df = df.dropna(subset=['Asset - Tag'])
 
     disc_map = {
@@ -985,7 +997,7 @@ def build_search_index(ov_path, punch_path, rfi_path):
 
     # ---- Inspection Register ----
     if rfi_path:
-        rdf = pd.read_excel(rfi_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
+        rdf = safe_read_excel(rfi_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
         rdf = rdf.dropna(subset=['Asset - Tag'])
 
         def norm_status(v):
