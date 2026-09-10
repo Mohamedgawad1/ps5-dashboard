@@ -4063,7 +4063,10 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     '.rfi-detail-head{font-weight:700;margin-bottom:8px;} .rfi-detail-table{max-height:260px;}' +
     '.rfi-badge{display:inline-block;padding:2px 8px;border-radius:10px;color:#fff;font-size:11px;margin-left:6px;}' +
     '.rfi-empty{padding:20px;color:#9a8d7c;text-align:center;} .rfi-eht-lbl{font-size:13px;color:#6b5e4d;display:inline-flex;gap:6px;align-items:center;}' +
-    '.rfi-total .progress-bar{width:120px;}';
+    '.rfi-total .progress-bar{width:120px;}' +
+    '.rfi-nos{display:flex;flex-wrap:wrap;gap:4px;padding:6px 0 10px;max-height:74px;overflow:auto;}' +
+    '.rfi-chip{font-size:11px;font-weight:600;color:#2563eb;background:#eef3ff;border:1px solid #c9d8ff;padding:2px 8px;border-radius:12px;white-space:nowrap;}' +
+    '.rfi-chip:hover{background:#dfe9ff;}';
   function buildRfiStatusPage(idx, rows){
     pagesCache[idx] = pagesCache[idx] || {};
     var t = document.getElementById('tab-' + idx);
@@ -4219,6 +4222,8 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     function groupTable(title, list, color){
       if(!list.length){ return '<div class="chart-card" style="min-width:320px;"><h3>' + title + '</h3><div class="rfi-empty">No RFIs in range.</div></div>'; }
       var s = sumClose(list);
+      var nos = list.map(function(g){ return g.rfi; }).join(' · ');
+      var chips = '<div class="rfi-nos" title="RFI numbers included: ' + esc(nos) + '">' + list.map(function(g){ return '<span class="rfi-chip">' + esc(g.rfi) + '</span>'; }).join('') + '</div>';
       var head = '<tr><th>#</th><th>RFI No</th><th>ITR Type</th><th>Disc.</th><th>Total Tasks</th><th>Closed Before</th><th>Can Close Now</th><th>Progress</th><th>·</th></tr>';
       var body = list.map(function(g, i){
         var r = '<tr class="rfi-group-row" onclick="toggleRfiDetail(this)" data-rfi="' + esc(g.rfi) + '" data-tab="' + idx + '">';
@@ -4237,6 +4242,7 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
       var f = '<tr class="rfi-total"><td colspan="4">Total</td><td><b>' + s.tasks + '</b></td><td>' + s.closed + '</td><td><b>' + s.can + '</b></td><td colspan="2">' + progressBar(s.tasks?Math.round(s.closed/s.tasks*100):0) + '</td></tr>';
       return '<div class="chart-card rfi-card" style="border-top:4px solid ' + color + ';">' +
         '<div class="section-title">' + title + ' <span class="rfi-badge">' + list.length + ' RFIs</span></div>' +
+        chips +
         '<div class="rfi-table-wrap"><table class="rfi-table"><thead>' + head + '</thead><tbody>' + body + f + '</tbody></table></div></div>';
     }
     var html = '<div class="rfi-cols">' + groupTable('📅 Today — ' + fmtDate(DATE), todayList, '#0891b2') +
