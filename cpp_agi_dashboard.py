@@ -4172,10 +4172,10 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     var td = sumClose(todayList), wk = sumClose(weeklyList), mo = sumClose(monthlyList), eh = sumClose(ehtList);
 
     // ---- KPIs ----
-    var kpi = kpiCard('📅', fmt(td.tasks), 'Tasks today · ' + fmtDate(DATE), '') +
+    var kpi = kpiCard('📅', todayList.length, 'RFIs today · ' + fmtDate(DATE), '') +
               kpiCard('✅', fmt(td.can), 'Can close today', '') +
-              kpiCard('🔒', fmt(td.closed), 'Closed before (today)', '') +
-              kpiCard('🗓️', fmt(wk.tasks), 'Tasks this week', '');
+              kpiCard('🗓️', fmt(wk.tasks), 'Tasks this week', '') +
+              kpiCard('🔢', weeklyList.length, 'RFIs this week', '');
     document.getElementById('pkpi-' + idx).innerHTML = '<div class="kpi-row">' + kpi + '</div>';
     document.getElementById('count-' + idx).textContent = base.length + ' RFI task rows · week ' + fmtDate(MONDAY) + ' → ' + fmtDate(SUNDAY);
 
