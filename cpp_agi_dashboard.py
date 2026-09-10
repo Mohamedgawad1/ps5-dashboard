@@ -4177,13 +4177,11 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
         '<input type="text" id="rfi-search-' + idx + '" value="' + st.q + '" placeholder="🔍 Search RFI No / Asset / Task ID" style="min-width:230px;">' +
         sel('disc', ['E','I','T'], 'Discipline') +
         sel('type', ['Static Test','Conformity Check'], 'ITR Type') +
-        '<label class="rfi-eht-lbl">EHT scope:
-          <select id="rfi-eht-' + idx + '" class="rfi-sel">
-            <option value="ALL">Any</option>
-            <option value="Week"' + (st.eht==='Week'?' selected':'') + '>EHT Week</option>
-            <option value="Month"' + (st.eht==='Month'?' selected':'') + '>EHT Month</option>
-          </select>
-        </label>' +
+        '<label class="rfi-eht-lbl">EHT scope: <select id="rfi-eht-' + idx + '" class="rfi-sel">' +
+          '<option value="ALL">Any</option>' +
+          '<option value="Week"' + (st.eht==='Week'?' selected':'') + '>EHT Week</option>' +
+          '<option value="Month"' + (st.eht==='Month'?' selected':'') + '>EHT Month</option>' +
+        '</select></label>' +
         '<button class="btn-export" onclick="exportRfiStatusExcel(' + idx + ')">⬇️ Export Excel</button>' +
       '</div>';
     var chartsWrap = document.getElementById('pcharts-' + idx);
