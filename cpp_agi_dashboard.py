@@ -771,6 +771,7 @@ def build_inspection_data(excel_path, ov_path=None):
     # ---- Build ITR Type Map from ovTasks (Task ID prefix -> ITR Type) ----
     itr_type_map = {}
     closed_tags = set()
+    closed_task_ids = set()
     if ov_path:
         try:
             odf = safe_read_excel(ov_path, sheet_name='Exported from SC')
@@ -785,8 +786,14 @@ def build_inspection_data(excel_path, ov_path=None):
                 if prefix not in itr_type_map:
                     itr_type_map[prefix] = tt
             closed_mask = (state == 'Closed') & (tag.notna()) & (tag.str.lower() != 'nan')
-            closed_tags = set(tag[closed_mask].dropna().unique())
-            print(f"  ITR Type Map: {len(itr_type_map)} prefixes | Closed tags: {len(closed_tags)}")
+            closed_tags_raw = set(tag[closed_mask].dropna().unique())
+            closed_tags = set()
+            for t in closed_tags_raw:
+                closed_tags.add(t)
+                closed_tags.add(t.replace('O', '0'))
+                closed_tags.add(t.replace('0', 'O'))
+            closed_task_ids = set(tid[closed_mask].dropna().unique())
+            print(f"  ITR Type Map: {len(itr_type_map)} prefixes | Closed tags: {len(closed_tags)} | Closed task IDs: {len(closed_task_ids)}")
         except Exception as e:
             print(f"  [WARN] Could not load ovTasks for ITR type map: {e}")
 
@@ -918,7 +925,7 @@ def build_inspection_data(excel_path, ov_path=None):
         pref = out['task_id'].str.extract(r'^T-(?P<p>\d+)')['p']
         out['itr_type'] = pref.map(itr_type_map).fillna('')
         out['asset'] = out[table_col].fillna('').astype(str)
-        out['closed'] = out['asset'].isin(closed_tags)
+        out['closed'] = (out['task_id'].isin(closed_task_ids)) | (out['asset'].isin(closed_tags))
         out['date'] = out['Inspection Date'].dt.strftime('%Y-%m-%d')
         desc_col = 'Description' if 'Description' in out.columns else None
         out['eht'] = out[desc_col].astype(str).str.contains('EHT', case=False, na=False) if desc_col else False
@@ -2211,6 +2218,15 @@ const DL_STACK = {  // for stacked bars: show value inside segment if big enough
   formatter:(v)=> v>5 ? v : ''
 };
 
+const DL_LINE = {  // for line charts: show value above every point (non-zero), smaller to avoid clutter
+  display:true, color:'#0b1120',
+  backgroundColor:'rgba(255,255,255,.92)', borderRadius:3,
+  padding:{top:1,bottom:1,left:3,right:3},
+  anchor:'end', align:'top', offset:2,
+  font:{weight:'bold', size:9},
+  formatter:(v)=> v>0 ? v : ''
+};
+
 // ---------- Sidebar toggle ----------
 document.querySelectorAll('.sidebar input[type=checkbox]').forEach(cb=>{
   cb.addEventListener('change', ()=>{
@@ -2270,7 +2286,7 @@ function combinedChart(id, itrRows, punchRows, rfiRows, type='line'){
       borderColor:s.color, backgroundColor: type==='line'? s.color+'33': s.color,
       fill: type==='line', tension:.3, borderRadius: type==='bar'?6:0,
       yAxisID:s.yid,
-      datalabels: type==='bar' ? DL_BAR : {display:false},
+      datalabels: type==='line' ? DL_LINE : DL_BAR,
     })) },
     options:{ responsive:true,
       plugins:{legend:{position:'bottom'}},
