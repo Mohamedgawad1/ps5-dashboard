@@ -84,6 +84,24 @@ def _cache_key(path, kwargs):
     return (os.path.normcase(os.path.abspath(path)),
             str(sorted((k, str(v)) for k, v in kwargs.items())))
 
+def _fast_read_excel(path, sheet_name=None, header=0, skiprows=0):
+    """Read one worksheet via openpyxl read_only + pandas (much faster than pandas default).
+    Mirrors pandas semantics: skiprows apply first, then header=N uses row N as labels."""
+    import openpyxl
+    wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
+    try:
+        ws = wb[sheet_name] if sheet_name else wb[wb.sheetnames[0]]
+        rows = list(ws.iter_rows(values_only=True))
+    finally:
+        wb.close()
+    if skiprows:
+        rows = rows[skiprows:]
+    if not rows:
+        return pd.DataFrame()
+    if header is None:
+        return pd.DataFrame(rows)
+    return pd.DataFrame(rows[header + 1:], columns=list(rows[header]))
+
 def safe_read_excel(path, **kwargs):
     """Read Excel with caching + fallback copy if file is locked."""
     if path is None:
@@ -92,8 +110,14 @@ def safe_read_excel(path, **kwargs):
     if key in _EXCEL_CACHE:
         return _EXCEL_CACHE[key].copy()
     import shutil, tempfile
+    def _read():
+        try:
+            return _fast_read_excel(path, **kwargs)
+        except Exception as e:
+            print(f"  [fast-read failed ({e}); retrying with pandas]")
+            return pd.read_excel(path, **kwargs)
     try:
-        df = pd.read_excel(path, **kwargs)
+        df = _read()
     except PermissionError:
         tmp = os.path.join(tempfile.gettempdir(), 'ov_tmp.xlsx')
         try:
@@ -705,19 +729,18 @@ def build_inspection_data(excel_path, ov_path=None):
     if ov_path:
         try:
             odf = safe_read_excel(ov_path, sheet_name='Exported from SC')
-            for _, r in odf.iterrows():
-                tid = str(r.get('Task ID', '')).strip()
-                ttype = str(r.get('Task Type (Name)', '')).strip()
-                tag = str(r.get('Asset - Tag', '')).strip()
-                state = str(r.get('Task State', '')).strip()
-                if tid.startswith('T-'):
-                    parts = tid.split('-')
-                    if len(parts) >= 3:
-                        prefix = parts[1]
-                        if prefix not in itr_type_map:
-                            itr_type_map[prefix] = ttype
-                if tag and tag.lower() != 'nan' and state == 'Closed':
-                    closed_tags.add(tag)
+            tid = odf['Task ID'].astype(str).str.strip()
+            ttype = odf['Task Type (Name)'].astype(str).str.strip()
+            tag = odf['Asset - Tag'].astype(str).str.strip()
+            state = odf['Task State'].astype(str).str.strip()
+            ok = (tid.str.startswith('T-')) & (tid.str.count('-') >= 1)
+            df_prefix = tid[ok].str.extract(r'^T-(?P<prefix>\d+)')['prefix']
+            # take first mapping per prefix (ordered)
+            for prefix, tt in zip(df_prefix, ttype[ok]):
+                if prefix not in itr_type_map:
+                    itr_type_map[prefix] = tt
+            closed_mask = (state == 'Closed') & (tag.notna()) & (tag.str.lower() != 'nan')
+            closed_tags = set(tag[closed_mask].dropna().unique())
             print(f"  ITR Type Map: {len(itr_type_map)} prefixes | Closed tags: {len(closed_tags)}")
         except Exception as e:
             print(f"  [WARN] Could not load ovTasks for ITR type map: {e}")
@@ -836,29 +859,21 @@ def build_inspection_data(excel_path, ov_path=None):
     # ---- ALL RFI records (for RFI STATUS page) + recent 100 ----
     table_col = 'Asset - Tag'
 
-    def make_rfi_record(r):
-        rfi_val = str(r.get('QC RFI#', '') or '') if pd.notna(r.get('QC RFI#')) else str(r.get('QC RFI#.1', '') or '')
-        task_id = str(r.get('Task ID', '') or '')
-        itr_type = ''
-        if task_id.startswith('T-'):
-            prefix = task_id.split('-')[1] if len(task_id.split('-')) >= 3 else ''
-            itr_type = itr_type_map.get(prefix, '')
-        asset = str(r.get(table_col, ''))
-        is_closed = asset in closed_tags if asset else False
-        return {
-            'task_id': task_id,
-            'asset': asset,
-            'rfi_no': rfi_val,
-            'disc': r.get('disc', ''),
-            'status': r.get('status_norm', ''),
-            'date': r['Inspection Date'].strftime('%Y-%m-%d'),
-            'itr_type': itr_type,
-            'closed': is_closed,
-        }
+    def rfi_frame(data):
+        out = data.copy()
+        out['rfi_no'] = out['QC RFI#'].fillna(out['QC RFI#.1']).fillna('').astype(str)
+        out['task_id'] = out['Task ID'].fillna('').astype(str)
+        pref = out['task_id'].str.extract(r'^T-(?P<p>\d+)')['p']
+        out['itr_type'] = pref.map(itr_type_map).fillna('')
+        out['asset'] = out[table_col].fillna('').astype(str)
+        out['closed'] = out['asset'].isin(closed_tags)
+        out['date'] = out['Inspection Date'].dt.strftime('%Y-%m-%d')
+        sel = out[['task_id', 'asset', 'rfi_no', 'disc', 'status_norm', 'date', 'itr_type', 'closed']]
+        return sel.rename(columns={'status_norm': 'status'}).to_dict('records')
 
-    all_rfi = [make_rfi_record(r) for _, r in dated.iterrows()]
+    all_rfi = rfi_frame(dated)
     recent = dated.sort_values('Inspection Date', ascending=False).head(100)
-    recent_records = [make_rfi_record(r) for _, r in recent.iterrows()]
+    recent_records = rfi_frame(recent)
 
     # ---- RFI Inspection Summary (by Discipline, 3 columns: Laying / Testing / Termination) ----
     def sum_rfi(sub_df):
@@ -1031,7 +1046,7 @@ def build_search_index(ov_path, punch_path, rfi_path):
                 if rr['rfi_no']:
                     rfi_to_tags.setdefault(rr['rfi_no'], set()).add(tag)
 
-        raw = pd.read_excel(punch_path, sheet_name='MP Register', header=None, skiprows=6)
+        raw = safe_read_excel(punch_path, sheet_name='MP Register', header=None, skiprows=6)
         cols = {1: 'plid', 3: 'rfi_no', 5: 'subsystem', 8: 'desc',
                 9: 'cat', 10: 'discipline', 13: 'raised_date', 20: 'status'}
         pdf_ = raw[list(cols.keys())].rename(columns=cols)
@@ -1060,7 +1075,7 @@ def build_search_index(ov_path, punch_path, rfi_path):
     sc_punch_path = find_file(['ovPunchlist'])
     if sc_punch_path:
         try:
-            sc_raw = pd.read_excel(sc_punch_path, sheet_name='Exported from SC', header=None)
+            sc_raw = safe_read_excel(sc_punch_path, sheet_name='Exported from SC', header=None)
             sc_raw = sc_raw.iloc[1:]  # skip header row
             sc_cols = {0: 'plid', 1: 'asset_tag', 3: 'cat', 4: 'discipline',
                        5: 'desc', 7: 'subsystem', 9: 'status', 12: 'raised_date'}
@@ -1160,7 +1175,7 @@ def build_completed_rfi_table(ov_path, punch_path, rfi_path):
         return []
 
     # 1) Punch Register: group by RFI
-    raw = pd.read_excel(punch_path, sheet_name='MP Register', header=None, skiprows=6)
+    raw = safe_read_excel(punch_path, sheet_name='MP Register', header=None, skiprows=6)
     pdf = raw.iloc[:, [1, 3, 20]].copy()
     pdf.columns = ['plid', 'rfi_no', 'status']
     pdf = pdf.dropna(subset=['plid'])
@@ -1182,7 +1197,7 @@ def build_completed_rfi_table(ov_path, punch_path, rfi_path):
     }
 
     # 2) Inspection Register: RFI No -> Asset Tags
-    rdf = pd.read_excel(rfi_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
+    rdf = safe_read_excel(rfi_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
     rdf = rdf.dropna(subset=['Asset - Tag'])
 
     rfi_to_assets = {}
@@ -4057,7 +4072,7 @@ def build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt
             for sheet in xls.sheet_names:
                 if sheet.strip().lower() in skip_sheets:
                     continue
-                df = pd.read_excel(xls, sheet_name=sheet, header=None)
+                df = safe_read_excel(eit_xlsx, sheet_name=sheet, header=None)
                 rows = []
                 for _, row in df.iterrows():
                     vals = []
@@ -4075,7 +4090,10 @@ def build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt
                         vals.pop()
                     if any(vals):
                         rows.append(vals)
-                eit_pages[sheet] = rows
+                page_name = sheet.strip()
+                if page_name.lower() == 'dashboard':
+                    page_name = 'RFI STATUS'
+                eit_pages[page_name] = rows
             print(f"  Extra pages loaded: {len(eit_pages)} sheets from PS5 EIT CPP AGI Dashboard.xlsx")
     except Exception as e:
         print(f"  Extra pages skipped: {e}")
