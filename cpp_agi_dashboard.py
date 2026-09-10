@@ -45,7 +45,7 @@ CLOUD_CACHE = r"C:\Users\mylap\AppData\Local\Temp\opencode\cloud_sync"
 CLOUD_LINKS = {
     # keywords to match in find_file() -> (local filename, download URL)
     ('inspection', 'register'): ('PS-5 INSPECTION REGISTER (cloud).xlsx',
-                                 'https://onedrive.live.com/:x:/g/personal/C6BFB870664E7A27/IQAM5D92qo2KR681-fyG9xmvAajJGCOqpybnOzd22WgpB68?download=1'),
+                                 'https://onedrive.live.com/:x:/g/personal/c6bfb870664e7a27/IQAM5D92qo2KR681-fyG9xmvAajJGCOqpybnOzd22WgpB68?download=1'),
 }
 
 
@@ -2248,23 +2248,38 @@ function multiChart(id, rows, type='bar'){
 function combinedChart(id, itrRows, punchRows, rfiRows, type='line'){
   const toMap = rows => Object.fromEntries((rows||[]).map(r=>[r.label, r.Total||0]));
   const itrMap = toMap(itrRows), punchMap = toMap(punchRows), rfiMap = toMap(rfiRows);
-  const labels = Array.from(new Set([...Object.keys(itrMap), ...Object.keys(punchMap), ...Object.keys(rfiMap)])).sort();
-
+  const allLabs = Array.from(new Set([...Object.keys(itrMap), ...Object.keys(punchMap), ...Object.keys(rfiMap)]));
+  if(!allLabs.length) return;
+  const d1 = new Date(allLabs.slice().sort().pop());
+  const d0 = new Date(d1); d0.setDate(d0.getDate() - 29);
+  const labels = [];
+  for(let t = new Date(d0); t <= d1; t.setDate(t.getDate()+1)){
+    labels.push(t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0'));
+  }
+  const mk = m => labels.map(l=> m[l]||0);
   const series = [
-    {name:'ITR Closed', color:'#1a8a4a', map:itrMap},
-    {name:'Punch Raised', color:'#c53030', map:punchMap},
-    {name:'RFI Submitted', color:'#2563eb', map:rfiMap},
+    {name:'ITR Closed', color:'#1a8a4a', data:mk(itrMap), yid:'y'},
+    {name:'Punch Raised', color:'#c53030', data:mk(punchMap), yid:'y'},
+    {name:'RFI Submitted', color:'#2563eb', data:mk(rfiMap), yid:'y1'},
   ];
   new Chart(document.getElementById(id), {
     type:type,
     data:{ labels, datasets: series.map(s=>({
       label:s.name,
-      data: labels.map(l=> s.map[l]||0),
+      data:s.data,
       borderColor:s.color, backgroundColor: type==='line'? s.color+'33': s.color,
       fill: type==='line', tension:.3, borderRadius: type==='bar'?6:0,
-      datalabels: DL_BAR,
+      yAxisID:s.yid,
+      datalabels: type==='bar' ? DL_BAR : {display:false},
     })) },
-    options:{ plugins:{legend:{position:'bottom'}}, scales:{y:{beginAtZero:true}} }
+    options:{ responsive:true,
+      plugins:{legend:{position:'bottom'}},
+      scales:{
+        x:{ticks:{maxTicksLimit:10, maxRotation:0, autoSkip:true}},
+        y:{beginAtZero:true, position:'left', title:{display:true, text:'ITR / Punch'}},
+        y1:{beginAtZero:true, position:'right', grid:{drawOnChartArea:false}, title:{display:true, text:'RFI Submitted'}}
+      }
+    }
   });
 }
 
@@ -4063,6 +4078,7 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     '.rfi-detail-head{font-weight:700;margin-bottom:8px;} .rfi-detail-table{max-height:260px;}' +
     '.rfi-badge{display:inline-block;padding:2px 8px;border-radius:10px;color:#fff;font-size:11px;margin-left:6px;}' +
     '.rfi-empty{padding:20px;color:#9a8d7c;text-align:center;} .rfi-eht-lbl{font-size:13px;color:#6b5e4d;display:inline-flex;gap:6px;align-items:center;}' +
+    '.rfi-help{font-size:12px;line-height:1.5;color:#6b5e4d;background:#fbf7ec;border:1px solid #ece5d4;border-radius:8px;padding:8px 12px;margin-bottom:12px;width:100%;}' +
     '.rfi-total .progress-bar{width:120px;}' +
     '.rfi-nos{display:flex;flex-wrap:wrap;gap:4px;padding:6px 0 10px;max-height:74px;overflow:auto;}' +
     '.rfi-chip{font-size:11px;font-weight:600;color:#2563eb;background:#eef3ff;border:1px solid #c9d8ff;padding:2px 8px;border-radius:12px;white-space:nowrap;}' +
@@ -4173,8 +4189,8 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
 
     // ---- KPIs ----
     var kpi = kpiCard('📅', todayList.length, 'RFIs today · ' + fmtDate(DATE), '') +
-              kpiCard('✅', fmt(td.can), 'Can close today', '') +
-              kpiCard('🗓️', fmt(wk.tasks), 'Tasks this week', '') +
+              kpiCard('✅', fmt(td.can), 'ITR can close', '') +
+              kpiCard('🗓️', fmt(wk.tasks), 'ITRs this week', '') +
               kpiCard('🔢', weeklyList.length, 'RFIs this week', '');
     document.getElementById('pkpi-' + idx).innerHTML = '<div class="kpi-row">' + kpi + '</div>';
     document.getElementById('count-' + idx).textContent = base.length + ' RFI task rows · week ' + fmtDate(MONDAY) + ' → ' + fmtDate(SUNDAY);
@@ -4198,7 +4214,10 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
           '<option value="Month"' + (st.eht==='Month'?' selected':'') + '>EHT Month</option>' +
         '</select></label>' +
         '<button class="btn-export" onclick="exportRfiStatusExcel(' + idx + ')">⬇️ Export Excel</button>' +
-      '</div>';
+      '</div>' +
+      '<div class="rfi-help">RFI = the inspection request. Each RFI contains <b>ITR</b> task rows below it. ' +
+      '<b>Total ITRs</b> = all ITR tasks in the RFI · <b>ITR Closed Before</b> = ITRs already closed earlier · ' +
+      '<b>ITR Can Close</b> = ITRs still open that can be closed now. Click a row (▾) to open its ITR details.</div>';
     var chartsWrap = document.getElementById('pcharts-' + idx);
     chartsWrap.innerHTML = tbHtml;
     chartsWrap.style.flexWrap = 'wrap';
@@ -4224,7 +4243,10 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
       var s = sumClose(list);
       var nos = list.map(function(g){ return g.rfi; }).join(' · ');
       var chips = '<div class="rfi-nos" title="RFI numbers included: ' + esc(nos) + '">' + list.map(function(g){ return '<span class="rfi-chip">' + esc(g.rfi) + '</span>'; }).join('') + '</div>';
-      var head = '<tr><th>#</th><th>RFI No</th><th>ITR Type</th><th>Disc.</th><th>Total Tasks</th><th>Closed Before</th><th>Can Close Now</th><th>Progress</th><th>·</th></tr>';
+      var head = '<tr><th>#</th><th>RFI No</th><th>ITR Type</th><th>Disc.</th>' +
+                 '<th title="Number of ITR task rows under this RFI">Total ITRs</th>' +
+                 '<th title="ITRs already closed before the selected day">ITR Closed Before</th>' +
+                 '<th title="ITRs still open that can be closed now">ITR Can Close</th><th>Progress</th><th>·</th></tr>';
       var body = list.map(function(g, i){
         var r = '<tr class="rfi-group-row" onclick="toggleRfiDetail(this)" data-rfi="' + esc(g.rfi) + '" data-tab="' + idx + '">';
         r += '<td>' + (i+1) + '</td>';
@@ -4273,7 +4295,7 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
   function exportRfiStatusExcel(idx){
     var all = (RFI && RFI.rfi_all) ? RFI.rfi_all : [];
     function buildRows(list){
-      var out = [['RFI No','ITR Type','Discipline','First Date','Last Date','Total Tasks','Closed Before','Can Close Now']];
+      var out = [['RFI No','ITR Type','Discipline','First Date','Last Date','Total ITRs','ITR Closed Before','ITR Can Close']];
       list.forEach(function(g){
         out.push([g.rfi, g.type, g.disc, g.first, g.last, g.tasks, g.closed, g.canClose]);
       });
