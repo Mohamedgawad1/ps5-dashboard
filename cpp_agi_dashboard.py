@@ -860,8 +860,15 @@ def build_inspection_data(excel_path, ov_path=None):
     status_by_disc = status_by_disc[statuses]
     status_by_disc_records = status_by_disc.reset_index().rename(columns={'disc': 'label'}).to_dict('records')
 
-    # ---- RFI trend (Inspection Date) by discipline ----
-    df['Inspection Date'] = pd.to_datetime(df['Inspection Date'], errors='coerce')
+    # ---- RFI trend (merged inspection date) by discipline ----
+    # The register has TWO date columns: 'Inspection Date' (QC RFI# / primary)
+    # and 'INSPECTION DATE' (QC RFI#.1 / glanding&termination). Merge both so
+    # every RFI row keeps its date (otherwise monthly/weekly counts are wrong).
+    d_ok = pd.to_datetime(df['Inspection Date'], errors='coerce')
+    d2_col = 'INSPECTION DATE' if 'INSPECTION DATE' in df.columns else None
+    if d2_col:
+        d_ok = d_ok.fillna(pd.to_datetime(df[d2_col], errors='coerce'))
+    df['Inspection Date'] = d_ok
     dated = df.dropna(subset=['Inspection Date']).copy()
 
     def pivot_disc(data, col):
@@ -4109,6 +4116,10 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
       var a = fmtDate(s), b = fmtDate(e);
       return !!r.date && r.date >= a && r.date <= b;
     }
+    function inDayRec(r, d){
+      var a = fmtDate(d);
+      return !!r.date && r.date === a;
+    }
     function inMonthRec(r, s, e){
       var a = fmtDate(s), b = fmtDate(e);
       return !!r.date && r.date >= a && r.date <= b;
@@ -4145,6 +4156,7 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
     }
 
     var base = all.filter(passFilter);
+    var todayList = groupRfi(base.filter(function(r){ return inDayRec(r, DATE); }));
     var weeklyList = groupRfi(base.filter(function(r){ return inWeekRec(r, MONDAY, SUNDAY); }));
     var monthlyList = groupRfi(base.filter(function(r){ return inMonthRec(r, M_START, M_END); }));
     var ehtList = groupRfi(base.filter(function(r){ return isEht(r) && inRange(r); }));
@@ -4154,13 +4166,13 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
       list.forEach(function(g){ t+=g.tasks; c+=g.closed; });
       return {tasks:t, closed:c, can:t-c};
     }
-    var wk = sumClose(weeklyList), mo = sumClose(monthlyList), eh = sumClose(ehtList);
+    var td = sumClose(todayList), wk = sumClose(weeklyList), mo = sumClose(monthlyList), eh = sumClose(ehtList);
 
     // ---- KPIs ----
-    var kpi = kpiCard('🗓️', fmt(wk.tasks), 'Tasks this week', '') +
-              kpiCard('✅', fmt(wk.can), 'Can close this week', '') +
-              kpiCard('🔒', fmt(wk.closed), 'Closed before (week)', '') +
-              kpiCard('🔢', fmt(monthlyList.length), 'RFIs this month', '');
+    var kpi = kpiCard('📅', fmt(td.tasks), 'Tasks today · ' + fmtDate(DATE), '') +
+              kpiCard('✅', fmt(td.can), 'Can close today', '') +
+              kpiCard('🔒', fmt(td.closed), 'Closed before (today)', '') +
+              kpiCard('🗓️', fmt(wk.tasks), 'Tasks this week', '');
     document.getElementById('pkpi-' + idx).innerHTML = '<div class="kpi-row">' + kpi + '</div>';
     document.getElementById('count-' + idx).textContent = base.length + ' RFI task rows · week ' + fmtDate(MONDAY) + ' → ' + fmtDate(SUNDAY);
 
@@ -4227,7 +4239,8 @@ document.getElementById('universalSearch').addEventListener('input', e=>{
         '<div class="section-title">' + title + ' <span class="rfi-badge">' + list.length + ' RFIs</span></div>' +
         '<div class="rfi-table-wrap"><table class="rfi-table"><thead>' + head + '</thead><tbody>' + body + f + '</tbody></table></div></div>';
     }
-    var html = '<div class="rfi-cols">' + groupTable('📅 Weekly — ' + fmtDate(MONDAY) + ' → ' + fmtDate(SUNDAY), weeklyList, '#2563eb') +
+    var html = '<div class="rfi-cols">' + groupTable('📅 Today — ' + fmtDate(DATE), todayList, '#0891b2') +
+                        groupTable('📅 Weekly — ' + fmtDate(MONDAY) + ' → ' + fmtDate(SUNDAY), weeklyList, '#2563eb') +
                         groupTable('🗓️ Monthly — ' + M_START.getFullYear() + '-' + (M_START.getMonth()+1<10?'0':'') + (M_START.getMonth()+1), monthlyList, '#7c3aed') +
                         groupTable('⚡ EHT — ' + (st.eht==='Month' ? 'Monthly' : 'Weekly'), ehtList, '#c8940a') + '</div>';
     document.getElementById('wrap-' + idx).innerHTML = html + '<style>' + RFI_PAGE_CSS + '</style>';
