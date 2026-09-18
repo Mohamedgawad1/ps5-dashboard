@@ -20,6 +20,7 @@ import os
 import sys
 import json
 import datetime
+import time
 import urllib.request
 import webbrowser
 
@@ -100,8 +101,6 @@ def sync_cloud_files():
             if out.startswith('CLOK:'):
                 size = int(out.split(':', 1)[1])
                 print(f"  Cloud -> {fname} ({size:,} bytes)")
-                if 'inspection' in keywords and 'register' in keywords:
-                    repair_inspection_register(dest)
             else:
                 err_msg = out or r.stderr.strip()[:200]
                 print(f"  [WARN] Cloud ({fname}): {err_msg}")
@@ -178,7 +177,10 @@ def safe_read_excel(path, **kwargs):
 
 def read_inspection_register(path):
     """Read the 'PS-5 EIT INSPECTION REGISTER' sheet auto-detecting the header row
-    (row containing 'Asset - Tag'), robust to the header being moved in the file."""
+    (row containing 'Asset - Tag'), robust to the header being moved in the file.
+    When the header is misplaced (e.g. pasted into the middle of the data), the data
+    rows above it are re-appended after the rows below it WITHOUT touching the file
+    on disk, so the build stays fast."""
     raw = safe_read_excel(path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=None)
     hrow = None
     for i in range(len(raw)):
@@ -188,19 +190,8 @@ def read_inspection_register(path):
             break
     if hrow is None:
         raise KeyError('Asset - Tag')
-    if hrow != 5:
-        if repair_inspection_register(path):
-            for key in [k for k in _EXCEL_CACHE if os.path.normcase(os.path.abspath(k[0])) == os.path.normcase(os.path.abspath(path))]:
-                _EXCEL_CACHE.pop(key, None)
-            raw = pd.read_excel(path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=None)
-            hrow = None
-            for i in range(len(raw)):
-                v = raw.iloc[i, 1]
-                if pd.notna(v) and str(v).strip() == 'Asset - Tag':
-                    hrow = i
-                    break
-            if hrow is None:
-                raise KeyError('Asset - Tag')
+    if hrow < 5:
+        raise KeyError('Asset - Tag')
     seen = {}
     newcols = []
     for j in range(raw.shape[1]):
@@ -215,7 +206,10 @@ def read_inspection_register(path):
             else:
                 seen[name] = 0
                 newcols.append(name)
-    df = raw.iloc[hrow + 1:].reset_index(drop=True)
+    if hrow == 5:
+        df = raw.iloc[hrow + 1:].reset_index(drop=True)
+    else:
+        df = pd.concat([raw.iloc[5:hrow], raw.iloc[hrow + 1:]], ignore_index=True)
     df.columns = newcols
     return df
 
@@ -4629,7 +4623,12 @@ def main():
     print("   PS5 Project Dashboard Generator")
     print("=" * 60)
 
+    t0 = time.time()
+    def t_phase(label):
+        print(f"    [[{label}]] +{time.time() - t0:.1f}s")
+
     sync_cloud_files()
+    t_phase('cloud sync')
 
     ov_path = find_file(['ovtasks'])
     punch_path = find_file(['punch', 'list', 'register']) or find_file(['punch', 'list'])
@@ -4645,19 +4644,28 @@ def main():
     print(f"Inspection Register: {rfi_path if rfi_path else 'NOT FOUND'}")
 
     itr_data = build_itr_data(ov_path, today_override)
+    t_phase('itr_data')
     eit_table_data = build_itr_breakdown_table(ov_path)
+    t_phase('eit_breakdown')
     punch_data = build_punch_data(punch_path) if punch_path else None
+    t_phase('punch_data')
     rfi_data = build_inspection_data(rfi_path, ov_path) if rfi_path else None
+    t_phase('rfi/inspection')
     cmt_qc_punch_data = build_cmt_qc_punch_data()
+    t_phase('cmt_qc_punch')
     cable_ov_data = build_cable_ov_data(ov_path)
+    t_phase('cable_ov')
     cable_tracker_data = build_cable_tracker_data()
+    t_phase('cable_tracker')
 
     master_path = find_file(['master', 'tracker', 'eit']) or find_file(['PS5 Master tracker'])
     inspection_path = find_file(['inspection', 'register'])
     print("\nBuilding universal search index (Asset Tag -> ITR / RFI / Punch)...")
     search_index = build_search_index(ov_path, punch_path, rfi_path)
+    t_phase('search_index')
 
     build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, cable_tracker_data, OUTPUT_HTML)
+    t_phase('build_html')
 
     # نسخة تانية باسم PS5_Project_Dashboard.html (للمشاركة المباشرة)
     import shutil
