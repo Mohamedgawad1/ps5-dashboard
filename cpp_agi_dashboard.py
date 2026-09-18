@@ -154,14 +154,54 @@ def _cache_key(path, kwargs):
     return (os.path.normcase(os.path.abspath(path)),
             str(sorted((k, str(v)) for k, v in kwargs.items())))
 
+_PERSIST_DIR = None
+def _persist_cache_dir():
+    """Persist parsed Excel sheets to disk (keyed by file digest) so repeated
+    updates skip the expensive Excel parse when a source file did not change."""
+    global _PERSIST_DIR
+    if _PERSIST_DIR is None:
+        import tempfile
+        base = os.path.join(tempfile.gettempdir(), 'ps5_exc_cache')
+        try:
+            os.makedirs(base, exist_ok=True)
+        except OSError:
+            base = None
+        _PERSIST_DIR = base
+    return _PERSIST_DIR
+
+def _quick_digest(path):
+    try:
+        import hashlib
+        h = hashlib.md5()
+        with open(path, 'rb') as f:
+            for chunk in iter(lambda: f.read(1 << 20), b''):
+                h.update(chunk)
+        return h.hexdigest()
+    except Exception:
+        return None
+
 def safe_read_excel(path, **kwargs):
-    """Read Excel with caching + fallback copy if file is locked."""
+    """Read Excel with memory + disk caching (keyed by file digest) and a
+    fallback copy if the file is locked."""
     if path is None:
         return None
+    import hashlib, pickle, tempfile
     key = _cache_key(path, kwargs)
     if key in _EXCEL_CACHE:
         return _EXCEL_CACHE[key].copy()
-    import shutil, tempfile
+    digest = _quick_digest(path)
+    pdir = _persist_cache_dir()
+    pf = None
+    if digest and pdir:
+        pf = os.path.join(pdir, hashlib.md5((digest + '|' + key[1]).encode('utf-8')).hexdigest() + '.pkl')
+        try:
+            with open(pf, 'rb') as f:
+                df = pickle.load(f)
+            if isinstance(df, pd.DataFrame):
+                _EXCEL_CACHE[key] = df
+                return df.copy()
+        except Exception:
+            pf = None
     try:
         df = pd.read_excel(path, **kwargs)
     except PermissionError:
@@ -172,6 +212,12 @@ def safe_read_excel(path, **kwargs):
             pass
         df = pd.read_excel(tmp, **kwargs)
     _EXCEL_CACHE[key] = df
+    if pf is not None:
+        try:
+            with open(pf, 'wb') as f:
+                pickle.dump(df, f, protocol=4)
+        except Exception:
+            pass
     return df.copy()
 
 
@@ -4608,6 +4654,8 @@ def main():
     parser = argparse.ArgumentParser(description='PS5 Project Dashboard Generator')
     parser.add_argument('--date', type=str, default=None,
                         help='Override today date (YYYY-MM-DD). Default: max date in data')
+    parser.add_argument('--force', action='store_true',
+                        help='Rebuild even if no input file changed')
     args = parser.parse_args()
 
     today_override = None
@@ -4643,6 +4691,26 @@ def main():
     print(f"Punch List         : {punch_path if punch_path else 'NOT FOUND'}")
     print(f"Inspection Register: {rfi_path if rfi_path else 'NOT FOUND'}")
 
+    # ---- Fast skip: nothing changed since last successful build ----
+    _sig_file = os.path.join(os.path.dirname(os.path.abspath(__file__)) or '.', '_build_sig.json')
+    sig_parts = []
+    for p in (ov_path, punch_path, rfi_path):
+        d = _quick_digest(p) if p and os.path.exists(p) else None
+        sig_parts.append(d or '?')
+    sig_parts.append(_quick_digest(os.path.abspath(__file__)) or '?')
+    sig = '#'.join(sig_parts)
+    if not args.force and os.path.exists(_sig_file) and os.path.exists(OUTPUT_HTML):
+        try:
+            with open(_sig_file) as f:
+                old = json.load(f).get('sig')
+            if old == sig:
+                print(f"  No input changes since last build -> skipping (fast). "
+                      f"Delete {os.path.basename(_sig_file)} or use --force to rebuild.")
+                return
+        except Exception:
+            pass
+    print("  Inputs changed -> full build")
+
     itr_data = build_itr_data(ov_path, today_override)
     t_phase('itr_data')
     eit_table_data = build_itr_breakdown_table(ov_path)
@@ -4671,6 +4739,13 @@ def main():
     import shutil
     shutil.copy(OUTPUT_HTML, OUTPUT_HTML2)
     print(f"  Also saved: {OUTPUT_HTML2}")
+
+    # ---- Remember inputs so the next run can skip (fast update) ----
+    try:
+        with open(_sig_file, 'w') as f:
+            json.dump({'sig': sig, 't': time.time()}, f)
+    except Exception as e:
+        print(f"  [WARN] could not save build signature: {e}")
 
     # ---- Save SMS data (fallback for phone) ----
     sms_out = os.path.join(os.path.dirname(__file__) or '.', 'sms_data.json')
