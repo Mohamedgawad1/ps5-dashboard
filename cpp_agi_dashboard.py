@@ -100,6 +100,8 @@ def sync_cloud_files():
             if out.startswith('CLOK:'):
                 size = int(out.split(':', 1)[1])
                 print(f"  Cloud -> {fname} ({size:,} bytes)")
+                if 'inspection' in keywords and 'register' in keywords:
+                    repair_inspection_register(dest)
             else:
                 err_msg = out or r.stderr.strip()[:200]
                 print(f"  [WARN] Cloud ({fname}): {err_msg}")
@@ -172,6 +174,94 @@ def safe_read_excel(path, **kwargs):
         df = pd.read_excel(tmp, **kwargs)
     _EXCEL_CACHE[key] = df
     return df.copy()
+
+
+def read_inspection_register(path):
+    """Read the 'PS-5 EIT INSPECTION REGISTER' sheet auto-detecting the header row
+    (row containing 'Asset - Tag'), robust to the header being moved in the file."""
+    raw = safe_read_excel(path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=None)
+    hrow = None
+    for i in range(len(raw)):
+        v = raw.iloc[i, 1]
+        if pd.notna(v) and str(v).strip() == 'Asset - Tag':
+            hrow = i
+            break
+    if hrow is None:
+        raise KeyError('Asset - Tag')
+    if hrow != 5:
+        if repair_inspection_register(path):
+            for key in [k for k in _EXCEL_CACHE if os.path.normcase(os.path.abspath(k[0])) == os.path.normcase(os.path.abspath(path))]:
+                _EXCEL_CACHE.pop(key, None)
+            raw = pd.read_excel(path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=None)
+            hrow = None
+            for i in range(len(raw)):
+                v = raw.iloc[i, 1]
+                if pd.notna(v) and str(v).strip() == 'Asset - Tag':
+                    hrow = i
+                    break
+            if hrow is None:
+                raise KeyError('Asset - Tag')
+    seen = {}
+    newcols = []
+    for j in range(raw.shape[1]):
+        v = raw.iloc[hrow, j]
+        if pd.isna(v):
+            newcols.append(f'Unnamed: {j}')
+        else:
+            name = str(v)
+            if name in seen:
+                seen[name] += 1
+                newcols.append(f'{name}.{seen[name]}')
+            else:
+                seen[name] = 0
+                newcols.append(name)
+    df = raw.iloc[hrow + 1:].reset_index(drop=True)
+    df.columns = newcols
+    return df
+
+
+def repair_inspection_register(path):
+    """If the header row (contains 'Asset - Tag') is not at row 6, move it back
+    to row 6 (someone may have pasted/moved it inside the data). Returns True if repaired."""
+    if not path or not os.path.exists(path):
+        return False
+    try:
+        import openpyxl
+        from copy import copy as _copy
+        wb = openpyxl.load_workbook(path)
+    except Exception as e:
+        print(f"  [REPAIR] could not open: {e}")
+        return False
+    ws = wb['PS-5 EIT INSPECTION REGISTER'] if 'PS-5 EIT INSPECTION REGISTER' in wb.sheetnames else wb.active
+    hrow = None
+    for r in range(1, ws.max_row + 1):
+        v = ws.cell(r, 2).value
+        if v is not None and str(v).strip() == 'Asset - Tag':
+            hrow = r
+            break
+    if hrow is None or hrow == 6:
+        return False
+    ncol = ws.max_column
+    vals = [ws.cell(hrow, c).value for c in range(1, ncol + 1)]
+    styles = {}
+    for c in range(1, ncol + 1):
+        src = ws.cell(hrow, c)
+        styles[c] = (_copy(src.font), _copy(src.fill), _copy(src.alignment), _copy(src.border))
+    ws.insert_rows(6)
+    old_hrow = hrow + 1
+    for c in range(1, ncol + 1):
+        nc = ws.cell(6, c)
+        nc.value = vals[c - 1]
+        f, fl, a, b = styles[c]
+        nc.font, nc.fill, nc.alignment, nc.border = f, fl, a, b
+    ws.delete_rows(old_hrow)
+    try:
+        wb.save(path)
+        print(f"  [REPAIR] Inspection register: header moved from row {hrow} back to row 6")
+        return True
+    except Exception as e:
+        print(f"  [REPAIR] could not save: {e}")
+        return False
 
 
 # ====================================================================
@@ -797,7 +887,7 @@ def build_inspection_data(excel_path, ov_path=None):
         except Exception as e:
             print(f"  [WARN] Could not load ovTasks for ITR type map: {e}")
 
-    df = safe_read_excel(excel_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
+    df = read_inspection_register(excel_path)
     df = df.dropna(subset=['Asset - Tag'])
 
     disc_map = {
@@ -1083,7 +1173,7 @@ def build_search_index(ov_path, punch_path, rfi_path):
 
     # ---- Inspection Register ----
     if rfi_path:
-        rdf = safe_read_excel(rfi_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
+        rdf = read_inspection_register(rfi_path)
         rdf = rdf.dropna(subset=['Asset - Tag'])
 
         def norm_status(v):
@@ -1267,8 +1357,8 @@ def build_completed_rfi_table(ov_path, punch_path, rfi_path):
             'all_closed': total == closed
     }
 
-    # 2) Inspection Register: RFI No -> Asset Tags
-    rdf = safe_read_excel(rfi_path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=5)
+# 2) Inspection Register: RFI No -> Asset Tags
+    rdf = read_inspection_register(rfi_path)
     rdf = rdf.dropna(subset=['Asset - Tag'])
 
     rfi_to_assets = {}
