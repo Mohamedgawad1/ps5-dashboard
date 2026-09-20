@@ -36,4 +36,6 @@ sc_pull/js/
 sc_pull/discovery.json
 sc_pull/*.xlsx
 sc_pull/*.json
+sc_pull/creds.env
+sc_pull/login_fail.png
 !sc_pull/*.py
