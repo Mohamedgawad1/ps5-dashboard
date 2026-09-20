@@ -31,3 +31,9 @@ tunnel*.txt
 serveo*.txt
 scan_content_*.txt
 opencode.json
+sc_pull/profile/
+sc_pull/js/
+sc_pull/discovery.json
+sc_pull/*.xlsx
+sc_pull/*.json
+!sc_pull/*.py
