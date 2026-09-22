@@ -4735,6 +4735,15 @@ def main():
     build_html(itr_data, punch_data, rfi_data, search_index, eit_table_data, cmt_qc_punch_data, cable_ov_data, cable_tracker_data, OUTPUT_HTML)
     t_phase('build_html')
 
+    # ---- ITR LIVE badge - keep the live-ITR script binding after every build ----
+    try:
+        from sc_pull import itr_online_sync as _itr_live
+        _itr_live.ensure_web_files()
+        injected = _itr_live.inject_into_index(os.path.dirname(os.path.abspath(__file__)))
+        print("  ITR live badge:", "ok" if injected else "skip")
+    except Exception as _e:
+        print("  ITR live badge warn:", str(_e)[:120])
+
     # نسخة تانية باسم PS5_Project_Dashboard.html (للمشاركة المباشرة)
     import shutil
     shutil.copy(OUTPUT_HTML, OUTPUT_HTML2)
@@ -4777,7 +4786,7 @@ def main():
                 print("\n  Uploading to GitHub...")
                 import subprocess
                 base = os.path.dirname(os.path.abspath(__file__)) or '.'
-                files_to_commit = ['index.html', 'sms_data.json', 'phone_sms.py', 'test_sms.py', 'cpp_agi_dashboard.py', 'update_dashboard.bat']
+                files_to_commit = ['index.html', 'sms_data.json', 'phone_sms.py', 'test_sms.py', 'cpp_agi_dashboard.py', 'update_dashboard.bat', 'itr_live_state.json', 'live_itr.js', 'itr_live.html']
                 # ensure local repo exists
                 if not os.path.exists(os.path.join(base, '.git')):
                     subprocess.run(['git', 'init'], cwd=base, capture_output=True)

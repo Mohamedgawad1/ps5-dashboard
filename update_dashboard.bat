@@ -22,7 +22,7 @@ if %errorlevel% neq 0 goto :err
 
 echo.
 echo [3/4] Committing and pushing to GitHub...
-git add -u
+git add -A
 git diff --cached --quiet
 if %errorlevel% equ 0 (
     echo   No changes to upload.
