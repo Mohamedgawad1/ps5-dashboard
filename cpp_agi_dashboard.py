@@ -2414,11 +2414,23 @@ function combinedChart(id, itrRows, punchRows, rfiRows, type='line'){
   const today = new Date();
   const todayStr = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
   const valid = allLabs.filter(l=> /^\d{4}-\d{2}-\d{2}$/.test(l) && l <= todayStr);
-  const d1 = new Date((valid.length ? valid.slice().sort().pop() : todayStr) + 'T12:00:00');
-  const d0 = new Date(d1); d0.setDate(d0.getDate() - 29);
-  const labels = [];
-  for(let t = new Date(d0); t <= d1; t.setDate(t.getDate()+1)){
-    labels.push(t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0'));
+  const monthlyMode = allLabs.length && allLabs.every(l=> /^\d{4}-\d{2}$/.test(l));
+  let d1, d0, labels = [];
+  if(monthlyMode){
+    const vm = allLabs.filter(l=> l && l <= todayStr.slice(0,7));
+    d1 = new Date((vm.length? vm.slice().sort().pop() : todayStr.slice(0,7)) + '-01T12:00:00');
+    const d0m = new Date(d1); d0m.setMonth(d0m.getMonth() - 11);
+    d0 = d0m;
+    for(let t = new Date(d0); t <= d1; t.setMonth(t.getMonth()+1)){
+      labels.push(t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0'));
+    }
+  } else {
+    const d1d = new Date((valid.length ? valid.slice().sort().pop() : todayStr) + 'T12:00:00');
+    const d0d = new Date(d1d); d0d.setDate(d0d.getDate() - 29);
+    d1 = d1d; d0 = d0d;
+    for(let t = new Date(d0); t <= d1; t.setDate(t.getDate()+1)){
+      labels.push(t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0'));
+    }
   }
   const mk = m => labels.map(l=> m[l]||0);
   const series = [
