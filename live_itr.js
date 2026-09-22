@@ -13,11 +13,28 @@
       ' &middot; Total E&I&T ' + fmt(update.eit_total) + '</div>' +
       '<div class="itr-badge-time">Updated ' + (update.updated||'') + '</div>';
   }
+  function syncCards(update){
+    const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+    const tot = update.closed||0, all = update.eit_total||0, today = update.today_closed||0;
+    set('todayClosed', fmt(today));
+    set('totalClosed', fmt(tot));
+    set('totalPct', all ? (tot/all*100).toFixed(2) : '0.00');
+    document.querySelectorAll('.kpi').forEach(c => {
+      const lbl = c.querySelector('.lbl'); if(!lbl) return;
+      const val = c.querySelector('.val'); if(!val) return;
+      const t = lbl.textContent||'';
+      if(t.indexOf('CPP AGI EIT') !== -1 && t.indexOf('Total ITRs Closed') !== -1){
+        val.textContent = fmt(tot) + ' / ' + fmt(all);
+      } else if(t.trim() === 'Today Closed'){
+        val.textContent = fmt(today);
+      }
+    });
+  }
   function fetchItr(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/120000), {cache:'no-store'})
       .then(r => r.json())
-      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); })
-      .catch(() => { try{ const o=localStorage.getItem(LS); if(o) build(JSON.parse(o)); }catch(e){} });
+      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); })
+      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); } }catch(e){} });
   }
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
