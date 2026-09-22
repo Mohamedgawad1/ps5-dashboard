@@ -18,6 +18,13 @@
   .bar{height:10px;background:#1e293b;border-radius:6px;overflow:hidden;margin-top:8px}
   .bar span{display:block;height:100%}
   .err{color:#f87171}
+  table{width:100%;border-collapse:collapse;margin-top:22px;font-size:12px}
+  th,td{border:1px solid #1e293b;padding:6px 9px;text-align:left;white-space:nowrap}
+  th{background:#0b2f56;color:#7dd3fc;text-transform:uppercase;font-size:10px;letter-spacing:.5px}
+  tr:nth-child(even){background:#111c33}
+  .wrap{overflow-x:auto}
+  .chip{display:inline-block;padding:1px 8px;border-radius:10px;font-size:10px}
+  .chip.e{background:#065f46;color:#a7f3d0}.chip.i{background:#78350f;color:#fde68a}.chip.t{background:#831843;color:#fbcfe8}
 </style>
 </head>
 <body>
@@ -34,6 +41,11 @@
   <div class="card"><div class="lbl">إجمالي E&amp;I&amp;T</div><div class="num" id="total">&hellip;</div></div>
 </div>
 <div class="meta" id="meta">جارٍ التحديث…</div>
+<h2 style="font-size:15px;color:#7dd3fc;margin-top:28px">آخر ITRs متقفلة — بالتفاصيل (باشر)</h2>
+<div class="wrap"><table id="tbl">
+<thead><tr><th>Task ID</th><th>Asset Tag</th><th>النظام (System)</th><th>Loop</th><th>Disc</th><th>التشغيل</th><th>تاريخ القفل</th></tr></thead>
+<tbody id="rows"></tbody>
+</table></div>
 <script>
   function fmt(n){ return (n||0).toLocaleString('en-US'); }
   function render(u){
@@ -47,6 +59,15 @@
       'آخر تحديث من المنصة: <b>' + (u.updated||'') + '</b><br>النطاق: ' + (u.scope||'') +
       '<br>يتحدث تلقائياً كل دقيقة. <span class="err" id="st"></span>';
     document.title = 'ITR Closed: ' + fmt(u.closed) + ' | PS5 CPP AGI';
+    const tb = document.getElementById('rows');
+    if(tb && Array.isArray(u.recent_closed)){
+      tb.innerHTML = u.recent_closed.map(r=>{
+        const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        return '<tr><td>'+esc(r.task)+'</td><td>'+esc(r.tag)+'</td><td>'+esc(r.system)+'</td>'+
+               '<td>'+esc(r.loop)+'</td><td><span class="chip '+(r.disc||'').toLowerCase()+'">'+esc(r.disc)+'</span></td>'+
+               '<td>'+esc(r.cat)+'</td><td>'+esc(r.approved)+'</td></tr>';
+      }).join('');
+    }
   }
   function go(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/60000), {cache:'no-store'})

@@ -2,7 +2,6 @@
   const LS = 'live_itr_state';
   function fmt(n){ return (n||0).toLocaleString('en-US'); }
   function build(update){
-    try{ syncCards(update); }catch(e){}
     const e = document.querySelector('#itr-live-badge');
     if(!e) return;
     const cb = update.closed, eb = (update.closed_by_discipline||{}).E||0,
@@ -36,30 +35,4 @@
   }
   fetchItr();
   setInterval(fetchItr, 120000);
-
-  function syncCards(u){
-    if(!u) return;
-    const closed = u.closed||0, eit = u.eit_total||0;
-    const pct = eit>0 ? (100*closed/eit) : 0, pctTxt = pct.toFixed(2);
-    const fmt = n => (n||0).toLocaleString('en-US');
-    const set = (id,val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
-    set('totalClosed', fmt(closed));
-    set('totalPct', pctTxt);
-    const today = u.today_closed||0;
-    set('todayClosed', fmt(today));
-    const bar = document.getElementById('totalPctBar') || document.querySelector('.progress-fill');
-    if(bar) bar.style.width = Math.min(100, pct) + '%';
-    document.querySelectorAll('.kpi').forEach(c=>{
-      const lbl = c.querySelector('.lbl'), v = c.querySelector('.val');
-      if(!lbl || !v) return;
-      const t = (lbl.textContent||'').trim();
-      if(/Today Closed/i.test(t)){
-        v.textContent = fmt(today);
-      } else if(/CPP AGI EIT|Total ITRs Closed/i.test(t) && !/Today/i.test(t)){
-        v.textContent = fmt(closed) + (eit>0 ? ' / '+fmt(eit) : '');
-      } else if(/Progress/i.test(t)){ v.textContent = pctTxt + '%'; }
-    });
-  }
-  try{ syncCards(JSON.parse(localStorage.getItem('live_itr_state')||'{}')); }catch(e){}
-
 })();
