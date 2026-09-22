@@ -447,11 +447,65 @@ LIVE_ITER_JS = """(() => {
       }
     });
   }
+  function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function discChip(d){
+    const c = (d||'').toLowerCase();
+    const cls = c.indexOf('e')===0 ? '#065f46' : c.indexOf('i')===0 ? '#78350f' : c.indexOf('t')===0 ? '#831843' : '#1e293b';
+    const col = c.indexOf('e')===0 ? '#a7f3d0' : c.indexOf('i')===0 ? '#fde68a' : c.indexOf('t')===0 ? '#fbcfe8' : '#cbd5e1';
+    return '<span style="display:inline-block;padding:1px 8px;border-radius:10px;font-size:10px;background:'+cls+';color:'+col+'">'+esc(d)+'</span>';
+  }
+  function syncRecent(update){
+    const list = Array.isArray(update.recent_closed) ? update.recent_closed : [];
+    let sec = document.getElementById('live-recent-sec');
+    if(!sec){
+      sec = document.createElement('section');
+      sec.id = 'live-recent-sec';
+      sec.className = 'section active';
+      sec.style.border = '1px solid var(--border)';
+      sec.style.background = 'var(--panel2)';
+      sec.style.borderRadius = '8px';
+      sec.style.padding = '14px';
+      sec.style.marginBottom = '16px';
+      sec.innerHTML =
+        '<div class="section-title" style="margin:0 0 10px">🕒 Latest ITR Closures &mdash; Live (Subsystem / Asset / Task)</div>' +
+        '<div class="wrap" style="overflow-x:auto">' +
+        '<table id="live-recent-tbl" style="width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap">' +
+        '<thead><tr style="background:var(--panel);text-transform:uppercase;font-size:10px;letter-spacing:.5px;color:var(--teal)">' +
+        '<th style="padding:7px 9px;border:1px solid var(--border);text-align:left">Task ID</th>' +
+        '<th style="padding:7px 9px;border:1px solid var(--border);text-align:left">Asset Tag</th>' +
+        '<th style="padding:7px 9px;border:1px solid var(--border);text-align:left">Subsystem</th>' +
+        '<th style="padding:7px 9px;border:1px solid var(--border);text-align:left">Loop</th>' +
+        '<th style="padding:7px 9px;border:1px solid var(--border);text-align:left">Disc</th>' +
+        '<th style="padding:7px 9px;border:1px solid var(--border);text-align:left">Category</th>' +
+        '<th style="padding:7px 9px;border:1px solid var(--border);text-align:left">Approved</th>' +
+        '</tr></thead><tbody></tbody></table></div>' +
+        '<div style="font-size:11px;color:var(--muted);margin-top:8px">Live from <b>itr_live_state.json</b> &mdash; updates automatically every 2 min. Time shown: <b id="live-recent-time">&mdash;</b></div>';
+      const kpi = document.getElementById('sec-kpi');
+      if(kpi && kpi.parentElement) kpi.parentElement.insertBefore(sec, kpi.nextSibling);
+      else document.body.appendChild(sec);
+    }
+    const tb = sec.querySelector('#live-recent-tbl tbody');
+    const tm = sec.querySelector('#live-recent-time');
+    if(tm) tm.textContent = update.updated || '—';
+    if(tb){
+      tb.innerHTML = list.map(r =>
+        '<tr>' +
+        '<td style="padding:6px 9px;border:1px solid var(--border)">'+esc(r.task)+'</td>' +
+        '<td style="padding:6px 9px;border:1px solid var(--border);color:var(--teal);font-weight:600">'+esc(r.tag)+'</td>' +
+        '<td style="padding:6px 9px;border:1px solid var(--border)">'+esc(r.system)+'</td>' +
+        '<td style="padding:6px 9px;border:1px solid var(--border)">'+esc(r.loop)+'</td>' +
+        '<td style="padding:6px 9px;border:1px solid var(--border)">'+discChip(r.disc)+'</td>' +
+        '<td style="padding:6px 9px;border:1px solid var(--border)">'+esc(r.cat)+'</td>' +
+        '<td style="padding:6px 9px;border:1px solid var(--border);color:var(--muted)">'+esc(r.approved)+'</td>' +
+        '</tr>'
+      ).join('') || '<tr><td colspan="7" style="padding:10px;text-align:center;color:var(--muted)">No closures yet &mdash; waiting for live data&hellip;</td></tr>';
+    }
+  }
   function fetchItr(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/120000), {cache:'no-store'})
       .then(r => r.json())
-      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); })
-      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); } }catch(e){} });
+      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); })
+      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); } }catch(e){} });
   }
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
