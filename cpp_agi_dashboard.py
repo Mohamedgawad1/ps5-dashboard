@@ -792,11 +792,10 @@ def build_punch_data(excel_path):
 
     df['raised_date'] = pd.to_datetime(df['raised_date'], errors='coerce')
     df = df.dropna(subset=['raised_date'])
-    # استبعاد تواريخ مستقبلية غير منطقية (مثلاً 2027+): اتحط خطأ/وراثة في الملف
+    # استبعاد تواريخ مستقبلية/تالفة (مثلاً 2027+ أو سنة 203/1970) غير منطقية في المشروع
     future_cut = pd.Timestamp.now().normalize() + pd.Timedelta(days=1)
-    future = (df['raised_date'] > future_cut).sum()
-    if future:
-        df = df[df['raised_date'] <= future_cut]
+    past_cut = pd.Timestamp('2015-01-01')
+    df = df[df['raised_date'].between(past_cut, future_cut)]
     # توحيد حالة الـ Status (الملف بيجي فيه Open / OPEN / CLOSED ...الخ بأشكال مختلفة)
     df['status'] = df['status'].fillna('Open').astype(str).str.strip().str.title()
 
@@ -2414,10 +2413,11 @@ function combinedChart(id, itrRows, punchRows, rfiRows, type='line'){
   const today = new Date();
   const todayStr = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
   const valid = allLabs.filter(l=> /^\d{4}-\d{2}-\d{2}$/.test(l) && l <= todayStr);
-  const monthlyMode = allLabs.length && allLabs.every(l=> /^\d{4}-\d{2}$/.test(l));
+  const monthlyKeys = allLabs.filter(l=> /^\d{4}-\d{2}$/.test(l));
+  const monthlyMode = monthlyKeys.length >= allLabs.length / 2;
   let d1, d0, labels = [];
   if(monthlyMode){
-    const vm = allLabs.filter(l=> l && l <= todayStr.slice(0,7));
+    const vm = monthlyKeys.filter(l=> l && l <= todayStr.slice(0,7));
     d1 = new Date((vm.length? vm.slice().sort().pop() : todayStr.slice(0,7)) + '-01T12:00:00');
     const d0m = new Date(d1); d0m.setMonth(d0m.getMonth() - 11);
     d0 = d0m;
