@@ -45,13 +45,17 @@
     const set = (id,val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
     set('totalClosed', fmt(closed));
     set('totalPct', pctTxt);
+    const today = u.today_closed||0;
+    set('todayClosed', fmt(today));
     const bar = document.getElementById('totalPctBar') || document.querySelector('.progress-fill');
     if(bar) bar.style.width = Math.min(100, pct) + '%';
     document.querySelectorAll('.kpi').forEach(c=>{
       const lbl = c.querySelector('.lbl'), v = c.querySelector('.val');
       if(!lbl || !v) return;
       const t = (lbl.textContent||'').trim();
-      if(/CPP AGI EIT|Total ITRs Closed/i.test(t) && !/Today/i.test(t)){
+      if(/Today Closed/i.test(t)){
+        v.textContent = fmt(today);
+      } else if(/CPP AGI EIT|Total ITRs Closed/i.test(t) && !/Today/i.test(t)){
         v.textContent = fmt(closed) + (eit>0 ? ' / '+fmt(eit) : '');
       } else if(/Progress/i.test(t)){ v.textContent = pctTxt + '%'; }
     });
