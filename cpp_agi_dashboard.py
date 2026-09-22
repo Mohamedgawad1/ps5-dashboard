@@ -792,6 +792,11 @@ def build_punch_data(excel_path):
 
     df['raised_date'] = pd.to_datetime(df['raised_date'], errors='coerce')
     df = df.dropna(subset=['raised_date'])
+    # استبعاد تواريخ مستقبلية غير منطقية (مثلاً 2027+): اتحط خطأ/وراثة في الملف
+    future_cut = pd.Timestamp.now().normalize() + pd.Timedelta(days=1)
+    future = (df['raised_date'] > future_cut).sum()
+    if future:
+        df = df[df['raised_date'] <= future_cut]
     # توحيد حالة الـ Status (الملف بيجي فيه Open / OPEN / CLOSED ...الخ بأشكال مختلفة)
     df['status'] = df['status'].fillna('Open').astype(str).str.strip().str.title()
 
@@ -2406,7 +2411,10 @@ function combinedChart(id, itrRows, punchRows, rfiRows, type='line'){
   const itrMap = toMap(itrRows), punchMap = toMap(punchRows), rfiMap = toMap(rfiRows);
   const allLabs = Array.from(new Set([...Object.keys(itrMap), ...Object.keys(punchMap), ...Object.keys(rfiMap)]));
   if(!allLabs.length) return;
-  const d1 = new Date(allLabs.slice().sort().pop());
+  const today = new Date();
+  const todayStr = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  const valid = allLabs.filter(l=> /^\d{4}-\d{2}-\d{2}$/.test(l) && l <= todayStr);
+  const d1 = new Date((valid.length ? valid.slice().sort().pop() : todayStr) + 'T12:00:00');
   const d0 = new Date(d1); d0.setDate(d0.getDate() - 29);
   const labels = [];
   for(let t = new Date(d0); t <= d1; t.setDate(t.getDate()+1)){
