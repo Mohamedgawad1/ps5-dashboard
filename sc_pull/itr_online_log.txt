@@ -470,3 +470,66 @@ Call log:
   - navigating to "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switchboard.htm", waiting until "domcontentloaded"
 
 
+[2026-09-22 21:02:13] ============================================================
+[2026-09-22 21:02:13] ITR ONLINE SYNC START
+[2026-09-22 21:02:13] ============================================================
+[2026-09-22 21:02:13] ITR ONLINE SYNC START
+[2026-09-22 21:03:39] session expired -> auto-login
+[2026-09-22 21:10:44] ============================================================
+[2026-09-22 21:10:44] ITR ONLINE SYNC START
+[2026-09-22 21:10:44] ============================================================
+[2026-09-22 21:10:44] ITR ONLINE SYNC START
+[2026-09-22 21:11:08] LOGGED IN
+[2026-09-22 21:13:28] pulled off=0 n=4000 accum=4000
+[2026-09-22 21:15:04] ============================================================
+[2026-09-22 21:15:04] ITR ONLINE SYNC START
+[2026-09-22 21:15:04] ============================================================
+[2026-09-22 21:15:04] ITR ONLINE SYNC START
+[2026-09-22 21:15:07] !! CRASH:
+le "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 230, in pull_live
+    r = call(page, "vTasks_TestsPlanned", FIELDS, restrictions, off=off)
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 71, in call
+    return page.evaluate("(%s)(%s)" % (GET_JS, json.dumps({
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "v": view, "f": fields, "r": restrictions or [], "n": n, "off": off, "to": to,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    })))
+    ^^^^
+  File "C:\Python314\Lib\site-packages\playwright\sync_api\_generated.py", line 9413, in evaluate
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.evaluate(expression=expression, arg=mapping.to_impl(arg))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_page.py", line 474, in evaluate
+    return await self._main_frame.evaluate(expression, arg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 346, in evaluate
+    await self._channel.send(
+    ...<6 lines>...
+    )
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.evaluate: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --user-data-dir=C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\profile --remote-debugging-pipe about:blank
+<launched> pid=18764
+[pid=18764][err] [18764:8644:0922/211348.744:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[pid=18764][err] [18764:8644:0922/211409.936:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[pid=18764][err] [18764:8644:0922/211504.247:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+
+[2026-09-22 21:15:38] LOGGED IN
+[2026-09-22 21:17:32] pulled off=0 n=4000 accum=4000
+[2026-09-22 21:19:35] pulled off=4000 n=4000 accum=8000
+[2026-09-22 21:21:46] pulled off=8000 n=4000 accum=12000
