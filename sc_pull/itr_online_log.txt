@@ -376,3 +376,97 @@ Call log:
 [2026-09-22 20:36:26]  >> git push OK
 [2026-09-22 20:36:26] PUSH rc=0
 [2026-09-22 20:36:26] DONE
+[2026-09-22 20:55:03] ============================================================
+[2026-09-22 20:55:03] ITR ONLINE SYNC START
+[2026-09-22 20:55:03] ============================================================
+[2026-09-22 20:55:03] ITR ONLINE SYNC START
+[2026-09-22 20:56:23] session expired -> auto-login
+[2026-09-22 20:56:37] !! CRASH:
+Traceback (most recent call last):
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 400, in run_once
+    return _run_once()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 409, in _run_once
+    rows = pull_live()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 209, in pull_live
+    page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\sync_api\_generated.py", line 9903, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_page.py", line 562, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 157, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: Navigation to "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switchboard.htm" is interrupted by another navigation to "https://wly04-sc.intergraphsmartcloud.com/error.htm?aspxerrorpath=/ISC/Login.aspx"
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switchboard.htm", waiting until "domcontentloaded"
+
+
+[2026-09-22 20:58:52] ============================================================
+[2026-09-22 20:58:52] ITR ONLINE SYNC START
+[2026-09-22 20:58:52] ============================================================
+[2026-09-22 20:58:52] ITR ONLINE SYNC START
+[2026-09-22 20:59:57] session expired -> auto-login
+[2026-09-22 21:00:23] !! CRASH:
+Traceback (most recent call last):
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 400, in run_once
+    return _run_once()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 409, in _run_once
+    rows = pull_live()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 209, in pull_live
+    page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\sync_api\_generated.py", line 9903, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_page.py", line 562, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 157, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.goto: Page crashed
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switchboard.htm", waiting until "domcontentloaded"
+
+

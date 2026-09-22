@@ -644,8 +644,9 @@ if __name__ == "__main__":
         while True:
             try:
                 run_once()
+                time.sleep(1800)
             except Exception as e:
                 pr("LOOP ERR:", str(e)[:200])
-            time.sleep(1800)
+                time.sleep(300)
     else:
         sys.exit(run_once())
