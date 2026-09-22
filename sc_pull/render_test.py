@@ -62,6 +62,16 @@ with sync_playwright() as pw:
             for (let i=0;i<d.length;i+=4){ if(d[i]+ d[i+1]+d[i+2] < 750) colored++; }
             out.colored = colored;
             try { out.charts = Object.keys(Chart.instances||{}).length; } catch(e){ out.charts = -1; }
+            try {
+              const insts = Object.keys(Chart.instances||{}).map(k=>Chart.instances[k]);
+              out.winITR = window.ITR ? {daily:(window.ITR.daily||[]).length, subj:(window.ITR.daily_submitted||[]).length} : null;
+            } catch(e){ out.winITR = 'err:'+e; }
+            try {
+              const c = window.Chart ? Object.keys(window.Chart.instances||{}).map(k=>window.Chart.instances[k]).find(x=>x.canvas && x.canvas.id==='chartCombinedDaily') : null;
+              out.combined = c ? {
+                datasets: (c.data.datasets||[]).map(ds=>({label:ds.label, hasDL:!!ds.datalabels, total:(ds.data||[]).reduce((a,b)=>a+(b||0),0), head:(ds.data||[]).slice(0,6)}))
+              } : 'no-inst';
+            } catch(e){ out.combined = 'err:'+e; }
             return out;
         }"""
     )
