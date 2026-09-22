@@ -1,0 +1,16 @@
+﻿============================================================
+ITR ONLINE SYNC START
+session expired -> auto-login
+LOGGED IN
+pulled off=0 n=4000 accum=4000
+pulled off=4000 n=4000 accum=8000
+pulled off=8000 n=4000 accum=12000
+pulled off=12000 n=4000 accum=16000
+pulled off=16000 n=1131 accum=17131
+RESULT: {"source": "Smart Completions (live authenticated pull)", "scope": "PS5 / CPP AGI / E&I&T / vTasks_TestsPlanned", "updated": "2026-09-22 10:03:09", "total_tasks_ps5": 17131, "eit_total": 10923, "eit_by_discipline": {"I": 4727, "E": 5118, "T": 1078}, "closed": 5520, "open": 5403, "closed_by_discipline": {"I": 2622, "E": 2796, "T": 102}, "open_by_discipline": {"I": 2105, "E": 2322, "T": 976}}
+updated dashboard_data.json itr_summary.live
+index.html injection ok: False
+wrote itr_live_state.json -> ps5-dashboard
+pushing online...
+PUSH rc=no clone
+DONE

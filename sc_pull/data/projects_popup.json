@@ -1,0 +1,177 @@
+{
+  "switchboard": {
+    "headerHtml": "EACOP - EACOP\nMG",
+    "dropdownTag": "SPAN",
+    "dropdownCls": "k-widget k-dropdown",
+    "dropdownText": "EACOP - EACOP",
+    "dropdownId": "",
+    "localStorage": {
+      "pj": "1488",
+      "name": "EACOP - EACOP",
+      "ci": "19"
+    }
+  },
+  "clicked": {
+    "clicked": true,
+    "tag": "SPAN",
+    "id": ""
+  },
+  "popup": {
+    "anns": [
+      {
+        "vis": "block",
+        "off": true,
+        "txt": "EACOP - EACOP\nMy Projects\nProject Chart"
+      },
+      {
+        "vis": "block",
+        "off": true,
+        "txt": "EACOP - EACOP\nMy Projects\nProject Chart"
+      },
+      {
+        "vis": "none",
+        "off": false,
+        "txt": "\n                        \n              MG\n              \n                Mohamed Gawad\n                mohamed.abdelgawad.elsaid@cpptz.com\n              \n            ThemeChange PasswordSet PINChange E-SignatureUpload Utility ToolLogout\n                    "
+      },
+      {
+        "vis": "none",
+        "off": false,
+        "txt": "\n                        \n    \n        \n            \n                    To-Do List\n                    \n                \n                    Announcements\n                    \n                \n                    Notifications\n                    \n                \n            \n                \n                \n                \n            \n            \n                \n                No Announce"
+      }
+    ],
+    "lists": [
+      {
+        "txt": "EACOP - EACOP",
+        "cls": "k-input"
+      },
+      {
+        "txt": "",
+        "cls": "leftpanehover leftpanehover-collapsed k-item k-men"
+      },
+      {
+        "txt": "",
+        "cls": "leftpanehover leftpanehover-collapsed k-item k-men"
+      },
+      {
+        "txt": "",
+        "cls": "leftpanehover leftpanehover-collapsed k-item k-men"
+      },
+      {
+        "txt": "",
+        "cls": "leftpanehover leftpanehover-collapsed k-item k-men"
+      },
+      {
+        "txt": "",
+        "cls": "groupLabel leftpanehover leftpanehover-collapsed k"
+      },
+      {
+        "txt": "Documentation",
+        "cls": "groupLabel k-item k-menu-item k-state-default k-fi"
+      },
+      {
+        "txt": "Hexagon University",
+        "cls": "groupLabel  k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Support Forums",
+        "cls": "groupLabel  k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Internal Support",
+        "cls": "groupLabel  k-item k-menu-item k-state-default k-l"
+      },
+      {
+        "txt": "Workspace",
+        "cls": "leftpanehover leftpanehover-expanded k-item k-menu"
+      },
+      {
+        "txt": "Configuration",
+        "cls": "leftpanehover leftpanehover-expanded k-item k-menu"
+      },
+      {
+        "txt": "Engineering",
+        "cls": "leftpanehover leftpanehover-expanded k-item k-menu"
+      },
+      {
+        "txt": "Completions",
+        "cls": "leftpanehover leftpanehover-expanded k-item k-menu"
+      },
+      {
+        "txt": "Help\n                                \n                                        \n                                        \n",
+        "cls": "leftpanehover leftpanehover-expanded k-item k-menu"
+      },
+      {
+        "txt": "Documentation",
+        "cls": "groupLabel  k-item k-menu-item k-state-default k-f"
+      },
+      {
+        "txt": "Hexagon University",
+        "cls": "groupLabel  k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Support Forums",
+        "cls": "groupLabel  k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Internal Support",
+        "cls": "groupLabel  k-item k-menu-item k-state-default k-l"
+      },
+      {
+        "txt": "EACOP - EACOP",
+        "cls": "k-item k-state-selected k-state-focused"
+      },
+      {
+        "txt": "My Projects",
+        "cls": "k-item"
+      },
+      {
+        "txt": "Project Chart",
+        "cls": "k-item k-first"
+      },
+      {
+        "txt": "MG\n              \n                Mohamed Gawad\n                mohamed.abdelgawad.elsaid@cpptz.com",
+        "cls": "k-item k-menu-item k-state-default k-first"
+      },
+      {
+        "txt": "Theme",
+        "cls": "k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Change Password",
+        "cls": "k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Set PIN",
+        "cls": "k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Change E-Signature",
+        "cls": "k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Upload Utility Tool",
+        "cls": "k-item k-menu-item k-state-default"
+      },
+      {
+        "txt": "Logout",
+        "cls": "k-item k-menu-item k-state-default k-last"
+      },
+      {
+        "txt": "To-Do List\n                    \n                \n                    Announcements\n                    \n                ",
+        "cls": "k-item k-menu-item k-state-default k-first k-last"
+      },
+      {
+        "txt": "To-Do List",
+        "cls": "k-item k-state-default k-first"
+      },
+      {
+        "txt": "Announcements",
+        "cls": "k-item k-state-default"
+      },
+      {
+        "txt": "Notifications",
+        "cls": "k-item k-state-default k-last"
+      }
+    ]
+  }
+}

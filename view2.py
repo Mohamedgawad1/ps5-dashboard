@@ -1,0 +1,5 @@
+﻿txt=open('punch_itr_explorer.py',encoding='utf-8').read()
+i=txt.find('def extract_rfc')
+j=txt.find('\r\n\r\ndef ',i+10)
+if j==-1: j=txt.find('\n\ndef ',i+10)
+print(txt[i:j if j!=-1 else i+4000])

@@ -1,0 +1,333 @@
+﻿NO SESSION
+st0: {"t": "Inspections and Test Forms Completions By Tasks (Planned Tests)", "resp": -1, "grids": 0}
+st1: {"t": "Inspections and Test Forms Completions By Tasks (Planned Tests)", "resp": -1, "grids": 2}
+st2: {"t": "Inspections and Test Forms Completions By Tasks (Planned Tests)", "resp": -1, "grids": 2}
+st3: {"t": "Inspections and Test Forms Completions By Tasks (Planned Tests)", "resp": 1039, "grids": 2}
+REPORT CANDIDATES: {
+  "items": [
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlanned_PageBody",
+      "cls": "pagebody",
+      "text": "Inspections and Test Forms Completions By Tasks (Planned Tests) Manager\nEACOP - EACOP\nMG\nSearch or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nan"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "bodycontent",
+      "text": "Inspections and Test Forms Completions By Tasks (Planned Tests) Manager\nEACOP - EACOP\nMG\nSearch or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nan"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "",
+      "text": "Inspections and Test Forms Completions By Tasks (Planned Tests) Manager\nEACOP - EACOP\nMG\nSearch or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nan"
+    },
+    {
+      "tag": "DIV",
+      "id": "ContentRow",
+      "cls": "",
+      "text": "Search or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "",
+      "text": "Search or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo"
+    },
+    {
+      "tag": "DIV",
+      "id": "tempDivUIandAnn",
+      "cls": "",
+      "text": "Search or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlanned_uiBody",
+      "cls": "k-widget k-splitter",
+      "text": "Search or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "k-pane k-scrollable",
+      "text": "Search or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlanned_Navigation",
+      "cls": "",
+      "text": "Search or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlannedSearch_Criteria_mainView",
+      "cls": "",
+      "text": "Search or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlanned_Search_Panel_Criteria",
+      "cls": "",
+      "text": "Search or Browse\nGENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlanned_Search_ContentHolder",
+      "cls": "",
+      "text": "GENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo\n\t\nCert Lock (Sys"
+    },
+    {
+      "tag": "TD",
+      "id": "",
+      "cls": "",
+      "text": "GENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo\n\t\nCert Lock (Sys"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlannedSearchBarContainer",
+      "cls": "",
+      "text": "GENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo\n\t\nCert Lock (Sys"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlannedSearchBarSubContainer",
+      "cls": "",
+      "text": "GENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo\n\t\nCert Lock (Sys"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "k-tabstrip-wrapper",
+      "text": "GENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo\n\t\nCert Lock (Sys"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlannedSearchBar",
+      "cls": "k-widget k-header k-tabstrip k-floatwrap k-tabstrip-top k-tabstrip-scrollable",
+      "text": "GENERAL\nSTRUCTURES\nADVANCED\n\t\n=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo\n\t\nCert Lock (Sys"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlanned_General_Tab_Content",
+      "cls": "k-content k-state-active",
+      "text": "=\nany\nnone\n!=\nIs Checked Out?YesNoN/A\n\t\nTask State\n\t\n=\nany\nnone\n!=\nTask Predecessor LockYesNo\n\t\nCert Lock (Syst)YesNo\n\t\nActual Start DateYes"
+    },
+    {
+      "tag": "DIV",
+      "id": "vTasks_TestsPlanned_ResponsibleCompanyID_dropdownchecklist_Wrp_div",
+      "cls": "",
+      "text": "Responsible Company (Name)\n\t\n=\nany\nnone\n!="
+    },
+    {
+      "tag": "TD",
+      "id": "vTasks_TestsPlanned_ResponsibleCompanyID_dropdownchecklist_Wrp",
+      "cls": "",
+      "text": "Responsible Company (Name)"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "k-widget k-dropdowntree ibs-control ui-widget k-dropdowntree-clearable",
+      "text": "Responsible Company (Name)"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "k-multiselect-wrap k-floatwrap",
+      "text": "Responsible Company (Name)"
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-input k-readonly",
+      "text": "Responsible Company (Name)"
+    },
+    {
+      "tag": "LI",
+      "id": "vTasks_TestsPlanned_WorkTabs-tab-2",
+      "cls": "k-item k-state-default",
+      "text": "Reports"
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-link",
+      "text": "Reports"
+    }
+  ],
+  "reportsClickables": [
+    {
+      "tag": "IMG",
+      "id": "",
+      "cls": "menuIcon",
+      "txt": ""
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-widget k-dropdown",
+      "txt": "EACOP - EACOP"
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-dropdown-wrap k-state-default",
+      "txt": "EACOP - EACOP"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "collapsedmenu",
+      "txt": ""
+    },
+    {
+      "tag": "DIV",
+      "id": "CollapsedMenuContent",
+      "cls": "k-widget k-reset k-header k-menu k-menu-vertical",
+      "txt": ""
+    },
+    {
+      "tag": "LI",
+      "id": "",
+      "cls": "leftpanehover leftpanehover-collapsed k-item k-menu-item k-state-default k-first",
+      "txt": ""
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-link k-menu-link",
+      "txt": ""
+    },
+    {
+      "tag": "IMG",
+      "id": "",
+      "cls": "menuIcon k-image",
+      "txt": ""
+    },
+    {
+      "tag": "LI",
+      "id": "",
+      "cls": "leftpanehover leftpanehover-collapsed k-item k-menu-item k-state-default",
+      "txt": ""
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-link k-menu-link",
+      "txt": ""
+    },
+    {
+      "tag": "IMG",
+      "id": "",
+      "cls": "menuIcon k-image",
+      "txt": ""
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-menu-expand-arrow k-icon k-i-arrow-60-right",
+      "txt": ""
+    },
+    {
+      "tag": "UL",
+      "id": "",
+      "cls": "k-group k-menu-group",
+      "txt": "Project Configuration (Level 1)Systemization ExportsResource & User ManagementResources & Users"
+    },
+    {
+      "tag": "LI",
+      "id": "",
+      "cls": "groupLabel k-item k-menu-item k-state-default k-first",
+      "txt": "Project Configuration (Level 1)Systemization Exports"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "k-link k-menu-link",
+      "txt": "Project Configuration (Level 1)"
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-menu-expand-arrow k-icon k-i-arrow-60-right",
+      "txt": ""
+    },
+    {
+      "tag": "UL",
+      "id": "",
+      "cls": "k-group k-menu-group",
+      "txt": "Systemization Exports"
+    },
+    {
+      "tag": "LI",
+      "id": "",
+      "cls": "groupLabel k-item k-menu-item k-state-default k-first",
+      "txt": "Systemization"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "k-link k-menu-link",
+      "txt": "Systemization"
+    },
+    {
+      "tag": "LI",
+      "id": "",
+      "cls": "k-separator k-item k-state-default k-menu-separator",
+      "txt": " "
+    },
+    {
+      "tag": "LI",
+      "id": "",
+      "cls": "groupLabel k-item k-menu-item k-state-default k-last",
+      "txt": "Exports"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "k-link k-menu-link",
+      "txt": "Exports"
+    },
+    {
+      "tag": "LI",
+      "id": "",
+      "cls": "groupLabel k-item k-menu-item k-state-default k-last",
+      "txt": "Resource & User ManagementResources & Users"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "k-link k-menu-link",
+      "txt": "Resource & User Management"
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "cls": "k-menu-expand-arrow k-icon k-i-arrow-60-right",
+      "txt": ""
+    }
+  ]
+}
+GRID INFO: [
+  {
+    "id": "vTasks_TestsPlanned_PrimaryList_grid",
+    "cls": "k-grid k-widget k-grid-display-block k-reorderable",
+    "hasKendoGrid": true,
+    "pageSize": 200,
+    "total": 0,
+    "serverPaging": false,
+    "readData": null,
+    "view": null
+  },
+  {
+    "id": "vTaskswTestForms_Forms_grid",
+    "cls": "k-grid k-widget k-grid-display-block k-reorderable",
+    "hasKendoGrid": true,
+    "pageSize": 200,
+    "total": 0,
+    "serverPaging": false,
+    "readData": null,
+    "view": null
+  }
+]

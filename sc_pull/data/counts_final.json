@@ -1,0 +1,66 @@
+{
+  "reference_excel": {
+    "cpp_tasks": 14001,
+    "cpp_eit": 10300,
+    "cpp_eit_closed": 4966,
+    "cpp_eit_ps5": 10300,
+    "cpp_eit_ps5_closed": 4966,
+    "by_disc": {
+      "E": 4627,
+      "I": 4595,
+      "T": 1078
+    }
+  },
+  "live": {
+    "total_pulled": 63905,
+    "eit_total": 38622,
+    "eit_by_discipline": {
+      "I": 16127,
+      "E": 17726,
+      "T": 4769
+    },
+    "eit_closed": 23319,
+    "eit_closed_by_discipline": {
+      "I": 11230,
+      "E": 10963,
+      "T": 1126
+    },
+    "eit_open": 15303,
+    "eit_open_by_discipline": {
+      "I": 4897,
+      "E": 6763,
+      "T": 3643
+    },
+    "eit_ps5": 10931,
+    "eit_ps5_closed": 5501,
+    "by_station_total": {
+      "PR1": 1445,
+      "PS2": 2860,
+      "PS1": 4269,
+      "PR2": 1459,
+      "PS6": 3081,
+      "PS3": 2897,
+      "PS4": 11122,
+      "PS5": 10923,
+      "EPS": 496,
+      "TIF": 36,
+      "PS3_CFR-61-01": 8,
+      "PS4_CFR-61-01": 8,
+      "PS5_CFR-61-01": 8,
+      "PS6_CFR-61-01": 8,
+      "PS1_CFR-61-01": 2
+    },
+    "by_station_closed": {
+      "PR1": 916,
+      "PS2": 1987,
+      "PS1": 3120,
+      "PR2": 1100,
+      "PS6": 2122,
+      "PS3": 1838,
+      "PS4": 6298,
+      "PS5": 5501,
+      "EPS": 404,
+      "TIF": 33
+    }
+  }
+}

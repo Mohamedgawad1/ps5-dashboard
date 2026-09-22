@@ -1,0 +1,54 @@
+﻿NO SESSION
+opening EXPORTS app...
+exports state: {"bodyLen": 165, "t": "Export Wizard", "grids": 0}
+EXPORTS: {
+  "url": "https://wly04-sc.intergraphsmartcloud.com/ISC/tools/vExports/index.htm",
+  "title": "Export Wizard",
+  "snippets": [
+    {
+      "key": "Export",
+      "near": "Export Wizard Manager EACOP - EACOP MG Search or Browse START ADVANCED like not like any none != = < <= >= > like not like any none != = < <= >= > like not like any none != = < <= >= > like no"
+    },
+    {
+      "key": "Export",
+      "near": " > like not like any none != = < <= >= > Project = any none != Match All Any of selected criteria RESET SAVE SEARCH Exports EXPORT WIZARD Reports Saved Export Name Export View sFTP Saved Export Run Export Scheduling 30 days Usage Overall Usage Project EXPORT LOG DETAILS FIELD LOG"
+    },
+    {
+      "key": "Export",
+      "near": "ys Usage Overall Usage Project EXPORT LOG DETAILS FIELD LOG Date User Company Report Name Export? Y N "
+    }
+  ],
+  "grids": [
+    {
+      "id": "vExports_PrimaryList_grid",
+      "cols": [
+        "Saved Export Name",
+        "Export View",
+        "sFTP",
+        "Saved Export",
+        "Run Export",
+        "Scheduling",
+        "30 days Usage",
+        "Overall Usage",
+        "Project"
+      ],
+      "rows": 0
+    },
+    {
+      "id": "vReportLog_RptLog_grid",
+      "cols": [
+        "Date",
+        "User",
+        "Company",
+        "Report Name",
+        "Export?",
+        "Y\nN"
+      ],
+      "rows": 0
+    }
+  ]
+}
+opening EDIT FORM 1369...
+edit state: {"bodyLen": 367, "t": "Edit Export Wizard (CMT Export Planned tasks)"}
+EDIT1369 head: {"url": "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1369&v=vExports", "title": "Edit Export Wizard (CMT Export Planned tasks)", "len": 1841, "text": "Start\nCriteria\nLocation & Scheduling\nExport\nSaved Export\nSaved Export Name\t\t\n\n\nChoose fields to Export\nAssignment selection must be limited as this will create a large file and impede performance significantly for all users.:\t\n\t\n\nRecords (32)\nEdit ListDeleteUpDown\nTo\n\t\n#\tColumn Name\tDatabase Column\tAlias\n1\tTask ID\tTaskName\t\n2\tAsset - Tag\tAssetTag\t\n3\tAsset Pack ID\tAssetPackName\tAsset Pack ID\n4\tCable Pack ID\tCableAssetPackName\t\n5\tPipe Pack ID\tPipeAssetPackName\tPipe Pack ID\n6\tLoop Name\tLoopName\t\n7\tDescription\tTaskDescription\t\n8\tCategory (Summary)\tTaskCategorySummary\t\n9\tDiscipline (Name)\tTaskDiscipline\tDiscipline\n10\tTask Type (Name)\tTaskType\t\n11\tDiscipline (Summary)\tTaskDisciplineSummary\t\n12\tAsset - Description\tAssetDescription\t\n13\tSystemization - Process Plant ID\tProcessBreakdownUp3Identifier\t\n14\tResponsible Company (Summary)\tResponsibleCompany\t\n15\tActual Duration\tScheduledActualDuration\tActual Duration\n16\tScheduled Duration\tScheduledDuration\tScheduled Duration\n17\tTask Duration\tTaskDuration\tTask Duration\n18\tTitle - Actual MH/Person\tActualDuration\t\n19\tTitle - Planned MH/Person\tPlannedDuration\t\n20\tField005 (Custom)\tField005\t\n21\tPhysical Location - Area (Summary)\tPhysicalLocationUp1Summary\t\n22\tSystemization - Subsystem (Summary)\tProcessBreakdown\t\n23\tClosing Date\tApprovedDate\t\n24\tSystemization - Subsystem ID\tProcessBreakdownIdentifier\tSubsystem ID\n25\tPriority (Name)\tTaskPriority\tTask Priority\n26\tPriority (Summary)\tTaskPrioritySummary\tPriority\n27\tTest Form - Description\tDocumentDescription\tTest Form - Description\n28\tAsset - Discipline\tDiscipline\tAsset Discipline\n29\tTask State\tTaskState\tTask State\n30\tSystemization - Subsystem Priority\tProcessBreakdownPriority\tSubsystem Priority\n31\tTask Model (Name)\tTaskModelName\tTask Model\n32\tClosed By\tApprovedBy\tClosed By\n\t\n\nMissing rights to save this record: Edit\n\n\t\nBackNextSaveExit"}
+[saved exports_dump.txt & edit1369_dump.txt]

@@ -1,0 +1,351 @@
+====== Sat 08/22/2026  9:56:00.08 ====== 
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -22-08-26.xlsx
+  Punch rows: 2620 | ITR rows: 13999 | RFC: 270
+  Subsystems: 279 | max punch/sub: 104 | max itr/sub: 1102
+  Carry-over: 0 notes, 0 colored rows
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -22-08-26.xlsx
+  ITR rows 11 | Punch disc 10 | Miles 292 | Detail P 2620 | Detail I 13999 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 10 colored rows | 0 platform colors
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsx
+------ done 10:02:27.28 ------ 
+====== Sun 08/23/2026  8:00:01.59 ====== 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+[2026-08-23 08:00:05] ==================================================
+[2026-08-23 08:00:05] Starting daily update...
+[2026-08-23 08:00:05] Copying new PDFs from Downloads...
+[2026-08-23 08:00:05]   Copied 0 new PDFs
+[2026-08-23 08:00:07] Building subsystem mapping...
+[2026-08-23 08:00:20]   297 subsystems, 6553 mappings
+[2026-08-23 08:00:20] Reading ovTasks (10K+ tags)...
+[2026-08-23 08:00:56]   10312 unique tags
+[2026-08-23 08:00:56] Reading Glanding RFI + matching CPP-RFI PDFs...
+[2026-08-23 08:01:05]   Glanding: 25 | Matched to PDF: 24
+[2026-08-23 08:01:05] Parsing cable schedules...
+[2026-08-23 08:01:10]   Electrical Cable Schedule: 1577
+[2026-08-23 08:01:12]   Instrument Cable Schedule: 943
+[2026-08-23 08:01:13]   Telecom Cable Schedule: 768
+[2026-08-23 08:01:16]   Trace Heating: 1581
+[2026-08-23 08:01:16] Building data.json...
+[2026-08-23 08:01:35] DONE! 11942 assets | 4869 cables | 10312 ovtasks | 9726 w/PDF | 25 w/RFI | 12 w/RFI-PDF | 297 subs
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\mylap\OneDrive\Desktop\dashboard\cpp_agi_dashboard.py:761: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df['Inspection Date'] = pd.to_datetime(df['Inspection Date'], errors='coerce')
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\mylap\OneDrive\Desktop\dashboard\cpp_agi_dashboard.py:990: UserWarning: Parsing dates in %d/%m/%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  raised = pd.to_datetime(r.get('raised_date'), errors='coerce')
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+============================================================
+   PS5 Project Dashboard Generator
+============================================================
+ovTasks file       : C:\Users\mylap\Downloads\asset and punch\ovTasks_TestsPlanned_1369.xlsx
+Punch List         : C:\Users\mylap\OneDrive\Desktop\dashboard\PS-5 EIT PUNCH LIST REGISTER.xlsx
+Inspection Register: C:\Users\mylap\OneDrive\Desktop\dashboard\PS-5 INSPECTION REGISTER.xlsx
+  Today's date used: 2026-08-22 (from data)
+  Cable/CMT OV tasks: 8460 records (E-Electrical: 3974, I-Instrumentation: 3894, T-Telecom: 592)
+  Cable tracker (PS5): E=1665, I=1838, T=822
+  Cable tracker scopes: 15 scope groups
+
+Building universal search index (Asset Tag -> ITR / RFI / Punch)...
+  ovTasks: 23593 tasks | 8399 closed
+  SC Punch: Added 1153 direct-asset punch items
+Search index built: 9946 unique Asset Tags (from 13095)
+  Extra pages loaded: 9 sheets from PS5 EIT CPP AGI Dashboard.xlsx
+Dashboard saved: C:\Users\mylap\OneDrive\Desktop\dashboard\index.html
+  Also saved: C:\Users\mylap\OneDrive\Desktop\dashboard\PS5_Project_Dashboard.html
+  SMS data saved: C:\Users\mylap\OneDrive\Desktop\dashboard\sms_data.json
+
+  Uploading to GitHub...
+  Uploaded via git: index.html, sms_data.json
+
+============================================================
+  Dashboard built successfully!
+  File: C:\Users\mylap\OneDrive\Desktop\dashboard\index.html
+============================================================
+[git] no changes 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+====== Sun 08/23/2026 17:49:24.14 ====== 
+[explorer] FAILED 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+[dashboard] OK 
+[deploy] no changes
+------ done 18:01:23.81 ------ 
+====== Mon 08/24/2026  7:07:49.11 ====== 
+[explorer] FAILED 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -22-08-26(2).xlsx
+  ITR rows 11 | Punch disc 10 | Miles 292 | Detail P 2647 | Detail I 23593 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 10 colored rows | 0 platform colors | 525 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done  7:29:32.72 ------ 
+====== Mon 08/24/2026  9:19:57.25 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1501: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  rows.push([...tr.children].map(td=>td.innerText.replace(/\u25BE/g,'').replace(/\s+/g,' ').trim()))});
+[explorer] FAILED 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1501: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  rows.push([...tr.children].map(td=>td.innerText.replace(/\u25BE/g,'').replace(/\s+/g,' ').trim()))});
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -22-08-26(2).xlsx
+  ITR rows 1 | Punch disc 10 | Miles 292 | Detail P 2647 | Detail I 23593 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 14456 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done  9:32:41.07 ------ 
+====== Mon 08/24/2026 17:10:41.04 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -24-08-26.xlsx  (edits: 51970 cells / 0 notes)
+  [summery-sync] OK -> 51965 cells, 0 notes written
+[summery-sync] OK 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -24-08-26.xlsx
+  ITR rows 1 | Punch disc 10 | Miles 292 | Detail P 2664 | Detail I 23593 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 14515 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done 17:29:09.09 ------ 
+====== Mon 08/24/2026 18:34:58.53 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -24-08-26.xlsx  (edits: 52045 cells / 0 notes)
+  [summery-sync] OK -> 52038 cells, 0 notes written
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+[dashboard] FAILED 
+====== Tue 08/25/2026  7:15:21.45 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -24-08-26.xlsx  (edits: 52045 cells / 0 notes)
+  [summery-sync] OK -> 52038 cells, 0 notes written
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -24-08-26.xlsx
+  ITR rows 1 | Punch disc 10 | Miles 292 | Detail P 2664 | Detail I 23593 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 14515 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done  7:36:23.83 ------ 
+====== Tue 08/25/2026 18:18:50.83 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -24-08-26.xlsx  (edits: 52091 cells / 0 notes)
+  [summery-sync] OK -> 52076 cells, 0 notes written
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -25-08-26.xlsx
+  ITR rows 11 | Punch disc 10 | Miles 292 | Detail P 2678 | Detail I 23598 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 14530 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done 18:38:07.62 ------ 
+====== Wed 08/26/2026  7:18:47.34 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+====== Wed 08/26/2026 17:18:24.33 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+====== Wed 08/26/2026 18:33:44.21 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -26-08-26.xlsx  (edits: 52187 cells / 0 notes)
+  [summery-sync] OK -> 52165 cells, 0 notes written
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -26-08-26.xlsx
+  ITR rows 11 | Punch disc 10 | Miles 292 | Detail P 2706 | Detail I 23533 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 6 colored rows | 0 platform colors | 14556 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done 18:48:36.34 ------ 
+====== Thu 08/27/2026  7:16:20.58 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+====== Fri 08/28/2026  7:23:20.28 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -27-08-26.xlsx  (edits: 52318 cells / 0 notes)
+  [summery-sync] OK -> 52270 cells, 0 notes written
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx
+  ITR rows 11 | Punch disc 10 | Miles 292 | Detail P 2747 | Detail I 23533 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 10 colored rows | 0 platform colors | 14637 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done  8:26:48.00 ------ 
+====== Fri 08/28/2026 10:53:16.01 ====== 
+[explorer] FAILED 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx  (edits: 52456 cells / 0 notes)
+  [summery-sync] OK -> 52330 cells, 0 notes written, 76 skipped (no matching column)
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx
+  ITR rows 1 | Punch disc 10 | Miles 292 | Detail P 2747 | Detail I 23533 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 10 colored rows | 0 platform colors | 14639 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done 11:06:24.20 ------ 
+====== Fri 08/28/2026 15:18:59.77 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx  (edits: 52464 cells / 0 notes)
+  [summery-sync] OK -> 52338 cells, 0 notes written, 76 skipped (no matching column)
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx
+  ITR rows 1 | Punch disc 10 | Miles 292 | Detail P 2747 | Detail I 23533 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 14639 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done 15:33:36.02 ------ 
+====== Fri 08/28/2026 18:45:56.31 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx  (edits: 52464 cells / 0 notes)
+  [summery-sync] OK -> 52338 cells, 0 notes written, 76 skipped (no matching column)
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx
+  ITR rows 1 | Punch disc 10 | Miles 292 | Detail P 2747 | Detail I 23533 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 14639 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] push FAILED
+------ done 19:18:29.30 ------ 
+====== Sat 08/29/2026  7:16:39.25 ====== 
+[explorer] FAILED 
+====== Sat 08/29/2026  7:40:55.25 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx  (edits: 52464 cells / 0 notes)
+  [summery-sync] OK -> 52338 cells, 0 notes written, 76 skipped (no matching column)
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx
+  ITR rows 1 | Punch disc 10 | Miles 292 | Detail P 2749 | Detail I 23533 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 14708 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] pushed OK
+------ done  7:54:33.28 ------ 
+====== Sat 08/29/2026 10:30:18.92 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -28-08-26.xlsx  (edits: 52593 cells / 0 notes)
+  [summery-sync] OK -> 52423 cells, 0 notes written, 109 skipped (no matching column)
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+====== Sun 08/30/2026  7:13:35.23 ====== 
+====== Mon 08/31/2026  7:20:53.12 ====== 
+C:\Users\mylap\OneDrive\Desktop\dashboard\punch_itr_explorer.py:1218: SyntaxWarning: "\s" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\s"? A raw string is also an option.
+  const doneI=s=>{s=String(s||'').trim();if(/to\s*be/i.test(s))return false;return /^comp/i.test(s)||/^closed$/i.test(s);};
+[explorer] FAILED 
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+  [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -29-AUGUST-2026.xlsx BLOCK UPDATE.xlsx  (edits: 52706 cells / 0 notes)
+  [summery-sync] OK -> 52517 cells, 0 notes written, 109 skipped (no matching column)
+[summery-sync] OK 
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -29-AUGUST-2026.xlsx BLOCK UPDATE.xlsx
+  ITR rows 1 | Punch disc 10 | Miles 292 | Detail P 2751 | Detail I 23534 | RFC 270
+  Carry-over: dash 1 notes | detail 0 notes | 6 colored rows | 0 platform colors | 14727 pinned cells
+DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+[dashboard] OK 
+[deploy] no changes
+------ done  7:39:04.16 ------ 

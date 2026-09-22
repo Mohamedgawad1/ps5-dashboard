@@ -1,0 +1,20 @@
+﻿NO SESSION
+SAMPLE: {"cols": ["AssetPackName", "IsException", "TaskDescription", "TaskID", "ApprovedDate", "JobName", "WeekOverdue", "CertificateCategorySummary", "RowNumber", "AssetTag", "WorkBreakdownUp2Name", "ProcessBreakdownUp1Summary", "LoopName", "ActualEndDate", "TaskDiscipline", "ResponsibleCompany", "CompletedBy", "PDFFileID", "ID", "ProcessBreakdown", "TaskType", "ApprovedBy", "ExecutionType", "TaskName", "WorkBreakdownUp1Name"], "rows": null, "total": null, "n": 3}
+row: {"AssetPackName": null, "IsException": null, "TaskDescription": "CQX03 - Water proofing", "TaskID": "345128", "ApprovedDate": null, "JobName": null, "WeekOverdue": null, "CertificateCategorySummary": null, "RowNumber": "1", "AssetTag": null, "WorkBreakdownUp2Name": "Precommissioning", "ProcessBreakdownUp1Summary": null, "LoopName": null, "ActualEndDate": null, "TaskDiscipline": "B", "ResponsibleCompany": null, "CompletedBy": null, "PDFFileID": "393930", "ID": "345128", "ProcessBreakdown": null, "TaskType": "Conformity Check", "ApprovedBy": null, "ExecutionType": "Digital Execution", "TaskName": "TM-00006", "WorkBreakdownUp1Name": "Pre-Commissioning"}
+row: {"AssetPackName": null, "IsException": null, "TaskDescription": "CPX04 - HV switchboard", "TaskID": "344892", "ApprovedDate": null, "JobName": null, "WeekOverdue": null, "CertificateCategorySummary": null, "RowNumber": "2", "AssetTag": null, "WorkBreakdownUp2Name": "Precommissioning", "ProcessBreakdownUp1Summary": null, "LoopName": null, "ActualEndDate": null, "TaskDiscipline": "E", "ResponsibleCompany": null, "CompletedBy": null, "PDFFileID": "384077", "ID": "344892", "ProcessBreakdown": null, "TaskType": "Conformity Check", "ApprovedBy": null, "ExecutionType": "Digital Execution", "TaskName": "TM-00005", "WorkBreakdownUp1Name": "Pre-Commissioning"}
+row: {"AssetPackName": null, "IsException": null, "TaskDescription": "CQX02 - Building General", "TaskID": "337274", "ApprovedDate": null, "JobName": null, "WeekOverdue": null, "CertificateCategorySummary": null, "RowNumber": "3", "AssetTag": null, "WorkBreakdownUp2Name": "Precommissioning", "ProcessBreakdownUp1Summary": null, "LoopName": null, "ActualEndDate": null, "TaskDiscipline": "B", "ResponsibleCompany": null, "CompletedBy": null, "PDFFileID": "393929", "ID": "337274", "ProcessBreakdown": null, "TaskType": "Conformity Check", "ApprovedBy": null, "ExecutionType": "Digital Execution", "TaskName": "TM-00004", "WorkBreakdownUp1Name": "Pre-Commissioning"}
+pulled off=0 n=2000 total=None accumulated=2000
+pulled off=2000 n=2000 total=None accumulated=4000
+pulled off=4000 n=2000 total=None accumulated=6000
+pulled off=6000 n=2000 total=None accumulated=8000
+pulled off=8000 n=2000 total=None accumulated=10000
+pulled off=10000 n=2000 total=None accumulated=12000
+pulled off=12000 n=2000 total=None accumulated=14000
+pulled off=14000 n=2000 total=None accumulated=16000
+pulled off=16000 n=2000 total=None accumulated=18000
+pulled off=18000 n=2000 total=None accumulated=20000
+pulled off=20000 n=2000 total=None accumulated=22000
+pulled off=22000 n=2000 total=None accumulated=24000
+pulled off=24000 n=2000 total=None accumulated=26000
+pulled off=26000 n=2000 total=None accumulated=28000
+pulled off=28000 n=2000 total=None accumulated=30000

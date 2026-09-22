@@ -1,0 +1,16 @@
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\mylap\OneDrive\Desktop\dashboard\cpp_agi_dashboard.py:1004: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  d_ok = pd.to_datetime(df['Inspection Date'], errors='coerce')
+C:\Python314\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Users\mylap\OneDrive\Desktop\dashboard\cpp_agi_dashboard.py:1232: UserWarning: Parsing dates in %d-%m-%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  insp_date = pd.to_datetime(r.get('Inspection Date'), errors='coerce')
+C:\Users\mylap\OneDrive\Desktop\dashboard\cpp_agi_dashboard.py:1257: UserWarning: Parsing dates in %d/%m/%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  raised = pd.to_datetime(r.get('raised_date'), errors='coerce')
+C:\Users\mylap\OneDrive\Desktop\dashboard\cpp_agi_dashboard.py:1257: UserWarning: Parsing dates in %d-%m-%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  raised = pd.to_datetime(r.get('raised_date'), errors='coerce')
+C:\Python314\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+  warn("Workbook contains no default style, apply openpyxl's default")

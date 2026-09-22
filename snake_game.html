@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الثعبان 🐍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .game-container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #00ff88;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 15px;
+        }
+
+        .score-item {
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .score-item span {
+            color: #00ff88;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        canvas {
+            border: 3px solid #00ff88;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            background: #1a1a2e;
+        }
+
+        .controls {
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #0f0c29;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .overlay.hidden {
+            display: none;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #00ff88;
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.3);
+        }
+
+        .modal h2 {
+            color: #00ff88;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .modal p {
+            color: white;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .modal .final-score {
+            color: #ffcc00;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .mobile-controls {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .mobile-controls .row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 5px 0;
+        }
+
+        .mobile-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 255, 136, 0.2);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            color: #00ff88;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .mobile-btn:active {
+            background: rgba(0, 255, 136, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .mobile-controls { display: block; }
+            canvas { max-width: 95vw; max-height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Screen -->
+    <div class="overlay" id="startScreen">
+        <div class="modal">
+            <h2>🐍 لعبة الثعبان</h2>
+            <p>استخدم الأسهم أو WASD للتحكم</p>
+            <p> ate the food to grow and score!</p>
+            <button class="btn" onclick="startGame()">ابدأ اللعب</button>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div class="overlay hidden" id="gameOverScreen">
+        <div class="modal">
+            <h2>💥 انتهت اللعبة!</h2>
+            <p>النتيجة النهائية: <span class="final-score" id="finalScore">0</span></p>
+            <button class="btn" onclick="startGame()">العب تاني</button>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <h1>🐍 لعبة الثعبان</h1>
+        <div class="score-board">
+            <div class="score-item">النتيجة: <span id="score">0</span></div>
+            <div class="score-item">الأعلى: <span id="highScore">0</span></div>
+        </div>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div class="controls">
+            <p>🎮 الأسهم أو WASD للتحكم | ملاحظة: الثعبان يلف حول الشاشة</p>
+        </div>
+        <div class="mobile-controls">
+            <div class="row">
+                <div class="mobile-btn" onclick="changeDirection('up')">▲</div>
+            </div>
+            <div class="row">
+                <div class="mobile-btn" onclick="changeDirection('left')">◄</div>
+                <div class="mobile-btn" onclick="changeDirection('down')">▼</div>
+                <div class="mobile-btn" onclick="changeDirection('right')">►</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const gridSize = 20;
+        const tileCount = canvas.width / gridSize;
+
+        let snake = [];
+        let food = {};
+        let direction = { x: 1, y: 0 };
+        let nextDirection = { x: 1, y: 0 };
+        let score = 0;
+        let highScore = localStorage.getItem('snakeHighScore') || 0;
+        let gameLoop = null;
+        let gameSpeed = 120;
+        let isRunning = false;
+
+        document.getElementById('highScore').textContent = highScore;
+
+        function initGame() {
+            snake = [
+                { x: 5, y: 10 },
+                { x: 4, y: 10 },
+                { x: 3, y: 10 }
+            ];
+            direction = { x: 1, y: 0 };
+            nextDirection = { x: 1, y: 0 };
+            score = 0;
+            gameSpeed = 120;
+            document.getElementById('score').textContent = score;
+            spawnFood();
+        }
+
+        function spawnFood() {
+            do {
+                food = {
+                    x: Math.floor(Math.random() * tileCount),
+                    y: Math.floor(Math.random() * tileCount)
+                };
+            } while (snake.some(seg => seg.x === food.x && seg.y === food.y));
+        }
+
+        function draw() {
+            // Background
+            ctx.fillStyle = '#1a1a2e';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Grid
+            ctx.strokeStyle = '#16213e';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < tileCount; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * gridSize, 0);
+                ctx.lineTo(i * gridSize, canvas.height);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i * gridSize);
+                ctx.lineTo(canvas.width, i * gridSize);
+                ctx.stroke();
+            }
+
+            // Snake
+            snake.forEach((segment, index) => {
+                const gradient = ctx.createRadialGradient(
+                    segment.x * gridSize + gridSize/2,
+                    segment.y * gridSize + gridSize/2,
+                    2,
+                    segment.x * gridSize + gridSize/2,
+                    segment.y * gridSize + gridSize/2,
+                    gridSize/2
+                );
+                
+                if (index === 0) {
+                    gradient.addColorStop(0, '#00ff88');
+                    gradient.addColorStop(1, '#00cc6a');
+                } else {
+                    gradient.addColorStop(0, '#00cc6a');
+                    gradient.addColorStop(1, '#009950');
+                }
+
+                ctx.fillStyle = gradient;
+                ctx.shadowBlur = index === 0 ? 15 : 5;
+                ctx.shadowColor = '#00ff88';
+                
+                ctx.beginPath();
+                ctx.roundRect(
+                    segment.x * gridSize + 1,
+                    segment.y * gridSize + 1,
+                    gridSize - 2,
+                    gridSize - 2,
+                    5
+                );
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Eyes for head
+                if (index === 0) {
+                    ctx.fillStyle = '#0f0c29';
+                    const eyeSize = 3;
+                    ctx.beginPath();
+                    ctx.arc(
+                        segment.x * gridSize + (direction.x === 0 ? 6 : (direction.x === 1 ? 14 : 6)),
+                        segment.y * gridSize + (direction.y === 0 ? 6 : (direction.y === 1 ? 14 : 6)),
+                        eyeSize, 0, Math.PI * 2
+                    );
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.arc(
+                        segment.x * gridSize + (direction.x === 0 ? 14 : (direction.x === 1 ? 14 : 14)),
+                        segment.y * gridSize + (direction.y === 0 ? 14 : (direction.y === 1 ? 14 : 14)),
+                        eyeSize, 0, Math.PI * 2
+                    );
+                    ctx.fill();
+                }
+            });
+
+            // Food
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = '#ff0055';
+            ctx.fillStyle = '#ff0055';
+            ctx.beginPath();
+            ctx.arc(
+                food.x * gridSize + gridSize/2,
+                food.y * gridSize + gridSize/2,
+                gridSize/2 - 2,
+                0, Math.PI * 2
+            );
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            // Food emoji
+            ctx.font = '14px Arial';
+            ctx.fillText('🍎', food.x * gridSize + 3, food.y * gridSize + 15);
+        }
+
+        function update() {
+            direction = { ...nextDirection };
+
+            const head = {
+                x: snake[0].x + direction.x,
+                y: snake[0].y + direction.y
+            };
+
+            // Wrap around (go through walls)
+            if (head.x < 0) head.x = tileCount - 1;
+            if (head.x >= tileCount) head.x = 0;
+            if (head.y < 0) head.y = tileCount - 1;
+            if (head.y >= tileCount) head.y = 0;
+
+            // Self collision
+            if (snake.some(seg => seg.x === head.x && seg.y === head.y)) {
+                gameOver();
+                return;
+            }
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                score += 10;
+                document.getElementById('score').textContent = score;
+                spawnFood();
+                
+                // Speed up
+                if (gameSpeed > 60) {
+                    gameSpeed -= 2;
+                    clearInterval(gameLoop);
+                    gameLoop = setInterval(gameStep, gameSpeed);
+                }
+            } else {
+                snake.pop();
+            }
+        }
+
+        function gameStep() {
+            update();
+            draw();
+        }
+
+        function gameOver() {
+            isRunning = false;
+            clearInterval(gameLoop);
+            
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('snakeHighScore', highScore);
+                document.getElementById('highScore').textContent = highScore;
+            }
+
+            document.getElementById('finalScore').textContent = score;
+            document.getElementById('gameOverScreen').classList.remove('hidden');
+        }
+
+        function startGame() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('gameOverScreen').classList.add('hidden');
+            initGame();
+            isRunning = true;
+            gameLoop = setInterval(gameStep, gameSpeed);
+        }
+
+        function changeDirection(dir) {
+            switch(dir) {
+                case 'up':
+                    if (direction.y !== 1) nextDirection = { x: 0, y: -1 };
+                    break;
+                case 'down':
+                    if (direction.y !== -1) nextDirection = { x: 0, y: 1 };
+                    break;
+                case 'left':
+                    if (direction.x !== 1) nextDirection = { x: -1, y: 0 };
+                    break;
+                case 'right':
+                    if (direction.x !== -1) nextDirection = { x: 1, y: 0 };
+                    break;
+            }
+        }
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (!isRunning) return;
+            
+            switch(e.key) {
+                case 'ArrowUp':
+                case 'w':
+                case 'W':
+                    if (direction.y !== 1) nextDirection = { x: 0, y: -1 };
+                    break;
+                case 'ArrowDown':
+                case 's':
+                case 'S':
+                    if (direction.y !== -1) nextDirection = { x: 0, y: 1 };
+                    break;
+                case 'ArrowLeft':
+                case 'a':
+                case 'A':
+                    if (direction.x !== 1) nextDirection = { x: -1, y: 0 };
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                case 'D':
+                    if (direction.x !== -1) nextDirection = { x: 1, y: 0 };
+                    break;
+            }
+        });
+
+        // Initial draw
+        initGame();
+        draw();
+    </script>
+</body>
+</html>

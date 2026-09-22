@@ -1,0 +1,21 @@
+﻿============================================================
+ITR ONLINE SYNC START
+============================================================
+ITR ONLINE SYNC START
+LOGGED IN
+pulled off=0 n=4000 accum=4000
+pulled off=4000 n=4000 accum=8000
+pulled off=8000 n=4000 accum=12000
+pulled off=12000 n=2001 accum=14001
+RESULT: {"source": "Smart Completions (live authenticated pull)", "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned", "updated": "2026-09-22 10:31:23", "total_tasks_ps5": 14001, "eit_total": 10300, "eit_by_discipline": {"I": 4595, "E": 4627, "T": 1078}, "closed": 4991, "open": 5309, "closed_by_discipline": {"I": 2504, "E": 2385, "T": 102}, "open_by_discipline": {"I": 2091, "E": 2242, "T": 976}}
+updated dashboard_data.json itr_summary.live
+index.html injection ok: True
+wrote itr_live_state.json -> ps5-dashboard
+pushing online...
+ >> git -C C:\Users\mylap\OneDrive\Desktop\ps5-dashboard add -A rc=0 
+ >> git -C C:\Users\mylap\OneDrive\Desktop\ps5-dashboard commit -m ITR live update 2026-09-22 10:31 (closed=4991) rc=0 [main 09ce0fe] ITR live update 2026-09-22 10:31 (closed=4991)
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+ >> pull --rebase (attempt 1)
+ >> git push OK
+PUSH rc=0
+DONE

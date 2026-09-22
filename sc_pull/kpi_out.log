@@ -1,0 +1,12 @@
+[09:28:36] NO SESSION -> try auto-login
+[09:29:34] NO SESSION after auto-login (long poll)
+[09:29:57] LOGGED IN
+[09:30:29] pulled off=0 n=4000 accum=4000
+[09:30:48] pulled off=4000 n=4000 accum=8000
+[09:31:22] pulled off=8000 n=4000 accum=12000
+[09:32:04] pulled off=12000 n=4000 accum=16000
+[09:32:16] pulled off=16000 n=1131 accum=17131
+[09:32:16] PS5 CPP AGI rows: 17131
+[09:32:16] RESULT: {"scope": "PS5 / CPP AGI / vTasks_TestsPlanned", "as_of": "2026-09-22 09:32:16", "ps5_total_rows": 17131, "eit_total": 10923, "eit_closed": 5514, "eit_open": 5409, "eit_by_discipline": {"I": 4727, "E": 5118, "T": 1078}, "eit_closed_by_discipline": {"I": 2620, "E": 2792, "T": 102}, "eit_open_by_discipline": {"I": 2107, "E": 2326, "T": 976}}
+[09:32:21] saved: C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\Live_PS5_CPP_AGI_EIT_Tasks.xlsx
+[09:32:24] DONE

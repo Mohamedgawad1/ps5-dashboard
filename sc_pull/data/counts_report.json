@@ -1,0 +1,55 @@
+{
+  "reference_excel": null,
+  "companies": {
+    "cols": [
+      "RowNumber",
+      "Summary",
+      "ID",
+      "Name"
+    ],
+    "total": null,
+    "n": 885
+  },
+  "pulled": 2000,
+  "totalReported": null,
+  "cols": [
+    "TaskState",
+    "TaskCategorySummary",
+    "ID",
+    "TaskDisciplineSummary",
+    "ApprovedDate",
+    "RowNumber",
+    "TaskPrioritySummary",
+    "TaskModelName",
+    "AssetTag",
+    "ResponsibleCompanyID",
+    "LoopName",
+    "TaskDiscipline",
+    "ResponsibleCompany",
+    "PhysicalLocationUp1Summary",
+    "ProcessBreakdown",
+    "TaskType",
+    "ApprovedBy",
+    "TaskName"
+  ],
+  "keyCounts": {
+    "total": 2000,
+    "E_I_T_total": 1436,
+    "by_discipline": {
+      "I": 1276,
+      "S": 430,
+      "E": 160,
+      "M": 108,
+      "P": 26
+    },
+    "closed_E_I_T": 1122,
+    "closed_by_discipline": {
+      "I": 996,
+      "S": 65,
+      "E": 126,
+      "M": 71,
+      "P": 22
+    },
+    "closed_with_ApprovedDate": 1280
+  }
+}

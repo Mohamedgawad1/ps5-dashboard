@@ -1,0 +1,417 @@
+Inspections and Test Forms Completions By Tasks (Planned Tests) Manager
+EACOP - EACOP
+MG
+Search or Browse
+GENERAL
+STRUCTURES
+ADVANCED
+	
+=
+any
+none
+!=
+Is Checked Out?YesNoN/A
+	
+Task State
+	
+=
+any
+none
+!=
+Task Predecessor LockYesNo
+	
+Cert Lock (Syst)YesNo
+	
+Actual Start DateYesNo
+	
+Submitted DateYesNo
+	
+Actual End DateYesNo
+	
+Closing DateYesNo
+	
+	
+=
+any
+none
+	
+=
+any
+none
+Execution Type
+	
+=
+any
+none
+!=
+Steps Closing?YesNoN/A
+	
+Pending Punchlists?YesNo
+	
+Mail Merged?YesNo
+	
+Executed Forms (Uploaded)?YesNo
+	
+Task Attachments?YesNo
+	
+Reference File?YesNo
+	
+Answer File?YesNo
+	
+My Tasks?YesNo
+	
+Workflow Sign-offYesNoN/A
+	
+Update Lock?YesNoN/A
+	
+	
+like
+not like
+any
+none
+!=
+=
+<
+<=
+>=
+>
+	
+like
+not like
+any
+none
+!=
+=
+<
+<=
+>=
+>
+	
+like
+not like
+any
+none
+!=
+=
+<
+<=
+>=
+>
+	
+like
+not like
+any
+none
+!=
+=
+<
+<=
+>=
+>
+Task Model
+	
+=
+any
+none
+!=
+Completion Task Phase
+	
+=
+any
+none
+!=
+Category
+	
+=
+any
+none
+!=
+Task Type
+	
+=
+any
+none
+!=
+Discipline
+	
+=
+any
+none
+!=
+Certificate Group
+	
+=
+any
+none
+!=
+	
+=
+any
+none
+!=
+	
+=
+any
+none
+!=
+Priority
+	
+=
+any
+none
+!=
+Responsible Workgroup (Name)
+	
+=
+any
+none
+!=
+Responsible Company (Name)
+	
+=
+any
+none
+!=
+Work Package
+	
+=
+any
+none
+!=
+Job Package
+	
+=
+any
+none
+!=
+Job Card
+	
+=
+any
+none
+!=
+	
+=
+any
+none
+!=
+	
+=
+any
+none
+!=
+Contract ID
+	
+=
+any
+none
+!=
+	
+=
+any
+none
+!=
+Workflow Sign-off
+	
+=
+any
+none
+!=
+Repeat HeaderYesNoN/A
+	
+Use E-SignatureYesNoN/A
+	
+Is Exception?YesNoN/A
+	
+	
+=
+any
+none
+!=
+Project
+	
+=
+any
+none
+!=
+Phase
+	
+=
+any
+none
+!=
+Stage
+	
+=
+any
+none
+!=
+Work Breakdown - Activity (Name)
+	
+=
+any
+none
+!=
+	
+=
+any
+none
+!=
+Test Form - Name
+	
+=
+any
+none
+!=
+Match
+All
+Any
+of selected criteria
+RESET
+SAVE
+SEARCH
+Planned Tasks (Master List)
+INSPECTIONS AND TEST FORMS COMPLETIONS BY TASKS (PLANNED TESTS)
+Reports
+ 
+	Task Status	Actions	
+Task ID
+	
+Datasheet
+	
+Asset Tag
+	
+Description
+	
+Is Exception?
+	
+Execution Type
+	
+Discipline
+	
+Task Type
+	
+COMPANY
+	
+Planned Form
+	
+Executed Form
+	
+Punchlists
+	
+Job Card
+	
+Asset Pack ID
+	
+Loop No.
+	
+Phase
+	
+Stage
+	
+Asset Discipline
+	
+Asset Type
+	
+Certificate Group
+	
+Actual End Date
+	
+Completed By
+	
+Closing Date
+	
+Closed By
+	
+System
+	
+Subsystem
+
+ 	 	 	
+	
+Y
+N
+	
+	
+	
+Y
+N
+	
+	
+	
+	
+	
+Y
+N
+	
+Y
+N
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+TEST FORMS
+INSPECTION POINTS
+PUNCHLIST ITEMS
+DETAILS
+DOCUMENTS
+PREDECESSORS
+RFIS
+WORK PERMITS
+FILES
+FIELD LOG
+State
+	
+Complete Task
+	
+Form Name
+	
+Mail Merge
+	
+Upload File to Replace Mail Merged One.
+	
+Planned Form
+	
+Upload Scanned Form.
+	
+Executed Form
+	
+Description
+	
+Type
+
+
+	
+	
+	
+	
+	
+Y
+N
+	
+	
+Y
+N
+	
+	
+Rework
+DS
+Form
+Pckg
+Execute
+Check In/Out
+Imports
+PL
+Notify
+ 

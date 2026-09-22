@@ -1,0 +1,40 @@
+============================================================
+   PS5 Project Dashboard Generator
+============================================================
+  Cloud -> PS-5 INSPECTION REGISTER (cloud).xlsx (1,232,133 bytes)
+    [[cloud sync]] +8.9s
+ovTasks file       : C:\Users\mylap\OneDrive\Desktop\dashboard\ovTasks_TestsPlanned_1369.xlsx
+Punch List         : C:\Users\mylap\OneDrive\Desktop\dashboard\PS-5 EIT PUNCH LIST REGISTER.xlsx
+Inspection Register: C:\Users\mylap\AppData\Local\Temp\opencode\cloud_sync\PS-5 INSPECTION REGISTER (cloud).xlsx
+  Inputs changed -> full build
+  Today's date used: 2026-09-18 (from data)
+    [[itr_data]] +45.1s
+    [[eit_breakdown]] +45.3s
+    [[punch_data]] +50.8s
+  ITR Type Map: 266 prefixes | Closed tags: 11126 | Closed task IDs: 8794
+    [[rfi/inspection]] +58.5s
+    [[cmt_qc_punch]] +59.1s
+  Cable/CMT OV tasks: 8460 records (E-Electrical: 3974, I-Instrumentation: 3894, T-Telecom: 592)
+    [[cable_ov]] +61.0s
+  Cable tracker (PS5): E=1665, I=1838, T=822
+  Cable tracker scopes: 15 scope groups
+    [[cable_tracker]] +63.6s
+
+Building universal search index (Asset Tag -> ITR / RFI / Punch)...
+  ovTasks: 23541 tasks | 11138 closed
+  SC Punch: Added 2494 direct-asset punch items
+Search index built: 10227 unique Asset Tags (from 13145)
+    [[search_index]] +88.1s
+  Extra pages loaded: 9 sheets from PS5 EIT CPP AGI Dashboard.xlsx
+Dashboard saved: C:\Users\mylap\OneDrive\Desktop\dashboard\index.html
+    [[build_html]] +105.4s
+  Also saved: C:\Users\mylap\OneDrive\Desktop\dashboard\PS5_Project_Dashboard.html
+  SMS data saved: C:\Users\mylap\OneDrive\Desktop\dashboard\sms_data.json
+
+  Uploading to GitHub...
+  Uploaded via git: index.html, sms_data.json
+
+============================================================
+  Dashboard built successfully!
+  File: C:\Users\mylap\OneDrive\Desktop\dashboard\index.html
+============================================================

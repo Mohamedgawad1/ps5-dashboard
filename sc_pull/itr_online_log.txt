@@ -1,0 +1,329 @@
+[2026-09-22 10:40:07] ============================================================
+[2026-09-22 10:40:07] ITR ONLINE SYNC START
+[2026-09-22 10:40:07] ============================================================
+[2026-09-22 10:40:07] ITR ONLINE SYNC START
+[2026-09-22 10:41:25] LOGGED IN
+[2026-09-22 10:42:00] pulled off=0 n=4000 accum=4000
+[2026-09-22 10:42:34] pulled off=4000 n=4000 accum=8000
+[2026-09-22 10:43:14] pulled off=8000 n=4000 accum=12000
+[2026-09-22 10:43:30] pulled off=12000 n=2001 accum=14001
+[2026-09-22 10:43:34] RESULT: {"source": "Smart Completions (live authenticated pull)", "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned", "updated": "2026-09-22 10:43:34", "total_tasks_ps5": 14001, "eit_total": 10300, "eit_by_discipline": {"I": 4595, "E": 4627, "T": 1078}, "closed": 4991, "open": 5309, "closed_by_discipline": {"I": 2504, "E": 2385, "T": 102}, "open_by_discipline": {"I": 2091, "E": 2242, "T": 976}}
+[2026-09-22 10:43:34] updated dashboard_data.json itr_summary.live
+[2026-09-22 10:43:34] index.html injection ok: True
+[2026-09-22 10:43:34] wrote itr_live_state.json -> ps5-dashboard
+[2026-09-22 10:43:34] pushing online...
+[2026-09-22 10:43:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-09-22 10:43:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-09-22 10:43 (closed=4991) rc=0  1 deletion(-)
+ create mode 100644 itr_live.html
+ create mode 100644 itr_live_state.json
+ create mode 100644 live_itr.js
+[2026-09-22 10:43:49]  >> git push OK
+[2026-09-22 10:43:49] PUSH rc=0
+[2026-09-22 10:43:49] DONE
+[2026-09-22 10:53:27] ============================================================
+[2026-09-22 10:53:27] ITR ONLINE SYNC START
+[2026-09-22 10:53:27] ============================================================
+[2026-09-22 10:53:27] ITR ONLINE SYNC START
+[2026-09-22 10:54:23] session expired -> auto-login
+[2026-09-22 10:55:21] LOGGED IN
+[2026-09-22 10:56:02] pulled off=0 n=4000 accum=4000
+[2026-09-22 10:56:41] pulled off=4000 n=4000 accum=8000
+[2026-09-22 10:57:20] pulled off=8000 n=4000 accum=12000
+[2026-09-22 10:57:39] pulled off=12000 n=2001 accum=14001
+[2026-09-22 10:58:15] RESULT: {"source": "Smart Completions (live authenticated pull)", "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned", "updated": "2026-09-22 10:58:15", "total_tasks_ps5": 14001, "eit_total": 10300, "eit_by_discipline": {"I": 4595, "E": 4627, "T": 1078}, "closed": 4991, "open": 5309, "closed_by_discipline": {"I": 2504, "E": 2385, "T": 102}, "open_by_discipline": {"I": 2091, "E": 2242, "T": 976}}
+[2026-09-22 10:58:15] updated dashboard_data.json itr_summary.live
+[2026-09-22 10:58:18] index.html injection ok: True
+[2026-09-22 10:58:18] wrote itr_live_state.json -> ps5-dashboard
+[2026-09-22 10:58:18] pushing online...
+[2026-09-22 10:58:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-09-22 10:58:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-09-22 10:58 (closed=4991) rc=0 [main 2d0f0a4] ITR live update 2026-09-22 10:58 (closed=4991)
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+[2026-09-22 10:58:31]  >> git push OK
+[2026-09-22 10:58:31] PUSH rc=0
+[2026-09-22 10:58:31] DONE
+[2026-09-22 13:23:51] ============================================================
+[2026-09-22 13:23:51] ITR ONLINE SYNC START
+[2026-09-22 13:23:51] ============================================================
+[2026-09-22 13:23:51] ITR ONLINE SYNC START
+[2026-09-22 13:25:03] session expired -> auto-login
+[2026-09-22 13:26:05] ============================================================
+[2026-09-22 13:26:05] ITR ONLINE SYNC START
+[2026-09-22 13:26:05] ============================================================
+[2026-09-22 13:26:05] ITR ONLINE SYNC START
+[2026-09-22 13:27:12] session expired -> auto-login
+[2026-09-22 13:27:25] LOGGED IN
+[2026-09-22 13:28:17] pulled off=0 n=4000 accum=4000
+[2026-09-22 13:29:16] pulled off=4000 n=4000 accum=8000
+[2026-09-22 13:30:12] pulled off=8000 n=4000 accum=12000
+[2026-09-22 13:30:44] pulled off=12000 n=2001 accum=14001
+[2026-09-22 13:30:45] RESULT: {"source": "Smart Completions (live authenticated pull)", "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned", "updated": "2026-09-22 13:30:45", "total_tasks_ps5": 14001, "eit_total": 10300, "eit_by_discipline": {"I": 4595, "E": 4627, "T": 1078}, "closed": 4992, "open": 5308, "closed_by_discipline": {"I": 2504, "E": 2386, "T": 102}, "open_by_discipline": {"I": 2091, "E": 2241, "T": 976}}
+[2026-09-22 13:30:45] updated dashboard_data.json itr_summary.live
+[2026-09-22 13:30:47] index.html injection ok: True
+[2026-09-22 13:30:47] wrote itr_live_state.json -> ps5-dashboard
+[2026-09-22 13:30:47] pushing online...
+[2026-09-22 13:30:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-09-22 13:30:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-09-22 13:30 (closed=4992) rc=0 [main a7fafa7] ITR live update 2026-09-22 13:30 (closed=4992)
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+[2026-09-22 13:30:55]  >> git push OK
+[2026-09-22 13:30:55] PUSH rc=0
+[2026-09-22 13:30:55] DONE
+[2026-09-22 13:39:34] ============================================================
+[2026-09-22 13:39:34] ITR ONLINE SYNC START
+[2026-09-22 13:39:34] ============================================================
+[2026-09-22 13:39:34] ITR ONLINE SYNC START
+[2026-09-22 13:40:45] session expired -> auto-login
+[2026-09-22 13:42:03] LOGGED IN
+[2026-09-22 13:42:45] pulled off=0 n=4000 accum=4000
+[2026-09-22 13:43:45] pulled off=4000 n=4000 accum=8000
+[2026-09-22 13:44:48] pulled off=8000 n=4000 accum=12000
+[2026-09-22 13:45:14] pulled off=12000 n=2001 accum=14001
+[2026-09-22 13:45:15] RESULT: {"source": "Smart Completions (live authenticated pull)", "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned", "updated": "2026-09-22 13:45:15", "total_tasks_ps5": 14001, "eit_total": 10300, "eit_by_discipline": {"I": 4595, "E": 4627, "T": 1078}, "closed": 4992, "open": 5308, "closed_by_discipline": {"I": 2504, "E": 2386, "T": 102}, "open_by_discipline": {"I": 2091, "E": 2241, "T": 976}}
+[2026-09-22 13:45:15] updated dashboard_data.json itr_summary.live
+[2026-09-22 13:45:17] index.html injection ok: True
+[2026-09-22 13:45:17] wrote itr_live_state.json -> ps5-dashboard
+[2026-09-22 13:45:17] pushing online...
+[2026-09-22 13:45:17]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-09-22 13:45:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-09-22 13:45 (closed=4992) rc=0 [main f2744b9] ITR live update 2026-09-22 13:45 (closed=4992)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-09-22 13:45:25]  >> git push OK
+[2026-09-22 13:45:25] PUSH rc=0
+[2026-09-22 13:45:25] DONE
+[2026-09-22 14:00:55] ============================================================
+[2026-09-22 14:00:55] ITR ONLINE SYNC START
+[2026-09-22 14:00:55] ============================================================
+[2026-09-22 14:00:55] ITR ONLINE SYNC START
+[2026-09-22 14:02:11] session expired -> auto-login
+[2026-09-22 14:08:24] ============================================================
+[2026-09-22 14:08:24] ITR ONLINE SYNC START
+[2026-09-22 14:08:24] ============================================================
+[2026-09-22 14:08:24] ITR ONLINE SYNC START
+[2026-09-22 14:08:26] !! CRASH:
+Traceback (most recent call last):
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 345, in run_once
+    return _run_once()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 354, in _run_once
+    rows = pull_live()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 196, in pull_live
+    page.wait_for_timeout(5000)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\sync_api\_generated.py", line 12744, in wait_for_timeout
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.wait_for_timeout(timeout=to_milliseconds(timeout))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_page.py", line 1144, in wait_for_timeout
+    await self._main_frame.wait_for_timeout(timeout)
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 925, in wait_for_timeout
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.wait_for_timeout: Target page, context or browser has been closed
+
+[2026-09-22 14:09:29] session expired -> auto-login
+[2026-09-22 14:15:25] ============================================================
+[2026-09-22 14:15:25] ITR ONLINE SYNC START
+[2026-09-22 14:15:25] ============================================================
+[2026-09-22 14:15:25] ITR ONLINE SYNC START
+[2026-09-22 14:15:41] !! CRASH:
+Traceback (most recent call last):
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 345, in run_once
+    return _run_once()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 354, in _run_once
+    rows = pull_live()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 196, in pull_live
+    page.wait_for_timeout(5000)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\sync_api\_generated.py", line 12744, in wait_for_timeout
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.wait_for_timeout(timeout=to_milliseconds(timeout))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_page.py", line 1144, in wait_for_timeout
+    await self._main_frame.wait_for_timeout(timeout)
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 925, in wait_for_timeout
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.wait_for_timeout: Target page, context or browser has been closed
+
+[2026-09-22 14:17:17] session expired -> auto-login
+[2026-09-22 14:28:27] WAITING FOR MANUAL LOGIN...
+[2026-09-22 14:38:26] ============================================================
+[2026-09-22 14:38:26] ITR ONLINE SYNC START
+[2026-09-22 14:38:26] ============================================================
+[2026-09-22 14:38:26] ITR ONLINE SYNC START
+[2026-09-22 14:39:28] session expired -> auto-login
+[2026-09-22 14:48:27] !! no rows — abort
+[2026-09-22 14:50:30] WAITING FOR MANUAL LOGIN...
+[2026-09-22 15:10:32] !! no rows — abort
+[2026-09-22 15:15:35] ============================================================
+[2026-09-22 15:15:35] ITR ONLINE SYNC START
+[2026-09-22 15:15:35] ============================================================
+[2026-09-22 15:15:35] ITR ONLINE SYNC START
+[2026-09-22 15:16:56] session expired -> auto-login
+[2026-09-22 15:17:54] LOGGED IN
+[2026-09-22 15:18:27] ============================================================
+[2026-09-22 15:18:28] ITR ONLINE SYNC START
+[2026-09-22 15:18:28] ============================================================
+[2026-09-22 15:18:28] ITR ONLINE SYNC START
+[2026-09-22 15:19:03] !! CRASH:
+"C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 212, in pull_live
+    r = call(page, "vTasks_TestsPlanned", FIELDS, restrictions, off=off)
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 71, in call
+    return page.evaluate("(%s)(%s)" % (GET_JS, json.dumps({
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "v": view, "f": fields, "r": restrictions or [], "n": n, "off": off, "to": to,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    })))
+    ^^^^
+  File "C:\Python314\Lib\site-packages\playwright\sync_api\_generated.py", line 9413, in evaluate
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.evaluate(expression=expression, arg=mapping.to_impl(arg))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_page.py", line 474, in evaluate
+    return await self._main_frame.evaluate(expression, arg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 346, in evaluate
+    await self._channel.send(
+    ...<6 lines>...
+    )
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.evaluate: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --user-data-dir=C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\profile --remote-debugging-pipe about:blank
+<launched> pid=23108
+[pid=23108][err] [23108:14600:0922/151601.040:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[pid=23108][err] [23108:14600:0922/151623.959:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[pid=23108][err] [23108:14600:0922/151721.589:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+
+[2026-09-22 15:20:30] session expired -> auto-login
+[2026-09-22 15:21:26] ============================================================
+[2026-09-22 15:21:26] ITR ONLINE SYNC START
+[2026-09-22 15:21:26] ============================================================
+[2026-09-22 15:21:26] ITR ONLINE SYNC START
+[2026-09-22 15:23:15] session expired -> auto-login
+[2026-09-22 15:24:38] !! CRASH:
+Traceback (most recent call last):
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 371, in run_once
+    return _run_once()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 380, in _run_once
+    rows = pull_live()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 191, in pull_live
+    page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\sync_api\_generated.py", line 9903, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_page.py", line 562, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 157, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switchboard.htm", waiting until "domcontentloaded"
+
+
+[2026-09-22 15:25:04] ============================================================
+[2026-09-22 15:25:04] ITR ONLINE SYNC START
+[2026-09-22 15:25:04] ============================================================
+[2026-09-22 15:25:04] ITR ONLINE SYNC START
+[2026-09-22 15:26:55] session expired -> auto-login
+[2026-09-22 15:28:05] !! CRASH:
+Traceback (most recent call last):
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 371, in run_once
+    return _run_once()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 380, in _run_once
+    rows = pull_live()
+  File "C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\itr_online_sync.py", line 191, in pull_live
+    page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\sync_api\_generated.py", line 9903, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_page.py", line 562, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 157, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switchboard.htm", waiting until "domcontentloaded"
+
+

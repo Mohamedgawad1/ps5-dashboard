@@ -1,0 +1,55 @@
+Start
+Criteria
+Location & Scheduling
+Export
+Saved Export
+Saved Export Name		
+
+
+Choose fields to Export
+Assignment selection must be limited as this will create a large file and impede performance significantly for all users.:	
+	
+
+Records (32)
+Edit ListDeleteUpDown
+To
+	
+#	Column Name	Database Column	Alias
+1	Task ID	TaskName	
+2	Asset - Tag	AssetTag	
+3	Asset Pack ID	AssetPackName	Asset Pack ID
+4	Cable Pack ID	CableAssetPackName	
+5	Pipe Pack ID	PipeAssetPackName	Pipe Pack ID
+6	Loop Name	LoopName	
+7	Description	TaskDescription	
+8	Category (Summary)	TaskCategorySummary	
+9	Discipline (Name)	TaskDiscipline	Discipline
+10	Task Type (Name)	TaskType	
+11	Discipline (Summary)	TaskDisciplineSummary	
+12	Asset - Description	AssetDescription	
+13	Systemization - Process Plant ID	ProcessBreakdownUp3Identifier	
+14	Responsible Company (Summary)	ResponsibleCompany	
+15	Actual Duration	ScheduledActualDuration	Actual Duration
+16	Scheduled Duration	ScheduledDuration	Scheduled Duration
+17	Task Duration	TaskDuration	Task Duration
+18	Title - Actual MH/Person	ActualDuration	
+19	Title - Planned MH/Person	PlannedDuration	
+20	Field005 (Custom)	Field005	
+21	Physical Location - Area (Summary)	PhysicalLocationUp1Summary	
+22	Systemization - Subsystem (Summary)	ProcessBreakdown	
+23	Closing Date	ApprovedDate	
+24	Systemization - Subsystem ID	ProcessBreakdownIdentifier	Subsystem ID
+25	Priority (Name)	TaskPriority	Task Priority
+26	Priority (Summary)	TaskPrioritySummary	Priority
+27	Test Form - Description	DocumentDescription	Test Form - Description
+28	Asset - Discipline	Discipline	Asset Discipline
+29	Task State	TaskState	Task State
+30	Systemization - Subsystem Priority	ProcessBreakdownPriority	Subsystem Priority
+31	Task Model (Name)	TaskModelName	Task Model
+32	Closed By	ApprovedBy	Closed By
+	
+
+Missing rights to save this record: Edit
+
+	
+BackNextSaveExit

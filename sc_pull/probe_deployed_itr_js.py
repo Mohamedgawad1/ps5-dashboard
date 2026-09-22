@@ -1,0 +1,1 @@
+C:\Users\mylap\OneDrive\Desktop\dashboard\live_itr.js restore OK — source itr_live\live_itr.js. Now check what the deployed online live_itr.js contains (to know if it's broken online too) and verify against the schema: closed, closed_by_discipline{E,I,T}, eit_total, updated.

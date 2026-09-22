@@ -1,0 +1,135 @@
+﻿trying: https://wly04-sc.intergraphsmartcloud.com/ISC/tools/vTasks_TestsPlanned/index.htm
+  state0: {"url": "https://wly04-sc.intergraphsmartcloud.com/ISC/tools/vTasks_TestsPlanned/index.htm", "title": "Inspections and Test Forms Completions By Tasks (Planned Tests)", "hasResponsible": false, "hasDalc": true, "grids": 0, "bodyLen": 446}
+{
+  "url": "https://wly04-sc.intergraphsmartcloud.com/ISC/tools/vTasks_TestsPlanned/index.htm",
+  "reportItems": [],
+  "grids": [
+    {
+      "id": "vTasks_TestsPlanned_PrimaryList_grid",
+      "cls": "k-grid k-widget k-grid-display-block k-reorderable",
+      "cols": [
+        "Task Status",
+        "Actions",
+        "Task ID",
+        "Datasheet",
+        "Asset Tag",
+        "Description",
+        "Is Exception?",
+        "Execution Type",
+        "Discipline",
+        "Task Type",
+        "COMPANY",
+        "Planned Form",
+        "Executed Form",
+        "Punchlists",
+        "Job Card",
+        "Asset Pack ID",
+        "Loop No.",
+        "Phase",
+        "Stage",
+        "Asset Discipline",
+        "Asset Type",
+        "Certificate Group",
+        "Actual End Date",
+        "Completed By",
+        "Closing Date",
+        "Closed By",
+        "System",
+        "Subsystem",
+        "Y\nN",
+        "Y\nN",
+        "Y\nN",
+        "Y\nN"
+      ],
+      "rows": 0,
+      "pager": null
+    },
+    {
+      "id": "vTaskswTestForms_Forms_grid",
+      "cls": "k-grid k-widget k-grid-display-block k-reorderable",
+      "cols": [
+        "State",
+        "Complete Task",
+        "Form Name",
+        "Mail Merge",
+        "Upload File to Replace Mail Merged One.",
+        "Planned Form",
+        "Upload Scanned Form.",
+        "Executed Form",
+        "Description",
+        "Type",
+        "Y\nN",
+        "Y\nN"
+      ],
+      "rows": 0,
+      "pager": null
+    }
+  ]
+}
+[saved app_dump2.txt]
+{
+  "after": {
+    "responsibleNear": " none != Certificate Group = any none != = any none != = any none != Priority = any none != Responsible Workgroup (Name) = any none != Responsible Company (Name) = any none != Work Package = any none != Job Package = any none != Job Card = any none != = any none != = any none != Contract ID = any none != = any none != Workflow Sign-off = any none != Repeat HeaderYesNoN/A Use E-SignatureYesNoN/A Is Exception?YesNoN/A = any none != Project = any none != Phase = any none != Stage = any none != Work Breakdown - Activity (Name) = any none != = any none ",
+    "grids": [
+      {
+        "id": "vTasks_TestsPlanned_PrimaryList_grid",
+        "cols": [
+          "Task Status",
+          "Actions",
+          "Task ID",
+          "Datasheet",
+          "Asset Tag",
+          "Description",
+          "Is Exception?",
+          "Execution Type",
+          "Discipline",
+          "Task Type",
+          "COMPANY",
+          "Planned Form",
+          "Executed Form",
+          "Punchlists",
+          "Job Card",
+          "Asset Pack ID",
+          "Loop No.",
+          "Phase",
+          "Stage",
+          "Asset Discipline",
+          "Asset Type",
+          "Certificate Group",
+          "Actual End Date",
+          "Completed By",
+          "Closing Date",
+          "Closed By",
+          "System",
+          "Subsystem",
+          "Y\nN",
+          "Y\nN",
+          "Y\nN",
+          "Y\nN"
+        ],
+        "rows": 0,
+        "pager": null
+      },
+      {
+        "id": "vTaskswTestForms_Forms_grid",
+        "cols": [
+          "State",
+          "Complete Task",
+          "Form Name",
+          "Mail Merge",
+          "Upload File to Replace Mail Merged One.",
+          "Planned Form",
+          "Upload Scanned Form.",
+          "Executed Form",
+          "Description",
+          "Type",
+          "Y\nN",
+          "Y\nN"
+        ],
+        "rows": 0,
+        "pager": null
+      }
+    ]
+  }
+}
+[saved app_dump2_after.txt]

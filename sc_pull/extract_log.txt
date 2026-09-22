@@ -1,0 +1,24 @@
+﻿LOGGED IN
+context: {"ID": 6969, "Resource": "Mohamed Gawad", "loggedIn": true, "pj": {"pj": "1488", "name": "EACOP - EACOP", "ci": "19"}}
+controller deep: vAssets_TestForms
+sample pull: vAssets_TestForms
+  cols: ['RecordCreated', 'RowNumber', 'Description', 'DisciplineID', 'CompanyInstanceID', 'Discipline', 'ID'] total: None
+   row0: {"RecordCreated": "2/13/2026 6:00:19 AM", "RowNumber": "1", "Description": "None", "DisciplineID": "961", "CompanyInstanceID": "19", "Discipline": "E", "ID": "1502466"}
+   row1: {"RecordCreated": "6/5/2026 6:23:46 AM", "RowNumber": "2", "Description": "None", "DisciplineID": "961", "CompanyInstanceID": "19", "Discipline": "E", "ID": "1608137"}
+   row2: {"RecordCreated": "6/5/2026 6:24:09 AM", "RowNumber": "3", "Description": "None", "DisciplineID": "961", "CompanyInstanceID": "19", "Discipline": "E", "ID": "1608138"}
+controller deep: vTasks_TestsPlanned
+sample pull: vTasks_TestsPlanned
+  cols: ['TaskTypeID', 'ResponsibleCompanyID', 'CompanyInstanceID', 'ID', 'ResponsibleCompany', 'ApprovedDate', 'RowNumber', 'WorkGroupID', 'TaskCategory', 'AssetTag', 'RecordCreated', 'LoopName', 'TaskCategoryID', 'TaskType', 'ApprovedBy', 'TaskName', 'TaskModelID'] total: None
+   row0: {"TaskTypeID": "None", "ResponsibleCompanyID": "None", "CompanyInstanceID": "19", "ID": "2343898", "ResponsibleCompany": "None", "ApprovedDate": "None", "RowNumber": "1", "WorkGroupID": "None", "TaskCategory": "None", "AssetTag": "None", "RecordCreated": "8/18/2026 6:53:29 AM", "LoopName": "None", "TaskCategoryID": "None", "TaskType": "None", "ApprovedBy": "None", "TaskName": "", "TaskModelID": "None"}
+   row1: {"TaskTypeID": "None", "ResponsibleCompanyID": "994", "CompanyInstanceID": "19", "ID": "2350592", "ResponsibleCompany": "EITS", "ApprovedDate": "None", "RowNumber": "2", "WorkGroupID": "None", "TaskCategory": "None", "AssetTag": "None", "RecordCreated": "8/22/2026 4:58:15 AM", "LoopName": "None", "TaskCategoryID": "None", "TaskType": "None", "ApprovedBy": "None", "TaskName": "None", "TaskModelID": "None"}
+   row2: {"TaskTypeID": "None", "ResponsibleCompanyID": "994", "CompanyInstanceID": "19", "ID": "2350593", "ResponsibleCompany": "EITS", "ApprovedDate": "None", "RowNumber": "3", "WorkGroupID": "None", "TaskCategory": "None", "AssetTag": "None", "RecordCreated": "8/22/2026 4:58:15 AM", "LoopName": "None", "TaskCategoryID": "None", "TaskType": "None", "ApprovedBy": "None", "TaskName": "None", "TaskModelID": "None"}
+controller deep: vPunchlist
+sample pull: vPunchlist
+  cols: ['DueDate', 'CompanyInstanceID', 'ID', 'DisciplineID', 'ResponsibleCompany', 'Discipline', 'RowNumber', 'WorkGroupID', 'AssetTag', 'Priority', 'ResponsibleCompanyID', 'LoopName', 'RecordCreated', 'TaskName'] total: None
+   row0: {"DueDate": "None", "CompanyInstanceID": "19", "ID": "152812", "DisciplineID": "961", "ResponsibleCompany": "EITS", "Discipline": "E", "RowNumber": "1", "WorkGroupID": "None", "AssetTag": "None", "Priority": "None", "ResponsibleCompanyID": "994", "LoopName": "None", "RecordCreated": "2/11/2025 6:44:35 AM", "TaskName": "T-00030-0277"}
+   row1: {"DueDate": "None", "CompanyInstanceID": "19", "ID": "152813", "DisciplineID": "961", "ResponsibleCompany": "EITS", "Discipline": "E", "RowNumber": "2", "WorkGroupID": "None", "AssetTag": "None", "Priority": "None", "ResponsibleCompanyID": "994", "LoopName": "None", "RecordCreated": "2/11/2025 6:44:36 AM", "TaskName": "T-00030-0278"}
+   row2: {"DueDate": "None", "CompanyInstanceID": "19", "ID": "152814", "DisciplineID": "961", "ResponsibleCompany": "EITS", "Discipline": "E", "RowNumber": "3", "WorkGroupID": "None", "AssetTag": "None", "Priority": "None", "ResponsibleCompanyID": "994", "LoopName": "None", "RecordCreated": "2/11/2025 6:44:36 AM", "TaskName": "T-00030-0278"}
+controller deep: vInspectionNonCompliances
+sample pull: vInspectionNonCompliances
+  cols: [] total: None
+saved -> C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\data\schema_behaviors.json

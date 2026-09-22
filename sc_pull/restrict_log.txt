@@ -1,0 +1,19 @@
+﻿== vTaskDisciplines ==
+   {"Description": "Mechanical", "Summary": "M - Mechanical", "RowNumber": "1", "ID": "836", "Name": "M"}
+   {"Description": "Piping & Vessel", "Summary": "P - Piping & Vessel", "RowNumber": "2", "ID": "838", "Name": "P"}
+   {"Description": "Telecom", "Summary": "T - Telecom", "RowNumber": "3", "ID": "843", "Name": "T"}
+   {"Description": "Building", "Summary": "B - Building", "RowNumber": "4", "ID": "848", "Name": "B"}
+   {"Description": "HVAC", "Summary": "H - HVAC", "RowNumber": "5", "ID": "852", "Name": "H"}
+   {"Description": "Operation", "Summary": "O - Operation", "RowNumber": "6", "ID": "853", "Name": "O"}
+   {"Description": "Pipline", "Summary": "PL - Pipline", "RowNumber": "7", "ID": "854", "Name": "PL"}
+   {"Description": "Safety", "Summary": "S - Safety", "RowNumber": "8", "ID": "855", "Name": "S"}
+   {"Description": "Miscellaneous", "Summary": "Z - Miscellaneous", "RowNumber": "9", "ID": "856", "Name": "Z"}
+   {"Description": "Cyber Security", "Summary": "IT - Cyber Security", "RowNumber": "10", "ID": "857", "Name": "IT"}
+   {"Description": "Electrical", "Summary": "E - Electrical", "RowNumber": "11", "ID": "961", "Name": "E"}
+   {"Description": "Instrumentation", "Summary": "I - Instrumentation", "RowNumber": "12", "ID": "962", "Name": "I"}
+== vProcessBreakdownsProjects ==
+  first3: [{'RowNumber': '1', 'Summary': 'PS5 - Pump Station 5', 'ID': '10572'}, {'RowNumber': '1', 'Summary': 'PS5 - Pump Station 5', 'ID': '10572'}, {'RowNumber': '1', 'Summary': 'PS5 - Pump Station 5', 'ID': '10572'}]
+target disciplines: {}
+agi system ids: []
+TEST: {'what': 'TaskDiscipline like E', 'res': {'cols': ['ID', 'ApprovedDate', 'WeekOverdue', 'RowNumber', 'AssetTag', 'ProcessBreakdownUp1Summary', 'TaskDisciplineID', 'TaskDiscipline', 'ProcessBreakdown', 'ProcessBreakdownUp1ID', 'TaskType', 'ApprovedBy', 'TaskName'], 'rows': None, 'total': None, 'n': 3}}
+saved -> C:\Users\mylap\OneDrive\Desktop\dashboard\sc_pull\data\restrict_test.json
