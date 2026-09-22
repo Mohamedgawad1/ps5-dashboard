@@ -6007,3 +6007,24 @@
 2026-09-22 08:10:41 cloud_auto_update started (interval 300s)
 2026-09-22 08:10:43 [trigger] state changed -> rebuilding downloads+pages
 2026-09-22 08:10:43 [skip] another build in progress
+2026-09-22 18:47:25 ==================================================
+2026-09-22 18:47:25 cloud_auto_update started (interval 300s)
+2026-09-22 18:47:26 [trigger] state changed -> rebuilding downloads+pages
+2026-09-22 18:47:26 >> cloud->DPR
+2026-09-22 18:49:25    [sync] target : PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx
+2026-09-22 18:49:25    sync 2026-09-22 18:49:24 -> PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx
+2026-09-22 18:49:25    written=836 notes=0 colors=1
+2026-09-22 18:49:25    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6
+2026-09-22 18:49:25    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065, RFC PROGRESS/PS5-01-09, RFC PROGRESS/PS5-03-20, RFC PROGRESS/PS5-05-01, RFC PROGRESS/PS5-05-02, RFC PROGRESS/PS5-60-28, RFC PROGRESS/PS5-60-35, RFC PROGRESS/PS5-60-42, RFC PROGRESS/PS5-71-22
+2026-09-22 18:49:25    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped
+2026-09-22 18:49:25 >> local->DPR
+2026-09-22 18:52:24    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx  (edits: 60391 cells / 0 notes)
+2026-09-22 18:52:24      [summery-sync] OK -> 45498 cells, 0 notes written, 14113 skipped (no matching column)
+2026-09-22 18:52:24 >> explorer rebuild
+2026-09-22 18:59:16      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14001+9543 rows, 12574 updates
+2026-09-22 18:59:16      Punch rows: 3712 | ITR rows: 23544 | RFC: 262 | Miles: 292
+2026-09-22 18:59:16      Subsystems: 290 | max punch/sub: 196 | max itr/sub: 1137
+2026-09-22 18:59:16      Carry-over: 0 notes, 0 colored rows, 17132 pinned cells
+2026-09-22 18:59:16    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-09-22 18:59:16    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-09-22 18:59:16 >> dashboard xlsm
