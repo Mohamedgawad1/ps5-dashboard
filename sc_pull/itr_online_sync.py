@@ -248,15 +248,26 @@ def build_state(rows):
     eit = [r for r in rows if dc(r.get("TaskDisciplineSummary") or r.get("TaskDiscipline")) in ("E", "I", "T")]
     by = Counter(); closed = Counter(); opened = Counter(); today = 0
     today_key = time.strftime("%Y-%m-%d")
+    daily_ts = {}
     for r in eit:
         d = dc(r.get("TaskDisciplineSummary") or r.get("TaskDiscipline"))
         by[d] += 1
         if str(r.get("TaskState")) == "Closed":
             closed[d] += 1
-            if date_key(r.get("ApprovedDate")) == today_key:
+            k = date_key(r.get("ApprovedDate"))
+            if k == today_key:
                 today += 1
+            if k:
+                daily_ts.setdefault(k, Counter())[d] += 1
         else:
             opened[d] += 1
+    daily = []
+    for i in range(29, -1, -1):
+        t = time.localtime(time.time() - i * 86400)
+        label = time.strftime("%Y-%m-%d", t)
+        c = daily_ts.get(label, {})
+        daily.append({"label": label, "E": c.get("E", 0), "I": c.get("I", 0), "T": c.get("T", 0)})
+        daily[-1]["Total"] = daily[-1]["E"] + daily[-1]["I"] + daily[-1]["T"]
     recent = recent_closed_rows(rows)
     return {
         "source": "Smart Completions (live authenticated pull)",
@@ -270,6 +281,7 @@ def build_state(rows):
         "today_closed": today,
         "closed_by_discipline": dict(closed),
         "open_by_discipline": dict(opened),
+        "daily": daily,
         "recent_closed": recent,
     }
 
@@ -501,11 +513,31 @@ LIVE_ITER_JS = """(() => {
       ).join('') || '<tr><td colspan="7" style="padding:10px;text-align:center;color:var(--muted)">No closures yet &mdash; waiting for live data&hellip;</td></tr>';
     }
   }
+  function syncChart(update){
+    const daily = Array.isArray(update.daily) ? update.daily : null;
+    if(!daily || !daily.length) return;
+    const labels = daily.map(d=>d.label);
+    const tot = daily.map(d=>d.Total||0);
+    const upd = (id, apply) => {
+      const cv = document.getElementById(id);
+      if(!cv) return;
+      let ch = null;
+      try{ ch = window.Chart && Chart.getChart ? Chart.getChart(cv) : null; }catch(e){}
+      if(!ch || !ch.data || !ch.data.datasets) return;
+      ch.data.labels = labels;
+      apply(ch.data.datasets);
+      ch.update();
+    };
+    upd('chartCombinedDaily', ds => { if(ds[0]) ds[0].data = tot; });
+    upd('chartDaily', ds => {
+      ['E','I','T'].forEach((k,i)=>{ if(ds[i]) ds[i].data = daily.map(d=>d[k]||0); });
+    });
+  }
   function fetchItr(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/120000), {cache:'no-store'})
       .then(r => r.json())
-      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); })
-      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); } }catch(e){} });
+      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); })
+      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); } }catch(e){} });
   }
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
@@ -523,8 +555,7 @@ LIVE_ITER_JS = """(() => {
   }
   fetchItr();
   setInterval(fetchItr, 120000);
-})();
-"""
+})();"""
 
 ITR_LIVE_HTML = """<!DOCTYPE html>
 <html lang="ar">

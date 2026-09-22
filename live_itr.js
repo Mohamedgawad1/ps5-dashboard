@@ -84,11 +84,31 @@
       ).join('') || '<tr><td colspan="7" style="padding:10px;text-align:center;color:var(--muted)">No closures yet &mdash; waiting for live data&hellip;</td></tr>';
     }
   }
+  function syncChart(update){
+    const daily = Array.isArray(update.daily) ? update.daily : null;
+    if(!daily || !daily.length) return;
+    const labels = daily.map(d=>d.label);
+    const tot = daily.map(d=>d.Total||0);
+    const upd = (id, apply) => {
+      const cv = document.getElementById(id);
+      if(!cv) return;
+      let ch = null;
+      try{ ch = window.Chart && Chart.getChart ? Chart.getChart(cv) : null; }catch(e){}
+      if(!ch || !ch.data || !ch.data.datasets) return;
+      ch.data.labels = labels;
+      apply(ch.data.datasets);
+      ch.update();
+    };
+    upd('chartCombinedDaily', ds => { if(ds[0]) ds[0].data = tot; });
+    upd('chartDaily', ds => {
+      ['E','I','T'].forEach((k,i)=>{ if(ds[i]) ds[i].data = daily.map(d=>d[k]||0); });
+    });
+  }
   function fetchItr(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/120000), {cache:'no-store'})
       .then(r => r.json())
-      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); })
-      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); } }catch(e){} });
+      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); })
+      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); } }catch(e){} });
   }
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
