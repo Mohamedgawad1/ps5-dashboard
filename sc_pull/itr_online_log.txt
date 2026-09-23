@@ -691,3 +691,4 @@ playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or b
 [2026-09-23 11:52:12] ITR ONLINE SYNC START
 [2026-09-23 11:53:11] session expired -> auto-login
 [2026-09-23 12:04:09] WAITING FOR MANUAL LOGIN...
+[2026-09-23 12:24:10] !! no rows — abort
