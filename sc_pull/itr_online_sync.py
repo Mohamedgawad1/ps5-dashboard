@@ -17,6 +17,36 @@ PROFILE_DIR = os.path.join(BASE_DIR, "profile")
 CLONE = WS
 LOG = os.path.join(BASE_DIR, "itr_online_log.txt")
 
+MILESTONE_MAP = {}
+_MS_LOADED = False
+
+
+def load_milestone_map():
+    global MILESTONE_MAP, _MS_LOADED
+    if _MS_LOADED:
+        return
+    p = os.path.join(DATA_DIR, "milestone_map.json")
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            MILESTONE_MAP = {str(k).strip(): str(v).strip() for k, v in json.load(f).items()}
+        pr("milestone_map: %d subsystems" % len(MILESTONE_MAP))
+    except Exception as e:
+        pr("milestone_map load err:", str(e)[:120])
+    _MS_LOADED = True
+
+
+def milestone_of(process_breakdown):
+    if not process_breakdown:
+        return None
+    s = str(process_breakdown).strip()
+    raw = MILESTONE_MAP.get(s)
+    if raw:
+        return raw
+    for k, v in MILESTONE_MAP.items():
+        if s.startswith(k) or k in s:
+            return v
+    return None
+
 SWITCHBOARD_URL = (
     "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switchboard.htm"
 )
@@ -150,6 +180,16 @@ def dc(v):
     return s[:2].upper()
 
 
+DISC_LABELS = {
+    "E": "Electrical (E)",
+    "I": "Instrumentation (I)",
+    "T": "Telecom (T)",
+    "M": "Mechanical (M)",
+    "S": "S (S)",
+    "P": "Process (P)",
+}
+
+
 def date_key(v):
     s = str(v or "").split(" ")[0]
     if "T" in s:
@@ -249,6 +289,7 @@ def build_state(rows):
     by = Counter(); closed = Counter(); opened = Counter(); today = 0
     today_key = time.strftime("%Y-%m-%d")
     daily_ts = {}
+    ms_today = Counter()
     for r in eit:
         d = dc(r.get("TaskDisciplineSummary") or r.get("TaskDiscipline"))
         by[d] += 1
@@ -257,6 +298,9 @@ def build_state(rows):
             k = date_key(r.get("ApprovedDate"))
             if k == today_key:
                 today += 1
+                ms = milestone_of(r.get("ProcessBreakdown"))
+                if ms:
+                    ms_today[(ms, d)] += 1
             if k:
                 daily_ts.setdefault(k, Counter())[d] += 1
         else:
@@ -269,6 +313,19 @@ def build_state(rows):
         daily.append({"label": label, "E": c.get("E", 0), "I": c.get("I", 0), "T": c.get("T", 0)})
         daily[-1]["Total"] = daily[-1]["E"] + daily[-1]["I"] + daily[-1]["T"]
     recent = recent_closed_rows(rows)
+    today_milestone = []
+    for (ms, d), c in sorted(ms_today.items()):
+        label = str(ms)
+        for prefix in ("PS5 - ", "PS5-"):
+            if label.startswith(prefix):
+                label = label[len(prefix):]
+                break
+        today_milestone.append({
+            "milestone": label,
+            "disc": d,
+            "discipline": DISC_LABELS.get(d, d),
+            "count": c,
+        })
     return {
         "source": "Smart Completions (live authenticated pull)",
         "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
@@ -282,6 +339,8 @@ def build_state(rows):
         "closed_by_discipline": dict(closed),
         "open_by_discipline": dict(opened),
         "daily": daily,
+        "today_milestone": today_milestone,
+        "today_milestone_total": sum(ms_today.values()),
         "recent_closed": recent,
     }
 
@@ -410,6 +469,7 @@ def _run_once():
     if not rows:
         pr("!! no rows — abort")
         return 1
+    load_milestone_map()
     state = build_state(rows)
     pr("RESULT:", json.dumps(state, ensure_ascii=False))
     write_local(state)
@@ -533,11 +593,40 @@ LIVE_ITER_JS = """(() => {
       ['E','I','T'].forEach((k,i)=>{ if(ds[i]) ds[i].data = daily.map(d=>d[k]||0); });
     });
   }
+  function syncMilestone(update){
+    const t = document.getElementById('todayMsTotal');
+    if(t) t.textContent = fmt(update.today_milestone_total||0);
+    const body = document.getElementById('todayMsBody');
+    if(!body) return;
+    const tm = Array.isArray(update.today_milestone) ? update.today_milestone : [];
+    if(!tm.length){
+      if(!body.dataset._live) body.innerHTML = '<tr><td colspan="5" style="padding:10px;text-align:center;color:var(--muted)">No closures today yet &mdash; waiting for live data&hellip;</td></tr>';
+      return;
+    }
+    body.dataset._live = '1';
+    const msMap = {};
+    tm.forEach(r => {
+      if(!msMap[r.milestone]) msMap[r.milestone] = {E:0, I:0, T:0};
+      const d = String(r.disc||'');
+      if(msMap[r.milestone][d] !== undefined) msMap[r.milestone][d] = r.count;
+    });
+    body.innerHTML = Object.keys(msMap).sort().map(ms => {
+      const d = msMap[ms];
+      const rowTotal = d.E + d.I + d.T;
+      return '<tr>' +
+        '<td style="text-align:left;border:1px solid var(--border);font-weight:bold;color:var(--red);background:var(--card3);">'+esc(ms)+'</td>' +
+        '<td style="text-align:center;border:1px solid var(--border);background:#FCE4D6;color:var(--red);">'+fmt(d.E)+'</td>' +
+        '<td style="text-align:center;border:1px solid var(--border);background:#FFF2CC;color:var(--red);">'+fmt(d.I)+'</td>' +
+        '<td style="text-align:center;border:1px solid var(--border);background:#D9D9D9;color:var(--red);">'+fmt(d.T)+'</td>' +
+        '<td style="text-align:center;border:1px solid var(--border);font-weight:bold;color:var(--red);background:var(--card3);">'+fmt(rowTotal)+'</td>' +
+        '</tr>';
+    }).join('');
+  }
   function fetchItr(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/120000), {cache:'no-store'})
       .then(r => r.json())
-      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); })
-      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); } }catch(e){} });
+      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); })
+      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); } }catch(e){} });
   }
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
