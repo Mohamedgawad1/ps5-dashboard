@@ -734,3 +734,8 @@ playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or b
 [2026-09-23 16:05:12]  >> git push OK
 [2026-09-23 16:05:12] PUSH rc=0
 [2026-09-23 16:05:12] DONE
+[2026-09-23 16:35:12] ============================================================
+[2026-09-23 16:35:12] ITR ONLINE SYNC START
+[2026-09-23 16:35:12] ============================================================
+[2026-09-23 16:35:12] ITR ONLINE SYNC START
+[2026-09-23 16:36:22] session expired -> auto-login
