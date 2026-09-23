@@ -137,11 +137,39 @@
         '</tr>';
     }).join('');
   }
+  const MS_ORDER = ['Closed','Submitted','To be completed','Other'];
+  const MS_COLORS = {'Closed':'#1a8a4a','Submitted':'#2563eb','To be completed':'#c8940a','Other':'#9a8d7c'};
+  function syncMilestoneSummary(update){
+    const list = Array.isArray(update.milestone_summary) ? update.milestone_summary : [];
+    const cards = document.getElementById('msCards');
+    if(cards){
+      cards.innerHTML = list.map(s =>
+        '<div class="kpi">' +
+          '<div class="val">' + fmt(s.closed) + ' / ' + fmt(s.total) + '</div>' +
+          '<div class="lbl">🎯 ' + esc(s.label) + ' &mdash; ' + s.pct + '%</div>' +
+          '<div class="progress-bar"><div class="progress-fill" style="width:' + s.pct + '%"></div></div>' +
+        '</div>'
+      ).join('') ||
+        '<div class="kpi"><div class="val">0 / 0</div><div class="lbl">🎯 &mdash;</div><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div></div>';
+    }
+    const cv = document.getElementById('chartMilestone');
+    if(!cv || !list.length) return;
+    let ch = null;
+    try{ ch = window.Chart && Chart.getChart ? Chart.getChart(cv) : null; }catch(e){}
+    if(!ch || !ch.data || !ch.data.datasets) return;
+    ch.data.labels = list.map(s=>s.label);
+    MS_ORDER.forEach((st,i)=>{
+      let ds = ch.data.datasets[i];
+      if(!ds || ds.label !== st) ds = ch.data.datasets.find(d=>d.label===st);
+      if(ds) ds.data = list.map(s=> (s.status&&s.status[st]) || 0);
+    });
+    ch.update();
+  }
   function fetchItr(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/120000), {cache:'no-store'})
       .then(r => r.json())
-      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); })
-      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); } }catch(e){} });
+      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); syncMilestoneSummary(u); })
+      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); syncMilestoneSummary(u); } }catch(e){} });
   }
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
