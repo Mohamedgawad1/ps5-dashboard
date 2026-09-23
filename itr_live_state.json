@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-23 20:51:17",
+  "updated": "2026-09-23 21:30:23",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,18 +9,18 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5127,
-  "open": 5173,
-  "today_closed": 55,
+  "closed": 5157,
+  "open": 5143,
+  "today_closed": 85,
   "closed_by_discipline": {
-    "I": 2595,
+    "I": 2619,
     "E": 2430,
-    "T": 102
+    "T": 108
   },
   "open_by_discipline": {
-    "I": 2000,
+    "I": 1976,
     "E": 2197,
-    "T": 976
+    "T": 970
   },
   "daily": [
     {
@@ -229,13 +229,13 @@
     {
       "label": "2026-09-23",
       "E": 25,
-      "I": 30,
-      "T": 0,
-      "Total": 55
+      "I": 54,
+      "T": 6,
+      "Total": 85
     }
   ],
-  "closed_this_week": 246,
-  "closed_this_month": 1575,
+  "closed_this_week": 276,
+  "closed_this_month": 1605,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -250,10 +250,28 @@
       "count": 22
     },
     {
+      "milestone": "Milestone D",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 24
+    },
+    {
+      "milestone": "Milestone D",
+      "disc": "T",
+      "discipline": "Telecom (T)",
+      "count": 4
+    },
+    {
       "milestone": "Milestone E",
       "disc": "I",
       "discipline": "Instrumentation (I)",
       "count": 7
+    },
+    {
+      "milestone": "Milestone E",
+      "disc": "T",
+      "discipline": "Telecom (T)",
+      "count": 2
     },
     {
       "milestone": "Milestone F",
@@ -274,7 +292,7 @@
       "count": 21
     }
   ],
-  "today_milestone_total": 55,
+  "today_milestone_total": 85,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -322,12 +340,12 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3433,
-      "closed": 2183,
-      "remaining": 1250,
-      "pct": 63.6,
+      "closed": 2211,
+      "remaining": 1222,
+      "pct": 64.4,
       "status": {
-        "Closed": 2183,
-        "Submitted": 30,
+        "Closed": 2211,
+        "Submitted": 2,
         "To be completed": 1218,
         "Other": 2
       }
@@ -336,12 +354,12 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1533,
-      "closed": 1026,
-      "remaining": 507,
-      "pct": 66.9,
+      "closed": 1028,
+      "remaining": 505,
+      "pct": 67.1,
       "status": {
-        "Closed": 1026,
-        "Submitted": 2,
+        "Closed": 1028,
+        "Submitted": 0,
         "To be completed": 496,
         "Other": 9
       }
@@ -404,6 +422,276 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-LA-0002C-CC05",
+      "task": "T-00069-5303",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:18:37 P"
+    },
+    {
+      "tag": "PS5-60-LA-0002C-CC04",
+      "task": "T-00069-5302",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:18:11 P"
+    },
+    {
+      "tag": "PS5-60-LA-0002C-CC03",
+      "task": "T-00069-5301",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:17:34 P"
+    },
+    {
+      "tag": "PS5-60-LA-0002C-CC02",
+      "task": "T-00069-5300",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:16:58 P"
+    },
+    {
+      "tag": "PS5-60-LA-0002C-CC01",
+      "task": "T-00069-5299",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:14:12 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC26",
+      "task": "T-00069-5182",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:13:11 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC25",
+      "task": "T-00069-5181",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:12:29 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC24",
+      "task": "T-00614-1057",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:08:49 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC21",
+      "task": "T-00614-1054",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:08:27 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC23",
+      "task": "T-00614-1056",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:08:20 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC17",
+      "task": "T-00069-5176",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:08:17 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC16",
+      "task": "T-00069-5175",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:07:58 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC10",
+      "task": "T-00069-5172",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:05:25 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC09",
+      "task": "T-00069-5171",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:04:32 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC08",
+      "task": "T-00069-5170",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:03:37 P"
+    },
+    {
+      "tag": "PS5-60-BI-0019F-CC02",
+      "task": "T-00069-5054",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:01:42 P"
+    },
+    {
+      "tag": "PS5-60-BI-0019F-CC01",
+      "task": "T-00069-5053",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:01:13 P"
+    },
+    {
+      "tag": "PS5-60-BI-0016F-CC03",
+      "task": "T-00069-5030",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:00:32 P"
+    },
+    {
+      "tag": "PS5-60-IE-0003F-CC11",
+      "task": "T-00069-5173",
+      "system": "PS5-60-17 - Power Gen Package F (UCP)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 6:00:20 P"
+    },
+    {
+      "tag": "PS5-60-BI-0005F-CC02",
+      "task": "T-00069-4935",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:54:56 P"
+    },
+    {
+      "tag": "PS5-60-BI-0016F-CC01",
+      "task": "T-00069-5028",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:54:43 P"
+    },
+    {
+      "tag": "PS5-60-BI-0005F-CC01",
+      "task": "T-00069-4934",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:54:16 P"
+    },
+    {
+      "tag": "PS5-60-BI-0001F-CC03",
+      "task": "T-00069-4908",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:53:37 P"
+    },
+    {
+      "tag": "PS5-60-BI-0001F-CC01",
+      "task": "T-00069-4907",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:53:07 P"
+    },
+    {
+      "tag": "PS5-60-IN-0002F-CA01",
+      "task": "T-00275-1993",
+      "system": "PS5-60-67 - Fuel Conditioning Module PS5-60-UZ-8900F (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:48:45 P"
+    },
+    {
+      "tag": "PS5-60-IN-0002G-CA01",
+      "task": "T-00275-1994",
+      "system": "PS5-60-69 - Fuel Conditioning Module PS5-60-UZ-8900G (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:48:26 P"
+    },
+    {
+      "tag": "PS5-60-IN-0002E-CA01",
+      "task": "T-00275-1992",
+      "system": "PS5-60-65 - Fuel Conditioning Module PS5-60-UZ-8900E (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:47:16 P"
+    },
+    {
+      "tag": "PS5-60-IN-0001G-CA01",
+      "task": "T-00275-1987",
+      "system": "PS5-60-55 - Lube Oil Separator Module PS5-60-UO-81100G",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:46:36 P"
+    },
+    {
+      "tag": "PS5-60-IN-0001F-CA01",
+      "task": "T-00275-1986",
+      "system": "PS5-60-54 - Lube Oil Separator Module PS5-60-UO-81100F",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:46:20 P"
+    },
+    {
+      "tag": "PS5-60-IN-0001E-CA01",
+      "task": "T-00275-1985",
+      "system": "PS5-60-53 - Lube Oil Separator Module PS5-60-UO-81100E",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/23/2026 5:46:04 P"
+    },
     {
       "tag": "PS5-60-LA-0002C-CL02",
       "task": "T-00023-5303",
@@ -1213,276 +1501,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/22/2026 5:22:19 P"
-    },
-    {
-      "tag": "PS5-60-IE-0002E-CD03",
-      "task": "T-00024-2115",
-      "system": "PS5-60-13 - Power Generation Package E",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:21:51 P"
-    },
-    {
-      "tag": "PS5-60-IE-0002E-CD02",
-      "task": "T-00024-2114",
-      "system": "PS5-60-13 - Power Generation Package E",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:21:39 P"
-    },
-    {
-      "tag": "PS5-60-IE-0002E-CD01",
-      "task": "T-00024-2113",
-      "system": "PS5-60-13 - Power Generation Package E",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:21:28 P"
-    },
-    {
-      "tag": "PS5-61-IK-0006",
-      "task": "T-00019-0036",
-      "system": "PS5-61-06 - 0.4kV Switchboard Power Generator Building (PS5-61-IK-0006)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:17:36 P"
-    },
-    {
-      "tag": "PS5-61-BI-0006-CC02",
-      "task": "T-00069-5362",
-      "system": "PS5-60-16 - Power Generation Package F",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:14:24 P"
-    },
-    {
-      "tag": "PS5-61-BI-0006-CC03",
-      "task": "T-00069-5363",
-      "system": "PS5-60-16 - Power Generation Package F",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:13:52 P"
-    },
-    {
-      "tag": "PS5-60-VS-9101F-CC01",
-      "task": "T-00069-5344",
-      "system": "PS5-60-47 - Oil Mist Separator Skid PS5-60-VS-9100F",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:13:33 P"
-    },
-    {
-      "tag": "PS5-61-BI-0006-CC01",
-      "task": "T-00069-5361",
-      "system": "PS5-60-16 - Power Generation Package F",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:13:32 P"
-    },
-    {
-      "tag": "PS5-60-VS-9101E-CC01",
-      "task": "T-00069-5343",
-      "system": "PS5-60-46 - Oil Mist Separator Skid PS5-60-VS-9100E",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:13:14 P"
-    },
-    {
-      "tag": "PS5-60-BI-0016F-CC04",
-      "task": "T-00069-5031",
-      "system": "PS5-60-16 - Power Generation Package F",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:12:43 P"
-    },
-    {
-      "tag": "PS5-60-SY-0013-CC01",
-      "task": "T-00069-5338",
-      "system": "PS5-60-34 - Air Receiver G & Air Regulator G",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:10:58 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1109-CC01",
-      "task": "T-00069-4354",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:04:52 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1108-CC01",
-      "task": "T-00069-4353",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:04:32 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1107-CC01",
-      "task": "T-00069-4352",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:04:09 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1106-CC01",
-      "task": "T-00069-4351",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:03:52 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1104-CC01",
-      "task": "T-00069-4350",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:03:33 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1101-CC01",
-      "task": "T-00069-4347",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 5:03:20 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1109-CC01",
-      "task": "T-00254-4366",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:59:07 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1108-CC01",
-      "task": "T-00254-4365",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:58:18 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1107-CC01",
-      "task": "T-00254-4364",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:57:27 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1106-CC01",
-      "task": "T-00254-4363",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:56:10 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1104-CC01",
-      "task": "T-00254-4362",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:54:12 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1103-CC01",
-      "task": "T-00254-4361",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:52:59 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1102-CC01",
-      "task": "T-00254-4360",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:51:49 P"
-    },
-    {
-      "tag": "PS5-03-GDIR-1101-CC01",
-      "task": "T-00254-4359",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:50:23 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00240-1341",
-      "system": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:44:14 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00240-1340",
-      "system": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 4:43:40 P"
-    },
-    {
-      "tag": "PS5-61-BI-0005-CC03",
-      "task": "T-00254-5372",
-      "system": "PS5-60-13 - Power Generation Package E",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 2:44:14 P"
-    },
-    {
-      "tag": "PS5-28-TIT-1201-CJ01",
-      "task": "T-00254-4880",
-      "system": "PS5-28-06 - Relief Drum and Pump",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 2:43:59 P"
-    },
-    {
-      "tag": "PS5-28-PIT-0033-CJ01",
-      "task": "T-00254-4850",
-      "system": "PS5-28-06 - Relief Drum and Pump",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/22/2026 2:43:42 P"
     }
   ]
 }
