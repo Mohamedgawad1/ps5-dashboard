@@ -104,11 +104,40 @@
       ['E','I','T'].forEach((k,i)=>{ if(ds[i]) ds[i].data = daily.map(d=>d[k]||0); });
     });
   }
+  function syncMilestone(update){
+    const t = document.getElementById('todayMsTotal');
+    if(t) t.textContent = fmt(update.today_milestone_total||0);
+    const body = document.getElementById('todayMsBody');
+    if(!body) return;
+    const tm = Array.isArray(update.today_milestone) ? update.today_milestone : [];
+    if(!tm.length){
+      if(!body.dataset._live) body.innerHTML = '<tr><td colspan="5" style="padding:10px;text-align:center;color:var(--muted)">No closures today yet &mdash; waiting for live data&hellip;</td></tr>';
+      return;
+    }
+    body.dataset._live = '1';
+    const msMap = {};
+    tm.forEach(r => {
+      if(!msMap[r.milestone]) msMap[r.milestone] = {E:0, I:0, T:0};
+      const d = String(r.disc||'');
+      if(msMap[r.milestone][d] !== undefined) msMap[r.milestone][d] = r.count;
+    });
+    body.innerHTML = Object.keys(msMap).sort().map(ms => {
+      const d = msMap[ms];
+      const rowTotal = d.E + d.I + d.T;
+      return '<tr>' +
+        '<td style="text-align:left;border:1px solid var(--border);font-weight:bold;color:var(--red);background:var(--card3);">'+esc(ms)+'</td>' +
+        '<td style="text-align:center;border:1px solid var(--border);background:#FCE4D6;color:var(--red);">'+fmt(d.E)+'</td>' +
+        '<td style="text-align:center;border:1px solid var(--border);background:#FFF2CC;color:var(--red);">'+fmt(d.I)+'</td>' +
+        '<td style="text-align:center;border:1px solid var(--border);background:#D9D9D9;color:var(--red);">'+fmt(d.T)+'</td>' +
+        '<td style="text-align:center;border:1px solid var(--border);font-weight:bold;color:var(--red);background:var(--card3);">'+fmt(rowTotal)+'</td>' +
+        '</tr>';
+    }).join('');
+  }
   function fetchItr(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/120000), {cache:'no-store'})
       .then(r => r.json())
-      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); })
-      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); } }catch(e){} });
+      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); })
+      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); } }catch(e){} });
   }
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';

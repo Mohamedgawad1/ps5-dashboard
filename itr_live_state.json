@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-23 07:45:45",
+  "updated": "2026-09-23 08:19:32",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5072,
-  "open": 5228,
-  "today_closed": 0,
+  "closed": 5085,
+  "open": 5215,
+  "today_closed": 13,
   "closed_by_discipline": {
-    "I": 2565,
+    "I": 2578,
     "E": 2405,
     "T": 102
   },
   "open_by_discipline": {
-    "I": 2030,
+    "I": 2017,
     "E": 2222,
     "T": 976
   },
@@ -229,11 +229,32 @@
     {
       "label": "2026-09-23",
       "E": 0,
-      "I": 0,
+      "I": 13,
       "T": 0,
-      "Total": 0
+      "Total": 13
     }
   ],
+  "today_milestone": [
+    {
+      "milestone": "Milestone E",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 7
+    },
+    {
+      "milestone": "Milestone G",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 2
+    },
+    {
+      "milestone": "Milestone H",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 4
+    }
+  ],
+  "today_milestone_total": 13,
   "recent_closed": [
     {
       "tag": "PS5-53-LIT-4102",
