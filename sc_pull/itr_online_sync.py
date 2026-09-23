@@ -339,6 +339,38 @@ def build_state(rows):
             "discipline": DISC_LABELS.get(d, d),
             "count": c,
         })
+    MS_GROUPS = {"Closed": "Closed", "Submitted": "Submitted", "To be completed": "To be completed"}
+    MS_ORDER = ["Closed", "Submitted", "To be completed", "Other"]
+    M = {}
+    for r in rows:
+        ms = milestone_of(r.get("ProcessBreakdown"))
+        if not ms:
+            continue
+        sub = M.setdefault(ms, Counter())
+        st = str(r.get("TaskState") or "").strip()
+        sub["total"] += 1
+        if st == "Closed":
+            sub["closed"] += 1
+        sub[MS_GROUPS.get(st, "Other")] += 1
+    milestone_summary = []
+    for ms in sorted(M):
+        sub = M[ms]
+        label = str(ms)
+        for prefix in ("PS5 - ", "PS5-"):
+            if label.startswith(prefix):
+                label = label[len(prefix):]
+                break
+        tot = sub["total"]
+        cls = sub["closed"]
+        milestone_summary.append({
+            "label": label,
+            "raw": ms,
+            "total": tot,
+            "closed": cls,
+            "remaining": tot - cls,
+            "pct": round(cls * 100.0 / tot, 1) if tot else 0,
+            "status": {k: sub.get(k, 0) for k in MS_ORDER},
+        })
     return {
         "source": "Smart Completions (live authenticated pull)",
         "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
@@ -356,6 +388,7 @@ def build_state(rows):
         "closed_this_month": closed_this_month,
         "today_milestone": today_milestone,
         "today_milestone_total": sum(ms_today.values()),
+        "milestone_summary": milestone_summary,
         "recent_closed": recent,
     }
 
@@ -663,11 +696,39 @@ LIVE_ITER_JS = """(() => {
         '</tr>';
     }).join('');
   }
+  const MS_ORDER = ['Closed','Submitted','To be completed','Other'];
+  const MS_COLORS = {'Closed':'#1a8a4a','Submitted':'#2563eb','To be completed':'#c8940a','Other':'#9a8d7c'};
+  function syncMilestoneSummary(update){
+    const list = Array.isArray(update.milestone_summary) ? update.milestone_summary : [];
+    const cards = document.getElementById('msCards');
+    if(cards){
+      cards.innerHTML = list.map(s =>
+        '<div class="kpi">' +
+          '<div class="val">' + fmt(s.closed) + ' / ' + fmt(s.total) + '</div>' +
+          '<div class="lbl">🎯 ' + esc(s.label) + ' &mdash; ' + s.pct + '%</div>' +
+          '<div class="progress-bar"><div class="progress-fill" style="width:' + s.pct + '%"></div></div>' +
+        '</div>'
+      ).join('') ||
+        '<div class="kpi"><div class="val">0 / 0</div><div class="lbl">🎯 &mdash;</div><div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div></div>';
+    }
+    const cv = document.getElementById('chartMilestone');
+    if(!cv || !list.length) return;
+    let ch = null;
+    try{ ch = window.Chart && Chart.getChart ? Chart.getChart(cv) : null; }catch(e){}
+    if(!ch || !ch.data || !ch.data.datasets) return;
+    ch.data.labels = list.map(s=>s.label);
+    MS_ORDER.forEach((st,i)=>{
+      let ds = ch.data.datasets[i];
+      if(!ds || ds.label !== st) ds = ch.data.datasets.find(d=>d.label===st);
+      if(ds) ds.data = list.map(s=> (s.status&&s.status[st]) || 0);
+    });
+    ch.update();
+  }
   function fetchItr(){
     fetch('itr_live_state.json?v=' + Math.floor(Date.now()/120000), {cache:'no-store'})
       .then(r => r.json())
-      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); })
-      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); } }catch(e){} });
+      .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); syncMilestoneSummary(u); })
+      .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); syncMilestoneSummary(u); } }catch(e){} });
   }
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
