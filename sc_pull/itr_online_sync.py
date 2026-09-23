@@ -4,6 +4,7 @@ import subprocess
 import sys
 import time
 from collections import Counter
+import datetime
 
 from playwright.sync_api import sync_playwright
 
@@ -313,6 +314,18 @@ def build_state(rows):
         daily.append({"label": label, "E": c.get("E", 0), "I": c.get("I", 0), "T": c.get("T", 0)})
         daily[-1]["Total"] = daily[-1]["E"] + daily[-1]["I"] + daily[-1]["T"]
     recent = recent_closed_rows(rows)
+    closed_this_week, closed_this_month = 0, 0
+    now_dt = datetime.datetime.now()
+    wk = datetime.date.today() - datetime.timedelta(days=datetime.date.today().weekday())
+    wk_start = "%04d-%02d-%02d" % (wk.year, wk.month, wk.day)
+    for r in eit:
+        if str(r.get("TaskState")) != "Closed":
+            continue
+        k = date_key(r.get("ApprovedDate"))
+        if k and k >= wk_start:
+            closed_this_week += 1
+        if k and k[:7] == now_dt.strftime("%Y-%m"):
+            closed_this_month += 1
     today_milestone = []
     for (ms, d), c in sorted(ms_today.items()):
         label = str(ms)
@@ -339,10 +352,30 @@ def build_state(rows):
         "closed_by_discipline": dict(closed),
         "open_by_discipline": dict(opened),
         "daily": daily,
+        "closed_this_week": closed_this_week,
+        "closed_this_month": closed_this_month,
         "today_milestone": today_milestone,
         "today_milestone_total": sum(ms_today.values()),
         "recent_closed": recent,
     }
+
+
+def parse_dt(v):
+    s = str(v or "").strip()
+    if not s:
+        return ""
+    t = s.replace("T", " ")
+    if "." in t:
+        t = t.split(".")[0]
+    for fmt in ("%m/%d/%Y %I:%M:%S %p", "%m/%d/%Y %H:%M:%S",
+                "%m/%d/%Y %I:%M %p", "%m/%d/%Y %H:%M",
+                "%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%Y-%m-%d"):
+        try:
+            import datetime
+            return datetime.datetime.strptime(t.strip(), fmt).strftime("%Y-%m-%d %H:%M:%S")
+        except Exception:
+            continue
+    return ""
 
 
 def recent_closed_rows(rows, n=120):
@@ -351,6 +384,7 @@ def recent_closed_rows(rows, n=120):
     for r in eit:
         if str(r.get("TaskState")) != "Closed":
             continue
+        raw = str(r.get("ApprovedDate") or "")
         out.append({
             "tag": r.get("AssetTag") or "",
             "task": r.get("TaskName") or r.get("ID") or "",
@@ -358,9 +392,12 @@ def recent_closed_rows(rows, n=120):
             "loop": r.get("LoopName") or "",
             "disc": r.get("TaskDisciplineSummary") or r.get("TaskDiscipline") or "",
             "cat": r.get("TaskCategorySummary") or "",
-            "approved": str(r.get("ApprovedDate") or "")[:19],
+            "approved": raw[:19],
+            "_dt": parse_dt(raw),
         })
-    out.sort(key=lambda x: x["approved"], reverse=True)
+    out.sort(key=lambda x: x["_dt"], reverse=True)
+    for x in out:
+        x.pop("_dt", None)
     return out[:n]
 
 
@@ -516,6 +553,10 @@ LIVE_ITER_JS = """(() => {
         val.textContent = fmt(tot) + ' / ' + fmt(all);
       } else if(t.trim() === 'Today Closed'){
         val.textContent = fmt(today);
+      } else if(t.trim() === 'Closed This Week'){
+        val.textContent = fmt(update.closed_this_week);
+      } else if(t.trim() === 'Closed This Month'){
+        val.textContent = fmt(update.closed_this_month);
       }
     });
   }

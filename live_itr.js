@@ -27,6 +27,10 @@
         val.textContent = fmt(tot) + ' / ' + fmt(all);
       } else if(t.trim() === 'Today Closed'){
         val.textContent = fmt(today);
+      } else if(t.trim() === 'Closed This Week'){
+        val.textContent = fmt(update.closed_this_week);
+      } else if(t.trim() === 'Closed This Month'){
+        val.textContent = fmt(update.closed_this_month);
       }
     });
   }
