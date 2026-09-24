@@ -6164,3 +6164,27 @@
 2026-09-24 07:38:25    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx  (edits: 60516 cells / 0 notes)
 2026-09-24 07:38:25      [summery-sync] OK -> 45585 cells, 0 notes written, 14113 skipped (no matching column)
 2026-09-24 07:38:25 >> explorer rebuild
+2026-09-24 07:41:35      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14001+9543 rows, 12851 updates
+2026-09-24 07:41:35      Punch rows: 3712 | ITR rows: 23544 | RFC: 262 | Miles: 292
+2026-09-24 07:41:35      Subsystems: 290 | max punch/sub: 196 | max itr/sub: 1137
+2026-09-24 07:41:35      Carry-over: 0 notes, 0 colored rows, 17170 pinned cells
+2026-09-24 07:41:35    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-09-24 07:41:35    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-09-24 07:41:35 >> dashboard xlsm
+2026-09-24 07:46:03    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx
+2026-09-24 07:46:03      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 3712 | Detail I 23544 | RFC 262
+2026-09-24 07:46:03      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 17202 pinned cells
+2026-09-24 07:46:03    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-09-24 07:46:03 >> platform full sync
+2026-09-24 07:56:19    
+2026-09-24 07:56:19    >>> C:\Python314\python.exe make_platform_excel.py --pages --local
+2026-09-24 07:56:19      [files] PAGES/* -> EXCEL/*
+2026-09-24 07:56:19      [xlsm] 7 - COMPLETE.xlsm refreshed -> 43 rows, macro kept
+2026-09-24 07:56:19    
+2026-09-24 07:56:19    >>> git pull (clean tree) / commit only-if-changed / push
+2026-09-24 07:56:19    !!   File "C:\Python314\Lib\subprocess.py", line 577, in run
+2026-09-24 07:56:19    !!     raise CalledProcessError(retcode, process.args,
+2026-09-24 07:56:19    !!                              output=stdout, stderr=stderr)
+2026-09-24 07:56:19    !! subprocess.CalledProcessError: Command '['git', 'pull', '--rebase', 'origin', 'main']' returned non-zero exit status 128.
+2026-09-24 07:56:19 !! platform full sync FAILED (rc=1)
+2026-09-24 07:56:19 [done] build in 1327s
