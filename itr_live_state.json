@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-24 16:10:29",
+  "updated": "2026-09-24 16:26:52",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5195,
-  "open": 5105,
-  "today_closed": 22,
+  "closed": 5199,
+  "open": 5101,
+  "today_closed": 26,
   "closed_by_discipline": {
-    "I": 2636,
+    "I": 2640,
     "E": 2451,
     "T": 108
   },
   "open_by_discipline": {
-    "I": 1959,
+    "I": 1955,
     "E": 2176,
     "T": 970
   },
@@ -229,14 +229,20 @@
     {
       "label": "2026-09-24",
       "E": 21,
-      "I": 1,
+      "I": 5,
       "T": 0,
-      "Total": 22
+      "Total": 26
     }
   ],
-  "closed_this_week": 314,
-  "closed_this_month": 1643,
+  "closed_this_week": 318,
+  "closed_this_month": 1647,
   "today_milestone": [
+    {
+      "milestone": "Milestone E",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
+    },
     {
       "milestone": "Milestone H",
       "disc": "E",
@@ -247,10 +253,10 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 1
+      "count": 4
     }
   ],
-  "today_milestone_total": 22,
+  "today_milestone_total": 26,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -312,13 +318,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1533,
-      "closed": 1036,
-      "remaining": 497,
+      "closed": 1037,
+      "remaining": 496,
       "pct": 67.6,
       "status": {
-        "Closed": 1036,
+        "Closed": 1037,
         "Submitted": 0,
-        "To be completed": 489,
+        "To be completed": 488,
         "Other": 8
       }
     },
@@ -354,13 +360,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3249,
-      "closed": 1550,
-      "remaining": 1699,
-      "pct": 47.7,
+      "closed": 1553,
+      "remaining": 1696,
+      "pct": 47.8,
       "status": {
-        "Closed": 1550,
+        "Closed": 1553,
         "Submitted": 1,
-        "To be completed": 1682,
+        "To be completed": 1679,
         "Other": 16
       }
     },
@@ -380,6 +386,42 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-28-PRV-0055",
+      "task": "T-00251-0140",
+      "system": "PS5-28-04 - Closed Drain Drum and Pump 02",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/24/2026 1:12:59 P"
+    },
+    {
+      "tag": "PS5-28-PRV-0047C",
+      "task": "T-00251-0139",
+      "system": "PS5-28-15 - Seal Oil Drain Drum & Pump C",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/24/2026 1:11:51 P"
+    },
+    {
+      "tag": "PS5-28-PRV-0046C",
+      "task": "T-00251-0138",
+      "system": "PS5-28-15 - Seal Oil Drain Drum & Pump C",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/24/2026 1:10:58 P"
+    },
+    {
+      "tag": "PS5-71-PRV-0041",
+      "task": "T-00251-0136",
+      "system": "PS5-71-12 - CFO Service Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/24/2026 1:09:59 P"
+    },
     {
       "tag": "PS5-71-PRV-0018",
       "task": "T-00251-0135",
@@ -1423,42 +1465,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/23/2026 5:07:30 A"
-    },
-    {
-      "tag": "PS5-28-PRV-0047B",
-      "task": "T-00251-0118",
-      "system": "PS5-28-14 - Seal Oil Drain Drum & Pump B",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/23/2026 5:06:14 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1009-CC01",
-      "task": "T-00069-4346",
-      "system": "PS5-03-10 - FZ-10 - Power Generation Building - Engine Bay 2",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/23/2026 5:01:15 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1008-CC01",
-      "task": "T-00069-4345",
-      "system": "PS5-03-10 - FZ-10 - Power Generation Building - Engine Bay 2",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/23/2026 5:00:00 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1007-CC01",
-      "task": "T-00069-4344",
-      "system": "PS5-03-10 - FZ-10 - Power Generation Building - Engine Bay 2",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/23/2026 4:59:44 A"
     }
   ]
 }
