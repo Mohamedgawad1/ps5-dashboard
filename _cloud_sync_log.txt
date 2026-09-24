@@ -6188,3 +6188,27 @@
 2026-09-24 07:56:19    !! subprocess.CalledProcessError: Command '['git', 'pull', '--rebase', 'origin', 'main']' returned non-zero exit status 128.
 2026-09-24 07:56:19 !! platform full sync FAILED (rc=1)
 2026-09-24 07:56:19 [done] build in 1327s
+2026-09-24 08:01:19 [trigger] state changed -> rebuilding downloads+pages
+2026-09-24 08:01:19 >> cloud->DPR
+2026-09-24 08:03:11    [sync] target : PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx
+2026-09-24 08:03:11    sync 2026-09-24 08:03:10 -> PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx
+2026-09-24 08:03:11    written=836 notes=0 colors=1
+2026-09-24 08:03:11    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6
+2026-09-24 08:03:11    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065, RFC PROGRESS/PS5-01-09, RFC PROGRESS/PS5-03-20, RFC PROGRESS/PS5-05-01, RFC PROGRESS/PS5-05-02, RFC PROGRESS/PS5-60-28, RFC PROGRESS/PS5-60-35, RFC PROGRESS/PS5-60-42, RFC PROGRESS/PS5-71-22
+2026-09-24 08:03:11    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped
+2026-09-24 08:03:11 >> local->DPR
+2026-09-24 08:05:38    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx  (edits: 60692 cells / 0 notes)
+2026-09-24 08:05:38      [summery-sync] OK -> 45729 cells, 0 notes written, 14113 skipped (no matching column)
+2026-09-24 08:05:38 >> explorer rebuild
+2026-09-24 08:07:42      OV itr   : ovTasks_TestsPlanned_1369 (1).xlsx -> 14001+9544 rows, 12958 updates
+2026-09-24 08:07:42      Punch rows: 3712 | ITR rows: 23545 | RFC: 262 | Miles: 292
+2026-09-24 08:07:42      Subsystems: 290 | max punch/sub: 196 | max itr/sub: 1137
+2026-09-24 08:07:42      Carry-over: 0 notes, 0 colored rows, 17202 pinned cells
+2026-09-24 08:07:42    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-09-24 08:07:42    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-09-24 08:07:42 >> dashboard xlsm
+2026-09-24 08:12:34    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMERY -18-SEPTEMBER-2026.xlsx
+2026-09-24 08:12:34      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 3712 | Detail I 23545 | RFC 262
+2026-09-24 08:12:34      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 17203 pinned cells
+2026-09-24 08:12:34    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-09-24 08:12:34 >> platform full sync
