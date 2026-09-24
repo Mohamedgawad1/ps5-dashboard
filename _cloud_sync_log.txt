@@ -6260,3 +6260,4 @@
 2026-09-24 08:49:56    !! subprocess.CalledProcessError: Command '['git', 'pull', '--rebase', 'origin', 'main']' returned non-zero exit status 128.
 2026-09-24 08:49:56 !! platform full sync FAILED (rc=1)
 2026-09-24 08:49:56 [done] build in 1212s
+2026-09-24 10:15:20 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
