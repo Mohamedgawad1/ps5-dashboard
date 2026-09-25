@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-25 21:31:17",
+  "updated": "2026-09-25 22:04:42",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5339,
-  "open": 4961,
-  "today_closed": 84,
+  "closed": 5359,
+  "open": 4941,
+  "today_closed": 104,
   "closed_by_discipline": {
-    "I": 2692,
+    "I": 2712,
     "E": 2494,
     "T": 153
   },
   "open_by_discipline": {
-    "I": 1903,
+    "I": 1883,
     "E": 2133,
     "T": 925
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-09-25",
       "E": 26,
-      "I": 46,
+      "I": 66,
       "T": 12,
-      "Total": 84
+      "Total": 104
     }
   ],
-  "closed_this_week": 458,
-  "closed_this_month": 1787,
+  "closed_this_week": 478,
+  "closed_this_month": 1807,
   "today_milestone": [
     {
       "milestone": "Milestone D",
@@ -253,7 +253,7 @@
       "milestone": "Milestone E",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 43
+      "count": 47
     },
     {
       "milestone": "Milestone F",
@@ -271,16 +271,16 @@
       "milestone": "Milestone G",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 1
+      "count": 5
     },
     {
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 2
+      "count": 14
     }
   ],
-  "today_milestone_total": 84,
+  "today_milestone_total": 104,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -342,12 +342,12 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1533,
-      "closed": 1098,
-      "remaining": 435,
-      "pct": 71.6,
+      "closed": 1102,
+      "remaining": 431,
+      "pct": 71.9,
       "status": {
-        "Closed": 1098,
-        "Submitted": 6,
+        "Closed": 1102,
+        "Submitted": 2,
         "To be completed": 423,
         "Other": 6
       }
@@ -370,12 +370,12 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 567,
-      "remaining": 337,
-      "pct": 62.7,
+      "closed": 571,
+      "remaining": 333,
+      "pct": 63.2,
       "status": {
-        "Closed": 567,
-        "Submitted": 4,
+        "Closed": 571,
+        "Submitted": 0,
         "To be completed": 322,
         "Other": 11
       }
@@ -384,14 +384,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3249,
-      "closed": 1580,
-      "remaining": 1669,
-      "pct": 48.6,
+      "closed": 1592,
+      "remaining": 1657,
+      "pct": 49.0,
       "status": {
-        "Closed": 1580,
-        "Submitted": 6,
-        "To be completed": 1646,
-        "Other": 17
+        "Closed": 1592,
+        "Submitted": 0,
+        "To be completed": 1641,
+        "Other": 16
       }
     },
     {
@@ -410,6 +410,186 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-03-NMR-0804-CJ01",
+      "task": "T-00614-0917",
+      "system": "PS5-03-08 - FZ-08 - Utilities - Power Generation Area - External",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 7:01:23 P"
+    },
+    {
+      "tag": "PS5-03-NMR-0803-CJ01",
+      "task": "T-00614-0916",
+      "system": "PS5-03-08 - FZ-08 - Utilities - Power Generation Area - External",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 7:00:23 P"
+    },
+    {
+      "tag": "PS5-03-NMR-0802-CJ01",
+      "task": "T-00614-0915",
+      "system": "PS5-03-08 - FZ-08 - Utilities - Power Generation Area - External",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:59:28 P"
+    },
+    {
+      "tag": "PS5-03-NMR-0801-CJ01",
+      "task": "T-00614-0914",
+      "system": "PS5-03-08 - FZ-08 - Utilities - Power Generation Area - External",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:58:41 P"
+    },
+    {
+      "tag": "PS5-28-TIT-1201-CJ01",
+      "task": "T-00069-4868",
+      "system": "PS5-28-06 - Relief Drum and Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:52:00 P"
+    },
+    {
+      "tag": "PS5-28-PIT-0033-CJ01",
+      "task": "T-00069-4838",
+      "system": "PS5-28-06 - Relief Drum and Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:51:45 P"
+    },
+    {
+      "tag": "PS5-28-LIT-1202-CJ01",
+      "task": "T-00069-4831",
+      "system": "PS5-28-06 - Relief Drum and Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:51:34 P"
+    },
+    {
+      "tag": "PS5-28-LIT-1201-CJ01",
+      "task": "T-00069-4830",
+      "system": "PS5-28-06 - Relief Drum and Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:50:19 P"
+    },
+    {
+      "tag": "PS5-25-SY-0052A-CJ01",
+      "task": "T-00614-1013",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:50:07 P"
+    },
+    {
+      "tag": "PS5-25-SXS-0052-CJ01",
+      "task": "T-00614-1012",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:49:51 P"
+    },
+    {
+      "tag": "PS5-25-SDV-0052-CJ01",
+      "task": "T-00614-1010",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:48:59 P"
+    },
+    {
+      "tag": "PS5-25-SHSR-0052-CJ01",
+      "task": "T-00614-1011",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:48:35 P"
+    },
+    {
+      "tag": "PS5-25-SDV-0052-CC01",
+      "task": "T-00614-1009",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:48:19 P"
+    },
+    {
+      "tag": "PS5-25-TIT-1201",
+      "task": "T-00067-2150",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:45:41 P"
+    },
+    {
+      "tag": "PS5-25-ZIT-0002",
+      "task": "T-00067-2054",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:45:16 P"
+    },
+    {
+      "tag": "PS5-25-PIT-1202",
+      "task": "T-00067-2117",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:36:47 P"
+    },
+    {
+      "tag": "PS5-25-PIT-0071C",
+      "task": "T-00067-2129",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:34:35 P"
+    },
+    {
+      "tag": "PS5-25-PIT-0071B",
+      "task": "T-00067-2113",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:33:03 P"
+    },
+    {
+      "tag": "PS5-25-PIT-0071A",
+      "task": "T-00067-2133",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:31:22 P"
+    },
+    {
+      "tag": "PS5-25-PIT-0008C",
+      "task": "T-00067-2101",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 6:31:10 P"
+    },
     {
       "tag": "PS5-25-PIT-0008B",
       "task": "T-00067-2144",
@@ -1309,186 +1489,6 @@
       "disc": "T - Telecom",
       "cat": "PCOM - Precommissioning",
       "approved": "9/24/2026 8:33:43 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0621-CR01",
-      "task": "T-00621-2926",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:31:41 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0620-CR01",
-      "task": "T-00621-2925",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:29:53 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0520-CR01",
-      "task": "T-00621-2897",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:26:40 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0519-CR01",
-      "task": "T-00621-2896",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:24:41 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0518-CR01",
-      "task": "T-00621-2895",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:22:15 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0517-CR01",
-      "task": "T-00621-2894",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:20:11 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0512-CR01",
-      "task": "T-00621-2893",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:17:49 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0511-CR01",
-      "task": "T-00621-2892",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:15:59 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0510-CR01",
-      "task": "T-00621-2891",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:13:42 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0509-CR01",
-      "task": "T-00621-2890",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:11:47 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0508-CR01",
-      "task": "T-00621-2889",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:09:59 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0507-CR01",
-      "task": "T-00621-2888",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:07:24 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0506-CR01",
-      "task": "T-00621-2887",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:04:52 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0505-CR01",
-      "task": "T-00621-2886",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:02:41 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0504-CR01",
-      "task": "T-00621-2885",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 7:59:47 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0503-CR01",
-      "task": "T-00621-2884",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 7:56:39 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0502-CR01",
-      "task": "T-00621-2883",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 7:53:31 P"
-    },
-    {
-      "tag": "PS5-71-XV-0089-CL01",
-      "task": "T-00023-5607",
-      "system": "PS5-71-04 - CFO Storage Tank",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 7:27:15 P"
-    },
-    {
-      "tag": "PS5-71-UZ-6200-CL01",
-      "task": "T-00023-5606",
-      "system": "PS5-71-14 - Diesel Fuel Transfer and Dispensing Station",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 7:26:24 P"
-    },
-    {
-      "tag": "PS5-71-XV-0090-CL01",
-      "task": "T-00023-5608",
-      "system": "PS5-71-12 - CFO Service Tank",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 7:25:27 P"
     }
   ]
 }
