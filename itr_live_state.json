@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-25 16:14:08",
+  "updated": "2026-09-25 16:29:00",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,18 +9,18 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5291,
-  "open": 5009,
-  "today_closed": 36,
+  "closed": 5298,
+  "open": 5002,
+  "today_closed": 43,
   "closed_by_discipline": {
     "I": 2671,
     "E": 2474,
-    "T": 146
+    "T": 153
   },
   "open_by_discipline": {
     "I": 1924,
     "E": 2153,
-    "T": 932
+    "T": 925
   },
   "daily": [
     {
@@ -230,12 +230,12 @@
       "label": "2026-09-25",
       "E": 6,
       "I": 25,
-      "T": 5,
-      "Total": 36
+      "T": 12,
+      "Total": 43
     }
   ],
-  "closed_this_week": 410,
-  "closed_this_month": 1739,
+  "closed_this_week": 417,
+  "closed_this_month": 1746,
   "today_milestone": [
     {
       "milestone": "Milestone D",
@@ -259,7 +259,7 @@
       "milestone": "Milestone F",
       "disc": "T",
       "discipline": "Telecom (T)",
-      "count": 5
+      "count": 12
     },
     {
       "milestone": "Milestone G",
@@ -268,7 +268,7 @@
       "count": 2
     }
   ],
-  "today_milestone_total": 36,
+  "today_milestone_total": 43,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -336,22 +336,22 @@
       "status": {
         "Closed": 1075,
         "Submitted": 2,
-        "To be completed": 451,
-        "Other": 5
+        "To be completed": 450,
+        "Other": 6
       }
     },
     {
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1148,
-      "closed": 480,
-      "remaining": 668,
-      "pct": 41.8,
+      "closed": 487,
+      "remaining": 661,
+      "pct": 42.4,
       "status": {
-        "Closed": 480,
+        "Closed": 487,
         "Submitted": 4,
-        "To be completed": 658,
-        "Other": 6
+        "To be completed": 652,
+        "Other": 5
       }
     },
     {
@@ -398,6 +398,69 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-08-01LS-0612-CR01",
+      "task": "T-00621-2921",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 1:24:21 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0611-CR01",
+      "task": "T-00621-2920",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 1:23:06 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0617-CR01",
+      "task": "T-00621-2922",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 1:21:46 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0618-CR01",
+      "task": "T-00621-2923",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 1:20:41 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0619-CR01",
+      "task": "T-00621-2924",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 1:18:58 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0610-CR01",
+      "task": "T-00621-2919",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 1:17:29 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0607-CR01",
+      "task": "T-00621-2916",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 1:16:00 P"
+    },
     {
       "tag": "PS5-08-01LS-0608-CR01",
       "task": "T-00621-2917",
@@ -1414,69 +1477,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/24/2026 10:43:16 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1448",
-      "system": "PS5-79-04 - Electrical Heat Tracing Transformer/Distribution Board 4 (PS5-79-IG-0004)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 10:42:30 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1447",
-      "system": "PS5-79-04 - Electrical Heat Tracing Transformer/Distribution Board 4 (PS5-79-IG-0004)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 10:41:29 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1445",
-      "system": "PS5-79-04 - Electrical Heat Tracing Transformer/Distribution Board 4 (PS5-79-IG-0004)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 10:40:57 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1417",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 10:40:25 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1364",
-      "system": "PS5-79-01 - Electrical Heat Tracing Transformer/Distribution Board 1 (PS5-79-IG-0001)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 10:39:38 "
-    },
-    {
-      "tag": "PS5-60-TCV-0002G",
-      "task": "T-00090-0270",
-      "system": "PS5-60-76 - Engine G Cooling system",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/23/2026 7:41:23 P"
-    },
-    {
-      "tag": "PS5-60-TCV-0001G",
-      "task": "T-00090-0263",
-      "system": "PS5-60-76 - Engine G Cooling system",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/23/2026 7:40:18 P"
     }
   ]
 }
