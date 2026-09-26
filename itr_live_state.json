@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-26 08:12:56",
+  "updated": "2026-09-26 10:52:28",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -306,70 +306,70 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1533,
-      "closed": 1102,
-      "remaining": 431,
-      "pct": 71.9,
+      "closed": 1103,
+      "remaining": 430,
+      "pct": 72.0,
       "status": {
-        "Closed": 1102,
+        "Closed": 1103,
         "Submitted": 2,
         "To be completed": 423,
-        "Other": 6
+        "Other": 5
       }
     },
     {
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1148,
-      "closed": 512,
-      "remaining": 636,
-      "pct": 44.6,
+      "closed": 516,
+      "remaining": 632,
+      "pct": 44.9,
       "status": {
-        "Closed": 512,
-        "Submitted": 4,
-        "To be completed": 627,
-        "Other": 5
+        "Closed": 516,
+        "Submitted": 3,
+        "To be completed": 626,
+        "Other": 3
       }
     },
     {
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 571,
-      "remaining": 333,
-      "pct": 63.2,
+      "closed": 572,
+      "remaining": 332,
+      "pct": 63.3,
       "status": {
-        "Closed": 571,
+        "Closed": 572,
         "Submitted": 0,
         "To be completed": 322,
-        "Other": 11
+        "Other": 10
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3249,
-      "closed": 1593,
-      "remaining": 1656,
-      "pct": 49.0,
+      "closed": 1596,
+      "remaining": 1653,
+      "pct": 49.1,
       "status": {
-        "Closed": 1593,
-        "Submitted": 0,
-        "To be completed": 1640,
-        "Other": 16
+        "Closed": 1596,
+        "Submitted": 5,
+        "To be completed": 1620,
+        "Other": 28
       }
     },
     {
       "label": "Milestone I",
       "raw": "PS5 - Milestone I",
       "total": 785,
-      "closed": 123,
-      "remaining": 662,
-      "pct": 15.7,
+      "closed": 124,
+      "remaining": 661,
+      "pct": 15.8,
       "status": {
-        "Closed": 123,
+        "Closed": 124,
         "Submitted": 1,
         "To be completed": 655,
-        "Other": 6
+        "Other": 5
       }
     }
   ],
