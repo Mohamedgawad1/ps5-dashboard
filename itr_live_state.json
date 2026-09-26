@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-25 22:04:42",
+  "updated": "2026-09-26 08:12:56",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,27 +9,20 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5359,
-  "open": 4941,
-  "today_closed": 104,
+  "closed": 5385,
+  "open": 4915,
+  "today_closed": 4,
   "closed_by_discipline": {
-    "I": 2712,
+    "I": 2713,
     "E": 2494,
-    "T": 153
+    "T": 178
   },
   "open_by_discipline": {
-    "I": 1883,
+    "I": 1882,
     "E": 2133,
-    "T": 925
+    "T": 900
   },
   "daily": [
-    {
-      "label": "2026-08-27",
-      "E": 25,
-      "I": 22,
-      "T": 0,
-      "Total": 47
-    },
     {
       "label": "2026-08-28",
       "E": 20,
@@ -229,58 +222,29 @@
     {
       "label": "2026-09-25",
       "E": 26,
-      "I": 66,
-      "T": 12,
-      "Total": 104
+      "I": 67,
+      "T": 33,
+      "Total": 126
+    },
+    {
+      "label": "2026-09-26",
+      "E": 0,
+      "I": 0,
+      "T": 4,
+      "Total": 4
     }
   ],
-  "closed_this_week": 478,
-  "closed_this_month": 1807,
+  "closed_this_week": 504,
+  "closed_this_month": 1833,
   "today_milestone": [
-    {
-      "milestone": "Milestone D",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 19
-    },
-    {
-      "milestone": "Milestone E",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 5
-    },
-    {
-      "milestone": "Milestone E",
-      "disc": "I",
-      "discipline": "Instrumentation (I)",
-      "count": 47
-    },
     {
       "milestone": "Milestone F",
       "disc": "T",
       "discipline": "Telecom (T)",
-      "count": 12
-    },
-    {
-      "milestone": "Milestone G",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 2
-    },
-    {
-      "milestone": "Milestone G",
-      "disc": "I",
-      "discipline": "Instrumentation (I)",
-      "count": 5
-    },
-    {
-      "milestone": "Milestone H",
-      "disc": "I",
-      "discipline": "Instrumentation (I)",
-      "count": 14
+      "count": 4
     }
   ],
-  "today_milestone_total": 104,
+  "today_milestone_total": 4,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -356,13 +320,13 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1148,
-      "closed": 487,
-      "remaining": 661,
-      "pct": 42.4,
+      "closed": 512,
+      "remaining": 636,
+      "pct": 44.6,
       "status": {
-        "Closed": 487,
+        "Closed": 512,
         "Submitted": 4,
-        "To be completed": 652,
+        "To be completed": 627,
         "Other": 5
       }
     },
@@ -384,13 +348,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3249,
-      "closed": 1592,
-      "remaining": 1657,
+      "closed": 1593,
+      "remaining": 1656,
       "pct": 49.0,
       "status": {
-        "Closed": 1592,
+        "Closed": 1593,
         "Submitted": 0,
-        "To be completed": 1641,
+        "To be completed": 1640,
         "Other": 16
       }
     },
@@ -410,6 +374,240 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-08-01LS-0605-CR01",
+      "task": "T-00621-2914",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/26/2026 5:08:30 A"
+    },
+    {
+      "tag": "PS5-08-01LS-0411-CR01",
+      "task": "T-00621-2879",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/26/2026 5:06:44 A"
+    },
+    {
+      "tag": "PS5-08-01LS-0403-CR01",
+      "task": "T-00621-2871",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/26/2026 5:05:44 A"
+    },
+    {
+      "tag": "PS5-08-01LS-0404-CR01",
+      "task": "T-00621-2872",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/26/2026 5:02:51 A"
+    },
+    {
+      "tag": "PS5-08-01LS-0307-CR01",
+      "task": "T-00621-2863",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 9:10:51 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0306-CR01",
+      "task": "T-00621-2862",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 9:07:44 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0303-CR01",
+      "task": "T-00621-2859",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 9:05:08 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0302-CR01",
+      "task": "T-00621-2858",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 9:02:44 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0301-CR01",
+      "task": "T-00621-2857",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 9:00:46 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0211-CR02",
+      "task": "T-00621-2856",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:58:37 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0211-CR01",
+      "task": "T-00621-2855",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:56:31 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0210-CR01",
+      "task": "T-00621-2854",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:54:30 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0209-CR01",
+      "task": "T-00621-2853",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:52:22 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0208-CR01",
+      "task": "T-00621-2852",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:50:10 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0207-CR01",
+      "task": "T-00621-2851",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:48:13 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0206-CR01",
+      "task": "T-00621-2850",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:46:11 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0205-CR01",
+      "task": "T-00621-2849",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:44:11 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0204-CR01",
+      "task": "T-00621-2848",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:42:15 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0110-CR01",
+      "task": "T-00621-2843",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:40:01 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0109-CR01",
+      "task": "T-00621-2842",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:37:57 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0108-CR01",
+      "task": "T-00621-2841",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:35:37 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0106-CR01",
+      "task": "T-00621-2839",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:33:21 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0105-CR01",
+      "task": "T-00621-2838",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:30:52 P"
+    },
+    {
+      "tag": "PS5-08-01LS-0102-CR01",
+      "task": "T-00621-2835",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:28:14 P"
+    },
+    {
+      "tag": "PS5-08-01BT-1901-CR02",
+      "task": "T-00621-2829",
+      "system": "PS5-08-01 - PAGA",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:25:21 P"
+    },
+    {
+      "tag": "PS5-25-ZS-1201",
+      "task": "T-00067-2055",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/25/2026 8:21:07 P"
+    },
     {
       "tag": "PS5-03-NMR-0804-CJ01",
       "task": "T-00614-0917",
@@ -1255,240 +1453,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/25/2026 5:01:17 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1107",
-      "task": "T-00083-0841",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 5:00:10 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1106",
-      "task": "T-00083-0840",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:59:01 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1104",
-      "task": "T-00083-0839",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:56:35 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1103",
-      "task": "T-00083-0838",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:55:38 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1102",
-      "task": "T-00083-0837",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:54:36 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1101",
-      "task": "T-00083-0836",
-      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:53:28 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1009",
-      "task": "T-00083-0835",
-      "system": "PS5-03-10 - FZ-10 - Power Generation Building - Engine Bay 2",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:52:31 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-1004",
-      "task": "T-00083-0831",
-      "system": "PS5-03-10 - FZ-10 - Power Generation Building - Engine Bay 2",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:51:31 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-0909",
-      "task": "T-00083-0827",
-      "system": "PS5-03-09 - FZ-09 - Power Generation Building - Engine Bay 1",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:50:25 A"
-    },
-    {
-      "tag": "PS5-03-GDIR-0904",
-      "task": "T-00083-0823",
-      "system": "PS5-03-09 - FZ-09 - Power Generation Building - Engine Bay 1",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/25/2026 4:49:20 A"
-    },
-    {
-      "tag": "PS5-08-01LS-0523-CR01",
-      "task": "T-00621-2901",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 9:04:59 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0602-CR01",
-      "task": "T-00621-2911",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 9:04:48 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0530-CR01",
-      "task": "T-00621-2908",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 9:02:56 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0522-CR02",
-      "task": "T-00621-2900",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:57:35 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0522-CR01",
-      "task": "T-00621-2899",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:55:37 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0521-CR01",
-      "task": "T-00621-2898",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:53:15 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0629-CR02",
-      "task": "T-00621-2936",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:49:56 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0629-CR01",
-      "task": "T-00621-2935",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:48:09 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0628-CR01",
-      "task": "T-00621-2934",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:46:25 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0627-CR01",
-      "task": "T-00621-2933",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:44:30 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0626-CR01",
-      "task": "T-00621-2932",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:42:30 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0625-CR01",
-      "task": "T-00621-2931",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:40:34 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0624-CR01",
-      "task": "T-00621-2930",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:38:54 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0623-CR01",
-      "task": "T-00621-2929",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:37:14 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0622-CR01",
-      "task": "T-00621-2928",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:35:23 P"
-    },
-    {
-      "tag": "PS5-08-01LS-0621-CR02",
-      "task": "T-00621-2927",
-      "system": "PS5-08-01 - PAGA",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/24/2026 8:33:43 P"
     }
   ]
 }
