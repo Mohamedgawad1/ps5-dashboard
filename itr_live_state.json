@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-27 10:15:21",
+  "updated": "2026-09-27 10:51:01",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -271,14 +271,14 @@
       "label": "Milestone C",
       "raw": "PS5 - Milestone C",
       "total": 962,
-      "closed": 567,
-      "remaining": 395,
-      "pct": 58.9,
+      "closed": 568,
+      "remaining": 394,
+      "pct": 59.0,
       "status": {
-        "Closed": 567,
+        "Closed": 568,
         "Submitted": 0,
         "To be completed": 392,
-        "Other": 3
+        "Other": 2
       }
     },
     {
@@ -299,13 +299,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1533,
-      "closed": 1112,
-      "remaining": 421,
-      "pct": 72.5,
+      "closed": 1113,
+      "remaining": 420,
+      "pct": 72.6,
       "status": {
-        "Closed": 1112,
+        "Closed": 1113,
         "Submitted": 2,
-        "To be completed": 414,
+        "To be completed": 413,
         "Other": 5
       }
     },
@@ -327,28 +327,28 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 576,
-      "remaining": 328,
-      "pct": 63.7,
+      "closed": 579,
+      "remaining": 325,
+      "pct": 64.0,
       "status": {
-        "Closed": 576,
+        "Closed": 579,
         "Submitted": 2,
         "To be completed": 311,
-        "Other": 15
+        "Other": 12
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3249,
-      "closed": 1604,
-      "remaining": 1645,
+      "closed": 1605,
+      "remaining": 1644,
       "pct": 49.4,
       "status": {
-        "Closed": 1604,
+        "Closed": 1605,
         "Submitted": 5,
-        "To be completed": 1595,
-        "Other": 45
+        "To be completed": 1593,
+        "Other": 46
       }
     },
     {
