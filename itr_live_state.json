@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-27 08:00:25",
+  "updated": "2026-09-27 09:41:23",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -313,14 +313,14 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1148,
-      "closed": 535,
-      "remaining": 613,
-      "pct": 46.6,
+      "closed": 537,
+      "remaining": 611,
+      "pct": 46.8,
       "status": {
-        "Closed": 535,
-        "Submitted": 5,
+        "Closed": 537,
+        "Submitted": 1,
         "To be completed": 597,
-        "Other": 11
+        "Other": 13
       }
     },
     {
@@ -332,8 +332,8 @@
       "pct": 63.7,
       "status": {
         "Closed": 576,
-        "Submitted": 0,
-        "To be completed": 313,
+        "Submitted": 2,
+        "To be completed": 311,
         "Other": 15
       }
     },
