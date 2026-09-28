@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-28 18:42:50",
+  "updated": "2026-09-28 19:16:47",
   "total_tasks_ps5": 14001,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5588,
-  "open": 4712,
-  "today_closed": 50,
+  "closed": 5595,
+  "open": 4705,
+  "today_closed": 57,
   "closed_by_discipline": {
-    "I": 2776,
+    "I": 2783,
     "E": 2596,
     "T": 216
   },
   "open_by_discipline": {
-    "I": 1819,
+    "I": 1812,
     "E": 2031,
     "T": 862
   },
@@ -229,14 +229,26 @@
     {
       "label": "2026-09-28",
       "E": 50,
-      "I": 0,
+      "I": 7,
       "T": 0,
-      "Total": 50
+      "Total": 57
     }
   ],
-  "closed_this_week": 50,
-  "closed_this_month": 2036,
+  "closed_this_week": 57,
+  "closed_this_month": 2043,
   "today_milestone": [
+    {
+      "milestone": "Milestone B",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
+    },
+    {
+      "milestone": "Milestone E",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 6
+    },
     {
       "milestone": "Milestone F",
       "disc": "E",
@@ -250,7 +262,7 @@
       "count": 48
     }
   ],
-  "today_milestone_total": 50,
+  "today_milestone_total": 57,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -270,13 +282,13 @@
       "label": "Milestone B",
       "raw": "PS5 - Milestone B",
       "total": 1714,
-      "closed": 1584,
-      "remaining": 130,
-      "pct": 92.4,
+      "closed": 1585,
+      "remaining": 129,
+      "pct": 92.5,
       "status": {
-        "Closed": 1584,
+        "Closed": 1585,
         "Submitted": 0,
-        "To be completed": 127,
+        "To be completed": 126,
         "Other": 3
       }
     },
@@ -312,13 +324,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1533,
-      "closed": 1154,
-      "remaining": 379,
-      "pct": 75.3,
+      "closed": 1160,
+      "remaining": 373,
+      "pct": 75.7,
       "status": {
-        "Closed": 1154,
+        "Closed": 1160,
         "Submitted": 20,
-        "To be completed": 349,
+        "To be completed": 343,
         "Other": 10
       }
     },
@@ -380,6 +392,69 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-IE-0002G-CC03",
+      "task": "T-00069-12976",
+      "system": "PS5-60-19 - Power Generation Package G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/28/2026 4:10:25 P"
+    },
+    {
+      "tag": "PS5-60-IE-0002G-CC01",
+      "task": "T-00069-12974",
+      "system": "PS5-60-19 - Power Generation Package G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/28/2026 4:08:43 P"
+    },
+    {
+      "tag": "PS5-60-BI-0005G-CC02",
+      "task": "T-00069-4937",
+      "system": "PS5-60-19 - Power Generation Package G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/28/2026 4:07:32 P"
+    },
+    {
+      "tag": "PS5-60-BI-0005G-CC01",
+      "task": "T-00069-4936",
+      "system": "PS5-60-19 - Power Generation Package G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/28/2026 4:04:53 P"
+    },
+    {
+      "tag": "PS5-60-BI-0001G-CC03",
+      "task": "T-00069-4910",
+      "system": "PS5-60-19 - Power Generation Package G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/28/2026 4:03:08 P"
+    },
+    {
+      "tag": "PS5-60-BI-0001G-CC01",
+      "task": "T-00069-4909",
+      "system": "PS5-60-19 - Power Generation Package G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/28/2026 4:01:06 P"
+    },
+    {
+      "tag": "PS5-60-PIT-8114B-CC01",
+      "task": "T-00069-13003",
+      "system": "PS5-60-58 - Fuel Conditioning Module PS5-60-UZ-8900B",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/28/2026 3:57:56 P"
+    },
     {
       "tag": "PS5-71-DM-3100B",
       "task": "T-00026-0172",
@@ -1396,69 +1471,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/27/2026 1:21:51 P"
-    },
-    {
-      "tag": "PS5-01-NMRA-61002-CJ01",
-      "task": "T-00254-4276",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/27/2026 1:21:34 P"
-    },
-    {
-      "tag": "PS5-01-NMRA-61001-CJ01",
-      "task": "T-00254-4275",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/27/2026 1:21:18 P"
-    },
-    {
-      "tag": "PS5-01-NMR-61004-CJ01",
-      "task": "T-00254-4274",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/27/2026 1:21:08 P"
-    },
-    {
-      "tag": "PS5-01-NMR-61003-CJ01",
-      "task": "T-00254-4273",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/27/2026 1:20:50 P"
-    },
-    {
-      "tag": "PS5-01-NMR-61002-CJ01",
-      "task": "T-00254-4272",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/27/2026 1:20:39 P"
-    },
-    {
-      "tag": "PS5-01-LB-6103A-CC01",
-      "task": "T-00254-4266",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/27/2026 1:17:50 P"
-    },
-    {
-      "tag": "PS5-01-LB-6104A-CC01",
-      "task": "T-00254-4267",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/27/2026 1:17:32 P"
     }
   ]
 }
