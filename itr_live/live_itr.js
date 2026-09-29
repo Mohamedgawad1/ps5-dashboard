@@ -19,9 +19,13 @@
       .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); })
       .catch(() => { try{ const o=localStorage.getItem(LS); if(o) build(JSON.parse(o)); }catch(e){} });
   }
+  // Live platform numbers only. A page must opt in with <body data-itr-live="1">;
+  // without it this script does nothing, so it can never overlay or rewrite a
+  // dashboard page. Never position:fixed — it would sit on top of the content.
+  if(!document.body || document.body.getAttribute('data-itr-live') !== '1') return;
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
-    st.textContent = '#itr-live-badge{position:fixed;right:16px;bottom:16px;z-index:99999;background:#0b2f56;color:#fff;border:1px solid #38bdf8;border-radius:12px;padding:10px 14px;font-family:Segoe UI,Arial,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35);min-width:210px}'
+    st.textContent = '#itr-live-badge{position:static;display:block;background:#0b2f56;color:#fff;border:1px solid #38bdf8;border-radius:12px;padding:10px 14px;font-family:Segoe UI,Arial,sans-serif;box-shadow:none;min-width:210px}'
       + '.itr-badge-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#7dd3fc}'
       + '.itr-badge-big{font-size:30px;font-weight:800;line-height:1.1}'
       + '.itr-badge-sub{font-size:12px;color:#cbd5e1;margin-top:2px}'

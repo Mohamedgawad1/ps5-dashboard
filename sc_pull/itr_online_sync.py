@@ -65,10 +65,9 @@ MARK_URL = SWITCHBOARD_URL + "#itr-sync"
 CPP_CID = 1021
 PAGE = 4000
 # Keep the browser session ALIVE after each update (reuse via debug port next run).
-# Set ITR_KEEP_OPEN=0 to restore old close-after-pull behavior.
-# 9222 is the user's SmartCloud browser (the one they sign in, close ITRs, and work in).
-# The sync REUSES that one browser in its own dedicated tab - it never launches a second
-# window, never closes the browser, and never touches the user's other tabs.
+# 9222 = the user's own SmartCloud browser (the one they sign in, close ITRs, and work
+# in at Switchboard). The sync runs inside that SAME browser in its own pull tab, so the
+# dashboard stays in sync with the user's live session - no second window, ever.
 DEBUG_PORT = int(os.environ.get("ITR_DEBUG_PORT", "9222"))
 KEEP_OPEN = os.environ.get("ITR_KEEP_OPEN", "1") != "0"
 # Loop interval between pulls. Default 5 minutes; override with ITR_LOOP_SECONDS.
@@ -306,72 +305,52 @@ def _kill_profile_chrome():
 
 
 def open_session(pw):
-    """Attach to the one always-open browser the user works in (port 9222) and read
-    from a dedicated tab, so there is never a second browser window."""
-    if _listener_pid(DEBUG_PORT):
-        port = DEBUG_PORT
-    else:
+    """Attach to the sync's OWN dedicated light browser (DEBUG_PORT), which stays open
+    forever and is reused every cycle. The user's 9222 work browser is never touched,
+    we never kill browsers, and we never pop up fresh windows just for the pull."""
+    # 1) our dedicated browser is already open -> reuse it
+    port = DEBUG_PORT if _listener_pid(DEBUG_PORT) else None
+    if not port:
         port = _our_port()
     if port:
         try:
-            conn = pw.chromium.connect_over_cdp("http://127.0.0.1:%d" % port, timeout=15000)
-            # reuse OUR dedicated pull tab if it exists, else open a BRAND-NEW tab.
-            # never reuse the user's work tabs (EditForm / Switchboard / anything they opened).
-            ours = None
-            for c in (conn.contexts or []):
-                for p in c.pages:
-                    try:
-                        if p.url.startswith(MARK_URL):
-                            ours = p
-                            break
-                    except Exception:
-                        pass
-                if ours:
-                    break
-            if ours is None:
-                home = None
-                try:
-                    home = conn.contexts[0] if conn.contexts else conn.new_context()
-                except Exception:
-                    pass
-                if home is None or (hasattr(home, "new_page") is False):
-                    home = conn.contexts[0] if conn.contexts else None
-                if home is not None:
-                    try:
-                        ours = home.new_page()
-                        try:
-                            ours.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
-                        except Exception:
-                            pass
-                    except Exception as e:
-                        pr("new tab err: %s -> using first page file-less" % str(e)[:60])
-                        ours = None
-            if ours is None:
-                raise RuntimeError("could not create a pull tab")
-            pr("reused the user's open browser (port %d) in a fresh tab" % port)
-            return None, ours
+            conn = pw.chromium.connect_over_cdp("http://127.0.0.1:%d" % port, timeout=20000)
         except Exception as e:
-            pr("reuse failed: %s -> leaving the browser alone, will retry later" % str(e)[:70])
+            # browser process may be wedged this cycle - back off, DON'T relaunch
+            pr("reuse failed: %s -> will retry next cycle, no new window" % str(e)[:70])
             time.sleep(2)
             raise
-    # no debuggable browser yet - launch ONE kept-open browser and reuse it forever
-    port = _free_port()
-    last = None
-    for attempt in range(4):
-        try:
-            ctx = pw.chromium.launch_persistent_context(
-                PROFILE_DIR, channel="chrome", headless=False,
-                args=["--remote-debugging-port=%d" % port],
-                viewport=None, timeout=60000,
-            )
-            page = ctx.pages[0] if ctx.pages else ctx.new_page()
-            pr("launched fresh kept-open browser (port %d) profile=%s" % (port, PROFILE_DIR))
-            return ctx, page
-        except Exception as e:
-            last = e
-            pr("launch attempt %d failed: %s" % (attempt + 1, str(e)[:100]))
-            time.sleep(3)
-    raise last
+        # reuse the dedicated pull tab if it exists, else open a fresh one for our pull
+        ours = None
+        for c in (conn.contexts or []):
+            for p in c.pages:
+                try:
+                    if p.url.startswith(MARK_URL):
+                        ours = p
+                        break
+                except Exception:
+                    pass
+            if ours:
+                break
+        if ours is None:
+            try:
+                home = conn.contexts[0]
+                ours = home.new_page()
+                try:
+                    ours.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                except Exception:
+                    pass
+            except Exception as e:
+                pr("new tab err: %s" % str(e)[:60])
+                ours = None
+        if ours is None:
+            raise RuntimeError("could not create a pull tab")
+        pr("reused the sync's always-open browser (port %d)" % port)
+        return None, ours
+    # 2) the user's browser is not open right now. Never open a second window and
+    #    never close theirs: just skip this cycle and try again on the next one.
+    pr("no browser on %d - skipping this cycle (open SmartCloud and it resumes)" % DEBUG_PORT)
+    return None, None
 
 
 def pull_live(page):
@@ -612,30 +591,35 @@ def ensure_web_files():
 
 
 def inject_into_index(clone):
+    """KEPT FOR COMPATIBILITY, BUT IT NO LONGER INJECTS ANYTHING.
+
+    The live ITR feed used to be injected into the dashboard index.html. It
+    overwrote the dashboard's own numbers with the platform's and floated a
+    badge on top of the KPIs. The two sources must stay separate, so this only
+    REPORTS a stray tag — it never writes, never adds, never removes. Keeping
+    this function read-only is what stops the sync from dirtying index.html
+    with changes it is not allowed to publish.
+    """
     if not os.path.isdir(clone):
         return False
     p = os.path.join(clone, "index.html")
     if not os.path.exists(p):
         return False
     s = open(p, "r", encoding="utf-8", errors="ignore").read()
-    marker = '<script src="live_itr.js"'
-    if marker in s:
-        return True
-    tag = '<script src="live_itr.js" charset="utf-8"></script>'
-    idx = s.rfind("</body>")
-    if idx != -1:
-        s = s[:idx] + tag + "\n" + s[idx:]
-    else:
-        s = s + "\n" + tag
-    open(p, "w", encoding="utf-8").write(s)
-    return True
+    if '<script src="live_itr.js"' in s:
+        pr("!! index.html still references live_itr.js — remove it by hand "
+           "(the live feed must not run on the dashboard)")
+        return False
+    return False
 
 
 def git_push(clone, state):
     if not os.path.isdir(clone):
         return None
     git = ["git", "-C", clone]
-    targeted = ["itr_live_state.json", "live_itr.js", "itr_live.html", "index.html"]
+    # index.html is deliberately NOT here: the dashboard is built from Excel by
+    # its own pipeline. This sync only publishes the live ITR feed files.
+    targeted = ["itr_live_state.json", "live_itr.js", "itr_live.html"]
     a0 = git + ["add", "--"] + targeted
     r = subprocess.run(a0, capture_output=True, text=True, timeout=600)
     pr(" >> " + " ".join(a0) + " rc=%d" % r.returncode)
@@ -781,7 +765,7 @@ def _run_once():
         write_local(state)
         ensure_web_files()
         injected = inject_into_index(CLONE)
-        pr("index.html injection ok:", injected)
+        pr("index.html scrubbed (no live injection):", injected)
         with open(os.path.join(CLONE, "itr_live_state.json") if os.path.isdir(CLONE) else os.devnull,
                   "w", encoding="utf-8") as f:
             json.dump(state, f, ensure_ascii=False, indent=2)
@@ -987,9 +971,14 @@ LIVE_ITER_JS = """(() => {
       .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); syncMilestoneSummary(u); })
       .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); syncMilestoneSummary(u); } }catch(e){} });
   }
+  // This feed owns the live platform numbers ONLY. The dashboard pages get their
+  // numbers from the Excel build — this script must never draw over them or
+  // rewrite them (that mixed two sources and hid the dashboard KPIs).
+  // A page opts in explicitly with <body data-itr-live="1">; nothing else does.
+  if(!document.body || document.body.getAttribute('data-itr-live') !== '1') return;
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
-    st.textContent = '#itr-live-badge{position:fixed;right:16px;bottom:16px;z-index:99999;background:#0b2f56;color:#fff;border:1px solid #38bdf8;border-radius:12px;padding:10px 14px;font-family:Segoe UI,Arial,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35);min-width:210px}'
+    st.textContent = '#itr-live-badge{position:static;display:block;background:#0b2f56;color:#fff;border:1px solid #38bdf8;border-radius:12px;padding:10px 14px;font-family:Segoe UI,Arial,sans-serif;box-shadow:none;min-width:210px}'
       + '.itr-badge-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#7dd3fc}'
       + '.itr-badge-big{font-size:30px;font-weight:800;line-height:1.1}'
       + '.itr-badge-sub{font-size:12px;color:#cbd5e1;margin-top:2px}'
@@ -1087,7 +1076,33 @@ ITR_LIVE_HTML = """<!DOCTYPE html>
 </html>
 """
 
+def claim_single_instance():
+    """Only one sync may run: a second one would double the load and fight the browser."""
+    lock = os.path.join(os.path.dirname(os.path.abspath(__file__)), "itr_sync.lock")
+    for _ in range(2):
+        try:
+            if os.path.exists(lock):
+                with open(lock) as f:
+                    old = int((f.read().strip() or "0"))
+                if old and old != os.getpid():
+                    out = subprocess.run(
+                        ["powershell", "-NoProfile", "-Command",
+                         "(Get-Process -Id %d -ErrorAction SilentlyContinue).Id" % old],
+                        capture_output=True, text=True, timeout=20).stdout.strip()
+                    if out:
+                        pr("sync is already running as pid %d - nothing to do" % old)
+                        return False
+            with open(lock, "w") as f:
+                f.write(str(os.getpid()))
+            return True
+        except Exception:
+            return True
+    return True
+
+
 if __name__ == "__main__":
+    if not claim_single_instance():
+        raise SystemExit(0)
     if not KEEP_OPEN:
         pass
     if "--loop" in sys.argv:
@@ -1097,9 +1112,13 @@ if __name__ == "__main__":
             pr("LOOP READY (interval %ds, keep_open=%s)" % (LOOP_SECONDS, KEEP_OPEN))
             while True:
                 try:
-                    if page.is_closed():
-                        pr("browser was closed — reopening session")
+                    if page is None or page.is_closed():
+                        pr("no pull tab yet — attaching to the open browser again")
                         ctx, page = open_session(pw)
+                        if page is None:
+                            for _ in range(LOOP_SECONDS // 5):
+                                time.sleep(5)
+                            continue
                     rows = pull_live(page)
                     if rows:
                         load_milestone_map()
@@ -1113,17 +1132,13 @@ if __name__ == "__main__":
                         git_push(CLONE, state)
                         pages_push(state)
                     try:
-                        page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                        if page is not None and not page.is_closed():
+                            page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
                     except Exception:
                         pass
-                    if page.is_closed():
-                        pr("browser closed — exiting loop")
-                        break
                 except Exception as e:
                     pr("LOOP ERR:", str(e)[:200])
                 for _ in range(LOOP_SECONDS // 5):
-                    if page.is_closed():
-                        break
                     time.sleep(5)
     else:
         sys.exit(run_once())
