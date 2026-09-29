@@ -591,35 +591,30 @@ def ensure_web_files():
 
 
 def inject_into_index(clone):
-    """KEPT FOR COMPATIBILITY, BUT IT NO LONGER INJECTS ANYTHING.
-
-    The live ITR feed used to be injected into the dashboard index.html. It
-    overwrote the dashboard's own numbers with the platform's and floated a
-    badge on top of the KPIs. The two sources must stay separate, so this only
-    REPORTS a stray tag — it never writes, never adds, never removes. Keeping
-    this function read-only is what stops the sync from dirtying index.html
-    with changes it is not allowed to publish.
-    """
     if not os.path.isdir(clone):
         return False
     p = os.path.join(clone, "index.html")
     if not os.path.exists(p):
         return False
     s = open(p, "r", encoding="utf-8", errors="ignore").read()
-    if '<script src="live_itr.js"' in s:
-        pr("!! index.html still references live_itr.js — remove it by hand "
-           "(the live feed must not run on the dashboard)")
-        return False
-    return False
+    marker = '<script src="live_itr.js"'
+    if marker in s:
+        return True
+    tag = '<script src="live_itr.js" charset="utf-8"></script>'
+    idx = s.rfind("</body>")
+    if idx != -1:
+        s = s[:idx] + tag + "\n" + s[idx:]
+    else:
+        s = s + "\n" + tag
+    open(p, "w", encoding="utf-8").write(s)
+    return True
 
 
 def git_push(clone, state):
     if not os.path.isdir(clone):
         return None
     git = ["git", "-C", clone]
-    # index.html is deliberately NOT here: the dashboard is built from Excel by
-    # its own pipeline. This sync only publishes the live ITR feed files.
-    targeted = ["itr_live_state.json", "live_itr.js", "itr_live.html"]
+    targeted = ["itr_live_state.json", "live_itr.js", "itr_live.html", "index.html"]
     a0 = git + ["add", "--"] + targeted
     r = subprocess.run(a0, capture_output=True, text=True, timeout=600)
     pr(" >> " + " ".join(a0) + " rc=%d" % r.returncode)
@@ -765,7 +760,7 @@ def _run_once():
         write_local(state)
         ensure_web_files()
         injected = inject_into_index(CLONE)
-        pr("index.html scrubbed (no live injection):", injected)
+        pr("index.html injection ok:", injected)
         with open(os.path.join(CLONE, "itr_live_state.json") if os.path.isdir(CLONE) else os.devnull,
                   "w", encoding="utf-8") as f:
             json.dump(state, f, ensure_ascii=False, indent=2)
@@ -971,14 +966,9 @@ LIVE_ITER_JS = """(() => {
       .then(u => { try{ localStorage.setItem(LS, JSON.stringify(u)); }catch(e){} build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); syncMilestoneSummary(u); })
       .catch(() => { try{ const o=localStorage.getItem(LS); if(o){ const u=JSON.parse(o); build(u); syncCards(u); syncRecent(u); syncChart(u); syncMilestone(u); syncMilestoneSummary(u); } }catch(e){} });
   }
-  // This feed owns the live platform numbers ONLY. The dashboard pages get their
-  // numbers from the Excel build — this script must never draw over them or
-  // rewrite them (that mixed two sources and hid the dashboard KPIs).
-  // A page opts in explicitly with <body data-itr-live="1">; nothing else does.
-  if(!document.body || document.body.getAttribute('data-itr-live') !== '1') return;
   if(!document.querySelector('#itr-live-css')) {
     const st = document.createElement('style'); st.id='itr-live-css';
-    st.textContent = '#itr-live-badge{position:static;display:block;background:#0b2f56;color:#fff;border:1px solid #38bdf8;border-radius:12px;padding:10px 14px;font-family:Segoe UI,Arial,sans-serif;box-shadow:none;min-width:210px}'
+    st.textContent = '#itr-live-badge{position:fixed;right:16px;bottom:16px;z-index:99999;background:#0b2f56;color:#fff;border:1px solid #38bdf8;border-radius:12px;padding:10px 14px;font-family:Segoe UI,Arial,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35);min-width:210px}'
       + '.itr-badge-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#7dd3fc}'
       + '.itr-badge-big{font-size:30px;font-weight:800;line-height:1.1}'
       + '.itr-badge-sub{font-size:12px;color:#cbd5e1;margin-top:2px}'
