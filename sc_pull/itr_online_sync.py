@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -13,9 +14,16 @@ import traceback
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WS = os.path.dirname(BASE_DIR)
 DATA_DIR = os.path.join(BASE_DIR, "data")
+# Sync uses its own dedicated profile. (Adopting the user's manual sc_itr_profile
+# was tried but it fights the user's personal window + is not reliably logged in.)
 PROFILE_DIR = os.path.join(BASE_DIR, "profile")
 # Single deploy repo = the workspace (the one behind update_dashboard + github.io/ps5-dashboard)
 CLONE = WS
+# Live ITR page repo (the PUBLIC platform site). The sync pushes itr_live files here too
+# so the live page always shows fresh data.
+PAGE_REPO = "PS5-COMPLETION-PLATFORM"
+PAGE_CLONE = os.path.join(os.environ.get("TEMP", BASE_DIR), "ps5_pages_deploy")
+TOK_FILE = os.path.join(WS, "github_token.txt")
 LOG = os.path.join(BASE_DIR, "itr_online_log.txt")
 
 MILESTONE_MAP = {}
@@ -51,8 +59,20 @@ def milestone_of(process_breakdown):
 SWITCHBOARD_URL = (
     "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switchboard.htm"
 )
+# URL marker for the sync's own dedicated pull tab inside the user's browser.
+# Reusing our tab keeps pull-login sticky without touching any work tab.
+MARK_URL = SWITCHBOARD_URL + "#itr-sync"
 CPP_CID = 1021
 PAGE = 4000
+# Keep the browser session ALIVE after each update (reuse via debug port next run).
+# Set ITR_KEEP_OPEN=0 to restore old close-after-pull behavior.
+# 9222 is the user's SmartCloud browser (the one they sign in, close ITRs, and work in).
+# The sync REUSES that one browser in its own dedicated tab - it never launches a second
+# window, never closes the browser, and never touches the user's other tabs.
+DEBUG_PORT = int(os.environ.get("ITR_DEBUG_PORT", "9222"))
+KEEP_OPEN = os.environ.get("ITR_KEEP_OPEN", "1") != "0"
+# Loop interval between pulls. Default 5 minutes; override with ITR_LOOP_SECONDS.
+LOOP_SECONDS = int(os.environ.get("ITR_LOOP_SECONDS", "300"))
 
 FIELDS = [
     "ID", "TaskName", "AssetTag", "AssetDescription", "Description", "TaskCategorySummary",
@@ -126,6 +146,22 @@ def wait_products(page, timeout_sec):
     return False
 
 
+def js_fill(page, sel, val):
+    try:
+        return page.evaluate("""([sel, val]) => {
+            const el = document.querySelector(sel);
+            if (!el) return 'no-el';
+            const proto = el.tagName === 'TEXTAREA' ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
+            const setter = Object.getOwnPropertyDescriptor(proto, 'value').set;
+            setter.call(el, val);
+            el.dispatchEvent(new Event('input', {bubbles: true}));
+            el.dispatchEvent(new Event('change', {bubbles: true}));
+            return 'ok';
+        }""", [sel, val])
+    except Exception as e:
+        return 'err:' + str(e)[:50]
+
+
 def auto_login(page):
     creds = {}
     try:
@@ -137,35 +173,43 @@ def auto_login(page):
                     creds[k.strip()] = v.strip()
     except Exception as e:
         pr("creds err", str(e)[:120])
-    for u in [
-        "https://wly04-sc.intergraphsmartcloud.com/ISC/Home/Login.aspx",
-        "https://wly04-sc.intergraphsmartcloud.com/ISC/SSO/Login.aspx",
-        "https://wly04-sc.intergraphsmartcloud.com/ISC/Login.aspx",
-    ]:
+    root_login = "https://wly04-sc.intergraphsmartcloud.com//Login.aspx?referrer=/ISC/Tools/vDashboardsUsers/Switchboard.htm"
+    try:
+        page.goto(root_login, wait_until="domcontentloaded", timeout=45000)
+    except Exception:
+        pass
+    page.wait_for_timeout(2500)
+    js_fill(page, "#txtUserName", creds.get("SC_USER", ""))
+    js_fill(page, "#txtUserPass", creds.get("SC_PASS", ""))
+    page.wait_for_timeout(400)
+    clicked = page.evaluate("""() => {
+        const el = document.getElementById('btnSSOLogin');
+        if (el) { el.click(); return 'ok'; }
+        return 'no-btn';
+    }""")
+    pr("ssologin click:", clicked)
+    page.wait_for_timeout(10000)
+    if "auth.intergraphsmartcloud.com" in page.url:
+        pr("sso handoff -> verify password page")
+        page.wait_for_timeout(2000)
+        js_fill(page, "input[type=password]", creds.get("SC_PASS", ""))
+        page.wait_for_timeout(400)
+        sub = page.evaluate("""() => {
+            const cand = document.querySelector('input[type=submit], button[type=submit], button[data-action-button-primary]');
+            if (cand) { cand.click(); return 'submitted'; }
+            return 'no-submit';
+        }""")
+        pr("verify submit:", sub)
+        page.wait_for_timeout(12000)
+    cnt = 0
+    while cnt < 6:
         try:
-            page.goto(u, wait_until="domcontentloaded", timeout=45000)
-        except Exception:
-            continue
-        page.wait_for_timeout(1500)
-        try:
-            pw = page.query_selector("input[type=password]")
-        except Exception:
-            pw = None
-        if pw:
-            try:
-                user = page.query_selector("input[type=text], input[name*=User], input[id*=User]")
-                if user:
-                    user.fill(creds.get("SC_USER", ""))
-                pw.fill(creds.get("SC_PASS", ""))
-                btn = page.query_selector("input[type=submit], button[type=submit]")
-                if btn:
-                    btn.click()
-                else:
-                    pw.press("Enter")
-                page.wait_for_timeout(8000)
+            if count_products(page) >= 0:
                 return True
-            except Exception as e:
-                pr("autologin err", str(e)[:150])
+        except Exception:
+            pass
+        page.wait_for_timeout(5000)
+        cnt += 1
     return False
 
 
@@ -209,80 +253,177 @@ def date_key(v):
     return ""
 
 
-def kill_profile_chrome():
+def _listener_pid(port):
     try:
-        ps = (
-            'Get-CimInstance Win32_Process -Filter "Name=\'chrome.exe\'" | '
-            r"Where-Object { $_.CommandLine -match 'sc_pull[\\\\]profile' } | "
-            "ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }"
-        )
-        subprocess.run(["powershell", "-NoProfile", "-Command", ps],
-                       capture_output=True, text=True, timeout=60)
+        out = subprocess.run(["netstat", "-ano", "-p", "TCP"], capture_output=True, text=True, timeout=60).stdout
+        for line in out.splitlines():
+            parts = line.split()
+            if len(parts) >= 5 and parts[0] == "TCP" and parts[1].endswith(":%d" % port) and "LISTENING" in line:
+                return int(parts[-1])
+    except Exception as e:
+        pr("netstat err:", str(e)[:80])
+    return None
+
+
+def _pid_cmdline(pid):
+    try:
+        r = subprocess.run(
+            ["powershell", "-NoProfile", "-Command",
+             "(Get-CimInstance Win32_Process -Filter 'ProcessId=%d').CommandLine" % pid],
+            capture_output=True, text=True, timeout=30)
+        return (r.stdout or "").strip()
     except Exception:
-        pass
+        return ""
 
 
-def pull_live():
-    with sync_playwright() as pw:
-        last = None
-        for attempt in range(4):
-            kill_profile_chrome()
-            try:
-                ctx = pw.chromium.launch_persistent_context(
-                    PROFILE_DIR, channel="chrome", headless=False,
-                    args=["--start-maximized"], viewport=None,
-                )
-                break
-            except Exception as e:
-                last = e
-                pr("launch attempt %d failed: %s" % (attempt + 1, str(e)[:100]))
-                time.sleep(3)
-        else:
-            raise last
-        page = ctx.pages[0] if ctx.pages else ctx.new_page()
+def _our_port():
+    """Debug port of a LISTENING chrome that uses OUR profile dir (the kept-open session)."""
+    for port in range(DEBUG_PORT, DEBUG_PORT + 10):
+        pid = _listener_pid(port)
+        if not pid:
+            continue
+        if PROFILE_DIR.replace("/", "\\").lower() in _pid_cmdline(pid).lower():
+            return port
+    return None
+
+
+def _free_port():
+    for port in range(DEBUG_PORT, DEBUG_PORT + 10):
+        if not _listener_pid(port):
+            return port
+    return DEBUG_PORT
+
+
+def _kill_profile_chrome():
+    """Never kill the browser window.
+
+    The user works in this same Chrome (that is where they sign in and open the
+    task pages). Killing it closes their tabs and loses the session, so the sync
+    only ever backs off and retries later.
+    """
+    pr("keeping the browser open - we never kill it (user works in it)")
+    return False
+
+
+def open_session(pw):
+    """Attach to the one always-open browser the user works in (port 9222) and read
+    from a dedicated tab, so there is never a second browser window."""
+    if _listener_pid(DEBUG_PORT):
+        port = DEBUG_PORT
+    else:
+        port = _our_port()
+    if port:
         try:
-            page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
-        except Exception:
-            pass
-        if not wait_products(page, timeout_sec=45):
-            pr("session expired -> auto-login")
+            conn = pw.chromium.connect_over_cdp("http://127.0.0.1:%d" % port, timeout=15000)
+            # reuse OUR dedicated pull tab if it exists, else open a BRAND-NEW tab.
+            # never reuse the user's work tabs (EditForm / Switchboard / anything they opened).
+            ours = None
+            for c in (conn.contexts or []):
+                for p in c.pages:
+                    try:
+                        if p.url.startswith(MARK_URL):
+                            ours = p
+                            break
+                    except Exception:
+                        pass
+                if ours:
+                    break
+            if ours is None:
+                home = None
+                try:
+                    home = conn.contexts[0] if conn.contexts else conn.new_context()
+                except Exception:
+                    pass
+                if home is None or (hasattr(home, "new_page") is False):
+                    home = conn.contexts[0] if conn.contexts else None
+                if home is not None:
+                    try:
+                        ours = home.new_page()
+                        try:
+                            ours.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                        except Exception:
+                            pass
+                    except Exception as e:
+                        pr("new tab err: %s -> using first page file-less" % str(e)[:60])
+                        ours = None
+            if ours is None:
+                raise RuntimeError("could not create a pull tab")
+            pr("reused the user's open browser (port %d) in a fresh tab" % port)
+            return None, ours
+        except Exception as e:
+            pr("reuse failed: %s -> leaving the browser alone, will retry later" % str(e)[:70])
+            time.sleep(2)
+            raise
+    # no debuggable browser yet - launch ONE kept-open browser and reuse it forever
+    port = _free_port()
+    last = None
+    for attempt in range(4):
+        try:
+            ctx = pw.chromium.launch_persistent_context(
+                PROFILE_DIR, channel="chrome", headless=False,
+                args=["--remote-debugging-port=%d" % port],
+                viewport=None, timeout=60000,
+            )
+            page = ctx.pages[0] if ctx.pages else ctx.new_page()
+            pr("launched fresh kept-open browser (port %d) profile=%s" % (port, PROFILE_DIR))
+            return ctx, page
+        except Exception as e:
+            last = e
+            pr("launch attempt %d failed: %s" % (attempt + 1, str(e)[:100]))
+            time.sleep(3)
+    raise last
+
+
+def pull_live(page):
+    try:
+        page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
+    except Exception as e:
+        pr("goto err:", str(e)[:100])
+    if not wait_products(page, timeout_sec=45):
+        pr("session expired -> auto-login")
+        login_ok = False
+        for attempt in range(3):
             auto_login(page)
-            page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
-            if not wait_products(page, timeout_sec=45):
-                for i in range(120):
-                    if count_products(page) >= 0:
-                        break
-                    page.wait_for_timeout(5000)
-        if count_products(page) < 0:
-            page.bring_to_front()
-            pr("WAITING FOR MANUAL LOGIN...")
-            if not wait_products(page, timeout_sec=1200):
-                ctx.close()
-                return None
-        pr("LOGGED IN")
-        restrictions = [
-            {"FieldName": "ResponsibleCompanyID", "Term": "=", "ValueCollection": [CPP_CID]},
-            {"FieldName": "PhysicalLocationUp1Summary", "Term": "like", "ValueCollection": ["PS5 -"]},
-            {"FieldName": "TaskCategorySummary", "Term": "like", "ValueCollection": ["PCOM - Precommissioning"]},
-        ]
-        all_rows = []
-        off = 0
-        while True:
-            r = call(page, "vTasks_TestsPlanned", FIELDS, restrictions, off=off)
-            if r.get("timeout"):
-                pr("timeout off=%d" % off)
+            try:
+                page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=90000)
+            except Exception as e:
+                pr("post-login goto err:", str(e)[:100])
+            if wait_products(page, timeout_sec=60):
+                login_ok = True
                 break
-            if r.get("err"):
-                pr("err off=%d: %s" % (off, r["err"][:120]))
-                break
-            n = r.get("n", 0)
-            all_rows.extend(r.get("rows", []))
-            pr("pulled off=%d n=%d accum=%d" % (off, n, len(all_rows)))
-            if n < PAGE:
-                break
-            off += PAGE
-        ctx.close()
-        return all_rows
+            pr("auto-login attempt %d still not logged in" % (attempt + 1))
+        if not login_ok:
+            for i in range(120):
+                if count_products(page) >= 0:
+                    break
+                page.wait_for_timeout(5000)
+    if count_products(page) < 0:
+        pr("WAITING FOR MANUAL LOGIN...")
+        if not wait_products(page, timeout_sec=120):
+            return None
+    pr("LOGGED IN")
+    restrictions = [
+        {"FieldName": "ResponsibleCompanyID", "Term": "=", "ValueCollection": [CPP_CID]},
+        {"FieldName": "PhysicalLocationUp1Summary", "Term": "like", "ValueCollection": ["PS5 -"]},
+        {"FieldName": "TaskCategorySummary", "Term": "like", "ValueCollection": ["PCOM - Precommissioning"]},
+    ]
+    all_rows = []
+    off = 0
+    while True:
+        r = call(page, "vTasks_TestsPlanned", FIELDS, restrictions, off=off)
+        if r.get("timeout"):
+            pr("timeout off=%d" % off)
+            break
+        if r.get("err"):
+            pr("err off=%d: %s" % (off, r["err"][:120]))
+            break
+        n = r.get("n", 0)
+        all_rows.extend(r.get("rows", []))
+        pr("pulled off=%d n=%d accum=%d" % (off, n, len(all_rows)))
+        if n < PAGE:
+            break
+        off += PAGE
+    return all_rows
 
 
 def build_state(rows):
@@ -522,6 +663,80 @@ def git_push(clone, state):
     return 1
 
 
+def _token():
+    try:
+        with open(TOK_FILE, "r", encoding="utf-8") as f:
+            t = f.read().strip()
+        return t or None
+    except Exception:
+        return None
+
+
+def ensure_pages_clone():
+    if not os.path.isdir(PAGE_CLONE):
+        r = subprocess.run(
+            ["git", "clone", "--depth", "1",
+             "https://github.com/Mohamedgawad1/%s.git" % PAGE_REPO, PAGE_CLONE],
+            capture_output=True, text=True, timeout=300)
+        if r.returncode != 0:
+            pr(" !! pages clone failed:", (r.stderr or "")[-200:])
+            return False
+    git = ["git", "-C", PAGE_CLONE]
+    subprocess.run(git + ["remote", "set-url", "origin",
+                          "https://github.com/Mohamedgawad1/%s.git" % PAGE_REPO],
+                   capture_output=True, text=True, timeout=120)
+    subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
+                   capture_output=True, text=True, timeout=300)
+    subprocess.run(git + ["reset", "--hard", "origin/main"],
+                   capture_output=True, text=True, timeout=120)
+    return True
+
+
+def pages_push(state):
+    """Sync the ITR LIVE files to the PUBLIC platform repo so the live page stays fresh."""
+    tok = _token()
+    if not tok:
+        pr(" !! no token found — skipping pages push")
+        return None
+    if not ensure_pages_clone():
+        return None
+    git = ["git", "-C", PAGE_CLONE]
+    for fn in ("itr_live_state.json", "live_itr.js", "itr_live.html"):
+        src = os.path.join(WS, fn)
+        if os.path.exists(src):
+            try:
+                shutil.copy2(src, os.path.join(PAGE_CLONE, fn))
+            except Exception as e:
+                pr(" !! copy %s err: %s" % (fn, str(e)[:80]))
+    subprocess.run(git + ["add", "--"] + ["itr_live_state.json", "live_itr.js", "itr_live.html"],
+                   capture_output=True, text=True, timeout=300)
+    r = subprocess.run(
+        git + ["commit", "-m", "ITR live update %s (closed=%d)" % (
+            time.strftime("%Y-%m-%d %H:%M"), state["closed"])],
+        capture_output=True, text=True, timeout=300)
+    pr(" >> pages commit rc=%d %s" % (r.returncode, (r.stdout or "").strip()[-80:]))
+    for attempt in range(4):
+        push = git + ["push",
+                      "https://x-access-ps5:%s@github.com/Mohamedgawad1/%s.git" % (tok, PAGE_REPO),
+                      "main"]
+        r = subprocess.run(push, capture_output=True, text=True, timeout=600)
+        if r.returncode == 0:
+            pr(" >> pages push OK (closed=%d)" % state["closed"])
+            return 0
+        err = (r.stderr or "").strip()
+        if "fetch first" in err or "rejected" in err:
+            pr(" >> pages pull --rebase (attempt %d)" % (attempt + 1))
+            rr = subprocess.run(git + ["pull", "--rebase", "origin", "main"],
+                                capture_output=True, text=True, timeout=600)
+            if rr.returncode != 0:
+                pr(" !! pages rebase failed:", (rr.stderr or "")[-300:])
+                return rr.returncode
+            continue
+        pr(" !! pages push failed:", err.splitlines()[-3:])
+        return r.returncode
+    return 1
+
+
 def run_once():
     pr("=" * 60)
     pr("ITR ONLINE SYNC START")
@@ -535,25 +750,67 @@ def run_once():
 def _run_once():
     pr("=" * 60)
     pr("ITR ONLINE SYNC START")
-    rows = pull_live()
-    if not rows:
-        pr("!! no rows — abort")
-        return 1
-    load_milestone_map()
-    state = build_state(rows)
-    pr("RESULT:", json.dumps(state, ensure_ascii=False))
-    write_local(state)
-    ensure_web_files()
-    injected = inject_into_index(CLONE)
-    pr("index.html injection ok:", injected)
-    with open(os.path.join(CLONE, "itr_live_state.json") if os.path.isdir(CLONE) else os.devnull,
-              "w", encoding="utf-8") as f:
-        json.dump(state, f, ensure_ascii=False, indent=2)
-        pr("wrote itr_live_state.json -> ps5-dashboard")
-    pr("pushing online...")
-    rc = git_push(CLONE, state)
-    pr("PUSH rc=%s" % (rc if rc is not None else "no clone"))
-    pr("DONE")
+    with sync_playwright() as pw:
+        ctx, page = open_session(pw)
+        if page is None:
+            pr("SKIPPED this cycle - browser is busy with the user (nothing was closed)")
+            return 0
+        rows = None
+        for attempt in range(2):
+            try:
+                rows = pull_live(page)
+                break
+            except Exception as e:
+                pr("pull attempt %d failed: %s — reopening session" % (attempt + 1, str(e)[:120]))
+                try:
+                    ctx, page = open_session(pw)
+                except Exception as e2:
+                    pr("reopen failed too: %s" % str(e2)[:120])
+                    break
+        if not rows:
+            pr("!! no rows — abort")
+            if ctx is not None and KEEP_OPEN:
+                try:
+                    ctx.close()
+                except Exception:
+                    pass
+            return 1
+        load_milestone_map()
+        state = build_state(rows)
+        pr("RESULT:", json.dumps(state, ensure_ascii=False))
+        write_local(state)
+        ensure_web_files()
+        injected = inject_into_index(CLONE)
+        pr("index.html injection ok:", injected)
+        with open(os.path.join(CLONE, "itr_live_state.json") if os.path.isdir(CLONE) else os.devnull,
+                  "w", encoding="utf-8") as f:
+            json.dump(state, f, ensure_ascii=False, indent=2)
+            pr("wrote itr_live_state.json -> ps5-dashboard")
+        pr("pushing online...")
+        rc = git_push(CLONE, state)
+        pr("PUSH rc=%s" % (rc if rc is not None else "no clone"))
+        pr("pushing to live platform repo...")
+        prc = pages_push(state)
+        pr("PAGES PUSH rc=%s" % (prc if prc is not None else "skipped"))
+        pr("DONE")
+        if not KEEP_OPEN:
+            if ctx is not None:
+                try:
+                    ctx.close()
+                except Exception:
+                    pass
+            return 0
+        # keep the session alive: switch to Switchboard, wait until user closes it
+        try:
+            page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
+            page.bring_to_front()
+        except Exception:
+            pass
+        pr("Session KEPT OPEN (Switchboard). Close the browser window to finish.")
+        while not page.is_closed():
+            time.sleep(5)
+        pr("Browser window closed — done")
+    return 0
     return 0
 
 
@@ -831,13 +1088,42 @@ ITR_LIVE_HTML = """<!DOCTYPE html>
 """
 
 if __name__ == "__main__":
+    if not KEEP_OPEN:
+        pass
     if "--loop" in sys.argv:
-        while True:
-            try:
-                run_once()
-                time.sleep(1800)
-            except Exception as e:
-                pr("LOOP ERR:", str(e)[:200])
-                time.sleep(300)
+        # keep ONE live session open across all pulls (never close it)
+        with sync_playwright() as pw:
+            ctx, page = open_session(pw)
+            pr("LOOP READY (interval %ds, keep_open=%s)" % (LOOP_SECONDS, KEEP_OPEN))
+            while True:
+                try:
+                    if page.is_closed():
+                        pr("browser was closed — reopening session")
+                        ctx, page = open_session(pw)
+                    rows = pull_live(page)
+                    if rows:
+                        load_milestone_map()
+                        state = build_state(rows)
+                        write_local(state)
+                        ensure_web_files()
+                        inject_into_index(CLONE)
+                        with open(os.path.join(CLONE, "itr_live_state.json") if os.path.isdir(CLONE) else os.devnull,
+                                  "w", encoding="utf-8") as f:
+                            json.dump(state, f, ensure_ascii=False, indent=2)
+                        git_push(CLONE, state)
+                        pages_push(state)
+                    try:
+                        page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                    except Exception:
+                        pass
+                    if page.is_closed():
+                        pr("browser closed — exiting loop")
+                        break
+                except Exception as e:
+                    pr("LOOP ERR:", str(e)[:200])
+                for _ in range(LOOP_SECONDS // 5):
+                    if page.is_closed():
+                        break
+                    time.sleep(5)
     else:
         sys.exit(run_once())
