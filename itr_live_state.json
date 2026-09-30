@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-30 14:29:29",
+  "updated": "2026-09-30 14:39:09",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5739,
-  "open": 4561,
-  "today_closed": 9,
+  "closed": 5741,
+  "open": 4559,
+  "today_closed": 11,
   "closed_by_discipline": {
     "I": 2870,
-    "E": 2653,
+    "E": 2655,
     "T": 216
   },
   "open_by_discipline": {
     "I": 1725,
-    "E": 1974,
+    "E": 1972,
     "T": 862
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-09-30",
-      "E": 0,
+      "E": 2,
       "I": 9,
       "T": 0,
-      "Total": 9
+      "Total": 11
     }
   ],
-  "closed_this_week": 201,
-  "closed_this_month": 2187,
+  "closed_this_week": 203,
+  "closed_this_month": 2189,
   "today_milestone": [
     {
       "milestone": "Milestone F",
@@ -251,12 +251,18 @@
     },
     {
       "milestone": "Milestone H",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 2
+    },
+    {
+      "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
       "count": 1
     }
   ],
-  "today_milestone_total": 9,
+  "today_milestone_total": 11,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -360,14 +366,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1723,
-      "remaining": 1528,
-      "pct": 53.0,
+      "closed": 1725,
+      "remaining": 1526,
+      "pct": 53.1,
       "status": {
-        "Closed": 1723,
-        "Submitted": 11,
+        "Closed": 1725,
+        "Submitted": 10,
         "To be completed": 1467,
-        "Other": 50
+        "Other": 49
       }
     },
     {
@@ -386,6 +392,24 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "",
+      "task": "T-00035-1558",
+      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:37:06 "
+    },
+    {
+      "tag": "",
+      "task": "T-00035-1551",
+      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:35:55 "
+    },
     {
       "tag": "PS5-28-FO-0007",
       "task": "T-00255-0066",
@@ -1447,24 +1471,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/28/2026 6:13:36 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CC06",
-      "task": "T-00069-5188",
-      "system": "PS5-60-20 - Power Gen Package G (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 6:10:47 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CC05",
-      "task": "T-00069-5187",
-      "system": "PS5-60-20 - Power Gen Package G (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 6:09:12 P"
     }
   ]
 }
