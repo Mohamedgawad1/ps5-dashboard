@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-30 14:05:37",
+  "updated": "2026-09-30 14:16:50",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5738,
-  "open": 4562,
-  "today_closed": 8,
+  "closed": 5739,
+  "open": 4561,
+  "today_closed": 9,
   "closed_by_discipline": {
-    "I": 2869,
+    "I": 2870,
     "E": 2653,
     "T": 216
   },
   "open_by_discipline": {
-    "I": 1726,
+    "I": 1725,
     "E": 1974,
     "T": 862
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-09-30",
       "E": 0,
-      "I": 8,
+      "I": 9,
       "T": 0,
-      "Total": 8
+      "Total": 9
     }
   ],
-  "closed_this_week": 200,
-  "closed_this_month": 2186,
+  "closed_this_week": 201,
+  "closed_this_month": 2187,
   "today_milestone": [
     {
       "milestone": "Milestone F",
@@ -247,7 +247,7 @@
       "milestone": "Milestone G",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 5
+      "count": 6
     },
     {
       "milestone": "Milestone H",
@@ -256,7 +256,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 8,
+  "today_milestone_total": 9,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -324,8 +324,8 @@
       "status": {
         "Closed": 1245,
         "Submitted": 2,
-        "To be completed": 277,
-        "Other": 8
+        "To be completed": 276,
+        "Other": 9
       }
     },
     {
@@ -346,14 +346,14 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 604,
-      "remaining": 300,
-      "pct": 66.8,
+      "closed": 605,
+      "remaining": 299,
+      "pct": 66.9,
       "status": {
-        "Closed": 604,
+        "Closed": 605,
         "Submitted": 1,
         "To be completed": 287,
-        "Other": 12
+        "Other": 11
       }
     },
     {
@@ -386,6 +386,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-28-FO-0007",
+      "task": "T-00255-0066",
+      "system": "PS5-28-03 - Closed Drain Drum and Pump 01",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:06:05 "
+    },
     {
       "tag": "PS5-28-FO-0006",
       "task": "T-00255-0065",
@@ -1456,15 +1465,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/28/2026 6:09:12 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CC04",
-      "task": "T-00069-5186",
-      "system": "PS5-60-20 - Power Gen Package G (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 6:07:13 P"
     }
   ]
 }
