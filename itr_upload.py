@@ -34,6 +34,8 @@ SHOTS_DIR = os.path.join(BASE_DIR, "_itr_shots")
 WATCH_DIR = r"C:\Users\mylap\Downloads\rfi"
 TASK_CACHE = os.path.join(BASE_DIR, "sc_pull", "data", "cpp_agi_tasks_full.json")
 LIVE_TASK_INDEX = os.path.join(BASE_DIR, "sc_pull", "data", "tasks_by_tag_live.json")
+# The platform only has these three task types, so map the work description onto them.
+# Order matters: the first rule that matches the description wins.
 TYPE_MAP_FILE = os.path.join(BASE_DIR, "rfi_type_map.json")
 
 SWITCHBOARD_URL = (
@@ -52,6 +54,33 @@ ASSET_TAG_RE = re.compile(r"\b(?:PS5|PS4|PR1|PR2)-[A-Z0-9]+(?:-[A-Z0-9]+){2,}\b"
 ASSET_TAG_SPACED_RE = re.compile(
     r"\b(PS5|PS4|PR1|PR2)[\s-]+(\d{1,3})[\s-]+([A-Z]{2,4})[\s-]+(\d{3,4}[A-Z]?)[\s-]+([A-Z]{2}\d{2,3})\b"
 )
+
+TYPE_MAP_FILE = os.path.join(BASE_DIR, "rfi_type_map.json")
+TYPE_RULES_FILE = os.path.join(BASE_DIR, "rfi_type_rules.json")
+
+
+def _load_work_type_rules():
+    """The work-description -> task-type table lives in rfi_type_rules.json so it can
+    grow without touching the code. Falls back to the built-in list."""
+    builtin = [
+        ("Piping Test Preparations", ["piping test", "pressure test", "hydro test", "hydrotest",
+                                      "pressure testing", "test preparation"]),
+        ("Static Test", ["request to witness", "witness the", "witness testing", "static test",
+                         "static testing", "functional test", "electrical cable testing",
+                         "cable testing after installation", "cable testing",
+                         "testing after installation", "cable test"]),
+        ("Conformity Check", ["inspection", "glanding", "gladding", "termination", "installation",
+                              "install", "device", "cable"]),
+    ]
+    try:
+        with open(TYPE_RULES_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        rules = [(r["type"], [str(p).lower() for p in r.get("phrases", [])])
+                 for r in data.get("rules", []) if r.get("type")]
+        return rules or builtin
+    except Exception:
+        return builtin
+
 
 TYPE_KEYWORDS = [
     # The RFI forms only say "Request for Inspection", so the type comes from the
@@ -226,9 +255,12 @@ def read_rfi_no(path):
 
 
 def _repair_split_tags(text):
-    """The forms wrap long tag lists across lines, which cuts tags in half:
-    '...CC01,\\n08-85BT-1901-CN01' or '...,\\nPS5\\n85BT-1904-CJ01'.
-    Glue the fragments back together before we look for tags."""
+    """The forms wrap long tag lists across lines, which cuts tags in half. The breaks
+    show up in three shapes, so repair all of them:
+      '...0003B-\\nCA04'            -> the hyphen is at the end of the line
+      '...CC01,\\n08-85BT-1901-CN01' -> the fragment lost its own 'PS5-' prefix
+      '...,\\nPS5\\n85BT-1904-CJ01'  -> the 'PS5' got separated from the rest
+    """
     flat = re.sub(r"[ \t]*\r?\n[ \t]*", " ", text or "")
     # a bare 'PS5' that lost the rest of the tag to the next line
     flat = re.sub(r"\bPS5\s+(?=\d{2}-[A-Z0-9])", "PS5-", flat)
@@ -236,7 +268,12 @@ def _repair_split_tags(text):
     flat = re.sub(r"\bPS5\s+(?=\d{2}[A-Z0-9]{2}-)", "PS5-", flat)
     # a fragment that lost its own 'PS5-' prefix
     flat = re.sub(r"(?<=[\s,;])(\d{2}-[A-Z0-9]+(?:-[A-Z0-9]+){2,})\b", r"PS5-\1", flat)
-    return flat
+    # a tag cut after a hyphen: 'PS5-60-IE-0003B- CA04' has to become 'PS5-60-IE-0003B-CA04'
+    glued = re.sub(r"-\s+(?=[A-Z0-9]{2,}\b)", "-", flat)
+    glued = re.sub(r"(?<=[A-Z0-9])\s+(?=[A-Z0-9]{2,}-)", "-", glued)
+    # a break right after the prefix can leave it doubled: PS5-PS5-60-...
+    glued = re.sub(r"\b(PS\d|PR\d)-(?:PS\d-|PR\d-)+", r"\1-", glued)
+    return glued
 
 
 def _complete_short_tags(tags):
@@ -267,15 +304,42 @@ def read_pdf(path):
         if tag not in tags:
             tags.append(tag)
     tags = _complete_short_tags(tags)
+    seen, uniq = set(), []
+    for t in tags:
+        k = t.upper()
+        if k not in seen:
+            seen.add(k)
+            uniq.append(t)
+    tags = uniq
     full = "\n".join(pages).lower()
-    ptype = None
+    first_low = first.lower()
     hits = []
     for name, keys in TYPE_KEYWORDS:
         found = [k for k in keys if k in full]
         if found:
             hits.append((name, found))
-            if ptype is None:
-                ptype = name
+    # The work description decides. The form title is only a last resort, because
+    # every one of these forms is titled "Request for Inspection" no matter the job.
+    ptype, why = None, None
+    for name, keys in _load_work_type_rules():
+        found = [k for k in keys if k in first_low]
+        if found:
+            ptype, why = name, found
+            break
+    if ptype is None:
+        for keys, name in (("request to witness", "Static Test"),
+                           ("request for test", "Static Test"),
+                           ("visual inspection", "Conformity Check"),
+                           ("request for inspection", "Conformity Check"),
+                           ("inspection request", "Conformity Check")):
+            if any(k in first_low for k in keys.split("|")):
+                ptype, why = name, [k for k in keys.split("|") if k in first_low]
+                break
+    if ptype is None:
+        for name, found in hits:
+            ptype, why = name, found
+            break
+    hits.insert(0, ("work description", why or []))
     mapped = type_from_map(path)
     return {
         "pdf": os.path.basename(path),

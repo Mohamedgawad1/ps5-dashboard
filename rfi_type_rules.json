@@ -1,0 +1,13 @@
+{
+  "_comment": "Task type per work-description phrase. First match wins (case-insensitive). Types are exactly the three on the platform: Conformity Check / Static Test / Piping Test Preparations.",
+  "rules": [
+    {"type": "Piping Test Preparations", "phrases": ["piping test", "pressure test", "hydro test", "hydrotest", "pressure testing", "test preparation"]},
+    {"type": "Static Test", "phrases": ["request to witness", "witness the", "witness testing", "static test", "static testing", "functional test", "electrical cable testing", "cable testing after installation", "cable testing", "testing after installation", "cable test"]},
+    {"type": "Conformity Check", "phrases": ["visual inspection", "inspection", "glanding", "gladding", "termination", "installation", "install", "device", "cable"]}
+  ],
+  "fallback": {
+    "Request for Inspection": "Conformity Check",
+    "Request to Witness": "Static Test",
+    "Request for Test": "Static Test"
+  }
+}

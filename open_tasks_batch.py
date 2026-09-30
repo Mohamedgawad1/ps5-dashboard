@@ -102,7 +102,7 @@ def open_tabs_fast(plan_rows):
     return opened_ids
 
 
-def verify_cached(known, tasks, live=True):
+def verify_cached(known, tasks, live=True, stream=None):
     """Re-check every cached task id against the live grid, then return the rows.
 
     The cache is only a shortcut, never the authority: if the record id changed
@@ -145,6 +145,14 @@ def verify_cached(known, tasks, live=True):
         known[tid] = hit
         rows.append((tid, hit))
         log("[%d/%d] %s -> %s" % (n, len(tasks), tid, hit["record"]))
+        if stream:
+            try:
+                http_new_tab(EDIT_URL % hit["record"])
+                stream.append(tid)
+                log("      [tab %d/%d] اتفتح" % (len(stream), len(tasks)))
+            except Exception as exc:
+                log("      !! %s" % str(exc)[:60])
+            time.sleep(0.3)
     if app is not None:
         try:
             app.close()
@@ -166,6 +174,11 @@ def wait_browser_open(count, minutes=240):
         except Exception:
             log("  (المتصفح مش راد - مستنيك ترجّعه)")
     return
+
+
+def is_closed(row):
+    """A closed task cannot take the RFI file any more, so never open it."""
+    return "closed" in (row.get("state") or "").lower()
 
 
 def load_skip():
@@ -463,16 +476,21 @@ def main():
         for tag, want, origin in pairs:
             by_origin.setdefault(origin, []).append((tag, want))
         for origin, items in by_origin.items():
-            picked, fallback = [], []
+            picked, fallback, closed = [], [], []
             for tag, want in items:
                 rows = find_tasks(tag) or []
                 hit = [r for r in rows if (r.get("type") or "").lower() == want.lower()]
-                if hit:
-                    picked.extend((tag, r) for r in hit)
+                open_hit = [r for r in hit if not is_closed(r)]
+                if open_hit:
+                    picked.extend((tag, r) for r in open_hit)
+                    closed.extend((tag, r) for r in hit if is_closed(r))
                     continue
+                if hit:  # the wanted type exists but every one of them is closed
+                    closed.extend((tag, r) for r in hit)
                 others = ", ".join("%s/%s" % (r.get("task_id"), r.get("type")) for r in rows) or "مفيش"
-                log("  - %s [%s]: مفيش %s | الموجود: %s" % (tag, want, want, others))
-                fallback.extend((tag, r) for r in rows)
+                log("  - %s [%s]: مفيش %s مفتوح | الموجود: %s" % (tag, want, want, others))
+                fallback.extend((tag, r) for r in rows if not is_closed(r))
+            fallback = [(t, r) for t, r in fallback if (t, r) not in picked]
             if not picked and fallback and not args.no_other_type:
                 kinds = sorted({(r.get("type") or "?") for _, r in fallback})
                 log("  ! الـ RFI طلب %s، لكن الأصول على المنصة: %s"
@@ -482,6 +500,8 @@ def main():
                 picked = fallback
             else:
                 log_types.update((r.get("type") or "?") for _, r in picked)
+            if closed:
+                log("  x %d task مقفول (Closed) - مش هيتفتح" % len(closed))
             for tag, row in picked:
                 tid = row.get("task_id")
                 if tid and tid in skip:
@@ -511,7 +531,8 @@ def main():
     # stale record can never open the wrong page (the check costs ~0s per task)
     known = load_records()
     if not args.no_fast and all(known.get(t) and known[t].get("record") for t in tasks):
-        rows, failed2 = verify_cached(known, tasks, live=not args.no_verify)
+        streamed = []
+        rows, failed2 = verify_cached(known, tasks, live=not args.no_verify, stream=streamed)
         if rows:
             if args.close_old:
                 for info in cdp_tabs():
@@ -521,7 +542,9 @@ def main():
                             urllib.request.urlopen(urllib.request.Request(CDP + "/json/close/" + info["id"], method="GET"), timeout=8)
                         except Exception:
                             pass
-            done = open_tabs_fast(rows)
+            done = streamed
+            if len(done) < len(rows):
+                done = open_tabs_fast([r for r in rows if r[0] not in done]) + done
             log("\n==================================================")
             log("فتحت %d/%d صفحة | مفيش حاجة اتكتبت ومفيش حاجة اتحفظت" % (len(done), len(rows)))
             if failed2:
@@ -536,7 +559,7 @@ def main():
     # raw CDP path: same as before but without Playwright, so it works while the
     # background sync holds its own connection to the browser
     if not args.no_fast and not args.no_cdp:
-        rows, failed2 = [], []
+        rows, failed2, done = [], [], []
         try:
             app = cdp_query.open_app_tab()
         except Exception as exc:
@@ -567,12 +590,18 @@ def main():
                 known[tid] = hit
                 fresh += 1
                 save_records(known)
-                log("   %s -> record %s" % (hit["task"], hit["record"]))
+                # open it right away so the pages start showing while we keep going
+                try:
+                    http_new_tab(EDIT_URL % hit["record"])
+                    done.append(tid)
+                    log("   %s -> record %s  [tab %d/%d]" % (hit["task"], hit["record"], len(done), len(tasks)))
+                except Exception as exc:
+                    log("   %s -> record %s  !! %s" % (hit["task"], hit["record"], str(exc)[:60]))
+                time.sleep(0.3)
             app.close()
             if fresh:
                 log("(حفظت %d record id في الـ cache)" % fresh)
             if rows:
-                done = open_tabs_fast(rows)
                 log("\n==================================================")
                 log("فتحت %d/%d صفحة | مفيش حاجة اتكتبت ومفيش حاجة اتحفظت" % (len(done), len(rows)))
                 if failed2:

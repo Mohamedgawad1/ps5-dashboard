@@ -154,8 +154,53 @@ SEARCH = r"""(async (tid) => {
 })"""
 
 
-def find_task(app, task_id, timeout=60):
-    """Return {record, task, asset, type} or None - the platform decides."""
+GET_JS = r"""((P) => {
+    return new Promise((res) => {
+        let done = false;
+        const t = setTimeout(() => { if (!done) { done = true; res({timeout: true}); } }, P.to);
+        const fin = (v) => { if (!done) { done = true; clearTimeout(t); res(v); } };
+        try {
+            dalc.Get(P.v, P.f, P.r || [], {Distinct:false, FirstRecordOrdinal: P.off, NumberOfRecords:P.n}, "Flat",
+                (ok) => {
+                    const vals = (ok && ok.Values) || [];
+                    let total = null;
+                    if (ok && ok.Request && typeof ok.Request.TotalRecords !== 'undefined') total = ok.Request.TotalRecords;
+                    fin({rows: JSON.parse(JSON.stringify(vals || [])), total: total, n: vals.length});
+                },
+                (err) => fin({err: String((err && err.message) || err)}), false);
+        } catch (e) { fin({err: String(e)}); }
+    });
+})"""
+
+
+def find_task_dalc(app, task_id, timeout=45):
+    """Ask the platform's own data layer for one TaskName - same call the live
+    dashboard sync uses, so it answers in a fraction of a second instead of waiting
+    for the grid to redraw. Returns {record, task, asset, type} or None."""
+    payload = {
+        "v": "vTasks_TestsPlanned",
+        "f": ["ID", "TaskName", "AssetTag", "TaskType", "TaskState"],
+        "r": [{"FieldName": "TaskName", "Term": "like", "ValueCollection": [task_id]}],
+        "n": 20, "off": 0, "to": (timeout - 5) * 1000,
+    }
+    res = app.eval(GET_JS + "(" + json.dumps(payload) + ")", timeout=timeout, awaitp=True)
+    if not isinstance(res, dict) or res.get("timeout") or res.get("err") or not res.get("rows"):
+        return None
+    want = str(task_id).strip().upper()
+    for r in res["rows"]:
+        name = str(r.get("TaskName") or "").strip()
+        if name.upper() != want:
+            continue
+        rec = r.get("ID")
+        if rec in (None, ""):
+            continue
+        return {"record": str(rec), "task": name, "asset": r.get("AssetTag"),
+                "type": r.get("TaskType"), "state": r.get("TaskState"), "via": "dalc"}
+    return None
+
+
+def find_task_grid(app, task_id, timeout=60):
+    """Grid search - the slower path, kept as the fallback."""
     call = "%s(%s)" % (SEARCH, json.dumps(task_id))
     res = app.eval(call, timeout=timeout, awaitp=True)
     if not isinstance(res, dict):
@@ -166,3 +211,11 @@ def find_task(app, task_id, timeout=60):
         return None
     rec = row.get("link") or row.get("id")
     return {"record": str(rec), "task": row.get("task"), "asset": row.get("asset"), "type": row.get("type")}
+
+
+def find_task(app, task_id, timeout=60):
+    """Prefer the fast data-layer call, fall back to the grid search."""
+    hit = find_task_dalc(app, task_id, timeout=min(timeout, 45))
+    if hit:
+        return hit
+    return find_task_grid(app, task_id, timeout=timeout)
