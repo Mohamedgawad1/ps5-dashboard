@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-30 13:43:12",
+  "updated": "2026-09-30 13:54:49",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5734,
-  "open": 4566,
-  "today_closed": 4,
+  "closed": 5735,
+  "open": 4565,
+  "today_closed": 5,
   "closed_by_discipline": {
-    "I": 2865,
+    "I": 2866,
     "E": 2653,
     "T": 216
   },
   "open_by_discipline": {
-    "I": 1730,
+    "I": 1729,
     "E": 1974,
     "T": 862
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-09-30",
       "E": 0,
-      "I": 4,
+      "I": 5,
       "T": 0,
-      "Total": 4
+      "Total": 5
     }
   ],
-  "closed_this_week": 196,
-  "closed_this_month": 2182,
+  "closed_this_week": 197,
+  "closed_this_month": 2183,
   "today_milestone": [
     {
       "milestone": "Milestone F",
@@ -247,7 +247,7 @@
       "milestone": "Milestone G",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 1
+      "count": 2
     },
     {
       "milestone": "Milestone H",
@@ -256,7 +256,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 4,
+  "today_milestone_total": 5,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -346,13 +346,13 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 599,
-      "remaining": 305,
-      "pct": 66.3,
+      "closed": 600,
+      "remaining": 304,
+      "pct": 66.4,
       "status": {
-        "Closed": 599,
+        "Closed": 600,
         "Submitted": 2,
-        "To be completed": 290,
+        "To be completed": 289,
         "Other": 13
       }
     },
@@ -386,6 +386,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-28-FO-0002A",
+      "task": "T-00255-0062",
+      "system": "PS5-28-08 - Open Drain Sump and Pumps",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 10:43:41 "
+    },
     {
       "tag": "PS5-74-FO-0001",
       "task": "T-00255-0061",
@@ -1456,15 +1465,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/28/2026 6:02:09 P"
-    },
-    {
-      "tag": "PS5-60-IE-0002G-CC05",
-      "task": "T-00069-5062",
-      "system": "PS5-60-19 - Power Generation Package G",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 6:01:03 P"
     }
   ]
 }
