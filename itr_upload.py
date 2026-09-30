@@ -33,6 +33,7 @@ PROFILE_DIR = os.path.join(os.environ.get("LOCALAPPDATA", BASE_DIR), "sc_itr_pro
 SHOTS_DIR = os.path.join(BASE_DIR, "_itr_shots")
 WATCH_DIR = r"C:\Users\mylap\Downloads\rfi"
 TASK_CACHE = os.path.join(BASE_DIR, "sc_pull", "data", "cpp_agi_tasks_full.json")
+LIVE_TASK_INDEX = os.path.join(BASE_DIR, "sc_pull", "data", "tasks_by_tag_live.json")
 TYPE_MAP_FILE = os.path.join(BASE_DIR, "rfi_type_map.json")
 
 SWITCHBOARD_URL = (
@@ -224,10 +225,39 @@ def read_rfi_no(path):
     return None
 
 
+def _repair_split_tags(text):
+    """The forms wrap long tag lists across lines, which cuts tags in half:
+    '...CC01,\\n08-85BT-1901-CN01' or '...,\\nPS5\\n85BT-1904-CJ01'.
+    Glue the fragments back together before we look for tags."""
+    flat = re.sub(r"[ \t]*\r?\n[ \t]*", " ", text or "")
+    # a bare 'PS5' that lost the rest of the tag to the next line
+    flat = re.sub(r"\bPS5\s+(?=\d{2}-[A-Z0-9])", "PS5-", flat)
+    flat = re.sub(r"\bPS5\s+(?=[A-Z]{2,4}-)", "PS5-", flat)
+    flat = re.sub(r"\bPS5\s+(?=\d{2}[A-Z0-9]{2}-)", "PS5-", flat)
+    # a fragment that lost its own 'PS5-' prefix
+    flat = re.sub(r"(?<=[\s,;])(\d{2}-[A-Z0-9]+(?:-[A-Z0-9]+){2,})\b", r"PS5-\1", flat)
+    return flat
+
+
+def _complete_short_tags(tags):
+    """A tag cut at the line break can lose its numeric segment: 'PS5-85BT-1904-CJ01'.
+    The rest of the list still carries it, so borrow it from the majority."""
+    full = [t for t in tags if re.match(r"^[A-Z0-9]+-\d{2}-", t)]
+    if not full:
+        return tags
+    seg = re.match(r"^[A-Z0-9]+-(\d{2})-", full[0]).group(1)
+    out = []
+    for t in tags:
+        if re.match(r"^[A-Z0-9]+-[A-Z]{2,4}-", t):
+            t = re.sub(r"^([A-Z0-9]+)-", r"\1-%s-" % seg, t)
+        out.append(t)
+    return out
+
+
 def read_pdf(path):
     """Asset tag from page 1, document type from the pages or the mapping file."""
     pages = pdf_pages_text(path)
-    first = pages[0] if pages else ""
+    first = _repair_split_tags(pages[0] if pages else "")
     tags = []
     for tag in ASSET_TAG_RE.findall(first):
         if tag not in tags:
@@ -236,6 +266,7 @@ def read_pdf(path):
         tag = "-".join(parts)
         if tag not in tags:
             tags.append(tag)
+    tags = _complete_short_tags(tags)
     full = "\n".join(pages).lower()
     ptype = None
     hits = []
@@ -263,16 +294,28 @@ _task_index = None
 
 
 def task_index():
-    """TaskName/TaskType per Asset Tag, from the last platform pull."""
+    """TaskName/TaskType per Asset Tag. The live index the sync refreshes every cycle
+    always wins, so the plan never runs on the old offline snapshot."""
     global _task_index
     if _task_index is not None:
         return _task_index
-    if not os.path.isfile(TASK_CACHE):
+    src = TASK_CACHE
+    if os.path.isfile(LIVE_TASK_INDEX) and (
+        not os.path.isfile(TASK_CACHE)
+        or os.path.getmtime(LIVE_TASK_INDEX) > os.path.getmtime(TASK_CACHE)
+    ):
+        src = LIVE_TASK_INDEX
+    if not os.path.isfile(src):
         raise SystemExit(
-            "مش لاقي%s\nشغّل pull الأول (sc_pull) عشان يجيب الـ tasks من المنصة." % TASK_CACHE
+            "مش لاقي %s\nشغّل التحديث الأول (PS5 ITR Update) عشان يجيب الـ tasks من المنصة." % src
         )
-    with open(TASK_CACHE, encoding="utf-8") as f:
+    with open(src, encoding="utf-8") as f:
         data = json.load(f)
+    if isinstance(data, dict) and "tags" in data:
+        _task_index = {k: list(v) for k, v in (data.get("tags") or {}).items()}
+        log("  (task index: %s - %d assets, محدّث %s)"
+            % (os.path.basename(src), len(_task_index), data.get("updated", "?")))
+        return _task_index
     rows = data.get("rows") if isinstance(data, dict) else data
     idx = {}
     for r in rows or []:
@@ -290,8 +333,8 @@ def task_index():
         )
     _task_index = idx
     log("  (task cache: %s - %d assets, آخر تحديث %s)"
-        % (os.path.basename(TASK_CACHE), len(idx),
-           time.strftime("%Y-%m-%d", time.localtime(os.path.getmtime(TASK_CACHE)))))
+        % (os.path.basename(src), len(idx),
+           time.strftime("%Y-%m-%d", time.localtime(os.path.getmtime(src)))))
     return idx
 
 

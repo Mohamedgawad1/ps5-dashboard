@@ -554,6 +554,29 @@ def recent_closed_rows(rows, n=120):
     return out[:n]
 
 
+def write_task_index(rows):
+    """Publish a fresh asset-tag -> tasks index so the RFI opener never plans from a
+    stale offline file: every cycle rewrites it from the live platform pull."""
+    idx = {}
+    for r in rows:
+        tag = (r.get("AssetTag") or "").strip()
+        tid = (r.get("TaskName") or "").strip()
+        if not tag or not tid:
+            continue
+        idx.setdefault(tag, []).append({
+            "task_id": tid,
+            "type": (r.get("TaskType") or "").strip(),
+            "state": (r.get("TaskState") or "").strip(),
+        })
+    out = os.path.join(DATA_DIR, "tasks_by_tag_live.json")
+    tmp = out + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump({"updated": time.strftime("%Y-%m-%d %H:%M:%S"), "tags": idx}, f, ensure_ascii=False)
+    os.replace(tmp, out)
+    pr("task index refreshed (%d asset tags)" % len(idx))
+    return len(idx)
+
+
 def write_local(state):
     with open(os.path.join(WS, "itr_live_state.json"), "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
@@ -1111,6 +1134,10 @@ if __name__ == "__main__":
                             continue
                     rows = pull_live(page)
                     if rows:
+                        try:
+                            write_task_index(rows)
+                        except Exception as e:
+                            pr("task index err:", str(e)[:120])
                         load_milestone_map()
                         state = build_state(rows)
                         write_local(state)

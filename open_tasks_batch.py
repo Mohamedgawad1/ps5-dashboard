@@ -102,6 +102,59 @@ def open_tabs_fast(plan_rows):
     return opened_ids
 
 
+def verify_cached(known, tasks, live=True):
+    """Re-check every cached task id against the live grid, then return the rows.
+
+    The cache is only a shortcut, never the authority: if the record id changed
+    we take the live one, and if the task is gone we refuse to open anything.
+    """
+    rows, failed2 = [], []
+    if not live:
+        return [(t, known[t]) for t in tasks if known.get(t)], []
+    app = None
+    try:
+        app = cdp_query.open_app_tab()
+    except Exception as exc:
+        log("  (live check skipped: %s)" % str(exc)[:80])
+    if app is None:
+        log("  live check unavailable - falling back to the cache")
+        return [(t, known[t]) for t in tasks if known.get(t)], []
+    changed = 0
+    for n, tid in enumerate(tasks, 1):
+        hit = None
+        for _ in (1, 2):
+            try:
+                hit = cdp_query.find_task(app, tid)
+            except Exception as exc:
+                log("   !! %s" % str(exc)[:80])
+                try:
+                    app.close()
+                    app = cdp_query.open_app_tab()
+                except Exception:
+                    app = None
+            if hit:
+                break
+        if not hit:
+            log("   !! %s مش موجود في الـ grid دلوقتي" % tid)
+            failed2.append(tid)
+            continue
+        cached = known.get(tid) or {}
+        if cached.get("record") and cached["record"] != hit["record"]:
+            log("   %s: الـ record اتغير %s -> %s (هحدّث الـ cache)" % (tid, cached["record"], hit["record"]))
+            changed += 1
+        known[tid] = hit
+        rows.append((tid, hit))
+        log("[%d/%d] %s -> %s" % (n, len(tasks), tid, hit["record"]))
+    if app is not None:
+        try:
+            app.close()
+        except Exception:
+            pass
+    if changed:
+        save_records(known)
+    return rows, failed2
+
+
 def wait_browser_open(count, minutes=240):
     """Stay alive with the browser, never close it."""
     log("\nفتحت %d صفحة. المتصفح سيبه مفتوح - اقفل الـ tabs لما تخلص." % count)
@@ -355,10 +408,12 @@ def main():
     ap.add_argument("--pdf", nargs="*", default=None)
     ap.add_argument("--type", nargs="*", default=["Static Test"], help="fallback task types when the PDF states none")
     ap.add_argument("--allow-other-type", action="store_true", help="open another type if the wanted one is missing")
+    ap.add_argument("--no-other-type", action="store_true", help="only open the exact detected type, never fall back")
     ap.add_argument("--dry-run", action="store_true", help="print the plan only, do not open any tab")
     ap.add_argument("--skip-missing", action="store_true", help="write tasks missing on the platform to skip_tasks.txt")
     ap.add_argument("--close-old", action="store_true", help="close the task tabs of the previous run (default: leave them for you)")
     ap.add_argument("--no-fast", action="store_true", help="always look the record ids up on the platform")
+    ap.add_argument("--no-verify", action="store_true", help="trust the cached record ids without re-checking the task id live")
     ap.add_argument("--no-cdp", action="store_true", help="skip the raw cdp path, use Playwright")
     ap.add_argument("--keep-open", type=int, default=0, help="0 = wait until you close the browser")
     args = ap.parse_args()
@@ -403,14 +458,25 @@ def main():
         skip = load_skip()
         if skip:
             log("skip list (%d): %s" % (len(skip), ", ".join(sorted(skip))))
+        by_origin = {}
         for tag, want, origin in pairs:
-            rows = find_tasks(tag) or []
-            hit = [r for r in rows if (r.get("type") or "").lower() == want.lower()]
-            if not hit:
+            by_origin.setdefault(origin, []).append((tag, want))
+        for origin, items in by_origin.items():
+            picked, fallback = [], []
+            for tag, want in items:
+                rows = find_tasks(tag) or []
+                hit = [r for r in rows if (r.get("type") or "").lower() == want.lower()]
+                if hit:
+                    picked.extend((tag, r) for r in hit)
+                    continue
                 others = ", ".join("%s/%s" % (r.get("task_id"), r.get("type")) for r in rows) or "مفيش"
                 log("  - %s [%s]: مفيش %s | الموجود: %s" % (tag, want, want, others))
-                continue
-            for row in hit:
+                fallback.extend((tag, r) for r in rows)
+            if not picked and fallback and not args.no_other_type:
+                kinds = sorted({(r.get("type") or "?") for _, r in fallback})
+                log("  ! مفيش النوع المطلوب في الـ RFI ده - هفتح الموجود: %s" % ", ".join(kinds))
+                picked = fallback
+            for tag, row in picked:
                 tid = row.get("task_id")
                 if tid and tid in skip:
                     log("  = %s | %s | %s | %s  (في قائمة التخطي)"
@@ -433,28 +499,31 @@ def main():
         log("!! المتصفح لسه مش راد على 9222 - اقفل أي Chrome تاني و شغّل SmartCloud - Open Tasks")
         return 1
 
-    # fast path: every record id already known -> fire the tabs over HTTP,
-    # no browser attach (the attach times out when many SmartCloud tabs are open)
+    # every record id is in the cache, but we still re-check the task id live so a
+    # stale record can never open the wrong page (the check costs ~0s per task)
     known = load_records()
     if not args.no_fast and all(known.get(t) and known[t].get("record") for t in tasks):
-        rows = [(t, known[t]) for t in tasks]
-        if args.close_old:
-            for info in cdp_tabs():
-                u = info.get("url") or ""
-                if "vTasks_TestsCompletion" in u:
-                    try:
-                        urllib.request.urlopen(urllib.request.Request(CDP + "/json/close/" + info["id"], method="GET"), timeout=8)
-                    except Exception:
-                        pass
-        done = open_tabs_fast(rows)
-        log("\n==================================================")
-        log("فتحت %d/%d صفحة | مفيش حاجة اتكتبت ومفيش حاجة اتحفظت" % (len(done), len(rows)))
-        log("في كل tab: تاب Files -> دوس أيقونة الرفع في عمود Files")
-        for p in sorted(Path(PDF_DIR).glob("*.pdf")):
-            log("الملف: %s" % p)
-        log("==================================================")
-        wait_browser_open(len(done), minutes=args.keep_open or 240)
-        return 0
+        rows, failed2 = verify_cached(known, tasks, live=not args.no_verify)
+        if rows:
+            if args.close_old:
+                for info in cdp_tabs():
+                    u = info.get("url") or ""
+                    if "vTasks_TestsCompletion" in u:
+                        try:
+                            urllib.request.urlopen(urllib.request.Request(CDP + "/json/close/" + info["id"], method="GET"), timeout=8)
+                        except Exception:
+                            pass
+            done = open_tabs_fast(rows)
+            log("\n==================================================")
+            log("فتحت %d/%d صفحة | مفيش حاجة اتكتبت ومفيش حاجة اتحفظت" % (len(done), len(rows)))
+            if failed2:
+                log("اللي فشلوا: %s" % ", ".join(failed2))
+            log("في كل tab: تاب Files -> دوس أيقونة الرفع في عمود Files")
+            for p in sorted(Path(PDF_DIR).glob("*.pdf")):
+                log("الملف: %s" % p)
+            log("==================================================")
+            wait_browser_open(len(done), minutes=args.keep_open or 240)
+            return 0
 
     # raw CDP path: same as before but without Playwright, so it works while the
     # background sync holds its own connection to the browser
