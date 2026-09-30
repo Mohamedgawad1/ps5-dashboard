@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-30 15:39:10",
+  "updated": "2026-09-30 15:50:02",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5782,
-  "open": 4518,
-  "today_closed": 52,
+  "closed": 5783,
+  "open": 4517,
+  "today_closed": 53,
   "closed_by_discipline": {
     "I": 2870,
-    "E": 2696,
+    "E": 2697,
     "T": 216
   },
   "open_by_discipline": {
     "I": 1725,
-    "E": 1931,
+    "E": 1930,
     "T": 862
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-09-30",
-      "E": 43,
+      "E": 44,
       "I": 9,
       "T": 0,
-      "Total": 52
+      "Total": 53
     }
   ],
-  "closed_this_week": 244,
-  "closed_this_month": 2230,
+  "closed_this_week": 245,
+  "closed_this_month": 2231,
   "today_milestone": [
     {
       "milestone": "Milestone E",
@@ -253,7 +253,7 @@
       "milestone": "Milestone G",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 5
+      "count": 6
     },
     {
       "milestone": "Milestone G",
@@ -274,7 +274,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 52,
+  "today_milestone_total": 53,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -364,26 +364,26 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 610,
-      "remaining": 294,
-      "pct": 67.5,
+      "closed": 611,
+      "remaining": 293,
+      "pct": 67.6,
       "status": {
-        "Closed": 610,
+        "Closed": 611,
         "Submitted": 2,
         "To be completed": 286,
-        "Other": 6
+        "Other": 5
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1763,
-      "remaining": 1488,
-      "pct": 54.2,
+      "closed": 1764,
+      "remaining": 1487,
+      "pct": 54.3,
       "status": {
-        "Closed": 1763,
-        "Submitted": 11,
+        "Closed": 1764,
+        "Submitted": 10,
         "To be completed": 1464,
         "Other": 13
       }
@@ -404,6 +404,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-79-BH-0002-CH03",
+      "task": "T-00232-1124",
+      "system": "PS5-61-03 - 6.6kV Switchboard and Transformer LLHT South - EITS Building (PS5-61-IJ-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 12:39:20 "
+    },
     {
       "tag": "PS5-79-BH-0002-CH02",
       "task": "T-00232-1123",
@@ -1474,15 +1483,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/29/2026 5:07:15 A"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CD02",
-      "task": "T-00024-2213",
-      "system": "PS5-60-19 - Power Generation Package G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 5:05:58 A"
     }
   ]
 }
