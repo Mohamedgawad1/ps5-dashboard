@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-30 13:32:36",
+  "updated": "2026-09-30 13:43:12",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5733,
-  "open": 4567,
-  "today_closed": 3,
+  "closed": 5734,
+  "open": 4566,
+  "today_closed": 4,
   "closed_by_discipline": {
-    "I": 2864,
+    "I": 2865,
     "E": 2653,
     "T": 216
   },
   "open_by_discipline": {
-    "I": 1731,
+    "I": 1730,
     "E": 1974,
     "T": 862
   },
@@ -229,19 +229,19 @@
     {
       "label": "2026-09-30",
       "E": 0,
-      "I": 3,
+      "I": 4,
       "T": 0,
-      "Total": 3
+      "Total": 4
     }
   ],
-  "closed_this_week": 195,
-  "closed_this_month": 2181,
+  "closed_this_week": 196,
+  "closed_this_month": 2182,
   "today_milestone": [
     {
       "milestone": "Milestone F",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 1
+      "count": 2
     },
     {
       "milestone": "Milestone G",
@@ -256,7 +256,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 3,
+  "today_milestone_total": 4,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -332,12 +332,12 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 580,
-      "remaining": 569,
-      "pct": 50.5,
+      "closed": 581,
+      "remaining": 568,
+      "pct": 50.6,
       "status": {
-        "Closed": 580,
-        "Submitted": 4,
+        "Closed": 581,
+        "Submitted": 3,
         "To be completed": 559,
         "Other": 6
       }
@@ -352,8 +352,8 @@
       "status": {
         "Closed": 599,
         "Submitted": 2,
-        "To be completed": 291,
-        "Other": 12
+        "To be completed": 290,
+        "Other": 13
       }
     },
     {
@@ -386,6 +386,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-74-FO-0001",
+      "task": "T-00255-0061",
+      "system": "PS5-74-04 - Nitrogen Distribution Header",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 10:35:41 "
+    },
     {
       "tag": "PS5-25-FO-0008",
       "task": "T-00255-0059",
@@ -1456,15 +1465,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/28/2026 6:01:03 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CC07",
-      "task": "T-00069-5189",
-      "system": "PS5-60-20 - Power Gen Package G (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 5:59:39 P"
     }
   ]
 }
