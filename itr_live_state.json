@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-30 14:58:36",
+  "updated": "2026-09-30 15:09:08",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5766,
-  "open": 4534,
-  "today_closed": 36,
+  "closed": 5777,
+  "open": 4523,
+  "today_closed": 47,
   "closed_by_discipline": {
     "I": 2870,
-    "E": 2680,
+    "E": 2691,
     "T": 216
   },
   "open_by_discipline": {
     "I": 1725,
-    "E": 1947,
+    "E": 1936,
     "T": 862
   },
   "daily": [
@@ -228,15 +228,21 @@
     },
     {
       "label": "2026-09-30",
-      "E": 27,
+      "E": 38,
       "I": 9,
       "T": 0,
-      "Total": 36
+      "Total": 47
     }
   ],
-  "closed_this_week": 228,
-  "closed_this_month": 2214,
+  "closed_this_week": 239,
+  "closed_this_month": 2225,
   "today_milestone": [
+    {
+      "milestone": "Milestone E",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 2
+    },
     {
       "milestone": "Milestone F",
       "disc": "I",
@@ -253,7 +259,7 @@
       "milestone": "Milestone H",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 27
+      "count": 36
     },
     {
       "milestone": "Milestone H",
@@ -262,7 +268,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 36,
+  "today_milestone_total": 47,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -324,14 +330,14 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1245,
-      "remaining": 287,
-      "pct": 81.3,
+      "closed": 1247,
+      "remaining": 285,
+      "pct": 81.4,
       "status": {
-        "Closed": 1245,
+        "Closed": 1247,
         "Submitted": 2,
         "To be completed": 275,
-        "Other": 10
+        "Other": 8
       }
     },
     {
@@ -366,14 +372,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1752,
-      "remaining": 1499,
-      "pct": 53.9,
+      "closed": 1761,
+      "remaining": 1490,
+      "pct": 54.2,
       "status": {
-        "Closed": 1752,
+        "Closed": 1761,
         "Submitted": 10,
         "To be completed": 1467,
-        "Other": 22
+        "Other": 13
       }
     },
     {
@@ -392,6 +398,105 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-53-DM-3100B",
+      "task": "T-00026-0168",
+      "system": "PS5-53-02 - Water Distribution Pump A/B",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 12:04:42 "
+    },
+    {
+      "tag": "PS5-53-DM-3100A",
+      "task": "T-00026-0167",
+      "system": "PS5-53-02 - Water Distribution Pump A/B",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 12:04:07 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1678",
+      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 12:00:55 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1677",
+      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 12:00:33 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1676",
+      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 12:00:14 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1675",
+      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:59:55 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1673",
+      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:59:17 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1671",
+      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:58:56 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1664",
+      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:58:37 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1616",
+      "system": "PS5-79-09 - Electrical Heat Tracing Transformer/Distribution Board 9 (PS5-79-IG-0009)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:58:14 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1613",
+      "system": "PS5-79-09 - Electrical Heat Tracing Transformer/Distribution Board 9 (PS5-79-IG-0009)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:57:41 "
+    },
     {
       "tag": "",
       "task": "T-00244-1583",
@@ -1372,105 +1477,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/28/2026 7:13:21 P"
-    },
-    {
-      "tag": "PS5-60-BI-0006G-CL06",
-      "task": "T-00023-9223",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:10:35 P"
-    },
-    {
-      "tag": "PS5-60-BI-0006G-CL05",
-      "task": "T-00023-9222",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:07:33 P"
-    },
-    {
-      "tag": "PS5-60-BI-0006G-CL04",
-      "task": "T-00023-9221",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:06:14 P"
-    },
-    {
-      "tag": "PS5-60-BI-0006G-CL03",
-      "task": "T-00023-9220",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:05:27 P"
-    },
-    {
-      "tag": "PS5-60-BI-0006G-CL02",
-      "task": "T-00023-9219",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:04:52 P"
-    },
-    {
-      "tag": "PS5-60-BI-0006G-CL01",
-      "task": "T-00023-9218",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:04:17 P"
-    },
-    {
-      "tag": "PS5-60-BE-0007G-CL03",
-      "task": "T-00023-10900",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:02:07 P"
-    },
-    {
-      "tag": "PS5-60-BE-0007G-CL02",
-      "task": "T-00023-10899",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:01:29 P"
-    },
-    {
-      "tag": "PS5-28-IES-3300-CD01",
-      "task": "T-00610-0206",
-      "system": "PS5-28-06 - Relief Drum and Pump",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:01:00 P"
-    },
-    {
-      "tag": "PS5-60-BE-0007G-CL01",
-      "task": "T-00023-9137",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 7:00:55 P"
-    },
-    {
-      "tag": "PS5-71-PIT-3302B-CJ01",
-      "task": "T-00069-5552",
-      "system": "PS5-71-05 - CFO Transfer Pump A/B",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 6:50:18 P"
     }
   ]
 }
