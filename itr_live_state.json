@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-30 13:54:49",
+  "updated": "2026-09-30 14:05:37",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5735,
-  "open": 4565,
-  "today_closed": 5,
+  "closed": 5738,
+  "open": 4562,
+  "today_closed": 8,
   "closed_by_discipline": {
-    "I": 2866,
+    "I": 2869,
     "E": 2653,
     "T": 216
   },
   "open_by_discipline": {
-    "I": 1729,
+    "I": 1726,
     "E": 1974,
     "T": 862
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-09-30",
       "E": 0,
-      "I": 5,
+      "I": 8,
       "T": 0,
-      "Total": 5
+      "Total": 8
     }
   ],
-  "closed_this_week": 197,
-  "closed_this_month": 2183,
+  "closed_this_week": 200,
+  "closed_this_month": 2186,
   "today_milestone": [
     {
       "milestone": "Milestone F",
@@ -247,7 +247,7 @@
       "milestone": "Milestone G",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 2
+      "count": 5
     },
     {
       "milestone": "Milestone H",
@@ -256,7 +256,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 5,
+  "today_milestone_total": 8,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -332,12 +332,12 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 581,
-      "remaining": 568,
-      "pct": 50.6,
+      "closed": 582,
+      "remaining": 567,
+      "pct": 50.7,
       "status": {
-        "Closed": 581,
-        "Submitted": 3,
+        "Closed": 582,
+        "Submitted": 2,
         "To be completed": 559,
         "Other": 6
       }
@@ -346,14 +346,14 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 600,
-      "remaining": 304,
-      "pct": 66.4,
+      "closed": 604,
+      "remaining": 300,
+      "pct": 66.8,
       "status": {
-        "Closed": 600,
-        "Submitted": 2,
-        "To be completed": 289,
-        "Other": 13
+        "Closed": 604,
+        "Submitted": 1,
+        "To be completed": 287,
+        "Other": 12
       }
     },
     {
@@ -386,6 +386,33 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-28-FO-0006",
+      "task": "T-00255-0065",
+      "system": "PS5-28-08 - Open Drain Sump and Pumps",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 11:02:03 "
+    },
+    {
+      "tag": "PS5-28-FO-0004",
+      "task": "T-00255-0064",
+      "system": "PS5-28-16 - LP Relief Header",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 10:59:08 "
+    },
+    {
+      "tag": "PS5-28-FO-0002B",
+      "task": "T-00255-0063",
+      "system": "PS5-28-08 - Open Drain Sump and Pumps",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 10:52:57 "
+    },
     {
       "tag": "PS5-28-FO-0002A",
       "task": "T-00255-0062",
@@ -1438,33 +1465,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/28/2026 6:07:13 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CC03",
-      "task": "T-00069-5185",
-      "system": "PS5-60-20 - Power Gen Package G (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 6:04:44 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CC02",
-      "task": "T-00069-5184",
-      "system": "PS5-60-20 - Power Gen Package G (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 6:03:27 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CC01",
-      "task": "T-00069-5183",
-      "system": "PS5-60-20 - Power Gen Package G (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 6:02:09 P"
     }
   ]
 }
