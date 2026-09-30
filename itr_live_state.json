@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-09-30 12:44:29",
+  "updated": "2026-09-30 12:57:46",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5730,
-  "open": 4570,
-  "today_closed": 0,
+  "closed": 5731,
+  "open": 4569,
+  "today_closed": 1,
   "closed_by_discipline": {
-    "I": 2861,
+    "I": 2862,
     "E": 2653,
     "T": 216
   },
   "open_by_discipline": {
-    "I": 1734,
+    "I": 1733,
     "E": 1974,
     "T": 862
   },
@@ -229,15 +229,22 @@
     {
       "label": "2026-09-30",
       "E": 0,
-      "I": 0,
+      "I": 1,
       "T": 0,
-      "Total": 0
+      "Total": 1
     }
   ],
-  "closed_this_week": 192,
-  "closed_this_month": 2178,
-  "today_milestone": [],
-  "today_milestone_total": 0,
+  "closed_this_week": 193,
+  "closed_this_month": 2179,
+  "today_milestone": [
+    {
+      "milestone": "Milestone F",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
+    }
+  ],
+  "today_milestone_total": 1,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -313,14 +320,14 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 579,
-      "remaining": 570,
-      "pct": 50.4,
+      "closed": 580,
+      "remaining": 569,
+      "pct": 50.5,
       "status": {
-        "Closed": 579,
+        "Closed": 580,
         "Submitted": 3,
         "To be completed": 560,
-        "Other": 7
+        "Other": 6
       }
     },
     {
@@ -333,8 +340,8 @@
       "status": {
         "Closed": 598,
         "Submitted": 2,
-        "To be completed": 292,
-        "Other": 12
+        "To be completed": 291,
+        "Other": 13
       }
     },
     {
@@ -367,6 +374,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-50-FE-0001",
+      "task": "T-00255-0055",
+      "system": "PS5-50-03 - Water Pre-Treatment Package",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "9/30/2026 9:49:33 A"
+    },
     {
       "tag": "PS5-60-IE-0003G-CD06",
       "task": "T-00610-0238",
@@ -1437,15 +1453,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/28/2026 5:55:52 P"
-    },
-    {
-      "tag": "PS5-60-BI-0006G-CC01",
-      "task": "T-00069-4974",
-      "system": "PS5-60-20 - Power Gen Package G (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/28/2026 5:54:43 P"
     }
   ]
 }
