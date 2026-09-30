@@ -458,6 +458,7 @@ def main():
         skip = load_skip()
         if skip:
             log("skip list (%d): %s" % (len(skip), ", ".join(sorted(skip))))
+        log_types = set()
         by_origin = {}
         for tag, want, origin in pairs:
             by_origin.setdefault(origin, []).append((tag, want))
@@ -474,8 +475,13 @@ def main():
                 fallback.extend((tag, r) for r in rows)
             if not picked and fallback and not args.no_other_type:
                 kinds = sorted({(r.get("type") or "?") for _, r in fallback})
-                log("  ! مفيش النوع المطلوب في الـ RFI ده - هفتح الموجود: %s" % ", ".join(kinds))
+                log("  ! الـ RFI طلب %s، لكن الأصول على المنصة: %s"
+                    % ("/".join(sorted({w for _, w in items})), ", ".join(kinds)))
+                log("  >> النوع اللي هيتفتح فعليًا: %s" % ", ".join(kinds))
+                log_types.update(kinds)
                 picked = fallback
+            else:
+                log_types.update((r.get("type") or "?") for _, r in picked)
             for tag, row in picked:
                 tid = row.get("task_id")
                 if tid and tid in skip:
@@ -489,7 +495,9 @@ def main():
     if not tasks:
         log("!! no tasks to open")
         return 2
-    log("\n%d task(s) to open\n" % len(tasks))
+    log("\n%d task(s) to open" % len(tasks))
+    if log_types:
+        log("النوع اللي هيتفتح: %s" % ", ".join(sorted(log_types)))
     if args.dry_run:
         log("DRY RUN - مفيش تاب اتفتح. راجع القائمة فوق قبل التشغيل.")
         return 0
