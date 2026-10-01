@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 22:07:46",
+  "updated": "2026-10-01 22:14:09",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5888,
-  "open": 4412,
-  "today_closed": 52,
+  "closed": 5894,
+  "open": 4406,
+  "today_closed": 58,
   "closed_by_discipline": {
-    "I": 2889,
+    "I": 2895,
     "E": 2739,
     "T": 260
   },
   "open_by_discipline": {
-    "I": 1706,
+    "I": 1700,
     "E": 1888,
     "T": 818
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-01",
       "E": 40,
-      "I": 7,
+      "I": 13,
       "T": 5,
-      "Total": 52
+      "Total": 58
     }
   ],
-  "closed_this_week": 350,
-  "closed_this_month": 52,
+  "closed_this_week": 356,
+  "closed_this_month": 58,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -274,13 +274,25 @@
       "count": 29
     },
     {
+      "milestone": "Milestone G",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 5
+    },
+    {
       "milestone": "Milestone H",
       "disc": "E",
       "discipline": "Electrical (E)",
       "count": 4
+    },
+    {
+      "milestone": "Milestone H",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
     }
   ],
-  "today_milestone_total": 52,
+  "today_milestone_total": 58,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -370,28 +382,28 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 645,
-      "remaining": 259,
-      "pct": 71.3,
+      "closed": 650,
+      "remaining": 254,
+      "pct": 71.9,
       "status": {
-        "Closed": 645,
+        "Closed": 650,
         "Submitted": 0,
-        "To be completed": 251,
-        "Other": 8
+        "To be completed": 247,
+        "Other": 7
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1783,
-      "remaining": 1468,
-      "pct": 54.8,
+      "closed": 1784,
+      "remaining": 1467,
+      "pct": 54.9,
       "status": {
-        "Closed": 1783,
+        "Closed": 1784,
         "Submitted": 0,
-        "To be completed": 1453,
-        "Other": 15
+        "To be completed": 1451,
+        "Other": 16
       }
     },
     {
@@ -410,6 +422,60 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-28-IES-3900A",
+      "task": "T-00067-2455",
+      "system": "PS5-28-17 - Reinjection Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:12:54 P"
+    },
+    {
+      "tag": "PS5-28-IES-3600B",
+      "task": "T-00067-2449",
+      "system": "PS5-28-08 - Open Drain Sump and Pumps",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:11:52 P"
+    },
+    {
+      "tag": "PS5-28-IES-3600A",
+      "task": "T-00067-2448",
+      "system": "PS5-28-08 - Open Drain Sump and Pumps",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:10:47 P"
+    },
+    {
+      "tag": "PS5-28-IES-3500",
+      "task": "T-00067-2447",
+      "system": "PS5-28-08 - Open Drain Sump and Pumps",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:09:45 P"
+    },
+    {
+      "tag": "PS5-28-IES-3400",
+      "task": "T-00067-2446",
+      "system": "PS5-28-03 - Closed Drain Drum and Pump 01",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:08:46 P"
+    },
+    {
+      "tag": "PS5-28-IES-3300",
+      "task": "T-00067-2445",
+      "system": "PS5-28-06 - Relief Drum and Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:07:52 P"
+    },
     {
       "tag": "PS5-01-IE-0001B",
       "task": "T-00044-0176",
@@ -1435,60 +1501,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 12:00:55 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1677",
-      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 12:00:33 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1676",
-      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 12:00:14 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1675",
-      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:59:55 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1673",
-      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:59:17 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1671",
-      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:58:56 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1664",
-      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:58:37 "
     }
   ]
 }
