@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 11:29:14",
+  "updated": "2026-10-01 11:41:08",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,18 +9,18 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5855,
-  "open": 4445,
-  "today_closed": 19,
+  "closed": 5858,
+  "open": 4442,
+  "today_closed": 22,
   "closed_by_discipline": {
     "I": 2889,
     "E": 2710,
-    "T": 256
+    "T": 259
   },
   "open_by_discipline": {
     "I": 1706,
     "E": 1917,
-    "T": 822
+    "T": 819
   },
   "daily": [
     {
@@ -230,13 +230,19 @@
       "label": "2026-10-01",
       "E": 11,
       "I": 7,
-      "T": 1,
-      "Total": 19
+      "T": 4,
+      "Total": 22
     }
   ],
-  "closed_this_week": 317,
-  "closed_this_month": 19,
+  "closed_this_week": 320,
+  "closed_this_month": 22,
   "today_milestone": [
+    {
+      "milestone": "Milestone B",
+      "disc": "T",
+      "discipline": "Telecom (T)",
+      "count": 2
+    },
     {
       "milestone": "Milestone D",
       "disc": "E",
@@ -247,7 +253,7 @@
       "milestone": "Milestone D",
       "disc": "T",
       "discipline": "Telecom (T)",
-      "count": 1
+      "count": 2
     },
     {
       "milestone": "Milestone E",
@@ -274,7 +280,7 @@
       "count": 4
     }
   ],
-  "today_milestone_total": 19,
+  "today_milestone_total": 22,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -294,13 +300,13 @@
       "label": "Milestone B",
       "raw": "PS5 - Milestone B",
       "total": 1714,
-      "closed": 1589,
-      "remaining": 125,
-      "pct": 92.7,
+      "closed": 1591,
+      "remaining": 123,
+      "pct": 92.8,
       "status": {
-        "Closed": 1589,
+        "Closed": 1591,
         "Submitted": 0,
-        "To be completed": 122,
+        "To be completed": 120,
         "Other": 3
       }
     },
@@ -322,13 +328,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3433,
-      "closed": 2283,
-      "remaining": 1150,
+      "closed": 2284,
+      "remaining": 1149,
       "pct": 66.5,
       "status": {
-        "Closed": 2283,
+        "Closed": 2284,
         "Submitted": 2,
-        "To be completed": 1146,
+        "To be completed": 1145,
         "Other": 2
       }
     },
@@ -404,6 +410,33 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-IN-0002C-CA01",
+      "task": "T-00171-4387",
+      "system": "PS5-60-61 - Fuel Conditioning Module PS5-60-UZ-8900C (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 8:34:46 A"
+    },
+    {
+      "tag": "PS5-60-IN-0002B-CA01",
+      "task": "T-00171-4386",
+      "system": "PS5-60-59 - Fuel Conditioning Module PS5-60-UZ-8900B (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 8:32:38 A"
+    },
+    {
+      "tag": "PS5-60-IN-0002A-CA01",
+      "task": "T-00171-4385",
+      "system": "PS5-60-57 - Fuel Conditioning Module PS5-60-UZ-8900A (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 8:30:58 A"
+    },
     {
       "tag": "PS5-60-TW-0008G",
       "task": "T-00257-0214",
@@ -1456,33 +1489,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 11:06:05 "
-    },
-    {
-      "tag": "PS5-28-FO-0006",
-      "task": "T-00255-0065",
-      "system": "PS5-28-08 - Open Drain Sump and Pumps",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:02:03 "
-    },
-    {
-      "tag": "PS5-28-FO-0004",
-      "task": "T-00255-0064",
-      "system": "PS5-28-16 - LP Relief Header",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 10:59:08 "
-    },
-    {
-      "tag": "PS5-28-FO-0002B",
-      "task": "T-00255-0063",
-      "system": "PS5-28-08 - Open Drain Sump and Pumps",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 10:52:57 "
     }
   ]
 }
