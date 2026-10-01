@@ -1,4 +1,4 @@
-r"""
+﻿r"""
 Attach a PDF to a SmartCloud Test Form record (vAssets_TestForms).
 
 Workflow
@@ -273,7 +273,50 @@ def _repair_split_tags(text):
     glued = re.sub(r"(?<=[A-Z0-9])\s+(?=[A-Z0-9]{2,}-)", "-", glued)
     # a break right after the prefix can leave it doubled: PS5-PS5-60-...
     glued = re.sub(r"\b(PS\d|PR\d)-(?:PS\d-|PR\d-)+", r"\1-", glued)
-    return glued
+    return _split_glued_tags(glued)
+
+
+TAG_RE = re.compile(r"\b(?:PS|PR)\d-[A-Z0-9]+(?:-[A-Z0-9]+){3,}\b")
+
+
+def _split_glued_tags(text):
+    """A line break between two tags welds them together with a single hyphen
+    ('PS5-71-BI-0005-CC02-PS5-71-BI-0003-CC01'). Split every run of tag characters
+    that contains more than one 'PSn-' / 'PRn-' prefix."""
+    def fix(m):
+        s = m.group(0)
+        starts = [x.start() for x in re.finditer(r"(?:PS|PR)\d-", s)]
+        if len(starts) < 2:
+            return s
+        parts, prev = [], 0
+        for st in starts[1:]:
+            parts.append(s[prev:st].rstrip("-"))
+            prev = st
+        parts.append(s[prev:])
+        return ", ".join(p for p in parts if p)
+    return re.sub(r"(?:PS|PR)\d-[A-Z0-9]+(?:-[A-Z0-9]+)+", fix, text or "")
+
+
+def _description_block(text):
+    """Just the 'Inspection activity description' part of the form. The rest of the
+    page is the tick-box list, which contains words like 'Test crew not available'
+    that must not be read as the type of work."""
+    m = re.search(r"inspection\s+activity\s+description\s*:?\s*(.+?)(?=\bcontractor\b|\bname\b\s+f\b|$)",
+                  text or "", re.S | re.I)
+    if not m:
+        return ""
+    block = m.group(1)
+    lines = [ln.strip() for ln in block.splitlines()]
+    keep = []
+    for ln in lines:
+        if not ln:
+            continue
+        if TAG_RE.match(ln) or re.match(r"^(ps|pr)\d-", ln, re.I):
+            continue
+        if re.match(r"^\(?\s*total\b|^\(?\s*\d+\s*tags?\b|^\d+\s*tags?\b", ln, re.I):
+            continue
+        keep.append(ln)
+    return " ".join(keep)
 
 
 def _complete_short_tags(tags):
@@ -313,6 +356,10 @@ def read_pdf(path):
     tags = uniq
     full = "\n".join(pages).lower()
     first_low = first.lower()
+    # Only the "Inspection activity description" block decides the type. The rest of
+    # page 1 is the tick-box list ("Test crew not available", "Test equipment not
+    # available" ...) and would otherwise force every RFI to Static Test.
+    desc_low = _description_block(first).lower()
     hits = []
     for name, keys in TYPE_KEYWORDS:
         found = [k for k in keys if k in full]
@@ -324,19 +371,19 @@ def read_pdf(path):
     #    (Static Test) and "CPX13 - ..." is a conformance check. Anything else falls
     #    back to the wording rules below.
     ptype, why = None, None
-    desc = re.sub(r"^[^a-z0-9]+", "", first_low)
+    desc = re.sub(r"^[^a-z0-9]+", "", desc_low)
     first_code = (desc.split()[0] if desc.split() else "")
     if re.match(r"^t[a-z]*\d", first_code):
         ptype, why = "Static Test", [first_code]
     elif re.match(r"^c[a-z]*\d", first_code):
         ptype, why = "Conformity Check", [first_code]
-    if ptype is None and re.search(r"\btesting\b|\btest\b", first_low):
+    if ptype is None and re.search(r"\btesting\b|\btest\b", desc_low):
         ptype, why = "Static Test", ["testing / test"]
-    if ptype is None and re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", first_low):
+    if ptype is None and re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", desc_low):
         ptype, why = "Conformity Check", ["visual inspection / inspection of"]
     if ptype is None:
         for name, keys in _load_work_type_rules():
-            found = [k for k in keys if k in first_low]
+            found = [k for k in keys if k in desc_low]
             if found:
                 ptype, why = name, found
                 break
@@ -346,8 +393,8 @@ def read_pdf(path):
                            ("visual inspection", "Conformity Check"),
                            ("request for inspection", "Conformity Check"),
                            ("inspection request", "Conformity Check")):
-            if any(k in first_low for k in keys.split("|")):
-                ptype, why = name, [k for k in keys.split("|") if k in first_low]
+            if any(k in desc_low for k in keys.split("|")):
+                ptype, why = name, [k for k in keys.split("|") if k in desc_low]
                 break
     if ptype is None:
         for name, found in hits:
