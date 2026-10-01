@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 17:25:50",
+  "updated": "2026-10-01 21:18:39",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5859,
-  "open": 4441,
-  "today_closed": 23,
+  "closed": 5868,
+  "open": 4432,
+  "today_closed": 32,
   "closed_by_discipline": {
     "I": 2889,
-    "E": 2710,
+    "E": 2719,
     "T": 260
   },
   "open_by_discipline": {
     "I": 1706,
-    "E": 1917,
+    "E": 1908,
     "T": 818
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-10-01",
-      "E": 11,
+      "E": 20,
       "I": 7,
       "T": 5,
-      "Total": 23
+      "Total": 32
     }
   ],
-  "closed_this_week": 321,
-  "closed_this_month": 23,
+  "closed_this_week": 330,
+  "closed_this_month": 32,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -271,7 +271,7 @@
       "milestone": "Milestone G",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 2
+      "count": 11
     },
     {
       "milestone": "Milestone H",
@@ -280,7 +280,7 @@
       "count": 4
     }
   ],
-  "today_milestone_total": 23,
+  "today_milestone_total": 32,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -370,14 +370,14 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 618,
-      "remaining": 286,
-      "pct": 68.4,
+      "closed": 627,
+      "remaining": 277,
+      "pct": 69.4,
       "status": {
-        "Closed": 618,
+        "Closed": 627,
         "Submitted": 0,
-        "To be completed": 279,
-        "Other": 7
+        "To be completed": 269,
+        "Other": 8
       }
     },
     {
@@ -390,8 +390,8 @@
       "status": {
         "Closed": 1783,
         "Submitted": 0,
-        "To be completed": 1454,
-        "Other": 14
+        "To be completed": 1453,
+        "Other": 15
       }
     },
     {
@@ -410,6 +410,87 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-62-IE-0001-CL55",
+      "task": "T-00233-10069",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:14:51 P"
+    },
+    {
+      "tag": "PS5-62-IE-0001-CL54",
+      "task": "T-00233-10068",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:12:24 P"
+    },
+    {
+      "tag": "PS5-62-IE-0001-CL53",
+      "task": "T-00233-10067",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:11:02 P"
+    },
+    {
+      "tag": "PS5-62-IE-0001-CL52",
+      "task": "T-00233-10066",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:08:59 P"
+    },
+    {
+      "tag": "PS5-62-IE-0001-CL51",
+      "task": "T-00233-10065",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:07:37 P"
+    },
+    {
+      "tag": "PS5-62-IE-0001-CL06",
+      "task": "T-00233-10063",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:05:55 P"
+    },
+    {
+      "tag": "PS5-62-IE-0001-CL05",
+      "task": "T-00233-10062",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:04:35 P"
+    },
+    {
+      "tag": "PS5-62-IE-0001-CL03",
+      "task": "T-00233-10061",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:03:09 P"
+    },
+    {
+      "tag": "PS5-62-IE-0001-CL02",
+      "task": "T-00233-10060",
+      "system": "PS5-62-01 - Lighting Control Panel - PS5-62-IE-0001",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:01:37 P"
+    },
     {
       "tag": "PS5-60-IN-0002D-CA01",
       "task": "T-00171-4388",
@@ -1408,87 +1489,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 11:42:08 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1583",
-      "system": "PS5-79-08 - Electrical Heat Tracing Transformer/Distribution Board 8 (PS5-79-IG-0008)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:41:38 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1582",
-      "system": "PS5-79-08 - Electrical Heat Tracing Transformer/Distribution Board 8 (PS5-79-IG-0008)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:40:48 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1579",
-      "system": "PS5-79-08 - Electrical Heat Tracing Transformer/Distribution Board 8 (PS5-79-IG-0008)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:40:24 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1577",
-      "system": "PS5-79-08 - Electrical Heat Tracing Transformer/Distribution Board 8 (PS5-79-IG-0008)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:40:01 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1576",
-      "system": "PS5-79-08 - Electrical Heat Tracing Transformer/Distribution Board 8 (PS5-79-IG-0008)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:39:37 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1568",
-      "system": "PS5-79-08 - Electrical Heat Tracing Transformer/Distribution Board 8 (PS5-79-IG-0008)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:39:03 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1567",
-      "system": "PS5-79-08 - Electrical Heat Tracing Transformer/Distribution Board 8 (PS5-79-IG-0008)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:38:23 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1558",
-      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:37:06 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1551",
-      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:35:55 "
     }
   ]
 }
