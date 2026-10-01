@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 07:48:12",
+  "updated": "2026-10-01 08:00:16",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,18 +9,18 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5836,
-  "open": 4464,
-  "today_closed": 0,
+  "closed": 5837,
+  "open": 4463,
+  "today_closed": 1,
   "closed_by_discipline": {
     "I": 2882,
     "E": 2699,
-    "T": 255
+    "T": 256
   },
   "open_by_discipline": {
     "I": 1713,
     "E": 1928,
-    "T": 823
+    "T": 822
   },
   "daily": [
     {
@@ -230,14 +230,21 @@
       "label": "2026-10-01",
       "E": 0,
       "I": 0,
-      "T": 0,
-      "Total": 0
+      "T": 1,
+      "Total": 1
     }
   ],
-  "closed_this_week": 298,
-  "closed_this_month": 0,
-  "today_milestone": [],
-  "today_milestone_total": 0,
+  "closed_this_week": 299,
+  "closed_this_month": 1,
+  "today_milestone": [
+    {
+      "milestone": "Milestone D",
+      "disc": "T",
+      "discipline": "Telecom (T)",
+      "count": 1
+    }
+  ],
+  "today_milestone_total": 1,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -285,13 +292,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3433,
-      "closed": 2280,
-      "remaining": 1153,
+      "closed": 2281,
+      "remaining": 1152,
       "pct": 66.4,
       "status": {
-        "Closed": 2280,
+        "Closed": 2281,
         "Submitted": 2,
-        "To be completed": 1149,
+        "To be completed": 1148,
         "Other": 2
       }
     },
@@ -367,6 +374,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-LA-0002B-CA06",
+      "task": "T-00171-4397",
+      "system": "PS5-60-10 - Power Generation Package D",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 4:52:02 A"
+    },
     {
       "tag": "PS5-28-FO-0004",
       "task": "T-00070-0064",
@@ -1437,15 +1453,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/29/2026 7:16:44 P"
-    },
-    {
-      "tag": "PS5-61-NER-0011",
-      "task": "T-00034-0042",
-      "system": "PS5-61-03 - 6.6kV Switchboard and Transformer LLHT South - EITS Building (PS5-61-IJ-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:04:45 P"
     }
   ]
 }
