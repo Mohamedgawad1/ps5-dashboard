@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 08:53:31",
+  "updated": "2026-10-01 11:09:07",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5837,
-  "open": 4463,
-  "today_closed": 1,
+  "closed": 5855,
+  "open": 4445,
+  "today_closed": 19,
   "closed_by_discipline": {
-    "I": 2882,
-    "E": 2699,
+    "I": 2889,
+    "E": 2710,
     "T": 256
   },
   "open_by_discipline": {
-    "I": 1713,
-    "E": 1928,
+    "I": 1706,
+    "E": 1917,
     "T": 822
   },
   "daily": [
@@ -228,23 +228,53 @@
     },
     {
       "label": "2026-10-01",
-      "E": 0,
-      "I": 0,
+      "E": 11,
+      "I": 7,
       "T": 1,
-      "Total": 1
+      "Total": 19
     }
   ],
-  "closed_this_week": 299,
-  "closed_this_month": 1,
+  "closed_this_week": 317,
+  "closed_this_month": 19,
   "today_milestone": [
+    {
+      "milestone": "Milestone D",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 2
+    },
     {
       "milestone": "Milestone D",
       "disc": "T",
       "discipline": "Telecom (T)",
       "count": 1
+    },
+    {
+      "milestone": "Milestone E",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 7
+    },
+    {
+      "milestone": "Milestone F",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 3
+    },
+    {
+      "milestone": "Milestone G",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 2
+    },
+    {
+      "milestone": "Milestone H",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 4
     }
   ],
-  "today_milestone_total": 1,
+  "today_milestone_total": 19,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -292,13 +322,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3433,
-      "closed": 2281,
-      "remaining": 1152,
-      "pct": 66.4,
+      "closed": 2283,
+      "remaining": 1150,
+      "pct": 66.5,
       "status": {
-        "Closed": 2281,
+        "Closed": 2283,
         "Submitted": 2,
-        "To be completed": 1148,
+        "To be completed": 1146,
         "Other": 2
       }
     },
@@ -306,13 +336,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1259,
-      "remaining": 273,
-      "pct": 82.2,
+      "closed": 1266,
+      "remaining": 266,
+      "pct": 82.6,
       "status": {
-        "Closed": 1259,
+        "Closed": 1266,
         "Submitted": 3,
-        "To be completed": 262,
+        "To be completed": 255,
         "Other": 8
       }
     },
@@ -320,13 +350,13 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 597,
-      "remaining": 552,
-      "pct": 52.0,
+      "closed": 600,
+      "remaining": 549,
+      "pct": 52.2,
       "status": {
-        "Closed": 597,
+        "Closed": 600,
         "Submitted": 3,
-        "To be completed": 546,
+        "To be completed": 543,
         "Other": 3
       }
     },
@@ -334,27 +364,27 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 614,
-      "remaining": 290,
-      "pct": 67.9,
+      "closed": 616,
+      "remaining": 288,
+      "pct": 68.1,
       "status": {
-        "Closed": 614,
+        "Closed": 616,
         "Submitted": 2,
-        "To be completed": 281,
-        "Other": 7
+        "To be completed": 280,
+        "Other": 6
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1769,
-      "remaining": 1482,
-      "pct": 54.4,
+      "closed": 1773,
+      "remaining": 1478,
+      "pct": 54.5,
       "status": {
-        "Closed": 1769,
+        "Closed": 1773,
         "Submitted": 9,
-        "To be completed": 1458,
+        "To be completed": 1454,
         "Other": 15
       }
     },
@@ -374,6 +404,168 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-TW-0008G",
+      "task": "T-00257-0214",
+      "system": "PS5-60-76 - Engine G Cooling system",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:32:23 A"
+    },
+    {
+      "tag": "PS5-60-TW-0007G",
+      "task": "T-00257-0213",
+      "system": "PS5-60-76 - Engine G Cooling system",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:29:26 A"
+    },
+    {
+      "tag": "PS5-60-TW-0005G",
+      "task": "T-00257-0179",
+      "system": "PS5-60-76 - Engine G Cooling system",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:28:32 A"
+    },
+    {
+      "tag": "PS5-60-TW-0006G",
+      "task": "T-00257-0165",
+      "system": "PS5-60-76 - Engine G Cooling system",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:27:45 A"
+    },
+    {
+      "tag": "PS5-60-TW-0008G",
+      "task": "T-00072-0214",
+      "system": "PS5-60-76 - Engine G Cooling system",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:26:50 A"
+    },
+    {
+      "tag": "PS5-60-TW-0007G",
+      "task": "T-00072-0213",
+      "system": "PS5-60-76 - Engine G Cooling system",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:26:00 A"
+    },
+    {
+      "tag": "PS5-60-TW-0005G",
+      "task": "T-00072-0179",
+      "system": "PS5-60-76 - Engine G Cooling system",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:25:09 A"
+    },
+    {
+      "tag": "PS5-60-IN-0002F",
+      "task": "T-00044-0190",
+      "system": "PS5-60-67 - Fuel Conditioning Module PS5-60-UZ-8900F (UCP)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:24:13 A"
+    },
+    {
+      "tag": "PS5-71-DM-3400B",
+      "task": "T-00236-0177",
+      "system": "PS5-71-13 - CFO Service Pump A/B",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:22:42 A"
+    },
+    {
+      "tag": "PS5-71-DM-3400A",
+      "task": "T-00236-0176",
+      "system": "PS5-71-13 - CFO Service Pump A/B",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:21:07 A"
+    },
+    {
+      "tag": "PS5-71-DM-3300B",
+      "task": "T-00236-0175",
+      "system": "PS5-71-05 - CFO Transfer Pump A/B",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:19:55 A"
+    },
+    {
+      "tag": "PS5-71-DM-3300A",
+      "task": "T-00236-0174",
+      "system": "PS5-71-05 - CFO Transfer Pump A/B",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:18:42 A"
+    },
+    {
+      "tag": "PS5-71-DM-3200",
+      "task": "T-00236-0173",
+      "system": "PS5-71-14 - Diesel Fuel Transfer and Dispensing Station",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:17:05 A"
+    },
+    {
+      "tag": "PS5-71-DM-3100B",
+      "task": "T-00236-0172",
+      "system": "PS5-71-16 - Diesel Fuel Supply Pump A/B",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:14:47 A"
+    },
+    {
+      "tag": "PS5-71-DM-3100A",
+      "task": "T-00236-0171",
+      "system": "PS5-71-16 - Diesel Fuel Supply Pump A/B",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:13:13 A"
+    },
+    {
+      "tag": "PS5-28-DM-3400",
+      "task": "T-00236-0156",
+      "system": "PS5-28-03 - Closed Drain Drum and Pump 01",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:11:56 A"
+    },
+    {
+      "tag": "PS5-28-DM-3300",
+      "task": "T-00236-0155",
+      "system": "PS5-28-06 - Relief Drum and Pump",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:10:26 A"
+    },
+    {
+      "tag": "PS5-60-IN-0002E",
+      "task": "T-00044-0189",
+      "system": "PS5-60-65 - Fuel Conditioning Module PS5-60-UZ-8900E (UCP)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 6:07:58 A"
+    },
     {
       "tag": "PS5-60-LA-0002B-CA06",
       "task": "T-00171-4397",
@@ -1291,168 +1483,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 10:52:57 "
-    },
-    {
-      "tag": "PS5-28-FO-0002A",
-      "task": "T-00255-0062",
-      "system": "PS5-28-08 - Open Drain Sump and Pumps",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 10:43:41 "
-    },
-    {
-      "tag": "PS5-74-FO-0001",
-      "task": "T-00255-0061",
-      "system": "PS5-74-04 - Nitrogen Distribution Header",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 10:35:41 "
-    },
-    {
-      "tag": "PS5-25-FO-0008",
-      "task": "T-00255-0059",
-      "system": "PS5-25-05 - Crude Oil Export Pumps Bypass",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 10:12:53 "
-    },
-    {
-      "tag": "PS5-28-FO-0005",
-      "task": "T-00255-0057",
-      "system": "PS5-28-06 - Relief Drum and Pump",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 10:00:45 "
-    },
-    {
-      "tag": "PS5-50-FE-0001",
-      "task": "T-00255-0055",
-      "system": "PS5-50-03 - Water Pre-Treatment Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 9:49:33 A"
-    },
-    {
-      "tag": "PS5-60-IE-0003G-CD06",
-      "task": "T-00610-0238",
-      "system": "PS5-60-19 - Power Generation Package G",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:38:09 P"
-    },
-    {
-      "tag": "PS5-60-UZ-8900F",
-      "task": "T-00090-0285",
-      "system": "PS5-60-66 - Fuel Conditioning Module PS5-60-UZ-8900F",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:30:24 P"
-    },
-    {
-      "tag": "PS5-60-UZ-8900E",
-      "task": "T-00090-0284",
-      "system": "PS5-60-64 - Fuel Conditioning Module PS5-60-UZ-8900E",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:29:31 P"
-    },
-    {
-      "tag": "PS5-60-UR-8200E",
-      "task": "T-00090-0276",
-      "system": "PS5-60-13 - Power Generation Package E",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:28:29 P"
-    },
-    {
-      "tag": "PS5-60-EA-2900G",
-      "task": "T-00090-0256",
-      "system": "PS5-60-68 - Fuel Conditioning Module PS5-60-UZ-8900G",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:27:40 P"
-    },
-    {
-      "tag": "PS5-60-UR-8200F",
-      "task": "T-00046-0389",
-      "system": "PS5-60-16 - Power Generation Package F",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:26:22 P"
-    },
-    {
-      "tag": "PS5-60-UR-8200E",
-      "task": "T-00046-0388",
-      "system": "PS5-60-13 - Power Generation Package E",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:25:32 P"
-    },
-    {
-      "tag": "PS5-79-BH-0002-CH03",
-      "task": "T-00022-3488",
-      "system": "PS5-61-03 - 6.6kV Switchboard and Transformer LLHT South - EITS Building (PS5-61-IJ-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:23:49 P"
-    },
-    {
-      "tag": "PS5-79-BH-0002-CH02",
-      "task": "T-00022-3487",
-      "system": "PS5-61-03 - 6.6kV Switchboard and Transformer LLHT South - EITS Building (PS5-61-IJ-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:22:00 P"
-    },
-    {
-      "tag": "PS5-79-BH-0002-CH01",
-      "task": "T-00022-3486",
-      "system": "PS5-61-03 - 6.6kV Switchboard and Transformer LLHT South - EITS Building (PS5-61-IJ-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:20:16 P"
-    },
-    {
-      "tag": "PS5-79-BH-0001-CH03",
-      "task": "T-00022-3485",
-      "system": "PS5-61-02 - 6.6kV Switchboard and Transformer LLHT North - EITS Building (PS5-61-IJ-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:18:55 P"
-    },
-    {
-      "tag": "PS5-79-BH-0001-CH02",
-      "task": "T-00022-3484",
-      "system": "PS5-61-02 - 6.6kV Switchboard and Transformer LLHT North - EITS Building (PS5-61-IJ-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:17:54 P"
-    },
-    {
-      "tag": "PS5-79-BH-0001-CH01",
-      "task": "T-00022-3483",
-      "system": "PS5-61-02 - 6.6kV Switchboard and Transformer LLHT North - EITS Building (PS5-61-IJ-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/29/2026 7:16:44 P"
     }
   ]
 }
