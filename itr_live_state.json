@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 13:42:59",
+  "updated": "2026-10-01 13:59:09",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -342,12 +342,12 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1266,
-      "remaining": 266,
-      "pct": 82.6,
+      "closed": 1269,
+      "remaining": 263,
+      "pct": 82.8,
       "status": {
-        "Closed": 1266,
-        "Submitted": 3,
+        "Closed": 1269,
+        "Submitted": 0,
         "To be completed": 255,
         "Other": 8
       }
@@ -356,12 +356,12 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 600,
-      "remaining": 549,
-      "pct": 52.2,
+      "closed": 602,
+      "remaining": 547,
+      "pct": 52.4,
       "status": {
-        "Closed": 600,
-        "Submitted": 3,
+        "Closed": 602,
+        "Submitted": 1,
         "To be completed": 542,
         "Other": 4
       }
@@ -384,12 +384,12 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1778,
-      "remaining": 1473,
-      "pct": 54.7,
+      "closed": 1782,
+      "remaining": 1469,
+      "pct": 54.8,
       "status": {
-        "Closed": 1778,
-        "Submitted": 4,
+        "Closed": 1782,
+        "Submitted": 0,
         "To be completed": 1454,
         "Other": 15
       }
