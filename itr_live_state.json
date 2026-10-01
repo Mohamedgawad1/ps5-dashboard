@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 21:45:18",
+  "updated": "2026-10-01 22:01:29",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5886,
-  "open": 4414,
-  "today_closed": 50,
+  "closed": 5887,
+  "open": 4413,
+  "today_closed": 51,
   "closed_by_discipline": {
     "I": 2889,
-    "E": 2737,
+    "E": 2738,
     "T": 260
   },
   "open_by_discipline": {
     "I": 1706,
-    "E": 1890,
+    "E": 1889,
     "T": 818
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-10-01",
-      "E": 38,
+      "E": 39,
       "I": 7,
       "T": 5,
-      "Total": 50
+      "Total": 51
     }
   ],
-  "closed_this_week": 348,
-  "closed_this_month": 50,
+  "closed_this_week": 349,
+  "closed_this_month": 51,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -265,7 +265,7 @@
       "milestone": "Milestone F",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 3
+      "count": 4
     },
     {
       "milestone": "Milestone G",
@@ -280,7 +280,7 @@
       "count": 4
     }
   ],
-  "today_milestone_total": 50,
+  "today_milestone_total": 51,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -356,14 +356,14 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 605,
-      "remaining": 544,
+      "closed": 606,
+      "remaining": 543,
       "pct": 52.7,
       "status": {
-        "Closed": 605,
+        "Closed": 606,
         "Submitted": 0,
-        "To be completed": 539,
-        "Other": 5
+        "To be completed": 537,
+        "Other": 6
       }
     },
     {
@@ -410,6 +410,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-01-IE-0001A",
+      "task": "T-00044-0175",
+      "system": "PS5-01-05 - Foam Skid",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:00:03 P"
+    },
     {
       "tag": "PS5-62-IE-0002-CL60",
       "task": "T-00233-10088",
@@ -1480,15 +1489,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 11:58:14 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1613",
-      "system": "PS5-79-09 - Electrical Heat Tracing Transformer/Distribution Board 9 (PS5-79-IG-0009)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:57:41 "
     }
   ]
 }
