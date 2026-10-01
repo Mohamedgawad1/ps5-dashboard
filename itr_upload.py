@@ -320,12 +320,25 @@ def read_pdf(path):
             hits.append((name, found))
     # The work description decides. The form title is only a last resort, because
     # every one of these forms is titled "Request for Inspection" no matter the job.
+    # 0) a description that STARTS with "Visual Inspection" is an inspection activity,
+    #    even when it mentions testing ("Visual Inspection of Electrical Motor Testing").
+    #    A description that is only about testing ("Electrical Cable testing after
+    #    installation") is a Static Test.
     ptype, why = None, None
-    for name, keys in _load_work_type_rules():
-        found = [k for k in keys if k in first_low]
-        if found:
-            ptype, why = name, found
-            break
+    if re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", first_low):
+        ptype, why = "Conformity Check", [m.group(0) for m in
+                                          (re.search(r"\bvisual\s+inspection\b", first_low),
+                                           re.search(r"\binspection\s+of\b", first_low)) if m]
+    elif re.search(r"\btesting\b|\btest\b", first_low):
+        ptype, why = "Static Test", [m.group(0) for m in
+                                     (re.search(r"\btesting\b", first_low),
+                                      re.search(r"\btest\b", first_low)) if m]
+    if ptype is None:
+        for name, keys in _load_work_type_rules():
+            found = [k for k in keys if k in first_low]
+            if found:
+                ptype, why = name, found
+                break
     if ptype is None:
         for keys, name in (("request to witness", "Static Test"),
                            ("request for test", "Static Test"),

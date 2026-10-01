@@ -27,6 +27,7 @@ from fill_rfi import (
 )
 from itr_upload import find_tasks, read_pdf, task_index
 import cdp_query
+Q = cdp_query
 import sc_browser
 
 PDF_DIR = r"C:\Users\mylap\Downloads\rfi"
@@ -86,19 +87,69 @@ def ensure_browser(seconds=120):
     return ""
 
 
+def task_tabs():
+    """Record ids of the task pages that are really open right now."""
+    out = set()
+    try:
+        for t in cdp_tabs(timeout=20):
+            u = t.get("url") or ""
+            if "vTasks_TestsCompletion" in u and "ID=" in u:
+                out.add(u.split("ID=")[1].split("&")[0])
+    except Exception:
+        pass
+    return out
+
+
+def keep_tab_alive(tab_id):
+    """Chrome's memory saver throws background tabs away within seconds, which is why
+    31 tabs turned into one. Telling DevTools the tab is active stops the discarding."""
+    try:
+        info = next((t for t in Q.tabs() if t.get("id") == tab_id and t.get("webSocketDebuggerUrl")), None)
+        if not info:
+            return False
+        tab = Q.Tab(info["webSocketDebuggerUrl"], timeout=10)
+        try:
+            tab.send("Page.setWebLifecycleState", {"state": "active"}, timeout=10)
+        finally:
+            tab.close()
+        return True
+    except Exception:
+        return False
+
+
+def open_one_tab(record, tries=4):
+    """Open one task page and confirm it really exists - Chrome silently drops tabs
+    when they are fired too fast, so we check and retry instead of trusting the PUT."""
+    url = EDIT_URL % record
+    for attempt in range(tries):
+        info = None
+        try:
+            info = http_new_tab(url)
+        except Exception as exc:
+            log("      !! put failed: %s" % str(exc)[:60])
+        if info and info.get("id"):
+            keep_tab_alive(info["id"])
+        for _ in range(5):
+            time.sleep(0.8)
+            if str(record) in task_tabs():
+                return True
+        log("      (retry %d for record %s)" % (attempt + 2, record))
+        time.sleep(1.5)
+    return False
+
+
 def open_tabs_fast(plan_rows):
     """Every record id is known, so skip the browser attach and just fire the tabs."""
     log("كل الـ records معروفة - هفتح الـ tabs مباشرة من غير ما أربط بالمتصفح\n")
     opened_ids = []
     for n, (tid, row) in enumerate(plan_rows, 1):
-        url = EDIT_URL % row["record"]
-        try:
-            http_new_tab(url)
+        rec = str(row["record"])
+        if open_one_tab(rec):
             opened_ids.append(tid)
-            log("   [tab %d/%d] %s -> record %s" % (n, len(plan_rows), row["task"], row["record"]))
-        except Exception as exc:
-            log("   !! %s: %s" % (row["task"], str(exc)[:90]))
-        time.sleep(0.4)
+            log("   [tab %d/%d] %s -> record %s" % (n, len(plan_rows), row["task"], rec))
+        else:
+            log("   !! %s -> record %s مفتحش" % (row["task"], rec))
+    log("   (%d/%d tab متأكد—they in the browser)" % (len(opened_ids), len(plan_rows)))
     return opened_ids
 
 
@@ -145,14 +196,12 @@ def verify_cached(known, tasks, live=True, stream=None):
         known[tid] = hit
         rows.append((tid, hit))
         log("[%d/%d] %s -> %s" % (n, len(tasks), tid, hit["record"]))
-        if stream:
-            try:
-                http_new_tab(EDIT_URL % hit["record"])
+        if stream is not None:
+            if open_one_tab(hit["record"]):
                 stream.append(tid)
                 log("      [tab %d/%d] اتفتح" % (len(stream), len(tasks)))
-            except Exception as exc:
-                log("      !! %s" % str(exc)[:60])
-            time.sleep(0.3)
+            else:
+                log("      !! record %s مفتحش" % hit["record"])
     if app is not None:
         try:
             app.close()
@@ -476,21 +525,16 @@ def main():
         for tag, want, origin in pairs:
             by_origin.setdefault(origin, []).append((tag, want))
         for origin, items in by_origin.items():
-            picked, fallback, closed = [], [], []
+            picked, fallback = [], []
             for tag, want in items:
                 rows = find_tasks(tag) or []
                 hit = [r for r in rows if (r.get("type") or "").lower() == want.lower()]
-                open_hit = [r for r in hit if not is_closed(r)]
-                if open_hit:
-                    picked.extend((tag, r) for r in open_hit)
-                    closed.extend((tag, r) for r in hit if is_closed(r))
+                if hit:
+                    picked.extend((tag, r) for r in hit)
                     continue
-                if hit:  # the wanted type exists but every one of them is closed
-                    closed.extend((tag, r) for r in hit)
                 others = ", ".join("%s/%s" % (r.get("task_id"), r.get("type")) for r in rows) or "مفيش"
-                log("  - %s [%s]: مفيش %s مفتوح | الموجود: %s" % (tag, want, want, others))
-                fallback.extend((tag, r) for r in rows if not is_closed(r))
-            fallback = [(t, r) for t, r in fallback if (t, r) not in picked]
+                log("  - %s [%s]: مفيش %s | الموجود: %s" % (tag, want, want, others))
+                fallback.extend((tag, r) for r in rows)
             if not picked and fallback and not args.no_other_type:
                 kinds = sorted({(r.get("type") or "?") for _, r in fallback})
                 log("  ! الـ RFI طلب %s، لكن الأصول على المنصة: %s"
@@ -500,8 +544,6 @@ def main():
                 picked = fallback
             else:
                 log_types.update((r.get("type") or "?") for _, r in picked)
-            if closed:
-                log("  x %d task مقفول (Closed) - مش هيتفتح" % len(closed))
             for tag, row in picked:
                 tid = row.get("task_id")
                 if tid and tid in skip:
@@ -591,13 +633,11 @@ def main():
                 fresh += 1
                 save_records(known)
                 # open it right away so the pages start showing while we keep going
-                try:
-                    http_new_tab(EDIT_URL % hit["record"])
+                if open_one_tab(hit["record"]):
                     done.append(tid)
                     log("   %s -> record %s  [tab %d/%d]" % (hit["task"], hit["record"], len(done), len(tasks)))
-                except Exception as exc:
-                    log("   %s -> record %s  !! %s" % (hit["task"], hit["record"], str(exc)[:60]))
-                time.sleep(0.3)
+                else:
+                    log("   %s -> record %s  !! مفتحش" % (hit["task"], hit["record"]))
             app.close()
             if fresh:
                 log("(حفظت %d record id في الـ cache)" % fresh)
