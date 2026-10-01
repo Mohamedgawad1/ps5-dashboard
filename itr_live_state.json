@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 22:27:33",
+  "updated": "2026-10-01 22:35:13",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5899,
-  "open": 4401,
-  "today_closed": 63,
+  "closed": 5901,
+  "open": 4399,
+  "today_closed": 65,
   "closed_by_discipline": {
-    "I": 2900,
+    "I": 2902,
     "E": 2739,
     "T": 260
   },
   "open_by_discipline": {
-    "I": 1695,
+    "I": 1693,
     "E": 1888,
     "T": 818
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-01",
       "E": 40,
-      "I": 18,
+      "I": 20,
       "T": 5,
-      "Total": 63
+      "Total": 65
     }
   ],
-  "closed_this_week": 361,
-  "closed_this_month": 63,
+  "closed_this_week": 363,
+  "closed_this_month": 65,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -289,10 +289,10 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 6
+      "count": 8
     }
   ],
-  "today_milestone_total": 63,
+  "today_milestone_total": 65,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -396,13 +396,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1789,
-      "remaining": 1462,
-      "pct": 55.0,
+      "closed": 1791,
+      "remaining": 1460,
+      "pct": 55.1,
       "status": {
-        "Closed": 1789,
-        "Submitted": 1,
-        "To be completed": 1445,
+        "Closed": 1791,
+        "Submitted": 0,
+        "To be completed": 1444,
         "Other": 16
       }
     },
@@ -422,6 +422,24 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-25-XV-0070",
+      "task": "T-00077-0263",
+      "system": "PS5-25-05 - Crude Oil Export Pumps Bypass",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:30:22 P"
+    },
+    {
+      "tag": "PS5-25-XV-0053",
+      "task": "T-00077-0253",
+      "system": "PS5-25-05 - Crude Oil Export Pumps Bypass",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:27:23 P"
+    },
     {
       "tag": "PS5-25-SDV-0046",
       "task": "T-00077-0261",
@@ -1483,24 +1501,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 12:34:27 "
-    },
-    {
-      "tag": "PS5-79-BH-0002-CH01",
-      "task": "T-00232-1122",
-      "system": "PS5-61-03 - 6.6kV Switchboard and Transformer LLHT South - EITS Building (PS5-61-IJ-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 12:33:34 "
-    },
-    {
-      "tag": "PS5-79-BH-0001-CH03",
-      "task": "T-00232-1121",
-      "system": "PS5-61-02 - 6.6kV Switchboard and Transformer LLHT North - EITS Building (PS5-61-IJ-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 12:32:48 "
     }
   ]
 }
