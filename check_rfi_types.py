@@ -13,10 +13,10 @@ def guess(text):
         return "Static Test", [code]
     if re.match(r"^c[a-z]*\d", code):
         return "Conformity Check", [code]
-    if re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", low):
-        return "Conformity Check", ["visual inspection / inspection of"]
     if re.search(r"\btesting\b|\btest\b", low):
         return "Static Test", ["testing / test"]
+    if re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", low):
+        return "Conformity Check", ["visual inspection / inspection of"]
     for name, keys in RULES:
         f = [k for k in keys if k in low]
         if f:
@@ -26,7 +26,7 @@ def guess(text):
 CASES = [
     ("TPX13 - Motor LV", "Static Test"),
     ("CPX13 - Cable Glanding", "Conformity Check"),
-    ("Visual Inspection of Electrical Motor Testing with following tag number", "Conformity Check"),
+    ("Visual Inspection of Electrical Motor Testing with following tag number", "Static Test"),
     ("Electrical Cable testing after installation with the following Cable Tag Num", "Static Test"),
     ("Request to Witness Telecom Cable Glanding & termination with following tag number", "Static Test"),
     ("Visual inspection of Instrument cable Glanding and Termination", "Conformity Check"),

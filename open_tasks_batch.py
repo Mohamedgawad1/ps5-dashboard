@@ -1,4 +1,4 @@
-"""Open every task-completion record for the assets in the RFI PDFs, all in one browser run.
+﻿"""Open every task-completion record for the assets in the RFI PDFs, all in one browser run.
 
 One tab per task, nothing is typed, nothing is saved, nothing is completed.
 """
@@ -595,7 +595,7 @@ def main():
             for p in sorted(Path(PDF_DIR).glob("*.pdf")):
                 log("الملف: %s" % p)
             log("==================================================")
-            wait_browser_open(len(done), minutes=args.keep_open or 240)
+            wait_browser_open(len(done), minutes=(240 if args.keep_open is None else args.keep_open))
             return 0
 
     # raw CDP path: same as before but without Playwright, so it works while the
@@ -650,7 +650,7 @@ def main():
                 for p in sorted(Path(PDF_DIR).glob("*.pdf")):
                     log("الملف: %s" % p)
                 log("==================================================")
-                wait_browser_open(len(done), minutes=args.keep_open or 240)
+                wait_browser_open(len(done), minutes=(240 if args.keep_open is None else args.keep_open))
                 return 0
 
     pw = sync_playwright().start()

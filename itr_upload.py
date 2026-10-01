@@ -330,10 +330,10 @@ def read_pdf(path):
         ptype, why = "Static Test", [first_code]
     elif re.match(r"^c[a-z]*\d", first_code):
         ptype, why = "Conformity Check", [first_code]
-    if ptype is None and re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", first_low):
-        ptype, why = "Conformity Check", ["visual inspection / inspection of"]
     if ptype is None and re.search(r"\btesting\b|\btest\b", first_low):
         ptype, why = "Static Test", ["testing / test"]
+    if ptype is None and re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", first_low):
+        ptype, why = "Conformity Check", ["visual inspection / inspection of"]
     if ptype is None:
         for name, keys in _load_work_type_rules():
             found = [k for k in keys if k in first_low]
