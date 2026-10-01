@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 11:41:08",
+  "updated": "2026-10-01 12:21:11",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,18 +9,18 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5858,
-  "open": 4442,
-  "today_closed": 22,
+  "closed": 5859,
+  "open": 4441,
+  "today_closed": 23,
   "closed_by_discipline": {
     "I": 2889,
     "E": 2710,
-    "T": 259
+    "T": 260
   },
   "open_by_discipline": {
     "I": 1706,
     "E": 1917,
-    "T": 819
+    "T": 818
   },
   "daily": [
     {
@@ -230,12 +230,12 @@
       "label": "2026-10-01",
       "E": 11,
       "I": 7,
-      "T": 4,
-      "Total": 22
+      "T": 5,
+      "Total": 23
     }
   ],
-  "closed_this_week": 320,
-  "closed_this_month": 22,
+  "closed_this_week": 321,
+  "closed_this_month": 23,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -253,7 +253,7 @@
       "milestone": "Milestone D",
       "disc": "T",
       "discipline": "Telecom (T)",
-      "count": 2
+      "count": 3
     },
     {
       "milestone": "Milestone E",
@@ -280,7 +280,7 @@
       "count": 4
     }
   ],
-  "today_milestone_total": 22,
+  "today_milestone_total": 23,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -328,13 +328,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3433,
-      "closed": 2284,
-      "remaining": 1149,
-      "pct": 66.5,
+      "closed": 2285,
+      "remaining": 1148,
+      "pct": 66.6,
       "status": {
-        "Closed": 2284,
+        "Closed": 2285,
         "Submitted": 2,
-        "To be completed": 1145,
+        "To be completed": 1144,
         "Other": 2
       }
     },
@@ -410,6 +410,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-IN-0002D-CA01",
+      "task": "T-00171-4388",
+      "system": "PS5-60-63 - Fuel Conditioning Module PS5-60-UZ-8900D (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 8:37:15 A"
+    },
     {
       "tag": "PS5-60-IN-0002C-CA01",
       "task": "T-00171-4387",
@@ -1480,15 +1489,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 11:35:55 "
-    },
-    {
-      "tag": "PS5-28-FO-0007",
-      "task": "T-00255-0066",
-      "system": "PS5-28-03 - Closed Drain Drum and Pump 01",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 11:06:05 "
     }
   ]
 }
