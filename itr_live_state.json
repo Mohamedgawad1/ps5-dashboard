@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 22:50:26",
+  "updated": "2026-10-01 22:57:11",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5903,
-  "open": 4397,
-  "today_closed": 67,
+  "closed": 5907,
+  "open": 4393,
+  "today_closed": 71,
   "closed_by_discipline": {
-    "I": 2904,
+    "I": 2908,
     "E": 2739,
     "T": 260
   },
   "open_by_discipline": {
-    "I": 1691,
+    "I": 1687,
     "E": 1888,
     "T": 818
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-01",
       "E": 40,
-      "I": 22,
+      "I": 26,
       "T": 5,
-      "Total": 67
+      "Total": 71
     }
   ],
-  "closed_this_week": 365,
-  "closed_this_month": 67,
+  "closed_this_week": 369,
+  "closed_this_month": 71,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -271,7 +271,7 @@
       "milestone": "Milestone F",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 2
+      "count": 3
     },
     {
       "milestone": "Milestone G",
@@ -295,10 +295,10 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 8
+      "count": 11
     }
   ],
-  "today_milestone_total": 67,
+  "today_milestone_total": 71,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -323,8 +323,8 @@
       "pct": 92.8,
       "status": {
         "Closed": 1591,
-        "Submitted": 0,
-        "To be completed": 120,
+        "Submitted": 1,
+        "To be completed": 119,
         "Other": 3
       }
     },
@@ -374,14 +374,14 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 609,
-      "remaining": 540,
-      "pct": 53.0,
+      "closed": 610,
+      "remaining": 539,
+      "pct": 53.1,
       "status": {
-        "Closed": 609,
+        "Closed": 610,
         "Submitted": 0,
         "To be completed": 534,
-        "Other": 6
+        "Other": 5
       }
     },
     {
@@ -402,13 +402,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1791,
-      "remaining": 1460,
-      "pct": 55.1,
+      "closed": 1794,
+      "remaining": 1457,
+      "pct": 55.2,
       "status": {
-        "Closed": 1791,
-        "Submitted": 1,
-        "To be completed": 1443,
+        "Closed": 1794,
+        "Submitted": 0,
+        "To be completed": 1441,
         "Other": 16
       }
     },
@@ -428,6 +428,42 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-25-XXS-0070-CJ01",
+      "task": "T-00069-4804",
+      "system": "PS5-25-05 - Crude Oil Export Pumps Bypass",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:53:20 P"
+    },
+    {
+      "tag": "PS5-25-XV-0070-CC01",
+      "task": "T-00069-4802",
+      "system": "PS5-25-05 - Crude Oil Export Pumps Bypass",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:51:05 P"
+    },
+    {
+      "tag": "PS5-71-SDV-0029",
+      "task": "T-00077-0244",
+      "system": "PS5-71-15 - Diesel Fuel Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:50:10 P"
+    },
+    {
+      "tag": "PS5-71-FCV-0018",
+      "task": "T-00079-0066",
+      "system": "PS5-71-13 - CFO Service Pump A/B",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:49:59 P"
+    },
     {
       "tag": "PS5-71-HZL-0059",
       "task": "T-00067-2052",
@@ -1471,42 +1507,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 7:49:25 P"
-    },
-    {
-      "tag": "PS5-28-LIT-1301B-CJ01",
-      "task": "T-00069-4833",
-      "system": "PS5-28-14 - Seal Oil Drain Drum & Pump B",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 7:47:33 P"
-    },
-    {
-      "tag": "PS5-28-LIT-1301A-CJ01",
-      "task": "T-00069-4832",
-      "system": "PS5-28-13 - Seal Oil Drain Drum & Pump A",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 7:46:59 P"
-    },
-    {
-      "tag": "PS5-79-BH-0002",
-      "task": "T-00043-0046",
-      "system": "PS5-61-03 - 6.6kV Switchboard and Transformer LLHT South - EITS Building (PS5-61-IJ-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 7:42:47 P"
-    },
-    {
-      "tag": "PS5-79-BH-0001",
-      "task": "T-00043-0045",
-      "system": "PS5-61-02 - 6.6kV Switchboard and Transformer LLHT North - EITS Building (PS5-61-IJ-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 7:41:27 P"
     }
   ]
 }
