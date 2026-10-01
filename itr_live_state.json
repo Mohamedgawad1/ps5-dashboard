@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 22:21:13",
+  "updated": "2026-10-01 22:27:33",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5898,
-  "open": 4402,
-  "today_closed": 62,
+  "closed": 5899,
+  "open": 4401,
+  "today_closed": 63,
   "closed_by_discipline": {
-    "I": 2899,
+    "I": 2900,
     "E": 2739,
     "T": 260
   },
   "open_by_discipline": {
-    "I": 1696,
+    "I": 1695,
     "E": 1888,
     "T": 818
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-01",
       "E": 40,
-      "I": 17,
+      "I": 18,
       "T": 5,
-      "Total": 62
+      "Total": 63
     }
   ],
-  "closed_this_week": 360,
-  "closed_this_month": 62,
+  "closed_this_week": 361,
+  "closed_this_month": 63,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -289,10 +289,10 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 5
+      "count": 6
     }
   ],
-  "today_milestone_total": 62,
+  "today_milestone_total": 63,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -396,14 +396,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1788,
-      "remaining": 1463,
+      "closed": 1789,
+      "remaining": 1462,
       "pct": 55.0,
       "status": {
-        "Closed": 1788,
-        "Submitted": 0,
-        "To be completed": 1448,
-        "Other": 15
+        "Closed": 1789,
+        "Submitted": 1,
+        "To be completed": 1445,
+        "Other": 16
       }
     },
     {
@@ -422,6 +422,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-25-SDV-0046",
+      "task": "T-00077-0261",
+      "system": "PS5-25-05 - Crude Oil Export Pumps Bypass",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:24:23 P"
+    },
     {
       "tag": "PS5-71-IES-3400A",
       "task": "T-00067-2466",
@@ -1492,15 +1501,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 12:32:48 "
-    },
-    {
-      "tag": "PS5-79-BH-0001-CH02",
-      "task": "T-00232-1120",
-      "system": "PS5-61-02 - 6.6kV Switchboard and Transformer LLHT North - EITS Building (PS5-61-IJ-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 12:32:14 "
     }
   ]
 }
