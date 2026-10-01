@@ -100,21 +100,43 @@ def task_tabs():
     return out
 
 
-def keep_tab_alive(tab_id):
+def keep_tab_alive(tab_id=None, rounds=6):
     """Chrome's memory saver throws background tabs away within seconds, which is why
-    31 tabs turned into one. Telling DevTools the tab is active stops the discarding."""
-    try:
-        info = next((t for t in Q.tabs() if t.get("id") == tab_id and t.get("webSocketDebuggerUrl")), None)
-        if not info:
-            return False
-        tab = Q.Tab(info["webSocketDebuggerUrl"], timeout=10)
+    17 tabs turned into one. Telling DevTools the tab is active stops the discarding.
+    A fresh tab is not listed by /json/list for a moment, so retry for a few seconds
+    instead of giving up on the first miss."""
+    for _ in range(rounds):
         try:
-            tab.send("Page.setWebLifecycleState", {"state": "active"}, timeout=10)
-        finally:
-            tab.close()
-        return True
-    except Exception:
-        return False
+            targets = Q.tabs()
+        except Exception:
+            targets = []
+        if tab_id is None:
+            targets = [t for t in targets if "vTasks_TestsCompletion" in (t.get("url") or "")]
+            if not targets:
+                return 0
+        else:
+            targets = [t for t in targets if t.get("id") == tab_id]
+        ok = 0
+        for t in targets:
+            ws = t.get("webSocketDebuggerUrl")
+            if not ws:
+                continue
+            try:
+                tab = Q.Tab(ws, timeout=10)
+                try:
+                    res = tab.send("Page.setWebLifecycleState", {"state": "active"}, timeout=10)
+                    if not res.get("error"):
+                        ok += 1
+                finally:
+                    tab.close()
+            except Exception:
+                pass
+        if tab_id is not None and ok:
+            return 1
+        if tab_id is None and ok:
+            return ok
+        time.sleep(1)
+    return 0
 
 
 def open_one_tab(record, tries=4):
@@ -213,7 +235,8 @@ def verify_cached(known, tasks, live=True, stream=None):
 
 
 def wait_browser_open(count, minutes=240):
-    """Stay alive with the browser, never close it."""
+    """Stay alive with the browser, never close it. Every 30s re-mark the task tabs
+    as active so Chrome's memory saver cannot throw them away while you work."""
     log("\nفتحت %d صفحة. المتصفح سيبه مفتوح - اقفل الـ tabs لما تخلص." % count)
     end = time.time() + minutes * 60
     while time.time() < end:
@@ -222,6 +245,11 @@ def wait_browser_open(count, minutes=240):
             cdp_tabs(timeout=10)
         except Exception:
             log("  (المتصفح مش راد - مستنيك ترجّعه)")
+            continue
+        left = len(task_tabs())
+        if left < count:
+            log("  (Chrome قفل %d تاب - بارجعه alive)" % (count - left))
+        keep_tab_alive()
     return
 
 
