@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-01 22:42:39",
+  "updated": "2026-10-01 22:50:26",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5902,
-  "open": 4398,
-  "today_closed": 66,
+  "closed": 5903,
+  "open": 4397,
+  "today_closed": 67,
   "closed_by_discipline": {
-    "I": 2903,
+    "I": 2904,
     "E": 2739,
     "T": 260
   },
   "open_by_discipline": {
-    "I": 1692,
+    "I": 1691,
     "E": 1888,
     "T": 818
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-01",
       "E": 40,
-      "I": 21,
+      "I": 22,
       "T": 5,
-      "Total": 66
+      "Total": 67
     }
   ],
-  "closed_this_week": 364,
-  "closed_this_month": 66,
+  "closed_this_week": 365,
+  "closed_this_month": 67,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -271,7 +271,7 @@
       "milestone": "Milestone F",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 1
+      "count": 2
     },
     {
       "milestone": "Milestone G",
@@ -298,7 +298,7 @@
       "count": 8
     }
   ],
-  "today_milestone_total": 66,
+  "today_milestone_total": 67,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -374,14 +374,14 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 608,
-      "remaining": 541,
-      "pct": 52.9,
+      "closed": 609,
+      "remaining": 540,
+      "pct": 53.0,
       "status": {
-        "Closed": 608,
+        "Closed": 609,
         "Submitted": 0,
         "To be completed": 534,
-        "Other": 7
+        "Other": 6
       }
     },
     {
@@ -408,8 +408,8 @@
       "status": {
         "Closed": 1791,
         "Submitted": 1,
-        "To be completed": 1444,
-        "Other": 15
+        "To be completed": 1443,
+        "Other": 16
       }
     },
     {
@@ -428,6 +428,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-HZL-0059",
+      "task": "T-00067-2052",
+      "system": "PS5-71-18 - Diesel Separator Module",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/1/2026 7:46:20 P"
+    },
     {
       "tag": "PS5-71-HZH-0059",
       "task": "T-00067-2053",
@@ -1498,15 +1507,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 7:41:27 P"
-    },
-    {
-      "tag": "PS5-79-BH-0002-CH03",
-      "task": "T-00232-1124",
-      "system": "PS5-61-03 - 6.6kV Switchboard and Transformer LLHT South - EITS Building (PS5-61-IJ-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 12:39:20 "
     }
   ]
 }
