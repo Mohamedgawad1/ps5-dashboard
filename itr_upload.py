@@ -320,19 +320,20 @@ def read_pdf(path):
             hits.append((name, found))
     # The work description decides. The form title is only a last resort, because
     # every one of these forms is titled "Request for Inspection" no matter the job.
-    # 0) a description that STARTS with "Visual Inspection" is an inspection activity,
-    #    even when it mentions testing ("Visual Inspection of Electrical Motor Testing").
-    #    A description that is only about testing ("Electrical Cable testing after
-    #    installation") is a Static Test.
+    # 0) the first code of the DESCRIPTION decides, e.g. "TPX13 - Motor LV" is a test
+    #    (Static Test) and "CPX13 - ..." is a conformance check. Anything else falls
+    #    back to the wording rules below.
     ptype, why = None, None
-    if re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", first_low):
-        ptype, why = "Conformity Check", [m.group(0) for m in
-                                          (re.search(r"\bvisual\s+inspection\b", first_low),
-                                           re.search(r"\binspection\s+of\b", first_low)) if m]
-    elif re.search(r"\btesting\b|\btest\b", first_low):
-        ptype, why = "Static Test", [m.group(0) for m in
-                                     (re.search(r"\btesting\b", first_low),
-                                      re.search(r"\btest\b", first_low)) if m]
+    desc = re.sub(r"^[^a-z0-9]+", "", first_low)
+    first_code = (desc.split()[0] if desc.split() else "")
+    if re.match(r"^t[a-z]*\d", first_code):
+        ptype, why = "Static Test", [first_code]
+    elif re.match(r"^c[a-z]*\d", first_code):
+        ptype, why = "Conformity Check", [first_code]
+    if ptype is None and re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", first_low):
+        ptype, why = "Conformity Check", ["visual inspection / inspection of"]
+    if ptype is None and re.search(r"\btesting\b|\btest\b", first_low):
+        ptype, why = "Static Test", ["testing / test"]
     if ptype is None:
         for name, keys in _load_work_type_rules():
             found = [k for k in keys if k in first_low]
