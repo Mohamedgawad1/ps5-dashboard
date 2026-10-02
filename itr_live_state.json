@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-02 09:58:43",
+  "updated": "2026-10-02 10:07:11",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,18 +9,18 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5961,
-  "open": 4339,
-  "today_closed": 36,
+  "closed": 5965,
+  "open": 4335,
+  "today_closed": 40,
   "closed_by_discipline": {
     "I": 2951,
     "E": 2739,
-    "T": 271
+    "T": 275
   },
   "open_by_discipline": {
     "I": 1644,
     "E": 1888,
-    "T": 807
+    "T": 803
   },
   "daily": [
     {
@@ -230,12 +230,12 @@
       "label": "2026-10-02",
       "E": 0,
       "I": 25,
-      "T": 11,
-      "Total": 36
+      "T": 15,
+      "Total": 40
     }
   ],
-  "closed_this_week": 423,
-  "closed_this_month": 125,
+  "closed_this_week": 427,
+  "closed_this_month": 129,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -259,7 +259,7 @@
       "milestone": "Milestone D",
       "disc": "T",
       "discipline": "Telecom (T)",
-      "count": 7
+      "count": 9
     },
     {
       "milestone": "Milestone E",
@@ -284,9 +284,15 @@
       "disc": "I",
       "discipline": "Instrumentation (I)",
       "count": 9
+    },
+    {
+      "milestone": "Milestone H",
+      "disc": "T",
+      "discipline": "Telecom (T)",
+      "count": 2
     }
   ],
-  "today_milestone_total": 36,
+  "today_milestone_total": 40,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -334,13 +340,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3433,
-      "closed": 2302,
-      "remaining": 1131,
+      "closed": 2304,
+      "remaining": 1129,
       "pct": 67.1,
       "status": {
-        "Closed": 2302,
+        "Closed": 2304,
         "Submitted": 2,
-        "To be completed": 1127,
+        "To be completed": 1125,
         "Other": 2
       }
     },
@@ -390,14 +396,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1819,
-      "remaining": 1432,
+      "closed": 1821,
+      "remaining": 1430,
       "pct": 56.0,
       "status": {
-        "Closed": 1819,
+        "Closed": 1821,
         "Submitted": 0,
-        "To be completed": 1411,
-        "Other": 21
+        "To be completed": 1410,
+        "Other": 20
       }
     },
     {
@@ -416,6 +422,42 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-IE-0003D-CA02",
+      "task": "T-00171-4350",
+      "system": "PS5-60-11 - Power Gen Package D (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 7:02:25 A"
+    },
+    {
+      "tag": "PS5-60-IE-0003C-CA02",
+      "task": "T-00171-4346",
+      "system": "PS5-60-08 - Power Gen Package C (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 7:01:23 A"
+    },
+    {
+      "tag": "PS5-71-IN-0004B-CA01",
+      "task": "T-00171-4410",
+      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 7:00:30 A"
+    },
+    {
+      "tag": "PS5-71-IN-0004A-CA01",
+      "task": "T-00171-4409",
+      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:57:15 A"
+    },
     {
       "tag": "PS5-71-IN-0003-CA01",
       "task": "T-00171-4408",
@@ -1459,42 +1501,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/1/2026 6:21:07 A"
-    },
-    {
-      "tag": "PS5-71-DM-3300B",
-      "task": "T-00236-0175",
-      "system": "PS5-71-05 - CFO Transfer Pump A/B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 6:19:55 A"
-    },
-    {
-      "tag": "PS5-71-DM-3300A",
-      "task": "T-00236-0174",
-      "system": "PS5-71-05 - CFO Transfer Pump A/B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 6:18:42 A"
-    },
-    {
-      "tag": "PS5-71-DM-3200",
-      "task": "T-00236-0173",
-      "system": "PS5-71-14 - Diesel Fuel Transfer and Dispensing Station",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 6:17:05 A"
-    },
-    {
-      "tag": "PS5-71-DM-3100B",
-      "task": "T-00236-0172",
-      "system": "PS5-71-16 - Diesel Fuel Supply Pump A/B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 6:14:47 A"
     }
   ]
 }
