@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-02 09:50:47",
+  "updated": "2026-10-02 09:58:43",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,18 +9,18 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5955,
-  "open": 4345,
-  "today_closed": 30,
+  "closed": 5961,
+  "open": 4339,
+  "today_closed": 36,
   "closed_by_discipline": {
     "I": 2951,
     "E": 2739,
-    "T": 265
+    "T": 271
   },
   "open_by_discipline": {
     "I": 1644,
     "E": 1888,
-    "T": 813
+    "T": 807
   },
   "daily": [
     {
@@ -230,12 +230,12 @@
       "label": "2026-10-02",
       "E": 0,
       "I": 25,
-      "T": 5,
-      "Total": 30
+      "T": 11,
+      "Total": 36
     }
   ],
-  "closed_this_week": 417,
-  "closed_this_month": 119,
+  "closed_this_week": 423,
+  "closed_this_month": 125,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -247,7 +247,7 @@
       "milestone": "Milestone B",
       "disc": "T",
       "discipline": "Telecom (T)",
-      "count": 2
+      "count": 3
     },
     {
       "milestone": "Milestone D",
@@ -259,7 +259,7 @@
       "milestone": "Milestone D",
       "disc": "T",
       "discipline": "Telecom (T)",
-      "count": 3
+      "count": 7
     },
     {
       "milestone": "Milestone E",
@@ -274,13 +274,19 @@
       "count": 1
     },
     {
+      "milestone": "Milestone F",
+      "disc": "T",
+      "discipline": "Telecom (T)",
+      "count": 1
+    },
+    {
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
       "count": 9
     }
   ],
-  "today_milestone_total": 30,
+  "today_milestone_total": 36,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -300,13 +306,13 @@
       "label": "Milestone B",
       "raw": "PS5 - Milestone B",
       "total": 1714,
-      "closed": 1599,
-      "remaining": 115,
+      "closed": 1600,
+      "remaining": 114,
       "pct": 93.3,
       "status": {
-        "Closed": 1599,
+        "Closed": 1600,
         "Submitted": 0,
-        "To be completed": 111,
+        "To be completed": 110,
         "Other": 4
       }
     },
@@ -328,14 +334,14 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3433,
-      "closed": 2298,
-      "remaining": 1135,
-      "pct": 66.9,
+      "closed": 2302,
+      "remaining": 1131,
+      "pct": 67.1,
       "status": {
-        "Closed": 2298,
+        "Closed": 2302,
         "Submitted": 2,
-        "To be completed": 1130,
-        "Other": 3
+        "To be completed": 1127,
+        "Other": 2
       }
     },
     {
@@ -356,13 +362,13 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 612,
-      "remaining": 537,
-      "pct": 53.3,
+      "closed": 613,
+      "remaining": 536,
+      "pct": 53.4,
       "status": {
-        "Closed": 612,
+        "Closed": 613,
         "Submitted": 0,
-        "To be completed": 533,
+        "To be completed": 532,
         "Other": 4
       }
     },
@@ -390,8 +396,8 @@
       "status": {
         "Closed": 1819,
         "Submitted": 0,
-        "To be completed": 1412,
-        "Other": 20
+        "To be completed": 1411,
+        "Other": 21
       }
     },
     {
@@ -410,6 +416,60 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-IN-0003-CA01",
+      "task": "T-00171-4408",
+      "system": "PS5-71-23 - Diesel Fuel Pre Pressure Module (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:56:12 A"
+    },
+    {
+      "tag": "PS5-71-IN-0001-CA01",
+      "task": "T-00171-4405",
+      "system": "PS5-71-19 - Diesel Separator Module (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:55:14 A"
+    },
+    {
+      "tag": "PS5-60-LA-0002C-CA03",
+      "task": "T-00171-4400",
+      "system": "PS5-60-16 - Power Generation Package F",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:53:48 A"
+    },
+    {
+      "tag": "PS5-60-IN-0002F-CA01",
+      "task": "T-00171-4390",
+      "system": "PS5-60-67 - Fuel Conditioning Module PS5-60-UZ-8900F (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:52:55 A"
+    },
+    {
+      "tag": "PS5-60-IN-0002E-CA01",
+      "task": "T-00171-4389",
+      "system": "PS5-60-65 - Fuel Conditioning Module PS5-60-UZ-8900E (UCP)",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:51:56 A"
+    },
+    {
+      "tag": "PS5-60-IN-0001F-CA01",
+      "task": "T-00171-4383",
+      "system": "PS5-60-54 - Lube Oil Separator Module PS5-60-UO-81100F",
+      "loop": "",
+      "disc": "T - Telecom",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:50:34 A"
+    },
     {
       "tag": "PS5-60-IN-0001E-CA01",
       "task": "T-00171-4382",
@@ -1435,60 +1495,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/1/2026 6:14:47 A"
-    },
-    {
-      "tag": "PS5-71-DM-3100A",
-      "task": "T-00236-0171",
-      "system": "PS5-71-16 - Diesel Fuel Supply Pump A/B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 6:13:13 A"
-    },
-    {
-      "tag": "PS5-28-DM-3400",
-      "task": "T-00236-0156",
-      "system": "PS5-28-03 - Closed Drain Drum and Pump 01",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 6:11:56 A"
-    },
-    {
-      "tag": "PS5-28-DM-3300",
-      "task": "T-00236-0155",
-      "system": "PS5-28-06 - Relief Drum and Pump",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 6:10:26 A"
-    },
-    {
-      "tag": "PS5-60-IN-0002E",
-      "task": "T-00044-0189",
-      "system": "PS5-60-65 - Fuel Conditioning Module PS5-60-UZ-8900E (UCP)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 6:07:58 A"
-    },
-    {
-      "tag": "PS5-60-LA-0002B-CA06",
-      "task": "T-00171-4397",
-      "system": "PS5-60-10 - Power Generation Package D",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/1/2026 4:52:02 A"
-    },
-    {
-      "tag": "PS5-28-FO-0004",
-      "task": "T-00070-0064",
-      "system": "PS5-28-16 - LP Relief Header",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:58:58 P"
     }
   ]
 }
