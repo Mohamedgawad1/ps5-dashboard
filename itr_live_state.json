@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-02 09:25:26",
+  "updated": "2026-10-02 09:34:01",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5936,
-  "open": 4364,
-  "today_closed": 11,
+  "closed": 5941,
+  "open": 4359,
+  "today_closed": 16,
   "closed_by_discipline": {
-    "I": 2937,
+    "I": 2942,
     "E": 2739,
     "T": 260
   },
   "open_by_discipline": {
-    "I": 1658,
+    "I": 1653,
     "E": 1888,
     "T": 818
   },
@@ -229,14 +229,26 @@
     {
       "label": "2026-10-02",
       "E": 0,
-      "I": 11,
+      "I": 16,
       "T": 0,
-      "Total": 11
+      "Total": 16
     }
   ],
-  "closed_this_week": 398,
-  "closed_this_month": 100,
+  "closed_this_week": 403,
+  "closed_this_month": 105,
   "today_milestone": [
+    {
+      "milestone": "Milestone B",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 4
+    },
+    {
+      "milestone": "Milestone D",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
+    },
     {
       "milestone": "Milestone E",
       "disc": "I",
@@ -256,7 +268,7 @@
       "count": 9
     }
   ],
-  "today_milestone_total": 11,
+  "today_milestone_total": 16,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -276,13 +288,13 @@
       "label": "Milestone B",
       "raw": "PS5 - Milestone B",
       "total": 1714,
-      "closed": 1591,
-      "remaining": 123,
-      "pct": 92.8,
+      "closed": 1595,
+      "remaining": 119,
+      "pct": 93.1,
       "status": {
-        "Closed": 1591,
+        "Closed": 1595,
         "Submitted": 0,
-        "To be completed": 119,
+        "To be completed": 115,
         "Other": 4
       }
     },
@@ -304,14 +316,14 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3433,
-      "closed": 2287,
-      "remaining": 1146,
+      "closed": 2288,
+      "remaining": 1145,
       "pct": 66.6,
       "status": {
-        "Closed": 2287,
+        "Closed": 2288,
         "Submitted": 2,
-        "To be completed": 1142,
-        "Other": 2
+        "To be completed": 1140,
+        "Other": 3
       }
     },
     {
@@ -386,6 +398,51 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-IH-0001C-CC01",
+      "task": "T-00069-12981",
+      "system": "PS5-60-09 - Power Gen Package C Generator Auxiliary MCCs & DBs",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:32:30 A"
+    },
+    {
+      "tag": "PS5-60-IH-0001B-CC02",
+      "task": "T-00069-12980",
+      "system": "PS5-60-06 - Power Gen Package B Generator Auxiliary MCCs & DBs",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:31:16 A"
+    },
+    {
+      "tag": "PS5-60-IH-0001B-CC01",
+      "task": "T-00069-12979",
+      "system": "PS5-60-06 - Power Gen Package B Generator Auxiliary MCCs & DBs",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:30:07 A"
+    },
+    {
+      "tag": "PS5-60-IH-0001A-CC02",
+      "task": "T-00069-12978",
+      "system": "PS5-60-03 - Power Gen Package A Generator Auxiliary MCCs & DBs",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:28:27 A"
+    },
+    {
+      "tag": "PS5-60-IH-0001A-CC01",
+      "task": "T-00069-12977",
+      "system": "PS5-60-03 - Power Gen Package A Generator Auxiliary MCCs & DBs",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 6:26:52 A"
+    },
     {
       "tag": "PS5-03-RDIR-0138-CJ01",
       "task": "T-00069-4474",
@@ -1420,51 +1477,6 @@
       "disc": "T - Telecom",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 8:36:43 P"
-    },
-    {
-      "tag": "PS5-60-LA-0002C-CA02",
-      "task": "T-00171-4399",
-      "system": "PS5-60-16 - Power Generation Package F",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:35:29 P"
-    },
-    {
-      "tag": "PS5-60-LA-0002B-CA05",
-      "task": "T-00171-4396",
-      "system": "PS5-60-10 - Power Generation Package D",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:34:08 P"
-    },
-    {
-      "tag": "PS5-60-LA-0002B-CA04",
-      "task": "T-00171-4395",
-      "system": "PS5-60-10 - Power Generation Package D",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:32:22 P"
-    },
-    {
-      "tag": "PS5-60-LA-0002B-CA03",
-      "task": "T-00171-4394",
-      "system": "PS5-60-10 - Power Generation Package D",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:31:12 P"
-    },
-    {
-      "tag": "PS5-60-LA-0002B-CA02",
-      "task": "T-00171-4393",
-      "system": "PS5-60-10 - Power Generation Package D",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:29:54 P"
     }
   ]
 }
