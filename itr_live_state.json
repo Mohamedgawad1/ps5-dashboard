@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-02 08:46:03",
+  "updated": "2026-10-02 08:53:52",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5925,
-  "open": 4375,
-  "today_closed": 0,
+  "closed": 5926,
+  "open": 4374,
+  "today_closed": 1,
   "closed_by_discipline": {
-    "I": 2926,
+    "I": 2927,
     "E": 2739,
     "T": 260
   },
   "open_by_discipline": {
-    "I": 1669,
+    "I": 1668,
     "E": 1888,
     "T": 818
   },
@@ -229,15 +229,22 @@
     {
       "label": "2026-10-02",
       "E": 0,
-      "I": 0,
+      "I": 1,
       "T": 0,
-      "Total": 0
+      "Total": 1
     }
   ],
-  "closed_this_week": 387,
-  "closed_this_month": 89,
-  "today_milestone": [],
-  "today_milestone_total": 0,
+  "closed_this_week": 388,
+  "closed_this_month": 90,
+  "today_milestone": [
+    {
+      "milestone": "Milestone F",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
+    }
+  ],
+  "today_milestone_total": 1,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -313,13 +320,13 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 1149,
-      "closed": 611,
-      "remaining": 538,
-      "pct": 53.2,
+      "closed": 612,
+      "remaining": 537,
+      "pct": 53.3,
       "status": {
-        "Closed": 611,
+        "Closed": 612,
         "Submitted": 0,
-        "To be completed": 534,
+        "To be completed": 533,
         "Other": 4
       }
     },
@@ -367,6 +374,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-03-BI-1502-CC01",
+      "task": "T-00614-0879",
+      "system": "PS5-03-04 - FZ-04 - Utilities - Diesel and Firewater Pumps Areas",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 5:53:26 A"
+    },
     {
       "tag": "PS5-25-MOV-0002",
       "task": "T-00078-0154",
@@ -1437,15 +1453,6 @@
       "disc": "T - Telecom",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 8:17:11 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003E-CA03",
-      "task": "T-00171-4355",
-      "system": "PS5-60-14 - Power Gen Package E (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:15:44 P"
     }
   ]
 }
