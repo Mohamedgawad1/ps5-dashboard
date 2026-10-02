@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-02 08:53:52",
+  "updated": "2026-10-02 09:01:49",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 5926,
-  "open": 4374,
-  "today_closed": 1,
+  "closed": 5931,
+  "open": 4369,
+  "today_closed": 6,
   "closed_by_discipline": {
-    "I": 2927,
+    "I": 2932,
     "E": 2739,
     "T": 260
   },
   "open_by_discipline": {
-    "I": 1668,
+    "I": 1663,
     "E": 1888,
     "T": 818
   },
@@ -229,22 +229,34 @@
     {
       "label": "2026-10-02",
       "E": 0,
-      "I": 1,
+      "I": 6,
       "T": 0,
-      "Total": 1
+      "Total": 6
     }
   ],
-  "closed_this_week": 388,
-  "closed_this_month": 90,
+  "closed_this_week": 393,
+  "closed_this_month": 95,
   "today_milestone": [
+    {
+      "milestone": "Milestone E",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
+    },
     {
       "milestone": "Milestone F",
       "disc": "I",
       "discipline": "Instrumentation (I)",
       "count": 1
+    },
+    {
+      "milestone": "Milestone H",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 4
     }
   ],
-  "today_milestone_total": 1,
+  "today_milestone_total": 6,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -306,13 +318,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1269,
-      "remaining": 263,
-      "pct": 82.8,
+      "closed": 1270,
+      "remaining": 262,
+      "pct": 82.9,
       "status": {
-        "Closed": 1269,
+        "Closed": 1270,
         "Submitted": 0,
-        "To be completed": 248,
+        "To be completed": 247,
         "Other": 15
       }
     },
@@ -348,14 +360,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1810,
-      "remaining": 1441,
-      "pct": 55.7,
+      "closed": 1814,
+      "remaining": 1437,
+      "pct": 55.8,
       "status": {
-        "Closed": 1810,
+        "Closed": 1814,
         "Submitted": 0,
-        "To be completed": 1421,
-        "Other": 20
+        "To be completed": 1416,
+        "Other": 21
       }
     },
     {
@@ -374,6 +386,51 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-25-PIT-0046-CJ01",
+      "task": "T-00069-4728",
+      "system": "PS5-25-05 - Crude Oil Export Pumps Bypass",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 5:59:48 A"
+    },
+    {
+      "tag": "PS5-25-MOV-0027-CC02",
+      "task": "T-00069-4684",
+      "system": "PS5-25-06 - Crude Oil Export Pumps Discharge",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 5:58:57 A"
+    },
+    {
+      "tag": "PS5-25-MOV-0027-CC01",
+      "task": "T-00069-4683",
+      "system": "PS5-25-06 - Crude Oil Export Pumps Discharge",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 5:57:22 A"
+    },
+    {
+      "tag": "PS5-25-MOV-0011-CC01",
+      "task": "T-00069-4678",
+      "system": "PS5-25-07 - Export Pipeline Pig Launcher",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 5:56:22 A"
+    },
+    {
+      "tag": "PS5-03-GDIR-1103-CC01",
+      "task": "T-00069-4349",
+      "system": "PS5-03-11 - FZ-11 - Power Generation Building - Engine Bay 3",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/2/2026 5:55:21 A"
+    },
     {
       "tag": "PS5-03-BI-1502-CC01",
       "task": "T-00614-0879",
@@ -1408,51 +1465,6 @@
       "disc": "T - Telecom",
       "cat": "PCOM - Precommissioning",
       "approved": "9/30/2026 8:23:34 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003F-CA05",
-      "task": "T-00171-4361",
-      "system": "PS5-60-17 - Power Gen Package F (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:22:25 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003F-CA04",
-      "task": "T-00171-4360",
-      "system": "PS5-60-17 - Power Gen Package F (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:21:17 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003F-CA03",
-      "task": "T-00171-4359",
-      "system": "PS5-60-17 - Power Gen Package F (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:19:35 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003E-CA05",
-      "task": "T-00171-4357",
-      "system": "PS5-60-14 - Power Gen Package E (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:18:19 P"
-    },
-    {
-      "tag": "PS5-60-IE-0003E-CA04",
-      "task": "T-00171-4356",
-      "system": "PS5-60-14 - Power Gen Package E (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "9/30/2026 8:17:11 P"
     }
   ]
 }
