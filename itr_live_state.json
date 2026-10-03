@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-03 19:35:58",
+  "updated": "2026-10-03 19:42:37",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6080,
-  "open": 4220,
-  "today_closed": 49,
+  "closed": 6084,
+  "open": 4216,
+  "today_closed": 53,
   "closed_by_discipline": {
-    "I": 3036,
+    "I": 3040,
     "E": 2757,
     "T": 287
   },
   "open_by_discipline": {
-    "I": 1559,
+    "I": 1555,
     "E": 1870,
     "T": 791
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-03",
       "E": 8,
-      "I": 41,
+      "I": 45,
       "T": 0,
-      "Total": 49
+      "Total": 53
     }
   ],
-  "closed_this_week": 542,
-  "closed_this_month": 244,
+  "closed_this_week": 546,
+  "closed_this_month": 248,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -259,7 +259,7 @@
       "milestone": "Milestone E",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 19
+      "count": 20
     },
     {
       "milestone": "Milestone G",
@@ -271,10 +271,10 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 20
+      "count": 23
     }
   ],
-  "today_milestone_total": 49,
+  "today_milestone_total": 53,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -336,14 +336,14 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1323,
-      "remaining": 209,
+      "closed": 1324,
+      "remaining": 208,
       "pct": 86.4,
       "status": {
-        "Closed": 1323,
+        "Closed": 1324,
         "Submitted": 0,
         "To be completed": 193,
-        "Other": 16
+        "Other": 15
       }
     },
     {
@@ -370,22 +370,22 @@
       "status": {
         "Closed": 659,
         "Submitted": 3,
-        "To be completed": 233,
-        "Other": 9
+        "To be completed": 232,
+        "Other": 10
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1857,
-      "remaining": 1394,
-      "pct": 57.1,
+      "closed": 1860,
+      "remaining": 1391,
+      "pct": 57.2,
       "status": {
-        "Closed": 1857,
+        "Closed": 1860,
         "Submitted": 0,
-        "To be completed": 1371,
-        "Other": 23
+        "To be completed": 1367,
+        "Other": 24
       }
     },
     {
@@ -404,6 +404,42 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-28-PIT-3901A-CJ01",
+      "task": "T-00069-4844",
+      "system": "PS5-28-17 - Reinjection Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:41:48 P"
+    },
+    {
+      "tag": "PS5-28-PIT-0041-CJ01",
+      "task": "T-00069-4839",
+      "system": "PS5-28-17 - Reinjection Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:41:12 P"
+    },
+    {
+      "tag": "PS5-28-PIT-3901B-CJ01",
+      "task": "T-00069-4845",
+      "system": "PS5-28-17 - Reinjection Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:38:41 P"
+    },
+    {
+      "tag": "PS5-60-SEA-0001-CC17",
+      "task": "T-00069-5330",
+      "system": "PS5-03-14 - FZ-14 - Power Generation Building - Switchgear Room",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:35:43 P"
+    },
     {
       "tag": "PS5-60-SEA-0001-CC16",
       "task": "T-00069-5329",
@@ -1447,42 +1483,6 @@
       "disc": "T - Telecom",
       "cat": "PCOM - Precommissioning",
       "approved": "10/2/2026 7:02:25 A"
-    },
-    {
-      "tag": "PS5-60-IE-0003C-CA02",
-      "task": "T-00171-4346",
-      "system": "PS5-60-08 - Power Gen Package C (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 7:01:23 A"
-    },
-    {
-      "tag": "PS5-71-IN-0004B-CA01",
-      "task": "T-00171-4410",
-      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 7:00:30 A"
-    },
-    {
-      "tag": "PS5-71-IN-0004A-CA01",
-      "task": "T-00171-4409",
-      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:57:15 A"
-    },
-    {
-      "tag": "PS5-71-IN-0003-CA01",
-      "task": "T-00171-4408",
-      "system": "PS5-71-23 - Diesel Fuel Pre Pressure Module (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:56:12 A"
     }
   ]
 }
