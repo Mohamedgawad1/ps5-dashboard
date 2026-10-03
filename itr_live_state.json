@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-03 19:20:37",
+  "updated": "2026-10-03 19:28:14",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6066,
-  "open": 4234,
-  "today_closed": 35,
+  "closed": 6073,
+  "open": 4227,
+  "today_closed": 42,
   "closed_by_discipline": {
-    "I": 3022,
+    "I": 3029,
     "E": 2757,
     "T": 287
   },
   "open_by_discipline": {
-    "I": 1573,
+    "I": 1566,
     "E": 1870,
     "T": 791
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-03",
       "E": 8,
-      "I": 27,
+      "I": 34,
       "T": 0,
-      "Total": 35
+      "Total": 42
     }
   ],
-  "closed_this_week": 528,
-  "closed_this_month": 230,
+  "closed_this_week": 535,
+  "closed_this_month": 237,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -259,7 +259,7 @@
       "milestone": "Milestone E",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 5
+      "count": 12
     },
     {
       "milestone": "Milestone G",
@@ -274,7 +274,7 @@
       "count": 20
     }
   ],
-  "today_milestone_total": 35,
+  "today_milestone_total": 42,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -336,13 +336,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1309,
-      "remaining": 223,
-      "pct": 85.4,
+      "closed": 1316,
+      "remaining": 216,
+      "pct": 85.9,
       "status": {
-        "Closed": 1309,
+        "Closed": 1316,
         "Submitted": 0,
-        "To be completed": 207,
+        "To be completed": 200,
         "Other": 16
       }
     },
@@ -404,6 +404,69 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-SEA-0001-CC07",
+      "task": "T-00069-5322",
+      "system": "PS5-03-14 - FZ-14 - Power Generation Building - Switchgear Room",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:26:54 P"
+    },
+    {
+      "tag": "PS5-60-SEA-0001-CC06",
+      "task": "T-00069-5321",
+      "system": "PS5-03-14 - FZ-14 - Power Generation Building - Switchgear Room",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:25:52 P"
+    },
+    {
+      "tag": "PS5-60-SEA-0001-CC05",
+      "task": "T-00069-5320",
+      "system": "PS5-03-14 - FZ-14 - Power Generation Building - Switchgear Room",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:24:56 P"
+    },
+    {
+      "tag": "PS5-60-SEA-0001-CC04",
+      "task": "T-00069-5319",
+      "system": "PS5-03-14 - FZ-14 - Power Generation Building - Switchgear Room",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:23:27 P"
+    },
+    {
+      "tag": "PS5-60-SEA-0001-CC03",
+      "task": "T-00069-5318",
+      "system": "PS5-03-14 - FZ-14 - Power Generation Building - Switchgear Room",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:22:30 P"
+    },
+    {
+      "tag": "PS5-60-SEA-0001-CC02",
+      "task": "T-00069-5317",
+      "system": "PS5-03-14 - FZ-14 - Power Generation Building - Switchgear Room",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:21:30 P"
+    },
+    {
+      "tag": "PS5-60-SEA-0001-CC01",
+      "task": "T-00069-5316",
+      "system": "PS5-03-14 - FZ-14 - Power Generation Building - Switchgear Room",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:20:22 P"
+    },
     {
       "tag": "PS5-71-SDV-0022-CC02",
       "task": "T-00254-5573",
@@ -1420,69 +1483,6 @@
       "disc": "T - Telecom",
       "cat": "PCOM - Precommissioning",
       "approved": "10/2/2026 6:47:10 A"
-    },
-    {
-      "tag": "PS5-60-IN-0001C-CA01",
-      "task": "T-00171-4380",
-      "system": "PS5-60-51 - Lube Oil Separator Module PS5-60-UO-81100C",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:46:04 A"
-    },
-    {
-      "tag": "PS5-60-IN-0001B-CA01",
-      "task": "T-00171-4379",
-      "system": "PS5-60-50 - Lube Oil Separator Module PS5-60-UO-81100B",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:44:51 A"
-    },
-    {
-      "tag": "PS5-60-IN-0001A-CA01",
-      "task": "T-00171-4378",
-      "system": "PS5-60-49 - Lube Oil Separator Module PS5-60-UO-81100A",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:43:37 A"
-    },
-    {
-      "tag": "PS5-60-LA-0003-CC03",
-      "task": "T-00069-12994",
-      "system": "PS5-60-22 - Power Gen Master UCP",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:42:39 A"
-    },
-    {
-      "tag": "PS5-60-LA-0003-CC02",
-      "task": "T-00069-12993",
-      "system": "PS5-60-22 - Power Gen Master UCP",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:41:39 A"
-    },
-    {
-      "tag": "PS5-60-IH-0001F-CC02",
-      "task": "T-00069-12988",
-      "system": "PS5-60-18 - Power Gen Package F Generator Auxiliary MCCs & DBs",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:40:38 A"
-    },
-    {
-      "tag": "PS5-60-IH-0001F-CC01",
-      "task": "T-00069-12987",
-      "system": "PS5-60-18 - Power Gen Package F Generator Auxiliary MCCs & DBs",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:39:40 A"
     }
   ]
 }
