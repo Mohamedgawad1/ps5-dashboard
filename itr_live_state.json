@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-03 19:13:24",
+  "updated": "2026-10-03 19:20:37",
   "total_tasks_ps5": 14004,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6062,
-  "open": 4238,
-  "today_closed": 31,
+  "closed": 6066,
+  "open": 4234,
+  "today_closed": 35,
   "closed_by_discipline": {
-    "I": 3018,
+    "I": 3022,
     "E": 2757,
     "T": 287
   },
   "open_by_discipline": {
-    "I": 1577,
+    "I": 1573,
     "E": 1870,
     "T": 791
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-03",
       "E": 8,
-      "I": 23,
+      "I": 27,
       "T": 0,
-      "Total": 31
+      "Total": 35
     }
   ],
-  "closed_this_week": 524,
-  "closed_this_month": 226,
+  "closed_this_week": 528,
+  "closed_this_month": 230,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -271,10 +271,10 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 16
+      "count": 20
     }
   ],
-  "today_milestone_total": 31,
+  "today_milestone_total": 35,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -342,8 +342,8 @@
       "status": {
         "Closed": 1309,
         "Submitted": 0,
-        "To be completed": 208,
-        "Other": 15
+        "To be completed": 207,
+        "Other": 16
       }
     },
     {
@@ -378,14 +378,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 1853,
-      "remaining": 1398,
-      "pct": 57.0,
+      "closed": 1857,
+      "remaining": 1394,
+      "pct": 57.1,
       "status": {
-        "Closed": 1853,
+        "Closed": 1857,
         "Submitted": 0,
-        "To be completed": 1374,
-        "Other": 24
+        "To be completed": 1371,
+        "Other": 23
       }
     },
     {
@@ -404,6 +404,42 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-SDV-0022-CC02",
+      "task": "T-00254-5573",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:15:57 P"
+    },
+    {
+      "tag": "PS5-71-LCV-4101-CC01",
+      "task": "T-00254-5516",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:14:58 P"
+    },
+    {
+      "tag": "PS5-71-XV-0089-CC02",
+      "task": "T-00254-5601",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:14:09 P"
+    },
+    {
+      "tag": "PS5-71-SDV-0022-CC01",
+      "task": "T-00254-5572",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/3/2026 4:13:17 P"
+    },
     {
       "tag": "PS5-71-XV-0089-CC01",
       "task": "T-00254-5600",
@@ -1447,42 +1483,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "10/2/2026 6:39:40 A"
-    },
-    {
-      "tag": "PS5-60-IH-0001E-CC02",
-      "task": "T-00069-12986",
-      "system": "PS5-60-15 - Power Gen Package E Generator Auxiliary MCCs & DBs",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:38:35 A"
-    },
-    {
-      "tag": "PS5-60-IH-0001E-CC01",
-      "task": "T-00069-12985",
-      "system": "PS5-60-15 - Power Gen Package E Generator Auxiliary MCCs & DBs",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:37:18 A"
-    },
-    {
-      "tag": "PS5-60-IH-0001D-CC02",
-      "task": "T-00069-12984",
-      "system": "PS5-60-12 - Power Gen Package D Generator Auxiliary MCCs & DBs",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:36:06 A"
-    },
-    {
-      "tag": "PS5-60-IH-0001D-CC01",
-      "task": "T-00069-12983",
-      "system": "PS5-60-12 - Power Gen Package D Generator Auxiliary MCCs & DBs",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/2/2026 6:35:03 A"
     }
   ]
 }
