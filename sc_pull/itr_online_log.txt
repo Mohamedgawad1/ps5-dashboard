@@ -25702,3 +25702,85 @@ Call log:
 [2026-10-09 08:26:01] sync is already running as pid 16704 - nothing to do
 [2026-10-09 08:26:19] sync is already running as pid 16704 - nothing to do
 [2026-10-09 08:26:37] sync is already running as pid 16704 - nothing to do
+[2026-10-09 10:50:44] stale lock (pid 16704 now is free) - taking over
+[2026-10-09 10:51:48] reused the sync's always-open browser (port 9222)
+[2026-10-09 10:51:48] LOOP READY (interval 300s, keep_open=True)
+[2026-10-09 10:52:44] LOGGED IN
+[2026-10-09 11:04:47] stale lock (pid 10908 now is free) - taking over
+[2026-10-09 11:05:55] reused the sync's always-open browser (port 9222)
+[2026-10-09 11:05:55] LOOP READY (interval 300s, keep_open=True)
+[2026-10-09 11:06:39] LOGGED IN
+[2026-10-09 11:12:55] err off=0: [object Object]
+[2026-10-09 11:13:51] stale lock (pid 19452 now is free) - taking over
+[2026-10-09 11:14:12] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:14:24] stale lock (pid 1820 now is free) - taking over
+[2026-10-09 11:14:46] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:14:57] stale lock (pid 9240 now is free) - taking over
+[2026-10-09 11:14:58] reused the sync's always-open browser (port 9222)
+[2026-10-09 11:14:58] LOOP READY (interval 300s, keep_open=True)
+[2026-10-09 11:15:58] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-09 11:16:17] LOGGED IN
+[2026-10-09 11:23:29] stale lock (pid 13984 now is free) - taking over
+[2026-10-09 11:23:50] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:24:02] stale lock (pid 1020 now is free) - taking over
+[2026-10-09 11:24:23] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:24:36] stale lock (pid 7504 now is free) - taking over
+[2026-10-09 11:24:57] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:25:08] stale lock (pid 9772 now is free) - taking over
+[2026-10-09 11:25:30] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:25:41] stale lock (pid 16816 now is free) - taking over
+[2026-10-09 11:26:02] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:26:14] stale lock (pid 18600 now is free) - taking over
+[2026-10-09 11:26:34] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:26:47] stale lock (pid 19044 now is free) - taking over
+[2026-10-09 11:27:08] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:27:20] stale lock (pid 17072 now is free) - taking over
+[2026-10-09 11:27:41] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 11:27:53] stale lock (pid 8948 now is free) - taking over
+[2026-10-09 11:31:03] reused the sync's always-open browser (port 9222)
+[2026-10-09 11:31:03] LOOP READY (interval 300s, keep_open=True)
+[2026-10-09 11:34:03] goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 11:34:12] reused the sync's always-open browser (port 9222)
+[2026-10-09 11:34:12] LOOP READY (interval 300s, keep_open=True)
+[2026-10-09 11:37:12] goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 11:37:58] session expired -> auto-login
+[2026-10-09 11:38:46] ssologin click: no-btn
+[2026-10-09 11:42:26] post-login goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 11:43:27] auto-login attempt 1 still not logged in
+[2026-10-09 11:44:15] ssologin click: no-btn
+[2026-10-09 11:47:55] post-login goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 11:48:55] auto-login attempt 2 still not logged in
+[2026-10-09 11:49:16] ssologin click: ok
+[2026-10-09 11:50:46] LOGGED IN
+[2026-10-09 12:01:17] pulled off=0 n=4000 accum=4000
+[2026-10-09 12:06:33] pulled off=4000 n=4000 accum=8000

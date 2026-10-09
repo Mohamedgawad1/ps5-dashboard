@@ -117,7 +117,7 @@ def pr(*a):
         pass
 
 
-def call(page, view, fields, restrictions=None, n=PAGE, off=0, to=120000):
+def call(page, view, fields, restrictions=None, n=PAGE, off=0, to=240000):
     return page.evaluate("(%s)(%s)" % (GET_JS, json.dumps({
         "v": view, "f": fields, "r": restrictions or [], "n": n, "off": off, "to": to,
     })))
@@ -320,24 +320,32 @@ def open_session(pw):
             pr("reuse failed: %s -> will retry next cycle, no new window" % str(e)[:70])
             time.sleep(2)
             raise
-        # reuse the dedicated pull tab if it exists, else open a fresh one for our pull
+        # reuse the dedicated pull tab if it exists, else open a fresh one for our pull.
+        # If our own tab is missing but the user already has a loaded Switchboard tab,
+        # reuse that instead of forcing another (slow) full page load.
         ours = None
+        ready = None
         for c in (conn.contexts or []):
             for p in c.pages:
                 try:
-                    if p.url.startswith(MARK_URL):
-                        ours = p
-                        break
+                    u = p.url or ""
                 except Exception:
-                    pass
+                    continue
+                if u.startswith(MARK_URL):
+                    ours = p
+                    break
+                if ready is None and "vDashboardsUsers/Switchboard.htm" in u:
+                    ready = p
             if ours:
                 break
+        if ours is None:
+            ours = ready
         if ours is None:
             try:
                 home = conn.contexts[0]
                 ours = home.new_page()
                 try:
-                    ours.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                    ours.goto(MARK_URL, wait_until="domcontentloaded", timeout=180000)
                 except Exception:
                     pass
             except Exception as e:
@@ -354,17 +362,20 @@ def open_session(pw):
 
 
 def pull_live(page):
-    try:
-        page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
-    except Exception as e:
-        pr("goto err:", str(e)[:100])
+    if count_products(page) < 0:
+        try:
+            page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=180000)
+        except Exception as e:
+            pr("goto err:", str(e)[:100])
+    else:
+        pr("reusing already-loaded Switchboard tab")
     if not wait_products(page, timeout_sec=45):
         pr("session expired -> auto-login")
         login_ok = False
         for attempt in range(3):
             auto_login(page)
             try:
-                page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=90000)
+                page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=180000)
             except Exception as e:
                 pr("post-login goto err:", str(e)[:100])
             if wait_products(page, timeout_sec=60):
