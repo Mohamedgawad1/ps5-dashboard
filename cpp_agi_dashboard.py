@@ -221,12 +221,26 @@ def safe_read_excel(path, **kwargs):
     return df.copy()
 
 
+# Canonical column layout of the inspection register. Used to repair a header
+# row that was damaged upstream (e.g. the real header row got deleted in the
+# OneDrive source, leaving only the group/partial header row behind).
+CANON_INSPECTION_COLS = [
+    'Task ID', 'Asset - Tag', 'Description', 'For CHECKING Vlookup_BW',
+    'Discipline', 'Asset - Description', None,
+    'Systemization - Subsystem (Summary)', 'QC RFI#', 'Inspection Date',
+    'STATUS OF RFI', 'QC INSPECTOR ',
+    'INSPECTION TYPE (PULLING/CABLE TESTING/ EQUIPMENT INSTALLATION)',
+    'QC RFI#', ' RFI STATUS', 'INSPECTION DATE', 'QC INSPECTOR ', 'Remarks',
+]
+
+
 def read_inspection_register(path):
     """Read the 'PS-5 EIT INSPECTION REGISTER' sheet auto-detecting the header row
     (row containing 'Asset - Tag'), robust to the header being moved in the file.
     When the header is misplaced (e.g. pasted into the middle of the data), the data
     rows above it are re-appended after the rows below it WITHOUT touching the file
-    on disk, so the build stays fast."""
+    on disk, so the build stays fast. If the header row was deleted upstream and
+    only group/partial names remain, the known schema is restored."""
     raw = safe_read_excel(path, sheet_name='PS-5 EIT INSPECTION REGISTER', header=None)
     hrow = None
     for i in range(len(raw)):
@@ -234,28 +248,29 @@ def read_inspection_register(path):
         if pd.notna(v) and str(v).strip() == 'Asset - Tag':
             hrow = i
             break
-    if hrow is None:
+    if hrow is None or hrow < 1:
         raise KeyError('Asset - Tag')
-    if hrow < 5:
-        raise KeyError('Asset - Tag')
+    names = [str(raw.iloc[hrow, j]) if pd.notna(raw.iloc[hrow, j]) else None
+             for j in range(raw.shape[1])]
+    nonnull = [n for n in names if n]
+    if ('Discipline' not in nonnull or 'Inspection Date' not in nonnull) \
+            and len(names) >= len(CANON_INSPECTION_COLS):
+        names = list(CANON_INSPECTION_COLS) + [None] * (len(names) - len(CANON_INSPECTION_COLS))
     seen = {}
     newcols = []
-    for j in range(raw.shape[1]):
-        v = raw.iloc[hrow, j]
-        if pd.isna(v):
+    for j, name in enumerate(names):
+        if not name:
             newcols.append(f'Unnamed: {j}')
+        elif name in seen:
+            seen[name] += 1
+            newcols.append(f'{name}.{seen[name]}')
         else:
-            name = str(v)
-            if name in seen:
-                seen[name] += 1
-                newcols.append(f'{name}.{seen[name]}')
-            else:
-                seen[name] = 0
-                newcols.append(name)
-    if hrow == 5:
-        df = raw.iloc[hrow + 1:].reset_index(drop=True)
-    else:
+            seen[name] = 0
+            newcols.append(name)
+    if hrow >= 5:
         df = pd.concat([raw.iloc[5:hrow], raw.iloc[hrow + 1:]], ignore_index=True)
+    else:
+        df = raw.iloc[hrow + 1:].reset_index(drop=True)
     df.columns = newcols
     return df
 
