@@ -535,6 +535,8 @@ def main():
             log("%s" % Path(pdf).name)
             log("   RFI No: %s | النوع: %s" % (info.get("rfi_no"), own))
             log("   الأصول (%d): %s" % (len(info.get("asset_tags") or []), ", ".join(info.get("asset_tags") or [])))
+            if info.get("suspect_tags"):
+                log("   !! تاجات مكسورة لسه: %s" % ", ".join(info["suspect_tags"]))
             if not own:
                 log("   ! مفيش نوع واضح في الـ PDF - هستخدم %s" % "/".join(args.type))
                 for want in args.type:

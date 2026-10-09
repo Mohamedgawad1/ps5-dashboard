@@ -300,23 +300,24 @@ def _split_glued_tags(text):
 def _description_block(text):
     """Just the 'Inspection activity description' part of the form. The rest of the
     page is the tick-box list, which contains words like 'Test crew not available'
-    that must not be read as the type of work."""
-    m = re.search(r"inspection\s+activity\s+description\s*:?\s*(.+?)(?=\bcontractor\b|\bname\b\s+f\b|$)",
-                  text or "", re.S | re.I)
-    if not m:
+    that must not be read as the type of work. In some forms the description, the tag
+    list and the tick-boxes are printed on top of each other, so stop at the first
+    asset tag instead of relying on line breaks."""
+    m = re.search(r"inspection\s+activity\s+description\s*:?\s*(.+?)$", text or "", re.S | re.I)
+    if m:
+        block = m.group(1)
+    else:
+        # Not every form prints the label: on some of them the description is the line
+        # that follows the ITP item, on top of the tag list.
+        tail = re.split(r"\bITP\s*item\b\s*:?\s*[0-9A-Za-z\-\.]+", text or "", maxsplit=1, flags=re.I)
+        block = tail[1] if len(tail) > 1 else ""
+    if not block.strip():
         return ""
-    block = m.group(1)
-    lines = [ln.strip() for ln in block.splitlines()]
-    keep = []
-    for ln in lines:
-        if not ln:
-            continue
-        if TAG_RE.match(ln) or re.match(r"^(ps|pr)\d-", ln, re.I):
-            continue
-        if re.match(r"^\(?\s*total\b|^\(?\s*\d+\s*tags?\b|^\d+\s*tags?\b", ln, re.I):
-            continue
-        keep.append(ln)
-    return " ".join(keep)
+    cut = re.search(r"(?:PS|PR)\d-[A-Z0-9]+(?:-[A-Z0-9]+)+", block)
+    if cut:
+        block = block[:cut.start()]
+    block = re.split(r"\bcontractor\b|\bname\b\s+f\b|\btotal\b|\d+\s*tags?\b", block, flags=re.I)[0]
+    return " ".join(ln.strip() for ln in block.splitlines() if ln.strip())
 
 
 def _complete_short_tags(tags):
@@ -354,6 +355,8 @@ def read_pdf(path):
             seen.add(k)
             uniq.append(t)
     tags = uniq
+    # A tag that is still cut in half after the repairs must never be opened silently.
+    suspect = [t for t in tags if not TAG_RE.fullmatch(t)]
     full = "\n".join(pages).lower()
     first_low = first.lower()
     # Only the "Inspection activity description" block decides the type. The rest of
@@ -379,6 +382,10 @@ def read_pdf(path):
         ptype, why = "Conformity Check", [first_code]
     if ptype is None and re.search(r"\btesting\b|\btest\b", desc_low):
         ptype, why = "Static Test", ["testing / test"]
+    # glanding / termination is physical installation work, so it is a Conformity
+    # Check even when the sentence starts with "Request to Witness".
+    if ptype is None and re.search(r"\bgland\w*|\bterminat\w*", desc_low):
+        ptype, why = "Conformity Check", ["glanding / termination"]
     if ptype is None and re.search(r"\bvisual\s+inspection\b|\binspection\s+of\b", desc_low):
         ptype, why = "Conformity Check", ["visual inspection / inspection of"]
     if ptype is None:
@@ -408,6 +415,7 @@ def read_pdf(path):
         "pages": len(pages),
         "rfi_no": read_rfi_no(path),
         "asset_tags": tags,
+        "suspect_tags": suspect,
         "detected_type": ptype,
         "mapped_type": mapped,
         "type_hits": hits,

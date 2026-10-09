@@ -85,31 +85,14 @@ def dstr(v):
 
 
 def find_latest_dpr():
-    cands = []
-    seen = set()
-    for folder in (DL_SUB, HOME_DL, BASE):
-        if not os.path.isdir(folder):
-            continue
-        for f in glob.glob(os.path.join(folder, '*.xlsx')):
-            b = os.path.basename(f)
-            if b.startswith('~$') or b in seen:
-                continue
-            if 'completions dpr summery' not in b.lower():
-                continue
-            if 'backup' in b.lower():
-                continue
-            seen.add(b)
-            m = re.search(r'-(\d{2}-\d{2}-\d{2})', b)
-            key = None
-            if m:
-                try:
-                    key = datetime.datetime.strptime(m.group(1), '%d-%m-%y')
-                except ValueError:
-                    pass
-            if key is None:
-                key = datetime.datetime.fromtimestamp(os.path.getmtime(f))
-            cands.append((key, f))
-    return max(cands)[1] if cands else None
+    """The canonical DPR workbook, resolved by the platform's dpr_file.py.
+
+    This script previously searched for its own file, and matched only the
+    'SUMMERY' spelling, so it used a different workbook from the one the
+    platform syncs into - which is why the explorer kept showing stale data.
+    """
+    from dpr_new_summary import find_latest_dpr as _shared
+    return _shared()
 
 
 def open_source(path):

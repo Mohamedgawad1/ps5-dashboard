@@ -32,6 +32,30 @@ TARGET_SHEET = {
     'ITR LIST': ('DETAILED ITR LIST', 'TASK ID'),
 }
 
+# The daily workbook is spelled both ways on disk - newer files say
+# "DPR SUMMARY", older ones "DPR SUMMERY". Matching only one of them made this
+# script report "no DPR SUMMERY file found" and skip every platform edit.
+DPR_STEM = r'PS-?5\s*COMPLETIONS\s*DPR\s*SUMM(?:ARY|ERY)'
+DPR_RE = re.compile(DPR_STEM, re.I)
+_MONTHS = {'JAN': '01', 'FEB': '02', 'MAR': '03', 'APR': '04', 'MAY': '05',
+           'JUN': '06', 'JUL': '07', 'AUG': '08', 'SEP': '09', 'OCT': '10',
+           'NOV': '11', 'DEC': '12'}
+
+
+def fname_date(b):
+    """(year, month, day) parsed out of the '-DD-MM-YY' / '-DD-MONTH-YY' suffix,
+    so the newest daily report wins instead of the newest file mtime."""
+    m = re.search(DPR_STEM + r'\s*-\s*(\d{1,2})-(\d{1,2})-(\d{2,4})', b, re.I)
+    if m:
+        dd, mm, yy = m.group(1), m.group(2), m.group(3)
+        return (yy if len(yy) == 4 else '20' + yy, mm.zfill(2), dd.zfill(2))
+    m = re.search(DPR_STEM + r'\s*-\s*(\d{1,2})-([A-Za-z]+)-(\d{2,4})', b, re.I)
+    if m and m.group(2)[:3].upper() in _MONTHS:
+        dd, yy = m.group(1), m.group(3)
+        return (yy if len(yy) == 4 else '20' + yy, _MONTHS[m.group(2)[:3].upper()],
+                dd.zfill(2))
+    return None
+
 
 def n(v):
     return '' if v is None else str(v).strip()
@@ -48,12 +72,14 @@ def find_latest_summery():
             continue
         for f in glob.glob(os.path.join(folder, '*.xlsx')):
             b = os.path.basename(f)
-            if b.startswith('~$') or 'completions dpr summery' not in b.lower():
+            # Both spellings exist on disk: newer daily files say
+            # "DPR SUMMARY", older ones "DPR SUMMERY".
+            if b.startswith('~$') or not DPR_RE.search(b):
                 continue
             if b.upper().endswith('BACKUP.XLSX'):
                 continue
-            cands.append((os.path.getmtime(f), f))
-    return max(cands)[1] if cands else None
+            cands.append((fname_date(b) or ('', '', ''), os.path.getmtime(f), f))
+    return max(cands)[2] if cands else None
 
 
 def load_state():

@@ -567,6 +567,7 @@ def write_task_index(rows):
             "task_id": tid,
             "type": (r.get("TaskType") or "").strip(),
             "state": (r.get("TaskState") or "").strip(),
+            "approved": parse_dt(r.get("ApprovedDate")),
         })
     out = os.path.join(DATA_DIR, "tasks_by_tag_live.json")
     tmp = out + ".tmp"
@@ -657,6 +658,10 @@ def git_push(clone, state):
                                 capture_output=True, text=True, timeout=1200)
             rrerr = (rr.stderr or "").strip()
             if rr.returncode != 0:
+                # never leave a stuck rebase behind: it would block every later cycle
+                subprocess.run(git + ["rebase", "--abort"], capture_output=True, text=True,
+                               timeout=120)
+                _clear_git_state(CLONE, git)
                 pr(" !! rebase failed:", " | ".join(rrerr.splitlines()[-5:])[:400])
                 return rr.returncode
             continue
@@ -694,6 +699,54 @@ def ensure_pages_clone():
     return True
 
 
+LIVE_PAGE_FILES = ["itr_live_state.json", "live_itr.js", "itr_live.html"]
+
+
+def _clear_git_state(clone, git):
+    """Wipe a half-finished rebase/merge.
+
+    A rebase that stopped on a conflict (the pages repo carries binary EXCEL files, so
+    any concurrent full sync conflicts) leaves .git/rebase-merge behind, and from then
+    on EVERY pull dies with "you might be in the middle of another rebase" - the live
+    platform then silently stops updating forever. Clearing the state lets the next
+    attempt rebuild cleanly instead of poisoning every future cycle.
+    """
+    subprocess.run(git + ["rebase", "--abort"], capture_output=True, text=True, timeout=120)
+    subprocess.run(git + ["merge", "--abort"], capture_output=True, text=True, timeout=120)
+    for junk in ("rebase-merge", "rebase-apply", "MERGE_HEAD", "CHERRY_PICK_HEAD"):
+        p = os.path.join(clone, ".git", junk)
+        try:
+            if os.path.isdir(p):
+                shutil.rmtree(p, ignore_errors=True)
+            elif os.path.exists(p):
+                os.remove(p)
+        except Exception as e:
+            pr(" !! clear %s err: %s" % (junk, str(e)[:80]))
+    return True
+
+
+def _stage_live_files(git):
+    """Copy the fresh ITR live files from the workspace into the pages clone and stage them."""
+    for fn in LIVE_PAGE_FILES:
+        src = os.path.join(WS, fn)
+        if os.path.exists(src):
+            try:
+                shutil.copy2(src, os.path.join(PAGE_CLONE, fn))
+            except Exception as e:
+                pr(" !! copy %s err: %s" % (fn, str(e)[:80]))
+    subprocess.run(git + ["add", "--"] + LIVE_PAGE_FILES,
+                   capture_output=True, text=True, timeout=300)
+    return True
+
+
+def _commit_live_files(git, state):
+    msg = "ITR live update %s (closed=%d)" % (time.strftime("%Y-%m-%d %H:%M"), state["closed"])
+    r = subprocess.run(git + ["commit", "-m", msg],
+                       capture_output=True, text=True, timeout=300)
+    pr(" >> pages commit rc=%d %s" % (r.returncode, (r.stdout or "").strip()[-80:]))
+    return msg
+
+
 def pages_push(state):
     """Sync the ITR LIVE files to the PUBLIC platform repo so the live page stays fresh."""
     tok = _token()
@@ -703,20 +756,9 @@ def pages_push(state):
     if not ensure_pages_clone():
         return None
     git = ["git", "-C", PAGE_CLONE]
-    for fn in ("itr_live_state.json", "live_itr.js", "itr_live.html"):
-        src = os.path.join(WS, fn)
-        if os.path.exists(src):
-            try:
-                shutil.copy2(src, os.path.join(PAGE_CLONE, fn))
-            except Exception as e:
-                pr(" !! copy %s err: %s" % (fn, str(e)[:80]))
-    subprocess.run(git + ["add", "--"] + ["itr_live_state.json", "live_itr.js", "itr_live.html"],
-                   capture_output=True, text=True, timeout=300)
-    r = subprocess.run(
-        git + ["commit", "-m", "ITR live update %s (closed=%d)" % (
-            time.strftime("%Y-%m-%d %H:%M"), state["closed"])],
-        capture_output=True, text=True, timeout=300)
-    pr(" >> pages commit rc=%d %s" % (r.returncode, (r.stdout or "").strip()[-80:]))
+    _clear_git_state(PAGE_CLONE, git)
+    _stage_live_files(git)
+    msg = _commit_live_files(git, state)
     for attempt in range(4):
         push = git + ["push",
                       "https://x-access-ps5:%s@github.com/Mohamedgawad1/%s.git" % (tok, PAGE_REPO),
@@ -726,13 +768,23 @@ def pages_push(state):
             pr(" >> pages push OK (closed=%d)" % state["closed"])
             return 0
         err = (r.stderr or "").strip()
-        if "fetch first" in err or "rejected" in err:
-            pr(" >> pages pull --rebase (attempt %d)" % (attempt + 1))
-            rr = subprocess.run(git + ["pull", "--rebase", "origin", "main"],
+        if "fetch first" in err or "rejected" in err or "non-fast-forward" in err:
+            # Rebuild on top of the remote instead of rebasing: the live files are
+            # re-copied from the workspace, so nothing of ours is lost.
+            pr(" >> pages rebuild on origin/main (attempt %d)" % (attempt + 1))
+            _clear_git_state(PAGE_CLONE, git)
+            rr = subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
                                 capture_output=True, text=True, timeout=600)
             if rr.returncode != 0:
-                pr(" !! pages rebase failed:", (rr.stderr or "")[-300:])
+                pr(" !! pages fetch failed:", (rr.stderr or "")[-300:])
                 return rr.returncode
+            rr = subprocess.run(git + ["reset", "--hard", "origin/main"],
+                                capture_output=True, text=True, timeout=300)
+            if rr.returncode != 0:
+                pr(" !! pages reset failed:", (rr.stderr or "")[-300:])
+                return rr.returncode
+            _stage_live_files(git)
+            _commit_live_files(git, state)
             continue
         pr(" !! pages push failed:", err.splitlines()[-3:])
         return r.returncode
@@ -1100,11 +1152,12 @@ def claim_single_instance():
                 if old and old != os.getpid():
                     out = subprocess.run(
                         ["powershell", "-NoProfile", "-Command",
-                         "(Get-Process -Id %d -ErrorAction SilentlyContinue).Id" % old],
+                         "(Get-CimInstance Win32_Process -Filter 'ProcessId=%d' -ErrorAction SilentlyContinue).CommandLine" % old],
                         capture_output=True, text=True, timeout=20).stdout.strip()
-                    if out:
+                    if out and "itr_online_sync" in out:
                         pr("sync is already running as pid %d - nothing to do" % old)
                         return False
+                    pr("stale lock (pid %d now is %s) - taking over" % (old, out[:60] or "free"))
             with open(lock, "w") as f:
                 f.write(str(os.getpid()))
             return True

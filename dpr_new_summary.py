@@ -5,7 +5,7 @@ and builds a clean organized Excel:
   Sheet 1 'DAILY SUMMARY' : ITR Summary + Punch Summary combined
   Sheet 2 'MILESTONES'    : subsystem milestone data (source sheet 5)
 """
-import os, re, glob, shutil, datetime
+import os, re, glob, shutil, datetime, sys
 import openpyxl
 from openpyxl.styles import PatternFill, Font, Border, Side, Alignment
 from openpyxl.utils import get_column_letter
@@ -38,15 +38,23 @@ def num(v):
     try: return float(v)
     except ValueError: return None
 
+# The DPR lookup is delegated to the platform's dpr_file.py so this script and
+# the platform's rebuild/sync scripts can never resolve to different files.
+# That drift is what left the dashboard building from a 20-August workbook.
+sys.path.insert(0, r'C:\Users\mylap\OneDrive\Desktop\PS5-COMPLETION-PLATFORM')
+import dpr_file
+
+DPR_RE = dpr_file.DPR_RE
+CANON_DIR = dpr_file.CANON_DIR
+
+
+def dpr_fname_date(b):
+    """(year, month, day) from the '-DD-MM-YY' / '-DD-MONTH-YYYY' suffix."""
+    return dpr_file.file_date(b)
+
+
 def find_latest_dpr():
-    cands = []
-    for folder in (DOWNLOADS, BASE):
-        for f in glob.glob(os.path.join(folder, '*.xlsx')):
-            b = os.path.basename(f)
-            if b.startswith('~$'): continue
-            if 'completions dpr summery' in b.lower():
-                cands.append((os.path.getmtime(f), f))
-    return max(cands)[1] if cands else None
+    return dpr_file.find_dpr()
 
 def src_report_date(path):
     m = re.search(r'-(\d{2}-\d{2}-\d{2})', os.path.basename(path))
