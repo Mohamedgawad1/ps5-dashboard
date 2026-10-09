@@ -11481,3 +11481,26 @@
 2026-10-09 12:06:22    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx  (edits: 66297 cells / 0 notes)
 2026-10-09 12:06:22      [summery-sync] OK -> 50455 cells, 0 notes written, 14153 skipped (no matching column)
 2026-10-09 12:06:22 >> explorer rebuild
+2026-10-09 12:10:54      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14004+9479 rows, 13338 updates
+2026-10-09 12:10:54      Punch rows: 4028 | ITR rows: 23483 | RFC: 270 | Miles: 292
+2026-10-09 12:10:54      Subsystems: 290 | max punch/sub: 196 | max itr/sub: 1137
+2026-10-09 12:10:54      Carry-over: 0 notes, 0 colored rows, 18626 pinned cells
+2026-10-09 12:10:54    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-09 12:10:54    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-09 12:10:54 >> dashboard xlsm
+2026-10-09 12:16:20    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-09 12:16:20      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4028 | Detail I 23483 | RFC 270
+2026-10-09 12:16:20      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 18626 pinned cells
+2026-10-09 12:16:20    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-10-09 12:16:20 >> platform full sync
+2026-10-09 12:46:20 !! platform full sync crashed: Command '['C:\\Python314\\python.exe', 'C:\\Users\\mylap\\OneDrive\\Desktop\\PS5-COMPLETION-PLATFORM\\sync_all.py']' timed out after 1800 seconds
+2026-10-09 12:46:20 [done] build in 2765s
+2026-10-09 12:52:38 [warn] cloud fetch failed: The read operation timed out
+2026-10-09 13:03:18 [warn] cloud fetch failed: <urlopen error _ssl.c:1059: The handshake operation timed out>
+2026-10-09 13:08:58 [warn] cloud fetch failed: The read operation timed out
+2026-10-09 13:20:20 [warn] cloud fetch failed: The read operation timed out
+2026-10-09 13:26:15 [warn] cloud fetch failed: The read operation timed out
+2026-10-09 13:37:13 [warn] cloud fetch failed: The read operation timed out
+2026-10-09 13:48:10 [warn] cloud fetch failed: The read operation timed out
+2026-10-09 13:54:12 [warn] cloud fetch failed: The read operation timed out
+2026-10-09 14:00:22 [warn] cloud fetch failed: The read operation timed out

@@ -25784,3 +25784,134 @@ Call log:
 [2026-10-09 11:50:46] LOGGED IN
 [2026-10-09 12:01:17] pulled off=0 n=4000 accum=4000
 [2026-10-09 12:06:33] pulled off=4000 n=4000 accum=8000
+[2026-10-09 12:14:17] err off=8000: [object Object]
+[2026-10-09 12:14:19] task index refreshed (3172 asset tags)
+[2026-10-09 12:14:20] milestone_map: 290 subsystems
+[2026-10-09 12:14:21] updated dashboard_data.json itr_summary.live
+[2026-10-09 12:14:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-09 12:14:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-09 12:14 (closed=4719) rc=0 [main 0f004da] ITR live update 2026-10-09 12:14 (closed=4719)
+ 1 file changed, 581 insertions(+), 581 deletions(-)
+[2026-10-09 12:14:30]  >> git push OK
+[2026-10-09 12:14:36]  >> pages commit rc=0 6-10-09 12:14 (closed=4719)
+ 1 file changed, 581 insertions(+), 581 deletions(-)
+[2026-10-09 12:14:41]  >> pages push OK (closed=4719)
+[2026-10-09 12:19:41] reusing already-loaded Switchboard tab
+[2026-10-09 12:19:41] LOGGED IN
+[2026-10-09 12:20:45] stale lock (pid 18484 now is free) - taking over
+[2026-10-09 12:21:06] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:21:18] stale lock (pid 1700 now is free) - taking over
+[2026-10-09 12:21:39] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:21:51] stale lock (pid 14492 now is free) - taking over
+[2026-10-09 12:22:12] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:22:24] stale lock (pid 8872 now is free) - taking over
+[2026-10-09 12:22:45] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:22:57] stale lock (pid 20632 now is free) - taking over
+[2026-10-09 12:23:18] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:23:30] stale lock (pid 12380 now is free) - taking over
+[2026-10-09 12:23:50] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:24:03] stale lock (pid 11636 now is free) - taking over
+[2026-10-09 12:24:24] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:24:36] stale lock (pid 20428 now is free) - taking over
+[2026-10-09 12:24:57] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:25:09] stale lock (pid 14944 now is free) - taking over
+[2026-10-09 12:25:30] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:25:42] stale lock (pid 20640 now is free) - taking over
+[2026-10-09 12:26:02] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:26:15] stale lock (pid 20544 now is free) - taking over
+[2026-10-09 12:26:36] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:26:48] stale lock (pid 12576 now is free) - taking over
+[2026-10-09 12:27:08] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:27:21] stale lock (pid 11144 now is free) - taking over
+[2026-10-09 12:27:42] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:27:54] stale lock (pid 18112 now is free) - taking over
+[2026-10-09 12:28:14] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:28:27] stale lock (pid 9988 now is free) - taking over
+[2026-10-09 12:28:47] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:29:00] stale lock (pid 4944 now is free) - taking over
+[2026-10-09 12:29:20] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:29:22] LOOP READY (interval 300s, keep_open=True)
+[2026-10-09 12:29:22] no pull tab yet — attaching to the open browser again
+[2026-10-09 12:29:42] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:34:44] no pull tab yet — attaching to the open browser again
+[2026-10-09 12:35:04] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-09 12:39:33] stale lock (pid 21076 now is free) - taking over
+[2026-10-09 12:39:34] reused the sync's always-open browser (port 9222)
+[2026-10-09 12:39:34] LOOP READY (interval 300s, keep_open=True)
+[2026-10-09 12:41:37] LOGGED IN
+[2026-10-09 12:46:35] retry off=0 attempt=1/4 ([object Object])
+[2026-10-09 12:59:22] retry off=0 attempt=2/4 ([object Object])
+[2026-10-09 13:00:22] LOOP ERR: Page.evaluate: Target page, context or browser has been closed
+[2026-10-09 13:05:22] no pull tab yet — attaching to the open browser again
+[2026-10-09 13:05:22] reused the sync's always-open browser (port 9222)
+[2026-10-09 13:08:22] goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 13:09:08] session expired -> auto-login
+[2026-10-09 13:09:56] ssologin click: no-btn
+[2026-10-09 13:13:36] post-login goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 13:14:37] auto-login attempt 1 still not logged in
+[2026-10-09 13:16:18] ssologin click: no-btn
+[2026-10-09 13:19:58] post-login goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 13:20:59] auto-login attempt 2 still not logged in
+[2026-10-09 13:21:47] ssologin click: no-btn
+[2026-10-09 13:25:27] post-login goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 13:26:27] auto-login attempt 3 still not logged in
+[2026-10-09 13:36:29] WAITING FOR MANUAL LOGIN...
+[2026-10-09 13:47:29] goto err: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartc
+[2026-10-09 13:48:35] LOGGED IN
+[2026-10-09 13:54:24] retry off=0 attempt=1/4 ([object Object])
+[2026-10-09 13:55:04] retry off=0 attempt=2/4 ([object Object])
+[2026-10-09 14:01:11] retry off=0 attempt=3/4 ([object Object])
+[2026-10-09 14:14:01] retry off=0 attempt=4/4 ([object Object])
+[2026-10-09 14:14:01] FAILED off=0 ([object Object]) after retries - aborting, NOT pushing partial data
+[2026-10-09 14:18:09] reuse failed: BrowserType.connect_over_cdp: read ECONNRESET
+Call log:
+  - <ws prepar -> will retry next cycle, no new window
+[2026-10-09 14:18:29] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-09 14:18:29] LOOP READY (interval 300s, keep_open=True)
+[2026-10-09 14:18:29] no pull tab yet — attaching to the open browser again
+[2026-10-09 14:18:29] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
