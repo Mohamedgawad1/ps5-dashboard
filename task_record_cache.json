@@ -4438,5 +4438,101 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00610-0577": {
+  "record": "2053191",
+  "task": "T-00610-0577",
+  "asset": "PS5-61-IE-0002-CD41",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0578": {
+  "record": "2053192",
+  "task": "T-00610-0578",
+  "asset": "PS5-61-IE-0002-CD42",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0579": {
+  "record": "2053193",
+  "task": "T-00610-0579",
+  "asset": "PS5-61-IE-0002-CD43",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0580": {
+  "record": "2053194",
+  "task": "T-00610-0580",
+  "asset": "PS5-61-IE-0002-CD44",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0581": {
+  "record": "2053195",
+  "task": "T-00610-0581",
+  "asset": "PS5-61-IE-0003-CD02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0609": {
+  "record": "2173117",
+  "task": "T-00610-0609",
+  "asset": "PS5-61-IE-0003-CD11",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0611": {
+  "record": "2173119",
+  "task": "T-00610-0611",
+  "asset": "PS5-61-IE-0003-CD13",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0386": {
+  "record": "2051062",
+  "task": "T-00608-0386",
+  "asset": "PS5-25-FIT-0003C-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0458": {
+  "record": "2051134",
+  "task": "T-00608-0458",
+  "asset": "PS5-71-FIT-0011A-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0459": {
+  "record": "2051135",
+  "task": "T-00608-0459",
+  "asset": "PS5-71-FIT-0011B-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0387": {
+  "record": "2051063",
+  "task": "T-00608-0387",
+  "asset": "PS5-25-FIT-0004-CL01",
+  "type": "Conformity Check",
+  "state": "Started (not Completed)",
+  "via": "dalc"
+ },
+ "T-00023-5641": {
+  "record": "1063185",
+  "task": "T-00023-5641",
+  "asset": "PS5-87-IRF-0002-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
