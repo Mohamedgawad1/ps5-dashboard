@@ -26922,3 +26922,83 @@ Call log:
 [2026-10-10 10:01:49] sync is already running as pid 17092 - nothing to do
 [2026-10-10 10:02:09] sync is already running as pid 17092 - nothing to do
 [2026-10-10 10:02:26] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:02:43] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:03:01] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:03:19] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:03:37] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:03:55] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:04:14] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:04:25] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-10 10:04:31] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:04:45] LOGGED IN
+[2026-10-10 10:04:49] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:05:07] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:05:25] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:05:44] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:06:01] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:06:20] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:06:38] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:06:55] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:07:13] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:07:32] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:07:45] pulled off=0 n=4000 accum=4000
+[2026-10-10 10:07:50] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:08:08] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:08:25] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:08:43] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:09:01] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:09:10] pulled off=4000 n=4000 accum=8000
+[2026-10-10 10:09:19] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:09:37] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:09:55] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:10:13] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:10:31] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:10:49] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:11:07] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:11:25] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:11:43] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:12:01] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:12:20] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:12:37] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:12:55] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:13:13] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:13:31] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:13:49] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:14:08] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:14:25] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:14:43] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:15:01] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:15:19] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:15:37] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:15:55] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:16:13] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:16:31] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:16:49] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:17:07] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:17:13] pulled off=8000 n=4000 accum=12000
+[2026-10-10 10:17:25] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:17:43] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:18:01] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:18:12] pulled off=12000 n=2008 accum=14008
+[2026-10-10 10:18:12] task index refreshed (6321 asset tags)
+[2026-10-10 10:18:13] updated dashboard_data.json itr_summary.live
+[2026-10-10 10:18:13]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-10 10:18:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-10 10:18 (closed=6394) rc=0 [main 5fb040a] ITR live update 2026-10-10 10:18 (closed=6394)
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+[2026-10-10 10:18:18]  >> git push OK
+[2026-10-10 10:18:20] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:18:24]  >> pages commit rc=0  2026-10-10 10:18 (closed=6394)
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+[2026-10-10 10:18:29]  >> pages push OK (closed=6394)
+[2026-10-10 10:18:38] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:18:55] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:19:13] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:19:31] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:19:49] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:20:07] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:20:26] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:20:43] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:21:01] sync is already running as pid 17092 - nothing to do
+[2026-10-10 10:21:19] sync is already running as pid 17092 - nothing to do
