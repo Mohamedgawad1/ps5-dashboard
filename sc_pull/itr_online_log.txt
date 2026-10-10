@@ -28811,3 +28811,82 @@ Call log:
 [2026-10-10 18:24:46] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
 [2026-10-10 18:25:03] sync is already running as pid 16280 - nothing to do
 [2026-10-10 18:25:26] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:25:46] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:26:06] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:26:27] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:26:49] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:27:06] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:27:24] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:27:42] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:28:00] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:28:18] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:28:36] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:28:54] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:29:12] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:29:30] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:29:46] no pull tab yet — attaching to the open browser again
+[2026-10-10 18:29:49] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:29:52] reused the sync's always-open browser (port 9222)
+[2026-10-10 18:29:57] LOGGED IN
+[2026-10-10 18:30:06] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:30:09] pulled off=0 n=4000 accum=4000
+[2026-10-10 18:30:20] pulled off=4000 n=4000 accum=8000
+[2026-10-10 18:30:24] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:30:32] pulled off=8000 n=4000 accum=12000
+[2026-10-10 18:30:38] pulled off=12000 n=2008 accum=14008
+[2026-10-10 18:30:39] task index refreshed (6321 asset tags)
+[2026-10-10 18:30:39] milestone_map: 290 subsystems
+[2026-10-10 18:30:39] updated dashboard_data.json itr_summary.live
+[2026-10-10 18:30:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-10 18:30:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-10 18:30 (closed=6419) rc=0 [main a90ad96] ITR live update 2026-10-10 18:30 (closed=6419)
+ 1 file changed, 720 insertions(+), 704 deletions(-)
+[2026-10-10 18:30:42] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:30:48]  >> git push OK
+[2026-10-10 18:30:52]  >> pages commit rc=0 026-10-10 18:30 (closed=6419)
+ 1 file changed, 57 insertions(+), 57 deletions(-)
+[2026-10-10 18:30:56]  >> pages push OK (closed=6419)
+[2026-10-10 18:31:00] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:31:18] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:31:37] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:31:57] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:32:20] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:32:32] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:32:50] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:33:07] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:33:26] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:33:43] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:34:02] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:34:20] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:34:39] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:34:56] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:35:15] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:35:32] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:35:51] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:36:04] LOGGED IN
+[2026-10-10 18:36:10] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:36:31] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:36:48] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:37:04] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:37:19] pulled off=0 n=4000 accum=4000
+[2026-10-10 18:37:23] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:37:39] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:37:43] pulled off=4000 n=4000 accum=8000
+[2026-10-10 18:37:58] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:37:58] pulled off=8000 n=4000 accum=12000
+[2026-10-10 18:38:05] pulled off=12000 n=2008 accum=14008
+[2026-10-10 18:38:06] task index refreshed (6321 asset tags)
+[2026-10-10 18:38:06] updated dashboard_data.json itr_summary.live
+[2026-10-10 18:38:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-10 18:38:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-10 18:38 (closed=6421) rc=0 [main d34bfe7] ITR live update 2026-10-10 18:38 (closed=6421)
+ 1 file changed, 41 insertions(+), 41 deletions(-)
+[2026-10-10 18:38:14]  >> git push OK
+[2026-10-10 18:38:15] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:38:19]  >> pages commit rc=0 026-10-10 18:38 (closed=6421)
+ 1 file changed, 41 insertions(+), 41 deletions(-)
+[2026-10-10 18:38:23]  >> pages push OK (closed=6421)
+[2026-10-10 18:38:33] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:38:52] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:39:10] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:39:27] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:39:47] sync is already running as pid 16280 - nothing to do
+[2026-10-10 18:40:04] sync is already running as pid 16280 - nothing to do
