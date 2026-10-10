@@ -27241,3 +27241,75 @@ Call log:
 [2026-10-10 11:22:53] sync is already running as pid 17092 - nothing to do
 [2026-10-10 11:23:11] sync is already running as pid 17092 - nothing to do
 [2026-10-10 11:23:29] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:23:47] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:24:05] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:24:23] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:24:41] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:24:59] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:25:17] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:25:36] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:25:53] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:26:11] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:26:29] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:26:46] err off=0: [object Object]
+[2026-10-10 11:26:52] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:27:05] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:27:23] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:27:42] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:28:00] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:28:18] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:28:36] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:28:53] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:29:11] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:29:29] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:29:47] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:30:06] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:30:24] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:30:42] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:30:59] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:31:18] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:31:36] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:31:56] LOGGED IN
+[2026-10-10 11:31:56] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:32:12] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:32:20] pulled off=0 n=4000 accum=4000
+[2026-10-10 11:32:31] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:32:34] pulled off=4000 n=4000 accum=8000
+[2026-10-10 11:32:47] pulled off=8000 n=4000 accum=12000
+[2026-10-10 11:32:48] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:32:53] pulled off=12000 n=2008 accum=14008
+[2026-10-10 11:32:53] task index refreshed (6321 asset tags)
+[2026-10-10 11:32:54] updated dashboard_data.json itr_summary.live
+[2026-10-10 11:32:55]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-10 11:32:55]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-10 11:32 (closed=6411) rc=0 [main 83d86db] ITR live update 2026-10-10 11:32 (closed=6411)
+ 1 file changed, 171 insertions(+), 171 deletions(-)
+[2026-10-10 11:33:00]  >> git push OK
+[2026-10-10 11:33:06] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:33:19]  >> pages commit rc=0 6-10-10 11:33 (closed=6411)
+ 1 file changed, 171 insertions(+), 171 deletions(-)
+[2026-10-10 11:33:24] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:33:39]  >> pages push OK (closed=6411)
+[2026-10-10 11:33:42] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:34:00] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:34:18] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:34:36] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:34:54] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:35:12] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:35:31] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:35:48] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:36:06] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:36:24] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:36:42] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:37:00] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:37:18] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:37:36] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:37:56] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:38:13] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:38:30] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:38:47] LOGGED IN
+[2026-10-10 11:38:48] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:39:06] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:39:24] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:39:42] sync is already running as pid 17092 - nothing to do
+[2026-10-10 11:39:58] err off=0: [object Object]
+[2026-10-10 11:40:01] sync is already running as pid 17092 - nothing to do
