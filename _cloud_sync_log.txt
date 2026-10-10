@@ -11602,3 +11602,10 @@
 2026-10-10 18:38:41    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx  (edits: 71419 cells / 0 notes)
 2026-10-10 18:38:41      [summery-sync] OK -> 51662 cells, 0 notes written, 15357 skipped (no matching column)
 2026-10-10 18:38:41 >> explorer rebuild
+2026-10-10 18:58:44      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14004+176557 rows, 182329 updates
+2026-10-10 18:58:44      Punch rows: 4028 | ITR rows: 190561 | RFC: 270 | Miles: 292
+2026-10-10 18:58:44      Subsystems: 1945 | max punch/sub: 196 | max itr/sub: 1919
+2026-10-10 18:58:44      Carry-over: 0 notes, 0 colored rows, 20647 pinned cells
+2026-10-10 18:58:44    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-10 18:58:44    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-10 18:58:44 >> dashboard xlsm
