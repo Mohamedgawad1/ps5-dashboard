@@ -26562,3 +26562,122 @@ Call log:
 [2026-10-10 08:39:33] sync is already running as pid 17092 - nothing to do
 [2026-10-10 08:39:51] sync is already running as pid 17092 - nothing to do
 [2026-10-10 08:40:09] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:40:13] pulled off=8000 n=4000 accum=12000
+[2026-10-10 08:40:27] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:40:27] pulled off=12000 n=2008 accum=14008
+[2026-10-10 08:40:28] task index refreshed (7484 asset tags)
+[2026-10-10 08:40:28] updated dashboard_data.json itr_summary.live
+[2026-10-10 08:40:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-10 08:40:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-10 08:40 (closed=3467) rc=0 [main ea30fe0] ITR live update 2026-10-10 08:40 (closed=3467)
+ 1 file changed, 474 insertions(+), 467 deletions(-)
+[2026-10-10 08:40:34]  >> git push OK
+[2026-10-10 08:40:37]  >> pages commit rc=0 6-10-10 08:40 (closed=3467)
+ 1 file changed, 474 insertions(+), 467 deletions(-)
+[2026-10-10 08:40:41]  >> pages push OK (closed=3467)
+[2026-10-10 08:40:45] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:41:03] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:41:21] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:41:40] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:41:57] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:42:15] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:42:33] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:42:51] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:43:09] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:43:27] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:43:47] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:44:03] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:44:23] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:44:40] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:44:58] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:45:15] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:45:33] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:45:47] LOGGED IN
+[2026-10-10 08:45:51] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:45:59] pulled off=0 n=4000 accum=4000
+[2026-10-10 08:46:10] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:46:16] pulled off=4000 n=4000 accum=8000
+[2026-10-10 08:46:27] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:46:34] pulled off=8000 n=4000 accum=12000
+[2026-10-10 08:46:42] pulled off=12000 n=2008 accum=14008
+[2026-10-10 08:46:42] task index refreshed (6321 asset tags)
+[2026-10-10 08:46:42] updated dashboard_data.json itr_summary.live
+[2026-10-10 08:46:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-10 08:46:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-10 08:46 (closed=6384) rc=0 [main 51c3462] ITR live update 2026-10-10 08:46 (closed=6384)
+ 1 file changed, 470 insertions(+), 470 deletions(-)
+[2026-10-10 08:46:46] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:46:48]  >> git push OK
+[2026-10-10 08:46:52]  >> pages commit rc=0 6-10-10 08:46 (closed=6384)
+ 1 file changed, 470 insertions(+), 470 deletions(-)
+[2026-10-10 08:46:56]  >> pages push OK (closed=6384)
+[2026-10-10 08:47:04] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:47:21] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:47:40] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:47:57] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:48:15] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:48:33] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:48:51] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:49:09] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:49:27] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:49:45] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:50:03] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:50:21] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:50:41] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:50:59] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:51:16] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:51:34] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:51:51] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:52:02] LOGGED IN
+[2026-10-10 08:52:10] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:52:18] pulled off=0 n=4000 accum=4000
+[2026-10-10 08:52:29] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:52:34] pulled off=4000 n=4000 accum=8000
+[2026-10-10 08:52:46] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:52:48] pulled off=8000 n=4000 accum=12000
+[2026-10-10 08:53:04] pulled off=12000 n=2008 accum=14008
+[2026-10-10 08:53:05] task index refreshed (6321 asset tags)
+[2026-10-10 08:53:06] updated dashboard_data.json itr_summary.live
+[2026-10-10 08:53:07] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:53:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-10 08:53:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-10 08:53 (closed=6385) rc=0 [main a455ac4] ITR live update 2026-10-10 08:53 (closed=6385)
+ 1 file changed, 25 insertions(+), 25 deletions(-)
+[2026-10-10 08:53:12]  >> git push OK
+[2026-10-10 08:53:17]  >> pages commit rc=0 026-10-10 08:53 (closed=6385)
+ 1 file changed, 25 insertions(+), 25 deletions(-)
+[2026-10-10 08:53:22]  >> pages push OK (closed=6385)
+[2026-10-10 08:53:22] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:53:40] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:53:58] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:54:16] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:54:36] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:54:52] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:55:10] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:55:28] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:55:47] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:56:05] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:56:22] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:56:40] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:56:58] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:57:16] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:57:34] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:57:52] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:58:10] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:58:28] LOGGED IN
+[2026-10-10 08:58:28] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:58:37] pulled off=0 n=4000 accum=4000
+[2026-10-10 08:58:46] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:58:48] pulled off=4000 n=4000 accum=8000
+[2026-10-10 08:58:58] pulled off=8000 n=4000 accum=12000
+[2026-10-10 08:59:03] pulled off=12000 n=2008 accum=14008
+[2026-10-10 08:59:03] task index refreshed (6321 asset tags)
+[2026-10-10 08:59:03] updated dashboard_data.json itr_summary.live
+[2026-10-10 08:59:05]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-10 08:59:05] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:59:06]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-10 08:59 (closed=6385) rc=0 [main 16a4d2f] ITR live update 2026-10-10 08:59 (closed=6385)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-10 08:59:16]  >> git push OK
+[2026-10-10 08:59:19]  >> pages commit rc=0 te 2026-10-10 08:59 (closed=6385)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-10 08:59:22] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:59:23]  >> pages push OK (closed=6385)
+[2026-10-10 08:59:40] sync is already running as pid 17092 - nothing to do
+[2026-10-10 08:59:58] sync is already running as pid 17092 - nothing to do
