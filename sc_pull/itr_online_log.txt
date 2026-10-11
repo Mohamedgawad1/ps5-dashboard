@@ -31140,3 +31140,85 @@ Call log:
 [2026-10-11 14:59:25] sync is already running as pid 4888 - nothing to do
 [2026-10-11 14:59:43] sync is already running as pid 4888 - nothing to do
 [2026-10-11 15:00:01] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:00:19] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:00:37] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:00:55] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:01:13] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:01:31] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:01:49] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:02:07] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:02:13] no pull tab yet — attaching to the open browser again
+[2026-10-11 15:02:13] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-11 15:02:25] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:02:43] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:03:01] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:03:19] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:03:37] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:03:55] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:04:13] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:04:31] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:04:50] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:05:07] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:05:26] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:05:44] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:06:01] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:06:19] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:06:37] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:06:55] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:07:13] no pull tab yet — attaching to the open browser again
+[2026-10-11 15:07:14] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-11 15:07:14] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:07:32] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:07:50] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:08:08] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:08:26] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:08:44] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:09:01] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:09:20] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:09:47] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:10:00] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:10:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:10:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:10:51] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:11:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:11:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:11:45] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:12:03] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:12:14] no pull tab yet — attaching to the open browser again
+[2026-10-11 15:12:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:12:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:12:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:13:15] reused the sync's always-open browser (port 9222)
+[2026-10-11 15:13:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:13:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:13:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:14:09] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:14:15] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-11 15:14:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:14:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:15:02] session expired -> auto-login
+[2026-10-11 15:15:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:15:14] ssologin click: no-btn
+[2026-10-11 15:15:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:15:28] LOGGED IN
+[2026-10-11 15:15:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:15:59] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:16:06] pulled off=0 n=4000 accum=4000
+[2026-10-11 15:16:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:16:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:16:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:17:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:17:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:17:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:18:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:18:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:18:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:18:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:19:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:19:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:19:35] pulled off=4000 n=4000 accum=8000
+[2026-10-11 15:19:46] pulled off=8000 n=4000 accum=12000
+[2026-10-11 15:19:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:19:58] pulled off=12000 n=2008 accum=14008
