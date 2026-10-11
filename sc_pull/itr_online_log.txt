@@ -29704,3 +29704,116 @@ Call log:
 [2026-10-11 09:39:18] sync is already running as pid 4888 - nothing to do
 [2026-10-11 09:39:36] sync is already running as pid 4888 - nothing to do
 [2026-10-11 09:39:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:40:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:40:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:40:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:41:06] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:41:24] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:41:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:42:00] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:42:14] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-11 09:42:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:42:36] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:42:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:43:00] session expired -> auto-login
+[2026-10-11 09:43:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:43:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:43:36] ssologin click: no-btn
+[2026-10-11 09:43:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:43:51] LOGGED IN
+[2026-10-11 09:44:04] pulled off=0 n=4000 accum=4000
+[2026-10-11 09:44:06] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:44:17] pulled off=4000 n=4000 accum=8000
+[2026-10-11 09:44:25] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:44:28] pulled off=8000 n=4000 accum=12000
+[2026-10-11 09:44:34] pulled off=12000 n=2008 accum=14008
+[2026-10-11 09:44:34] task index refreshed (6321 asset tags)
+[2026-10-11 09:44:34] updated dashboard_data.json itr_summary.live
+[2026-10-11 09:44:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-11 09:44:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-11 09:44 (closed=6443) rc=0 [main 5bd3589] ITR live update 2026-10-11 09:44 (closed=6443)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-11 09:44:39]  >> git push OK
+[2026-10-11 09:44:42]  >> pages commit rc=0  2026-10-11 09:44 (closed=6443)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-11 09:44:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:44:46]  >> pages push OK (closed=6443)
+[2026-10-11 09:45:00] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:45:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:45:36] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:45:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:46:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:46:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:46:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:47:06] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:47:24] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:47:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:48:00] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:48:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:48:36] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:48:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:49:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:49:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:49:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:49:49] LOGGED IN
+[2026-10-11 09:49:57] pulled off=0 n=4000 accum=4000
+[2026-10-11 09:50:06] pulled off=4000 n=4000 accum=8000
+[2026-10-11 09:50:06] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:50:16] pulled off=8000 n=4000 accum=12000
+[2026-10-11 09:50:20] pulled off=12000 n=2008 accum=14008
+[2026-10-11 09:50:20] task index refreshed (6321 asset tags)
+[2026-10-11 09:50:21] updated dashboard_data.json itr_summary.live
+[2026-10-11 09:50:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-11 09:50:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-11 09:50 (closed=6443) rc=0 [main ade0aca] ITR live update 2026-10-11 09:50 (closed=6443)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-11 09:50:26] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:50:27]  >> git push OK
+[2026-10-11 09:50:31]  >> pages commit rc=0  2026-10-11 09:50 (closed=6443)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-11 09:50:35]  >> pages push OK (closed=6443)
+[2026-10-11 09:50:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:51:00] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:51:19] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:51:37] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:51:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:52:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:52:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:52:49] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:53:07] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:53:25] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:53:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:54:00] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:54:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:54:36] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:54:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:55:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:55:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:55:39] LOGGED IN
+[2026-10-11 09:55:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:55:52] pulled off=0 n=4000 accum=4000
+[2026-10-11 09:56:07] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:56:08] pulled off=4000 n=4000 accum=8000
+[2026-10-11 09:56:26] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:56:26] pulled off=8000 n=4000 accum=12000
+[2026-10-11 09:56:35] pulled off=12000 n=2008 accum=14008
+[2026-10-11 09:56:35] task index refreshed (6321 asset tags)
+[2026-10-11 09:56:35] updated dashboard_data.json itr_summary.live
+[2026-10-11 09:56:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-11 09:56:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-11 09:56 (closed=6443) rc=0 [main 43eb5ed] ITR live update 2026-10-11 09:56 (closed=6443)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-11 09:56:42]  >> git push OK
+[2026-10-11 09:56:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:56:46]  >> pages commit rc=0  2026-10-11 09:56 (closed=6443)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-11 09:56:50]  >> pages push OK (closed=6443)
+[2026-10-11 09:57:01] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:57:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:57:37] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:57:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:58:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:58:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:58:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:59:06] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:59:24] sync is already running as pid 4888 - nothing to do
+[2026-10-11 09:59:42] sync is already running as pid 4888 - nothing to do
