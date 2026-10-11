@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-11 10:57:43",
+  "updated": "2026-10-11 11:35:56",
   "total_tasks_ps5": 14008,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6443,
-  "open": 3857,
-  "today_closed": 2,
+  "closed": 6446,
+  "open": 3854,
+  "today_closed": 5,
   "closed_by_discipline": {
     "I": 3206,
-    "E": 2942,
+    "E": 2945,
     "T": 295
   },
   "open_by_discipline": {
     "I": 1389,
-    "E": 1685,
+    "E": 1682,
     "T": 783
   },
   "daily": [
@@ -228,23 +228,35 @@
     },
     {
       "label": "2026-10-11",
-      "E": 2,
+      "E": 5,
       "I": 0,
       "T": 0,
-      "Total": 2
+      "Total": 5
     }
   ],
-  "closed_this_week": 316,
-  "closed_this_month": 610,
+  "closed_this_week": 319,
+  "closed_this_month": 613,
   "today_milestone": [
+    {
+      "milestone": "Milestone D",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 1
+    },
+    {
+      "milestone": "Milestone E",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 1
+    },
     {
       "milestone": "Milestone H",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 2
+      "count": 3
     }
   ],
-  "today_milestone_total": 2,
+  "today_milestone_total": 5,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -292,27 +304,27 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3437,
-      "closed": 2338,
-      "remaining": 1099,
-      "pct": 68.0,
+      "closed": 2339,
+      "remaining": 1098,
+      "pct": 68.1,
       "status": {
-        "Closed": 2338,
+        "Closed": 2339,
         "Submitted": 13,
-        "To be completed": 1084,
-        "Other": 2
+        "To be completed": 1082,
+        "Other": 3
       }
     },
     {
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1347,
-      "remaining": 185,
-      "pct": 87.9,
+      "closed": 1348,
+      "remaining": 184,
+      "pct": 88.0,
       "status": {
-        "Closed": 1347,
+        "Closed": 1348,
         "Submitted": 0,
-        "To be completed": 180,
+        "To be completed": 179,
         "Other": 5
       }
     },
@@ -348,14 +360,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2099,
-      "remaining": 1152,
+      "closed": 2100,
+      "remaining": 1151,
       "pct": 64.6,
       "status": {
-        "Closed": 2099,
+        "Closed": 2100,
         "Submitted": 46,
-        "To be completed": 1027,
-        "Other": 79
+        "To be completed": 1021,
+        "Other": 84
       }
     },
     {
@@ -367,13 +379,40 @@
       "pct": 18.6,
       "status": {
         "Closed": 146,
-        "Submitted": 2,
-        "To be completed": 630,
-        "Other": 7
+        "Submitted": 4,
+        "To be completed": 629,
+        "Other": 6
       }
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-IN-0002F-CG01",
+      "task": "T-00233-10541",
+      "system": "PS5-60-67 - Fuel Conditioning Module PS5-60-UZ-8900F (UCP)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/11/2026 8:25:48 "
+    },
+    {
+      "tag": "PS5-60-IN-0002G-CG01",
+      "task": "T-00233-10542",
+      "system": "PS5-60-69 - Fuel Conditioning Module PS5-60-UZ-8900G (UCP)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/11/2026 8:20:13 "
+    },
+    {
+      "tag": "PS5-79-IG-0012",
+      "task": "T-00238-0742",
+      "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/11/2026 8:15:41 "
+    },
     {
       "tag": "",
       "task": "T-00244-1420",
@@ -1426,33 +1465,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/8/2026 5:52:19 P"
-    },
-    {
-      "tag": "PS5-71-TIT-0006-CJ01",
-      "task": "T-00069-5576",
-      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/8/2026 5:07:57 P"
-    },
-    {
-      "tag": "PS5-71-XY-0089-CJ01",
-      "task": "T-00069-5600",
-      "system": "PS5-71-04 - CFO Storage Tank",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/8/2026 5:05:08 P"
-    },
-    {
-      "tag": "PS5-71-TIT-2402AA-CJ01",
-      "task": "T-00069-5580",
-      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/8/2026 5:04:16 P"
     }
   ]
 }
