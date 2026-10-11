@@ -4348,7 +4348,7 @@
   "task": "T-00023-4890",
   "asset": "PS5-25-DM-3100C-CL01",
   "type": "Conformity Check",
-  "state": "To be completed",
+  "state": "Closed",
   "via": "dalc"
  },
  "T-00023-4891": {
@@ -4603,6 +4603,102 @@
   "record": "1124146",
   "task": "T-00069-5591",
   "asset": "PS5-71-XV-0090-CC02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2112": {
+  "record": "1100049",
+  "task": "T-00067-2112",
+  "asset": "PS5-71-PDIT-0030",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2136": {
+  "record": "1100073",
+  "task": "T-00067-2136",
+  "asset": "PS5-71-PIT-2402A",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2146": {
+  "record": "1100128",
+  "task": "T-00067-2146",
+  "asset": "PS5-71-TIT-0006",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2154": {
+  "record": "1100136",
+  "task": "T-00067-2154",
+  "asset": "PS5-71-TIT-0007",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2156": {
+  "record": "1100138",
+  "task": "T-00067-2156",
+  "asset": "PS5-71-TIT-0004",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5534": {
+  "record": "1063078",
+  "task": "T-00023-5534",
+  "asset": "PS5-61-IU-3100C-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-2069": {
+  "record": "1063229",
+  "task": "T-00024-2069",
+  "asset": "PS5-25-IES-3100C-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0420": {
+  "record": "2051096",
+  "task": "T-00608-0420",
+  "asset": "PS5-61-IDH-3100C-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0424": {
+  "record": "2051100",
+  "task": "T-00608-0424",
+  "asset": "PS5-61-IG-0012B-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0249": {
+  "record": "2052863",
+  "task": "T-00610-0249",
+  "asset": "PS5-61-IDH-3100C-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0250": {
+  "record": "2052864",
+  "task": "T-00610-0250",
+  "asset": "PS5-61-IDH-3100C-CD02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0265": {
+  "record": "2052879",
+  "task": "T-00610-0265",
+  "asset": "PS5-61-IJ-0001-CD26",
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
