@@ -31222,3 +31222,83 @@ Call log:
 [2026-10-11 15:19:46] pulled off=8000 n=4000 accum=12000
 [2026-10-11 15:19:52] sync is already running as pid 4888 - nothing to do
 [2026-10-11 15:19:58] pulled off=12000 n=2008 accum=14008
+[2026-10-11 15:19:59] task index refreshed (6321 asset tags)
+[2026-10-11 15:19:59] updated dashboard_data.json itr_summary.live
+[2026-10-11 15:20:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-11 15:20:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-11 15:20 (closed=6450) rc=0 [main fd7e5b2] ITR live update 2026-10-11 15:20 (closed=6450)
+ 3 files changed, 252 insertions(+), 38 deletions(-)
+[2026-10-11 15:20:06]  >> git push OK
+[2026-10-11 15:20:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:20:13]  >> pages commit rc=0 026-10-11 15:20 (closed=6450)
+ 1 file changed, 38 insertions(+), 38 deletions(-)
+[2026-10-11 15:20:19]  >> pages push OK (closed=6450)
+[2026-10-11 15:20:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:20:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:21:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:21:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:21:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:21:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:22:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:22:36] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:22:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:23:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:23:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:23:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:24:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:24:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:24:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:24:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:25:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:25:19] goto err: Page.goto: Connection closed while reading from the driver
+[2026-10-11 15:25:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:25:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:26:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:26:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:26:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:27:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:27:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:27:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:27:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:28:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:28:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:28:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:29:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:29:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:29:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:30:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:30:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:30:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:30:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:31:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:31:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:31:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:32:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:32:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:32:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:33:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:33:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:33:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:33:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:34:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:34:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:34:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:35:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:35:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:35:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:36:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:36:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:36:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:36:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:37:17] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:37:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:37:52] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:38:10] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:38:28] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:38:46] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:39:04] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:39:22] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:39:40] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:39:58] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:40:16] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:40:34] sync is already running as pid 4888 - nothing to do
+[2026-10-11 15:40:52] sync is already running as pid 4888 - nothing to do
