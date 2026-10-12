@@ -32308,3 +32308,31 @@ valuable there.
 [2026-10-12 12:18:38] ssologin click: ok
 [2026-10-12 12:18:48] sso handoff -> verify password page
 [2026-10-12 12:18:50] verify submit: submitted
+[2026-10-12 12:20:37] auto-login attempt 3 still not logged in
+[2026-10-12 12:22:16] LOGGED IN
+[2026-10-12 12:24:11] pulled off=0 n=4000 accum=4000
+[2026-10-12 12:26:26] pulled off=4000 n=4000 accum=8000
+[2026-10-12 12:28:54] pulled off=8000 n=4000 accum=12000
+[2026-10-12 12:30:15] pulled off=12000 n=2008 accum=14008
+[2026-10-12 12:30:15] task index refreshed (6321 asset tags)
+[2026-10-12 12:30:16] updated dashboard_data.json itr_summary.live
+[2026-10-12 12:30:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-12 12:30:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-12 12:30 (closed=6475) rc=0 [main d630bcf] ITR live update 2026-10-12 12:30 (closed=6475)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-12 12:30:25]  >> git push OK
+[2026-10-12 12:30:29]  >> pages commit rc=0  2026-10-12 12:30 (closed=6475)
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+[2026-10-12 12:30:33]  >> pages pull --rebase (attempt 1)
+[2026-10-12 12:30:35]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-12 12:35:56] LOGGED IN
+[2026-10-12 12:38:48] pulled off=0 n=4000 accum=4000
+[2026-10-12 12:41:19] pulled off=4000 n=4000 accum=8000
