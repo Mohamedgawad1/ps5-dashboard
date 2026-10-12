@@ -33029,3 +33029,12 @@ and run me again.  I am stopping in case you still have something
 valuable there.
 
 
+[2026-10-12 17:41:56] LOGGED IN
+[2026-10-12 17:43:55] pulled off=0 n=4000 accum=4000
+[2026-10-12 18:51:57] reused the sync's always-open browser (port 9222)
+[2026-10-12 18:51:57] LOOP READY (interval 300s, keep_open=True)
+[2026-10-12 18:52:54] session expired -> auto-login
+[2026-10-12 18:52:59] ssologin click: no-btn
+[2026-10-12 18:53:20] LOGGED IN
+[2026-10-12 18:54:30] pulled off=0 n=4000 accum=4000
+[2026-10-12 18:55:22] pulled off=4000 n=4000 accum=8000
