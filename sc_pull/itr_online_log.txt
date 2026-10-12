@@ -32019,3 +32019,60 @@ Call log:
 [2026-10-12 09:58:36]  >> pages commit rc=0 te 2026-10-12 09:58 (closed=6475)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-10-12 09:58:41]  >> pages push OK (closed=6475)
+[2026-10-12 10:04:21] LOGGED IN
+[2026-10-12 10:04:37] pulled off=0 n=4000 accum=4000
+[2026-10-12 10:05:00] pulled off=4000 n=4000 accum=8000
+[2026-10-12 10:05:10] pulled off=8000 n=4000 accum=12000
+[2026-10-12 10:05:15] pulled off=12000 n=2008 accum=14008
+[2026-10-12 10:05:15] task index refreshed (6321 asset tags)
+[2026-10-12 10:05:16] updated dashboard_data.json itr_summary.live
+[2026-10-12 10:05:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-12 10:05:21]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-12 10:05 (closed=6475) rc=0 [main 62f56e5] ITR live update 2026-10-12 10:05 (closed=6475)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 10:05:30]  >> git push OK
+[2026-10-12 10:05:33]  >> pages commit rc=0 te 2026-10-12 10:05 (closed=6475)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 10:05:39]  >> pages push OK (closed=6475)
+[2026-10-12 10:10:45] LOGGED IN
+[2026-10-12 10:11:14] pulled off=0 n=4000 accum=4000
+[2026-10-12 10:11:27] pulled off=4000 n=4000 accum=8000
+[2026-10-12 10:11:37] pulled off=8000 n=4000 accum=12000
+[2026-10-12 10:11:42] pulled off=12000 n=2008 accum=14008
+[2026-10-12 10:11:42] task index refreshed (6321 asset tags)
+[2026-10-12 10:11:43] updated dashboard_data.json itr_summary.live
+[2026-10-12 10:11:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-12 10:11:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-12 10:11 (closed=6475) rc=0 [main 9828f93] ITR live update 2026-10-12 10:11 (closed=6475)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 10:12:06]  !! push failed: ["fatal: unable to access 'https://github.com/Mohamedgawad1/ps5-dashboard.git/': Failed to connect to github.com:443 after 21342 ms: Could not connect to server"]
+[2026-10-12 10:12:29]  >> pages commit rc=0 te 2026-10-12 10:12 (closed=6475)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 10:12:47]  >> pages pull --rebase (attempt 1)
+[2026-10-12 10:12:50]  !! pages rebase failed:  You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Could not apply 1f3bbac... # ITR live update 2026-10-12 10:12 (closed=6475)
+
+[2026-10-12 10:17:57] LOGGED IN
+[2026-10-12 10:18:25] pulled off=0 n=4000 accum=4000
+[2026-10-12 10:18:51] pulled off=4000 n=4000 accum=8000
+[2026-10-12 10:19:29] pulled off=8000 n=4000 accum=12000
+[2026-10-12 10:19:40] pulled off=12000 n=2008 accum=14008
+[2026-10-12 10:19:41] task index refreshed (6321 asset tags)
+[2026-10-12 10:19:42] updated dashboard_data.json itr_summary.live
+[2026-10-12 10:19:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-12 10:19:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-12 10:19 (closed=6475) rc=0 [main 2caaf23] ITR live update 2026-10-12 10:19 (closed=6475)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-12 10:19:51]  >> git push OK
+[2026-10-12 10:19:54]  >> pages commit rc=0  2026-10-12 10:19 (closed=6475)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-12 10:19:59]  >> pages pull --rebase (attempt 1)
+[2026-10-12 10:20:02]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
