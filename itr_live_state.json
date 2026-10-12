@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-12 17:36:25",
+  "updated": "2026-10-12 18:57:11",
   "total_tasks_ps5": 14008,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6481,
-  "open": 3819,
-  "today_closed": 12,
+  "closed": 6487,
+  "open": 3813,
+  "today_closed": 18,
   "closed_by_discipline": {
-    "I": 3224,
+    "I": 3230,
     "E": 2962,
     "T": 295
   },
   "open_by_discipline": {
-    "I": 1371,
+    "I": 1365,
     "E": 1665,
     "T": 783
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-12",
       "E": 0,
-      "I": 12,
+      "I": 18,
       "T": 0,
-      "Total": 12
+      "Total": 18
     }
   ],
-  "closed_this_week": 12,
-  "closed_this_month": 648,
+  "closed_this_week": 18,
+  "closed_this_month": 654,
   "today_milestone": [
     {
       "milestone": "Milestone C",
@@ -259,10 +259,10 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 6
+      "count": 12
     }
   ],
-  "today_milestone_total": 12,
+  "today_milestone_total": 18,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -366,13 +366,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2123,
-      "remaining": 1128,
-      "pct": 65.3,
+      "closed": 2129,
+      "remaining": 1122,
+      "pct": 65.5,
       "status": {
-        "Closed": 2123,
+        "Closed": 2129,
         "Submitted": 46,
-        "To be completed": 937,
+        "To be completed": 931,
         "Other": 145
       }
     },
@@ -392,6 +392,60 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-XY-0090-CJ01",
+      "task": "T-00069-5601",
+      "system": "PS5-71-12 - CFO Service Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:41:51 "
+    },
+    {
+      "tag": "PS5-71-XXS-0090-CJ01",
+      "task": "T-00069-5597",
+      "system": "PS5-71-12 - CFO Service Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:40:59 "
+    },
+    {
+      "tag": "PS5-28-SDV-0045-CC01",
+      "task": "T-00069-4846",
+      "system": "PS5-28-17 - Reinjection Pump",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:40:02 "
+    },
+    {
+      "tag": "PS5-25-ZS-1101-CJ01",
+      "task": "T-00069-4809",
+      "system": "PS5-25-01 - Export Pipeline Pig Receiver",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:39:12 "
+    },
+    {
+      "tag": "PS5-25-ZIT-0001-CC01",
+      "task": "T-00069-4807",
+      "system": "PS5-25-01 - Export Pipeline Pig Receiver",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:37:05 "
+    },
+    {
+      "tag": "PS5-25-SDV-0022-CC02",
+      "task": "T-00069-4741",
+      "system": "PS5-25-01 - Export Pipeline Pig Receiver",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:36:09 "
+    },
     {
       "tag": "PS5-01-PIT-0016-CJ01",
       "task": "T-00614-0877",
@@ -1417,60 +1471,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/9/2026 6:21:52 A"
-    },
-    {
-      "tag": "PS5-75-UI-6100",
-      "task": "T-00090-0291",
-      "system": "PS5-75-02 - Biocide Injection Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:14:52 A"
-    },
-    {
-      "tag": "PS5-75-UI-6100",
-      "task": "T-00046-0403",
-      "system": "PS5-75-02 - Biocide Injection Package",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:14:06 A"
-    },
-    {
-      "tag": "PS5-75-UI-6300",
-      "task": "T-00090-0293",
-      "system": "PS5-75-03 - Corrosion Inhibitor Injection Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:12:44 A"
-    },
-    {
-      "tag": "PS5-75-UI-6300",
-      "task": "T-00046-0405",
-      "system": "PS5-75-03 - Corrosion Inhibitor Injection Package",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:11:56 A"
-    },
-    {
-      "tag": "PS5-82-UZ-8100",
-      "task": "T-00090-0295",
-      "system": "PS5-82-02 - Sewage Treatment Plant Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:10:37 A"
-    },
-    {
-      "tag": "PS5-82-UZ-8100",
-      "task": "T-00046-0407",
-      "system": "PS5-82-02 - Sewage Treatment Plant Package",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:09:31 A"
     }
   ]
 }
