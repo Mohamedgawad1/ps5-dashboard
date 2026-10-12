@@ -11749,3 +11749,6 @@
 2026-10-12 18:55:22    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
 2026-10-12 18:55:22    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
 2026-10-12 18:55:22 >> local->DPR
+2026-10-12 18:58:49    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx  (edits: 72727 cells / 0 notes)
+2026-10-12 18:58:49      [summery-sync] OK -> 52931 cells, 0 notes written, 15357 skipped (no matching column)
+2026-10-12 18:58:49 >> explorer rebuild
