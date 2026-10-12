@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-12 12:30:16",
+  "updated": "2026-10-12 12:56:16",
   "total_tasks_ps5": 14008,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6475,
-  "open": 3825,
-  "today_closed": 6,
+  "closed": 6477,
+  "open": 3823,
+  "today_closed": 8,
   "closed_by_discipline": {
-    "I": 3218,
+    "I": 3220,
     "E": 2962,
     "T": 295
   },
   "open_by_discipline": {
-    "I": 1377,
+    "I": 1375,
     "E": 1665,
     "T": 783
   },
@@ -229,14 +229,20 @@
     {
       "label": "2026-10-12",
       "E": 0,
-      "I": 6,
+      "I": 8,
       "T": 0,
-      "Total": 6
+      "Total": 8
     }
   ],
-  "closed_this_week": 6,
-  "closed_this_month": 642,
+  "closed_this_week": 8,
+  "closed_this_month": 644,
   "today_milestone": [
+    {
+      "milestone": "Milestone G",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 2
+    },
     {
       "milestone": "Milestone H",
       "disc": "I",
@@ -244,7 +250,7 @@
       "count": 6
     }
   ],
-  "today_milestone_total": 6,
+  "today_milestone_total": 8,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -334,13 +340,13 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 747,
-      "remaining": 157,
-      "pct": 82.6,
+      "closed": 749,
+      "remaining": 155,
+      "pct": 82.9,
       "status": {
-        "Closed": 747,
+        "Closed": 749,
         "Submitted": 0,
-        "To be completed": 154,
+        "To be completed": 152,
         "Other": 3
       }
     },
@@ -374,6 +380,24 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-28-LIT-0008",
+      "task": "T-00067-2096",
+      "system": "PS5-28-08 - Open Drain Sump and Pumps",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 9:30:27 "
+    },
+    {
+      "tag": "PS5-28-LIT-0002",
+      "task": "T-00067-2085",
+      "system": "PS5-28-08 - Open Drain Sump and Pumps",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 9:29:16 "
+    },
     {
       "tag": "PS5-28-PSV-3901A",
       "task": "T-00251-0143",
@@ -1435,24 +1459,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/9/2026 5:56:15 A"
-    },
-    {
-      "tag": "PS5-28-DM-3500",
-      "task": "T-00026-0157",
-      "system": "PS5-28-08 - Open Drain Sump and Pumps",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 5:55:57 A"
-    },
-    {
-      "tag": "PS5-28-DM-3400",
-      "task": "T-00026-0156",
-      "system": "PS5-28-03 - Closed Drain Drum and Pump 01",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 5:54:31 A"
     }
   ]
 }
