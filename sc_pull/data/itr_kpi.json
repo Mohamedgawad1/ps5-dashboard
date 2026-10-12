@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-12 18:57:11",
+  "updated": "2026-10-12 19:15:54",
   "total_tasks_ps5": 14008,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6487,
-  "open": 3813,
-  "today_closed": 18,
+  "closed": 6495,
+  "open": 3805,
+  "today_closed": 26,
   "closed_by_discipline": {
-    "I": 3230,
-    "E": 2962,
+    "I": 3237,
+    "E": 2963,
     "T": 295
   },
   "open_by_discipline": {
-    "I": 1365,
-    "E": 1665,
+    "I": 1358,
+    "E": 1664,
     "T": 783
   },
   "daily": [
@@ -228,20 +228,20 @@
     },
     {
       "label": "2026-10-12",
-      "E": 0,
-      "I": 18,
+      "E": 1,
+      "I": 25,
       "T": 0,
-      "Total": 18
+      "Total": 26
     }
   ],
-  "closed_this_week": 18,
-  "closed_this_month": 654,
+  "closed_this_week": 26,
+  "closed_this_month": 662,
   "today_milestone": [
     {
       "milestone": "Milestone C",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 1
+      "count": 7
     },
     {
       "milestone": "Milestone E",
@@ -257,12 +257,18 @@
     },
     {
       "milestone": "Milestone H",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 1
+    },
+    {
+      "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 12
+      "count": 13
     }
   ],
-  "today_milestone_total": 18,
+  "today_milestone_total": 26,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -296,13 +302,13 @@
       "label": "Milestone C",
       "raw": "PS5 - Milestone C",
       "total": 963,
-      "closed": 613,
-      "remaining": 350,
-      "pct": 63.7,
+      "closed": 619,
+      "remaining": 344,
+      "pct": 64.3,
       "status": {
-        "Closed": 613,
+        "Closed": 619,
         "Submitted": 0,
-        "To be completed": 349,
+        "To be completed": 343,
         "Other": 1
       }
     },
@@ -366,14 +372,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2129,
-      "remaining": 1122,
+      "closed": 2131,
+      "remaining": 1120,
       "pct": 65.5,
       "status": {
-        "Closed": 2129,
+        "Closed": 2131,
         "Submitted": 46,
-        "To be completed": 931,
-        "Other": 145
+        "To be completed": 928,
+        "Other": 146
       }
     },
     {
@@ -392,6 +398,78 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-HE-2400A-CL01",
+      "task": "T-00608-1052",
+      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 4:14:35 "
+    },
+    {
+      "tag": "PS5-25-PIT-0013",
+      "task": "T-00067-2135",
+      "system": "PS5-25-06 - Crude Oil Export Pumps Discharge",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 4:08:16 "
+    },
+    {
+      "tag": "PS5-01-PIT-0017",
+      "task": "T-00067-2124",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 4:07:07 "
+    },
+    {
+      "tag": "PS5-01-PIT-0016",
+      "task": "T-00067-2111",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 4:06:13 "
+    },
+    {
+      "tag": "PS5-01-PIT-0015",
+      "task": "T-00067-2120",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 4:05:11 "
+    },
+    {
+      "tag": "PS5-01-PIT-0014",
+      "task": "T-00067-2128",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 4:04:00 "
+    },
+    {
+      "tag": "PS5-01-PIT-0013",
+      "task": "T-00067-2139",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 4:03:04 "
+    },
+    {
+      "tag": "PS5-01-PIT-0010",
+      "task": "T-00067-2103",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 4:02:14 "
+    },
     {
       "tag": "PS5-71-XY-0090-CJ01",
       "task": "T-00069-5601",
@@ -1399,78 +1477,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/9/2026 2:11:30 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1669",
-      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 2:09:48 P"
-    },
-    {
-      "tag": "PS5-75-UI-6200",
-      "task": "T-00090-0292",
-      "system": "PS5-75-01 - DRA Injection Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:30:58 A"
-    },
-    {
-      "tag": "PS5-71-DM-3400B",
-      "task": "T-00026-0177",
-      "system": "PS5-71-13 - CFO Service Pump A/B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:23:57 A"
-    },
-    {
-      "tag": "PS5-75-UI-6200",
-      "task": "T-00046-0404",
-      "system": "PS5-75-01 - DRA Injection Package",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:23:23 A"
-    },
-    {
-      "tag": "PS5-71-DM-3400A",
-      "task": "T-00026-0176",
-      "system": "PS5-71-13 - CFO Service Pump A/B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:23:20 A"
-    },
-    {
-      "tag": "PS5-71-DM-3300B",
-      "task": "T-00026-0175",
-      "system": "PS5-71-05 - CFO Transfer Pump A/B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:22:58 A"
-    },
-    {
-      "tag": "PS5-71-DM-3300A",
-      "task": "T-00026-0174",
-      "system": "PS5-71-05 - CFO Transfer Pump A/B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:22:23 A"
-    },
-    {
-      "tag": "PS5-71-DM-3200",
-      "task": "T-00026-0173",
-      "system": "PS5-71-14 - Diesel Fuel Transfer and Dispensing Station",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 6:21:52 A"
     }
   ]
 }
