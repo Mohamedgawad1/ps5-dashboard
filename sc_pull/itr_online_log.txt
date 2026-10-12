@@ -32295,3 +32295,16 @@ valuable there.
 [2026-10-12 11:54:34] sso handoff -> verify password page
 [2026-10-12 11:54:36] verify submit: submitted
 [2026-10-12 11:56:22] auto-login attempt 3 still not logged in
+[2026-10-12 12:06:24] WAITING FOR MANUAL LOGIN...
+[2026-10-12 12:14:21] session expired -> auto-login
+[2026-10-12 12:14:27] ssologin click: ok
+[2026-10-12 12:14:37] sso handoff -> verify password page
+[2026-10-12 12:14:39] verify submit: submitted
+[2026-10-12 12:16:27] auto-login attempt 1 still not logged in
+[2026-10-12 12:16:33] ssologin click: ok
+[2026-10-12 12:16:43] sso handoff -> verify password page
+[2026-10-12 12:16:46] verify submit: submitted
+[2026-10-12 12:18:32] auto-login attempt 2 still not logged in
+[2026-10-12 12:18:38] ssologin click: ok
+[2026-10-12 12:18:48] sso handoff -> verify password page
+[2026-10-12 12:18:50] verify submit: submitted
