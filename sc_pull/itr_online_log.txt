@@ -31633,3 +31633,109 @@ Call log:
 [2026-10-11 17:19:53] sync is already running as pid 4888 - nothing to do
 [2026-10-11 17:20:12] sync is already running as pid 4888 - nothing to do
 [2026-10-11 17:20:29] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:20:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:21:05] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:21:23] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:21:41] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:21:59] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:22:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:22:35] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:22:53] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:23:11] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:23:29] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:23:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:24:06] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:24:23] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:24:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:24:59] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:25:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:25:36] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:25:53] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:26:11] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:26:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:26:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:27:06] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:27:24] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:27:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:28:00] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:28:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:28:36] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:28:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:29:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:29:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:29:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:30:06] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:30:24] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:30:42] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:31:00] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:31:18] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:31:36] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:31:54] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:32:12] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:32:30] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:32:48] sync is already running as pid 4888 - nothing to do
+[2026-10-11 17:33:06] sync is already running as pid 4888 - nothing to do
+[2026-10-12 07:32:08] sync is already running as pid 18124 - nothing to do
+[2026-10-12 07:32:26] sync is already running as pid 18124 - nothing to do
+[2026-10-12 07:32:29] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-12 07:32:50] reused the sync's always-open browser (port 9222)
+[2026-10-12 07:32:50] LOOP READY (interval 300s, keep_open=True)
+[2026-10-12 07:32:54] LOGGED IN
+[2026-10-12 07:35:57] pulled off=0 n=4000 accum=4000
+[2026-10-12 07:37:35] pulled off=4000 n=4000 accum=8000
+[2026-10-12 07:38:18] pulled off=8000 n=4000 accum=12000
+[2026-10-12 07:38:56] pulled off=12000 n=2008 accum=14008
+[2026-10-12 07:38:56] task index refreshed (6321 asset tags)
+[2026-10-12 07:38:56] milestone_map: 290 subsystems
+[2026-10-12 07:38:57] updated dashboard_data.json itr_summary.live
+[2026-10-12 07:38:59]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-12 07:39:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-12 07:38 (closed=6469) rc=0 [main 528e404] ITR live update 2026-10-12 07:38 (closed=6469)
+ 1 file changed, 215 insertions(+), 240 deletions(-)
+[2026-10-12 07:39:06]  >> git push OK
+[2026-10-12 07:39:09]  >> pages commit rc=0 6-10-12 07:39 (closed=6469)
+ 1 file changed, 215 insertions(+), 240 deletions(-)
+[2026-10-12 07:39:13]  >> pages push OK (closed=6469)
+[2026-10-12 07:44:20] LOGGED IN
+[2026-10-12 07:44:45] pulled off=0 n=4000 accum=4000
+[2026-10-12 07:45:01] pulled off=4000 n=4000 accum=8000
+[2026-10-12 07:45:17] pulled off=8000 n=4000 accum=12000
+[2026-10-12 07:45:22] pulled off=12000 n=2008 accum=14008
+[2026-10-12 07:45:22] task index refreshed (6321 asset tags)
+[2026-10-12 07:45:23] updated dashboard_data.json itr_summary.live
+[2026-10-12 07:45:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-12 07:45:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-12 07:45 (closed=6469) rc=0 [main 5708b4f] ITR live update 2026-10-12 07:45 (closed=6469)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 07:45:37]  >> git push OK
+[2026-10-12 07:45:41]  >> pages commit rc=0 te 2026-10-12 07:45 (closed=6469)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 07:45:45]  >> pages push OK (closed=6469)
+[2026-10-12 07:50:50] LOGGED IN
+[2026-10-12 07:51:04] pulled off=0 n=4000 accum=4000
+[2026-10-12 07:51:13] pulled off=4000 n=4000 accum=8000
+[2026-10-12 07:51:22] pulled off=8000 n=4000 accum=12000
+[2026-10-12 07:51:27] pulled off=12000 n=2008 accum=14008
+[2026-10-12 07:51:27] task index refreshed (6321 asset tags)
+[2026-10-12 07:51:27] updated dashboard_data.json itr_summary.live
+[2026-10-12 07:51:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-12 07:51:31]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-12 07:51 (closed=6469) rc=0 [main a681ef8] ITR live update 2026-10-12 07:51 (closed=6469)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 07:51:39]  >> git push OK
+[2026-10-12 07:51:41]  >> pages commit rc=0 te 2026-10-12 07:51 (closed=6469)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 07:51:46]  >> pages push OK (closed=6469)
+[2026-10-12 07:56:51] LOGGED IN
+[2026-10-12 07:57:00] pulled off=0 n=4000 accum=4000
+[2026-10-12 07:57:09] pulled off=4000 n=4000 accum=8000
+[2026-10-12 07:57:17] pulled off=8000 n=4000 accum=12000
+[2026-10-12 07:57:21] pulled off=12000 n=2008 accum=14008
+[2026-10-12 07:57:21] task index refreshed (6321 asset tags)
+[2026-10-12 07:57:22] updated dashboard_data.json itr_summary.live
+[2026-10-12 07:57:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-12 07:57:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-12 07:57 (closed=6469) rc=0 [main 9982283] ITR live update 2026-10-12 07:57 (closed=6469)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 07:57:28]  >> git push OK
+[2026-10-12 07:57:31]  >> pages commit rc=0 te 2026-10-12 07:57 (closed=6469)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-12 07:57:36]  >> pages push OK (closed=6469)
