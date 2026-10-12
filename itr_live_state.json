@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-12 17:27:20",
+  "updated": "2026-10-12 17:36:25",
   "total_tasks_ps5": 14008,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6477,
-  "open": 3823,
-  "today_closed": 8,
+  "closed": 6481,
+  "open": 3819,
+  "today_closed": 12,
   "closed_by_discipline": {
-    "I": 3220,
+    "I": 3224,
     "E": 2962,
     "T": 295
   },
   "open_by_discipline": {
-    "I": 1375,
+    "I": 1371,
     "E": 1665,
     "T": 783
   },
@@ -229,14 +229,26 @@
     {
       "label": "2026-10-12",
       "E": 0,
-      "I": 8,
+      "I": 12,
       "T": 0,
-      "Total": 8
+      "Total": 12
     }
   ],
-  "closed_this_week": 8,
-  "closed_this_month": 644,
+  "closed_this_week": 12,
+  "closed_this_month": 648,
   "today_milestone": [
+    {
+      "milestone": "Milestone C",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
+    },
+    {
+      "milestone": "Milestone E",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 3
+    },
     {
       "milestone": "Milestone G",
       "disc": "I",
@@ -250,7 +262,7 @@
       "count": 6
     }
   ],
-  "today_milestone_total": 8,
+  "today_milestone_total": 12,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -284,13 +296,13 @@
       "label": "Milestone C",
       "raw": "PS5 - Milestone C",
       "total": 963,
-      "closed": 612,
-      "remaining": 351,
-      "pct": 63.6,
+      "closed": 613,
+      "remaining": 350,
+      "pct": 63.7,
       "status": {
-        "Closed": 612,
+        "Closed": 613,
         "Submitted": 0,
-        "To be completed": 350,
+        "To be completed": 349,
         "Other": 1
       }
     },
@@ -312,13 +324,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1349,
-      "remaining": 183,
-      "pct": 88.1,
+      "closed": 1352,
+      "remaining": 180,
+      "pct": 88.3,
       "status": {
-        "Closed": 1349,
+        "Closed": 1352,
         "Submitted": 0,
-        "To be completed": 178,
+        "To be completed": 175,
         "Other": 5
       }
     },
@@ -380,6 +392,42 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-01-PIT-0016-CJ01",
+      "task": "T-00614-0877",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:35:13 "
+    },
+    {
+      "tag": "PS5-60-VS-9101G-CC01",
+      "task": "T-00069-5345",
+      "system": "PS5-60-48 - Oil Mist Separator Skid PS5-60-VS-9100G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:33:44 "
+    },
+    {
+      "tag": "PS5-60-BI-0019G-CC02",
+      "task": "T-00069-5056",
+      "system": "PS5-60-19 - Power Generation Package G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:32:47 "
+    },
+    {
+      "tag": "PS5-60-BI-0019G-CC01",
+      "task": "T-00069-5055",
+      "system": "PS5-60-19 - Power Generation Package G",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/12/2026 2:31:40 "
+    },
     {
       "tag": "PS5-28-LIT-0008",
       "task": "T-00067-2096",
@@ -1423,42 +1471,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/9/2026 6:09:31 A"
-    },
-    {
-      "tag": "PS5-28-DM-3900B",
-      "task": "T-00026-0166",
-      "system": "PS5-28-17 - Reinjection Pump",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 5:58:26 A"
-    },
-    {
-      "tag": "PS5-28-DM-3900A",
-      "task": "T-00026-0165",
-      "system": "PS5-28-17 - Reinjection Pump",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 5:58:08 A"
-    },
-    {
-      "tag": "PS5-28-DM-3600B",
-      "task": "T-00026-0159",
-      "system": "PS5-28-08 - Open Drain Sump and Pumps",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 5:57:19 A"
-    },
-    {
-      "tag": "PS5-28-DM-3600A",
-      "task": "T-00026-0158",
-      "system": "PS5-28-08 - Open Drain Sump and Pumps",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/9/2026 5:56:15 A"
     }
   ]
 }
