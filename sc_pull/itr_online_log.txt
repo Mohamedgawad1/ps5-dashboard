@@ -33182,3 +33182,102 @@ and run me again.  I am stopping in case you still have something
 valuable there.
 
 
+[2026-10-13 07:41:01] sync is already running as pid 1972 - nothing to do
+[2026-10-13 07:41:15] sync is already running as pid 1972 - nothing to do
+[2026-10-13 07:41:19] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:41:53] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:42:27] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:42:59] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:43:32] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:44:06] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:44:44] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:45:11] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:45:45] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:46:18] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:46:51] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:47:23] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:47:56] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:48:29] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-13 07:48:47] reused the sync's always-open browser (port 9222)
+[2026-10-13 07:48:47] LOOP READY (interval 300s, keep_open=True)
+[2026-10-13 07:49:36] session expired -> auto-login
+[2026-10-13 07:49:41] ssologin click: ok
+[2026-10-13 07:49:51] sso handoff -> verify password page
+[2026-10-13 07:49:53] verify submit: submitted
+[2026-10-13 07:51:13] LOGGED IN
+[2026-10-13 07:51:31] pulled off=0 n=4000 accum=4000
+[2026-10-13 07:51:44] pulled off=4000 n=4000 accum=8000
+[2026-10-13 07:52:05] pulled off=8000 n=4000 accum=12000
+[2026-10-13 07:52:13] pulled off=12000 n=2008 accum=14008
+[2026-10-13 07:52:13] task index refreshed (6321 asset tags)
+[2026-10-13 07:52:13] milestone_map: 290 subsystems
+[2026-10-13 07:52:14] updated dashboard_data.json itr_summary.live
+[2026-10-13 07:52:17]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-13 07:52:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-13 07:52 (closed=6516) rc=0 [main dd8f776] ITR live update 2026-10-13 07:52 (closed=6516)
+ 1 file changed, 137 insertions(+), 167 deletions(-)
+[2026-10-13 07:52:24]  >> git push OK
+[2026-10-13 07:52:29]  >> pages commit rc=0 6-10-13 07:52 (closed=6516)
+ 1 file changed, 433 insertions(+), 433 deletions(-)
+[2026-10-13 07:52:32]  >> pages pull --rebase (attempt 1)
+[2026-10-13 07:52:34]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-13 07:57:40] LOGGED IN
+[2026-10-13 07:57:53] pulled off=0 n=4000 accum=4000
+[2026-10-13 07:58:15] pulled off=4000 n=4000 accum=8000
+[2026-10-13 07:58:39] pulled off=8000 n=4000 accum=12000
+[2026-10-13 07:58:50] pulled off=12000 n=2008 accum=14008
+[2026-10-13 07:58:50] task index refreshed (6321 asset tags)
+[2026-10-13 07:58:50] updated dashboard_data.json itr_summary.live
+[2026-10-13 07:58:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-13 07:58:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-13 07:58 (closed=6516) rc=0 [main 43ec4a9] ITR live update 2026-10-13 07:58 (closed=6516)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-13 07:58:56]  >> git push OK
+[2026-10-13 07:58:58]  >> pages commit rc=0 6-10-13 07:58 (closed=6516)
+ 1 file changed, 433 insertions(+), 433 deletions(-)
+[2026-10-13 07:59:01]  >> pages pull --rebase (attempt 1)
+[2026-10-13 07:59:03]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
