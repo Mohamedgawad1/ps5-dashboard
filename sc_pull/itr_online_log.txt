@@ -33556,3 +33556,64 @@ valuable there.
 [2026-10-13 09:20:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-13 09:20 (closed=6534) rc=0 [main 4abf6d9] ITR live update 2026-10-13 09:20 (closed=6534)
  1 file changed, 80 insertions(+), 80 deletions(-)
 [2026-10-13 09:20:35]  >> git push OK
+[2026-10-13 09:20:38]  >> pages commit rc=0 6-10-13 09:20 (closed=6534)
+ 1 file changed, 590 insertions(+), 590 deletions(-)
+[2026-10-13 09:20:41]  >> pages pull --rebase (attempt 1)
+[2026-10-13 09:20:44]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-13 09:25:49] LOGGED IN
+[2026-10-13 09:26:13] pulled off=0 n=4000 accum=4000
+[2026-10-13 09:26:39] pulled off=4000 n=4000 accum=8000
+[2026-10-13 09:27:10] pulled off=8000 n=4000 accum=12000
+[2026-10-13 09:27:25] pulled off=12000 n=2008 accum=14008
+[2026-10-13 09:27:25] task index refreshed (6321 asset tags)
+[2026-10-13 09:27:26] updated dashboard_data.json itr_summary.live
+[2026-10-13 09:27:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-13 09:27:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-13 09:27 (closed=6546) rc=0 [main b915dcb] ITR live update 2026-10-13 09:27 (closed=6546)
+ 1 file changed, 125 insertions(+), 125 deletions(-)
+[2026-10-13 09:27:31]  >> git push OK
+[2026-10-13 09:27:33]  >> pages commit rc=0 6-10-13 09:27 (closed=6546)
+ 1 file changed, 601 insertions(+), 601 deletions(-)
+[2026-10-13 09:27:36]  >> pages pull --rebase (attempt 1)
+[2026-10-13 09:27:37]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-13 09:32:55] LOGGED IN
+[2026-10-13 09:33:32] pulled off=0 n=4000 accum=4000
+[2026-10-13 09:34:25] pulled off=4000 n=4000 accum=8000
+[2026-10-13 09:36:03] pulled off=8000 n=4000 accum=12000
+[2026-10-13 09:36:27] pulled off=12000 n=2008 accum=14008
+[2026-10-13 09:36:28] task index refreshed (6321 asset tags)
+[2026-10-13 09:36:28] updated dashboard_data.json itr_summary.live
+[2026-10-13 09:36:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-13 09:36:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-13 09:36 (closed=6560) rc=0 [main 5732589] ITR live update 2026-10-13 09:36 (closed=6560)
+ 1 file changed, 145 insertions(+), 145 deletions(-)
+[2026-10-13 09:36:32]  >> git push OK
+[2026-10-13 09:36:35]  >> pages commit rc=0 6-10-13 09:36 (closed=6560)
+ 1 file changed, 594 insertions(+), 594 deletions(-)
+[2026-10-13 09:36:37]  >> pages pull --rebase (attempt 1)
+[2026-10-13 09:36:39]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
