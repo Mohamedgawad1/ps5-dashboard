@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-13 09:53:57",
+  "updated": "2026-10-13 10:02:48",
   "total_tasks_ps5": 14008,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6566,
-  "open": 3734,
-  "today_closed": 53,
+  "closed": 6573,
+  "open": 3727,
+  "today_closed": 60,
   "closed_by_discipline": {
     "I": 3242,
-    "E": 3029,
+    "E": 3036,
     "T": 295
   },
   "open_by_discipline": {
     "I": 1353,
-    "E": 1598,
+    "E": 1591,
     "T": 783
   },
   "daily": [
@@ -228,20 +228,20 @@
     },
     {
       "label": "2026-10-13",
-      "E": 48,
+      "E": 55,
       "I": 5,
       "T": 0,
-      "Total": 53
+      "Total": 60
     }
   ],
-  "closed_this_week": 97,
-  "closed_this_month": 733,
+  "closed_this_week": 104,
+  "closed_this_month": 740,
   "today_milestone": [
     {
       "milestone": "Milestone H",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 48
+      "count": 55
     },
     {
       "milestone": "Milestone H",
@@ -250,7 +250,7 @@
       "count": 5
     }
   ],
-  "today_milestone_total": 53,
+  "today_milestone_total": 60,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -354,14 +354,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2197,
-      "remaining": 1054,
-      "pct": 67.6,
+      "closed": 2204,
+      "remaining": 1047,
+      "pct": 67.8,
       "status": {
-        "Closed": 2197,
+        "Closed": 2204,
         "Submitted": 45,
-        "To be completed": 899,
-        "Other": 110
+        "To be completed": 898,
+        "Other": 104
       }
     },
     {
@@ -380,6 +380,69 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "",
+      "task": "T-00244-1670",
+      "system": "PS5-79-11 - Electrical Heat Tracing Transformer/Distribution Board 11 (PS5-79-IG-0011)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/13/2026 7:01:15 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1619",
+      "system": "PS5-79-09 - Electrical Heat Tracing Transformer/Distribution Board 9 (PS5-79-IG-0009)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/13/2026 7:00:46 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1492",
+      "system": "PS5-79-05 - Electrical Heat Tracing Transformer/Distribution Board 5 (PS5-79-IG-0005)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/13/2026 6:53:51 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1475",
+      "system": "PS5-79-05 - Electrical Heat Tracing Transformer/Distribution Board 5 (PS5-79-IG-0005)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/13/2026 6:53:27 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1462",
+      "system": "PS5-79-04 - Electrical Heat Tracing Transformer/Distribution Board 4 (PS5-79-IG-0004)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/13/2026 6:53:01 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1459",
+      "system": "PS5-79-04 - Electrical Heat Tracing Transformer/Distribution Board 4 (PS5-79-IG-0004)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/13/2026 6:52:35 "
+    },
+    {
+      "tag": "",
+      "task": "T-00244-1450",
+      "system": "PS5-79-04 - Electrical Heat Tracing Transformer/Distribution Board 4 (PS5-79-IG-0004)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/13/2026 6:52:12 "
+    },
     {
       "tag": "",
       "task": "T-00244-1409",
@@ -1396,69 +1459,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "10/11/2026 1:11:20 "
-    },
-    {
-      "tag": "PS5-71-TIT-0006",
-      "task": "T-00067-2146",
-      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/11/2026 1:10:28 "
-    },
-    {
-      "tag": "PS5-71-PIT-2402A",
-      "task": "T-00067-2136",
-      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/11/2026 1:09:23 "
-    },
-    {
-      "tag": "PS5-71-PDIT-0030",
-      "task": "T-00067-2112",
-      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/11/2026 1:08:16 "
-    },
-    {
-      "tag": "PS5-71-IN-0004B",
-      "task": "T-00044-0201",
-      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/11/2026 8:59:05 "
-    },
-    {
-      "tag": "PS5-71-IN-0004A",
-      "task": "T-00044-0200",
-      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/11/2026 8:56:24 "
-    },
-    {
-      "tag": "PS5-60-IN-0004A-CC11",
-      "task": "T-00069-5283",
-      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/11/2026 8:38:36 "
-    },
-    {
-      "tag": "PS5-60-IN-0002E-CG01",
-      "task": "T-00233-10540",
-      "system": "PS5-60-65 - Fuel Conditioning Module PS5-60-UZ-8900E (UCP)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/11/2026 8:34:59 "
     }
   ]
 }
