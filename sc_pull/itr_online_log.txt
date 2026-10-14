@@ -34109,3 +34109,19 @@ valuable there.
 [2026-10-14 07:32:20] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
 [2026-10-14 07:37:20] no pull tab yet — attaching to the open browser again
 [2026-10-14 07:37:20] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-14 07:42:20] no pull tab yet — attaching to the open browser again
+[2026-10-14 07:42:20] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-14 07:47:20] no pull tab yet — attaching to the open browser again
+[2026-10-14 07:47:21] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-14 07:52:21] no pull tab yet — attaching to the open browser again
+[2026-10-14 07:53:07] reused the sync's always-open browser (port 9222)
+[2026-10-14 07:53:59] session expired -> auto-login
+[2026-10-14 07:54:10] ssologin click: ok
+[2026-10-14 07:54:20] sso handoff -> verify password page
+[2026-10-14 07:54:22] verify submit: submitted
+[2026-10-14 07:56:18] auto-login attempt 1 still not logged in
+[2026-10-14 07:56:28] ssologin click: no-btn
+[2026-10-14 07:56:45] LOGGED IN
+[2026-10-14 07:58:22] pulled off=0 n=4000 accum=4000
+[2026-10-14 07:59:32] pulled off=4000 n=4000 accum=8000
+[2026-10-14 08:00:28] pulled off=8000 n=4000 accum=12000
