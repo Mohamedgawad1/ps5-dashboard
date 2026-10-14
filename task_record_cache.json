@@ -4982,5 +4982,29 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00608-0406": {
+  "record": "2051082",
+  "task": "T-00608-0406",
+  "asset": "PS5-28-DM-3900A-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-4966": {
+  "record": "1062510",
+  "task": "T-00023-4966",
+  "asset": "PS5-28-LB-8200-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00004-0066": {
+  "record": "1202600",
+  "task": "T-00004-0066",
+  "asset": "PS5-86-OB-0002",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
  }
 }
