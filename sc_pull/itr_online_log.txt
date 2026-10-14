@@ -35444,3 +35444,103 @@ Call log:
 [2026-10-14 17:22:29] sync is already running as pid 2328 - nothing to do
 [2026-10-14 17:22:46] sync is already running as pid 2328 - nothing to do
 [2026-10-14 17:23:01] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:23:20] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:23:37] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:23:54] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:24:12] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:24:30] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:24:49] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:25:06] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:25:25] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:25:42] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:26:01] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:26:04] no pull tab yet — attaching to the open browser again
+[2026-10-14 17:26:18] reused the sync's always-open browser (port 9222)
+[2026-10-14 17:26:21] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:26:37] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:26:49] LOGGED IN
+[2026-10-14 17:26:54] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:27:12] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:27:29] pulled off=0 n=4000 accum=4000
+[2026-10-14 17:27:30] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:27:48] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:27:58] pulled off=4000 n=4000 accum=8000
+[2026-10-14 17:28:07] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:28:25] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:28:34] pulled off=8000 n=4000 accum=12000
+[2026-10-14 17:28:43] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:28:53] pulled off=12000 n=2009 accum=14009
+[2026-10-14 17:28:54] task index refreshed (6321 asset tags)
+[2026-10-14 17:28:54] milestone_map: 290 subsystems
+[2026-10-14 17:28:54] updated dashboard_data.json itr_summary.live
+[2026-10-14 17:28:57]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-14 17:28:58]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-14 17:28 (closed=6692) rc=0 [main 5057be0] ITR live update 2026-10-14 17:28 (closed=6692)
+ 1 file changed, 69 insertions(+), 63 deletions(-)
+[2026-10-14 17:29:01] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:29:04]  >> git push OK
+[2026-10-14 17:29:08]  >> pages commit rc=0 6-10-14 17:29 (closed=6692)
+ 1 file changed, 586 insertions(+), 550 deletions(-)
+[2026-10-14 17:29:11]  >> pages pull --rebase (attempt 1)
+[2026-10-14 17:29:13]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-14 17:29:19] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:29:37] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:29:55] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:30:13] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:30:32] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:30:49] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:31:07] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:31:25] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:31:43] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:32:01] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:32:20] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:32:37] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:32:55] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:33:13] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:33:31] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:33:49] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:34:07] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:34:22] LOGGED IN
+[2026-10-14 17:34:25] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:34:43] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:35:01] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:35:19] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:35:26] pulled off=0 n=4000 accum=4000
+[2026-10-14 17:35:37] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:35:55] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:36:13] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:36:14] pulled off=4000 n=4000 accum=8000
+[2026-10-14 17:36:31] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:36:49] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:37:07] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:37:25] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:37:36] pulled off=8000 n=4000 accum=12000
+[2026-10-14 19:14:36] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:14:36] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-14 19:14:36] LOOP READY (interval 300s, keep_open=True)
+[2026-10-14 19:14:36] no pull tab yet — attaching to the open browser again
+[2026-10-14 19:14:37] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-14 19:14:48] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:15:06] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:15:24] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:15:46] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:16:00] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:16:18] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:16:37] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:16:54] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:17:13] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:17:30] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:17:48] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:18:06] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:18:24] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:18:44] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:19:02] sync is already running as pid 16600 - nothing to do
+[2026-10-14 19:19:18] sync is already running as pid 16600 - nothing to do
