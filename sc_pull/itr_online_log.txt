@@ -35386,3 +35386,61 @@ valuable there.
 [2026-10-14 17:08:32] sync is already running as pid 2328 - nothing to do
 [2026-10-14 17:08:49] sync is already running as pid 2328 - nothing to do
 [2026-10-14 17:09:12] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:09:26] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:09:43] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:10:02] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:10:20] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:10:37] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:10:38] no pull tab yet — attaching to the open browser again
+[2026-10-14 17:10:38] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-14 17:10:55] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:11:16] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:11:32] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:12:00] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:12:11] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:12:27] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:12:46] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:13:04] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:13:22] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:13:39] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:13:57] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:14:17] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:14:35] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:14:52] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:15:10] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:15:28] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:15:39] no pull tab yet — attaching to the open browser again
+[2026-10-14 17:15:40] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-14 17:15:46] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:16:05] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:16:23] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:16:40] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:16:58] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:17:19] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:17:35] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:17:54] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:18:12] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:18:34] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:18:50] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:19:08] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:19:24] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:19:43] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:20:00] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:20:21] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:20:41] no pull tab yet — attaching to the open browser again
+[2026-10-14 17:20:42] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:20:57] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:21:01] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-14 17:21:03] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/3b0247
+[2026-10-14 17:21:13] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:21:30] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:21:49] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:22:06] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:22:29] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:22:46] sync is already running as pid 2328 - nothing to do
+[2026-10-14 17:23:01] sync is already running as pid 2328 - nothing to do
