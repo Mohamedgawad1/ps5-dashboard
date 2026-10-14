@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-14 13:56:01",
+  "updated": "2026-10-14 14:05:13",
   "total_tasks_ps5": 14009,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6662,
-  "open": 3638,
-  "today_closed": 7,
+  "closed": 6664,
+  "open": 3636,
+  "today_closed": 9,
   "closed_by_discipline": {
     "I": 3244,
-    "E": 3123,
+    "E": 3125,
     "T": 295
   },
   "open_by_discipline": {
     "I": 1351,
-    "E": 1504,
+    "E": 1502,
     "T": 783
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-10-14",
-      "E": 7,
+      "E": 9,
       "I": 0,
       "T": 0,
-      "Total": 7
+      "Total": 9
     }
   ],
-  "closed_this_week": 191,
-  "closed_this_month": 829,
+  "closed_this_week": 193,
+  "closed_this_month": 831,
   "today_milestone": [
     {
       "milestone": "Milestone A",
@@ -247,7 +247,7 @@
       "milestone": "Milestone H",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 1
+      "count": 3
     },
     {
       "milestone": "Milestone I",
@@ -256,7 +256,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 7,
+  "today_milestone_total": 9,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -360,13 +360,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2287,
-      "remaining": 964,
-      "pct": 70.3,
+      "closed": 2289,
+      "remaining": 962,
+      "pct": 70.4,
       "status": {
-        "Closed": 2287,
+        "Closed": 2289,
         "Submitted": 64,
-        "To be completed": 876,
+        "To be completed": 874,
         "Other": 24
       }
     },
@@ -386,6 +386,24 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-HE-2400B",
+      "task": "T-00242-0049",
+      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 10:57:32"
+    },
+    {
+      "tag": "PS5-71-HE-2400A",
+      "task": "T-00242-0048",
+      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 10:54:38"
+    },
     {
       "tag": "PS5-86-OB-0002_Earthing",
       "task": "T-00247-0164",
@@ -1447,24 +1465,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/13/2026 6:24:57 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1505",
-      "system": "PS5-79-06 - Electrical Heat Tracing Transformer/Distribution Board 6 (PS5-79-IG-0006)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:24:24 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1441",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:23:11 "
     }
   ]
 }
