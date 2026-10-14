@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-14 14:58:23",
+  "updated": "2026-10-14 15:07:02",
   "total_tasks_ps5": 14009,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6684,
-  "open": 3616,
-  "today_closed": 29,
+  "closed": 6688,
+  "open": 3612,
+  "today_closed": 33,
   "closed_by_discipline": {
-    "I": 3253,
+    "I": 3257,
     "E": 3136,
     "T": 295
   },
   "open_by_discipline": {
-    "I": 1342,
+    "I": 1338,
     "E": 1491,
     "T": 783
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-14",
       "E": 20,
-      "I": 9,
+      "I": 13,
       "T": 0,
-      "Total": 29
+      "Total": 33
     }
   ],
-  "closed_this_week": 213,
-  "closed_this_month": 851,
+  "closed_this_week": 217,
+  "closed_this_month": 855,
   "today_milestone": [
     {
       "milestone": "Milestone A",
@@ -265,7 +265,7 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 9
+      "count": 13
     },
     {
       "milestone": "Milestone I",
@@ -274,7 +274,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 29,
+  "today_milestone_total": 33,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -378,13 +378,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2307,
-      "remaining": 944,
-      "pct": 71.0,
+      "closed": 2311,
+      "remaining": 940,
+      "pct": 71.1,
       "status": {
-        "Closed": 2307,
+        "Closed": 2311,
         "Submitted": 64,
-        "To be completed": 857,
+        "To be completed": 853,
         "Other": 23
       }
     },
@@ -404,6 +404,42 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-TW-0004",
+      "task": "T-00072-0170",
+      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 12:00:44"
+    },
+    {
+      "tag": "PS5-71-TW-0003",
+      "task": "T-00072-0168",
+      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 11:59:51"
+    },
+    {
+      "tag": "PS5-71-TW-0007",
+      "task": "T-00072-0167",
+      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 11:58:45"
+    },
+    {
+      "tag": "PS5-71-TW-4203",
+      "task": "T-00072-0166",
+      "system": "PS5-71-12 - CFO Service Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 11:58:01"
+    },
     {
       "tag": "PS5-71-PVSV-4102",
       "task": "T-00065-0126",
@@ -1447,42 +1483,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/13/2026 6:52:12 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1409",
-      "system": "PS5-79-02 - Electrical Heat Tracing Transformer/Distribution Board 2 (PS5-79-IG-0002)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:50:56 "
-    },
-    {
-      "tag": "PS5-28-PRV-0046B",
-      "task": "T-00065-0133",
-      "system": "PS5-28-14 - Seal Oil Drain Drum & Pump B",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:46:01 "
-    },
-    {
-      "tag": "PS5-28-PSV-0064A",
-      "task": "T-00065-0129",
-      "system": "PS5-28-13 - Seal Oil Drain Drum & Pump A",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:45:00 "
-    },
-    {
-      "tag": "PS5-28-PRV-0046A",
-      "task": "T-00065-0127",
-      "system": "PS5-28-13 - Seal Oil Drain Drum & Pump A",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:39:47 "
     }
   ]
 }
