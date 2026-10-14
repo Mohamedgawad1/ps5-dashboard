@@ -35251,3 +35251,72 @@ valuable there.
 [2026-10-14 15:38:28] LOGGED IN
 [2026-10-14 15:39:18] pulled off=0 n=4000 accum=4000
 [2026-10-14 15:41:36] pulled off=4000 n=4000 accum=8000
+[2026-10-14 15:42:23] pulled off=8000 n=4000 accum=12000
+[2026-10-14 15:42:34] pulled off=12000 n=2009 accum=14009
+[2026-10-14 15:42:34] task index refreshed (6321 asset tags)
+[2026-10-14 15:42:34] updated dashboard_data.json itr_summary.live
+[2026-10-14 15:42:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-14 15:42:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-14 15:42 (closed=6688) rc=0 [main ccbcacc] ITR live update 2026-10-14 15:42 (closed=6688)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-14 15:42:39]  >> git push OK
+[2026-10-14 15:42:46]  >> pages commit rc=0 6-10-14 15:42 (closed=6688)
+ 1 file changed, 571 insertions(+), 541 deletions(-)
+[2026-10-14 15:42:51]  >> pages pull --rebase (attempt 1)
+[2026-10-14 15:42:55]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-14 15:48:02] LOGGED IN
+[2026-10-14 15:48:54] pulled off=0 n=4000 accum=4000
+[2026-10-14 15:49:51] pulled off=4000 n=4000 accum=8000
+[2026-10-14 15:50:29] pulled off=8000 n=4000 accum=12000
+[2026-10-14 15:50:52] pulled off=12000 n=2009 accum=14009
+[2026-10-14 15:50:52] task index refreshed (6321 asset tags)
+[2026-10-14 15:50:52] updated dashboard_data.json itr_summary.live
+[2026-10-14 15:50:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-14 15:50:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-14 15:50 (closed=6688) rc=0 [main 2fd8e3e] ITR live update 2026-10-14 15:50 (closed=6688)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-14 15:50:57]  >> git push OK
+[2026-10-14 15:51:00]  >> pages commit rc=0 6-10-14 15:51 (closed=6688)
+ 1 file changed, 571 insertions(+), 541 deletions(-)
+[2026-10-14 15:51:03]  >> pages pull --rebase (attempt 1)
+[2026-10-14 15:51:04]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-14 15:56:10] LOGGED IN
+[2026-10-14 15:56:41] pulled off=0 n=4000 accum=4000
+[2026-10-14 15:57:46] pulled off=4000 n=4000 accum=8000
+[2026-10-14 15:58:22] pulled off=8000 n=4000 accum=12000
+[2026-10-14 15:58:48] pulled off=12000 n=2009 accum=14009
+[2026-10-14 15:58:48] task index refreshed (6321 asset tags)
+[2026-10-14 15:58:49] updated dashboard_data.json itr_summary.live
+[2026-10-14 15:58:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-14 15:58:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-14 15:58 (closed=6688) rc=0 [main 5d799a4] ITR live update 2026-10-14 15:58 (closed=6688)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-14 15:58:54]  >> git push OK
+[2026-10-14 15:58:58]  >> pages commit rc=0 6-10-14 15:58 (closed=6688)
+ 1 file changed, 571 insertions(+), 541 deletions(-)
+[2026-10-14 15:59:01]  >> pages pull --rebase (attempt 1)
+[2026-10-14 15:59:03]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
