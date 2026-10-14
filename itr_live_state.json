@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-14 09:43:11",
+  "updated": "2026-10-14 09:51:29",
   "total_tasks_ps5": 14008,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6657,
-  "open": 3643,
-  "today_closed": 4,
+  "closed": 6659,
+  "open": 3641,
+  "today_closed": 5,
   "closed_by_discipline": {
-    "I": 3242,
-    "E": 3120,
+    "I": 3243,
+    "E": 3121,
     "T": 295
   },
   "open_by_discipline": {
-    "I": 1353,
-    "E": 1507,
+    "I": 1352,
+    "E": 1506,
     "T": 783
   },
   "daily": [
@@ -187,9 +187,9 @@
     {
       "label": "2026-10-08",
       "E": 33,
-      "I": 52,
+      "I": 53,
       "T": 0,
-      "Total": 85
+      "Total": 86
     },
     {
       "label": "2026-10-09",
@@ -228,20 +228,20 @@
     },
     {
       "label": "2026-10-14",
-      "E": 4,
+      "E": 5,
       "I": 0,
       "T": 0,
-      "Total": 4
+      "Total": 5
     }
   ],
-  "closed_this_week": 188,
-  "closed_this_month": 824,
+  "closed_this_week": 189,
+  "closed_this_month": 826,
   "today_milestone": [
     {
       "milestone": "Milestone A",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 2
+      "count": 3
     },
     {
       "milestone": "Milestone H",
@@ -256,20 +256,20 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 4,
+  "today_milestone_total": 5,
   "milestone_summary": [
     {
       "label": "Milestone A",
       "raw": "PS5 - Milestone A",
       "total": 273,
-      "closed": 229,
-      "remaining": 44,
-      "pct": 83.9,
+      "closed": 230,
+      "remaining": 43,
+      "pct": 84.2,
       "status": {
-        "Closed": 229,
-        "Submitted": 3,
-        "To be completed": 39,
-        "Other": 2
+        "Closed": 230,
+        "Submitted": 4,
+        "To be completed": 38,
+        "Other": 1
       }
     },
     {
@@ -360,32 +360,41 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2285,
-      "remaining": 966,
+      "closed": 2286,
+      "remaining": 965,
       "pct": 70.3,
       "status": {
-        "Closed": 2285,
+        "Closed": 2286,
         "Submitted": 64,
-        "To be completed": 876,
-        "Other": 26
+        "To be completed": 877,
+        "Other": 24
       }
     },
     {
       "label": "Milestone I",
       "raw": "PS5 - Milestone I",
       "total": 785,
-      "closed": 153,
-      "remaining": 632,
-      "pct": 19.5,
+      "closed": 154,
+      "remaining": 631,
+      "pct": 19.6,
       "status": {
-        "Closed": 153,
+        "Closed": 154,
         "Submitted": 1,
         "To be completed": 624,
-        "Other": 7
+        "Other": 6
       }
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5 - POWER GENERATION COOLING TOWER AREA_Earthing",
+      "task": "T-00247-0148",
+      "system": "PS5-63-01 - Electrical Earthing",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 6:43:26 "
+    },
     {
       "tag": "PS5 - CLOSED DRAIN DRUM AREA_Earthing",
       "task": "T-00247-0136",
@@ -1456,15 +1465,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/13/2026 6:21:59 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1431",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:21:30 "
     }
   ]
 }
