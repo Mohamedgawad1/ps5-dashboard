@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-14 09:17:52",
+  "updated": "2026-10-14 09:34:55",
   "total_tasks_ps5": 14008,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6655,
-  "open": 3645,
-  "today_closed": 2,
+  "closed": 6657,
+  "open": 3643,
+  "today_closed": 4,
   "closed_by_discipline": {
     "I": 3242,
-    "E": 3118,
+    "E": 3120,
     "T": 295
   },
   "open_by_discipline": {
     "I": 1353,
-    "E": 1509,
+    "E": 1507,
     "T": 783
   },
   "daily": [
@@ -228,15 +228,21 @@
     },
     {
       "label": "2026-10-14",
-      "E": 2,
+      "E": 4,
       "I": 0,
       "T": 0,
-      "Total": 2
+      "Total": 4
     }
   ],
-  "closed_this_week": 186,
-  "closed_this_month": 822,
+  "closed_this_week": 188,
+  "closed_this_month": 824,
   "today_milestone": [
+    {
+      "milestone": "Milestone A",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 2
+    },
     {
       "milestone": "Milestone H",
       "disc": "E",
@@ -250,20 +256,20 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 2,
+  "today_milestone_total": 4,
   "milestone_summary": [
     {
       "label": "Milestone A",
       "raw": "PS5 - Milestone A",
       "total": 273,
-      "closed": 227,
-      "remaining": 46,
-      "pct": 83.2,
+      "closed": 229,
+      "remaining": 44,
+      "pct": 83.9,
       "status": {
-        "Closed": 227,
+        "Closed": 229,
         "Submitted": 3,
-        "To be completed": 41,
-        "Other": 2
+        "To be completed": 40,
+        "Other": 1
       }
     },
     {
@@ -380,6 +386,24 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5 - CLOSED DRAIN DRUM AREA_Earthing",
+      "task": "T-00247-0136",
+      "system": "PS5-63-01 - Electrical Earthing",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 6:30:55 "
+    },
+    {
+      "tag": "PS5 - CFO AREA_Earthing",
+      "task": "T-00247-0134",
+      "system": "PS5-63-01 - Electrical Earthing",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 6:21:26 "
+    },
     {
       "tag": "PS5-28-LB-8200-CL01",
       "task": "T-00023-4966",
@@ -1441,24 +1465,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/13/2026 6:21:30 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1428",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:20:52 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1426",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:20:13 "
     }
   ]
 }
