@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-14 14:47:26",
+  "updated": "2026-10-14 14:58:23",
   "total_tasks_ps5": 14009,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6682,
-  "open": 3618,
-  "today_closed": 27,
+  "closed": 6684,
+  "open": 3616,
+  "today_closed": 29,
   "closed_by_discipline": {
-    "I": 3251,
+    "I": 3253,
     "E": 3136,
     "T": 295
   },
   "open_by_discipline": {
-    "I": 1344,
+    "I": 1342,
     "E": 1491,
     "T": 783
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-14",
       "E": 20,
-      "I": 7,
+      "I": 9,
       "T": 0,
-      "Total": 27
+      "Total": 29
     }
   ],
-  "closed_this_week": 211,
-  "closed_this_month": 849,
+  "closed_this_week": 213,
+  "closed_this_month": 851,
   "today_milestone": [
     {
       "milestone": "Milestone A",
@@ -265,7 +265,7 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 7
+      "count": 9
     },
     {
       "milestone": "Milestone I",
@@ -274,7 +274,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 27,
+  "today_milestone_total": 29,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -378,13 +378,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2305,
-      "remaining": 946,
-      "pct": 70.9,
+      "closed": 2307,
+      "remaining": 944,
+      "pct": 71.0,
       "status": {
-        "Closed": 2305,
+        "Closed": 2307,
         "Submitted": 64,
-        "To be completed": 859,
+        "To be completed": 857,
         "Other": 23
       }
     },
@@ -404,6 +404,24 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-PVSV-4102",
+      "task": "T-00065-0126",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 11:43:16"
+    },
+    {
+      "tag": "PS5-71-PVSV-4202",
+      "task": "T-00065-0125",
+      "system": "PS5-71-12 - CFO Service Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 11:42:30"
+    },
     {
       "tag": "PS5-71-PRV-0015",
       "task": "T-00065-0134",
@@ -1465,24 +1483,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "10/13/2026 6:39:47 "
-    },
-    {
-      "tag": "PS5-28-PRV-0047A",
-      "task": "T-00065-0124",
-      "system": "PS5-28-13 - Seal Oil Drain Drum & Pump A",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:36:50 "
-    },
-    {
-      "tag": "PS5-71-PSV-2403A",
-      "task": "T-00065-0122",
-      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 6:35:16 "
     }
   ]
 }
