@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-14 19:46:20",
+  "updated": "2026-10-15 07:55:23",
   "total_tasks_ps5": 14009,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,27 +9,20 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6710,
-  "open": 3590,
-  "today_closed": 55,
+  "closed": 6711,
+  "open": 3589,
+  "today_closed": 0,
   "closed_by_discipline": {
     "I": 3266,
-    "E": 3149,
+    "E": 3150,
     "T": 295
   },
   "open_by_discipline": {
     "I": 1329,
-    "E": 1478,
+    "E": 1477,
     "T": 783
   },
   "daily": [
-    {
-      "label": "2026-09-15",
-      "E": 31,
-      "I": 92,
-      "T": 0,
-      "Total": 123
-    },
     {
       "label": "2026-09-16",
       "E": 21,
@@ -228,65 +221,23 @@
     },
     {
       "label": "2026-10-14",
-      "E": 33,
+      "E": 34,
       "I": 22,
       "T": 0,
-      "Total": 55
+      "Total": 56
+    },
+    {
+      "label": "2026-10-15",
+      "E": 0,
+      "I": 0,
+      "T": 0,
+      "Total": 0
     }
   ],
-  "closed_this_week": 239,
-  "closed_this_month": 877,
-  "today_milestone": [
-    {
-      "milestone": "Milestone A",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 5
-    },
-    {
-      "milestone": "Milestone C",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 1
-    },
-    {
-      "milestone": "Milestone E",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 1
-    },
-    {
-      "milestone": "Milestone G",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 5
-    },
-    {
-      "milestone": "Milestone H",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 20
-    },
-    {
-      "milestone": "Milestone H",
-      "disc": "I",
-      "discipline": "Instrumentation (I)",
-      "count": 20
-    },
-    {
-      "milestone": "Milestone I",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 1
-    },
-    {
-      "milestone": "Milestone I",
-      "disc": "I",
-      "discipline": "Instrumentation (I)",
-      "count": 2
-    }
-  ],
-  "today_milestone_total": 55,
+  "closed_this_week": 240,
+  "closed_this_month": 878,
+  "today_milestone": [],
+  "today_milestone_total": 0,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -298,22 +249,22 @@
       "status": {
         "Closed": 232,
         "Submitted": 3,
-        "To be completed": 37,
-        "Other": 1
+        "To be completed": 36,
+        "Other": 2
       }
     },
     {
       "label": "Milestone B",
       "raw": "PS5 - Milestone B",
       "total": 1714,
-      "closed": 1617,
-      "remaining": 97,
-      "pct": 94.3,
+      "closed": 1618,
+      "remaining": 96,
+      "pct": 94.4,
       "status": {
-        "Closed": 1617,
+        "Closed": 1618,
         "Submitted": 0,
         "To be completed": 95,
-        "Other": 2
+        "Other": 1
       }
     },
     {
@@ -416,6 +367,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-61-IG-0015-CD01",
+      "task": "T-00610-0255",
+      "system": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/14/2026 4:46:33 "
+    },
     {
       "tag": "PS5-61-IE-0002-CD45",
       "task": "T-00610-0598",
@@ -1486,15 +1446,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/13/2026 7:10:24 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1370",
-      "system": "PS5-79-01 - Electrical Heat Tracing Transformer/Distribution Board 1 (PS5-79-IG-0001)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 7:10:02 "
     }
   ]
 }
