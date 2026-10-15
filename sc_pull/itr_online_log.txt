@@ -36887,3 +36887,19 @@ hint: To abort and get back to the state before "git rebase", run "git rebase --
 hint: Disable this message with "git config set advice.mergeConflict false"
 Could not apply 9280c76... # ITR live update 2026-10-15 10:38 (closed=1210)
 
+[2026-10-15 10:44:32] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-15 10:45:14] LOGGED IN
+[2026-10-15 10:46:59] pulled off=0 n=4000 accum=4000
+[2026-10-15 10:49:21] pulled off=4000 n=4000 accum=8000
+[2026-10-15 10:54:30] err off=8000: [object Object]
+[2026-10-15 10:54:30] task index refreshed (3172 asset tags)
+[2026-10-15 10:54:30] updated dashboard_data.json itr_summary.live
+[2026-10-15 10:54:32]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-15 10:54:32]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-15 10:54 (closed=4788) rc=0 [main 0caf454] ITR live update 2026-10-15 10:54 (closed=4788)
+ 1 file changed, 684 insertions(+), 681 deletions(-)
+[2026-10-15 10:54:32]  !! push failed: ["fatal: unable to access 'https://github.com/Mohamedgawad1/ps5-dashboard.git/': Could not resolve host: github.com"]
+[2026-10-15 10:54:35]  >> pages commit rc=0 6-10-15 10:54 (closed=4788)
+ 1 file changed, 734 insertions(+), 734 deletions(-)
+[2026-10-15 10:55:01]  !! pages push failed: ["fatal: unable to access 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git/': Failed to connect to github.com:443 after 26338 ms: Could not connect to server"]
