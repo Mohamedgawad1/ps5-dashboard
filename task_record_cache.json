@@ -5318,5 +5318,85 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00614-1139": {
+  "record": "2057708",
+  "task": "T-00614-1139",
+  "asset": "PS5-79-IG-0003-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1140": {
+  "record": "2057709",
+  "task": "T-00614-1140",
+  "asset": "PS5-79-IG-0004-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1141": {
+  "record": "2057710",
+  "task": "T-00614-1141",
+  "asset": "PS5-79-IG-0005-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1142": {
+  "record": "2057711",
+  "task": "T-00614-1142",
+  "asset": "PS5-79-IG-0006-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1143": {
+  "record": "2057712",
+  "task": "T-00614-1143",
+  "asset": "PS5-79-IG-0007-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1144": {
+  "record": "2057713",
+  "task": "T-00614-1144",
+  "asset": "PS5-79-IG-0008-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1145": {
+  "record": "2057714",
+  "task": "T-00614-1145",
+  "asset": "PS5-79-IG-0009-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1146": {
+  "record": "2057715",
+  "task": "T-00614-1146",
+  "asset": "PS5-79-IG-0010-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1147": {
+  "record": "2057716",
+  "task": "T-00614-1147",
+  "asset": "PS5-79-IG-0011-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00614-1148": {
+  "record": "2057717",
+  "task": "T-00614-1148",
+  "asset": "PS5-79-IG-0012-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
  }
 }
