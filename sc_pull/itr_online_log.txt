@@ -35760,3 +35760,27 @@ valuable there.
 [2026-10-14 21:37:52] sync is already running as pid 13492 - nothing to do
 [2026-10-14 21:38:09] sync is already running as pid 13492 - nothing to do
 [2026-10-14 21:38:27] sync is already running as pid 13492 - nothing to do
+[2026-10-14 21:38:45] sync is already running as pid 13492 - nothing to do
+[2026-10-14 21:39:03] sync is already running as pid 13492 - nothing to do
+[2026-10-14 21:39:21] sync is already running as pid 13492 - nothing to do
+[2026-10-14 21:39:31] no pull tab yet — attaching to the open browser again
+[2026-10-14 21:39:31] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-14 21:39:39] sync is already running as pid 13492 - nothing to do
+[2026-10-14 21:39:57] sync is already running as pid 13492 - nothing to do
+[2026-10-15 07:36:38] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:36:43] reused the sync's always-open browser (port 9222)
+[2026-10-15 07:36:43] LOOP READY (interval 300s, keep_open=True)
+[2026-10-15 07:36:58] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:37:12] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:37:30] LOGGED IN
+[2026-10-15 07:37:31] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:37:48] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:38:00] pulled off=0 n=4000 accum=4000
+[2026-10-15 07:38:09] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:38:24] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:38:43] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:39:03] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:39:16] pulled off=4000 n=4000 accum=8000
+[2026-10-15 07:39:19] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:39:37] sync is already running as pid 12556 - nothing to do
+[2026-10-15 07:39:40] pulled off=8000 n=4000 accum=12000

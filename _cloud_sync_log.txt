@@ -11941,3 +11941,7 @@
 2026-10-14 21:37:58    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
 2026-10-14 21:37:58    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
 2026-10-14 21:37:58 >> local->DPR
+2026-10-15 07:36:34 ==================================================
+2026-10-15 07:36:34 cloud_auto_update started (interval 300s)
+2026-10-15 07:36:35 [trigger] state changed -> rebuilding downloads+pages
+2026-10-15 07:36:35 >> cloud->DPR
