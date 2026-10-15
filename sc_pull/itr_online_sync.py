@@ -633,10 +633,28 @@ def inject_into_index(clone):
     return True
 
 
+def _clear_stuck_git_state(git):
+    """Abort any interrupted rebase/merge/cherry-pick so the next operation works.
+
+    `git reset --hard` alone does NOT clear a half-finished rebase; the hidden
+    .git/rebase-merge dir keeps blocking every later pull --rebase. This makes the
+    sync self-healing instead of wedging until someone cleans it by hand.
+    """
+    for sub in ("rebase", "merge", "cherry-pick", "revert"):
+        try:
+            subprocess.run(git + [sub, "--abort"], capture_output=True, text=True, timeout=120)
+        except Exception:
+            pass
+
+
 def git_push(clone, state):
     if not os.path.isdir(clone):
         return None
     git = ["git", "-C", clone]
+    # Self-heal: a prior cycle may have left an interrupted rebase behind. That
+    # wedges every future pull --rebase ("middle of another rebase"), which is
+    # exactly how the live push silently stopped. Clear it before we do anything.
+    _clear_stuck_git_state(git)
     targeted = ["itr_live_state.json", "live_itr.js", "itr_live.html", "index.html"]
     a0 = git + ["add", "--"] + targeted
     r = subprocess.run(a0, capture_output=True, text=True, timeout=600)
@@ -684,6 +702,7 @@ def ensure_pages_clone():
             pr(" !! pages clone failed:", (r.stderr or "")[-200:])
             return False
     git = ["git", "-C", PAGE_CLONE]
+    _clear_stuck_git_state(git)
     subprocess.run(git + ["remote", "set-url", "origin",
                           "https://github.com/Mohamedgawad1/%s.git" % PAGE_REPO],
                    capture_output=True, text=True, timeout=120)
