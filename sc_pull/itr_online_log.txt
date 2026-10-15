@@ -36335,3 +36335,281 @@ and run me again.  I am stopping in case you still have something
 valuable there.
 
 
+[2026-10-15 09:00:07] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:00:24] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:00:43] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:01:01] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:01:19] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:01:37] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:01:54] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:02:13] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:02:31] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:02:49] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:03:07] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:03:26] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:03:43] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:04:01] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:04:19] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:04:37] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:04:55] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:04:57] LOGGED IN
+[2026-10-15 09:05:06] pulled off=0 n=4000 accum=4000
+[2026-10-15 09:05:13] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:05:17] pulled off=4000 n=4000 accum=8000
+[2026-10-15 09:05:30] pulled off=8000 n=4000 accum=12000
+[2026-10-15 09:05:32] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:05:35] pulled off=12000 n=2009 accum=14009
+[2026-10-15 09:05:35] task index refreshed (6321 asset tags)
+[2026-10-15 09:05:36] updated dashboard_data.json itr_summary.live
+[2026-10-15 09:05:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-15 09:05:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-15 09:05 (closed=6711) rc=0 [main 83c0ad9] ITR live update 2026-10-15 09:05 (closed=6711)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-15 09:05:41]  >> git push OK
+[2026-10-15 09:05:44]  >> pages commit rc=0 6-10-15 09:05 (closed=6711)
+ 1 file changed, 561 insertions(+), 568 deletions(-)
+[2026-10-15 09:05:47]  >> pages pull --rebase (attempt 1)
+[2026-10-15 09:05:49]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-15 09:05:49] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:06:07] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:06:25] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:06:43] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:07:01] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:07:19] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:07:37] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:07:55] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:08:13] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:08:31] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:08:49] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:09:07] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:09:25] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:09:43] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:10:01] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:10:19] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:10:37] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:10:53] LOGGED IN
+[2026-10-15 09:10:55] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:11:01] pulled off=0 n=4000 accum=4000
+[2026-10-15 09:11:10] pulled off=4000 n=4000 accum=8000
+[2026-10-15 09:11:13] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:11:28] pulled off=8000 n=4000 accum=12000
+[2026-10-15 09:11:31] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:11:34] pulled off=12000 n=2009 accum=14009
+[2026-10-15 09:11:34] task index refreshed (6321 asset tags)
+[2026-10-15 09:11:34] updated dashboard_data.json itr_summary.live
+[2026-10-15 09:11:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-15 09:11:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-15 09:11 (closed=6711) rc=0 [main a9b3adf] ITR live update 2026-10-15 09:11 (closed=6711)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-15 09:11:40]  >> git push OK
+[2026-10-15 09:11:45]  >> pages commit rc=0 6-10-15 09:11 (closed=6711)
+ 1 file changed, 562 insertions(+), 569 deletions(-)
+[2026-10-15 09:11:49] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:11:59]  >> pages pull --rebase (attempt 1)
+[2026-10-15 09:12:01]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-15 09:12:07] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:12:25] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:12:43] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:13:01] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:13:19] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:13:37] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:13:55] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:14:13] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:14:31] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:14:49] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:15:07] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:15:25] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:15:43] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:16:01] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:16:19] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:16:37] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:16:55] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:17:07] LOGGED IN
+[2026-10-15 09:17:13] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:17:31] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:17:37] pulled off=0 n=4000 accum=4000
+[2026-10-15 09:17:49] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:18:08] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:18:10] pulled off=4000 n=4000 accum=8000
+[2026-10-15 09:18:26] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:18:34] pulled off=8000 n=4000 accum=12000
+[2026-10-15 09:18:44] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:18:49] pulled off=12000 n=2009 accum=14009
+[2026-10-15 09:18:49] task index refreshed (6321 asset tags)
+[2026-10-15 09:18:50] updated dashboard_data.json itr_summary.live
+[2026-10-15 09:18:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-15 09:18:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-15 09:18 (closed=6711) rc=0 [main 442454f] ITR live update 2026-10-15 09:18 (closed=6711)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-15 09:18:56]  >> git push OK
+[2026-10-15 09:18:59]  >> pages commit rc=0 6-10-15 09:18 (closed=6711)
+ 1 file changed, 562 insertions(+), 569 deletions(-)
+[2026-10-15 09:19:02] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:19:03]  >> pages pull --rebase (attempt 1)
+[2026-10-15 09:19:04]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-15 09:19:20] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:19:38] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:19:56] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:20:13] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:20:31] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:20:49] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:21:08] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:21:26] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:21:44] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:22:01] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:22:19] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:22:37] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:22:56] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:23:14] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:23:32] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:23:49] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:24:07] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:24:09] LOGGED IN
+[2026-10-15 09:24:25] pulled off=0 n=4000 accum=4000
+[2026-10-15 09:24:26] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:24:43] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:24:52] pulled off=4000 n=4000 accum=8000
+[2026-10-15 09:25:03] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:25:19] pulled off=8000 n=4000 accum=12000
+[2026-10-15 09:25:20] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:25:34] pulled off=12000 n=2009 accum=14009
+[2026-10-15 09:25:34] task index refreshed (6321 asset tags)
+[2026-10-15 09:25:35] updated dashboard_data.json itr_summary.live
+[2026-10-15 09:25:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-15 09:25:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-15 09:25 (closed=6711) rc=0 [main a26d163] ITR live update 2026-10-15 09:25 (closed=6711)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-15 09:25:38] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:25:41]  >> git push OK
+[2026-10-15 09:25:44]  >> pages commit rc=0 6-10-15 09:25 (closed=6711)
+ 1 file changed, 562 insertions(+), 569 deletions(-)
+[2026-10-15 09:25:47]  >> pages pull --rebase (attempt 1)
+[2026-10-15 09:25:49]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-15 09:25:56] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:26:14] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:26:32] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:26:50] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:27:13] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:27:27] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:27:46] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:28:02] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:28:21] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:28:41] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:28:57] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:29:15] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:29:33] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:29:51] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:30:08] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:30:26] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:30:45] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:30:57] LOGGED IN
+[2026-10-15 09:31:03] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:31:24] pulled off=0 n=4000 accum=4000
+[2026-10-15 09:31:24] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:31:39] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:31:50] pulled off=4000 n=4000 accum=8000
+[2026-10-15 09:31:57] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:32:13] pulled off=8000 n=4000 accum=12000
+[2026-10-15 09:32:15] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:32:19] pulled off=12000 n=2009 accum=14009
+[2026-10-15 09:32:19] task index refreshed (6321 asset tags)
+[2026-10-15 09:32:19] updated dashboard_data.json itr_summary.live
+[2026-10-15 09:32:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-15 09:32:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-15 09:32 (closed=6711) rc=0 [main 0217d65] ITR live update 2026-10-15 09:32 (closed=6711)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-15 09:32:25]  >> git push OK
+[2026-10-15 09:32:29]  >> pages commit rc=0 6-10-15 09:32 (closed=6711)
+ 1 file changed, 562 insertions(+), 569 deletions(-)
+[2026-10-15 09:32:33]  >> pages pull --rebase (attempt 1)
+[2026-10-15 09:32:33] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:32:35]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-15 09:32:51] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:33:10] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:33:27] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:33:45] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:34:03] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:34:21] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:34:39] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:34:57] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:35:15] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:35:33] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:35:52] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:36:09] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:36:29] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:36:46] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:37:04] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:37:22] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:37:40] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:37:40] LOGGED IN
+[2026-10-15 09:37:58] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:37:59] pulled off=0 n=4000 accum=4000
+[2026-10-15 09:38:12] pulled off=4000 n=4000 accum=8000
+[2026-10-15 09:38:15] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:38:31] pulled off=8000 n=4000 accum=12000
+[2026-10-15 09:38:33] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:38:44] pulled off=12000 n=2009 accum=14009
+[2026-10-15 09:38:44] task index refreshed (6321 asset tags)
+[2026-10-15 09:38:45] updated dashboard_data.json itr_summary.live
+[2026-10-15 09:38:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-15 09:38:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-15 09:38 (closed=6711) rc=0 [main 810631f] ITR live update 2026-10-15 09:38 (closed=6711)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-15 09:38:50]  >> git push OK
+[2026-10-15 09:38:51] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:38:54]  >> pages commit rc=0 6-10-15 09:38 (closed=6711)
+ 1 file changed, 562 insertions(+), 569 deletions(-)
+[2026-10-15 09:38:57]  >> pages pull --rebase (attempt 1)
+[2026-10-15 09:39:00]  !! pages rebase failed: ebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+[2026-10-15 09:39:10] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:39:28] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:39:46] sync is already running as pid 12556 - nothing to do
+[2026-10-15 09:40:05] sync is already running as pid 12556 - nothing to do
