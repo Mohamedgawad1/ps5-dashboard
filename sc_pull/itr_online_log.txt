@@ -38368,3 +38368,94 @@ Call log:
 [2026-10-16 16:38:12]  >> pages commit rc=0 te 2026-10-16 16:38 (closed=6767)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-10-16 16:38:16]  >> pages push OK (closed=6767)
+[2026-10-16 16:43:27] LOGGED IN
+[2026-10-16 16:44:52] pulled off=0 n=4000 accum=4000
+[2026-10-16 16:46:26] pulled off=4000 n=4000 accum=8000
+[2026-10-16 16:47:39] pulled off=8000 n=4000 accum=12000
+[2026-10-16 16:48:27] pulled off=12000 n=2009 accum=14009
+[2026-10-16 16:48:27] task index refreshed (6321 asset tags)
+[2026-10-16 16:48:27] updated dashboard_data.json itr_summary.live
+[2026-10-16 16:48:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-16 16:48:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-16 16:48 (closed=6767) rc=0 [main e019c62] ITR live update 2026-10-16 16:48 (closed=6767)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-16 16:48:37]  >> git push OK
+[2026-10-16 16:48:42]  >> pages commit rc=0 te 2026-10-16 16:48 (closed=6767)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-16 16:48:48]  >> pages push OK (closed=6767)
+[2026-10-16 16:54:24] LOGGED IN
+[2026-10-16 16:56:01] pulled off=0 n=4000 accum=4000
+[2026-10-16 16:56:51] pulled off=4000 n=4000 accum=8000
+[2026-10-16 16:58:03] pulled off=8000 n=4000 accum=12000
+[2026-10-16 16:58:32] pulled off=12000 n=2009 accum=14009
+[2026-10-16 16:58:32] task index refreshed (6321 asset tags)
+[2026-10-16 16:58:33] updated dashboard_data.json itr_summary.live
+[2026-10-16 16:58:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-16 16:58:38]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-16 16:58 (closed=6767) rc=0 [main a77efa3] ITR live update 2026-10-16 16:58 (closed=6767)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-16 16:58:45]  >> git push OK
+[2026-10-16 16:58:50]  >> pages commit rc=0 te 2026-10-16 16:58 (closed=6767)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-16 16:58:56]  >> pages push OK (closed=6767)
+[2026-10-16 17:04:20] LOGGED IN
+[2026-10-16 17:05:13] pulled off=0 n=4000 accum=4000
+[2026-10-16 17:06:10] pulled off=4000 n=4000 accum=8000
+[2026-10-16 17:07:15] pulled off=8000 n=4000 accum=12000
+[2026-10-16 17:07:54] pulled off=12000 n=2009 accum=14009
+[2026-10-16 17:07:54] task index refreshed (6321 asset tags)
+[2026-10-16 17:07:55] updated dashboard_data.json itr_summary.live
+[2026-10-16 17:07:57]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-16 17:07:58]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-16 17:07 (closed=6767) rc=0 [main 76689dd] ITR live update 2026-10-16 17:07 (closed=6767)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-16 17:08:04]  >> git push OK
+[2026-10-16 17:08:08]  >> pages commit rc=0 te 2026-10-16 17:08 (closed=6767)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-16 17:08:13]  >> pages push OK (closed=6767)
+[2026-10-16 17:13:27] LOGGED IN
+[2026-10-16 17:14:51] pulled off=0 n=4000 accum=4000
+[2026-10-16 17:16:18] pulled off=4000 n=4000 accum=8000
+[2026-10-16 17:17:47] pulled off=8000 n=4000 accum=12000
+[2026-10-16 17:18:32] pulled off=12000 n=2009 accum=14009
+[2026-10-16 17:18:33] task index refreshed (6321 asset tags)
+[2026-10-16 17:18:34] updated dashboard_data.json itr_summary.live
+[2026-10-16 17:18:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-16 17:18:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-16 17:18 (closed=6768) rc=0 [main 3d1dea1] ITR live update 2026-10-16 17:18 (closed=6768)
+ 1 file changed, 32 insertions(+), 26 deletions(-)
+[2026-10-16 17:18:41]  >> git push OK
+[2026-10-16 17:18:51]  >> pages commit rc=0 026-10-16 17:18 (closed=6768)
+ 1 file changed, 32 insertions(+), 26 deletions(-)
+[2026-10-16 17:18:55]  >> pages push OK (closed=6768)
+[2026-10-16 17:24:01] LOGGED IN
+[2026-10-16 17:24:46] pulled off=0 n=4000 accum=4000
+[2026-10-16 17:25:44] pulled off=4000 n=4000 accum=8000
+[2026-10-16 17:26:25] pulled off=8000 n=4000 accum=12000
+[2026-10-16 17:26:46] pulled off=12000 n=2009 accum=14009
+[2026-10-16 17:26:46] task index refreshed (6321 asset tags)
+[2026-10-16 17:26:47] updated dashboard_data.json itr_summary.live
+[2026-10-16 17:26:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-16 17:26:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-16 17:26 (closed=6769) rc=0 [main 7bb5528] ITR live update 2026-10-16 17:26 (closed=6769)
+ 1 file changed, 25 insertions(+), 25 deletions(-)
+[2026-10-16 17:26:57]  >> git push OK
+[2026-10-16 17:27:00]  >> pages commit rc=0 026-10-16 17:27 (closed=6769)
+ 1 file changed, 25 insertions(+), 25 deletions(-)
+[2026-10-16 17:27:04]  >> pages push OK (closed=6769)
+[2026-10-16 17:32:14] LOGGED IN
+[2026-10-16 17:34:31] pulled off=0 n=4000 accum=4000
+[2026-10-16 17:35:29] pulled off=4000 n=4000 accum=8000
+[2026-10-16 17:36:35] pulled off=8000 n=4000 accum=12000
+[2026-10-16 17:37:12] pulled off=12000 n=2009 accum=14009
+[2026-10-16 17:37:12] task index refreshed (6321 asset tags)
+[2026-10-16 17:37:13] updated dashboard_data.json itr_summary.live
+[2026-10-16 18:29:41] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:29:47] reused the sync's always-open browser (port 9222)
+[2026-10-16 18:29:47] LOOP READY (interval 300s, keep_open=True)
+[2026-10-16 18:29:58] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:30:15] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:30:34] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:30:37] session expired -> auto-login
+[2026-10-16 18:30:43] ssologin click: ok
+[2026-10-16 18:30:51] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:30:53] sso handoff -> verify password page
+[2026-10-16 18:30:55] verify submit: submitted
+[2026-10-16 18:31:09] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:31:27] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:31:45] sync is already running as pid 9576 - nothing to do
