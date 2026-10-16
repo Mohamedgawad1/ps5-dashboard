@@ -38459,3 +38459,64 @@ Call log:
 [2026-10-16 18:31:09] sync is already running as pid 9576 - nothing to do
 [2026-10-16 18:31:27] sync is already running as pid 9576 - nothing to do
 [2026-10-16 18:31:45] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:32:03] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:32:21] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:32:39] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:32:44] auto-login attempt 1 still not logged in
+[2026-10-16 18:32:50] ssologin click: no-btn
+[2026-10-16 18:32:57] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:33:00] sso handoff -> verify password page
+[2026-10-16 18:33:03] verify submit: submitted
+[2026-10-16 18:33:15] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:33:27] LOGGED IN
+[2026-10-16 18:33:33] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:33:52] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:34:10] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:34:27] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:34:40] pulled off=0 n=4000 accum=4000
+[2026-10-16 18:34:47] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:35:03] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:35:21] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:35:37] pulled off=4000 n=4000 accum=8000
+[2026-10-16 18:35:39] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:35:59] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:36:16] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:36:33] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:36:39] pulled off=8000 n=4000 accum=12000
+[2026-10-16 18:36:53] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:37:12] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:37:23] pulled off=12000 n=2009 accum=14009
+[2026-10-16 18:37:24] task index refreshed (6321 asset tags)
+[2026-10-16 18:37:24] milestone_map: 290 subsystems
+[2026-10-16 18:37:25] updated dashboard_data.json itr_summary.live
+[2026-10-16 18:37:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-16 18:37:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-16 18:37 (closed=6769) rc=0 [main c175cbf] ITR live update 2026-10-16 18:37 (closed=6769)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-16 18:37:30] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:37:34]  >> git push OK
+[2026-10-16 18:37:38]  >> pages commit rc=0 te 2026-10-16 18:37 (closed=6769)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-16 18:37:44]  >> pages push OK (closed=6769)
+[2026-10-16 18:37:46] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:38:04] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:38:22] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:38:40] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:38:58] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:39:16] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:39:34] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:39:52] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:40:10] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:40:29] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:40:46] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:41:04] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:41:23] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:41:41] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:41:58] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:42:20] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:42:35] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:42:53] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:42:57] LOGGED IN
+[2026-10-16 18:43:11] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:43:29] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:43:46] sync is already running as pid 9576 - nothing to do
+[2026-10-16 18:43:56] pulled off=0 n=4000 accum=4000
