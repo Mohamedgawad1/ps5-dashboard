@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-16 18:37:25",
+  "updated": "2026-10-16 18:57:03",
   "total_tasks_ps5": 14009,
   "eit_total": 10300,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6769,
-  "open": 3531,
-  "today_closed": 26,
+  "closed": 6783,
+  "open": 3517,
+  "today_closed": 40,
   "closed_by_discipline": {
-    "I": 3317,
+    "I": 3331,
     "E": 3157,
     "T": 295
   },
   "open_by_discipline": {
-    "I": 1278,
+    "I": 1264,
     "E": 1470,
     "T": 783
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-16",
       "E": 6,
-      "I": 20,
+      "I": 34,
       "T": 0,
-      "Total": 26
+      "Total": 40
     }
   ],
-  "closed_this_week": 298,
-  "closed_this_month": 936,
+  "closed_this_week": 312,
+  "closed_this_month": 950,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -247,7 +247,7 @@
       "milestone": "Milestone E",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 1
+      "count": 15
     },
     {
       "milestone": "Milestone F",
@@ -268,7 +268,7 @@
       "count": 19
     }
   ],
-  "today_milestone_total": 26,
+  "today_milestone_total": 40,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -330,13 +330,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1370,
-      "remaining": 162,
-      "pct": 89.4,
+      "closed": 1384,
+      "remaining": 148,
+      "pct": 90.3,
       "status": {
-        "Closed": 1370,
+        "Closed": 1384,
         "Submitted": 0,
-        "To be completed": 157,
+        "To be completed": 143,
         "Other": 5
       }
     },
@@ -398,6 +398,132 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-01-NMR-61002",
+      "task": "T-00082-1234",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:54:30 "
+    },
+    {
+      "tag": "PS5-01-NMR-61001",
+      "task": "T-00082-1233",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:53:29 "
+    },
+    {
+      "tag": "PS5-01-LB-6104A",
+      "task": "T-00067-2563",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:52:15 "
+    },
+    {
+      "tag": "PS5-01-LB-6103A",
+      "task": "T-00067-2562",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:50:51 "
+    },
+    {
+      "tag": "PS5-01-LB-6102A",
+      "task": "T-00067-2561",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:49:52 "
+    },
+    {
+      "tag": "PS5-01-LB-6101A",
+      "task": "T-00067-2560",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:48:39 "
+    },
+    {
+      "tag": "PS5-01-RAB-61004B",
+      "task": "T-00064-0419",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:46:01 "
+    },
+    {
+      "tag": "PS5-01-RAB-61004A",
+      "task": "T-00064-0418",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:44:34 "
+    },
+    {
+      "tag": "PS5-01-RAB-61003B",
+      "task": "T-00064-0417",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:43:26 "
+    },
+    {
+      "tag": "PS5-01-RAB-61003A",
+      "task": "T-00064-0416",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:42:28 "
+    },
+    {
+      "tag": "PS5-01-RAB-61002B",
+      "task": "T-00064-0415",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:41:19 "
+    },
+    {
+      "tag": "PS5-01-RAB-61002A",
+      "task": "T-00064-0414",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:40:09 "
+    },
+    {
+      "tag": "PS5-01-RAB-61001B",
+      "task": "T-00064-0413",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:38:42 "
+    },
+    {
+      "tag": "PS5-01-RAB-61001A",
+      "task": "T-00064-0412",
+      "system": "PS5-01-11 - Inergen for Power Gen Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/16/2026 3:37:37 "
+    },
     {
       "tag": "",
       "task": "T-00031-1339",
@@ -1351,132 +1477,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/14/2026 10:57:32"
-    },
-    {
-      "tag": "PS5-71-HE-2400A",
-      "task": "T-00242-0048",
-      "system": "PS5-71-01 - CFO Storage Tank Feed Heater",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/14/2026 10:54:38"
-    },
-    {
-      "tag": "PS5-86-OB-0002_Earthing",
-      "task": "T-00247-0164",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/14/2026 7:15:11 "
-    },
-    {
-      "tag": "PS5 - UTILITY AREA_Earthing",
-      "task": "T-00247-0150",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/14/2026 7:10:28 "
-    },
-    {
-      "tag": "PS5 - POWER GENERATION COOLING TOWER AREA_Earthing",
-      "task": "T-00247-0148",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/14/2026 6:43:26 "
-    },
-    {
-      "tag": "PS5 - CLOSED DRAIN DRUM AREA_Earthing",
-      "task": "T-00247-0136",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/14/2026 6:30:55 "
-    },
-    {
-      "tag": "PS5 - CFO AREA_Earthing",
-      "task": "T-00247-0134",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/14/2026 6:21:26 "
-    },
-    {
-      "tag": "PS5-28-LB-8200-CL01",
-      "task": "T-00023-4966",
-      "system": "PS5-28-11 - Open Drain Interceptor",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/14/2026 5:50:04 "
-    },
-    {
-      "tag": "PS5-28-DM-3900A-CL01",
-      "task": "T-00608-0406",
-      "system": "PS5-28-17 - Reinjection Pump",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/14/2026 5:49:53 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1502",
-      "system": "PS5-79-06 - Electrical Heat Tracing Transformer/Distribution Board 6 (PS5-79-IG-0006)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 1:44:13 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1655",
-      "system": "PS5-79-10 - Electrical Heat Tracing Transformer/Distribution Board 10 (PS5-79-IG-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 7:55:16 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1653",
-      "system": "PS5-79-10 - Electrical Heat Tracing Transformer/Distribution Board 10 (PS5-79-IG-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 7:54:46 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1652",
-      "system": "PS5-79-10 - Electrical Heat Tracing Transformer/Distribution Board 10 (PS5-79-IG-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 7:54:19 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1651",
-      "system": "PS5-79-10 - Electrical Heat Tracing Transformer/Distribution Board 10 (PS5-79-IG-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 7:53:56 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1650",
-      "system": "PS5-79-10 - Electrical Heat Tracing Transformer/Distribution Board 10 (PS5-79-IG-0010)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/13/2026 7:53:37 "
     }
   ]
 }
