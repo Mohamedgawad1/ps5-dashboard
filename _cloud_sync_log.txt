@@ -12048,3 +12048,4 @@
 2026-10-16 09:03:53 [done] build in 1999s
 2026-10-16 10:44:30 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
 2026-10-16 10:49:30 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-10-16 11:30:19 [warn] cloud fetch failed: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
