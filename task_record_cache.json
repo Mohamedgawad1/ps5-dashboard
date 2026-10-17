@@ -5566,5 +5566,21 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00023-4695": {
+  "record": "1062239",
+  "task": "T-00023-4695",
+  "asset": "PS5-01-BE-0001-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00238-0726": {
+  "record": "1173011",
+  "task": "T-00238-0726",
+  "asset": "PS5-61-IG-0015",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
  }
 }
