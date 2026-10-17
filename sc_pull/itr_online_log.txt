@@ -39302,3 +39302,89 @@ Call log:
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-10-17 10:00:16]  >> pages push OK (closed=6796)
 [2026-10-17 10:00:22] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:00:40] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:00:57] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:01:16] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:01:34] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:01:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:02:09] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:02:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:02:46] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:03:04] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:03:22] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:03:41] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:03:58] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:04:16] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:04:34] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:04:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:05:10] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:05:16] goto err: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://wly0
+[2026-10-17 10:05:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:05:49] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:06:01] session expired -> auto-login
+[2026-10-17 10:06:01] LOOP ERR: Page.wait_for_timeout: Target page, context or browser has been closed
+[2026-10-17 10:06:06] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:06:22] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:06:40] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:06:58] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:07:17] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:07:35] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:07:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:08:10] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:08:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:08:46] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:09:04] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:09:29] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:09:45] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:10:00] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:10:17] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:10:35] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:10:53] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:11:02] no pull tab yet — attaching to the open browser again
+[2026-10-17 10:11:08] reused the sync's always-open browser (port 9222)
+[2026-10-17 10:11:12] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:11:29] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:11:47] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:11:58] session expired -> auto-login
+[2026-10-17 10:12:02] ssologin click: ok
+[2026-10-17 10:12:06] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:12:12] sso handoff -> verify password page
+[2026-10-17 10:12:14] verify submit: submitted
+[2026-10-17 10:12:23] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:12:41] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:12:59] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:13:17] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:13:35] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:13:53] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:14:00] auto-login attempt 1 still not logged in
+[2026-10-17 10:14:06] ssologin click: ok
+[2026-10-17 10:14:11] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:14:16] sso handoff -> verify password page
+[2026-10-17 10:14:18] verify submit: submitted
+[2026-10-17 10:14:29] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:14:47] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:15:05] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:15:23] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:15:41] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:15:59] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:16:06] auto-login attempt 2 still not logged in
+[2026-10-17 10:16:11] ssologin click: ok
+[2026-10-17 10:16:18] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:16:21] sso handoff -> verify password page
+[2026-10-17 10:16:23] verify submit: submitted
+[2026-10-17 10:16:35] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:16:53] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:17:11] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:17:29] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:17:47] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:18:05] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:18:09] auto-login attempt 3 still not logged in
+[2026-10-17 10:18:23] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:18:41] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:18:59] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:19:17] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:19:35] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:19:53] sync is already running as pid 9724 - nothing to do
+[2026-10-17 10:20:11] sync is already running as pid 9724 - nothing to do
