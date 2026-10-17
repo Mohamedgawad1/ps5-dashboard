@@ -41137,3 +41137,97 @@ Call log:
 [2026-10-17 17:00:16] sync is already running as pid 9724 - nothing to do
 [2026-10-17 17:00:34] sync is already running as pid 9724 - nothing to do
 [2026-10-17 17:00:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:01:10] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:01:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:01:47] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:02:04] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:02:22] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:02:40] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:02:58] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:03:16] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:03:28] LOGGED IN
+[2026-10-17 17:03:34] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:03:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:04:10] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:04:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:04:46] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:04:56] pulled off=0 n=4000 accum=4000
+[2026-10-17 17:05:04] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:05:22] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:05:40] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:05:58] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:06:10] pulled off=4000 n=4000 accum=8000
+[2026-10-17 17:06:16] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:06:34] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:06:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:07:10] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:07:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:07:31] pulled off=8000 n=4000 accum=12000
+[2026-10-17 17:07:46] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:08:03] pulled off=12000 n=2009 accum=14009
+[2026-10-17 17:08:04] task index refreshed (6321 asset tags)
+[2026-10-17 17:08:05] updated dashboard_data.json itr_summary.live
+[2026-10-17 17:08:05] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:08:05]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-17 17:08:05]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-17 17:08 (closed=6799) rc=0 [main 09f1d57] ITR live update 2026-10-17 17:08 (closed=6799)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-17 17:08:11]  >> git push OK
+[2026-10-17 17:08:14]  >> pages commit rc=0 te 2026-10-17 17:08 (closed=6799)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-17 17:08:18]  >> pages push OK (closed=6799)
+[2026-10-17 17:08:22] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:08:40] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:08:58] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:09:16] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:09:34] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:09:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:10:10] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:10:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:10:46] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:11:04] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:11:22] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:11:40] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:11:58] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:12:16] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:12:34] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:12:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:13:10] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:13:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:13:29] LOGGED IN
+[2026-10-17 17:13:46] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:14:05] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:14:23] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:14:40] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:14:41] pulled off=0 n=4000 accum=4000
+[2026-10-17 17:14:58] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:15:17] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:15:34] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:15:43] pulled off=4000 n=4000 accum=8000
+[2026-10-17 17:15:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:16:11] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:16:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:16:47] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:16:47] pulled off=8000 n=4000 accum=12000
+[2026-10-17 17:17:05] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:17:23] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:17:30] pulled off=12000 n=2009 accum=14009
+[2026-10-17 17:17:30] task index refreshed (6321 asset tags)
+[2026-10-17 17:17:31] updated dashboard_data.json itr_summary.live
+[2026-10-17 17:17:32]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-17 17:17:32]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-17 17:17 (closed=6799) rc=0 [main 4aa8a16] ITR live update 2026-10-17 17:17 (closed=6799)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-17 17:17:40] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:17:41]  >> git push OK
+[2026-10-17 17:17:46]  >> pages commit rc=0 te 2026-10-17 17:17 (closed=6799)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-17 17:17:51]  >> pages push OK (closed=6799)
+[2026-10-17 17:17:58] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:18:16] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:18:34] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:18:52] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:19:10] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:19:28] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:19:46] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:20:06] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:20:23] sync is already running as pid 9724 - nothing to do
+[2026-10-17 17:20:40] sync is already running as pid 9724 - nothing to do
