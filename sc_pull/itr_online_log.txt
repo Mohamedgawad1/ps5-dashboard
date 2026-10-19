@@ -41876,3 +41876,207 @@ Call log:
 [2026-10-19 09:19:29] sync is already running as pid 17344 - nothing to do
 [2026-10-19 09:19:47] sync is already running as pid 17344 - nothing to do
 [2026-10-19 09:20:06] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:20:24] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:20:41] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:20:59] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:21:17] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:21:36] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:21:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:22:12] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:22:30] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:22:47] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:23:06] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:23:23] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:23:42] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:23:55] LOGGED IN
+[2026-10-19 09:24:00] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:24:18] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:24:25] pulled off=0 n=4000 accum=4000
+[2026-10-19 09:24:35] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:24:45] pulled off=4000 n=4000 accum=8000
+[2026-10-19 09:24:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:25:12] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:25:30] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:25:34] pulled off=8000 n=4000 accum=12000
+[2026-10-19 09:25:44] pulled off=12000 n=2009 accum=14009
+[2026-10-19 09:25:44] task index refreshed (6321 asset tags)
+[2026-10-19 09:25:44] updated dashboard_data.json itr_summary.live
+[2026-10-19 09:25:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-19 09:25:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-19 09:25 (closed=6807) rc=0 [main c19460a] ITR live update 2026-10-19 09:25 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:25:48] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:25:49]  >> git push OK
+[2026-10-19 09:25:54]  >> pages commit rc=0 te 2026-10-19 09:25 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:25:59]  >> pages push OK (closed=6807)
+[2026-10-19 09:26:06] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:26:24] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:26:42] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:27:00] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:27:18] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:27:36] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:27:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:28:12] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:28:30] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:28:48] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:29:06] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:29:24] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:29:42] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:30:00] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:30:18] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:30:36] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:30:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:31:05] LOGGED IN
+[2026-10-19 09:31:12] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:31:30] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:31:41] pulled off=0 n=4000 accum=4000
+[2026-10-19 09:31:48] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:32:06] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:32:11] pulled off=4000 n=4000 accum=8000
+[2026-10-19 09:32:24] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:32:42] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:33:00] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:33:07] pulled off=8000 n=4000 accum=12000
+[2026-10-19 09:33:18] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:33:36] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:33:40] pulled off=12000 n=2009 accum=14009
+[2026-10-19 09:33:41] task index refreshed (6321 asset tags)
+[2026-10-19 09:33:41] updated dashboard_data.json itr_summary.live
+[2026-10-19 09:33:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-19 09:33:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-19 09:33 (closed=6807) rc=0 [main b298a63] ITR live update 2026-10-19 09:33 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:33:54]  >> git push OK
+[2026-10-19 09:33:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:33:59]  >> pages commit rc=0 te 2026-10-19 09:33 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:34:07]  >> pages push OK (closed=6807)
+[2026-10-19 09:34:14] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:34:31] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:34:48] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:35:06] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:35:25] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:35:42] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:36:00] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:36:18] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:36:36] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:36:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:37:12] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:37:30] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:37:48] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:38:06] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:38:24] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:38:42] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:39:00] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:39:17] LOGGED IN
+[2026-10-19 09:39:18] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:39:36] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:39:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:39:55] pulled off=0 n=4000 accum=4000
+[2026-10-19 09:40:12] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:40:31] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:40:46] pulled off=4000 n=4000 accum=8000
+[2026-10-19 09:40:49] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:41:07] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:41:25] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:41:31] pulled off=8000 n=4000 accum=12000
+[2026-10-19 09:41:42] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:42:01] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:42:05] pulled off=12000 n=2009 accum=14009
+[2026-10-19 09:42:05] task index refreshed (6321 asset tags)
+[2026-10-19 09:42:06] updated dashboard_data.json itr_summary.live
+[2026-10-19 09:42:07]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-19 09:42:07]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-19 09:42 (closed=6807) rc=0 [main 21e8719] ITR live update 2026-10-19 09:42 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:42:15]  >> git push OK
+[2026-10-19 09:42:18] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:42:20]  >> pages commit rc=0 te 2026-10-19 09:42 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:42:25]  >> pages push OK (closed=6807)
+[2026-10-19 09:42:36] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:42:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:43:12] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:43:30] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:43:49] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:44:08] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:44:25] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:44:42] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:45:01] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:45:18] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:45:36] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:45:54] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:46:13] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:46:30] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:46:48] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:47:06] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:47:24] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:47:33] LOGGED IN
+[2026-10-19 09:47:43] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:48:01] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:48:19] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:48:21] pulled off=0 n=4000 accum=4000
+[2026-10-19 09:48:37] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:48:55] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:48:57] pulled off=4000 n=4000 accum=8000
+[2026-10-19 09:49:13] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:49:33] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:49:35] pulled off=8000 n=4000 accum=12000
+[2026-10-19 09:49:49] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:49:54] pulled off=12000 n=2009 accum=14009
+[2026-10-19 09:49:55] task index refreshed (6321 asset tags)
+[2026-10-19 09:49:55] updated dashboard_data.json itr_summary.live
+[2026-10-19 09:49:56]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-19 09:49:57]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-19 09:49 (closed=6807) rc=0 [main 2282d9c] ITR live update 2026-10-19 09:49 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:50:07] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:50:11]  >> git push OK
+[2026-10-19 09:50:14]  >> pages commit rc=0 te 2026-10-19 09:50 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:50:19]  >> pages push OK (closed=6807)
+[2026-10-19 09:50:25] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:50:43] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:51:01] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:51:19] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:51:37] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:51:55] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:52:13] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:52:31] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:52:49] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:53:07] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:53:25] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:53:43] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:54:01] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:54:19] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:54:37] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:54:55] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:55:13] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:55:26] LOGGED IN
+[2026-10-19 09:55:31] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:55:49] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:55:55] pulled off=0 n=4000 accum=4000
+[2026-10-19 09:56:07] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:56:15] pulled off=4000 n=4000 accum=8000
+[2026-10-19 09:56:25] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:56:40] pulled off=8000 n=4000 accum=12000
+[2026-10-19 09:56:43] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:56:58] pulled off=12000 n=2009 accum=14009
+[2026-10-19 09:56:58] task index refreshed (6321 asset tags)
+[2026-10-19 09:56:59] updated dashboard_data.json itr_summary.live
+[2026-10-19 09:56:59]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-19 09:57:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-19 09:56 (closed=6807) rc=0 [main b8bd284] ITR live update 2026-10-19 09:56 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:57:01] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:57:05]  >> git push OK
+[2026-10-19 09:57:11]  >> pages commit rc=0 te 2026-10-19 09:57 (closed=6807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-19 09:57:15]  >> pages push OK (closed=6807)
+[2026-10-19 09:57:19] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:57:37] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:57:55] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:58:13] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:58:31] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:58:49] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:59:07] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:59:25] sync is already running as pid 17344 - nothing to do
+[2026-10-19 09:59:43] sync is already running as pid 17344 - nothing to do
+[2026-10-19 10:00:01] sync is already running as pid 17344 - nothing to do
+[2026-10-19 10:00:19] sync is already running as pid 17344 - nothing to do
