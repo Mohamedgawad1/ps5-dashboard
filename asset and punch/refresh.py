@@ -1,4 +1,4 @@
-import pandas as pd
+﻿import pandas as pd
 import openpyxl
 from openpyxl.utils import get_column_letter
 from copy import copy
@@ -10,8 +10,7 @@ DASHBOARD = r"C:\Users\mylap\OneDrive\Desktop\dashboard"
 def find_latest(folder, keywords):
     candidates = []
     search_dirs = [folder]
-    for extra in [r"C:\Users\mylap\Downloads\asset and punch",
-                  r"C:\Users\mylap\Downloads\subsystem and punch"]:
+    for extra in [r"C:\Users\mylap\Downloads", r"C:\Users\mylap\Downloads\asset and punch", r"C:\Users\mylap\Downloads\subsystem and punch"]:
         if os.path.isdir(extra) and extra not in search_dirs:
             search_dirs.append(extra)
     for d in search_dirs:
@@ -319,3 +318,4 @@ else:
 wb.save(FILE)
 print(f'\nDone! {T_ALL} total, {T_O} open, {T_C} closed')
 input('Press Enter to close...')
+

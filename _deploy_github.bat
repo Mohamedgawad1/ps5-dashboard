@@ -69,13 +69,16 @@ if exist "%~dp0itr_live.html" (
     copy /y "%~dp0itr_live_state.json" "%D%\itr_live_state.json" >nul
 )
 git add index.html app.html itr_live.html live_itr.js itr_live_state.json
+git add dashboard_data.json server_data.json inspection_data.json data.json 2>nul
+git add dashboard.html PS5_Project_Dashboard.html PS5_Project_Dashboard_v2.html "PS5 - CPP AGI Completion Progress Dashboard.html" 2>nul
+git add index.html app.html itr_live.html live_itr.js itr_live_state.json *.json 2>nul
 git diff --cached --quiet
 if not errorlevel 1 (
     echo [deploy] no changes - already up to date
     popd
     exit /b 0
 )
-git -c user.name=ps5-bot -c user.email=ps5@local commit -m "PS5 ITR live update %date% %time%" >nul
+git -c user.name=ps5-bot -c user.email=ps5@local commit -m "PS5 auto update %date% %time%" >nul
 git push "https://x-access-ps5:%TOK%@github.com/Mohamedgawad1/%REPO%.git" main >nul 2>&1
 if errorlevel 1 (
     echo [deploy] push FAILED

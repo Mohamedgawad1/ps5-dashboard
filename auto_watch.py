@@ -21,6 +21,14 @@ WATCH_FILES = [
     'PS5 EIT CPP AGI Dashboard.xlsx',
 ]
 
+DOWNLOADS_DIR = r'C:\Users\mylap\Downloads'
+WATCH_GLOBS = [
+    'ovTasks*.xlsx',
+    'ovPunchlist*.xlsx',
+    'PS-5 EIT PUNCH LIST REGISTER*.xlsx',
+    'PS-5 INSPECTION REGISTER*.xlsx',
+]
+
 def log(msg):
     line = f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
     try:
@@ -37,6 +45,9 @@ def snapshot():
             st[f] = os.path.getmtime(p)
     for p in glob.glob(os.path.join(BASE, 'PS-5 COMPLETIONS DPR SUMMERY*.xlsx')):
         st[os.path.basename(p)] = os.path.getmtime(p)
+    for pat in WATCH_GLOBS:
+        for p in glob.glob(os.path.join(DOWNLOADS_DIR, pat)):
+            st[p] = os.path.getmtime(p)
     return st
 
 def file_ready(path):
@@ -62,15 +73,15 @@ def run_cycle():
                     log(f"  {f} still locked, aborting this cycle")
                     return False
     steps = [
-        ['python', 'daily_update.py'],
-        ['python', 'cpp_agi_dashboard.py'],
+        ['py', '-3.14', 'daily_update.py'],
+        ['py', '-3.14', 'cpp_agi_dashboard.py'],
     ]
     for cmd in steps:
         r = subprocess.run(cmd, cwd=BASE, capture_output=True, text=True,
                            encoding='utf-8', errors='replace')
         tail = (r.stdout or '').strip().splitlines()
         tail = tail[-1] if tail else ''
-        log(f"  {'$'+' '.join(cmd[1:])} rc={r.returncode} {tail}")
+        log(f"  {'$'+' '.join(cmd)} rc={r.returncode} {tail}")
         if r.returncode != 0:
             err = (r.stderr or '').strip().splitlines()
             log('   ERR: ' + (err[-1] if err else 'unknown'))
