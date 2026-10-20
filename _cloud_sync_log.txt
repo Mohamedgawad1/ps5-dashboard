@@ -12367,3 +12367,4 @@
 2026-10-20 14:35:30    !! push failed - the live platform was NOT updated
 2026-10-20 14:35:30 !! platform full sync FAILED (rc=1)
 2026-10-20 14:35:30 [done] build in 2210s
+2026-10-20 16:17:17 [warn] cloud fetch failed: <urlopen error [WinError 10051] A socket operation was attempted to an unreachable network>
