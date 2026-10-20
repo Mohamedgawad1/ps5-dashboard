@@ -44307,3 +44307,104 @@ Call log:
 [2026-10-20 07:39:33] sync is already running as pid 15944 - nothing to do
 [2026-10-20 07:39:50] sync is already running as pid 15944 - nothing to do
 [2026-10-20 07:40:08] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:40:26] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:40:44] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:41:02] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:41:20] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:41:39] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:41:56] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:42:15] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:42:23] no pull tab yet — attaching to the open browser again
+[2026-10-20 07:42:24] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-20 07:42:32] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:42:50] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:43:08] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:43:26] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:43:44] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:44:02] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:44:20] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:44:38] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:44:56] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:45:14] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:45:32] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:45:50] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:46:08] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:46:26] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:46:44] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:47:02] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:47:20] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:47:24] no pull tab yet — attaching to the open browser again
+[2026-10-20 07:47:24] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-20 07:47:38] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:47:56] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:48:14] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:48:32] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:48:50] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:49:08] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:49:27] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:49:45] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:50:04] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:50:21] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:50:39] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:50:58] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:51:16] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:51:33] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:51:51] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:52:12] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:52:25] no pull tab yet — attaching to the open browser again
+[2026-10-20 07:52:30] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:52:31] reused the sync's always-open browser (port 9222)
+[2026-10-20 07:52:36] LOGGED IN
+[2026-10-20 07:52:45] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:52:56] pulled off=0 n=4000 accum=4000
+[2026-10-20 07:53:06] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:53:11] pulled off=4000 n=4000 accum=8000
+[2026-10-20 07:53:22] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:53:25] pulled off=8000 n=4000 accum=12000
+[2026-10-20 07:53:34] pulled off=12000 n=2009 accum=14009
+[2026-10-20 07:53:34] task index refreshed (6321 asset tags)
+[2026-10-20 07:53:34] milestone_map: 290 subsystems
+[2026-10-20 07:53:34] updated dashboard_data.json itr_summary.live
+[2026-10-20 07:53:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-20 07:53:38]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-20 07:53 (closed=6812) rc=0 [main a819210] ITR live update 2026-10-20 07:53 (closed=6812)
+ 1 file changed, 67 insertions(+), 74 deletions(-)
+[2026-10-20 07:53:41] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:53:43]  >> git push OK
+[2026-10-20 07:53:46]  >> pages commit rc=0 026-10-20 07:53 (closed=6812)
+ 1 file changed, 67 insertions(+), 74 deletions(-)
+[2026-10-20 07:53:50]  >> pages push OK (closed=6812)
+[2026-10-20 07:53:58] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:54:18] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:54:34] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:54:52] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:55:10] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:55:28] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:55:46] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:56:04] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:56:22] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:56:40] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:56:58] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:57:17] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:57:34] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:57:52] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:58:10] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:58:28] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:58:46] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:58:55] LOGGED IN
+[2026-10-20 07:59:05] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:59:07] pulled off=0 n=4000 accum=4000
+[2026-10-20 07:59:22] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:59:26] pulled off=4000 n=4000 accum=8000
+[2026-10-20 07:59:37] pulled off=8000 n=4000 accum=12000
+[2026-10-20 07:59:40] sync is already running as pid 15944 - nothing to do
+[2026-10-20 07:59:44] pulled off=12000 n=2009 accum=14009
+[2026-10-20 07:59:44] task index refreshed (6321 asset tags)
+[2026-10-20 07:59:45] updated dashboard_data.json itr_summary.live
+[2026-10-20 07:59:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-20 07:59:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-20 07:59 (closed=6812) rc=0 [main 74a670d] ITR live update 2026-10-20 07:59 (closed=6812)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-20 07:59:49]  >> git push OK
+[2026-10-20 07:59:53]  >> pages commit rc=0 te 2026-10-20 07:59 (closed=6812)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-20 07:59:57]  >> pages push OK (closed=6812)
+[2026-10-20 07:59:58] sync is already running as pid 15944 - nothing to do
