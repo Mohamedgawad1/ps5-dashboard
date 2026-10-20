@@ -129,9 +129,16 @@ def norm_discipline(v):
 # ====================================================================
 #  1) إيجاد الملفات تلقائياً
 # ====================================================================
+FOLDER_EXTRAS = [
+    r"C:\Users\mylap\Downloads",
+    r"C:\Users\mylap\Downloads\asset and punch",
+    r"C:\Users\mylap\Downloads\subsystem and punch",
+]
+
+
 def find_file(prefix_keywords):
     candidates = []
-    for folder in [CLOUD_CACHE, DOWNLOADS, DOWNLOADS2]:
+    for folder in [CLOUD_CACHE, DOWNLOADS, DOWNLOADS2] + FOLDER_EXTRAS:
         if not os.path.isdir(folder):
             continue
         for f in os.listdir(folder):
