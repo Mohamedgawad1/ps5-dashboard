@@ -45279,3 +45279,7 @@ Call log:
 [2026-10-20 15:42:04]  >> pages commit rc=0 te 2026-10-20 15:42 (closed=6821)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-10-20 15:42:09]  >> pages push OK (closed=6821)
+[2026-10-20 15:48:09] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-20 15:48:29] LOGGED IN
