@@ -45037,3 +45037,6 @@ Call log:
 [2026-10-20 10:12:30] sync is already running as pid 15944 - nothing to do
 [2026-10-20 10:12:47] sync is already running as pid 15944 - nothing to do
 [2026-10-20 10:13:05] sync is already running as pid 15944 - nothing to do
+[2026-10-20 12:41:05] reused the sync's always-open browser (port 9222)
+[2026-10-20 12:41:05] LOOP READY (interval 300s, keep_open=True)
+[2026-10-20 12:41:20] LOGGED IN
