@@ -4,7 +4,7 @@ title PS5 - Platform to Excel Sync
 echo ============================================
 echo   Sync platform edits into DPR SUMMERY Excel
 echo ============================================
-python "%~dp0sync_cloud_to_excel.py" %*
+py -3.14 "%~dp0sync_cloud_to_excel.py" %*
 if %ERRORLEVEL% NEQ 0 (
   echo.
   echo [ERROR] sync failed - see messages above

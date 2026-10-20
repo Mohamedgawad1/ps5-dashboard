@@ -5,7 +5,7 @@ echo  %date% %time%
 echo ============================================
 echo.
 cd /d "%~dp0"
-python daily_update.py
+py -3.14 daily_update.py
 echo.
 echo Update complete. Press any key to exit.
 pause > nul

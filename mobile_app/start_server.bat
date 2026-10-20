@@ -8,5 +8,5 @@ echo.
 echo  Starting server...
 echo.
 cd /d "%~dp0"
-python server.py
+py -3.14 server.py
 pause

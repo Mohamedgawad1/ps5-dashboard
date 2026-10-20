@@ -10,14 +10,14 @@ echo ============================================
 echo.
 
 echo [1/4] Syncing latest data from OneDrive cloud...
-python -c "import sys; sys.path.insert(0,'.'); from cpp_agi_dashboard import sync_cloud_files; sync_cloud_files()"
+py -3.14 -c "import sys; sys.path.insert(0,'.'); from cpp_agi_dashboard import sync_cloud_files; sync_cloud_files()"
 if %errorlevel% neq 0 (
     echo   [WARN] Cloud sync failed, continuing with local files...
 )
 
 echo.
 echo [2/4] Building dashboard...
-python cpp_agi_dashboard.py
+py -3.14 cpp_agi_dashboard.py
 if %errorlevel% neq 0 goto :err
 
 echo.

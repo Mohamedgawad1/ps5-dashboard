@@ -4,9 +4,9 @@ cd /d "%~dp0"
 set LOG=%TEMP%\ps5_auto_update.log
 echo [%date% %time%] START >> "%LOG%"
 
-python -c "import sys; sys.path.insert(0,'.'); from cpp_agi_dashboard import sync_cloud_files; sync_cloud_files()" >> "%LOG%" 2>&1
+py -3.14 -c "import sys; sys.path.insert(0,'.'); from cpp_agi_dashboard import sync_cloud_files; sync_cloud_files()" >> "%LOG%" 2>&1
 
-python cpp_agi_dashboard.py >> "%LOG%" 2>&1
+py -3.14 cpp_agi_dashboard.py >> "%LOG%" 2>&1
 if %errorlevel% neq 0 (
     echo [%date% %time%] BUILD FAILED >> "%LOG%"
     exit /b 1

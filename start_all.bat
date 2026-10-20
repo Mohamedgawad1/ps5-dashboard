@@ -5,7 +5,7 @@ echo ============================================
 echo.
 
 echo [1/3] Starting server...
-start /min python "%~dp0mobile_app\server.py"
+start /min py -3.14 "%~dp0mobile_app\server.py"
 timeout /t 4 /nobreak >nul
 
 echo [2/3] Testing server...

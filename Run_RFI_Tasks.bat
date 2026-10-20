@@ -25,7 +25,7 @@ echo.
 echo [2/2] opening the task pages ...
 echo        if a login page shows up, sign in once - it stays logged in.
 echo.
-python "C:\Users\mylap\OneDrive\Desktop\dashboard\open_tasks_batch.py"
+py -3.14 "C:\Users\mylap\OneDrive\Desktop\dashboard\open_tasks_batch.py"
 echo.
 echo ============================================================
 echo  Done. The browser stays open.

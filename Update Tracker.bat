@@ -11,9 +11,9 @@ echo.
 echo [%time:~0,8%] [1/3]  Building EXCEL dashboard + PLATFORM ...
 echo        (takes about one or two minutes - please wait)
 echo.
-python punch_itr_explorer.py
+py -3.14 punch_itr_explorer.py
 if errorlevel 1 goto fail
-python dpr_dashboard.py
+py -3.14 dpr_dashboard.py
 if errorlevel 1 goto fail
 if not exist "C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm" goto fail
 echo.
