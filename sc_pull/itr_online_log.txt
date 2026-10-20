@@ -45409,3 +45409,39 @@ Call log:
 [2026-10-20 17:16:23]  >> pages commit rc=0 026-10-20 17:16 (closed=6821)
  1 file changed, 11 insertions(+), 11 deletions(-)
 [2026-10-20 17:16:28]  >> pages push OK (closed=6821)
+[2026-10-20 17:21:35] LOGGED IN
+[2026-10-20 17:21:46] pulled off=0 n=4000 accum=4000
+[2026-10-20 17:21:57] pulled off=4000 n=4000 accum=8000
+[2026-10-20 17:22:12] pulled off=8000 n=4000 accum=12000
+[2026-10-20 17:22:19] pulled off=12000 n=2009 accum=14009
+[2026-10-20 17:22:19] task index refreshed (6321 asset tags)
+[2026-10-20 17:22:20] updated dashboard_data.json itr_summary.live
+[2026-10-20 17:22:21]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-20 17:22:21]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-20 17:22 (closed=6821) rc=0 [main 1e6fa20] ITR live update 2026-10-20 17:22 (closed=6821)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-20 17:22:30]  >> git push OK
+[2026-10-20 17:22:34]  >> pages commit rc=0 te 2026-10-20 17:22 (closed=6821)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-20 17:22:38]  >> pages push OK (closed=6821)
+[2026-10-20 17:27:55] LOGGED IN
+[2026-10-20 17:28:45] pulled off=0 n=4000 accum=4000
+[2026-10-20 17:29:53] pulled off=4000 n=4000 accum=8000
+[2026-10-20 17:30:55] pulled off=8000 n=4000 accum=12000
+[2026-10-20 17:31:26] pulled off=12000 n=2009 accum=14009
+[2026-10-20 17:31:26] task index refreshed (6321 asset tags)
+[2026-10-20 17:31:27] updated dashboard_data.json itr_summary.live
+[2026-10-20 17:31:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-20 17:31:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-20 17:31 (closed=6821) rc=0 [main 7433e4d] ITR live update 2026-10-20 17:31 (closed=6821)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-20 17:31:37]  >> git push OK
+[2026-10-20 17:31:40]  >> pages commit rc=0 te 2026-10-20 17:31 (closed=6821)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-20 17:31:44]  >> pages push OK (closed=6821)
+[2026-10-20 17:36:57] LOGGED IN
+[2026-10-20 17:38:37] pulled off=0 n=4000 accum=4000
+[2026-10-20 17:40:02] pulled off=4000 n=4000 accum=8000
+[2026-10-20 17:40:48] LOOP ERR: Page.evaluate: Connection closed while reading from the driver
+[2026-10-20 19:09:24] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-20 19:09:24] LOOP READY (interval 300s, keep_open=True)
+[2026-10-20 19:09:24] no pull tab yet — attaching to the open browser again
+[2026-10-20 19:09:25] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
