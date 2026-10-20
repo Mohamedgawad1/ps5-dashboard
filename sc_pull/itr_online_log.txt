@@ -45445,3 +45445,10 @@ Call log:
 [2026-10-20 19:09:24] LOOP READY (interval 300s, keep_open=True)
 [2026-10-20 19:09:24] no pull tab yet — attaching to the open browser again
 [2026-10-20 19:09:25] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-20 19:14:25] no pull tab yet — attaching to the open browser again
+[2026-10-20 19:14:26] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-20 19:19:26] no pull tab yet — attaching to the open browser again
+[2026-10-20 19:19:26] reuse failed: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehav -> will retry next cycle, no new window
+[2026-10-20 19:19:28] LOOP ERR: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehavior): Browser context management is not supported.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:922
