@@ -45452,3 +45452,23 @@ Call log:
 [2026-10-20 19:19:28] LOOP ERR: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehavior): Browser context management is not supported.
 Call log:
   - <ws preparing> retrieving websocket url from http://127.0.0.1:922
+[2026-10-20 19:24:28] no pull tab yet — attaching to the open browser again
+[2026-10-20 19:24:28] reuse failed: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehav -> will retry next cycle, no new window
+[2026-10-20 19:24:30] LOOP ERR: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehavior): Browser context management is not supported.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:922
+[2026-10-20 19:29:31] no pull tab yet — attaching to the open browser again
+[2026-10-20 19:29:31] reuse failed: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehav -> will retry next cycle, no new window
+[2026-10-20 19:29:33] LOOP ERR: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehavior): Browser context management is not supported.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:922
+[2026-10-20 19:34:33] no pull tab yet — attaching to the open browser again
+[2026-10-20 19:34:33] reuse failed: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehav -> will retry next cycle, no new window
+[2026-10-20 19:34:35] LOOP ERR: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehavior): Browser context management is not supported.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:922
+[2026-10-20 19:39:35] no pull tab yet — attaching to the open browser again
+[2026-10-20 19:39:35] reuse failed: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehav -> will retry next cycle, no new window
+[2026-10-20 19:39:37] LOOP ERR: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehavior): Browser context management is not supported.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:922
