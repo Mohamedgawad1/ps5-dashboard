@@ -21,6 +21,7 @@ import sys
 import json
 import datetime
 import time
+import shutil
 import urllib.request
 import webbrowser
 
@@ -209,15 +210,23 @@ def safe_read_excel(path, **kwargs):
                 return df.copy()
         except Exception:
             pf = None
-    try:
-        df = pd.read_excel(path, **kwargs)
-    except PermissionError:
-        tmp = os.path.join(tempfile.gettempdir(), 'ov_tmp.xlsx')
+    df = None
+    for attempt in range(6):
         try:
-            shutil.copy2(path, tmp)
-        except PermissionError:
-            pass
-        df = pd.read_excel(tmp, **kwargs)
+            if os.path.getsize(path) < 512:
+                raise PermissionError('file empty / still being downloaded')
+            df = pd.read_excel(path, **kwargs)
+            break
+        except (PermissionError, ValueError, OSError) as e:
+            if attempt == 5:
+                tmp = os.path.join(tempfile.gettempdir(), 'ov_tmp.xlsx')
+                try:
+                    shutil.copy2(path, tmp)
+                    df = pd.read_excel(tmp, **kwargs)
+                    break
+                except Exception as e2:
+                    raise RuntimeError(f'cannot read {path}: {e2}') from e2
+            time.sleep(5)
     _EXCEL_CACHE[key] = df
     if pf is not None:
         try:
@@ -4857,5 +4866,45 @@ def main():
     print("=" * 60)
 
 
+def _acquire_build_lock():
+    if sys.platform != 'win32':
+        return open(os.devnull, 'a')
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)) or '.', '_build.lock')
+    for _ in range(3):
+        try:
+            f = open(path, 'a+')
+            import msvcrt
+            msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+            f.seek(0)
+            f.truncate()
+            f.write(str(os.getpid()))
+            f.flush()
+            return f
+        except (OSError, IOError):
+            try:
+                f.close()
+            except Exception:
+                pass
+            time.sleep(2)
+    return None
+
+
+def _release_build_lock(f):
+    try:
+        import msvcrt
+        f.seek(0)
+        msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
+        f.close()
+    except Exception:
+        pass
+
+
 if __name__ == "__main__":
-    main()
+    _lk = _acquire_build_lock()
+    if _lk is None:
+        print("Another dashboard build is already running -> skipping this run.")
+        sys.exit(0)
+    try:
+        main()
+    finally:
+        _release_build_lock(_lk)
