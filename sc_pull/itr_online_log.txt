@@ -45489,3 +45489,24 @@ Call log:
   - <ws preparing> retrieving websocket url from http://127.0.0.1:922
 [2026-10-20 19:59:45] no pull tab yet — attaching to the open browser again
 [2026-10-20 19:59:45] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-20 20:04:45] no pull tab yet — attaching to the open browser again
+[2026-10-20 20:04:45] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-20 20:09:45] no pull tab yet — attaching to the open browser again
+[2026-10-20 20:09:54] reused the sync's always-open browser (port 9222)
+[2026-10-20 20:10:50] session expired -> auto-login
+[2026-10-20 20:10:56] ssologin click: no-btn
+[2026-10-20 20:11:51] LOGGED IN
+[2026-10-20 20:13:28] pulled off=0 n=4000 accum=4000
+[2026-10-20 20:14:51] pulled off=4000 n=4000 accum=8000
+[2026-10-20 20:16:25] pulled off=8000 n=4000 accum=12000
+[2026-10-20 20:17:10] pulled off=12000 n=2009 accum=14009
+[2026-10-20 20:17:10] task index refreshed (6321 asset tags)
+[2026-10-20 20:17:10] milestone_map: 290 subsystems
+[2026-10-20 20:17:11] updated dashboard_data.json itr_summary.live
+[2026-10-20 20:17:13]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-20 20:17:13]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-20 20:17 (closed=6836) rc=0 [main a6178c5] ITR live update 2026-10-20 20:17 (closed=6836)
+ 1 file changed, 180 insertions(+), 162 deletions(-)
+[2026-10-20 20:17:18]  >> git push OK
+[2026-10-20 20:17:23]  >> pages commit rc=0 6-10-20 20:17 (closed=6836)
+ 1 file changed, 180 insertions(+), 162 deletions(-)
+[2026-10-20 20:17:27]  >> pages push OK (closed=6836)

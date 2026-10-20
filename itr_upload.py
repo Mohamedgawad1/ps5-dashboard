@@ -336,18 +336,33 @@ def _complete_short_tags(tags):
 
 
 def read_pdf(path):
-    """Asset tag from page 1, document type from the pages or the mapping file."""
+    """Asset tag from the RFI page, document type from the pages or the mapping file."""
     pages = pdf_pages_text(path)
+
+    def _tags_from(page_text):
+        page_text = _repair_split_tags(page_text)
+        out = []
+        for tag in ASSET_TAG_RE.findall(page_text):
+            if tag not in out:
+                out.append(tag)
+        for parts in ASSET_TAG_SPACED_RE.findall(page_text):
+            tag = "-".join(parts)
+            if tag not in out:
+                out.append(tag)
+        return _complete_short_tags(out)
+
+    # Some RFIs (glanding / termination) print a checklist on page 1 and the real
+    # RFI with the tag list on page 2 or 3 - so when page 1 holds no tag at all,
+    # look at the next two pages instead of returning an empty plan.
     first = _repair_split_tags(pages[0] if pages else "")
-    tags = []
-    for tag in ASSET_TAG_RE.findall(first):
-        if tag not in tags:
-            tags.append(tag)
-    for parts in ASSET_TAG_SPACED_RE.findall(first):
-        tag = "-".join(parts)
-        if tag not in tags:
-            tags.append(tag)
-    tags = _complete_short_tags(tags)
+    tags = _tags_from(first)
+    if not tags:
+        for page_text in pages[1:3]:
+            maybe = _tags_from(page_text)
+            if maybe:
+                first = _repair_split_tags(page_text)
+                tags = maybe
+                break
     seen, uniq = set(), []
     for t in tags:
         k = t.upper()
