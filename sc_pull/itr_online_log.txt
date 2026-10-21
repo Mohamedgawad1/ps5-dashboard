@@ -45974,3 +45974,31 @@ Call log:
 [2026-10-21 11:38:04] LOGGED IN
 [2026-10-21 11:39:10] pulled off=0 n=4000 accum=4000
 [2026-10-21 11:40:42] pulled off=4000 n=4000 accum=8000
+[2026-10-21 11:42:40] pulled off=8000 n=4000 accum=12000
+[2026-10-21 11:43:50] pulled off=12000 n=2009 accum=14009
+[2026-10-21 11:43:50] task index refreshed (6321 asset tags)
+[2026-10-21 11:43:51] updated dashboard_data.json itr_summary.live
+[2026-10-21 11:43:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-21 11:43:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-21 11:43 (closed=6843) rc=0 [main 82550ff] ITR live update 2026-10-21 11:43 (closed=6843)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-21 11:43:59]  >> git push OK
+[2026-10-21 11:44:45]  >> pages commit rc=0  2026-10-21 11:44 (closed=6843)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-21 11:44:58]  >> pages push OK (closed=6843)
+[2026-10-21 11:50:58] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-21 11:51:09] LOGGED IN
+[2026-10-21 11:52:53] pulled off=0 n=4000 accum=4000
+[2026-10-21 11:54:52] pulled off=4000 n=4000 accum=8000
+[2026-10-21 11:56:56] pulled off=8000 n=4000 accum=12000
+[2026-10-21 11:57:52] pulled off=12000 n=2009 accum=14009
+[2026-10-21 11:57:53] task index refreshed (6321 asset tags)
+[2026-10-21 11:57:53] updated dashboard_data.json itr_summary.live
+[2026-10-21 11:57:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-21 11:57:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-21 11:57 (closed=6843) rc=0 [main 4936bde] ITR live update 2026-10-21 11:57 (closed=6843)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-21 11:58:17]  >> git push OK
+[2026-10-21 11:58:26]  >> pages commit rc=0  2026-10-21 11:58 (closed=6843)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-21 11:58:32]  >> pages push OK (closed=6843)
