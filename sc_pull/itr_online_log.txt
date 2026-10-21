@@ -45529,3 +45529,44 @@ Call log:
 [2026-10-20 20:37:22] pulled off=4000 n=4000 accum=8000
 [2026-10-20 20:38:40] pulled off=8000 n=4000 accum=12000
 [2026-10-20 20:39:28] LOOP ERR: Page.evaluate: Target page, context or browser has been closed
+[2026-10-20 20:44:28] no pull tab yet — attaching to the open browser again
+[2026-10-20 20:44:49] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-20 20:44:51] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2026-10-20 20:49:51] no pull tab yet — attaching to the open browser again
+[2026-10-20 20:49:51] reuse failed: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehav -> will retry next cycle, no new window
+[2026-10-20 20:49:53] LOOP ERR: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehavior): Browser context management is not supported.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:922
+[2026-10-20 20:54:53] no pull tab yet — attaching to the open browser again
+[2026-10-20 20:54:53] reuse failed: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehav -> will retry next cycle, no new window
+[2026-10-20 20:54:55] LOOP ERR: BrowserType.connect_over_cdp: Protocol error (Browser.setDownloadBehavior): Browser context management is not supported.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:922
+[2026-10-21 07:37:54] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-21 07:38:38] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-21 07:39:18] reused the sync's always-open browser (port 9222)
+[2026-10-21 07:39:18] LOOP READY (interval 300s, keep_open=True)
+[2026-10-21 07:39:41] LOGGED IN
+[2026-10-21 07:40:13] pulled off=0 n=4000 accum=4000
+[2026-10-21 07:40:57] pulled off=4000 n=4000 accum=8000
+[2026-10-21 07:41:20] pulled off=8000 n=4000 accum=12000
+[2026-10-21 07:41:42] pulled off=12000 n=2009 accum=14009
+[2026-10-21 07:41:42] task index refreshed (6321 asset tags)
+[2026-10-21 07:41:42] milestone_map: 290 subsystems
+[2026-10-21 07:41:43] updated dashboard_data.json itr_summary.live
+[2026-10-21 07:41:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-21 07:41:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-21 07:41 (closed=6841) rc=0 [main 9cccd98] ITR live update 2026-10-21 07:41 (closed=6841)
+ 1 file changed, 11 insertions(+), 42 deletions(-)
+[2026-10-21 07:41:55]  >> git push OK
+[2026-10-21 07:41:58]  >> pages commit rc=0 026-10-21 07:41 (closed=6841)
+ 1 file changed, 11 insertions(+), 42 deletions(-)
+[2026-10-21 07:42:03]  >> pages push OK (closed=6841)
