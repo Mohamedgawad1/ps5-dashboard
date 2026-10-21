@@ -12423,3 +12423,29 @@
 2026-10-21 07:58:34    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
 2026-10-21 07:58:34    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
 2026-10-21 07:58:34 >> dashboard xlsm
+2026-10-21 08:02:58    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-21 08:02:58      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4124 | Detail I 23497 | RFC 270
+2026-10-21 08:02:58      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21016 pinned cells
+2026-10-21 08:02:58    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-10-21 08:02:58 >> platform full sync
+2026-10-21 08:08:42    >>> C:\Python315\python.exe rebuild_data.py
+2026-10-21 08:08:42    
+2026-10-21 08:08:42    >>> C:\Python315\python.exe make_platform_excel.py
+2026-10-21 08:08:42    
+2026-10-21 08:08:42    >>> C:\Python315\python.exe make_platform_excel.py --pages --local
+2026-10-21 08:08:42    !! FAILED: ['C:\\Python315\\python.exe', 'make_platform_excel.py', '--pages', '--local'] exit 1073807364
+2026-10-21 08:08:42    !! C:\Python315\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+2026-10-21 08:08:42    !!   warn("Workbook contains no default style, apply openpyxl's default")
+2026-10-21 08:08:42 !! platform full sync FAILED (rc=1073807364)
+2026-10-21 08:08:42 [done] build in 1883s
+2026-10-21 08:11:27 ==================================================
+2026-10-21 08:11:28 cloud_auto_update started (interval 300s)
+2026-10-21 08:11:29 [trigger] state changed -> rebuilding downloads+pages
+2026-10-21 08:11:29 >> cloud->DPR
+2026-10-21 08:15:37    sync 2026-10-21 08:15:35 -> PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-21 08:15:37    written=338 notes=0 colors=1
+2026-10-21 08:15:37    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-10-21 08:15:37    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-10-21 08:15:37    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-10-21 08:15:37    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-10-21 08:15:37 >> local->DPR
