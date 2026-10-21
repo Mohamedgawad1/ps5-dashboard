@@ -23,6 +23,10 @@ fix_cable_table.py
 update_dashboard.ps1
 github_token.txt
 *.exe
+linkedin_state.json
+linkedin_post_log.txt
+_linkedin_shots/
+linkedin_profile/
 _temp/
 WIRING - MASTER/
 auto_sync_log.txt
