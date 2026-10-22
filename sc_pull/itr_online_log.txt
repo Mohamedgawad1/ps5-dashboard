@@ -46950,3 +46950,29 @@ Call log:
 [2026-10-22 14:37:43] LOGGED IN
 [2026-10-22 14:43:38] pulled off=0 n=4000 accum=4000
 [2026-10-22 14:45:52] pulled off=4000 n=4000 accum=8000
+[2026-10-22 14:49:56] pulled off=8000 n=4000 accum=12000
+[2026-10-22 14:51:41] pulled off=12000 n=2007 accum=14007
+[2026-10-22 14:51:42] task index refreshed (6319 asset tags)
+[2026-10-22 14:51:44] updated dashboard_data.json itr_summary.live
+[2026-10-22 14:51:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-22 14:51:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-22 14:51 (closed=6899) rc=0 [main 2a2db76] ITR live update 2026-10-22 14:51 (closed=6899)
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+[2026-10-22 14:51:59]  >> git push OK
+[2026-10-22 14:52:03]  >> pages commit rc=128 
+[2026-10-22 14:52:03]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-22 14:57:19] LOGGED IN
+[2026-10-22 15:02:44] pulled off=0 n=4000 accum=4000
+[2026-10-22 15:04:49] pulled off=4000 n=4000 accum=8000
+[2026-10-22 15:08:03] pulled off=8000 n=4000 accum=12000
+[2026-10-22 15:09:43] pulled off=12000 n=2007 accum=14007
+[2026-10-22 15:09:44] task index refreshed (6319 asset tags)
+[2026-10-22 15:09:45] updated dashboard_data.json itr_summary.live
+[2026-10-22 15:10:11]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-22 15:10:25]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-22 15:10 (closed=6899) rc=0 [main e588b31] ITR live update 2026-10-22 15:10 (closed=6899)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-22 15:10:44]  >> git push OK
+[2026-10-22 15:10:48]  >> pages commit rc=128 
+[2026-10-22 15:10:49]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-22 15:16:44] LOGGED IN
+[2026-10-22 15:18:31] pulled off=0 n=4000 accum=4000
+[2026-10-22 15:20:08] pulled off=4000 n=4000 accum=8000
