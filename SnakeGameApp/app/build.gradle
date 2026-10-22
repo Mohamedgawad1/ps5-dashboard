@@ -1,30 +1,48 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
     namespace 'com.snakegame.app'
-    compileSdk 34
+    compileSdk 36
+    buildToolsVersion '36.1.0'
 
     defaultConfig {
         applicationId "com.snakegame.app"
-        minSdk 21
-        targetSdk 34
+        minSdk 24
+        targetSdk 36
         versionCode 1
         versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            def ks = new File(rootProject.file("keystore/snake-release.jks"))
+            if (ks.exists()) {
+                storeFile ks
+                storePassword "SNAKE2026STORE"
+                keyAlias "snake"
+                keyPassword "SNAKE2026KEY"
+            }
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (rootProject.file("keystore/snake-release.jks").exists()) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 }
