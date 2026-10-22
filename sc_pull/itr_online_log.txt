@@ -46937,3 +46937,16 @@ Call log:
 [2026-10-22 14:20:03] LOGGED IN
 [2026-10-22 14:26:24] pulled off=0 n=4000 accum=4000
 [2026-10-22 14:28:23] pulled off=4000 n=4000 accum=8000
+[2026-10-22 14:30:52] pulled off=8000 n=4000 accum=12000
+[2026-10-22 14:31:51] pulled off=12000 n=2007 accum=14007
+[2026-10-22 14:31:52] task index refreshed (6319 asset tags)
+[2026-10-22 14:31:53] updated dashboard_data.json itr_summary.live
+[2026-10-22 14:31:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-22 14:31:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-22 14:31 (closed=6899) rc=0 [main 31f939d] ITR live update 2026-10-22 14:31 (closed=6899)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-22 14:32:03]  >> git push OK
+[2026-10-22 14:32:17]  >> pages commit rc=128 
+[2026-10-22 14:32:20]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-22 14:37:43] LOGGED IN
+[2026-10-22 14:43:38] pulled off=0 n=4000 accum=4000
+[2026-10-22 14:45:52] pulled off=4000 n=4000 accum=8000
