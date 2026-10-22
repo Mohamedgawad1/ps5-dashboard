@@ -46439,3 +46439,32 @@ Call log:
 [2026-10-21 17:17:31] LOGGED IN
 [2026-10-21 17:19:00] pulled off=0 n=4000 accum=4000
 [2026-10-21 17:20:29] pulled off=4000 n=4000 accum=8000
+[2026-10-21 17:22:31] pulled off=8000 n=4000 accum=12000
+[2026-10-21 17:23:14] pulled off=12000 n=2009 accum=14009
+[2026-10-21 17:23:14] task index refreshed (6321 asset tags)
+[2026-10-21 17:23:15] updated dashboard_data.json itr_summary.live
+[2026-10-21 17:23:17]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-21 17:23:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-21 17:23 (closed=6852) rc=0 [main 308d98d] ITR live update 2026-10-21 17:23 (closed=6852)
+ 1 file changed, 98 insertions(+), 98 deletions(-)
+[2026-10-21 17:23:30]  >> git push OK
+[2026-10-21 17:23:33]  >> pages commit rc=0 026-10-21 17:23 (closed=6852)
+ 1 file changed, 98 insertions(+), 98 deletions(-)
+[2026-10-21 17:23:39]  >> pages push OK (closed=6852)
+[2026-10-21 17:28:52] LOGGED IN
+[2026-10-21 17:30:34] pulled off=0 n=4000 accum=4000
+[2026-10-21 17:31:58] pulled off=4000 n=4000 accum=8000
+[2026-10-21 17:33:12] pulled off=8000 n=4000 accum=12000
+[2026-10-21 17:33:47] pulled off=12000 n=2009 accum=14009
+[2026-10-21 17:33:47] task index refreshed (6321 asset tags)
+[2026-10-21 17:33:48] updated dashboard_data.json itr_summary.live
+[2026-10-21 17:33:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-21 17:33:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-21 17:33 (closed=6865) rc=0 [main c356bc7] ITR live update 2026-10-21 17:33 (closed=6865)
+ 1 file changed, 145 insertions(+), 139 deletions(-)
+[2026-10-21 17:33:57]  >> git push OK
+[2026-10-21 17:34:01]  >> pages commit rc=0 6-10-21 17:34 (closed=6865)
+ 1 file changed, 145 insertions(+), 139 deletions(-)
+[2026-10-21 17:34:08]  >> pages push OK (closed=6865)
+[2026-10-22 07:12:13] reused the sync's always-open browser (port 9222)
+[2026-10-22 07:12:13] LOOP READY (interval 300s, keep_open=True)
+[2026-10-22 07:13:38] session expired -> auto-login
+[2026-10-22 07:13:51] LOOP ERR: Page.evaluate: Execution context was destroyed, most likely because of a navigation
