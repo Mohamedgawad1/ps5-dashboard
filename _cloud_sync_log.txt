@@ -12515,3 +12515,13 @@
 2026-10-22 07:59:02    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
 2026-10-22 07:59:02    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
 2026-10-22 07:59:02 >> local->DPR
+2026-10-22 08:09:42    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -20-October-2026.xlsx  (edits: 75197 cells / 0 notes)
+2026-10-22 08:09:42      [summery-sync] OK -> 54696 cells, 0 notes written, 15395 skipped (no matching column)
+2026-10-22 08:09:42 >> explorer rebuild
+2026-10-22 08:14:53      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14004+9493 rows, 16269 updates
+2026-10-22 08:14:53      Punch rows: 4131 | ITR rows: 23497 | RFC: 270 | Miles: 292
+2026-10-22 08:14:53      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1141
+2026-10-22 08:14:53      Carry-over: 0 notes, 0 colored rows, 21057 pinned cells
+2026-10-22 08:14:53    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-22 08:14:53    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-22 08:14:53 >> dashboard xlsm

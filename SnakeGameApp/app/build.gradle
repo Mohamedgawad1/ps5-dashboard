@@ -17,9 +17,9 @@ android {
 
     signingConfigs {
         release {
-            def ks = new File(rootProject.file("keystore/snake-release.jks"))
-            if (ks.exists()) {
-                storeFile ks
+            def ksFile = rootProject.file("keystore/snake-release.jks")
+            if (ksFile.exists()) {
+                storeFile ksFile
                 storePassword "SNAKE2026STORE"
                 keyAlias "snake"
                 keyPassword "SNAKE2026KEY"
@@ -41,6 +41,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+}
+
+configurations.configureEach {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
 }
 
 dependencies {
