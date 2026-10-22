@@ -46804,3 +46804,11 @@ Call log:
 [2026-10-22 11:18:05] sso handoff -> verify password page
 [2026-10-22 11:18:07] verify submit: submitted
 [2026-10-22 11:19:57] auto-login attempt 3 still not logged in
+[2026-10-22 11:30:30] WAITING FOR MANUAL LOGIN...
+[2026-10-22 11:38:32] session expired -> auto-login
+[2026-10-22 11:38:38] ssologin click: ok
+[2026-10-22 11:38:48] sso handoff -> verify password page
+[2026-10-22 11:38:51] verify submit: submitted
+[2026-10-22 11:40:39] auto-login attempt 1 still not logged in
+[2026-10-22 11:40:44] ssologin click: ok
+[2026-10-22 11:40:54] sso handoff -> verify password page
