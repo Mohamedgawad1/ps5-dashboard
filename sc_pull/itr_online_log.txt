@@ -46468,3 +46468,6 @@ Call log:
 [2026-10-22 07:12:13] LOOP READY (interval 300s, keep_open=True)
 [2026-10-22 07:13:38] session expired -> auto-login
 [2026-10-22 07:13:51] LOOP ERR: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-10-22 07:19:06] LOGGED IN
+[2026-10-22 07:20:06] pulled off=0 n=4000 accum=4000
+[2026-10-22 07:20:37] pulled off=4000 n=4000 accum=8000
