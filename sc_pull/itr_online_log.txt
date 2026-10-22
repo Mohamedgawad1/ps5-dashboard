@@ -47002,3 +47002,39 @@ Call log:
 [2026-10-22 15:37:38] LOGGED IN
 [2026-10-22 15:38:48] pulled off=0 n=4000 accum=4000
 [2026-10-22 15:39:59] pulled off=4000 n=4000 accum=8000
+[2026-10-22 15:41:20] pulled off=8000 n=4000 accum=12000
+[2026-10-22 15:42:14] pulled off=12000 n=2007 accum=14007
+[2026-10-22 15:42:14] task index refreshed (6319 asset tags)
+[2026-10-22 15:42:15] updated dashboard_data.json itr_summary.live
+[2026-10-22 15:42:16]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-22 15:42:16]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-22 15:42 (closed=6899) rc=0 [main c5694c5] ITR live update 2026-10-22 15:42 (closed=6899)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-22 15:42:21]  >> git push OK
+[2026-10-22 15:42:21]  >> pages commit rc=128 
+[2026-10-22 15:42:22]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-22 15:47:32] LOGGED IN
+[2026-10-22 15:48:39] pulled off=0 n=4000 accum=4000
+[2026-10-22 15:49:47] pulled off=4000 n=4000 accum=8000
+[2026-10-22 15:50:50] pulled off=8000 n=4000 accum=12000
+[2026-10-22 15:51:29] pulled off=12000 n=2007 accum=14007
+[2026-10-22 15:51:29] task index refreshed (6319 asset tags)
+[2026-10-22 15:51:30] updated dashboard_data.json itr_summary.live
+[2026-10-22 15:51:33]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-22 15:51:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-22 15:51 (closed=6899) rc=0 [main 015a5b3] ITR live update 2026-10-22 15:51 (closed=6899)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-22 15:51:40]  >> git push OK
+[2026-10-22 15:51:40]  >> pages commit rc=128 
+[2026-10-22 15:51:40]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-22 15:56:46] LOGGED IN
+[2026-10-22 15:57:22] pulled off=0 n=4000 accum=4000
+[2026-10-22 15:58:15] pulled off=4000 n=4000 accum=8000
+[2026-10-22 15:59:02] pulled off=8000 n=4000 accum=12000
+[2026-10-22 15:59:34] pulled off=12000 n=2007 accum=14007
+[2026-10-22 15:59:35] task index refreshed (6319 asset tags)
+[2026-10-22 15:59:35] updated dashboard_data.json itr_summary.live
+[2026-10-22 15:59:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-22 15:59:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-22 15:59 (closed=6899) rc=0 [main ab66f89] ITR live update 2026-10-22 15:59 (closed=6899)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-22 15:59:43]  >> git push OK
+[2026-10-22 15:59:43]  >> pages commit rc=128 
+[2026-10-22 15:59:43]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
