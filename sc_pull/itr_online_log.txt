@@ -46790,3 +46790,17 @@ Call log:
 [2026-10-22 10:53:10] sso handoff -> verify password page
 [2026-10-22 10:53:13] verify submit: submitted
 [2026-10-22 10:55:09] auto-login attempt 3 still not logged in
+[2026-10-22 11:05:17] WAITING FOR MANUAL LOGIN...
+[2026-10-22 11:13:18] session expired -> auto-login
+[2026-10-22 11:13:23] ssologin click: ok
+[2026-10-22 11:13:33] sso handoff -> verify password page
+[2026-10-22 11:13:36] verify submit: submitted
+[2026-10-22 11:15:28] auto-login attempt 1 still not logged in
+[2026-10-22 11:15:38] ssologin click: ok
+[2026-10-22 11:15:48] sso handoff -> verify password page
+[2026-10-22 11:15:50] verify submit: submitted
+[2026-10-22 11:17:47] auto-login attempt 2 still not logged in
+[2026-10-22 11:17:55] ssologin click: ok
+[2026-10-22 11:18:05] sso handoff -> verify password page
+[2026-10-22 11:18:07] verify submit: submitted
+[2026-10-22 11:19:57] auto-login attempt 3 still not logged in

@@ -20,9 +20,10 @@ android {
             def ksFile = rootProject.file("keystore/snake-release.jks")
             if (ksFile.exists()) {
                 storeFile ksFile
+                storeType "PKCS12"
                 storePassword "SNAKE2026STORE"
                 keyAlias "snake"
-                keyPassword "SNAKE2026KEY"
+                keyPassword "SNAKE2026STORE"
             }
         }
     }
