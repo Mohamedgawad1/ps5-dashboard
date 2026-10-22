@@ -46812,3 +46812,10 @@ Call log:
 [2026-10-22 11:40:39] auto-login attempt 1 still not logged in
 [2026-10-22 11:40:44] ssologin click: ok
 [2026-10-22 11:40:54] sso handoff -> verify password page
+[2026-10-22 11:40:56] verify submit: submitted
+[2026-10-22 11:42:47] auto-login attempt 2 still not logged in
+[2026-10-22 11:42:55] ssologin click: ok
+[2026-10-22 11:43:05] sso handoff -> verify password page
+[2026-10-22 11:43:08] verify submit: submitted
+[2026-10-22 11:44:59] auto-login attempt 3 still not logged in
+[2026-10-22 11:55:01] WAITING FOR MANUAL LOGIN...
