@@ -173,7 +173,9 @@
   "record": "1100053",
   "task": "T-00067-2116",
   "asset": "PS5-71-PDIT-0056B",
-  "type": "Conformity Check"
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  },
  "T-00069-5539": {
   "record": "1124094",
@@ -5803,6 +5805,78 @@
   "record": "1174165",
   "task": "T-00032-0166",
   "asset": "PS5-28-ISO-2008",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-4288": {
+  "record": "1124463",
+  "task": "T-00254-4288",
+  "asset": "PS5-01-PIT-0013-CJ01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2155": {
+  "record": "1100137",
+  "task": "T-00067-2155",
+  "asset": "PS5-28-TIT-1104",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2160": {
+  "record": "1100142",
+  "task": "T-00067-2160",
+  "asset": "PS5-28-TIT-1105",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00079-0070": {
+  "record": "1100181",
+  "task": "T-00079-0070",
+  "asset": "PS5-71-FCV-0020",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00066-0067": {
+  "record": "1265634",
+  "task": "T-00066-0067",
+  "asset": "PS5-71-FCV-0020",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2121": {
+  "record": "1100058",
+  "task": "T-00067-2121",
+  "asset": "PS5-71-PDIT-0056A",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00076-0013": {
+  "record": "1099678",
+  "task": "T-00076-0013",
+  "asset": "PS5-71-PSE-2401A",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00076-0014": {
+  "record": "1099679",
+  "task": "T-00076-0014",
+  "asset": "PS5-71-PSE-2401B",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00078-0142": {
+  "record": "1100213",
+  "task": "T-00078-0142",
+  "asset": "PS5-75-MOV-0001",
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
