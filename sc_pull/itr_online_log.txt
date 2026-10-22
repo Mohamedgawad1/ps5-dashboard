@@ -46819,3 +46819,17 @@ Call log:
 [2026-10-22 11:43:08] verify submit: submitted
 [2026-10-22 11:44:59] auto-login attempt 3 still not logged in
 [2026-10-22 11:55:01] WAITING FOR MANUAL LOGIN...
+[2026-10-22 12:03:20] session expired -> auto-login
+[2026-10-22 12:03:27] ssologin click: ok
+[2026-10-22 12:03:37] sso handoff -> verify password page
+[2026-10-22 12:03:39] verify submit: submitted
+[2026-10-22 12:05:36] auto-login attempt 1 still not logged in
+[2026-10-22 12:05:44] ssologin click: ok
+[2026-10-22 12:05:54] sso handoff -> verify password page
+[2026-10-22 12:05:57] verify submit: submitted
+[2026-10-22 12:07:56] auto-login attempt 2 still not logged in
+[2026-10-22 12:08:05] ssologin click: ok
+[2026-10-22 12:08:15] sso handoff -> verify password page
+[2026-10-22 12:08:18] verify submit: submitted
+[2026-10-22 12:10:15] auto-login attempt 3 still not logged in
+[2026-10-22 12:20:17] WAITING FOR MANUAL LOGIN...
