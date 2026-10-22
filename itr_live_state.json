@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-22 17:15:27",
+  "updated": "2026-10-22 17:30:10",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6899,
-  "open": 3399,
-  "today_closed": 34,
+  "closed": 6900,
+  "open": 3398,
+  "today_closed": 35,
   "closed_by_discipline": {
     "I": 3379,
-    "E": 3224,
+    "E": 3225,
     "T": 296
   },
   "open_by_discipline": {
     "I": 1214,
-    "E": 1403,
+    "E": 1402,
     "T": 782
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-10-22",
-      "E": 23,
+      "E": 24,
       "I": 11,
       "T": 0,
-      "Total": 34
+      "Total": 35
     }
   ],
-  "closed_this_week": 92,
-  "closed_this_month": 1066,
+  "closed_this_week": 93,
+  "closed_this_month": 1067,
   "today_milestone": [
     {
       "milestone": "Milestone C",
@@ -260,9 +260,15 @@
       "disc": "I",
       "discipline": "Instrumentation (I)",
       "count": 7
+    },
+    {
+      "milestone": "Milestone I",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 1
     }
   ],
-  "today_milestone_total": 34,
+  "today_milestone_total": 35,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -366,12 +372,12 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2460,
-      "remaining": 791,
-      "pct": 75.7,
+      "closed": 2469,
+      "remaining": 782,
+      "pct": 75.9,
       "status": {
-        "Closed": 2460,
-        "Submitted": 76,
+        "Closed": 2469,
+        "Submitted": 67,
         "To be completed": 693,
         "Other": 22
       }
@@ -380,18 +386,27 @@
       "label": "Milestone I",
       "raw": "PS5 - Milestone I",
       "total": 783,
-      "closed": 177,
-      "remaining": 606,
-      "pct": 22.6,
+      "closed": 178,
+      "remaining": 605,
+      "pct": 22.7,
       "status": {
-        "Closed": 177,
+        "Closed": 178,
         "Submitted": 1,
         "To be completed": 598,
-        "Other": 7
+        "Other": 6
       }
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-28-ISO-2008",
+      "task": "T-00241-0166",
+      "system": "PS5-28-10 - Oil Skimmer Package",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/22/2026 2:12:35 "
+    },
     {
       "tag": "PS5-75-MOV-0001",
       "task": "T-00078-0142",
@@ -1462,15 +1477,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "10/16/2026 3:52:15 "
-    },
-    {
-      "tag": "PS5-01-LB-6103A",
-      "task": "T-00067-2562",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 3:50:51 "
     }
   ]
 }
