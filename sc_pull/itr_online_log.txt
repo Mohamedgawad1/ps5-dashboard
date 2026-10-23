@@ -47599,3 +47599,28 @@ Call log:
 [2026-10-23 13:36:57] LOGGED IN
 [2026-10-23 13:38:30] pulled off=0 n=4000 accum=4000
 [2026-10-23 13:40:09] pulled off=4000 n=4000 accum=8000
+[2026-10-23 13:41:44] pulled off=8000 n=4000 accum=12000
+[2026-10-23 13:42:26] pulled off=12000 n=2007 accum=14007
+[2026-10-23 13:42:26] task index refreshed (6319 asset tags)
+[2026-10-23 13:42:27] updated dashboard_data.json itr_summary.live
+[2026-10-23 13:42:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 13:42:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 13:42 (closed=6935) rc=0 [main 83c053f] ITR live update 2026-10-23 13:42 (closed=6935)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-23 13:42:34]  >> git push OK
+[2026-10-23 13:42:35]  >> pages commit rc=128 
+[2026-10-23 13:42:35]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-23 13:47:41] LOGGED IN
+[2026-10-23 13:48:36] pulled off=0 n=4000 accum=4000
+[2026-10-23 13:49:46] pulled off=4000 n=4000 accum=8000
+[2026-10-23 13:51:03] pulled off=8000 n=4000 accum=12000
+[2026-10-23 13:51:56] pulled off=12000 n=2007 accum=14007
+[2026-10-23 13:51:57] task index refreshed (6319 asset tags)
+[2026-10-23 13:51:57] updated dashboard_data.json itr_summary.live
+[2026-10-23 13:52:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 13:52:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 13:52 (closed=6935) rc=0 [main b93fce8] ITR live update 2026-10-23 13:52 (closed=6935)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-23 13:52:09]  >> git push OK
+[2026-10-23 13:52:10]  >> pages commit rc=128 
+[2026-10-23 13:52:10]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-23 13:57:28] LOGGED IN
+[2026-10-23 13:59:38] pulled off=0 n=4000 accum=4000
