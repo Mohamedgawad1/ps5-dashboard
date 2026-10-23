@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-23 08:20:39",
+  "updated": "2026-10-23 08:28:36",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6922,
-  "open": 3376,
-  "today_closed": 22,
+  "closed": 6923,
+  "open": 3375,
+  "today_closed": 23,
   "closed_by_discipline": {
-    "I": 3401,
+    "I": 3402,
     "E": 3225,
     "T": 296
   },
   "open_by_discipline": {
-    "I": 1192,
+    "I": 1191,
     "E": 1402,
     "T": 782
   },
@@ -229,22 +229,22 @@
     {
       "label": "2026-10-23",
       "E": 0,
-      "I": 22,
+      "I": 23,
       "T": 0,
-      "Total": 22
+      "Total": 23
     }
   ],
-  "closed_this_week": 115,
-  "closed_this_month": 1089,
+  "closed_this_week": 116,
+  "closed_this_month": 1090,
   "today_milestone": [
     {
       "milestone": "Milestone D",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 22
+      "count": 23
     }
   ],
-  "today_milestone_total": 22,
+  "today_milestone_total": 23,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -292,13 +292,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3437,
-      "closed": 2375,
-      "remaining": 1062,
+      "closed": 2376,
+      "remaining": 1061,
       "pct": 69.1,
       "status": {
-        "Closed": 2375,
+        "Closed": 2376,
         "Submitted": 2,
-        "To be completed": 1057,
+        "To be completed": 1056,
         "Other": 3
       }
     },
@@ -374,6 +374,15 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-61-IH-0004-CU23",
+      "task": "T-00254-11825",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:26:51 "
+    },
     {
       "tag": "PS5-61-IH-0004-CU22",
       "task": "T-00254-11824",
@@ -1444,15 +1453,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/17/2026 7:05:41 "
-    },
-    {
-      "tag": "PS5-53-UT-8100",
-      "task": "T-00090-0213",
-      "system": "PS5-50-03 - Water Pre-Treatment Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 7:04:40 "
     }
   ]
 }
