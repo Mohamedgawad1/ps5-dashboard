@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-23 10:23:27",
+  "updated": "2026-10-23 10:31:59",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6931,
-  "open": 3367,
-  "today_closed": 32,
+  "closed": 6935,
+  "open": 3363,
+  "today_closed": 36,
   "closed_by_discipline": {
-    "I": 3410,
+    "I": 3414,
     "E": 3225,
     "T": 296
   },
   "open_by_discipline": {
-    "I": 1183,
+    "I": 1179,
     "E": 1402,
     "T": 782
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-23",
       "E": 0,
-      "I": 32,
+      "I": 36,
       "T": 0,
-      "Total": 32
+      "Total": 36
     }
   ],
-  "closed_this_week": 125,
-  "closed_this_month": 1099,
+  "closed_this_week": 129,
+  "closed_this_month": 1103,
   "today_milestone": [
     {
       "milestone": "Milestone D",
@@ -244,13 +244,19 @@
       "count": 29
     },
     {
+      "milestone": "Milestone G",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 2
+    },
+    {
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 3
+      "count": 5
     }
   ],
-  "today_milestone_total": 32,
+  "today_milestone_total": 36,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -331,8 +337,8 @@
       "pct": 84.1,
       "status": {
         "Closed": 502,
-        "Submitted": 0,
-        "To be completed": 89,
+        "Submitted": 1,
+        "To be completed": 88,
         "Other": 6
       }
     },
@@ -340,27 +346,27 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 767,
-      "remaining": 137,
-      "pct": 84.8,
+      "closed": 769,
+      "remaining": 135,
+      "pct": 85.1,
       "status": {
-        "Closed": 767,
+        "Closed": 769,
         "Submitted": 0,
-        "To be completed": 135,
-        "Other": 2
+        "To be completed": 134,
+        "Other": 1
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2473,
-      "remaining": 778,
+      "closed": 2475,
+      "remaining": 776,
       "pct": 76.1,
       "status": {
-        "Closed": 2473,
-        "Submitted": 67,
-        "To be completed": 689,
+        "Closed": 2475,
+        "Submitted": 66,
+        "To be completed": 688,
         "Other": 22
       }
     },
@@ -380,6 +386,42 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-75-MOV-0001-CC02",
+      "task": "T-00614-1136",
+      "system": "PS5-28-07 - Open Drains (OD2)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 7:26:44 "
+    },
+    {
+      "tag": "PS5-75-MOV-0001-CC01",
+      "task": "T-00614-1135",
+      "system": "PS5-28-07 - Open Drains (OD2)",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 7:24:55 "
+    },
+    {
+      "tag": "PS5-71-SY-0022-CJ01",
+      "task": "T-00069-5571",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 7:22:54 "
+    },
+    {
+      "tag": "PS5-71-SXS-0022-CJ01",
+      "task": "T-00069-5567",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 7:21:45 "
+    },
     {
       "tag": "PS5-71-SDV-0022-CC02",
       "task": "T-00069-5561",
@@ -1423,42 +1465,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "10/20/2026 9:14:11 "
-    },
-    {
-      "tag": "PS5-01-LB-6104A-CC01",
-      "task": "T-00069-4255",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/20/2026 9:11:36 "
-    },
-    {
-      "tag": "PS5-01-LB-6103A-CC01",
-      "task": "T-00069-4254",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/20/2026 9:10:35 "
-    },
-    {
-      "tag": "PS5-01-LB-6102A-CC01",
-      "task": "T-00069-4253",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/20/2026 9:09:39 "
-    },
-    {
-      "tag": "PS5-01-LB-6101A-CC01",
-      "task": "T-00069-4252",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/20/2026 9:08:25 "
     }
   ]
 }
