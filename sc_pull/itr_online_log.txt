@@ -47663,3 +47663,53 @@ Call log:
 [2026-10-23 14:33:35]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
 [2026-10-23 14:38:46] LOGGED IN
 [2026-10-23 14:41:43] pulled off=0 n=4000 accum=4000
+[2026-10-23 14:43:34] pulled off=4000 n=4000 accum=8000
+[2026-10-23 14:46:38] pulled off=8000 n=4000 accum=12000
+[2026-10-23 14:47:45] pulled off=12000 n=2007 accum=14007
+[2026-10-23 14:47:45] task index refreshed (6319 asset tags)
+[2026-10-23 14:47:47] updated dashboard_data.json itr_summary.live
+[2026-10-23 14:47:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 14:47:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 14:47 (closed=6935) rc=0 [main a666dfc] ITR live update 2026-10-23 14:47 (closed=6935)
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+[2026-10-23 14:48:01]  >> git push OK
+[2026-10-23 14:48:02]  >> pages commit rc=128 
+[2026-10-23 14:48:02]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-23 14:53:17] LOGGED IN
+[2026-10-23 14:55:39] pulled off=0 n=4000 accum=4000
+[2026-10-23 14:57:02] pulled off=4000 n=4000 accum=8000
+[2026-10-23 14:58:14] pulled off=8000 n=4000 accum=12000
+[2026-10-23 14:59:12] pulled off=12000 n=2007 accum=14007
+[2026-10-23 14:59:13] task index refreshed (6319 asset tags)
+[2026-10-23 14:59:14] updated dashboard_data.json itr_summary.live
+[2026-10-23 14:59:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 14:59:19]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 14:59 (closed=6935) rc=0 [main a26e7c7] ITR live update 2026-10-23 14:59 (closed=6935)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-23 14:59:30]  >> git push OK
+[2026-10-23 14:59:31]  >> pages commit rc=128 
+[2026-10-23 14:59:31]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-23 15:04:40] LOGGED IN
+[2026-10-23 15:05:57] pulled off=0 n=4000 accum=4000
+[2026-10-23 15:08:37] pulled off=4000 n=4000 accum=8000
+[2026-10-23 15:09:52] pulled off=8000 n=4000 accum=12000
+[2026-10-23 15:10:33] pulled off=12000 n=2007 accum=14007
+[2026-10-23 15:10:33] task index refreshed (6319 asset tags)
+[2026-10-23 15:10:33] updated dashboard_data.json itr_summary.live
+[2026-10-23 15:10:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 15:10:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 15:10 (closed=6935) rc=0 [main 82a0075] ITR live update 2026-10-23 15:10 (closed=6935)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-23 15:10:51]  >> git push OK
+[2026-10-23 15:10:52]  >> pages commit rc=128 
+[2026-10-23 15:10:52]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-23 15:16:00] LOGGED IN
+[2026-10-23 15:16:58] pulled off=0 n=4000 accum=4000
+[2026-10-23 15:18:55] pulled off=4000 n=4000 accum=8000
+[2026-10-23 15:20:20] pulled off=8000 n=4000 accum=12000
+[2026-10-23 15:20:50] pulled off=12000 n=2007 accum=14007
+[2026-10-23 15:20:51] task index refreshed (6319 asset tags)
+[2026-10-23 15:20:52] updated dashboard_data.json itr_summary.live
+[2026-10-23 15:20:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 15:20:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 15:20 (closed=6935) rc=0 [main 8cac3a4] ITR live update 2026-10-23 15:20 (closed=6935)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-23 15:21:00]  >> git push OK
+[2026-10-23 15:21:00]  >> pages commit rc=128 
+[2026-10-23 15:21:00]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
