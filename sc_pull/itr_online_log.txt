@@ -47751,3 +47751,8 @@ Call log:
 [2026-10-23 15:59:27] ssologin click: ok
 [2026-10-23 15:59:37] sso handoff -> verify password page
 [2026-10-23 15:59:40] verify submit: submitted
+[2026-10-23 16:01:39] auto-login attempt 3 still not logged in
+[2026-10-23 16:11:57] WAITING FOR MANUAL LOGIN...
+[2026-10-23 16:19:54] goto err: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashbo
+[2026-10-23 16:20:40] session expired -> auto-login
+[2026-10-23 16:20:50] ssologin click: ok
