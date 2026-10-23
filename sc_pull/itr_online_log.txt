@@ -47768,3 +47768,16 @@ Call log:
 [2026-10-23 16:25:26] verify submit: submitted
 [2026-10-23 16:27:19] auto-login attempt 3 still not logged in
 [2026-10-23 16:37:24] WAITING FOR MANUAL LOGIN...
+[2026-10-23 16:45:37] session expired -> auto-login
+[2026-10-23 16:45:45] ssologin click: ok
+[2026-10-23 16:45:55] sso handoff -> verify password page
+[2026-10-23 16:45:58] verify submit: submitted
+[2026-10-23 16:47:58] auto-login attempt 1 still not logged in
+[2026-10-23 16:48:05] ssologin click: ok
+[2026-10-23 16:48:15] sso handoff -> verify password page
+[2026-10-23 16:48:18] verify submit: submitted
+[2026-10-23 16:50:08] auto-login attempt 2 still not logged in
+[2026-10-23 16:50:14] ssologin click: ok
+[2026-10-23 16:50:24] sso handoff -> verify password page
+[2026-10-23 16:50:27] verify submit: submitted
+[2026-10-23 16:52:13] auto-login attempt 3 still not logged in
