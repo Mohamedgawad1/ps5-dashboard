@@ -5888,5 +5888,208 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00254-11803": {
+  "record": "1296137",
+  "task": "T-00254-11803",
+  "asset": "PS5-61-IH-0004-CU01",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11804": {
+  "record": "1296138",
+  "task": "T-00254-11804",
+  "asset": "PS5-61-IH-0004-CU02",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11805": {
+  "record": "1296139",
+  "task": "T-00254-11805",
+  "asset": "PS5-61-IH-0004-CU03",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11806": {
+  "record": "1296140",
+  "task": "T-00254-11806",
+  "asset": "PS5-61-IH-0004-CU04",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11807": {
+  "record": "1296141",
+  "task": "T-00254-11807",
+  "asset": "PS5-61-IH-0004-CU05",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11808": {
+  "record": "1296142",
+  "task": "T-00254-11808",
+  "asset": "PS5-61-IH-0004-CU06",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11809": {
+  "record": "1296143",
+  "task": "T-00254-11809",
+  "asset": "PS5-61-IH-0004-CU07",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11810": {
+  "record": "1296144",
+  "task": "T-00254-11810",
+  "asset": "PS5-61-IH-0004-CU08",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11811": {
+  "record": "1296145",
+  "task": "T-00254-11811",
+  "asset": "PS5-61-IH-0004-CU09",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11812": {
+  "record": "1296146",
+  "task": "T-00254-11812",
+  "asset": "PS5-61-IH-0004-CU10",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11813": {
+  "record": "1296147",
+  "task": "T-00254-11813",
+  "asset": "PS5-61-IH-0004-CU11",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11814": {
+  "record": "1296148",
+  "task": "T-00254-11814",
+  "asset": "PS5-61-IH-0004-CU12",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11815": {
+  "record": "1296149",
+  "task": "T-00254-11815",
+  "asset": "PS5-61-IH-0004-CU13",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11816": {
+  "record": "1296150",
+  "task": "T-00254-11816",
+  "asset": "PS5-61-IH-0004-CU14",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11817": {
+  "record": "1296151",
+  "task": "T-00254-11817",
+  "asset": "PS5-61-IH-0004-CU15",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11818": {
+  "record": "1296152",
+  "task": "T-00254-11818",
+  "asset": "PS5-61-IH-0004-CU16",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11819": {
+  "record": "1296153",
+  "task": "T-00254-11819",
+  "asset": "PS5-61-IH-0004-CU17",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11820": {
+  "record": "1296154",
+  "task": "T-00254-11820",
+  "asset": "PS5-61-IH-0004-CU18",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11821": {
+  "record": "1296155",
+  "task": "T-00254-11821",
+  "asset": "PS5-61-IH-0004-CU19",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11822": {
+  "record": "1296156",
+  "task": "T-00254-11822",
+  "asset": "PS5-61-IH-0004-CU20",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11823": {
+  "record": "1296157",
+  "task": "T-00254-11823",
+  "asset": "PS5-61-IH-0004-CU21",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11824": {
+  "record": "1296158",
+  "task": "T-00254-11824",
+  "asset": "PS5-61-IH-0004-CU22",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11825": {
+  "record": "1296159",
+  "task": "T-00254-11825",
+  "asset": "PS5-61-IH-0004-CU23",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11826": {
+  "record": "1296160",
+  "task": "T-00254-11826",
+  "asset": "PS5-61-IH-0004-CU24",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11827": {
+  "record": "1296161",
+  "task": "T-00254-11827",
+  "asset": "PS5-61-IH-0004-CU25",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11828": {
+  "record": "1296162",
+  "task": "T-00254-11828",
+  "asset": "PS5-61-IH-0004-CU26",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11829": {
+  "record": "1296163",
+  "task": "T-00254-11829",
+  "asset": "PS5-61-IH-0004-CU27",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11830": {
+  "record": "1296164",
+  "task": "T-00254-11830",
+  "asset": "PS5-61-IH-0004-CU28",
+  "type": "Static Test",
+  "state": null
+ },
+ "T-00254-11831": {
+  "record": "1296165",
+  "task": "T-00254-11831",
+  "asset": "PS5-61-IH-0004-CU29",
+  "type": "Static Test",
+  "state": null
  }
 }

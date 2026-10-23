@@ -47160,3 +47160,23 @@ Call log:
 [2026-10-23 07:17:08] sso handoff -> verify password page
 [2026-10-23 07:17:10] verify submit: submitted
 [2026-10-23 07:18:55] auto-login attempt 3 still not logged in
+[2026-10-23 07:24:21] LOOP ERR: Page.wait_for_timeout: Target page, context or browser has been closed
+[2026-10-23 07:29:21] no pull tab yet — attaching to the open browser again
+[2026-10-23 07:29:21] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-23 07:34:22] no pull tab yet — attaching to the open browser again
+[2026-10-23 07:34:23] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-23 07:39:23] no pull tab yet — attaching to the open browser again
+[2026-10-23 07:39:30] reused the sync's always-open browser (port 9222)
+[2026-10-23 07:39:35] LOGGED IN
+[2026-10-23 07:42:32] pulled off=0 n=4000 accum=4000
+[2026-10-23 07:46:43] pulled off=4000 n=4000 accum=8000
+[2026-10-23 07:47:16] pulled off=8000 n=4000 accum=12000
+[2026-10-23 07:47:42] pulled off=12000 n=2007 accum=14007
+[2026-10-23 07:48:11] task index refreshed (6319 asset tags)
+[2026-10-23 07:48:12] updated dashboard_data.json itr_summary.live
+[2026-10-23 07:48:16]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 07:48:17]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 07:48 (closed=6902) rc=0 [main 976d16f] ITR live update 2026-10-23 07:48 (closed=6902)
+ 1 file changed, 45 insertions(+), 69 deletions(-)
+[2026-10-23 07:48:25]  >> git push OK
+[2026-10-23 07:48:25]  >> pages commit rc=128 
+[2026-10-23 07:48:25]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
