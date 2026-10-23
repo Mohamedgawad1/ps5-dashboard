@@ -47781,3 +47781,17 @@ Call log:
 [2026-10-23 16:50:24] sso handoff -> verify password page
 [2026-10-23 16:50:27] verify submit: submitted
 [2026-10-23 16:52:13] auto-login attempt 3 still not logged in
+[2026-10-23 17:02:15] WAITING FOR MANUAL LOGIN...
+[2026-10-23 17:10:18] session expired -> auto-login
+[2026-10-23 17:10:23] ssologin click: ok
+[2026-10-23 17:10:33] sso handoff -> verify password page
+[2026-10-23 17:10:35] verify submit: submitted
+[2026-10-23 17:12:29] auto-login attempt 1 still not logged in
+[2026-10-23 17:12:34] ssologin click: ok
+[2026-10-23 17:12:44] sso handoff -> verify password page
+[2026-10-23 17:12:46] verify submit: submitted
+[2026-10-23 17:14:35] auto-login attempt 2 still not logged in
+[2026-10-23 17:14:51] ssologin click: ok
+[2026-10-23 17:15:01] sso handoff -> verify password page
+[2026-10-23 17:15:04] verify submit: submitted
+[2026-10-23 17:16:57] auto-login attempt 3 still not logged in
