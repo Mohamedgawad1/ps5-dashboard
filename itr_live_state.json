@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-23 10:14:38",
+  "updated": "2026-10-23 10:23:27",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6928,
-  "open": 3370,
-  "today_closed": 29,
+  "closed": 6931,
+  "open": 3367,
+  "today_closed": 32,
   "closed_by_discipline": {
-    "I": 3407,
+    "I": 3410,
     "E": 3225,
     "T": 296
   },
   "open_by_discipline": {
-    "I": 1186,
+    "I": 1183,
     "E": 1402,
     "T": 782
   },
@@ -229,22 +229,28 @@
     {
       "label": "2026-10-23",
       "E": 0,
-      "I": 29,
+      "I": 32,
       "T": 0,
-      "Total": 29
+      "Total": 32
     }
   ],
-  "closed_this_week": 122,
-  "closed_this_month": 1096,
+  "closed_this_week": 125,
+  "closed_this_month": 1099,
   "today_milestone": [
     {
       "milestone": "Milestone D",
       "disc": "I",
       "discipline": "Instrumentation (I)",
       "count": 29
+    },
+    {
+      "milestone": "Milestone H",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 3
     }
   ],
-  "today_milestone_total": 29,
+  "today_milestone_total": 32,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -326,8 +332,8 @@
       "status": {
         "Closed": 502,
         "Submitted": 0,
-        "To be completed": 91,
-        "Other": 4
+        "To be completed": 89,
+        "Other": 6
       }
     },
     {
@@ -340,21 +346,21 @@
       "status": {
         "Closed": 767,
         "Submitted": 0,
-        "To be completed": 136,
-        "Other": 1
+        "To be completed": 135,
+        "Other": 2
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2470,
-      "remaining": 781,
-      "pct": 76.0,
+      "closed": 2473,
+      "remaining": 778,
+      "pct": 76.1,
       "status": {
-        "Closed": 2470,
-        "Submitted": 66,
-        "To be completed": 693,
+        "Closed": 2473,
+        "Submitted": 67,
+        "To be completed": 689,
         "Other": 22
       }
     },
@@ -374,6 +380,33 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-71-SDV-0022-CC02",
+      "task": "T-00069-5561",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 7:20:15 "
+    },
+    {
+      "tag": "PS5-71-SDV-0022-CC01",
+      "task": "T-00069-5560",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 7:19:16 "
+    },
+    {
+      "tag": "PS5-71-PIT-0022-CJ01",
+      "task": "T-00069-5540",
+      "system": "PS5-71-04 - CFO Storage Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 7:13:48 "
+    },
     {
       "tag": "PS5-61-IH-0004-CU29",
       "task": "T-00254-11831",
@@ -1426,33 +1459,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "10/20/2026 9:08:25 "
-    },
-    {
-      "tag": "PS5-53-UT-8200",
-      "task": "T-00090-0214",
-      "system": "PS5-53-04 - Water Treatment Purification Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/19/2026 4:48:04 "
-    },
-    {
-      "tag": "PS5-87-IRF-0004",
-      "task": "T-00228-0111",
-      "system": "PS5-71-15 - Diesel Fuel Storage Tank",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/19/2026 4:31:58 "
-    },
-    {
-      "tag": "PS5-87-IRF-0003",
-      "task": "T-00228-0110",
-      "system": "PS5-71-12 - CFO Service Tank",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/19/2026 4:30:49 "
     }
   ]
 }
