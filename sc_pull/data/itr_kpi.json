@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-23 07:58:12",
+  "updated": "2026-10-23 08:35:50",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6908,
-  "open": 3390,
-  "today_closed": 8,
+  "closed": 6929,
+  "open": 3369,
+  "today_closed": 29,
   "closed_by_discipline": {
-    "I": 3387,
+    "I": 3408,
     "E": 3225,
     "T": 296
   },
   "open_by_discipline": {
-    "I": 1206,
+    "I": 1185,
     "E": 1402,
     "T": 782
   },
@@ -229,22 +229,22 @@
     {
       "label": "2026-10-23",
       "E": 0,
-      "I": 8,
+      "I": 29,
       "T": 0,
-      "Total": 8
+      "Total": 29
     }
   ],
-  "closed_this_week": 101,
-  "closed_this_month": 1075,
+  "closed_this_week": 122,
+  "closed_this_month": 1096,
   "today_milestone": [
     {
       "milestone": "Milestone D",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 8
+      "count": 29
     }
   ],
-  "today_milestone_total": 8,
+  "today_milestone_total": 29,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -292,13 +292,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3437,
-      "closed": 2361,
-      "remaining": 1076,
-      "pct": 68.7,
+      "closed": 2382,
+      "remaining": 1055,
+      "pct": 69.3,
       "status": {
-        "Closed": 2361,
+        "Closed": 2382,
         "Submitted": 2,
-        "To be completed": 1072,
+        "To be completed": 1051,
         "Other": 2
       }
     },
@@ -374,6 +374,195 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-61-IH-0004-CU29",
+      "task": "T-00254-11831",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:34:58 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU28",
+      "task": "T-00254-11830",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:33:34 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU27",
+      "task": "T-00254-11829",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:32:15 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU26",
+      "task": "T-00254-11828",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:30:57 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU25",
+      "task": "T-00254-11827",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:29:52 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU24",
+      "task": "T-00254-11826",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:28:36 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU23",
+      "task": "T-00254-11825",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:26:51 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU22",
+      "task": "T-00254-11824",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:19:37 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU21",
+      "task": "T-00254-11823",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:18:31 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU20",
+      "task": "T-00254-11822",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:17:15 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU19",
+      "task": "T-00254-11821",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:15:59 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU18",
+      "task": "T-00254-11820",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:14:35 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU17",
+      "task": "T-00254-11819",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:13:34 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU16",
+      "task": "T-00254-11818",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:12:19 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU15",
+      "task": "T-00254-11817",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:11:12 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU14",
+      "task": "T-00254-11816",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:10:00 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU13",
+      "task": "T-00254-11815",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:08:38 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU12",
+      "task": "T-00254-11814",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:07:26 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU11",
+      "task": "T-00254-11813",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:05:24 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU10",
+      "task": "T-00254-11812",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:03:46 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU09",
+      "task": "T-00254-11811",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 5:00:26 "
+    },
     {
       "tag": "PS5-61-IH-0004-CU08",
       "task": "T-00254-11810",
@@ -1264,195 +1453,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/19/2026 4:30:49 "
-    },
-    {
-      "tag": "PS5-87-IRF-0002",
-      "task": "T-00228-0109",
-      "system": "PS5-71-04 - CFO Storage Tank",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/19/2026 4:29:21 "
-    },
-    {
-      "tag": "PS5-28-DM-3800A",
-      "task": "T-00026-0162",
-      "system": "PS5-28-13 - Seal Oil Drain Drum & Pump A",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/19/2026 1:51:54 "
-    },
-    {
-      "tag": "PS5-53-UT-8200",
-      "task": "T-00046-0326",
-      "system": "PS5-53-04 - Water Treatment Purification Package",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 7:08:31 "
-    },
-    {
-      "tag": "PS5-53-UT-8100",
-      "task": "T-00046-0325",
-      "system": "PS5-50-03 - Water Pre-Treatment Package",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 7:07:28 "
-    },
-    {
-      "tag": "PS5-83-EHO-0001C",
-      "task": "T-00046-0544",
-      "system": "PS5-25-04 - Crude Oil Export Pump C",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 7:06:34 "
-    },
-    {
-      "tag": "PS5-83-EHO-0001B",
-      "task": "T-00046-0543",
-      "system": "PS5-25-03 - Crude Oil Export Pump B",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 7:05:41 "
-    },
-    {
-      "tag": "PS5-53-UT-8100",
-      "task": "T-00090-0213",
-      "system": "PS5-50-03 - Water Pre-Treatment Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 7:04:40 "
-    },
-    {
-      "tag": "PS5-77-UZ-8200",
-      "task": "T-00090-0294",
-      "system": "PS5-53-03 - Water Softener Package",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 6:56:55 "
-    },
-    {
-      "tag": "PS5-77-UZ-8200",
-      "task": "T-00046-0406",
-      "system": "PS5-53-03 - Water Softener Package",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 6:55:47 "
-    },
-    {
-      "tag": "PS5-50-PSV-0004B",
-      "task": "T-00065-0144",
-      "system": "PS5-50-02 - Water Well Submersible Pumps (3200)",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 6:53:03 "
-    },
-    {
-      "tag": "",
-      "task": "T-00240-1338",
-      "system": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 1:26:09 "
-    },
-    {
-      "tag": "",
-      "task": "T-00240-1339",
-      "system": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 1:25:26 "
-    },
-    {
-      "tag": "PS5-01-BE-0001-CL01",
-      "task": "T-00023-4695",
-      "system": "PS5-01-08 - PS5 Deluge Valve Skid (PS5-01-UK-6100)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 1:11:59 "
-    },
-    {
-      "tag": "PS5 - POWER DISTRIBUTION AREA_Earthing",
-      "task": "T-00247-0146",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 5:41:32 "
-    },
-    {
-      "tag": "PS5 - LAUNCHER/RECEIVER AREA_Earthing",
-      "task": "T-00247-0144",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/17/2026 5:24:17 "
-    },
-    {
-      "tag": "PS5-71-IN-0001-CA11",
-      "task": "T-00171-4406",
-      "system": "PS5-71-19 - Diesel Separator Module (UCP)",
-      "loop": "",
-      "disc": "T - Telecom",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 7:40:44 "
-    },
-    {
-      "tag": "PS5 - EXPORT PUMP VSD AREA_Earthing",
-      "task": "T-00247-0138",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 4:25:39 "
-    },
-    {
-      "tag": "PS5 - OBSERVATION BASIN AREA_Earthing",
-      "task": "T-00247-0145",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 4:16:17 "
-    },
-    {
-      "tag": "PS5-86-OB-0001_Earthing",
-      "task": "T-00247-0163",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 4:12:15 "
-    },
-    {
-      "tag": "PS5-86-OB-0004_Earthing",
-      "task": "T-00247-0166",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 4:09:22 "
-    },
-    {
-      "tag": "PS5-01-NMRA-61004",
-      "task": "T-00082-1240",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 4:01:51 "
     }
   ]
 }
