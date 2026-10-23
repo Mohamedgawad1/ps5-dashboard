@@ -47145,3 +47145,18 @@ Call log:
 [2026-10-22 17:35:35] LOGGED IN
 [2026-10-22 17:37:41] pulled off=0 n=4000 accum=4000
 [2026-10-22 17:38:47] LOOP ERR: Page.evaluate: Target page, context or browser has been closed
+[2026-10-23 07:11:46] no pull tab yet — attaching to the open browser again
+[2026-10-23 07:11:54] reused the sync's always-open browser (port 9222)
+[2026-10-23 07:12:43] session expired -> auto-login
+[2026-10-23 07:12:51] ssologin click: ok
+[2026-10-23 07:13:01] sso handoff -> verify password page
+[2026-10-23 07:13:03] verify submit: submitted
+[2026-10-23 07:14:50] auto-login attempt 1 still not logged in
+[2026-10-23 07:14:54] ssologin click: ok
+[2026-10-23 07:15:04] sso handoff -> verify password page
+[2026-10-23 07:15:06] verify submit: submitted
+[2026-10-23 07:16:54] auto-login attempt 2 still not logged in
+[2026-10-23 07:16:58] ssologin click: ok
+[2026-10-23 07:17:08] sso handoff -> verify password page
+[2026-10-23 07:17:10] verify submit: submitted
+[2026-10-23 07:18:55] auto-login attempt 3 still not logged in
