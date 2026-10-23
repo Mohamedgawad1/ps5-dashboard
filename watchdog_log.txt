@@ -50163,3 +50163,7 @@
 [2026-10-22 16:53:49] RESTARTING tunnel_named
 [2026-10-22 16:53:49] STARTED tunnel_named (PID 10612)
 [2026-10-22 17:13:10] Watchdog alive - 2400 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-10-22 17:37:45] RESTARTING server
+[2026-10-22 17:37:46] STARTED server (PID 21040)
+[2026-10-23 07:07:35] RESTARTING server
+[2026-10-23 07:07:35] STARTED server (PID 11292)
