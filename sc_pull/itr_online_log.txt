@@ -47795,3 +47795,39 @@ Call log:
 [2026-10-23 17:15:01] sso handoff -> verify password page
 [2026-10-23 17:15:04] verify submit: submitted
 [2026-10-23 17:16:57] auto-login attempt 3 still not logged in
+[2026-10-23 17:27:02] WAITING FOR MANUAL LOGIN...
+[2026-10-23 17:35:05] session expired -> auto-login
+[2026-10-23 17:35:11] ssologin click: ok
+[2026-10-23 17:35:21] sso handoff -> verify password page
+[2026-10-23 17:35:27] verify submit: submitted
+[2026-10-23 17:37:23] auto-login attempt 1 still not logged in
+[2026-10-23 17:37:31] ssologin click: ok
+[2026-10-23 17:37:41] sso handoff -> verify password page
+[2026-10-23 17:38:06] verify submit: submitted
+[2026-10-23 17:40:01] auto-login attempt 2 still not logged in
+[2026-10-23 17:40:07] ssologin click: ok
+[2026-10-23 17:40:17] sso handoff -> verify password page
+[2026-10-23 17:40:19] verify submit: submitted
+[2026-10-23 17:42:08] auto-login attempt 3 still not logged in
+[2026-10-23 19:40:38] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-23 19:40:38] LOOP READY (interval 300s, keep_open=True)
+[2026-10-23 19:40:38] no pull tab yet — attaching to the open browser again
+[2026-10-23 19:40:39] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-23 19:45:39] no pull tab yet — attaching to the open browser again
+[2026-10-23 19:45:53] reused the sync's always-open browser (port 9222)
+[2026-10-23 19:46:03] LOGGED IN
+[2026-10-23 19:48:45] pulled off=0 n=4000 accum=4000
+[2026-10-23 19:50:23] pulled off=4000 n=4000 accum=8000
+[2026-10-23 19:52:17] pulled off=8000 n=4000 accum=12000
+[2026-10-23 19:53:14] pulled off=12000 n=2007 accum=14007
+[2026-10-23 19:53:14] task index refreshed (6319 asset tags)
+[2026-10-23 19:53:15] milestone_map: 290 subsystems
+[2026-10-23 19:53:16] updated dashboard_data.json itr_summary.live
+[2026-10-23 19:53:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 19:53:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 19:53 (closed=6935) rc=0 [main 560b538] ITR live update 2026-10-23 19:53 (closed=6935)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-23 19:53:31]  >> git push OK
+[2026-10-23 19:53:32]  >> pages commit rc=128 
+[2026-10-23 19:53:32]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-23 19:58:46] LOGGED IN
+[2026-10-23 20:00:27] pulled off=0 n=4000 accum=4000
