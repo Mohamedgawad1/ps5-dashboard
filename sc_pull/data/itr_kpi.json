@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-23 07:48:12",
+  "updated": "2026-10-23 07:58:12",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6902,
-  "open": 3396,
-  "today_closed": 2,
+  "closed": 6908,
+  "open": 3390,
+  "today_closed": 8,
   "closed_by_discipline": {
-    "I": 3381,
+    "I": 3387,
     "E": 3225,
     "T": 296
   },
   "open_by_discipline": {
-    "I": 1212,
+    "I": 1206,
     "E": 1402,
     "T": 782
   },
@@ -229,22 +229,22 @@
     {
       "label": "2026-10-23",
       "E": 0,
-      "I": 2,
+      "I": 8,
       "T": 0,
-      "Total": 2
+      "Total": 8
     }
   ],
-  "closed_this_week": 95,
-  "closed_this_month": 1069,
+  "closed_this_week": 101,
+  "closed_this_month": 1075,
   "today_milestone": [
     {
       "milestone": "Milestone D",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 2
+      "count": 8
     }
   ],
-  "today_milestone_total": 2,
+  "today_milestone_total": 8,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -292,13 +292,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3437,
-      "closed": 2355,
-      "remaining": 1082,
-      "pct": 68.5,
+      "closed": 2361,
+      "remaining": 1076,
+      "pct": 68.7,
       "status": {
-        "Closed": 2355,
+        "Closed": 2361,
         "Submitted": 2,
-        "To be completed": 1078,
+        "To be completed": 1072,
         "Other": 2
       }
     },
@@ -374,6 +374,60 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-61-IH-0004-CU08",
+      "task": "T-00254-11810",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 4:57:16 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU07",
+      "task": "T-00254-11809",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 4:54:00 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU06",
+      "task": "T-00254-11808",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 4:51:52 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU05",
+      "task": "T-00254-11807",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 4:50:37 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU04",
+      "task": "T-00254-11806",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 4:49:33 "
+    },
+    {
+      "tag": "PS5-61-IH-0004-CU03",
+      "task": "T-00254-11805",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/23/2026 4:48:03 "
+    },
     {
       "tag": "PS5-61-IH-0004-CU02",
       "task": "T-00254-11804",
@@ -1399,60 +1453,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "10/16/2026 4:01:51 "
-    },
-    {
-      "tag": "PS5-01-NMRA-61003",
-      "task": "T-00082-1239",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 4:00:58 "
-    },
-    {
-      "tag": "PS5-01-NMRA-61002",
-      "task": "T-00082-1238",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 4:00:15 "
-    },
-    {
-      "tag": "PS5-01-NMRA-61001",
-      "task": "T-00082-1237",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 3:57:21 "
-    },
-    {
-      "tag": "PS5-01-NMR-61004",
-      "task": "T-00082-1236",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 3:56:04 "
-    },
-    {
-      "tag": "PS5-01-NMR-61003",
-      "task": "T-00082-1235",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 3:55:21 "
-    },
-    {
-      "tag": "PS5-01-NMR-61002",
-      "task": "T-00082-1234",
-      "system": "PS5-01-11 - Inergen for Power Gen Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/16/2026 3:54:30 "
     }
   ]
 }
