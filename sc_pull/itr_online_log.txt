@@ -48479,3 +48479,29 @@ Call log:
 [2026-10-24 14:15:48]  >> git push OK
 [2026-10-24 14:15:48]  >> pages commit rc=128 
 [2026-10-24 14:15:48]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-24 14:21:04] LOGGED IN
+[2026-10-24 14:22:30] pulled off=0 n=4000 accum=4000
+[2026-10-24 14:24:31] pulled off=4000 n=4000 accum=8000
+[2026-10-24 14:25:42] pulled off=8000 n=4000 accum=12000
+[2026-10-24 14:26:41] pulled off=12000 n=2007 accum=14007
+[2026-10-24 14:26:41] task index refreshed (6319 asset tags)
+[2026-10-24 14:26:42] updated dashboard_data.json itr_summary.live
+[2026-10-24 14:26:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-24 14:26:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-24 14:26 (closed=6971) rc=0 [main ce687e7] ITR live update 2026-10-24 14:26 (closed=6971)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-24 14:26:53]  >> git push OK
+[2026-10-24 14:26:54]  >> pages commit rc=128 
+[2026-10-24 14:26:55]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-24 14:32:08] LOGGED IN
+[2026-10-24 14:33:46] pulled off=0 n=4000 accum=4000
+[2026-10-24 14:35:57] pulled off=4000 n=4000 accum=8000
+[2026-10-24 14:37:27] pulled off=8000 n=4000 accum=12000
+[2026-10-24 14:38:58] pulled off=12000 n=2007 accum=14007
+[2026-10-24 14:38:58] task index refreshed (6319 asset tags)
+[2026-10-24 14:38:59] updated dashboard_data.json itr_summary.live
+[2026-10-24 14:39:02]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-24 14:39:02]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-24 14:39 (closed=6971) rc=0 [main 40a4cc4] ITR live update 2026-10-24 14:39 (closed=6971)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-24 14:39:10]  >> git push OK
+[2026-10-24 14:39:11]  >> pages commit rc=128 
+[2026-10-24 14:39:11]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
