@@ -47899,3 +47899,24 @@ Call log:
 [2026-10-24 07:47:14] LOOP READY (interval 300s, keep_open=True)
 [2026-10-24 07:47:14] no pull tab yet — attaching to the open browser again
 [2026-10-24 07:47:15] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-24 07:52:16] no pull tab yet — attaching to the open browser again
+[2026-10-24 07:52:28] reused the sync's always-open browser (port 9222)
+[2026-10-24 07:52:28] goto err: Page.goto: Target page, context or browser has been closed
+[2026-10-24 07:53:13] session expired -> auto-login
+[2026-10-24 07:53:13] LOOP ERR: Page.wait_for_timeout: Target page, context or browser has been closed
+[2026-10-24 07:58:14] no pull tab yet — attaching to the open browser again
+[2026-10-24 07:58:22] reused the sync's always-open browser (port 9222)
+[2026-10-24 07:58:50] LOGGED IN
+[2026-10-24 07:59:35] pulled off=0 n=4000 accum=4000
+[2026-10-24 07:59:57] pulled off=4000 n=4000 accum=8000
+[2026-10-24 08:00:33] pulled off=8000 n=4000 accum=12000
+[2026-10-24 08:00:53] pulled off=12000 n=2007 accum=14007
+[2026-10-24 08:00:53] task index refreshed (6319 asset tags)
+[2026-10-24 08:00:53] milestone_map: 290 subsystems
+[2026-10-24 08:00:55] updated dashboard_data.json itr_summary.live
+[2026-10-24 08:01:05]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-24 08:01:05]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-24 08:01 (closed=6964) rc=0 [main 239388b] ITR live update 2026-10-24 08:01 (closed=6964)
+ 1 file changed, 11 insertions(+), 30 deletions(-)
+[2026-10-24 08:01:10]  >> git push OK
+[2026-10-24 08:01:11]  >> pages commit rc=128 
+[2026-10-24 08:01:11]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']

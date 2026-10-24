@@ -12611,3 +12611,10 @@
 2026-10-24 07:47:03 cloud_auto_update started (interval 300s)
 2026-10-24 07:47:05 [trigger] state changed -> rebuilding downloads+pages
 2026-10-24 07:47:05 >> cloud->DPR
+2026-10-24 07:49:49    sync 2026-10-24 07:49:48 -> PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-24 07:49:49    written=338 notes=0 colors=1
+2026-10-24 07:49:49    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-10-24 07:49:49    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-10-24 07:49:49    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-10-24 07:49:49    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-10-24 07:49:49 >> local->DPR
