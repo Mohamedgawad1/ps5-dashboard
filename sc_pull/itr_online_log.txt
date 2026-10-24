@@ -48505,3 +48505,19 @@ Call log:
 [2026-10-24 14:39:10]  >> git push OK
 [2026-10-24 14:39:11]  >> pages commit rc=128 
 [2026-10-24 14:39:11]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-24 14:44:22] LOGGED IN
+[2026-10-24 14:45:51] pulled off=0 n=4000 accum=4000
+[2026-10-24 14:47:54] pulled off=4000 n=4000 accum=8000
+[2026-10-24 14:49:34] pulled off=8000 n=4000 accum=12000
+[2026-10-24 14:50:13] pulled off=12000 n=2007 accum=14007
+[2026-10-24 14:50:14] task index refreshed (6319 asset tags)
+[2026-10-24 14:50:15] updated dashboard_data.json itr_summary.live
+[2026-10-24 14:50:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-24 14:50:21]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-24 14:50 (closed=6971) rc=0 [main ced1046] ITR live update 2026-10-24 14:50 (closed=6971)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-24 14:50:37]  >> git push OK
+[2026-10-24 14:50:38]  >> pages commit rc=128 
+[2026-10-24 14:50:38]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-24 14:55:51] LOGGED IN
+[2026-10-24 14:58:19] pulled off=0 n=4000 accum=4000
+[2026-10-24 14:59:51] pulled off=4000 n=4000 accum=8000
