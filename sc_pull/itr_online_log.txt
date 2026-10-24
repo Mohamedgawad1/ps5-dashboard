@@ -47881,3 +47881,21 @@ Call log:
 [2026-10-23 20:38:09]  >> git push OK
 [2026-10-23 20:38:10]  >> pages commit rc=128 
 [2026-10-23 20:38:10]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-23 20:43:24] LOGGED IN
+[2026-10-23 20:44:35] pulled off=0 n=4000 accum=4000
+[2026-10-23 20:46:09] pulled off=4000 n=4000 accum=8000
+[2026-10-23 20:47:53] pulled off=8000 n=4000 accum=12000
+[2026-10-23 20:48:48] pulled off=12000 n=2007 accum=14007
+[2026-10-23 20:48:48] task index refreshed (6319 asset tags)
+[2026-10-23 20:48:49] updated dashboard_data.json itr_summary.live
+[2026-10-23 20:48:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-23 20:48:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-23 20:48 (closed=6964) rc=0 [main 05f8745] ITR live update 2026-10-23 20:48 (closed=6964)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-23 20:49:02]  >> git push OK
+[2026-10-23 20:49:03]  >> pages commit rc=128 
+[2026-10-23 20:49:03]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-23 20:54:14] LOGGED IN
+[2026-10-24 07:47:14] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-24 07:47:14] LOOP READY (interval 300s, keep_open=True)
+[2026-10-24 07:47:14] no pull tab yet — attaching to the open browser again
+[2026-10-24 07:47:15] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
