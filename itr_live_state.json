@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-24 08:23:54",
+  "updated": "2026-10-24 08:30:54",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,16 +9,16 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 6969,
-  "open": 3329,
-  "today_closed": 5,
+  "closed": 6971,
+  "open": 3327,
+  "today_closed": 7,
   "closed_by_discipline": {
-    "I": 3447,
+    "I": 3449,
     "E": 3226,
     "T": 296
   },
   "open_by_discipline": {
-    "I": 1146,
+    "I": 1144,
     "E": 1401,
     "T": 782
   },
@@ -229,13 +229,13 @@
     {
       "label": "2026-10-24",
       "E": 1,
-      "I": 4,
+      "I": 6,
       "T": 0,
-      "Total": 5
+      "Total": 7
     }
   ],
-  "closed_this_week": 163,
-  "closed_this_month": 1137,
+  "closed_this_week": 165,
+  "closed_this_month": 1139,
   "today_milestone": [
     {
       "milestone": "Milestone G",
@@ -247,10 +247,10 @@
       "milestone": "Milestone H",
       "disc": "I",
       "discipline": "Instrumentation (I)",
-      "count": 4
+      "count": 6
     }
   ],
-  "today_milestone_total": 5,
+  "today_milestone_total": 7,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -354,14 +354,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2481,
-      "remaining": 770,
-      "pct": 76.3,
+      "closed": 2483,
+      "remaining": 768,
+      "pct": 76.4,
       "status": {
-        "Closed": 2481,
+        "Closed": 2483,
         "Submitted": 64,
-        "To be completed": 683,
-        "Other": 23
+        "To be completed": 682,
+        "Other": 22
       }
     },
     {
@@ -380,6 +380,24 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-60-MOV-0011",
+      "task": "T-00078-0155",
+      "system": "PS5-71-12 - CFO Service Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/24/2026 5:24:16 "
+    },
+    {
+      "tag": "PS5-60-MOV-0006",
+      "task": "T-00078-0150",
+      "system": "PS5-71-12 - CFO Service Tank",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/24/2026 5:22:07 "
+    },
     {
       "tag": "PS5-60-MOV-0005",
       "task": "T-00078-0146",
@@ -1441,24 +1459,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/21/2026 2:20:54 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1537",
-      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/21/2026 2:20:18 "
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1536",
-      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/21/2026 2:19:39 "
     }
   ]
 }
