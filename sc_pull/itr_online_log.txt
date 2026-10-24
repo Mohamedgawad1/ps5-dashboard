@@ -48635,3 +48635,21 @@ Call log:
 [2026-10-24 16:19:32]  >> git push OK
 [2026-10-24 16:19:33]  >> pages commit rc=128 
 [2026-10-24 16:19:33]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-24 16:24:39] LOGGED IN
+[2026-10-24 16:25:34] pulled off=0 n=4000 accum=4000
+[2026-10-24 16:27:21] pulled off=4000 n=4000 accum=8000
+[2026-10-24 16:28:24] pulled off=8000 n=4000 accum=12000
+[2026-10-24 16:28:59] pulled off=12000 n=2007 accum=14007
+[2026-10-24 16:28:59] task index refreshed (6319 asset tags)
+[2026-10-24 16:29:00] updated dashboard_data.json itr_summary.live
+[2026-10-24 16:29:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-24 16:29:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-24 16:29 (closed=6971) rc=0 [main d006b96] ITR live update 2026-10-24 16:29 (closed=6971)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-24 16:29:09]  >> git push OK
+[2026-10-24 16:29:10]  >> pages commit rc=128 
+[2026-10-24 16:29:10]  !! pages push failed: ['fatal: not a git repository (or any of the parent directories): .git']
+[2026-10-24 16:34:11] goto err: Page.goto: Target page, context or browser has been closed
+[2026-10-24 16:34:56] session expired -> auto-login
+[2026-10-24 16:34:56] LOOP ERR: Page.wait_for_timeout: Target page, context or browser has been closed
+[2026-10-24 16:39:57] no pull tab yet — attaching to the open browser again
+[2026-10-24 16:39:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
