@@ -12652,3 +12652,27 @@
 2026-10-25 07:14:54    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
 2026-10-25 07:14:54    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
 2026-10-25 07:14:54 >> local->DPR
+2026-10-25 07:30:16    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -23-October-2026.xlsx  (edits: 75640 cells / 0 notes)
+2026-10-25 07:30:16      [summery-sync] OK -> 54914 cells, 0 notes written, 15406 skipped (no matching column)
+2026-10-25 07:30:16 >> explorer rebuild
+2026-10-25 07:34:10      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14004+9493 rows, 16547 updates
+2026-10-25 07:34:10      Punch rows: 4147 | ITR rows: 23497 | RFC: 270 | Miles: 292
+2026-10-25 07:34:10      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1141
+2026-10-25 07:34:10      Carry-over: 0 notes, 0 colored rows, 21259 pinned cells
+2026-10-25 07:34:10    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-25 07:34:10    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-25 07:34:10 >> dashboard xlsm
+2026-10-25 07:38:05    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-25 07:38:05      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4147 | Detail I 23497 | RFC 270
+2026-10-25 07:38:05      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21259 pinned cells
+2026-10-25 07:38:05    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-10-25 07:38:05 >> platform full sync
+2026-10-25 07:38:17        e.g. T-00024-2061 (also Closed live)
+2026-10-25 07:38:17        e.g. T-00024-2062 (also Closed live)
+2026-10-25 07:38:17        e.g. T-00024-2063 (also Closed live)
+2026-10-25 07:38:17    
+2026-10-25 07:38:17    >>> C:\Python315\python.exe rebuild_data.py
+2026-10-25 07:38:17    !! FAILED: ['C:\\Python315\\python.exe', 'rebuild_data.py'] exit 1
+2026-10-25 07:38:17    !! refusing to build/publish stale ITR states (367 lagging tasks > limit 200)
+2026-10-25 07:38:17 !! platform full sync FAILED (rc=1)
+2026-10-25 07:38:17 [done] build in 1589s
