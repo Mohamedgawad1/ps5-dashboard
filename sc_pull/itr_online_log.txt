@@ -49468,3 +49468,24 @@ Call log:
 [2026-10-26 19:17:29]  >> pages commit rc=0 026-10-26 19:17 (closed=7003)
  1 file changed, 53 insertions(+), 53 deletions(-)
 [2026-10-26 19:17:33]  >> pages push OK (closed=7003)
+[2026-10-26 19:22:40] LOGGED IN
+[2026-10-26 19:24:43] pulled off=0 n=4000 accum=4000
+[2026-10-26 19:28:15] pulled off=4000 n=4000 accum=8000
+[2026-10-26 19:29:39] pulled off=8000 n=4000 accum=12000
+[2026-10-26 19:30:29] pulled off=12000 n=2007 accum=14007
+[2026-10-26 19:30:29] task index refreshed (6319 asset tags)
+[2026-10-26 19:30:30] updated dashboard_data.json itr_summary.live
+[2026-10-26 19:30:33]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-26 19:30:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-26 19:30 (closed=7007) rc=0 [main e5998a7] ITR live update 2026-10-26 19:30 (closed=7007)
+ 1 file changed, 54 insertions(+), 54 deletions(-)
+[2026-10-26 19:30:40]  >> git push OK
+[2026-10-26 19:30:43]  >> pages commit rc=0 026-10-26 19:30 (closed=7007)
+ 1 file changed, 54 insertions(+), 54 deletions(-)
+[2026-10-26 19:30:49]  >> pages push OK (closed=7007)
+[2026-10-26 19:37:31] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-26 19:37:57] LOGGED IN
+[2026-10-26 19:40:00] pulled off=0 n=4000 accum=4000
+[2026-10-26 19:41:48] pulled off=4000 n=4000 accum=8000
+[2026-10-26 19:41:56] LOOP ERR: Page.evaluate: Execution context was destroyed, most likely because of a navigation.
