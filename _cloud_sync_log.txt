@@ -12776,3 +12776,4 @@
 2026-10-26 16:54:58    !! push failed - the live platform was NOT updated
 2026-10-26 16:54:58 !! platform full sync FAILED (rc=1)
 2026-10-26 16:54:58 [done] build in 1533s
+2026-10-26 17:00:10 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
