@@ -12704,3 +12704,12 @@
 2026-10-26 07:40:25 >> platform full sync
 2026-10-26 08:19:03 !! platform full sync crashed: Command '['C:\\Python315\\python.exe', 'C:\\Users\\mylap\\OneDrive\\Desktop\\PS5-COMPLETION-PLATFORM\\sync_all.py']' timed out after 1800 seconds
 2026-10-26 08:19:03 [done] build in 4081s
+2026-10-26 08:24:08 [trigger] state changed -> rebuilding downloads+pages
+2026-10-26 08:24:09 >> cloud->DPR
+2026-10-26 08:28:46    sync 2026-10-26 08:28:44 -> PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-26 08:28:46    written=338 notes=0 colors=1
+2026-10-26 08:28:46    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-10-26 08:28:46    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-10-26 08:28:46    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-10-26 08:28:46    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-10-26 08:28:46 >> local->DPR
