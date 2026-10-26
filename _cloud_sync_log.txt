@@ -12753,3 +12753,26 @@
 2026-10-26 16:40:29    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -24-October-2026.xlsx  (edits: 76031 cells / 0 notes)
 2026-10-26 16:40:29      [summery-sync] OK -> 55246 cells, 0 notes written, 15406 skipped (no matching column)
 2026-10-26 16:40:29 >> explorer rebuild
+2026-10-26 16:42:29      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14004+9635 rows, 16765 updates
+2026-10-26 16:42:29      Punch rows: 4028 | ITR rows: 23639 | RFC: 270 | Miles: 292
+2026-10-26 16:42:29      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1141
+2026-10-26 16:42:29      Carry-over: 0 notes, 0 colored rows, 21318 pinned cells
+2026-10-26 16:42:29    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-26 16:42:29    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-26 16:42:29 >> dashboard xlsm
+2026-10-26 16:45:20    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-26 16:45:20      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4028 | Detail I 23639 | RFC 270
+2026-10-26 16:45:20      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21318 pinned cells
+2026-10-26 16:45:20    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-10-26 16:45:20 >> platform full sync
+2026-10-26 16:54:58     main -> main (non-fast-forward)
+2026-10-26 16:54:58    error: failed to push some refs to 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git'
+2026-10-26 16:54:58    hint: Updates were rejected because the tip of your current branch is behind
+2026-10-26 16:54:58    hint: its remote counterpart. If you want to integrate the remote changes,
+2026-10-26 16:54:58    hint: use 'git pull' before pushing again.
+2026-10-26 16:54:58    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2026-10-26 16:54:58    !! C:\Python315\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+2026-10-26 16:54:58    !!   warn("Workbook contains no default style, apply openpyxl's default")
+2026-10-26 16:54:58    !! push failed - the live platform was NOT updated
+2026-10-26 16:54:58 !! platform full sync FAILED (rc=1)
+2026-10-26 16:54:58 [done] build in 1533s
