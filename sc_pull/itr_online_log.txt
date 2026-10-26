@@ -49489,3 +49489,20 @@ Call log:
 [2026-10-26 19:40:00] pulled off=0 n=4000 accum=4000
 [2026-10-26 19:41:48] pulled off=4000 n=4000 accum=8000
 [2026-10-26 19:41:56] LOOP ERR: Page.evaluate: Execution context was destroyed, most likely because of a navigation.
+[2026-10-26 19:47:55] session expired -> auto-login
+[2026-10-26 19:48:09] LOOP ERR: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-10-26 19:53:10] goto err: Page.goto: Navigation to "https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/Switc
+[2026-10-26 19:53:22] LOGGED IN
+[2026-10-26 19:54:57] pulled off=0 n=4000 accum=4000
+[2026-10-26 19:56:24] pulled off=4000 n=4000 accum=8000
+[2026-10-26 19:57:56] pulled off=8000 n=4000 accum=12000
+[2026-10-26 19:58:46] pulled off=12000 n=2007 accum=14007
+[2026-10-26 19:58:46] task index refreshed (6319 asset tags)
+[2026-10-26 19:58:47] updated dashboard_data.json itr_summary.live
+[2026-10-26 19:58:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-26 19:58:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-26 19:58 (closed=7008) rc=0 [main f49472e] ITR live update 2026-10-26 19:58 (closed=7008)
+ 1 file changed, 26 insertions(+), 26 deletions(-)
+[2026-10-26 19:58:57]  >> git push OK
+[2026-10-26 19:59:00]  >> pages commit rc=0 026-10-26 19:59 (closed=7008)
+ 1 file changed, 26 insertions(+), 26 deletions(-)
+[2026-10-26 19:59:03]  >> pages push OK (closed=7008)
