@@ -1,5 +1,5 @@
 {
- "date": "24 OCT 2026",
+ "date": "26 OCT 2026",
  "disciplines": {
   "B": {
    "total": 71,
@@ -109,15 +109,15 @@
    10512
   ],
   "live": {
-   "closed": 6971,
-   "open": 3327,
+   "closed": 6981,
+   "open": 3317,
    "total": 10298,
    "by_discipline": {
-    "I": 3449,
+    "I": 3459,
     "E": 3226,
     "T": 296
    },
-   "updated": "2026-10-24 16:29:00"
+   "updated": "2026-10-26 14:18:58"
   }
  },
  "subsystems": [
