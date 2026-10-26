@@ -48937,3 +48937,10 @@ Call log:
 [2026-10-25 17:43:06] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
 [2026-10-25 17:48:07] no pull tab yet — attaching to the open browser again
 [2026-10-25 17:48:08] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-26 07:11:08] sync is already running as pid 16156 - nothing to do
+[2026-10-26 07:11:31] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-26 07:11:31] LOOP READY (interval 300s, keep_open=True)
+[2026-10-26 07:11:31] no pull tab yet — attaching to the open browser again
+[2026-10-26 07:11:33] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-26 07:16:34] no pull tab yet — attaching to the open browser again
+[2026-10-26 07:16:34] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)

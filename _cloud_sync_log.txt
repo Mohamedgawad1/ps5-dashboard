@@ -12676,3 +12676,14 @@
 2026-10-25 07:38:17    !! refusing to build/publish stale ITR states (367 lagging tasks > limit 200)
 2026-10-25 07:38:17 !! platform full sync FAILED (rc=1)
 2026-10-25 07:38:17 [done] build in 1589s
+2026-10-26 07:11:00 ==================================================
+2026-10-26 07:11:00 cloud_auto_update started (interval 300s)
+2026-10-26 07:11:02 [trigger] state changed -> rebuilding downloads+pages
+2026-10-26 07:11:02 >> cloud->DPR
+2026-10-26 07:14:05    sync 2026-10-26 07:14:03 -> PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-26 07:14:05    written=338 notes=0 colors=1
+2026-10-26 07:14:05    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-10-26 07:14:05    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-10-26 07:14:05    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-10-26 07:14:05    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-10-26 07:14:05 >> local->DPR
