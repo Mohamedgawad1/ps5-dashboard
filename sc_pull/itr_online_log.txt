@@ -49527,3 +49527,23 @@ Call log:
 [2026-10-26 20:21:45]  >> pages commit rc=0 te 2026-10-26 20:21 (closed=7008)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-10-26 20:21:51]  >> pages push OK (closed=7008)
+[2026-10-26 20:28:33] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-26 20:29:25] LOGGED IN
+[2026-10-26 20:32:08] pulled off=0 n=4000 accum=4000
+[2026-10-26 20:34:30] pulled off=4000 n=4000 accum=8000
+[2026-10-26 20:37:05] pulled off=8000 n=4000 accum=12000
+[2026-10-26 20:38:36] pulled off=12000 n=2007 accum=14007
+[2026-10-26 20:38:37] task index refreshed (6319 asset tags)
+[2026-10-26 20:38:40] updated dashboard_data.json itr_summary.live
+[2026-10-26 20:38:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-26 20:38:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-26 20:38 (closed=7008) rc=0 [main 199801f] ITR live update 2026-10-26 20:38 (closed=7008)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-26 20:39:04]  >> git push OK
+[2026-10-26 20:39:14]  >> pages commit rc=0 te 2026-10-26 20:39 (closed=7008)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-26 20:39:24]  >> pages push OK (closed=7008)
+[2026-10-26 20:45:47] LOGGED IN
+[2026-10-26 20:51:27] pulled off=0 n=4000 accum=4000
+[2026-10-26 20:56:44] pulled off=4000 n=4000 accum=8000

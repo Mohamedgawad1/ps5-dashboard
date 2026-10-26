@@ -12847,3 +12847,5 @@
 2026-10-26 20:17:30    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
 2026-10-26 20:17:30    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
 2026-10-26 20:17:30 >> local->DPR
+2026-10-26 20:48:25 !! local->DPR crashed: Command '['C:\\Python315\\python.exe', 'C:\\Users\\mylap\\OneDrive\\Desktop\\dashboard\\apply_platform_edits_to_summery.py']' timed out after 1800 seconds
+2026-10-26 20:48:32 >> explorer rebuild
