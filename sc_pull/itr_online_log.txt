@@ -49578,3 +49578,39 @@ Call log:
 [2026-10-27 07:57:20] LOGGED IN
 [2026-10-27 07:57:36] pulled off=0 n=4000 accum=4000
 [2026-10-27 07:57:39] LOOP ERR: Page.evaluate: Target page, context or browser has been closed
+[2026-10-27 08:02:39] no pull tab yet — attaching to the open browser again
+[2026-10-27 08:02:47] reused the sync's always-open browser (port 9222)
+[2026-10-27 08:02:52] LOGGED IN
+[2026-10-27 08:03:19] pulled off=0 n=4000 accum=4000
+[2026-10-27 08:03:40] pulled off=4000 n=4000 accum=8000
+[2026-10-27 08:03:54] pulled off=8000 n=4000 accum=12000
+[2026-10-27 08:04:11] pulled off=12000 n=2007 accum=14007
+[2026-10-27 08:04:11] task index refreshed (6319 asset tags)
+[2026-10-27 08:04:11] milestone_map: 290 subsystems
+[2026-10-27 08:04:12] updated dashboard_data.json itr_summary.live
+[2026-10-27 08:04:13]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-27 08:04:13]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-27 08:04 (closed=7008) rc=0 [main 7f3cc1b] ITR live update 2026-10-27 08:04 (closed=7008)
+ 1 file changed, 13 insertions(+), 26 deletions(-)
+[2026-10-27 08:04:21]  >> git push OK
+[2026-10-27 08:04:26]  >> pages commit rc=0 026-10-27 08:04 (closed=7008)
+ 1 file changed, 13 insertions(+), 26 deletions(-)
+[2026-10-27 08:04:30]  >> pages push OK (closed=7008)
+[2026-10-27 08:10:51] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-27 08:11:17] LOGGED IN
+[2026-10-27 08:14:41] pulled off=0 n=4000 accum=4000
+[2026-10-27 08:18:43] pulled off=4000 n=4000 accum=8000
+[2026-10-27 08:19:08] pulled off=8000 n=4000 accum=12000
+[2026-10-27 08:19:19] pulled off=12000 n=2007 accum=14007
+[2026-10-27 08:19:19] task index refreshed (6319 asset tags)
+[2026-10-27 08:19:20] updated dashboard_data.json itr_summary.live
+[2026-10-27 08:19:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-27 08:19:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-27 08:19 (closed=7008) rc=0 [main 6e3a5e6] ITR live update 2026-10-27 08:19 (closed=7008)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-27 08:19:28]  >> git push OK
+[2026-10-27 08:19:33]  >> pages commit rc=0 te 2026-10-27 08:19 (closed=7008)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-27 08:19:37]  >> pages push OK (closed=7008)
+[2026-10-27 08:25:08] LOGGED IN
+[2026-10-27 08:25:33] pulled off=0 n=4000 accum=4000
