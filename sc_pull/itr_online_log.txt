@@ -49550,3 +49550,14 @@ Call log:
 [2026-10-26 21:02:47] pulled off=8000 n=4000 accum=12000
 [2026-10-26 21:02:58] LOOP ERR: Page.evaluate: Execution context was destroyed, most likely because of a navigation.
 [2026-10-26 21:08:19] LOGGED IN
+[2026-10-26 21:11:00] pulled off=0 n=4000 accum=4000
+[2026-10-27 07:06:56] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-27 07:06:56] LOOP READY (interval 300s, keep_open=True)
+[2026-10-27 07:06:56] no pull tab yet — attaching to the open browser again
+[2026-10-27 07:06:56] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-27 07:11:57] no pull tab yet — attaching to the open browser again
+[2026-10-27 07:11:57] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-27 07:16:58] no pull tab yet — attaching to the open browser again
+[2026-10-27 07:16:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-27 07:21:58] no pull tab yet — attaching to the open browser again
+[2026-10-27 07:21:59] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
