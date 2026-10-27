@@ -12903,3 +12903,24 @@
 2026-10-27 07:39:45    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -24-October-2026.xlsx  (edits: 76990 cells / 0 notes)
 2026-10-27 07:39:45      [summery-sync] OK -> 55559 cells, 0 notes written, 15406 skipped (no matching column)
 2026-10-27 07:39:45 >> explorer rebuild
+2026-10-27 07:41:33      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14004+9488 rows, 15518 updates
+2026-10-27 07:41:33      Punch rows: 4028 | ITR rows: 23492 | RFC: 270 | Miles: 292
+2026-10-27 07:41:33      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1141
+2026-10-27 07:41:33      Carry-over: 0 notes, 0 colored rows, 21443 pinned cells
+2026-10-27 07:41:33    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-27 07:41:33    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-27 07:41:33 >> dashboard xlsm
+2026-10-27 07:45:43    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-27 07:45:43      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4028 | Detail I 23492 | RFC 270
+2026-10-27 07:45:43      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21443 pinned cells
+2026-10-27 07:45:43    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-10-27 07:45:43 >> platform full sync
+2026-10-27 07:45:51        e.g. T-00024-2061 (also Closed live)
+2026-10-27 07:45:51        e.g. T-00024-2062 (also Closed live)
+2026-10-27 07:45:51        e.g. T-00024-2063 (also Closed live)
+2026-10-27 07:45:51    
+2026-10-27 07:45:51    >>> C:\Python315\python.exe rebuild_data.py
+2026-10-27 07:45:51    !! FAILED: ['C:\\Python315\\python.exe', 'rebuild_data.py'] exit 1
+2026-10-27 07:45:51    !! refusing to build/publish stale ITR states (402 lagging tasks > limit 200)
+2026-10-27 07:45:51 !! platform full sync FAILED (rc=1)
+2026-10-27 07:45:51 [done] build in 918s

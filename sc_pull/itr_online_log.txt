@@ -49567,3 +49567,14 @@ Call log:
 [2026-10-27 07:31:59] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
 [2026-10-27 07:37:00] no pull tab yet — attaching to the open browser again
 [2026-10-27 07:37:00] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-27 07:42:00] no pull tab yet — attaching to the open browser again
+[2026-10-27 07:42:00] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-27 07:47:00] no pull tab yet — attaching to the open browser again
+[2026-10-27 07:47:01] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-27 07:52:04] no pull tab yet — attaching to the open browser again
+[2026-10-27 07:52:05] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-27 07:57:05] no pull tab yet — attaching to the open browser again
+[2026-10-27 07:57:13] reused the sync's always-open browser (port 9222)
+[2026-10-27 07:57:20] LOGGED IN
+[2026-10-27 07:57:36] pulled off=0 n=4000 accum=4000
+[2026-10-27 07:57:39] LOOP ERR: Page.evaluate: Target page, context or browser has been closed
