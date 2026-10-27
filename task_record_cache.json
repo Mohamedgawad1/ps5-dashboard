@@ -6707,5 +6707,45 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00067-2452": {
+  "record": "1173815",
+  "task": "T-00067-2452",
+  "asset": "PS5-28-IES-3800A",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2453": {
+  "record": "1173816",
+  "task": "T-00067-2453",
+  "asset": "PS5-28-IES-3800B",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2454": {
+  "record": "1173817",
+  "task": "T-00067-2454",
+  "asset": "PS5-28-IES-3800C",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2467": {
+  "record": "1173830",
+  "task": "T-00067-2467",
+  "asset": "PS5-71-IES-3400B",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2444": {
+  "record": "1173807",
+  "task": "T-00067-2444",
+  "asset": "PS5-28-IES-2008",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
