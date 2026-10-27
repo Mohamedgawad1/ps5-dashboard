@@ -12877,3 +12877,29 @@
 2026-10-27 07:21:56    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
 2026-10-27 07:21:56    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
 2026-10-27 07:21:56 >> dashboard xlsm
+2026-10-27 07:25:26    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-27 07:25:26      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4028 | Detail I 23492 | RFC 270
+2026-10-27 07:25:26      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21443 pinned cells
+2026-10-27 07:25:26    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-10-27 07:25:26 >> platform full sync
+2026-10-27 07:25:33        e.g. T-00024-2061 (also Closed live)
+2026-10-27 07:25:33        e.g. T-00024-2062 (also Closed live)
+2026-10-27 07:25:33        e.g. T-00024-2063 (also Closed live)
+2026-10-27 07:25:33    
+2026-10-27 07:25:33    >>> C:\Python315\python.exe rebuild_data.py
+2026-10-27 07:25:33    !! FAILED: ['C:\\Python315\\python.exe', 'rebuild_data.py'] exit 1
+2026-10-27 07:25:33    !! refusing to build/publish stale ITR states (402 lagging tasks > limit 200)
+2026-10-27 07:25:33 !! platform full sync FAILED (rc=1)
+2026-10-27 07:25:33 [done] build in 1135s
+2026-10-27 07:30:33 [trigger] state changed -> rebuilding downloads+pages
+2026-10-27 07:30:33 >> cloud->DPR
+2026-10-27 07:31:43    sync 2026-10-27 07:31:42 -> PS-5 COMPLETIONS DPR SUMMARY -30-SEPTEMBER-2026.xlsx
+2026-10-27 07:31:43    written=338 notes=0 colors=1
+2026-10-27 07:31:43    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-10-27 07:31:43    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-10-27 07:31:43    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-10-27 07:31:43    columns missing/unmapped: ITR LIST: DESCRIPTION unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-10-27 07:31:43 >> local->DPR
+2026-10-27 07:39:45    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -24-October-2026.xlsx  (edits: 76990 cells / 0 notes)
+2026-10-27 07:39:45      [summery-sync] OK -> 55559 cells, 0 notes written, 15406 skipped (no matching column)
+2026-10-27 07:39:45 >> explorer rebuild
