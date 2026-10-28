@@ -12924,3 +12924,12 @@
 2026-10-27 07:45:51    !! refusing to build/publish stale ITR states (402 lagging tasks > limit 200)
 2026-10-27 07:45:51 !! platform full sync FAILED (rc=1)
 2026-10-27 07:45:51 [done] build in 918s
+2026-10-27 17:29:11 [warn] cloud fetch failed: The read operation timed out
+2026-10-27 17:35:37 [warn] cloud fetch failed: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
+2026-10-27 17:40:48 [warn] cloud fetch failed: <urlopen error [SSL: UNEXPECTED_MESSAGE] unexpected message (_ssl.c:1144)>
+2026-10-27 17:45:53 [warn] cloud fetch failed: <urlopen error [SSL: UNEXPECTED_MESSAGE] unexpected message (_ssl.c:1144)>
+2026-10-27 17:51:13 [warn] cloud fetch failed: <urlopen error [SSL: UNEXPECTED_MESSAGE] unexpected message (_ssl.c:1144)>
+2026-10-28 07:10:47 ==================================================
+2026-10-28 07:10:47 cloud_auto_update started (interval 300s)
+2026-10-28 07:10:49 [trigger] state changed -> rebuilding downloads+pages
+2026-10-28 07:10:49 >> cloud->DPR

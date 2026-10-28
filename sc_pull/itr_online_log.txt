@@ -50364,3 +50364,37 @@ Call log:
 [2026-10-27 17:16:15] pulled off=0 n=4000 accum=4000
 [2026-10-27 17:18:55] pulled off=4000 n=4000 accum=8000
 [2026-10-27 17:21:38] pulled off=8000 n=4000 accum=12000
+[2026-10-27 17:22:31] pulled off=12000 n=2007 accum=14007
+[2026-10-27 17:22:31] task index refreshed (6319 asset tags)
+[2026-10-27 17:22:38] updated dashboard_data.json itr_summary.live
+[2026-10-27 17:22:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-27 17:22:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-27 17:22 (closed=7013) rc=0 [main 0f13b07] ITR live update 2026-10-27 17:22 (closed=7013)
+ 5 files changed, 21 insertions(+), 3 deletions(-)
+[2026-10-27 17:23:00]  >> git push OK
+[2026-10-27 17:23:09]  >> pages commit rc=0 te 2026-10-27 17:23 (closed=7013)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-27 17:23:15]  >> pages push OK (closed=7013)
+[2026-10-27 17:29:07] LOGGED IN
+[2026-10-27 17:31:45] pulled off=0 n=4000 accum=4000
+[2026-10-27 17:34:05] pulled off=4000 n=4000 accum=8000
+[2026-10-27 17:37:42] pulled off=8000 n=4000 accum=12000
+[2026-10-27 17:38:46] pulled off=12000 n=2007 accum=14007
+[2026-10-27 17:38:46] task index refreshed (6319 asset tags)
+[2026-10-27 17:38:48] updated dashboard_data.json itr_summary.live
+[2026-10-27 17:38:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-27 17:38:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-27 17:38 (closed=7013) rc=0 [main ef400d6] ITR live update 2026-10-27 17:38 (closed=7013)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-27 17:38:55]  >> git push OK
+[2026-10-27 17:39:01]  >> pages commit rc=0 te 2026-10-27 17:39 (closed=7013)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-27 17:39:10]  >> pages push OK (closed=7013)
+[2026-10-27 17:46:20] LOGGED IN
+[2026-10-27 17:51:59] pulled off=0 n=4000 accum=4000
+[2026-10-27 17:53:54] pulled off=4000 n=4000 accum=8000
+[2026-10-27 17:56:12] pulled off=8000 n=4000 accum=12000
+[2026-10-27 17:57:12] LOOP ERR: Page.evaluate: Target page, context or browser has been closed
+[2026-10-28 07:10:57] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-28 07:10:57] LOOP READY (interval 300s, keep_open=True)
+[2026-10-28 07:10:57] no pull tab yet — attaching to the open browser again
+[2026-10-28 07:10:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-28 07:15:59] no pull tab yet — attaching to the open browser again
