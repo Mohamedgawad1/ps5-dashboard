@@ -51275,3 +51275,21 @@ Call log:
 [2026-10-28 18:00:49]  >> pages commit rc=0 026-10-28 18:00 (closed=7032)
  1 file changed, 63 insertions(+), 57 deletions(-)
 [2026-10-28 18:00:53]  >> pages push OK (closed=7032)
+[2026-10-28 19:24:43] reused the sync's always-open browser (port 9222)
+[2026-10-28 19:24:43] LOOP READY (interval 300s, keep_open=True)
+[2026-10-28 19:25:42] session expired -> auto-login
+[2026-10-28 19:25:50] ssologin click: ok
+[2026-10-28 19:26:00] sso handoff -> verify password page
+[2026-10-28 19:26:03] verify submit: submitted
+[2026-10-28 19:28:02] auto-login attempt 1 still not logged in
+[2026-10-28 19:28:09] ssologin click: ok
+[2026-10-28 19:28:19] sso handoff -> verify password page
+[2026-10-28 19:28:22] verify submit: submitted
+[2026-10-28 19:30:17] auto-login attempt 2 still not logged in
+[2026-10-28 19:30:27] ssologin click: ok
+[2026-10-28 19:30:37] sso handoff -> verify password page
+[2026-10-28 19:30:40] verify submit: submitted
+[2026-10-28 19:32:41] auto-login attempt 3 still not logged in
+[2026-10-28 19:36:05] LOGGED IN
+[2026-10-28 19:38:45] pulled off=0 n=4000 accum=4000
+[2026-10-28 19:40:51] pulled off=4000 n=4000 accum=8000
