@@ -51368,3 +51368,29 @@ Call log:
 [2026-10-28 21:10:59] LOOP ERR: Command '['git', '-C', 'C:\\Users\\mylap\\AppData\\Local\\Temp\\ps5_pages_deploy', 'pull', '--rebase', 'origin', 'main']' timed out after 600 seconds
 [2026-10-28 21:16:24] LOGGED IN
 [2026-10-28 21:18:53] pulled off=0 n=4000 accum=4000
+[2026-10-28 21:21:41] pulled off=4000 n=4000 accum=8000
+[2026-10-28 21:24:07] pulled off=8000 n=4000 accum=12000
+[2026-10-28 21:25:28] pulled off=12000 n=2007 accum=14007
+[2026-10-28 21:25:28] task index refreshed (6319 asset tags)
+[2026-10-28 21:25:29] updated dashboard_data.json itr_summary.live
+[2026-10-28 21:25:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-28 21:25:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-28 21:25 (closed=7036) rc=0 [main b996ee5] ITR live update 2026-10-28 21:25 (closed=7036)
+ 1 file changed, 697 insertions(+), 672 deletions(-)
+[2026-10-28 21:25:36]  >> git push OK
+[2026-10-28 21:25:42]  >> pages commit rc=0  2026-10-28 21:25 (closed=7036)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-28 21:25:47]  >> pages push OK (closed=7036)
+[2026-10-28 21:31:06] LOGGED IN
+[2026-10-28 21:34:26] pulled off=0 n=4000 accum=4000
+[2026-10-28 21:37:11] pulled off=4000 n=4000 accum=8000
+[2026-10-28 21:39:30] pulled off=8000 n=4000 accum=12000
+[2026-10-28 21:40:48] pulled off=12000 n=2007 accum=14007
+[2026-10-28 21:40:48] task index refreshed (6319 asset tags)
+[2026-10-28 21:40:49] updated dashboard_data.json itr_summary.live
+[2026-10-28 21:40:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-28 21:40:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-28 21:40 (closed=7036) rc=0 [main 951ed29] ITR live update 2026-10-28 21:40 (closed=7036)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-28 21:41:00]  >> git push OK
+[2026-10-28 21:41:07]  >> pages commit rc=0  2026-10-28 21:41 (closed=7036)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-28 21:41:15]  >> pages push OK (closed=7036)
