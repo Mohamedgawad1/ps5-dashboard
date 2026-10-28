@@ -12995,3 +12995,25 @@
 2026-10-28 08:52:09 [done] build in 3086s
 2026-10-28 08:57:10 [trigger] state changed -> rebuilding downloads+pages
 2026-10-28 08:57:10 >> cloud->DPR
+2026-10-28 09:02:04    [guard]   PS5-01-07 col61: '4' -> ''
+2026-10-28 09:02:04    [guard]   PS5-01-08 col61: '1' -> ''
+2026-10-28 09:02:04    [guard]   PS5-09-03 col61: '2' -> ''
+2026-10-28 09:02:04    [guard]   PS5-28-17 col61: '4' -> ''
+2026-10-28 09:02:04    [guard]   PS5-53-04 col61: '5' -> ''
+2026-10-28 09:02:04    [guard]   PS5-71-01 col61: '1' -> ''
+2026-10-28 09:02:04 >> local->DPR
+2026-10-28 09:10:08    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -27-October-2026.xlsx  (edits: 77151 cells / 0 notes)
+2026-10-28 09:10:08      [summery-sync] OK -> 55683 cells, 0 notes written, 15434 skipped (no matching column)
+2026-10-28 09:10:08 >> explorer rebuild
+2026-10-28 09:12:39      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9630 rows, 10954 updates
+2026-10-28 09:12:39      Punch rows: 4465 | ITR rows: 23639 | RFC: 270 | Miles: 292
+2026-10-28 09:12:39      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1141
+2026-10-28 09:12:39      Carry-over: 0 notes, 0 colored rows, 21452 pinned cells
+2026-10-28 09:12:39    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-28 09:12:39    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-28 09:12:39 >> dashboard xlsm
+2026-10-28 09:16:39    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-10-28 09:16:39      ITR rows 11 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23639 | RFC 270
+2026-10-28 09:16:39      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21452 pinned cells
+2026-10-28 09:16:39    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-10-28 09:16:39 >> platform full sync
