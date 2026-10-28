@@ -51293,3 +51293,29 @@ Call log:
 [2026-10-28 19:36:05] LOGGED IN
 [2026-10-28 19:38:45] pulled off=0 n=4000 accum=4000
 [2026-10-28 19:40:51] pulled off=4000 n=4000 accum=8000
+[2026-10-28 19:43:17] pulled off=8000 n=4000 accum=12000
+[2026-10-28 19:44:18] pulled off=12000 n=2007 accum=14007
+[2026-10-28 19:44:18] task index refreshed (6319 asset tags)
+[2026-10-28 19:44:18] milestone_map: 290 subsystems
+[2026-10-28 19:44:18] updated dashboard_data.json itr_summary.live
+[2026-10-28 19:44:19]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-28 19:44:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-28 19:44 (closed=7036) rc=0 [main a9a326f] ITR live update 2026-10-28 19:44 (closed=7036)
+ 1 file changed, 54 insertions(+), 54 deletions(-)
+[2026-10-28 19:44:24]  >> git push OK
+[2026-10-28 19:44:30]  >> pages commit rc=0 026-10-28 19:44 (closed=7036)
+ 1 file changed, 54 insertions(+), 54 deletions(-)
+[2026-10-28 19:44:34]  >> pages push OK (closed=7036)
+[2026-10-28 19:49:53] LOGGED IN
+[2026-10-28 19:52:49] pulled off=0 n=4000 accum=4000
+[2026-10-28 19:55:46] pulled off=4000 n=4000 accum=8000
+[2026-10-28 19:58:39] pulled off=8000 n=4000 accum=12000
+[2026-10-28 20:00:05] pulled off=12000 n=2007 accum=14007
+[2026-10-28 20:00:06] task index refreshed (6319 asset tags)
+[2026-10-28 20:00:07] updated dashboard_data.json itr_summary.live
+[2026-10-28 20:00:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-28 20:00:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-28 20:00 (closed=7036) rc=0 [main 390cc85] ITR live update 2026-10-28 20:00 (closed=7036)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-28 20:00:14]  >> git push OK
+[2026-10-28 20:00:18]  >> pages commit rc=0 te 2026-10-28 20:00 (closed=7036)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-28 20:00:28]  >> pages push OK (closed=7036)
