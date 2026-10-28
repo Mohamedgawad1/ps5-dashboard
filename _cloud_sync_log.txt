@@ -12933,3 +12933,10 @@
 2026-10-28 07:10:47 cloud_auto_update started (interval 300s)
 2026-10-28 07:10:49 [trigger] state changed -> rebuilding downloads+pages
 2026-10-28 07:10:49 >> cloud->DPR
+2026-10-28 07:19:02    [guard]   PS5-01-07 col61: '4' -> ''
+2026-10-28 07:19:02    [guard]   PS5-01-08 col61: '1' -> ''
+2026-10-28 07:19:02    [guard]   PS5-09-03 col61: '2' -> ''
+2026-10-28 07:19:02    [guard]   PS5-28-17 col61: '4' -> ''
+2026-10-28 07:19:02    [guard]   PS5-53-04 col61: '5' -> ''
+2026-10-28 07:19:02    [guard]   PS5-71-01 col61: '1' -> ''
+2026-10-28 07:19:02 >> local->DPR
