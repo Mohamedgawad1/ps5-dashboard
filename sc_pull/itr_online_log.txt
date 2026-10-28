@@ -51250,3 +51250,28 @@ Call log:
 [2026-10-28 17:38:24] LOGGED IN
 [2026-10-28 17:40:21] pulled off=0 n=4000 accum=4000
 [2026-10-28 17:42:20] pulled off=4000 n=4000 accum=8000
+[2026-10-28 17:44:33] pulled off=8000 n=4000 accum=12000
+[2026-10-28 17:45:28] pulled off=12000 n=2007 accum=14007
+[2026-10-28 17:45:28] task index refreshed (6319 asset tags)
+[2026-10-28 17:45:29] updated dashboard_data.json itr_summary.live
+[2026-10-28 17:45:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-28 17:45:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-28 17:45 (closed=7028) rc=0 [main a0ca7c5] ITR live update 2026-10-28 17:45 (closed=7028)
+ 1 file changed, 125 insertions(+), 107 deletions(-)
+[2026-10-28 17:45:38]  >> git push OK
+[2026-10-28 17:45:41]  >> pages commit rc=0 6-10-28 17:45 (closed=7028)
+ 1 file changed, 125 insertions(+), 107 deletions(-)
+[2026-10-28 17:45:45]  >> pages push OK (closed=7028)
+[2026-10-28 17:51:03] LOGGED IN
+[2026-10-28 17:55:15] pulled off=0 n=4000 accum=4000
+[2026-10-28 17:57:24] pulled off=4000 n=4000 accum=8000
+[2026-10-28 17:59:34] pulled off=8000 n=4000 accum=12000
+[2026-10-28 18:00:30] pulled off=12000 n=2007 accum=14007
+[2026-10-28 18:00:30] task index refreshed (6319 asset tags)
+[2026-10-28 18:00:30] updated dashboard_data.json itr_summary.live
+[2026-10-28 18:00:31]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-28 18:00:31]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-28 18:00 (closed=7032) rc=0 [main a52faee] ITR live update 2026-10-28 18:00 (closed=7032)
+ 1 file changed, 63 insertions(+), 57 deletions(-)
+[2026-10-28 18:00:44]  >> git push OK
+[2026-10-28 18:00:49]  >> pages commit rc=0 026-10-28 18:00 (closed=7032)
+ 1 file changed, 63 insertions(+), 57 deletions(-)
+[2026-10-28 18:00:53]  >> pages push OK (closed=7032)
