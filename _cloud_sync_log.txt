@@ -12955,3 +12955,15 @@
 2026-10-28 07:31:57      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21452 pinned cells
 2026-10-28 07:31:57    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
 2026-10-28 07:31:57 >> platform full sync
+2026-10-28 07:55:42     main -> main (non-fast-forward)
+2026-10-28 07:55:42    error: failed to push some refs to 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git'
+2026-10-28 07:55:42    hint: Updates were rejected because the tip of your current branch is behind
+2026-10-28 07:55:42    hint: its remote counterpart. If you want to integrate the remote changes,
+2026-10-28 07:55:42    hint: use 'git pull' before pushing again.
+2026-10-28 07:55:42    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2026-10-28 07:55:42    !!   warn(msg)
+2026-10-28 07:55:42    !! C:\Python315\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+2026-10-28 07:55:42    !!   warn(msg)
+2026-10-28 07:55:42    !! push failed - the live platform was NOT updated
+2026-10-28 07:55:42 !! platform full sync FAILED (rc=1)
+2026-10-28 07:55:42 [done] build in 2692s
