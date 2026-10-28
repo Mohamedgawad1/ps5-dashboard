@@ -6755,5 +6755,25 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00608-0415": {
+  "record": "2051091",
+  "task": "T-00608-0415",
+  "asset": "PS5-53-IN-0001-CL01",
+  "type": "Conformity Check"
+ },
+ "T-00608-0943": {
+  "record": "2051619",
+  "task": "T-00608-0943",
+  "asset": "PS5-53-IN-0001-CL02",
+  "type": "Conformity Check"
+ },
+ "T-00608-0944": {
+  "record": "2051620",
+  "task": "T-00608-0944",
+  "asset": "PS5-53-IN-0001-CL03",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
