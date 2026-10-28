@@ -12991,3 +12991,7 @@
 2026-10-28 08:22:09      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21452 pinned cells
 2026-10-28 08:22:09    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
 2026-10-28 08:22:09 >> platform full sync
+2026-10-28 08:52:09 !! platform full sync crashed: Command '['C:\\Python315\\python.exe', 'C:\\Users\\mylap\\OneDrive\\Desktop\\PS5-COMPLETION-PLATFORM\\sync_all.py']' timed out after 1800 seconds
+2026-10-28 08:52:09 [done] build in 3086s
+2026-10-28 08:57:10 [trigger] state changed -> rebuilding downloads+pages
+2026-10-28 08:57:10 >> cloud->DPR
