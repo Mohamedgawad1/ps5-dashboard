@@ -51220,3 +51220,5 @@ Call log:
  1 file changed, 33 insertions(+), 27 deletions(-)
 [2026-10-28 17:04:19]  >> pages push OK (closed=7015)
 [2026-10-28 17:10:28] LOGGED IN
+[2026-10-28 17:15:43] pulled off=0 n=4000 accum=4000
+[2026-10-28 17:19:39] pulled off=4000 n=4000 accum=8000
