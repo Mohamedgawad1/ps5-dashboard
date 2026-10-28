@@ -13311,3 +13311,22 @@
 2026-10-28 15:00:08    DONE - platform online + all downloads synced.
 2026-10-28 15:00:08 [mirror] PAGES -> _files
 2026-10-28 15:00:08 [done] build in 1494s
+2026-10-28 15:05:09 [trigger] state changed -> rebuilding downloads+pages
+2026-10-28 15:05:09 >> cloud->DPR
+2026-10-28 15:09:13    [guard]   PS5-01-07 col61: '4' -> ''
+2026-10-28 15:09:13    [guard]   PS5-01-08 col61: '1' -> ''
+2026-10-28 15:09:13    [guard]   PS5-09-03 col61: '2' -> ''
+2026-10-28 15:09:13    [guard]   PS5-28-17 col61: '4' -> ''
+2026-10-28 15:09:13    [guard]   PS5-53-04 col61: '5' -> ''
+2026-10-28 15:09:13    [guard]   PS5-71-01 col61: '1' -> ''
+2026-10-28 15:09:13 >> local->DPR
+2026-10-28 15:18:18    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -27-October-2026.xlsx  (edits: 77151 cells / 0 notes)
+2026-10-28 15:18:18      [summery-sync] OK -> 55683 cells, 0 notes written, 15434 skipped (no matching column)
+2026-10-28 15:18:18 >> explorer rebuild
+2026-10-28 15:20:07      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9630 rows, 10954 updates
+2026-10-28 15:20:07      Punch rows: 4465 | ITR rows: 23639 | RFC: 270 | Miles: 292
+2026-10-28 15:20:07      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1141
+2026-10-28 15:20:07      Carry-over: 0 notes, 0 colored rows, 21452 pinned cells
+2026-10-28 15:20:07    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-28 15:20:07    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-28 15:20:07 >> dashboard xlsm
