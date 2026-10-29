@@ -51810,3 +51810,23 @@ Call log:
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-10-29 13:13:47]  >> pages push OK (closed=7058)
 [2026-10-29 13:18:48] goto err: Page.goto: Connection closed while reading from the driver
+[2026-10-29 16:21:10] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:21:41] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:22:14] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:22:48] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:23:20] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:23:53] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:25:09] reused the sync's always-open browser (port 9222)
+[2026-10-29 16:25:09] LOOP READY (interval 300s, keep_open=True)

@@ -17,6 +17,7 @@ import json
 import os
 import re
 import shutil
+import sys
 import time
 
 import openpyxl
@@ -66,6 +67,22 @@ def norm(s):
 
 
 def find_latest_summery():
+    """Delegate to the platform's single resolver (dpr_file.find_dpr) so the
+    workbook we WRITE the platform edits into is exactly the one the build
+    READS.
+
+    Keeping a private finder here is what split them apart: this one scanned
+    Downloads\\ too, so a newer daily workbook there was picked for writes while
+    dpr_file.find_dpr() kept the older copy in the _files folder for the build.
+    """
+    try:
+        sys.path.insert(0, r'C:\Users\mylap\OneDrive\Desktop\PS5-COMPLETION-PLATFORM')
+        from dpr_file import find_dpr
+        found = find_dpr()
+        if found:
+            return found
+    except Exception as e:
+        print(f'  [summery-sync] dpr_file resolver unavailable ({e}) - using local search')
     cands = []
     for folder in (DL_SUB, HOME):
         if not os.path.isdir(folder):
