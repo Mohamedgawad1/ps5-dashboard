@@ -6967,5 +6967,101 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00069-11652": {
+  "record": "1295594",
+  "task": "T-00069-11652",
+  "asset": "PS5-09-FCU-8442A-CU01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11653": {
+  "record": "1295595",
+  "task": "T-00069-11653",
+  "asset": "PS5-09-FCU-8442A-CU02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11654": {
+  "record": "1295596",
+  "task": "T-00069-11654",
+  "asset": "PS5-09-FCU-8442B-CU01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11655": {
+  "record": "1295597",
+  "task": "T-00069-11655",
+  "asset": "PS5-09-FCU-8442B-CU02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11656": {
+  "record": "1295598",
+  "task": "T-00069-11656",
+  "asset": "PS5-09-FCU-8442C-CU01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11657": {
+  "record": "1295599",
+  "task": "T-00069-11657",
+  "asset": "PS5-09-FCU-8442C-CU02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11658": {
+  "record": "1295600",
+  "task": "T-00069-11658",
+  "asset": "PS5-09-FCU-8442D-CU01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11659": {
+  "record": "1295601",
+  "task": "T-00069-11659",
+  "asset": "PS5-09-FCU-8442D-CU02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11660": {
+  "record": "1295602",
+  "task": "T-00069-11660",
+  "asset": "PS5-09-FCU-8442E-CU01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11661": {
+  "record": "1295603",
+  "task": "T-00069-11661",
+  "asset": "PS5-09-FCU-8442E-CU02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11662": {
+  "record": "1295604",
+  "task": "T-00069-11662",
+  "asset": "PS5-09-FCU-8442F-CU01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-11663": {
+  "record": "1295605",
+  "task": "T-00069-11663",
+  "asset": "PS5-09-FCU-8442F-CU02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }

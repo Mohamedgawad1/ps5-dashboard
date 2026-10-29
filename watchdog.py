@@ -33,6 +33,78 @@ def log(msg):
 def is_running(proc):
     return proc.poll() is None
 
+# ---------------------------------------------------------------------------
+# Keep the SmartCloud Chrome window on screen.
+# An old launcher used to start Chrome with --window-position=-32000,-32000,
+# which left the window invisible: every "Open Task" tab went into a window
+# nobody could see. If that ever happens again, put it back on screen within
+# one watchdog cycle (minimised-by-user windows are left alone).
+# ---------------------------------------------------------------------------
+SC_DEBUG_PORT = 9222
+
+
+def _sc_window_handles():
+    """HWNDs of the Chrome windows that own the SmartCloud debug port."""
+    pids = set()
+    try:
+        out = subprocess.run(["netstat", "-ano", "-p", "TCP"], capture_output=True,
+                             text=True, timeout=30).stdout
+        for line in out.splitlines():
+            parts = line.split()
+            if (len(parts) >= 5 and parts[0] == "TCP"
+                    and parts[1].endswith(":%d" % SC_DEBUG_PORT)
+                    and "LISTENING" in line.upper()):
+                try:
+                    pids.add(int(parts[-1]))
+                except ValueError:
+                    pass
+    except Exception as e:
+        log(f"window guard: netstat failed ({e})")
+        return []
+    if not pids:
+        return []
+    import ctypes
+    from ctypes import wintypes
+    user32 = ctypes.windll.user32
+    found = []
+    WNDENUMPROC = ctypes.WINFUNCTYPE(ctypes.c_bool, wintypes.HWND, wintypes.LPARAM)
+
+    def _cb(hwnd, _lparam):
+        pid = wintypes.DWORD()
+        user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+        if (pid.value in pids and user32.IsWindowVisible(hwnd)
+                and user32.GetWindowTextLengthW(hwnd)):
+            found.append(hwnd)
+        return True
+
+    user32.EnumWindows(WNDENUMPROC(_cb), 0)
+    return found
+
+
+def keep_sc_window_visible():
+    try:
+        import ctypes
+        user32 = ctypes.windll.user32
+
+        class RECT(ctypes.Structure):
+            _fields_ = [("left", ctypes.c_long), ("top", ctypes.c_long),
+                        ("right", ctypes.c_long), ("bottom", ctypes.c_long)]
+
+        SW_SHOWMAXIMIZED = 3
+        SWP_SHOWWINDOW, SWP_NOACTIVATE = 0x0040, 0x0010
+        for hwnd in _sc_window_handles():
+            if user32.IsIconic(hwnd):          # minimised on purpose - leave it
+                continue
+            r = RECT()
+            user32.GetWindowRect(hwnd, ctypes.byref(r))
+            if r.left <= -30000 or r.top <= -30000:
+                user32.SetWindowPos(hwnd, 0, 80, 50, 1400, 900,
+                                    SWP_SHOWWINDOW | SWP_NOACTIVATE)
+                user32.ShowWindow(hwnd, SW_SHOWMAXIMIZED)
+                log("SC window was off-screen (-32000) -> moved back on screen")
+    except Exception as e:
+        log(f"window guard failed: {e}")
+
 def start_process(name, cmd):
     try:
         kwargs = {"cwd": BASE}
@@ -127,6 +199,8 @@ def main():
                 log(f"RESTARTING {name}")
                 procs[name] = start_process(name, cmd)
                 time.sleep(3)
+
+        keep_sc_window_visible()
 
         if check_count % 240 == 0:
             log(f"Watchdog alive - {check_count} checks. URL: {FIXED_URL}")
