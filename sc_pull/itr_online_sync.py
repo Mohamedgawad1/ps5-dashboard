@@ -3,6 +3,7 @@ import os
 import shutil
 import subprocess
 import sys
+import threading
 import time
 from collections import Counter
 import datetime
@@ -72,6 +73,11 @@ DEBUG_PORT = int(os.environ.get("ITR_DEBUG_PORT", "9222"))
 KEEP_OPEN = os.environ.get("ITR_KEEP_OPEN", "1") != "0"
 # Loop interval between pulls. Default 5 minutes; override with ITR_LOOP_SECONDS.
 LOOP_SECONDS = int(os.environ.get("ITR_LOOP_SECONDS", "300"))
+# A cycle that hangs (dead CDP link, wedged browser) must never sit silent for hours:
+# after CYCLE_MAX_SECONDS we exit and let the watchdog start a clean session.
+CYCLE_MAX_SECONDS = int(os.environ.get("ITR_CYCLE_MAX", "900"))
+# After this many failed cycles in a row, exit so the watchdog rebuilds the session.
+MAX_FAILED_CYCLES = int(os.environ.get("ITR_MAX_FAILS", "3"))
 
 FIELDS = [
     "ID", "TaskName", "AssetTag", "AssetDescription", "Description", "TaskCategorySummary",
@@ -353,7 +359,14 @@ def open_session(pw):
     return None, None
 
 
-def pull_live(page):
+def _pull_once(page):
+    """One complete pass over vTasks_TestsPlanned.
+
+    Returns the rows only when the pass finished (last page returned less than PAGE
+    rows). Any error / navigation / timeout returns None so the caller retries instead
+    of publishing a half-read dataset (a partial read used to make the live dashboard
+    show a wrong "ITR Closed" number for one cycle).
+    """
     try:
         page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
     except Exception as e:
@@ -389,20 +402,46 @@ def pull_live(page):
     all_rows = []
     off = 0
     while True:
-        r = call(page, "vTasks_TestsPlanned", FIELDS, restrictions, off=off)
+        try:
+            r = call(page, "vTasks_TestsPlanned", FIELDS, restrictions, off=off)
+        except Exception as e:
+            pr("call err off=%d: %s" % (off, str(e)[:140]))
+            return None
         if r.get("timeout"):
             pr("timeout off=%d" % off)
-            break
+            return None
         if r.get("err"):
-            pr("err off=%d: %s" % (off, r["err"][:120]))
-            break
+            pr("err off=%d: %s" % (off, r["err"][:140]))
+            return None
         n = r.get("n", 0)
         all_rows.extend(r.get("rows", []))
         pr("pulled off=%d n=%d accum=%d" % (off, n, len(all_rows)))
         if n < PAGE:
-            break
+            return all_rows
         off += PAGE
-    return all_rows
+
+
+def pull_live(page, attempts=3):
+    """Pull with retries. Never returns partial data - None means "try again later"."""
+    for attempt in range(attempts):
+        if attempt:
+            pr("pull retry %d/%d - reloading Switchboard" % (attempt + 1, attempts))
+            try:
+                page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(4000)
+            except Exception:
+                try:
+                    page.wait_for_timeout(4000)
+                except Exception:
+                    return None
+        try:
+            rows = _pull_once(page)
+        except Exception as e:
+            pr("pull attempt %d crashed: %s" % (attempt + 1, str(e)[:140]))
+            rows = None
+        if rows:
+            return rows
+    return None
 
 
 def build_state(rows):
@@ -1132,6 +1171,13 @@ def claim_single_instance():
     return True
 
 
+def _cycle_timeout():
+    """Called from a timer thread when one sync cycle hangs too long."""
+    pr("!! cycle exceeded %ds - exiting so the watchdog restarts a clean session" % CYCLE_MAX_SECONDS)
+    sys.stdout.flush()
+    os._exit(4)
+
+
 if __name__ == "__main__":
     if not claim_single_instance():
         raise SystemExit(0)
@@ -1140,41 +1186,69 @@ if __name__ == "__main__":
     if "--loop" in sys.argv:
         # keep ONE live session open across all pulls (never close it)
         with sync_playwright() as pw:
-            ctx, page = open_session(pw)
-            pr("LOOP READY (interval %ds, keep_open=%s)" % (LOOP_SECONDS, KEEP_OPEN))
+            pr("LOOP READY (interval %ds, keep_open=%s, cycle max %ds)" % (
+                LOOP_SECONDS, KEEP_OPEN, CYCLE_MAX_SECONDS))
+            fails = 0
             while True:
+                cycle_timer = None
+                page = None
                 try:
-                    if page is None or page.is_closed():
-                        pr("no pull tab yet — attaching to the open browser again")
+                    # Hard stop for a hung cycle: a wedged CDP link used to leave
+                    # this process alive but silent for hours. Exiting lets the
+                    # watchdog start a clean session.
+                    cycle_timer = threading.Timer(CYCLE_MAX_SECONDS, _cycle_timeout)
+                    cycle_timer.daemon = True
+                    cycle_timer.start()
+                    # Re-attach every cycle (cheap). A dead playwright connection is
+                    # rebuilt here instead of poisoning every future cycle.
+                    ctx, page = open_session(pw)
+                    if page is None:
+                        pr("no pull tab this cycle - retrying in %ds" % LOOP_SECONDS)
+                    elif page.is_closed():
+                        pr("pull tab was closed - reopening")
                         ctx, page = open_session(pw)
-                        if page is None:
-                            for _ in range(LOOP_SECONDS // 5):
-                                time.sleep(5)
-                            continue
-                    rows = pull_live(page)
-                    if rows:
+                    if page is not None:
+                        rows = pull_live(page)
+                        if rows:
+                            try:
+                                write_task_index(rows)
+                            except Exception as e:
+                                pr("task index err:", str(e)[:120])
+                            load_milestone_map()
+                            state = build_state(rows)
+                            write_local(state)
+                            ensure_web_files()
+                            inject_into_index(CLONE)
+                            with open(os.path.join(CLONE, "itr_live_state.json") if os.path.isdir(CLONE) else os.devnull,
+                                      "w", encoding="utf-8") as f:
+                                json.dump(state, f, ensure_ascii=False, indent=2)
+                            git_push(CLONE, state)
+                            pages_push(state)
+                            fails = 0
+                            pr("cycle OK closed=%d open=%d updated=%s" % (
+                                state["closed"], state["open"], state["updated"]))
+                        else:
+                            fails += 1
+                            pr("cycle got no complete data (fail %d/%d)" % (fails, MAX_FAILED_CYCLES))
                         try:
-                            write_task_index(rows)
-                        except Exception as e:
-                            pr("task index err:", str(e)[:120])
-                        load_milestone_map()
-                        state = build_state(rows)
-                        write_local(state)
-                        ensure_web_files()
-                        inject_into_index(CLONE)
-                        with open(os.path.join(CLONE, "itr_live_state.json") if os.path.isdir(CLONE) else os.devnull,
-                                  "w", encoding="utf-8") as f:
-                            json.dump(state, f, ensure_ascii=False, indent=2)
-                        git_push(CLONE, state)
-                        pages_push(state)
-                    try:
-                        if page is not None and not page.is_closed():
-                            page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
-                    except Exception:
-                        pass
+                            if not page.is_closed():
+                                page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                        except Exception:
+                            pass
                 except Exception as e:
-                    pr("LOOP ERR:", str(e)[:200])
-                for _ in range(LOOP_SECONDS // 5):
+                    fails += 1
+                    pr("LOOP ERR:", str(e)[:200], "(fail %d/%d)" % (fails, MAX_FAILED_CYCLES))
+                finally:
+                    if cycle_timer is not None:
+                        cycle_timer.cancel()
+                if fails >= MAX_FAILED_CYCLES:
+                    pr("!! %d cycles in a row failed - exiting so the watchdog restarts a clean session" % fails)
+                    sys.stdout.flush()
+                    os._exit(3)
+                # If the browser was unreachable, retry soon instead of waiting the
+                # full interval - the browser usually comes back within a minute.
+                wait = LOOP_SECONDS if page is not None else 60
+                for _ in range(max(1, wait // 5)):
                     time.sleep(5)
     else:
         sys.exit(run_once())

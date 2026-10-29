@@ -51830,3 +51830,9 @@ Call log:
   -  -> will retry next cycle, no new window
 [2026-10-29 16:25:09] reused the sync's always-open browser (port 9222)
 [2026-10-29 16:25:09] LOOP READY (interval 300s, keep_open=True)
+[2026-10-29 16:25:39] LOGGED IN
+[2026-10-29 16:29:35] pulled off=0 n=4000 accum=4000
+[2026-10-29 16:29:36] LOOP ERR: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-10-29 16:35:12] LOGGED IN
+[2026-10-29 16:39:47] err off=0: [object Object]
+[2026-10-29 16:44:54] LOOP READY (interval 300s, keep_open=True, cycle max 900s)

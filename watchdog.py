@@ -177,6 +177,51 @@ hr{{border:none;border-top:1px solid rgba(255,255,255,.15);margin:16px 0}}
 FIXED_URL = "https://app.mohamedgawwad.is-a.dev"
 FIXED_URL_HTTP = "http://app.mohamedgawwad.is-a.dev"
 
+# ---------------------------------------------------------------------------
+# Data freshness guard: the live dashboard must never show data older than
+# ITR_STALE_SEC. If the sync process is alive but its data goes stale (wedged
+# browser, expired CDP link, silent hang) restart it instead of waiting hours.
+# ---------------------------------------------------------------------------
+ITR_STATE = os.path.join(BASE, "itr_live_state.json")
+ITR_STALE_SEC = int(os.environ.get("ITR_STALE_SEC", "2400"))          # 40 min
+ITR_RESTART_COOLDOWN = int(os.environ.get("ITR_RESTART_COOLDOWN", "1800"))  # 30 min
+_last_itr_restart = 0.0
+
+
+def kill_process(p):
+    if not p or p.poll() is not None:
+        return
+    try:
+        if sys.platform == "win32":
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(p.pid)],
+                           capture_output=True, timeout=60)
+        else:
+            p.kill()
+    except Exception as e:
+        log(f"kill failed: {e}")
+
+
+def keep_itr_fresh(procs):
+    """Restart itr_online when the live data file has not been refreshed in time."""
+    global _last_itr_restart
+    p = procs.get("itr_online")
+    if not p or not is_running(p):
+        return  # a dead process is already handled by the restart loop
+    if time.time() - _last_itr_restart < ITR_RESTART_COOLDOWN:
+        return
+    try:
+        age = time.time() - os.path.getmtime(ITR_STATE)
+    except OSError:
+        return
+    if age <= ITR_STALE_SEC:
+        return
+    log(f"ITR data is {int(age // 60)} min old (limit {ITR_STALE_SEC // 60} min) -> restarting itr_online")
+    kill_process(p)
+    time.sleep(3)
+    procs["itr_online"] = start_process("itr_online", PROCESSES["itr_online"])
+    _last_itr_restart = time.time()
+
+
 def main():
     log("=" * 50)
     log("Watchdog started - keeping everything alive")
@@ -201,6 +246,7 @@ def main():
                 time.sleep(3)
 
         keep_sc_window_visible()
+        keep_itr_fresh(procs)
 
         if check_count % 240 == 0:
             log(f"Watchdog alive - {check_count} checks. URL: {FIXED_URL}")
