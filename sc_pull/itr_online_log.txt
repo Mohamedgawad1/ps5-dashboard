@@ -51836,3 +51836,94 @@ Call log:
 [2026-10-29 16:35:12] LOGGED IN
 [2026-10-29 16:39:47] err off=0: [object Object]
 [2026-10-29 16:44:54] LOOP READY (interval 300s, keep_open=True, cycle max 900s)
+[2026-10-29 16:45:14] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:45:16] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/d3bb1c (fail 1/3)
+[2026-10-29 16:46:37] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:46:39] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/d3bb1c (fail 2/3)
+[2026-10-29 16:47:59] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:48:01] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/d3bb1c (fail 3/3)
+[2026-10-29 16:48:01] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-10-29 16:48:13] LOOP READY (interval 300s, keep_open=True, cycle max 900s)
+[2026-10-29 16:48:34] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> will retry next cycle, no new window
+[2026-10-29 16:48:36] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/d3bb1c (fail 1/3)
+[2026-10-29 16:50:01] LOOP READY (interval 300s, keep_open=True, cycle max 900s)
+[2026-10-29 16:50:21] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> checking for frozen tabs
+[2026-10-29 16:50:25] close err: Expecting value: line 1 column 1 (char 0)
+[2026-10-29 16:50:25] no frozen tab found -> will retry next cycle, no new window
+[2026-10-29 16:50:27] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/d3bb1c (fail 1/3)
+[2026-10-29 16:51:04] LOOP READY (interval 300s, keep_open=True, cycle max 900s)
+[2026-10-29 16:51:05] reused the sync's always-open browser (port 9222)
+[2026-10-29 16:52:05] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-29 16:52:51] session expired -> auto-login
+[2026-10-29 16:53:28] ssologin click: no-btn
+[2026-10-29 16:53:49] LOGGED IN
+[2026-10-29 16:54:33] pulled off=0 n=4000 accum=4000
+[2026-10-29 16:55:02] pulled off=4000 n=4000 accum=8000
+[2026-10-29 16:55:38] pulled off=8000 n=4000 accum=12000
+[2026-10-29 16:55:59] pulled off=12000 n=2007 accum=14007
+[2026-10-29 16:55:59] task index refreshed (6319 asset tags)
+[2026-10-29 16:55:59] milestone_map: 290 subsystems
+[2026-10-29 16:55:59] updated dashboard_data.json itr_summary.live
+[2026-10-29 16:56:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-29 16:56:02]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-29 16:56 (closed=7082) rc=0 [main e9233e2] ITR live update 2026-10-29 16:56 (closed=7082)
+ 1 file changed, 246 insertions(+), 240 deletions(-)
+[2026-10-29 16:56:07]  >> git push OK
+[2026-10-29 16:56:11]  >> pages commit rc=0 6-10-29 16:56 (closed=7082)
+ 1 file changed, 246 insertions(+), 240 deletions(-)
+[2026-10-29 16:56:30]  !! pages push failed: ['send-pack: unexpected disconnect while reading sideband packet', 'fatal: the remote end hung up unexpectedly', 'Everything up-to-date']
+[2026-10-29 16:56:31] cycle OK closed=7082 open=3216 updated=2026-10-29 16:55:59
+[2026-10-29 17:01:56] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> checking for frozen tabs
+[2026-10-29 17:02:00] closed frozen tab 02455740 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-29 17:02:01] reused the sync's always-open browser (port 9222)
+[2026-10-29 17:02:52] LOGGED IN
+[2026-10-29 17:04:07] err off=0: [object Object]
+[2026-10-29 17:04:07] pull retry 2/3 - reloading Switchboard
+[2026-10-29 17:04:33] goto err: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashbo
+[2026-10-29 17:16:36] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-10-29 17:16:52] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-29 17:17:51] reused the sync's always-open browser (port 9222)
+[2026-10-29 17:17:54] LOGGED IN
+[2026-10-29 17:18:09] pulled off=0 n=4000 accum=4000
+[2026-10-29 17:18:48] pulled off=4000 n=4000 accum=8000
+[2026-10-29 17:19:11] pulled off=8000 n=4000 accum=12000
+[2026-10-29 17:19:33] pulled off=12000 n=2007 accum=14007
+[2026-10-29 17:19:33] task index refreshed (6319 asset tags)
+[2026-10-29 17:19:33] milestone_map: 290 subsystems
+[2026-10-29 17:19:33] updated dashboard_data.json itr_summary.live
+[2026-10-29 17:19:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-29 17:19:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-29 17:19 (closed=7094) rc=0 [main 5c2a2da] ITR live update 2026-10-29 17:19 (closed=7094)
+ 1 file changed, 126 insertions(+), 126 deletions(-)
+[2026-10-29 17:19:42]  >> git push OK
+[2026-10-29 17:19:48]  >> pages commit rc=0 6-10-29 17:19 (closed=7094)
+ 1 file changed, 362 insertions(+), 356 deletions(-)
+[2026-10-29 17:19:52]  >> pages push OK (closed=7094)
+[2026-10-29 17:19:52] cycle OK closed=7094 open=3204 updated=2026-10-29 17:19:33

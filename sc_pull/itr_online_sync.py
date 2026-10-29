@@ -5,6 +5,7 @@ import subprocess
 import sys
 import threading
 import time
+import urllib.request
 from collections import Counter
 import datetime
 
@@ -75,7 +76,7 @@ KEEP_OPEN = os.environ.get("ITR_KEEP_OPEN", "1") != "0"
 LOOP_SECONDS = int(os.environ.get("ITR_LOOP_SECONDS", "300"))
 # A cycle that hangs (dead CDP link, wedged browser) must never sit silent for hours:
 # after CYCLE_MAX_SECONDS we exit and let the watchdog start a clean session.
-CYCLE_MAX_SECONDS = int(os.environ.get("ITR_CYCLE_MAX", "900"))
+CYCLE_MAX_SECONDS = int(os.environ.get("ITR_CYCLE_MAX", "600"))
 # After this many failed cycles in a row, exit so the watchdog rebuilds the session.
 MAX_FAILED_CYCLES = int(os.environ.get("ITR_MAX_FAILS", "3"))
 
@@ -310,6 +311,83 @@ def _kill_profile_chrome():
     return False
 
 
+def _cdp_json(port, path, timeout=5):
+    with urllib.request.urlopen("http://127.0.0.1:%d%s" % (port, path), timeout=timeout) as r:
+        body = r.read().decode("utf-8", "replace")
+    try:
+        return json.loads(body)
+    except Exception:
+        return body
+
+
+def _page_alive(ws_url, timeout=4):
+    """True when the tab's renderer answers a trivial Runtime.evaluate."""
+    try:
+        from websocket import create_connection
+    except Exception:
+        return True  # cannot check -> do not touch anything
+    ws = None
+    try:
+        ws = create_connection(ws_url, timeout=timeout, suppress_origin=True)
+        ws.settimeout(timeout)
+        ws.send(json.dumps({"id": 1, "method": "Runtime.evaluate",
+                            "params": {"expression": "1+1", "returnByValue": True}}))
+        while True:
+            msg = json.loads(ws.recv())
+            if msg.get("id") == 1:
+                return True
+    except Exception:
+        return False
+    finally:
+        if ws is not None:
+            try:
+                ws.close()
+            except Exception:
+                pass
+
+
+def close_frozen_tabs(port, all_pages=False):
+    """Close tabs whose renderer is wedged (infinite loop / dead page).
+
+    A single frozen tab makes Playwright's connect_over_cdp hang forever while it
+    initialises targets, and a frozen pull tab swallows the patched evaluate call for
+    hours. Default sweep only touches Switchboard dashboards (always responsive when
+    healthy, and duplicates exist); all_pages=True is the deeper fallback.
+    """
+    try:
+        targets = _cdp_json(port, "/json/list")
+    except Exception as e:
+        pr("target list err:", str(e)[:70])
+        return 0
+    if not isinstance(targets, list):
+        pr("target list unusable:", str(targets)[:70])
+        return 0
+    closed = 0
+    from websocket import create_connection  # noqa: F401  (used by _page_alive)
+    for t in targets:
+        if t.get("type") != "page":
+            continue
+        url = t.get("url") or ""
+        ours = url.startswith(MARK_URL)
+        is_switch = "vDashboardsUsers/Switchboard.htm" in url
+        if not (all_pages or ours or is_switch):
+            continue
+        if _page_alive(t.get("webSocketDebuggerUrl") or ""):
+            continue
+        try:
+            _cdp_json(port, "/json/close/" + t["id"], timeout=10)
+            closed += 1
+            tag = "pull tab (will reopen)" if ours else "frozen tab"
+            pr("closed %s %s %s" % (tag, t["id"][:8], url[:70]))
+        except Exception as e:
+            pr("close err:", str(e)[:70])
+    return closed
+
+
+def _connect(pw, port, timeout=20000):
+    return pw.chromium.connect_over_cdp("http://127.0.0.1:%d" % port, timeout=timeout)
+
+
 def open_session(pw):
     """Attach to the sync's OWN dedicated light browser (DEBUG_PORT), which stays open
     forever and is reused every cycle. The user's 9222 work browser is never touched,
@@ -320,12 +398,31 @@ def open_session(pw):
         port = _our_port()
     if port:
         try:
-            conn = pw.chromium.connect_over_cdp("http://127.0.0.1:%d" % port, timeout=20000)
+            n = close_frozen_tabs(port)
+            if n:
+                pr("pre-cycle cleanup: %d wedged tab(s) closed" % n)
+        except Exception as ce:
+            pr("pre-cycle check err:", str(ce)[:60])
+        try:
+            conn = _connect(pw, port)
         except Exception as e:
-            # browser process may be wedged this cycle - back off, DON'T relaunch
-            pr("reuse failed: %s -> will retry next cycle, no new window" % str(e)[:70])
-            time.sleep(2)
-            raise
+            # Deeper sweep: anything wedged blocks target initialisation.
+            pr("reuse failed: %s -> deep frozen-tab check" % str(e)[:70])
+            try:
+                closed = close_frozen_tabs(port, all_pages=True)
+            except Exception as ce:
+                pr("frozen-tab check err:", str(ce)[:60])
+                closed = 0
+            if not closed:
+                pr("no frozen tab found -> will retry next cycle, no new window")
+                time.sleep(2)
+                raise
+            try:
+                conn = _connect(pw, port)
+            except Exception as e2:
+                pr("reuse failed after cleanup: %s -> will retry next cycle" % str(e2)[:70])
+                time.sleep(2)
+                raise
         # reuse the dedicated pull tab if it exists, else open a fresh one for our pull
         ours = None
         for c in (conn.contexts or []):
@@ -791,6 +888,14 @@ def pages_push(state):
             if rr.returncode != 0:
                 pr(" !! pages rebase failed:", (rr.stderr or "")[-300:])
                 return rr.returncode
+            continue
+        transient = ("disconnect" in err or "hung up" in err or "RPC failed" in err
+                     or "early EOF" in err or "timed out" in err.lower())
+        if transient and attempt < 3:
+            pr(" .. pages push hiccup (attempt %d) - retrying" % (attempt + 1))
+            time.sleep(5)
+            subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
+                           capture_output=True, text=True, timeout=300)
             continue
         pr(" !! pages push failed:", err.splitlines()[-3:])
         return r.returncode
