@@ -51394,3 +51394,7 @@ Call log:
 [2026-10-28 21:41:07]  >> pages commit rc=0  2026-10-28 21:41 (closed=7036)
  1 file changed, 3 insertions(+), 3 deletions(-)
 [2026-10-28 21:41:15]  >> pages push OK (closed=7036)
+[2026-10-29 07:32:49] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-29 07:32:49] LOOP READY (interval 300s, keep_open=True)
+[2026-10-29 07:32:49] no pull tab yet — attaching to the open browser again
+[2026-10-29 07:32:50] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
