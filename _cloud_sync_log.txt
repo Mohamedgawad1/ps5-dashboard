@@ -13577,3 +13577,7 @@
 2026-10-29 14:16:52 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
 2026-10-29 14:27:49 [warn] cloud fetch failed: The read operation timed out
 2026-10-29 14:33:35 [warn] cloud fetch failed: The read operation timed out
+2026-10-29 14:49:02 [warn] cloud fetch failed: <urlopen error [WinError 10051] A socket operation was attempted to an unreachable network>
+2026-10-29 14:54:10 [warn] cloud fetch failed: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>
+2026-10-29 15:50:47 [warn] cloud fetch failed: The read operation timed out
+2026-10-29 15:56:21 [warn] cloud fetch failed: The read operation timed out
