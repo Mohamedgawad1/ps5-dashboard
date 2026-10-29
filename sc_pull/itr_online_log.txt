@@ -51414,3 +51414,71 @@ Call log:
 [2026-10-29 07:43:17] verify submit: submitted
 [2026-10-29 07:45:04] auto-login attempt 3 still not logged in
 [2026-10-29 07:55:06] WAITING FOR MANUAL LOGIN...
+[2026-10-29 08:02:12] goto err: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://wly0
+[2026-10-29 08:02:57] session expired -> auto-login
+[2026-10-29 08:02:57] LOOP ERR: Page.wait_for_timeout: Target page, context or browser has been closed
+[2026-10-29 08:07:57] no pull tab yet — attaching to the open browser again
+[2026-10-29 08:08:02] reused the sync's always-open browser (port 9222)
+[2026-10-29 08:08:06] LOGGED IN
+[2026-10-29 08:08:22] LOOP ERR: Page.evaluate: Target page, context or browser has been closed
+[2026-10-29 08:13:22] no pull tab yet — attaching to the open browser again
+[2026-10-29 08:13:27] reused the sync's always-open browser (port 9222)
+[2026-10-29 08:13:32] LOGGED IN
+[2026-10-29 08:14:07] pulled off=0 n=4000 accum=4000
+[2026-10-29 08:14:41] pulled off=4000 n=4000 accum=8000
+[2026-10-29 08:15:20] pulled off=8000 n=4000 accum=12000
+[2026-10-29 08:15:45] pulled off=12000 n=2007 accum=14007
+[2026-10-29 08:15:46] task index refreshed (6319 asset tags)
+[2026-10-29 08:15:46] milestone_map: 290 subsystems
+[2026-10-29 08:15:47] updated dashboard_data.json itr_summary.live
+[2026-10-29 08:15:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-29 08:15:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-29 08:15 (closed=7036) rc=0 [main e4c0f38] ITR live update 2026-10-29 08:15 (closed=7036)
+ 1 file changed, 13 insertions(+), 56 deletions(-)
+[2026-10-29 08:15:58]  >> git push OK
+[2026-10-29 08:16:03]  >> pages commit rc=0 026-10-29 08:16 (closed=7036)
+ 1 file changed, 13 insertions(+), 56 deletions(-)
+[2026-10-29 08:16:08]  >> pages push OK (closed=7036)
+[2026-10-29 08:21:19] LOGGED IN
+[2026-10-29 08:21:45] pulled off=0 n=4000 accum=4000
+[2026-10-29 08:22:17] pulled off=4000 n=4000 accum=8000
+[2026-10-29 08:22:46] pulled off=8000 n=4000 accum=12000
+[2026-10-29 08:23:06] pulled off=12000 n=2007 accum=14007
+[2026-10-29 08:23:06] task index refreshed (6319 asset tags)
+[2026-10-29 08:23:06] updated dashboard_data.json itr_summary.live
+[2026-10-29 08:23:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-29 08:23:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-29 08:23 (closed=7036) rc=0 [main e9bf370] ITR live update 2026-10-29 08:23 (closed=7036)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-29 08:23:13]  >> git push OK
+[2026-10-29 08:23:17]  >> pages commit rc=0 te 2026-10-29 08:23 (closed=7036)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-29 08:23:21]  >> pages push OK (closed=7036)
+[2026-10-29 08:28:32] LOGGED IN
+[2026-10-29 08:29:39] pulled off=0 n=4000 accum=4000
+[2026-10-29 08:31:20] pulled off=4000 n=4000 accum=8000
+[2026-10-29 08:31:51] pulled off=8000 n=4000 accum=12000
+[2026-10-29 08:32:05] pulled off=12000 n=2007 accum=14007
+[2026-10-29 08:32:05] task index refreshed (6319 asset tags)
+[2026-10-29 08:32:06] updated dashboard_data.json itr_summary.live
+[2026-10-29 08:32:10]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-29 08:32:12]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-29 08:32 (closed=7036) rc=0 [main 05c7f46] ITR live update 2026-10-29 08:32 (closed=7036)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-29 08:32:27]  >> git push OK
+[2026-10-29 08:32:37]  >> pages commit rc=0  2026-10-29 08:32 (closed=7036)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-29 08:32:41]  >> pages push OK (closed=7036)
+[2026-10-29 08:37:48] LOGGED IN
+[2026-10-29 08:38:22] pulled off=0 n=4000 accum=4000
+[2026-10-29 08:38:50] pulled off=4000 n=4000 accum=8000
+[2026-10-29 08:39:09] pulled off=8000 n=4000 accum=12000
+[2026-10-29 08:39:32] pulled off=12000 n=2007 accum=14007
+[2026-10-29 08:39:33] task index refreshed (6319 asset tags)
+[2026-10-29 08:39:34] updated dashboard_data.json itr_summary.live
+[2026-10-29 08:39:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-29 08:39:38]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-29 08:39 (closed=7037) rc=0 [main 257bbe2] ITR live update 2026-10-29 08:39 (closed=7037)
+ 1 file changed, 33 insertions(+), 26 deletions(-)
+[2026-10-29 08:39:42]  >> git push OK
+[2026-10-29 08:39:46]  >> pages commit rc=0 026-10-29 08:39 (closed=7037)
+ 1 file changed, 33 insertions(+), 26 deletions(-)
+[2026-10-29 08:39:51]  >> pages push OK (closed=7037)
