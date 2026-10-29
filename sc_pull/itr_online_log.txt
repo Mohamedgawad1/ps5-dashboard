@@ -51398,3 +51398,9 @@ Call log:
 [2026-10-29 07:32:49] LOOP READY (interval 300s, keep_open=True)
 [2026-10-29 07:32:49] no pull tab yet — attaching to the open browser again
 [2026-10-29 07:32:50] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-29 07:37:50] no pull tab yet — attaching to the open browser again
+[2026-10-29 07:37:57] reused the sync's always-open browser (port 9222)
+[2026-10-29 07:38:48] session expired -> auto-login
+[2026-10-29 07:38:53] ssologin click: ok
+[2026-10-29 07:39:03] sso handoff -> verify password page
+[2026-10-29 07:39:06] verify submit: submitted
