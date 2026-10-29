@@ -51404,3 +51404,13 @@ Call log:
 [2026-10-29 07:38:53] ssologin click: ok
 [2026-10-29 07:39:03] sso handoff -> verify password page
 [2026-10-29 07:39:06] verify submit: submitted
+[2026-10-29 07:40:54] auto-login attempt 1 still not logged in
+[2026-10-29 07:40:59] ssologin click: ok
+[2026-10-29 07:41:09] sso handoff -> verify password page
+[2026-10-29 07:41:11] verify submit: submitted
+[2026-10-29 07:42:58] auto-login attempt 2 still not logged in
+[2026-10-29 07:43:04] ssologin click: ok
+[2026-10-29 07:43:14] sso handoff -> verify password page
+[2026-10-29 07:43:17] verify submit: submitted
+[2026-10-29 07:45:04] auto-login attempt 3 still not logged in
+[2026-10-29 07:55:06] WAITING FOR MANUAL LOGIN...
