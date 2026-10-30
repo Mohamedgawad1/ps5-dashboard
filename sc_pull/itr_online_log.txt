@@ -53127,3 +53127,12 @@ Call log:
 [2026-10-30 20:55:34] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
 [2026-10-30 20:55:44] closed frozen tab 699A80FE https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
 [2026-10-30 20:55:44] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 20:56:24] reused the sync's always-open browser (port 9222)
+[2026-10-30 20:57:20] session expired -> auto-login
+[2026-10-30 20:57:25] ssologin click: ok
+[2026-10-30 20:57:35] sso handoff -> verify password page
+[2026-10-30 20:57:38] verify submit: submitted
+[2026-10-30 20:59:29] auto-login attempt 1 still not logged in
+[2026-10-30 20:59:33] ssologin click: ok
+[2026-10-30 20:59:43] sso handoff -> verify password page
+[2026-10-30 20:59:45] verify submit: submitted
