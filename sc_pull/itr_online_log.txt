@@ -52841,3 +52841,75 @@ Call log:
 [2026-10-30 14:16:40]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 14:16 (closed=7103) rc=0 [main e9b88aa] ITR live update 2026-10-30 14:16 (closed=7103)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-10-30 14:16:44]  >> git push OK
+[2026-10-30 14:22:43] LOOP ERR: Command '['git', '-C', 'C:\\Users\\mylap\\AppData\\Local\\Temp\\ps5_pages_deploy', 'fetch', '--depth', '1', 'origin', 'main']' timed out after 300 seconds (fail 1/3)
+[2026-10-30 14:28:49] reused the sync's always-open browser (port 9222)
+[2026-10-30 14:29:49] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 14:30:37] LOGGED IN
+[2026-10-30 14:37:43] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 14:37:57] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 14:38:01] closed frozen tab D034C651 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 14:38:01] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 14:39:02] reused the sync's always-open browser (port 9222)
+[2026-10-30 14:40:02] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 14:40:48] session expired -> auto-login
+[2026-10-30 14:41:36] ssologin click: no-btn
+[2026-10-30 14:43:47] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 14:44:22] LOGGED IN
+[2026-10-30 14:47:57] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 14:48:00] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 14:48:04] closed frozen tab D9482396 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 14:48:04] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 14:49:05] reused the sync's always-open browser (port 9222)
+[2026-10-30 14:50:05] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 14:50:59] session expired -> auto-login
+[2026-10-30 14:51:47] ssologin click: no-btn
+[2026-10-30 14:53:57] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 14:55:41] LOGGED IN
+[2026-10-30 14:56:54] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 14:56:58] closed frozen tab EB4AF0D1 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 14:56:58] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 14:57:59] reused the sync's always-open browser (port 9222)
+[2026-10-30 14:58:59] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 14:59:12] LOGGED IN
+[2026-10-30 15:06:54] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 15:07:09] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 15:07:13] closed frozen tab CFE0C7E8 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 15:07:13] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 15:08:14] reused the sync's always-open browser (port 9222)
+[2026-10-30 15:09:14] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:10:00] session expired -> auto-login
+[2026-10-30 15:10:48] ssologin click: no-btn
+[2026-10-30 15:12:58] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:13:59] auto-login attempt 1 still not logged in
+[2026-10-30 15:14:47] ssologin click: no-btn
+[2026-10-30 15:16:57] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:17:09] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 15:17:13] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 15:18:14] reused the sync's always-open browser (port 9222)
+[2026-10-30 15:19:14] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:20:00] session expired -> auto-login
+[2026-10-30 15:20:37] ssologin click: ok
+[2026-10-30 15:22:50] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:23:24] LOGGED IN
