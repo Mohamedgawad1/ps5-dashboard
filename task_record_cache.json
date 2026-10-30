@@ -7159,5 +7159,93 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00023-11250": {
+  "record": "2183833",
+  "task": "T-00023-11250",
+  "asset": "PS5-71-BE-0001A-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-11251": {
+  "record": "2183834",
+  "task": "T-00023-11251",
+  "asset": "PS5-71-BE-0001A-CL02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-11252": {
+  "record": "2183835",
+  "task": "T-00023-11252",
+  "asset": "PS5-71-BE-0001A-CL03",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-11253": {
+  "record": "2183836",
+  "task": "T-00023-11253",
+  "asset": "PS5-71-BE-0001A-CL04",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-11254": {
+  "record": "2183837",
+  "task": "T-00023-11254",
+  "asset": "PS5-71-BE-0001A-CL05",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-11259": {
+  "record": "2183842",
+  "task": "T-00023-11259",
+  "asset": "PS5-71-BE-0001A-CL10",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0421": {
+  "record": "2051097",
+  "task": "T-00608-0421",
+  "asset": "PS5-61-IG-0006-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0422": {
+  "record": "2051098",
+  "task": "T-00608-0422",
+  "asset": "PS5-61-IG-0007-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0252": {
+  "record": "2052866",
+  "task": "T-00610-0252",
+  "asset": "PS5-61-IG-0006-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0253": {
+  "record": "2052867",
+  "task": "T-00610-0253",
+  "asset": "PS5-61-IG-0007-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0217": {
+  "record": "2052831",
+  "task": "T-00610-0217",
+  "asset": "PS5-28-IES-3900B-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
