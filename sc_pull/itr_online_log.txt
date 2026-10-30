@@ -51927,3 +51927,69 @@ Call log:
  1 file changed, 362 insertions(+), 356 deletions(-)
 [2026-10-29 17:19:52]  >> pages push OK (closed=7094)
 [2026-10-29 17:19:52] cycle OK closed=7094 open=3204 updated=2026-10-29 17:19:33
+[2026-10-29 17:24:53] reused the sync's always-open browser (port 9222)
+[2026-10-29 17:24:56] LOGGED IN
+[2026-10-29 17:25:05] pulled off=0 n=4000 accum=4000
+[2026-10-29 17:25:17] pulled off=4000 n=4000 accum=8000
+[2026-10-29 17:25:28] pulled off=8000 n=4000 accum=12000
+[2026-10-29 17:25:34] pulled off=12000 n=2007 accum=14007
+[2026-10-29 17:25:34] task index refreshed (6319 asset tags)
+[2026-10-29 17:25:35] updated dashboard_data.json itr_summary.live
+[2026-10-29 17:25:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-29 17:25:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-29 17:25 (closed=7103) rc=0 [main 1673ce4] ITR live update 2026-10-29 17:25 (closed=7103)
+ 1 file changed, 99 insertions(+), 99 deletions(-)
+[2026-10-29 17:25:42]  >> git push OK
+[2026-10-29 17:25:46]  >> pages commit rc=0 026-10-29 17:25 (closed=7103)
+ 1 file changed, 99 insertions(+), 99 deletions(-)
+[2026-10-29 17:25:52]  >> pages push OK (closed=7103)
+[2026-10-29 17:25:52] cycle OK closed=7103 open=3195 updated=2026-10-29 17:25:35
+[2026-10-29 17:30:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-29 17:30:58] no pull tab this cycle - retrying in 300s
+[2026-10-29 17:32:03] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-29 17:32:03] no pull tab this cycle - retrying in 300s
+[2026-10-29 17:33:25] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-10-29 17:33:25] no frozen tab found -> will retry next cycle, no new window
+[2026-10-29 17:33:27] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/138ee2 (fail 1/3)
+[2026-10-29 17:35:19] reused the sync's always-open browser (port 9222)
+[2026-10-30 07:07:26] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 07:07:27] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 07:07:27] no pull tab this cycle - retrying in 300s
+[2026-10-30 07:07:42] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 07:07:43] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 07:07:43] no pull tab this cycle - retrying in 300s
+[2026-10-30 07:08:44] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 07:08:44] no pull tab this cycle - retrying in 300s
+[2026-10-30 07:09:54] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 07:09:55] no pull tab this cycle - retrying in 300s
+[2026-10-30 07:10:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 07:10:58] no pull tab this cycle - retrying in 300s
+[2026-10-30 07:12:01] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 07:12:01] no pull tab this cycle - retrying in 300s
+[2026-10-30 07:13:12] reused the sync's always-open browser (port 9222)
+[2026-10-30 07:14:04] session expired -> auto-login
+[2026-10-30 07:14:08] ssologin click: ok
+[2026-10-30 07:14:18] sso handoff -> verify password page
+[2026-10-30 07:14:21] verify submit: submitted
+[2026-10-30 07:14:45] LOGGED IN
+[2026-10-30 07:15:09] pulled off=0 n=4000 accum=4000
+[2026-10-30 07:15:33] pulled off=4000 n=4000 accum=8000
+[2026-10-30 07:15:58] pulled off=8000 n=4000 accum=12000
+[2026-10-30 07:16:09] pulled off=12000 n=2007 accum=14007
+[2026-10-30 07:16:09] task index refreshed (6319 asset tags)
+[2026-10-30 07:16:09] milestone_map: 290 subsystems
+[2026-10-30 07:16:10] updated dashboard_data.json itr_summary.live
+[2026-10-30 07:16:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-30 07:16:15]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 07:16 (closed=7103) rc=0 [main f29c089] ITR live update 2026-10-30 07:16 (closed=7103)
+ 1 file changed, 11 insertions(+), 24 deletions(-)
+[2026-10-30 07:16:27]  >> git push OK
+[2026-10-30 07:16:37]  >> pages commit rc=0 026-10-30 07:16 (closed=7103)
+ 1 file changed, 11 insertions(+), 24 deletions(-)
+[2026-10-30 07:16:42]  >> pages push OK (closed=7103)
+[2026-10-30 07:16:42] cycle OK closed=7103 open=3195 updated=2026-10-30 07:16:10
+[2026-10-30 07:22:05] reused the sync's always-open browser (port 9222)
+[2026-10-30 07:22:41] LOGGED IN
