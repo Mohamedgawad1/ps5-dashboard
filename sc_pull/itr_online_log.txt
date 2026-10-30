@@ -52291,3 +52291,49 @@ Call log:
 [2026-10-30 09:41:28] goto err: Page.goto: Timeout 60000ms exceeded.
 Call log:
   - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 09:42:05] LOGGED IN
+[2026-10-30 09:42:21] pulled off=0 n=4000 accum=4000
+[2026-10-30 09:42:38] pulled off=4000 n=4000 accum=8000
+[2026-10-30 09:42:50] pulled off=8000 n=4000 accum=12000
+[2026-10-30 09:42:58] pulled off=12000 n=2007 accum=14007
+[2026-10-30 09:42:58] task index refreshed (6319 asset tags)
+[2026-10-30 09:42:59] updated dashboard_data.json itr_summary.live
+[2026-10-30 09:43:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-30 09:43:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 09:43 (closed=7103) rc=0 [main 28691c6] ITR live update 2026-10-30 09:43 (closed=7103)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-30 09:43:07]  >> git push OK
+[2026-10-30 09:43:11]  >> pages commit rc=0  2026-10-30 09:43 (closed=7103)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-30 09:43:16]  >> pages push OK (closed=7103)
+[2026-10-30 09:43:16] cycle OK closed=7103 open=3195 updated=2026-10-30 09:42:59
+[2026-10-30 09:48:18] reused the sync's always-open browser (port 9222)
+[2026-10-30 09:48:22] LOGGED IN
+[2026-10-30 09:48:36] pulled off=0 n=4000 accum=4000
+[2026-10-30 09:48:47] pulled off=4000 n=4000 accum=8000
+[2026-10-30 09:48:59] pulled off=8000 n=4000 accum=12000
+[2026-10-30 09:49:04] pulled off=12000 n=2007 accum=14007
+[2026-10-30 09:49:04] task index refreshed (6319 asset tags)
+[2026-10-30 09:49:04] updated dashboard_data.json itr_summary.live
+[2026-10-30 09:49:06]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-30 09:49:06]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 09:49 (closed=7103) rc=0 [main 4a2441a] ITR live update 2026-10-30 09:49 (closed=7103)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-30 09:49:11]  >> git push OK
+[2026-10-30 09:49:14]  >> pages commit rc=0 te 2026-10-30 09:49 (closed=7103)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-30 09:52:51] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 09:52:52] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 09:52:52] no pull tab this cycle - retrying in 300s
+[2026-10-30 09:53:56] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 09:53:56] no pull tab this cycle - retrying in 300s
+[2026-10-30 09:54:56] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 09:54:56] no pull tab this cycle - retrying in 300s
+[2026-10-30 09:55:57] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 09:55:57] no pull tab this cycle - retrying in 300s
+[2026-10-30 09:56:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 09:56:58] no pull tab this cycle - retrying in 300s
+[2026-10-30 09:57:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 09:57:58] no pull tab this cycle - retrying in 300s
+[2026-10-30 09:58:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 09:58:58] no pull tab this cycle - retrying in 300s
+[2026-10-30 09:59:59] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 09:59:59] no pull tab this cycle - retrying in 300s
