@@ -53078,3 +53078,52 @@ Call log:
 [2026-10-30 17:15:59]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 17:15 (closed=7154) rc=0 [main 46be2e2] ITR live update 2026-10-30 17:15 (closed=7154)
  1 file changed, 62 insertions(+), 62 deletions(-)
 [2026-10-30 17:16:06]  >> git push OK
+[2026-10-30 17:20:01]  >> pages commit rc=128 
+[2026-10-30 17:20:04]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-30 17:20:04] cycle OK closed=7154 open=3144 updated=2026-10-30 17:15:55
+[2026-10-30 20:25:06] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 20:25:07] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 20:25:07] no pull tab this cycle - retrying in 300s
+[2026-10-30 20:25:25] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 20:25:26] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 20:25:26] no pull tab this cycle - retrying in 300s
+[2026-10-30 20:26:26] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 20:26:26] no pull tab this cycle - retrying in 300s
+[2026-10-30 20:27:28] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 20:27:28] no pull tab this cycle - retrying in 300s
+[2026-10-30 20:28:29] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 20:28:29] no pull tab this cycle - retrying in 300s
+[2026-10-30 20:29:29] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-30 20:29:29] no pull tab this cycle - retrying in 300s
+[2026-10-30 20:30:50] reused the sync's always-open browser (port 9222)
+[2026-10-30 20:31:51] session expired -> auto-login
+[2026-10-30 20:32:02] ssologin click: ok
+[2026-10-30 20:32:12] sso handoff -> verify password page
+[2026-10-30 20:32:25] verify submit: submitted
+[2026-10-30 20:35:02] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 20:38:28] auto-login attempt 1 still not logged in
+[2026-10-30 20:40:29] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 20:40:47] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 20:40:52] target list err: timed out
+[2026-10-30 20:41:12] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-10-30 20:41:17] closed frozen tab 3F0324A7 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 20:42:31] reused the sync's always-open browser (port 9222)
+[2026-10-30 20:43:31] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 20:47:22] session expired -> auto-login
+[2026-10-30 20:50:48] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 20:51:10] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 20:51:15] closed frozen tab 7B8034A1 https://wly04-sc.intergraphsmartcloud.com//Login.aspx?referrer=/ISC/To
+[2026-10-30 20:51:15] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 20:52:30] reused the sync's always-open browser (port 9222)
+[2026-10-30 20:53:30] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 20:55:34] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 20:55:44] closed frozen tab 699A80FE https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 20:55:44] pre-cycle cleanup: 1 wedged tab(s) closed

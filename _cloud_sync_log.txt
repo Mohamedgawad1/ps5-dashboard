@@ -13716,3 +13716,34 @@
 2026-10-30 15:40:54 [warn] cloud fetch failed: The read operation timed out
 2026-10-30 16:02:31 [warn] cloud fetch failed: <urlopen error _ssl.c:1126: The handshake operation timed out>
 2026-10-30 16:08:01 [warn] cloud fetch failed: <urlopen error _ssl.c:1126: The handshake operation timed out>
+2026-10-30 20:24:57 ==================================================
+2026-10-30 20:24:57 cloud_auto_update started (interval 300s)
+2026-10-30 20:26:22 [warn] cloud fetch failed: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
+2026-10-30 20:31:23 [trigger] state changed -> rebuilding downloads+pages
+2026-10-30 20:31:23 >> cloud->DPR
+2026-10-30 20:41:13    [guard]   PS5-60-22 col60: '14' -> ''
+2026-10-30 20:41:13    [guard]   PS5-61-04 col60: '23' -> ''
+2026-10-30 20:41:13    [guard]   PS5-63-01 col60: '31' -> ''
+2026-10-30 20:41:13    [guard]   PS5-63-03 col60: '2' -> ''
+2026-10-30 20:41:13    [guard]   PS5-71-19 col60: '8' -> ''
+2026-10-30 20:41:13    [guard]   PS5-71-21 col60: '3' -> ''
+2026-10-30 20:41:13 >> local->DPR
+2026-10-30 20:51:19      [wait] close "PS-5 COMPLETIONS DPR SUMMARY -30-October-2026.xlsx" in Excel ... (10/15)
+2026-10-30 20:51:19      [wait] close "PS-5 COMPLETIONS DPR SUMMARY -30-October-2026.xlsx" in Excel ... (11/15)
+2026-10-30 20:51:19      [wait] close "PS-5 COMPLETIONS DPR SUMMARY -30-October-2026.xlsx" in Excel ... (12/15)
+2026-10-30 20:51:19      [wait] close "PS-5 COMPLETIONS DPR SUMMARY -30-October-2026.xlsx" in Excel ... (13/15)
+2026-10-30 20:51:19      [wait] close "PS-5 COMPLETIONS DPR SUMMARY -30-October-2026.xlsx" in Excel ... (14/15)
+2026-10-30 20:51:19      [wait] close "PS-5 COMPLETIONS DPR SUMMARY -30-October-2026.xlsx" in Excel ... (15/15)
+2026-10-30 20:51:19    !!   File "C:\Python315\Lib\shutil.py", line 514, in copy2
+2026-10-30 20:51:19    !!     _winapi.CopyFile2(src_, dst_, flags)
+2026-10-30 20:51:19    !!     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-10-30 20:51:19    !! PermissionError: [WinError 32] The process cannot access the file because it is being used by another process
+2026-10-30 20:51:19 !! local->DPR FAILED (rc=1)
+2026-10-30 20:51:19 >> explorer rebuild
+2026-10-30 20:55:48      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9630 rows, 9651 updates
+2026-10-30 20:55:48      Punch rows: 4599 | ITR rows: 23639 | RFC: 270 | Miles: 292
+2026-10-30 20:55:48      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1141
+2026-10-30 20:55:48      Carry-over: 0 notes, 0 colored rows, 21733 pinned cells
+2026-10-30 20:55:48    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-10-30 20:55:48    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-10-30 20:55:48 >> dashboard xlsm
