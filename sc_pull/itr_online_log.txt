@@ -52443,3 +52443,32 @@ Call log:
 [2026-10-30 10:39:24]  >> pages commit rc=128 
 [2026-10-30 10:39:27]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
 [2026-10-30 10:39:27] cycle OK closed=7103 open=3195 updated=2026-10-30 10:39:10
+[2026-10-30 10:44:27] reused the sync's always-open browser (port 9222)
+[2026-10-30 10:45:18] session expired -> auto-login
+[2026-10-30 10:45:25] ssologin click: ok
+[2026-10-30 10:45:35] sso handoff -> verify password page
+[2026-10-30 10:45:37] verify submit: submitted
+[2026-10-30 10:47:23] auto-login attempt 1 still not logged in
+[2026-10-30 10:47:27] ssologin click: ok
+[2026-10-30 10:47:37] sso handoff -> verify password page
+[2026-10-30 10:47:40] verify submit: submitted
+[2026-10-30 10:49:25] auto-login attempt 2 still not logged in
+[2026-10-30 10:49:29] ssologin click: ok
+[2026-10-30 10:49:39] sso handoff -> verify password page
+[2026-10-30 10:49:41] verify submit: submitted
+[2026-10-30 10:51:27] auto-login attempt 3 still not logged in
+[2026-10-30 10:54:27] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 10:54:44] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 10:54:49] reused the sync's always-open browser (port 9222)
+[2026-10-30 10:55:38] session expired -> auto-login
+[2026-10-30 10:55:42] ssologin click: ok
+[2026-10-30 10:55:52] sso handoff -> verify password page
+[2026-10-30 10:55:54] verify submit: submitted
+[2026-10-30 10:57:40] auto-login attempt 1 still not logged in
+[2026-10-30 10:57:44] ssologin click: ok
+[2026-10-30 10:57:54] sso handoff -> verify password page
+[2026-10-30 10:57:57] verify submit: submitted
+[2026-10-30 10:59:43] auto-login attempt 2 still not logged in
+[2026-10-30 10:59:47] ssologin click: ok
+[2026-10-30 10:59:57] sso handoff -> verify password page
+[2026-10-30 10:59:59] verify submit: submitted
