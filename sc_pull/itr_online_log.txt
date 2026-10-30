@@ -52913,3 +52913,147 @@ Call log:
 Call log:
   - navigating to "https://wly04-sc.intergraphsmartcl
 [2026-10-30 15:23:24] LOGGED IN
+[2026-10-30 15:27:05] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 15:27:09] closed frozen tab BF60B629 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 15:27:09] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 15:28:10] reused the sync's always-open browser (port 9222)
+[2026-10-30 15:29:10] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:29:56] session expired -> auto-login
+[2026-10-30 15:30:44] ssologin click: no-btn
+[2026-10-30 15:32:54] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:33:54] auto-login attempt 1 still not logged in
+[2026-10-30 15:34:42] ssologin click: no-btn
+[2026-10-30 15:36:52] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:37:05] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 15:37:21] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 15:37:25] closed frozen tab 2519FB5D https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 15:37:25] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 15:38:26] reused the sync's always-open browser (port 9222)
+[2026-10-30 15:39:26] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:40:31] LOGGED IN
+[2026-10-30 15:47:21] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 15:47:25] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 15:47:30] closed frozen tab 0048156D https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 15:47:30] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 15:48:30] reused the sync's always-open browser (port 9222)
+[2026-10-30 15:49:30] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:50:17] session expired -> auto-login
+[2026-10-30 15:51:05] ssologin click: no-btn
+[2026-10-30 15:52:15] post-login goto err: Page.goto: net::ERR_TIMED_OUT at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUser
+[2026-10-30 15:53:16] auto-login attempt 1 still not logged in
+[2026-10-30 15:54:04] ssologin click: no-btn
+[2026-10-30 15:56:14] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 15:57:17] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 15:58:17] reused the sync's always-open browser (port 9222)
+[2026-10-30 15:59:17] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:00:04] session expired -> auto-login
+[2026-10-30 16:00:52] ssologin click: no-btn
+[2026-10-30 16:03:02] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:04:02] auto-login attempt 1 still not logged in
+[2026-10-30 16:04:50] ssologin click: no-btn
+[2026-10-30 16:07:00] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:07:17] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 16:07:33] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 16:08:33] reused the sync's always-open browser (port 9222)
+[2026-10-30 16:09:33] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:10:20] session expired -> auto-login
+[2026-10-30 16:11:08] ssologin click: no-btn
+[2026-10-30 16:13:18] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:14:18] auto-login attempt 1 still not logged in
+[2026-10-30 16:15:06] ssologin click: no-btn
+[2026-10-30 16:17:16] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:17:33] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 16:17:37] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 16:18:37] reused the sync's always-open browser (port 9222)
+[2026-10-30 16:19:08] goto err: Page.goto: net::ERR_TIMED_OUT at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUser
+[2026-10-30 16:19:54] session expired -> auto-login
+[2026-10-30 16:20:58] ssologin click: no-btn
+[2026-10-30 16:23:08] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:24:09] auto-login attempt 1 still not logged in
+[2026-10-30 16:24:57] ssologin click: no-btn
+[2026-10-30 16:27:07] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:27:29] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 16:27:33] closed frozen tab F69BDAEB https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 16:27:33] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 16:28:34] reused the sync's always-open browser (port 9222)
+[2026-10-30 16:29:34] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:30:31] LOGGED IN
+[2026-10-30 16:37:29] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 16:37:48] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 16:37:52] closed frozen tab 5E13F584 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-10-30 16:37:52] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-10-30 16:38:53] reused the sync's always-open browser (port 9222)
+[2026-10-30 16:39:53] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:40:39] session expired -> auto-login
+[2026-10-30 16:41:27] ssologin click: no-btn
+[2026-10-30 16:43:37] post-login goto err: Page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-10-30 16:44:39] auto-login attempt 1 still not logged in
+[2026-10-30 16:44:46] ssologin click: no-btn
+[2026-10-30 16:45:15] LOGGED IN
+[2026-10-30 16:45:25] pulled off=0 n=4000 accum=4000
+[2026-10-30 16:45:39] pulled off=4000 n=4000 accum=8000
+[2026-10-30 16:45:56] pulled off=8000 n=4000 accum=12000
+[2026-10-30 16:46:04] pulled off=12000 n=2007 accum=14007
+[2026-10-30 16:46:04] task index refreshed (6319 asset tags)
+[2026-10-30 16:46:04] milestone_map: 290 subsystems
+[2026-10-30 16:46:05] updated dashboard_data.json itr_summary.live
+[2026-10-30 16:46:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-30 16:46:10]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 16:46 (closed=7148) rc=0 [main 0d7617e] ITR live update 2026-10-30 16:46 (closed=7148)
+ 1 file changed, 550 insertions(+), 525 deletions(-)
+[2026-10-30 16:46:15]  >> git push OK
+[2026-10-30 16:46:25]  >> pages commit rc=128 
+[2026-10-30 16:46:28]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-30 16:46:28] cycle OK closed=7148 open=3150 updated=2026-10-30 16:46:05
+[2026-10-30 16:51:33] reused the sync's always-open browser (port 9222)
+[2026-10-30 16:51:40] LOGGED IN
+[2026-10-30 16:51:49] pulled off=0 n=4000 accum=4000
+[2026-10-30 16:52:02] pulled off=4000 n=4000 accum=8000
+[2026-10-30 16:52:17] pulled off=8000 n=4000 accum=12000
+[2026-10-30 16:52:25] pulled off=12000 n=2007 accum=14007
+[2026-10-30 16:52:25] task index refreshed (6319 asset tags)
+[2026-10-30 16:52:25] updated dashboard_data.json itr_summary.live
+[2026-10-30 16:52:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-30 16:52:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 16:52 (closed=7149) rc=0 [main 8d5851a] ITR live update 2026-10-30 16:52 (closed=7149)
+ 1 file changed, 25 insertions(+), 25 deletions(-)
+[2026-10-30 16:52:32]  >> git push OK
+[2026-10-30 16:53:03]  >> pages commit rc=128 
+[2026-10-30 16:53:07]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-30 16:53:07] cycle OK closed=7149 open=3149 updated=2026-10-30 16:52:25
+[2026-10-30 16:58:14] reused the sync's always-open browser (port 9222)
+[2026-10-30 16:58:28] LOGGED IN
+[2026-10-30 16:59:17] pulled off=0 n=4000 accum=4000
+[2026-10-30 17:00:02] pulled off=4000 n=4000 accum=8000

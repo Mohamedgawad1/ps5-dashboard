@@ -50446,3 +50446,21 @@
 [2026-10-30 15:07:07] STARTED itr_online (PID 18492)
 [2026-10-30 15:17:11] RESTARTING itr_online
 [2026-10-30 15:17:11] STARTED itr_online (PID 20364)
+[2026-10-30 15:27:00] ITR data is 70 min old (limit 40 min) -> restarting itr_online
+[2026-10-30 15:27:03] STARTED itr_online (PID 15300)
+[2026-10-30 15:37:19] RESTARTING itr_online
+[2026-10-30 15:37:19] STARTED itr_online (PID 13548)
+[2026-10-30 15:47:23] RESTARTING itr_online
+[2026-10-30 15:47:23] STARTED itr_online (PID 12244)
+[2026-10-30 15:53:56] Watchdog alive - 1440 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-10-30 15:57:12] ITR data is 100 min old (limit 40 min) -> restarting itr_online
+[2026-10-30 15:57:15] STARTED itr_online (PID 13388)
+[2026-10-30 16:07:31] RESTARTING itr_online
+[2026-10-30 16:07:31] STARTED itr_online (PID 21848)
+[2026-10-30 16:17:35] RESTARTING itr_online
+[2026-10-30 16:17:35] STARTED itr_online (PID 3456)
+[2026-10-30 16:27:24] ITR data is 130 min old (limit 40 min) -> restarting itr_online
+[2026-10-30 16:27:27] STARTED itr_online (PID 20264)
+[2026-10-30 16:37:44] RESTARTING itr_online
+[2026-10-30 16:37:44] STARTED itr_online (PID 20532)
+[2026-10-30 16:54:21] Watchdog alive - 1680 checks. URL: https://app.mohamedgawwad.is-a.dev
