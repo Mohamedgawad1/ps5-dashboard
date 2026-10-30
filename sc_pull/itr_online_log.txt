@@ -52472,3 +52472,45 @@ Call log:
 [2026-10-30 10:59:47] ssologin click: ok
 [2026-10-30 10:59:57] sso handoff -> verify password page
 [2026-10-30 10:59:59] verify submit: submitted
+[2026-10-30 11:01:44] auto-login attempt 3 still not logged in
+[2026-10-30 11:04:44] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 11:04:47] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 11:04:52] reused the sync's always-open browser (port 9222)
+[2026-10-30 11:05:40] session expired -> auto-login
+[2026-10-30 11:05:44] ssologin click: ok
+[2026-10-30 11:05:54] sso handoff -> verify password page
+[2026-10-30 11:05:57] verify submit: submitted
+[2026-10-30 11:07:42] auto-login attempt 1 still not logged in
+[2026-10-30 11:07:46] ssologin click: ok
+[2026-10-30 11:07:56] sso handoff -> verify password page
+[2026-10-30 11:07:58] verify submit: submitted
+[2026-10-30 11:09:27] LOGGED IN
+[2026-10-30 11:09:37] pulled off=0 n=4000 accum=4000
+[2026-10-30 11:09:46] pulled off=4000 n=4000 accum=8000
+[2026-10-30 11:09:55] pulled off=8000 n=4000 accum=12000
+[2026-10-30 11:10:00] pulled off=12000 n=2007 accum=14007
+[2026-10-30 11:10:00] task index refreshed (6319 asset tags)
+[2026-10-30 11:10:00] milestone_map: 290 subsystems
+[2026-10-30 11:10:01] updated dashboard_data.json itr_summary.live
+[2026-10-30 11:10:03]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-30 11:10:04]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 11:10 (closed=7103) rc=0 [main b298489] ITR live update 2026-10-30 11:10 (closed=7103)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-30 11:10:09]  >> git push OK
+[2026-10-30 11:11:26]  >> pages commit rc=128 
+[2026-10-30 11:11:29]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-30 11:11:29] cycle OK closed=7103 open=3195 updated=2026-10-30 11:10:01
+[2026-10-30 11:16:30] reused the sync's always-open browser (port 9222)
+[2026-10-30 11:16:34] LOGGED IN
+[2026-10-30 11:16:48] pulled off=0 n=4000 accum=4000
+[2026-10-30 11:17:14] pulled off=4000 n=4000 accum=8000
+[2026-10-30 11:17:33] pulled off=8000 n=4000 accum=12000
+[2026-10-30 11:17:53] pulled off=12000 n=2007 accum=14007
+[2026-10-30 11:17:53] task index refreshed (6319 asset tags)
+[2026-10-30 11:17:54] updated dashboard_data.json itr_summary.live
+[2026-10-30 11:18:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-30 11:18:02]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-30 11:18 (closed=7103) rc=0 [main ec838e8] ITR live update 2026-10-30 11:18 (closed=7103)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-30 11:18:08]  >> git push OK
+[2026-10-30 11:19:07]  >> pages commit rc=128 
+[2026-10-30 11:19:09]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-30 11:19:09] cycle OK closed=7103 open=3195 updated=2026-10-30 11:17:54
