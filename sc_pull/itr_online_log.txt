@@ -53558,3 +53558,81 @@ Call log:
 [2026-10-31 10:35:10] verify submit: submitted
 [2026-10-31 10:36:55] auto-login attempt 3 still not logged in
 [2026-10-31 10:39:56] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-31 10:40:01] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 10:40:07] reused the sync's always-open browser (port 9222)
+[2026-10-31 10:40:59] session expired -> auto-login
+[2026-10-31 10:41:03] ssologin click: ok
+[2026-10-31 10:41:13] sso handoff -> verify password page
+[2026-10-31 10:41:16] verify submit: submitted
+[2026-10-31 10:43:05] auto-login attempt 1 still not logged in
+[2026-10-31 10:43:08] ssologin click: ok
+[2026-10-31 10:43:18] sso handoff -> verify password page
+[2026-10-31 10:43:21] verify submit: submitted
+[2026-10-31 10:45:06] auto-login attempt 2 still not logged in
+[2026-10-31 10:45:11] ssologin click: ok
+[2026-10-31 10:45:21] sso handoff -> verify password page
+[2026-10-31 10:45:24] verify submit: submitted
+[2026-10-31 10:47:11] auto-login attempt 3 still not logged in
+[2026-10-31 10:49:53] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 10:50:07] reused the sync's always-open browser (port 9222)
+[2026-10-31 10:50:56] session expired -> auto-login
+[2026-10-31 10:51:00] ssologin click: ok
+[2026-10-31 10:51:10] sso handoff -> verify password page
+[2026-10-31 10:51:13] verify submit: submitted
+[2026-10-31 10:51:52] LOGGED IN
+[2026-10-31 10:52:09] pulled off=0 n=4000 accum=4000
+[2026-10-31 10:52:18] pulled off=4000 n=4000 accum=8000
+[2026-10-31 10:52:30] pulled off=8000 n=4000 accum=12000
+[2026-10-31 10:52:36] pulled off=12000 n=2007 accum=14007
+[2026-10-31 10:52:36] task index refreshed (6319 asset tags)
+[2026-10-31 10:52:36] milestone_map: 290 subsystems
+[2026-10-31 10:52:37] updated dashboard_data.json itr_summary.live
+[2026-10-31 10:52:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 10:52:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 10:52 (closed=7169) rc=0 [main dd8add9] ITR live update 2026-10-31 10:52 (closed=7169)
+ 1 file changed, 52 insertions(+), 52 deletions(-)
+[2026-10-31 10:52:58]  >> git push OK
+[2026-10-31 10:55:38]  >> pages commit rc=128 
+[2026-10-31 10:55:41]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-31 10:55:41] cycle OK closed=7169 open=3129 updated=2026-10-31 10:52:37
+[2026-10-31 11:00:43] reused the sync's always-open browser (port 9222)
+[2026-10-31 11:00:48] LOGGED IN
+[2026-10-31 11:01:17] pulled off=0 n=4000 accum=4000
+[2026-10-31 11:01:56] pulled off=4000 n=4000 accum=8000
+[2026-10-31 11:02:06] pulled off=8000 n=4000 accum=12000
+[2026-10-31 11:02:13] pulled off=12000 n=2007 accum=14007
+[2026-10-31 11:02:14] task index refreshed (6319 asset tags)
+[2026-10-31 11:02:14] updated dashboard_data.json itr_summary.live
+[2026-10-31 11:02:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 11:02:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 11:02 (closed=7169) rc=0 [main d38ef5e] ITR live update 2026-10-31 11:02 (closed=7169)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-31 11:02:28]  >> git push OK
+[2026-10-31 11:04:49]  >> pages commit rc=128 
+[2026-10-31 11:04:53]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-31 11:04:53] cycle OK closed=7169 open=3129 updated=2026-10-31 11:02:14
+[2026-10-31 11:09:55] reused the sync's always-open browser (port 9222)
+[2026-10-31 11:10:04] LOGGED IN
+[2026-10-31 11:10:20] pulled off=0 n=4000 accum=4000
+[2026-10-31 11:10:47] pulled off=4000 n=4000 accum=8000
+[2026-10-31 11:11:21] pulled off=8000 n=4000 accum=12000
+[2026-10-31 11:11:40] pulled off=12000 n=2007 accum=14007
+[2026-10-31 11:11:40] task index refreshed (6319 asset tags)
+[2026-10-31 11:11:41] updated dashboard_data.json itr_summary.live
+[2026-10-31 11:11:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 11:11:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 11:11 (closed=7169) rc=0 [main 68870fa] ITR live update 2026-10-31 11:11 (closed=7169)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-31 11:11:59]  >> git push OK
+[2026-10-31 11:12:16]  >> pages commit rc=128 
+[2026-10-31 11:12:24]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-31 11:12:24] cycle OK closed=7169 open=3129 updated=2026-10-31 11:11:41
+[2026-10-31 11:17:27] reused the sync's always-open browser (port 9222)
+[2026-10-31 11:17:34] LOGGED IN
+[2026-10-31 11:18:12] pulled off=0 n=4000 accum=4000
+[2026-10-31 11:18:31] pulled off=4000 n=4000 accum=8000
+[2026-10-31 11:18:40] pulled off=8000 n=4000 accum=12000
+[2026-10-31 11:18:45] pulled off=12000 n=2007 accum=14007
+[2026-10-31 11:18:45] task index refreshed (6319 asset tags)
+[2026-10-31 11:18:46] updated dashboard_data.json itr_summary.live
+[2026-10-31 11:18:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 11:18:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 11:18 (closed=7169) rc=0 [main 2499308] ITR live update 2026-10-31 11:18 (closed=7169)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-31 11:18:52]  >> git push OK
