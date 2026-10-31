@@ -50528,3 +50528,9 @@
 [2026-10-31 08:46:11] STARTED cloud_sync (PID 6804)
 [2026-10-31 08:54:45] RESTARTING itr_online
 [2026-10-31 08:54:45] STARTED itr_online (PID 19556)
+[2026-10-31 09:00:20] SC window was off-screen (-32000) -> moved back on screen
+[2026-10-31 09:10:36] RESTARTING itr_online
+[2026-10-31 09:10:36] STARTED itr_online (PID 14416)
+[2026-10-31 09:11:39] Watchdog alive - 480 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-10-31 09:19:10] ITR data is 40 min old (limit 40 min) -> restarting itr_online
+[2026-10-31 09:19:14] STARTED itr_online (PID 9100)

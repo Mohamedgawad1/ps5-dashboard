@@ -53402,3 +53402,35 @@ Call log:
 [2026-10-31 08:58:24] no pull tab this cycle - retrying in 300s
 [2026-10-31 08:59:24] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
 [2026-10-31 08:59:24] no pull tab this cycle - retrying in 300s
+[2026-10-31 09:00:40] reused the sync's always-open browser (port 9222)
+[2026-10-31 09:01:32] session expired -> auto-login
+[2026-10-31 09:01:37] ssologin click: ok
+[2026-10-31 09:01:47] sso handoff -> verify password page
+[2026-10-31 09:01:49] verify submit: submitted
+[2026-10-31 09:03:35] auto-login attempt 1 still not logged in
+[2026-10-31 09:03:40] ssologin click: ok
+[2026-10-31 09:03:50] sso handoff -> verify password page
+[2026-10-31 09:03:52] verify submit: submitted
+[2026-10-31 09:05:37] auto-login attempt 2 still not logged in
+[2026-10-31 09:05:43] ssologin click: ok
+[2026-10-31 09:05:53] sso handoff -> verify password page
+[2026-10-31 09:05:55] verify submit: submitted
+[2026-10-31 09:07:40] auto-login attempt 3 still not logged in
+[2026-10-31 09:10:24] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-31 09:10:40] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 09:11:34] reused the sync's always-open browser (port 9222)
+[2026-10-31 09:12:23] session expired -> auto-login
+[2026-10-31 09:12:30] ssologin click: ok
+[2026-10-31 09:12:40] sso handoff -> verify password page
+[2026-10-31 09:12:45] verify submit: submitted
+[2026-10-31 09:14:31] auto-login attempt 1 still not logged in
+[2026-10-31 09:14:35] ssologin click: ok
+[2026-10-31 09:14:45] sso handoff -> verify password page
+[2026-10-31 09:14:47] verify submit: submitted
+[2026-10-31 09:16:32] auto-login attempt 2 still not logged in
+[2026-10-31 09:16:36] ssologin click: ok
+[2026-10-31 09:16:46] sso handoff -> verify password page
+[2026-10-31 09:16:48] verify submit: submitted
+[2026-10-31 09:18:37] auto-login attempt 3 still not logged in
+[2026-10-31 09:19:16] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 09:19:21] reused the sync's always-open browser (port 9222)
