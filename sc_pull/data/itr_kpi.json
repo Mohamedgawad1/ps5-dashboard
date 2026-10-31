@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-31 08:11:44",
+  "updated": "2026-10-31 08:38:59",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 7158,
-  "open": 3140,
-  "today_closed": 4,
+  "closed": 7166,
+  "open": 3132,
+  "today_closed": 12,
   "closed_by_discipline": {
-    "I": 3519,
-    "E": 3343,
+    "I": 3525,
+    "E": 3345,
     "T": 296
   },
   "open_by_discipline": {
-    "I": 1074,
-    "E": 1284,
+    "I": 1068,
+    "E": 1282,
     "T": 782
   },
   "daily": [
@@ -228,29 +228,47 @@
     },
     {
       "label": "2026-10-31",
-      "E": 4,
-      "I": 0,
+      "E": 6,
+      "I": 6,
       "T": 0,
-      "Total": 4
+      "Total": 12
     }
   ],
-  "closed_this_week": 177,
-  "closed_this_month": 1326,
+  "closed_this_week": 185,
+  "closed_this_month": 1334,
   "today_milestone": [
+    {
+      "milestone": "Milestone C",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 3
+    },
+    {
+      "milestone": "Milestone F",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 1
+    },
     {
       "milestone": "Milestone G",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 3
+      "count": 4
     },
     {
       "milestone": "Milestone H",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 1
+      "count": 2
+    },
+    {
+      "milestone": "Milestone H",
+      "disc": "I",
+      "discipline": "Instrumentation (I)",
+      "count": 2
     }
   ],
-  "today_milestone_total": 4,
+  "today_milestone_total": 12,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -284,13 +302,13 @@
       "label": "Milestone C",
       "raw": "PS5 - Milestone C",
       "total": 958,
-      "closed": 625,
-      "remaining": 333,
-      "pct": 65.2,
+      "closed": 628,
+      "remaining": 330,
+      "pct": 65.6,
       "status": {
-        "Closed": 625,
+        "Closed": 628,
         "Submitted": 0,
-        "To be completed": 332,
+        "To be completed": 329,
         "Other": 1
       }
     },
@@ -326,13 +344,13 @@
       "label": "Milestone F",
       "raw": "PS5 - Milestone F",
       "total": 597,
-      "closed": 515,
-      "remaining": 82,
-      "pct": 86.3,
+      "closed": 516,
+      "remaining": 81,
+      "pct": 86.4,
       "status": {
-        "Closed": 515,
+        "Closed": 516,
         "Submitted": 0,
-        "To be completed": 81,
+        "To be completed": 80,
         "Other": 1
       }
     },
@@ -340,28 +358,28 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 780,
-      "remaining": 124,
-      "pct": 86.3,
+      "closed": 781,
+      "remaining": 123,
+      "pct": 86.4,
       "status": {
-        "Closed": 780,
+        "Closed": 781,
         "Submitted": 3,
         "To be completed": 120,
-        "Other": 1
+        "Other": 0
       }
     },
     {
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2574,
-      "remaining": 677,
-      "pct": 79.2,
+      "closed": 2577,
+      "remaining": 674,
+      "pct": 79.3,
       "status": {
-        "Closed": 2574,
+        "Closed": 2577,
         "Submitted": 63,
-        "To be completed": 591,
-        "Other": 23
+        "To be completed": 587,
+        "Other": 24
       }
     },
     {
@@ -380,6 +398,78 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "PS5-03-RMAC-0301-CJ01",
+      "task": "T-00069-4528",
+      "system": "PS5-03-03 - FZ-03 - Buildings Area",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 5:37:24 "
+    },
+    {
+      "tag": "PS5-50-FIT-0001-CJ01",
+      "task": "T-00069-4874",
+      "system": "PS5-50-03 - Water Pre-Treatment Package",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 5:36:18 "
+    },
+    {
+      "tag": "PS5-25-FIT-0001-CJ01",
+      "task": "T-00069-4655",
+      "system": "PS5-25-01 - Export Pipeline Pig Receiver",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 5:33:52 "
+    },
+    {
+      "tag": "PS5-01-PIT-0014-CJ01",
+      "task": "T-00614-0875",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 5:32:55 "
+    },
+    {
+      "tag": "PS5-01-PIT-0013-CJ01",
+      "task": "T-00069-4276",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 5:30:04 "
+    },
+    {
+      "tag": "PS5-01-PIT-0010-CJ01",
+      "task": "T-00069-4275",
+      "system": "PS5-01-07 - Fire Water Ring Main & Distribution",
+      "loop": "",
+      "disc": "I - Instrumentation",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 5:29:02 "
+    },
+    {
+      "tag": "PS5-28-IES-3900B-CD01",
+      "task": "T-00610-0217",
+      "system": "PS5-28-17 - Reinjection Pump",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 5:14:52 "
+    },
+    {
+      "tag": "PS5-61-IG-0007-CD01",
+      "task": "T-00610-0253",
+      "system": "PS5-62-09 - Outdoor Normal Lighting DB  - PS5-61-IG-0007",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 5:13:12 "
+    },
     {
       "tag": "PS5-61-IG-0006-CD01",
       "task": "T-00610-0252",
@@ -1387,78 +1477,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "10/29/2026 5:44:03 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1557",
-      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 5:43:41 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1544",
-      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 5:43:16 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1542",
-      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 5:42:55 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1540",
-      "system": "PS5-79-07 - Electrical Heat Tracing Transformer/Distribution Board 7 (PS5-79-IG-0007)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 5:42:28 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1521",
-      "system": "PS5-79-06 - Electrical Heat Tracing Transformer/Distribution Board 6 (PS5-79-IG-0006)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 5:42:01 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1520",
-      "system": "PS5-79-06 - Electrical Heat Tracing Transformer/Distribution Board 6 (PS5-79-IG-0006)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 5:41:38 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1517",
-      "system": "PS5-79-06 - Electrical Heat Tracing Transformer/Distribution Board 6 (PS5-79-IG-0006)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 5:41:13 "
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1514",
-      "system": "PS5-79-06 - Electrical Heat Tracing Transformer/Distribution Board 6 (PS5-79-IG-0006)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 5:40:43 "
     }
   ]
 }
