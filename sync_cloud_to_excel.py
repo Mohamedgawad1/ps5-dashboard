@@ -24,7 +24,6 @@ import hashlib
 import json
 import os
 import re
-import shutil
 import sys
 import time
 import urllib.request
@@ -32,6 +31,8 @@ import zipfile
 
 import openpyxl
 from openpyxl.styles import Font, PatternFill
+
+import win_file
 
 HOME = os.path.join(os.path.expanduser('~'), 'Downloads')
 DL_SUB = os.path.join(HOME, 'PS5 - CPP AGI Completion Progress Dashboard_files')
@@ -417,7 +418,9 @@ def run_once(force, state_file=None, target=None):
     backup = os.path.join(os.path.dirname(src),
                           os.path.splitext(os.path.basename(src))[0]
                           + ' -BACKUP.xlsx')
-    shutil.copy2(src, backup)
+    if not win_file.copy_with_retry(src, backup, attempts=6):
+        print('[sync] deferred - workbook is open in Excel, try again later')
+        return
 
     try:
         wb = openpyxl.load_workbook(src)
@@ -608,7 +611,13 @@ def run_once(force, state_file=None, target=None):
         print(f'[sync] post-save validation FAILED ({e}) - '
               f'original file untouched')
         return
-    os.replace(tmpf, src)
+    if not win_file.replace_with_retry(tmpf, src):
+        if os.path.exists(tmpf):
+            try:
+                os.remove(tmpf)
+            except OSError:
+                pass
+        return
 
     save_seen(h) if not state_file else None
     lines = [

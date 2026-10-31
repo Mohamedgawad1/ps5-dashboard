@@ -18,11 +18,12 @@ Run continuously (registered in watchdog.py PROCESSES).
 import hashlib
 import json
 import os
-import shutil
 import subprocess
 import sys
 import time
 import urllib.request
+
+import win_file
 
 DASH = r"C:\Users\mylap\OneDrive\Desktop\dashboard"
 PLAT = r"C:\Users\mylap\OneDrive\Desktop\PS5-COMPLETION-PLATFORM"
@@ -94,7 +95,9 @@ def run_step(name, cmd, cwd):
     out = (r.stdout or '').strip().splitlines()
     for ln in out[-6:]:
         log('   ' + ln)
-    if r.returncode != 0:
+    if r.returncode == 2:
+        log('   [defer] workbook is open in Excel - retry next cycle')
+    elif r.returncode != 0:
         err = (r.stderr or '').strip().splitlines()
         for ln in err[-4:]:
             log('   !! ' + ln)
@@ -102,54 +105,99 @@ def run_step(name, cmd, cwd):
     return r.returncode
 
 
+def dpr_path():
+    """The canonical DPR workbook, via the platform's single resolver."""
+    try:
+        sys.path.insert(0, PLAT)
+        from dpr_file import find_dpr
+        return find_dpr()
+    except Exception as e:
+        log('[warn] DPR resolver unavailable: %s' % e)
+        return None
+
+
 def run_build():
+    """Run the chain once.
+
+    Returns True when a workbook was open in Excel and the build had to be
+    postponed. In that case nothing is marked as failed - the caller retries
+    on the next cycle (see main()).
+    """
     if locked():
         log('[skip] another build in progress')
-        return
+        return False
     open(LOCK, 'w').close()
     t0 = time.time()
+    deferred = False
     try:
-        run_step('cloud->DPR',
+        # Do not spend 30+ minutes building from a workbook Excel is holding
+        # open: the writes would only bounce off the lock at the end.
+        blocked = dpr_path()
+        if blocked and win_file.is_locked(blocked):
+            log('[defer] %s is open in Excel - build postponed (retry next '
+                'cycle)' % win_file.friendly(blocked))
+            deferred = True
+        else:
+            steps = [
+                ('cloud->DPR',
                  [PY, os.path.join(PLAT, 'sync_cloud_to_excel.py'), '--force'],
-                 PLAT)
-        run_step('local->DPR',
+                 PLAT),
+                ('local->DPR',
                  [PY, os.path.join(DASH, 'apply_platform_edits_to_summery.py')],
-                 DASH)
-        run_step('explorer rebuild',
-                 [PY, os.path.join(DASH, 'punch_itr_explorer.py')], DASH)
-        run_step('dashboard xlsm',
-                 [PY, os.path.join(DASH, 'dpr_dashboard.py')], DASH)
-        rc = run_step('platform full sync',
-                      [PY, os.path.join(PLAT, 'sync_all.py')], PLAT)
-        if rc == 0:
-            mirror_downloads()
+                 DASH),
+                ('explorer rebuild',
+                 [PY, os.path.join(DASH, 'punch_itr_explorer.py')], DASH),
+                ('dashboard xlsm',
+                 [PY, os.path.join(DASH, 'dpr_dashboard.py')], DASH),
+                ('platform full sync',
+                 [PY, os.path.join(PLAT, 'sync_all.py')], PLAT),
+            ]
+            sync_rc = 1
+            for name, cmd, cwd in steps:
+                rc = run_step(name, cmd, cwd)
+                if rc == 2:
+                    deferred = True
+                    break
+                sync_rc = rc
+            if sync_rc == 0 and not deferred:
+                if not mirror_downloads():
+                    deferred = True
     finally:
         try:
             os.remove(LOCK)
         except Exception:
             pass
-    log('[done] build in %.0fs' % (time.time() - t0))
+    log('[done] build in %.0fs%s'
+        % (time.time() - t0, ' (deferred)' if deferred else ''))
+    return deferred
 
 
 def mirror_downloads():
     """Copy the freshly built numbered downloads into the local Downloads
-    folder (PAGES/*.xlsx + EXCEL/7 - COMPLETE.xlsm)."""
-    try:
-        pages = os.path.join(PLAT, 'PAGES')
-        excel = os.path.join(PLAT, 'EXCEL')
-        if os.path.isdir(pages):
-            for f in os.listdir(pages):
-                if f.lower().endswith('.xlsx'):
-                    shutil.copy2(os.path.join(pages, f),
-                                 os.path.join(DL_SUB, f))
-            log('[mirror] PAGES -> _files')
-        for name in ('7 - COMPLETE.xlsm',):
-            p = os.path.join(excel, name)
-            if os.path.isfile(p):
-                shutil.copy2(p, os.path.join(DL_SUB, name))
-        # fresh explorer + dashboard outputs land here already
-    except Exception as e:
-        log('[warn] mirror failed: %s' % e)
+    folder (PAGES/*.xlsx + EXCEL/7 - COMPLETE.xlsm).
+
+    Returns False when a file was still open in Excel, so the caller can
+    retry instead of silently leaving stale downloads behind.
+    """
+    ok = True
+    pages = os.path.join(PLAT, 'PAGES')
+    excel = os.path.join(PLAT, 'EXCEL')
+    if os.path.isdir(pages):
+        for f in os.listdir(pages):
+            if f.lower().endswith('.xlsx'):
+                if not win_file.copy_with_retry(os.path.join(pages, f),
+                                                os.path.join(DL_SUB, f),
+                                                attempts=6):
+                    ok = False
+        log('[mirror] PAGES -> _files')
+    for name in ('7 - COMPLETE.xlsm',):
+        p = os.path.join(excel, name)
+        if os.path.isfile(p):
+            if not win_file.copy_with_retry(p, os.path.join(DL_SUB, name),
+                                            attempts=6):
+                ok = False
+    # fresh explorer + dashboard outputs land here already
+    return ok
 
 
 def main():
@@ -162,6 +210,7 @@ def main():
     seen = {'cloud': None, 'local': None, 'pending': 0}
     last_run = 0
     first = True
+    retry_pending = False   # a previous build was postponed by an Excel lock
     while True:
         ch = cloud_hash()
         lh = local_hash()
@@ -175,12 +224,18 @@ def main():
         if changed:
             seen['pending'] += 1
         now = time.time()
-        if (first or changed) and seen['pending'] >= 1 and (now - last_run) >= INTERVAL - 60:
-            log('[trigger] state changed -> rebuilding downloads+pages')
-            run_build()
+        due = ((first or changed or retry_pending)
+               and seen['pending'] >= 1
+               and (now - last_run) >= INTERVAL - 60)
+        if due:
+            log('[trigger] state changed -> rebuilding downloads+pages'
+                if not retry_pending else
+                '[trigger] retrying postponed build')
+            deferred = run_build()
             last_run = time.time()
-            seen['pending'] = 0
-            first = False
+            retry_pending = deferred
+            seen['pending'] = 1 if deferred else 0
+            first = deferred
         time.sleep(INTERVAL - 60 if first else INTERVAL)
 
 

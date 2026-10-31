@@ -16,12 +16,12 @@ import glob
 import json
 import os
 import re
-import shutil
 import sys
-import time
 
 import openpyxl
 from openpyxl.styles import Font
+
+import win_file
 
 HOME = os.path.join(os.path.expanduser('~'), 'Downloads')
 DL_SUB = os.path.join(HOME,
@@ -157,13 +157,19 @@ def main():
 
     backup = os.path.join(os.path.dirname(src),
                           'PS-5 COMPLETIONS DPR SUMMERY -BACKUP.xlsx')
-    try:
-        shutil.copy2(src, backup)
-    except Exception as e:
-        print(f'  [summery-sync] backup failed ({e}) - aborted for safety')
-        return 1
+    if not win_file.copy_with_retry(src, backup, attempts=6):
+        print('  [summery-sync] deferred - workbook is open in Excel, '
+              'edits kept for the next cycle')
+        return 2
 
-    wb = openpyxl.load_workbook(src)
+    try:
+        wb = openpyxl.load_workbook(src)
+    except OSError as e:
+        if win_file.is_lock_error(e):
+            print('  [summery-sync] deferred - workbook is open in Excel, '
+                  'edits kept for the next cycle')
+            return 2
+        raise
     n_val = n_note = missed = 0
     for psheet, (tgt, idh) in TARGET_SHEET.items():
         global IDH
@@ -195,21 +201,15 @@ def main():
             ws.cell(r, note_col).font = Font(size=9)
             n_note += 1
 
-    ok = False
-    for attempt in range(15):
-        try:
-            wb.save(src)
-            ok = True
-            break
-        except PermissionError:
-            print(f'  [wait] close "{os.path.basename(src)}" in Excel '
-                  f'... ({attempt + 1}/15)')
-            time.sleep(2)
+    # Atomic save: tmp -> validate -> replace. The workbook we are writing
+    # stays untouched while Excel holds it open, so there is nothing to
+    # "restore" and no second WinError 32. Return 2 = retry next cycle.
+    ok = win_file.save_workbook(wb, src)
     wb.close()
     if not ok:
-        shutil.copy2(backup, src)
-        print('  [summery-sync] file locked - restored backup, nothing changed')
-        return 1
+        print('  [summery-sync] deferred - workbook is open in Excel, '
+              'edits kept for the next cycle')
+        return 2
     extra = f', {missed} skipped (no matching column)' if missed else ''
     print(f'  [summery-sync] OK -> {n_val} cells, {n_note} notes written'
           f'{extra}')
