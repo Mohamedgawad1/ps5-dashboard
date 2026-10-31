@@ -7303,5 +7303,21 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00608-0392": {
+  "record": "2051068",
+  "task": "T-00608-0392",
+  "asset": "PS5-28-BE-0002A-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00608-0393": {
+  "record": "2051069",
+  "task": "T-00608-0393",
+  "asset": "PS5-28-BE-0002B-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
