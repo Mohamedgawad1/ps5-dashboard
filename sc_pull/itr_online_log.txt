@@ -53214,3 +53214,47 @@ Call log:
 [2026-10-31 07:35:56] sso handoff -> verify password page
 [2026-10-31 07:35:59] verify submit: submitted
 [2026-10-31 07:37:47] auto-login attempt 3 still not logged in
+[2026-10-31 07:40:10] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-31 07:40:18] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 07:40:24] reused the sync's always-open browser (port 9222)
+[2026-10-31 07:41:06] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 07:41:09] reused the sync's always-open browser (port 9222)
+[2026-10-31 07:41:58] session expired -> auto-login
+[2026-10-31 07:42:02] ssologin click: ok
+[2026-10-31 07:42:12] sso handoff -> verify password page
+[2026-10-31 07:42:15] verify submit: submitted
+[2026-10-31 07:44:00] auto-login attempt 1 still not logged in
+[2026-10-31 07:44:05] ssologin click: ok
+[2026-10-31 07:44:15] sso handoff -> verify password page
+[2026-10-31 07:44:17] verify submit: submitted
+[2026-10-31 07:46:03] auto-login attempt 2 still not logged in
+[2026-10-31 07:46:07] ssologin click: ok
+[2026-10-31 07:46:17] sso handoff -> verify password page
+[2026-10-31 07:46:20] verify submit: submitted
+[2026-10-31 07:48:05] auto-login attempt 3 still not logged in
+[2026-10-31 07:51:06] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-31 07:51:22] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 07:51:26] reused the sync's always-open browser (port 9222)
+[2026-10-31 07:52:14] session expired -> auto-login
+[2026-10-31 07:52:18] ssologin click: ok
+[2026-10-31 07:52:28] sso handoff -> verify password page
+[2026-10-31 07:52:31] verify submit: submitted
+[2026-10-31 07:54:16] auto-login attempt 1 still not logged in
+[2026-10-31 07:54:20] ssologin click: ok
+[2026-10-31 07:54:30] sso handoff -> verify password page
+[2026-10-31 07:54:32] verify submit: submitted
+[2026-10-31 07:55:18] LOGGED IN
+[2026-10-31 07:55:31] pulled off=0 n=4000 accum=4000
+[2026-10-31 07:55:46] pulled off=4000 n=4000 accum=8000
+[2026-10-31 07:56:01] pulled off=8000 n=4000 accum=12000
+[2026-10-31 07:56:06] pulled off=12000 n=2007 accum=14007
+[2026-10-31 07:56:07] task index refreshed (6319 asset tags)
+[2026-10-31 07:56:07] milestone_map: 290 subsystems
+[2026-10-31 07:56:07] updated dashboard_data.json itr_summary.live
+[2026-10-31 07:56:09]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 07:56:09]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 07:56 (closed=7154) rc=0 [main d2f89ed] ITR live update 2026-10-31 07:56 (closed=7154)
+ 1 file changed, 11 insertions(+), 36 deletions(-)
+[2026-10-31 07:56:13]  >> git push OK
+[2026-10-31 07:56:36]  >> pages commit rc=128 
+[2026-10-31 07:56:39]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-31 07:56:39] cycle OK closed=7154 open=3144 updated=2026-10-31 07:56:07
