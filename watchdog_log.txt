@@ -50547,3 +50547,7 @@
 [2026-10-31 10:12:05] Watchdog alive - 720 checks. URL: https://app.mohamedgawwad.is-a.dev
 [2026-10-31 10:19:35] ITR data is 100 min old (limit 40 min) -> restarting itr_online
 [2026-10-31 10:19:39] STARTED itr_online (PID 17784)
+[2026-10-31 10:29:54] RESTARTING itr_online
+[2026-10-31 10:29:54] STARTED itr_online (PID 18944)
+[2026-10-31 10:39:58] RESTARTING itr_online
+[2026-10-31 10:39:58] STARTED itr_online (PID 22088)
