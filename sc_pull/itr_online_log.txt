@@ -53466,3 +53466,34 @@ Call log:
 [2026-10-31 09:39:32] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
 [2026-10-31 09:39:36] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
 [2026-10-31 09:39:42] reused the sync's always-open browser (port 9222)
+[2026-10-31 09:40:31] session expired -> auto-login
+[2026-10-31 09:40:35] ssologin click: ok
+[2026-10-31 09:40:45] sso handoff -> verify password page
+[2026-10-31 09:40:47] verify submit: submitted
+[2026-10-31 09:42:33] auto-login attempt 1 still not logged in
+[2026-10-31 09:42:37] ssologin click: ok
+[2026-10-31 09:42:47] sso handoff -> verify password page
+[2026-10-31 09:42:50] verify submit: submitted
+[2026-10-31 09:44:35] auto-login attempt 2 still not logged in
+[2026-10-31 09:44:40] ssologin click: ok
+[2026-10-31 09:44:50] sso handoff -> verify password page
+[2026-10-31 09:44:52] verify submit: submitted
+[2026-10-31 09:46:37] auto-login attempt 3 still not logged in
+[2026-10-31 09:49:31] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 09:49:35] reused the sync's always-open browser (port 9222)
+[2026-10-31 09:50:24] session expired -> auto-login
+[2026-10-31 09:50:29] ssologin click: ok
+[2026-10-31 09:50:39] sso handoff -> verify password page
+[2026-10-31 09:50:41] verify submit: submitted
+[2026-10-31 09:52:26] auto-login attempt 1 still not logged in
+[2026-10-31 09:52:31] ssologin click: ok
+[2026-10-31 09:52:41] sso handoff -> verify password page
+[2026-10-31 09:52:43] verify submit: submitted
+[2026-10-31 09:54:28] auto-login attempt 2 still not logged in
+[2026-10-31 09:54:33] ssologin click: ok
+[2026-10-31 09:54:43] sso handoff -> verify password page
+[2026-10-31 09:54:45] verify submit: submitted
+[2026-10-31 09:56:30] auto-login attempt 3 still not logged in
+[2026-10-31 09:59:31] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-31 09:59:44] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 09:59:59] reused the sync's always-open browser (port 9222)
