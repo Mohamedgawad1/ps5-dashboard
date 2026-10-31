@@ -7319,5 +7319,61 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00233-11266": {
+  "record": "2183929",
+  "task": "T-00233-11266",
+  "asset": "PS5-71-BE-0001B-CL02",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-11275": {
+  "record": "2183938",
+  "task": "T-00233-11275",
+  "asset": "PS5-71-BE-0001B-CL11",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-11276": {
+  "record": "2183939",
+  "task": "T-00233-11276",
+  "asset": "PS5-71-BE-0001B-CL12",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-11277": {
+  "record": "2183940",
+  "task": "T-00233-11277",
+  "asset": "PS5-71-BE-0005-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-11278": {
+  "record": "2183941",
+  "task": "T-00233-11278",
+  "asset": "PS5-71-BE-0005-CL02",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-11279": {
+  "record": "2183942",
+  "task": "T-00233-11279",
+  "asset": "PS5-71-BE-0005-CL03",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-11280": {
+  "record": "2183943",
+  "task": "T-00233-11280",
+  "asset": "PS5-71-BE-0005-CL04",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
