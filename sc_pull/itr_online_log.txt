@@ -53711,3 +53711,40 @@ Call log:
 [2026-10-31 12:19:24] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
 [2026-10-31 12:19:31] reused the sync's always-open browser (port 9222)
 [2026-10-31 12:19:38] LOGGED IN
+[2026-10-31 12:20:27] pulled off=0 n=4000 accum=4000
+[2026-10-31 12:21:22] pulled off=4000 n=4000 accum=8000
+[2026-10-31 12:22:03] pulled off=8000 n=4000 accum=12000
+[2026-10-31 12:22:32] pulled off=12000 n=2007 accum=14007
+[2026-10-31 12:22:32] task index refreshed (6319 asset tags)
+[2026-10-31 12:22:32] milestone_map: 290 subsystems
+[2026-10-31 12:22:33] updated dashboard_data.json itr_summary.live
+[2026-10-31 12:22:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 12:22:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 12:22 (closed=7169) rc=0 [main c99ff28] ITR live update 2026-10-31 12:22 (closed=7169)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-31 12:22:40]  >> git push OK
+[2026-10-31 12:22:45]  >> pages commit rc=128 
+[2026-10-31 12:22:50]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-31 12:22:50] cycle OK closed=7169 open=3129 updated=2026-10-31 12:22:33
+[2026-10-31 12:27:51] reused the sync's always-open browser (port 9222)
+[2026-10-31 12:27:55] LOGGED IN
+[2026-10-31 12:28:35] pulled off=0 n=4000 accum=4000
+[2026-10-31 12:29:25] pulled off=4000 n=4000 accum=8000
+[2026-10-31 12:30:35] pulled off=8000 n=4000 accum=12000
+[2026-10-31 12:31:00] pulled off=12000 n=2007 accum=14007
+[2026-10-31 12:31:00] task index refreshed (6319 asset tags)
+[2026-10-31 12:31:00] updated dashboard_data.json itr_summary.live
+[2026-10-31 12:31:02]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 12:31:02]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 12:31 (closed=7169) rc=0 [main 8eed2c9] ITR live update 2026-10-31 12:31 (closed=7169)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-10-31 12:31:08]  >> git push OK
+[2026-10-31 12:37:50] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-31 12:37:58] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 12:38:04] reused the sync's always-open browser (port 9222)
+[2026-10-31 12:38:09] LOGGED IN
+[2026-10-31 12:39:09] pulled off=0 n=4000 accum=4000
+[2026-10-31 12:39:32] err off=4000: [object Object]
+[2026-10-31 12:39:32] pull retry 2/3 - reloading Switchboard
+[2026-10-31 12:39:37] goto err: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDa
+[2026-10-31 12:40:23] session expired -> auto-login
+[2026-10-31 12:40:29] ssologin click: no-btn
+[2026-10-31 12:40:47] LOGGED IN

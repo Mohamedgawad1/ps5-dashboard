@@ -13824,3 +13824,4 @@
 2026-10-31 09:09:06 >> platform full sync
 2026-10-31 09:39:06 !! platform full sync crashed: Command '['C:\\Python315\\python.exe', 'C:\\Users\\mylap\\OneDrive\\Desktop\\PS5-COMPLETION-PLATFORM\\sync_all.py']' timed out after 1800 seconds
 2026-10-31 09:39:06 [done] build in 3174s
+2026-10-31 12:39:37 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
