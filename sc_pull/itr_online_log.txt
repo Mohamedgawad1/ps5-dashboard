@@ -53136,3 +53136,51 @@ Call log:
 [2026-10-30 20:59:33] ssologin click: ok
 [2026-10-30 20:59:43] sso handoff -> verify password page
 [2026-10-30 20:59:45] verify submit: submitted
+[2026-10-30 21:01:33] auto-login attempt 2 still not logged in
+[2026-10-30 21:01:37] ssologin click: ok
+[2026-10-30 21:01:47] sso handoff -> verify password page
+[2026-10-30 21:01:51] verify submit: submitted
+[2026-10-30 21:03:38] auto-login attempt 3 still not logged in
+[2026-10-30 21:05:34] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 21:05:53] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 21:05:59] reused the sync's always-open browser (port 9222)
+[2026-10-30 21:06:50] session expired -> auto-login
+[2026-10-30 21:06:55] ssologin click: ok
+[2026-10-30 21:07:05] sso handoff -> verify password page
+[2026-10-30 21:07:07] verify submit: submitted
+[2026-10-30 21:09:07] auto-login attempt 1 still not logged in
+[2026-10-30 21:09:12] ssologin click: ok
+[2026-10-30 21:09:22] sso handoff -> verify password page
+[2026-10-30 21:09:24] verify submit: submitted
+[2026-10-30 21:11:11] auto-login attempt 2 still not logged in
+[2026-10-30 21:11:16] ssologin click: ok
+[2026-10-30 21:11:26] sso handoff -> verify password page
+[2026-10-30 21:11:29] verify submit: submitted
+[2026-10-30 21:13:15] auto-login attempt 3 still not logged in
+[2026-10-30 21:15:53] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-10-30 21:16:15] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-30 21:16:21] target list err: timed out
+[2026-10-31 07:10:40] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 07:10:40] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:10:40] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:10:56] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-10-31 07:10:57] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:10:57] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:11:58] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:11:58] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:13:00] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:13:00] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:14:00] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:14:00] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:15:02] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:15:02] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:16:02] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:16:02] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:17:04] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:17:04] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:18:04] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:18:04] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:19:05] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:19:05] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:20:05] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:20:05] no pull tab this cycle - retrying in 300s
