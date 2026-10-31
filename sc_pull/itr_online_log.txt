@@ -53184,3 +53184,33 @@ Call log:
 [2026-10-31 07:19:05] no pull tab this cycle - retrying in 300s
 [2026-10-31 07:20:05] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
 [2026-10-31 07:20:05] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:21:07] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:21:07] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:22:07] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:22:07] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:23:08] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:23:08] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:24:08] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:24:08] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:25:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:25:09] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:26:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:26:09] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:27:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:27:09] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:28:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:28:09] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:29:10] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-10-31 07:29:10] no pull tab this cycle - retrying in 300s
+[2026-10-31 07:30:17] reused the sync's always-open browser (port 9222)
+[2026-10-31 07:31:06] session expired -> auto-login
+[2026-10-31 07:31:12] ssologin click: ok
+[2026-10-31 07:33:33] auto-login attempt 1 still not logged in
+[2026-10-31 07:33:38] ssologin click: ok
+[2026-10-31 07:33:48] sso handoff -> verify password page
+[2026-10-31 07:33:51] verify submit: submitted
+[2026-10-31 07:35:40] auto-login attempt 2 still not logged in
+[2026-10-31 07:35:46] ssologin click: ok
+[2026-10-31 07:35:56] sso handoff -> verify password page
+[2026-10-31 07:35:59] verify submit: submitted
+[2026-10-31 07:37:47] auto-login attempt 3 still not logged in
