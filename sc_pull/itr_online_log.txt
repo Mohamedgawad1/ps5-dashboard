@@ -54006,3 +54006,36 @@ Call log:
 [2026-10-31 15:14:14] LOGGED IN
 [2026-10-31 15:18:18] pulled off=0 n=4000 accum=4000
 [2026-10-31 15:20:10] pulled off=4000 n=4000 accum=8000
+[2026-10-31 15:21:13] pulled off=8000 n=4000 accum=12000
+[2026-10-31 15:21:37] pulled off=12000 n=2007 accum=14007
+[2026-10-31 15:21:37] task index refreshed (6319 asset tags)
+[2026-10-31 15:21:37] updated dashboard_data.json itr_summary.live
+[2026-10-31 15:21:38]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 15:21:38]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 15:21 (closed=7188) rc=0 [main 2df0c2c] ITR live update 2026-10-31 15:21 (closed=7188)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-31 15:21:43]  >> git push OK
+[2026-10-31 15:22:15]  >> pages commit rc=128 
+[2026-10-31 15:22:18]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-31 15:22:18] cycle OK closed=7188 open=3110 updated=2026-10-31 15:21:37
+[2026-10-31 15:27:50] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-10-31 15:27:54] no frozen tab found -> will retry next cycle, no new window
+[2026-10-31 15:27:57] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/dedda6 (fail 1/3)
+[2026-10-31 15:28:57] reused the sync's always-open browser (port 9222)
+[2026-10-31 15:29:06] LOGGED IN
+[2026-10-31 15:29:21] pulled off=0 n=4000 accum=4000
+[2026-10-31 15:29:29] pulled off=4000 n=4000 accum=8000
+[2026-10-31 15:29:37] pulled off=8000 n=4000 accum=12000
+[2026-10-31 15:29:41] pulled off=12000 n=2007 accum=14007
+[2026-10-31 15:29:41] task index refreshed (6319 asset tags)
+[2026-10-31 15:29:42] updated dashboard_data.json itr_summary.live
+[2026-10-31 15:29:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 15:29:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 15:29 (closed=7188) rc=0 [main 5c57699] ITR live update 2026-10-31 15:29 (closed=7188)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-31 15:29:49]  >> git push OK
+[2026-10-31 15:36:15] LOOP ERR: Command '['git', '-C', 'C:\\Users\\mylap\\AppData\\Local\\Temp\\ps5_pages_deploy', 'fetch', '--depth', '1', 'origin', 'main']' timed out after 300 seconds (fail 2/3)
+[2026-10-31 15:41:26] reused the sync's always-open browser (port 9222)
