@@ -1,3 +1,5 @@
+import base64
+import hashlib
 import json
 import os
 import shutil
@@ -5,6 +7,8 @@ import subprocess
 import sys
 import threading
 import time
+import urllib.error
+import urllib.parse
 import urllib.request
 from collections import Counter
 import datetime
@@ -21,10 +25,9 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 PROFILE_DIR = os.path.join(BASE_DIR, "profile")
 # Single deploy repo = the workspace (the one behind update_dashboard + github.io/ps5-dashboard)
 CLONE = WS
-# Live ITR page repo (the PUBLIC platform site). The sync pushes itr_live files here too
-# so the live page always shows fresh data.
+# Live ITR page repo (the PUBLIC platform site). The sync publishes itr_live files
+# here through the GitHub Contents API so the live page always shows fresh data.
 PAGE_REPO = "PS5-COMPLETION-PLATFORM"
-PAGE_CLONE = os.path.join(os.environ.get("TEMP", BASE_DIR), "ps5_pages_deploy")
 TOK_FILE = os.path.join(WS, "github_token.txt")
 LOG = os.path.join(BASE_DIR, "itr_online_log.txt")
 
@@ -864,6 +867,57 @@ def inject_platform_scripts(clone):
     return True
 
 
+PLATFORM_RAW = ("https://raw.githubusercontent.com/Mohamedgawad1/%s"
+                "/main/index.html" % PAGE_REPO)
+PLATFORM_TAG = '<script src="live_status.js" charset="utf-8"></script>'
+
+
+def _platform_tag_present():
+    """Cheap check of the published index.html tail (Range request, ~16 KB)."""
+    req = urllib.request.Request(PLATFORM_RAW, headers={
+        "Range": "bytes=-16384",
+        "User-Agent": "ps5-itr-live-sync",
+        "Cache-Control": "no-cache",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            tail = r.read()
+    except Exception as e:
+        pr(" .. platform index check failed: %s" % str(e)[:100])
+        return None
+    return b"live_status.js" in tail
+
+
+def _ensure_platform_tag(tok, msg):
+    """Make sure the public platform page loads live_status.js (one-time, ~7.7 MB).
+
+    `rebuild_data.py` rewrites index.html in place and keeps the injected tag, so
+    this normally only runs once. If a rebuild ever drops it, the next cycle
+    notices via the Range check and re-injects through the Contents API.
+    """
+    present = _platform_tag_present()
+    if present is None or present:
+        return present
+    try:
+        meta = _gh_get_meta("index.html", tok)
+        if not meta:
+            pr(" !! platform index.html missing on main")
+            return False
+        blob = _gh_request(GH_API + "/git/blobs/" + meta["sha"], tok, timeout=120)
+        html = base64.b64decode(blob["content"])
+        if b"live_status.js" in html:
+            return True
+        idx = html.rfind(b"</body>")
+        tag = PLATFORM_TAG.encode("ascii") + b"\n"
+        html = html[:idx] + tag + html[idx:] if idx != -1 else html + b"\n" + tag
+        _gh_put("index.html", html, tok, msg, sha=meta["sha"])
+        pr(" >> injected live_status.js into platform index.html")
+        return True
+    except Exception as e:
+        pr(" !! platform tag inject failed: %s" % str(e)[:160])
+        return False
+
+
 def _clear_stuck_git_state(git):
     """Abort any interrupted rebase/merge/cherry-pick so the next operation works.
 
@@ -923,128 +977,125 @@ def _token():
         return None
 
 
-def _pages_head_ok():
-    if not os.path.isdir(PAGE_CLONE):
-        return False
-    r = subprocess.run(["git", "-C", PAGE_CLONE, "rev-parse", "--verify", "HEAD"],
-                       capture_output=True, text=True, timeout=60)
-    return r.returncode == 0
+GH_API = "https://api.github.com/repos/Mohamedgawad1/%s" % PAGE_REPO
 
 
-def ensure_pages_clone():
-    # A half-initialised clone (git init + add, no commit) leaves HEAD
-    # unresolvable and every push dies with
-    # "fatal: refs/heads/main cannot be resolved to branch". Rebuild it.
-    if os.path.isdir(PAGE_CLONE) and not _pages_head_ok():
-        pr(" !! pages clone has no valid HEAD - rebuilding it")
-        try:
-            shutil.rmtree(PAGE_CLONE, ignore_errors=True)
-        except Exception:
-            pass
-    if not os.path.isdir(PAGE_CLONE):
-        r = subprocess.run(
-            ["git", "clone", "--depth", "1",
-             "https://github.com/Mohamedgawad1/%s.git" % PAGE_REPO, PAGE_CLONE],
-            capture_output=True, text=True, timeout=600)
-        if r.returncode != 0:
-            pr(" !! pages clone failed:", (r.stderr or "")[-200:])
-            return False
-    git = ["git", "-C", PAGE_CLONE]
-    _clear_stuck_git_state(git)
-    subprocess.run(git + ["remote", "set-url", "origin",
-                          "https://github.com/Mohamedgawad1/%s.git" % PAGE_REPO],
-                   capture_output=True, text=True, timeout=120)
-    fetched = False
-    for _ in range(2):
-        r = subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
-                           capture_output=True, text=True, timeout=300)
-        if r.returncode == 0:
-            fetched = True
-            break
-        pr(" .. pages fetch retry:", (r.stderr or "").strip()[-160:])
-        time.sleep(3)
-    if not fetched and not os.path.exists(os.path.join(PAGE_CLONE, "index.html")):
-        pr(" !! pages fetch failed and no working tree - cannot publish")
-        return False
-    # A shallow clone can end up on a detached HEAD with no local `main`. That is
-    # exactly what produced "fatal: refs/heads/main cannot be resolved to branch"
-    # on every push. Always (re)create the local main branch from origin/main.
-    target = "origin/main"
-    r = subprocess.run(git + ["rev-parse", "--verify", "origin/main"],
-                       capture_output=True, text=True, timeout=120)
-    if r.returncode != 0:
-        target = "FETCH_HEAD"
-    r = subprocess.run(git + ["checkout", "-B", "main", target],
-                       capture_output=True, text=True, timeout=300)
-    if r.returncode != 0:
-        pr(" !! pages checkout -B main failed:", (r.stderr or "").strip()[-200:])
-        subprocess.run(git + ["checkout", "-B", "main"], capture_output=True,
-                       text=True, timeout=120)
-    subprocess.run(git + ["reset", "--hard", target],
-                   capture_output=True, text=True, timeout=120)
-    return True
+def _gh_headers(tok):
+    return {
+        "Authorization": "Bearer " + tok,
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json",
+        "User-Agent": "ps5-itr-live-sync",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+
+def _gh_request(url, tok, method="GET", payload=None, timeout=60):
+    data = json.dumps(payload).encode("utf-8") if payload is not None else None
+    req = urllib.request.Request(url, data=data, method=method,
+                                 headers=_gh_headers(tok))
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        body = r.read()
+    return json.loads(body.decode("utf-8")) if body else {}
+
+
+def _git_blob_sha(data):
+    """Git blob id for `data` (same value GitHub returns as file `sha`)."""
+    h = hashlib.sha1()
+    h.update(b"blob %d\0" % len(data))
+    h.update(data)
+    return h.hexdigest()
+
+
+def _gh_get_meta(path, tok):
+    """Return the contents-API metadata for a file on main (None if absent)."""
+    url = GH_API + "/contents/" + urllib.parse.quote(path) + "?ref=main"
+    try:
+        return _gh_request(url, tok, timeout=60)
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return None
+        raise
+
+
+def _gh_put(path, data, tok, message, sha=None):
+    url = GH_API + "/contents/" + urllib.parse.quote(path)
+    payload = {
+        "message": message,
+        "content": base64.b64encode(data).decode("ascii"),
+        "branch": "main",
+    }
+    if sha:
+        payload["sha"] = sha
+    return _gh_request(url, tok, method="PUT", payload=payload, timeout=120)
 
 
 def pages_push(state):
-    """Sync the ITR LIVE files to the PUBLIC platform repo so the live page stays fresh."""
+    """Publish the live ITR files to the PUBLIC platform repo.
+
+    Uses the GitHub Contents API instead of a local git clone: the old shallow
+    clone kept ending up with an unresolvable HEAD / half-staged index and every
+    push failed, which is why the public platform froze. Each small file is
+    compared by git blob id and only uploaded when its content actually changed,
+    so a cycle that finds nothing new costs one cheap GET per file.
+    """
     tok = _token()
     if not tok:
-        pr(" !! no token found — skipping pages push")
+        pr(" !! no token found - skipping platform publish")
         return None
-    if not ensure_pages_clone():
-        return None
-    git = ["git", "-C", PAGE_CLONE]
+    msg = "ITR live update %s (closed=%d)" % (
+        time.strftime("%Y-%m-%d %H:%M"), state["closed"])
     files = ("itr_live_state.json", "live_itr.js", "live_status.js", "itr_live.html")
+    changed = 0
     for fn in files:
         src = os.path.join(WS, fn)
-        if os.path.exists(src):
+        if not os.path.exists(src):
+            pr(" .. skip %s (not generated)" % fn)
+            continue
+        try:
+            with open(src, "rb") as f:
+                data = f.read()
+        except Exception as e:
+            pr(" !! read %s err: %s" % (fn, str(e)[:100]))
+            continue
+        local_sha = _git_blob_sha(data)
+        ok = False
+        for attempt in range(4):
             try:
-                shutil.copy2(src, os.path.join(PAGE_CLONE, fn))
+                meta = _gh_get_meta(fn, tok)
+                if meta and meta.get("sha") == local_sha:
+                    ok = True
+                    break
+                _gh_put(fn, data, tok, msg, sha=(meta or {}).get("sha"))
+                pr(" >> published %s (%d bytes)" % (fn, len(data)))
+                changed += 1
+                ok = True
+                break
+            except urllib.error.HTTPError as e:
+                detail = ""
+                try:
+                    detail = e.read().decode("utf-8", "ignore")[:200]
+                except Exception:
+                    pass
+                # 409/422 = sha moved (another push landed first) -> re-read, retry.
+                if e.code in (409, 422) and attempt < 3:
+                    pr(" .. %s sha conflict (HTTP %d) - retrying" % (fn, e.code))
+                    time.sleep(2 + attempt * 2)
+                    continue
+                pr(" !! publish %s failed: HTTP %d %s" % (fn, e.code, detail))
+                break
             except Exception as e:
-                pr(" !! copy %s err: %s" % (fn, str(e)[:80]))
-    inject_platform_scripts(PAGE_CLONE)
-    targets = list(files) + ["index.html"]
-    subprocess.run(git + ["add", "--"] + targets,
-                   capture_output=True, text=True, timeout=300)
-    r = subprocess.run(
-        git + ["commit", "-m", "ITR live update %s (closed=%d)" % (
-            time.strftime("%Y-%m-%d %H:%M"), state["closed"])],
-        capture_output=True, text=True, timeout=300)
-    pr(" >> pages commit rc=%d %s" % (r.returncode, (r.stdout or "").strip()[-80:]))
-    push_url = "https://x-access-ps5:%s@github.com/Mohamedgawad1/%s.git" % (tok, PAGE_REPO)
-    for attempt in range(4):
-        # Push the checked-out commit explicitly as main. `push origin main` broke
-        # whenever the shallow clone had no local main branch.
-        r = subprocess.run(git + ["push", push_url, "HEAD:main"],
-                           capture_output=True, text=True, timeout=600)
-        if r.returncode == 0:
-            pr(" >> pages push OK (closed=%d)" % state["closed"])
-            return 0
-        err = (r.stderr or "").strip()
-        if "fetch first" in err or "rejected" in err or "non-fast-forward" in err:
-            pr(" >> pages pull --rebase (attempt %d)" % (attempt + 1))
-            subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
-                           capture_output=True, text=True, timeout=300)
-            rr = subprocess.run(git + ["rebase", "origin/main"],
-                                capture_output=True, text=True, timeout=600)
-            if rr.returncode != 0:
-                pr(" !! pages rebase failed:", (rr.stderr or "")[-300:])
-                subprocess.run(git + ["rebase", "--abort"], capture_output=True,
-                               text=True, timeout=120)
-                # Re-sync and retry the whole cycle next time rather than wedge.
-                return rr.returncode
-            continue
-        transient = ("disconnect" in err or "hung up" in err or "RPC failed" in err
-                     or "early EOF" in err or "timed out" in err.lower())
-        if transient and attempt < 3:
-            pr(" .. pages push hiccup (attempt %d) - retrying" % (attempt + 1))
-            time.sleep(5)
-            subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
-                           capture_output=True, text=True, timeout=300)
-            continue
-        pr(" !! pages push failed:", err.splitlines()[-3:])
-        return r.returncode
-    return 1
+                if attempt < 3:
+                    pr(" .. %s publish hiccup (%s) - retrying" % (fn, str(e)[:80]))
+                    time.sleep(3 + attempt * 3)
+                    continue
+                pr(" !! publish %s failed: %s" % (fn, str(e)[:160]))
+                break
+        if not ok:
+            return 1
+    _ensure_platform_tag(tok, msg)
+    pr(" >> platform publish OK (%d file(s) updated, closed=%d)" % (changed, state["closed"]))
+    return 0
 
 
 def run_once():

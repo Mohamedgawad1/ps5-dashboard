@@ -81,7 +81,7 @@ if not errorlevel 1 (
     exit /b 0
 )
 git -c user.name=ps5-bot -c user.email=ps5@local commit -m "PS5 auto update %date% %time%" >nul
-git push "https://x-access-ps5:%TOK%@github.com/Mohamedgawad1/%REPO%.git" main >nul 2>&1
+git push "https://x-access-ps5:%TOK%@github.com/Mohamedgawad1/%REPO%.git" HEAD:main >nul 2>&1
 if errorlevel 1 (
     echo [deploy] push FAILED
     popd
