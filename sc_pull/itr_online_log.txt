@@ -54207,3 +54207,39 @@ Call log:
 [2026-10-31 17:17:43] reused the sync's always-open browser (port 9222)
 [2026-10-31 17:17:51] LOGGED IN
 [2026-10-31 17:19:01] pulled off=0 n=4000 accum=4000
+[2026-10-31 17:20:18] pulled off=4000 n=4000 accum=8000
+[2026-10-31 17:22:01] pulled off=8000 n=4000 accum=12000
+[2026-10-31 17:22:45] pulled off=12000 n=2007 accum=14007
+[2026-10-31 17:22:45] task index refreshed (6319 asset tags)
+[2026-10-31 17:22:46] updated dashboard_data.json itr_summary.live
+[2026-10-31 17:22:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-10-31 17:22:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-10-31 17:22 (closed=7197) rc=0 [main 8b814f7] ITR live update 2026-10-31 17:22 (closed=7197)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-10-31 17:22:55]  >> git push OK
+[2026-10-31 17:26:49]  >> pages commit rc=128 
+[2026-10-31 17:26:53]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-10-31 17:26:53] cycle OK closed=7197 open=3101 updated=2026-10-31 17:22:46
+[2026-10-31 17:32:00] reused the sync's always-open browser (port 9222)
+[2026-10-31 17:32:19] goto err: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashbo
+[2026-11-02 07:09:24] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-11-02 07:09:25] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-02 07:09:25] no pull tab this cycle - retrying in 300s
+[2026-11-02 07:10:27] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-02 07:10:27] no pull tab this cycle - retrying in 300s
+[2026-11-02 07:11:28] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-02 07:11:28] no pull tab this cycle - retrying in 300s
+[2026-11-02 07:12:31] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-02 07:12:31] no pull tab this cycle - retrying in 300s
+[2026-11-02 07:13:32] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-02 07:13:32] no pull tab this cycle - retrying in 300s
+[2026-11-02 07:14:33] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-02 07:14:33] no pull tab this cycle - retrying in 300s
+[2026-11-02 07:15:34] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-02 07:15:34] no pull tab this cycle - retrying in 300s
+[2026-11-02 07:16:38] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-02 07:16:38] no pull tab this cycle - retrying in 300s
+[2026-11-02 07:18:06] reused the sync's always-open browser (port 9222)
+[2026-11-02 07:18:58] session expired -> auto-login
+[2026-11-02 07:19:05] ssologin click: ok
+[2026-11-02 07:21:45] auto-login attempt 1 still not logged in
+[2026-11-02 07:21:58] ssologin click: ok
