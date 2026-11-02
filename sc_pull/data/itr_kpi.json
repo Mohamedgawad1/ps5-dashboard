@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-10-31 17:22:46",
+  "updated": "2026-11-02 07:34:58",
   "total_tasks_ps5": 14007,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,34 +9,20 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 7197,
-  "open": 3101,
-  "today_closed": 43,
+  "closed": 7199,
+  "open": 3099,
+  "today_closed": 0,
   "closed_by_discipline": {
     "I": 3526,
-    "E": 3375,
+    "E": 3377,
     "T": 296
   },
   "open_by_discipline": {
     "I": 1067,
-    "E": 1252,
+    "E": 1250,
     "T": 782
   },
   "daily": [
-    {
-      "label": "2026-10-02",
-      "E": 10,
-      "I": 69,
-      "T": 27,
-      "Total": 106
-    },
-    {
-      "label": "2026-10-03",
-      "E": 26,
-      "I": 52,
-      "T": 0,
-      "Total": 78
-    },
     {
       "label": "2026-10-04",
       "E": 0,
@@ -228,53 +214,30 @@
     },
     {
       "label": "2026-10-31",
-      "E": 36,
+      "E": 38,
       "I": 7,
       "T": 0,
-      "Total": 43
+      "Total": 45
+    },
+    {
+      "label": "2026-11-01",
+      "E": 0,
+      "I": 0,
+      "T": 0,
+      "Total": 0
+    },
+    {
+      "label": "2026-11-02",
+      "E": 0,
+      "I": 0,
+      "T": 0,
+      "Total": 0
     }
   ],
-  "closed_this_week": 216,
-  "closed_this_month": 1365,
-  "today_milestone": [
-    {
-      "milestone": "Milestone C",
-      "disc": "I",
-      "discipline": "Instrumentation (I)",
-      "count": 3
-    },
-    {
-      "milestone": "Milestone F",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 4
-    },
-    {
-      "milestone": "Milestone F",
-      "disc": "I",
-      "discipline": "Instrumentation (I)",
-      "count": 1
-    },
-    {
-      "milestone": "Milestone G",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 8
-    },
-    {
-      "milestone": "Milestone H",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 24
-    },
-    {
-      "milestone": "Milestone H",
-      "disc": "I",
-      "discipline": "Instrumentation (I)",
-      "count": 3
-    }
-  ],
-  "today_milestone_total": 43,
+  "closed_this_week": 0,
+  "closed_this_month": 0,
+  "today_milestone": [],
+  "today_milestone_total": 0,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -364,13 +327,13 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 904,
-      "closed": 786,
-      "remaining": 118,
-      "pct": 86.9,
+      "closed": 788,
+      "remaining": 116,
+      "pct": 87.2,
       "status": {
-        "Closed": 786,
+        "Closed": 788,
         "Submitted": 2,
-        "To be completed": 116,
+        "To be completed": 114,
         "Other": 0
       }
     },
@@ -404,6 +367,24 @@
     }
   ],
   "recent_closed": [
+    {
+      "tag": "",
+      "task": "T-00240-1310",
+      "system": "PS5-62-08 - Outdoor Normal Lighting  DB  - PS5-61-IG-0006",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 2:31:29 "
+    },
+    {
+      "tag": "",
+      "task": "T-00031-1310",
+      "system": "PS5-62-08 - Outdoor Normal Lighting  DB  - PS5-61-IG-0006",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "10/31/2026 2:27:22 "
+    },
     {
       "tag": "PS5-71-BE-0005-CL04",
       "task": "T-00233-11280",
@@ -1465,24 +1446,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "10/29/2026 10:47:35"
-    },
-    {
-      "tag": "PS5-09-FCU-8442B-CU02",
-      "task": "T-00254-11667",
-      "system": "PS5-09-03 - HVAC for Generator Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 10:46:38"
-    },
-    {
-      "tag": "PS5-09-FCU-8442C-CU01",
-      "task": "T-00254-11668",
-      "system": "PS5-09-03 - HVAC for Generator Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "10/29/2026 10:45:44"
     }
   ]
 }

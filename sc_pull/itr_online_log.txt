@@ -54243,3 +54243,40 @@ Call log:
 [2026-11-02 07:19:05] ssologin click: ok
 [2026-11-02 07:21:45] auto-login attempt 1 still not logged in
 [2026-11-02 07:21:58] ssologin click: ok
+[2026-11-02 07:22:08] sso handoff -> verify password page
+[2026-11-02 07:22:11] verify submit: submitted
+[2026-11-02 07:23:38] LOGGED IN
+[2026-11-02 07:24:54] pulled off=0 n=4000 accum=4000
+[2026-11-02 07:25:53] pulled off=4000 n=4000 accum=8000
+[2026-11-02 07:26:15] pulled off=8000 n=4000 accum=12000
+[2026-11-02 07:26:26] pulled off=12000 n=2007 accum=14007
+[2026-11-02 07:26:26] task index refreshed (6319 asset tags)
+[2026-11-02 07:26:26] milestone_map: 290 subsystems
+[2026-11-02 07:26:27] updated dashboard_data.json itr_summary.live
+[2026-11-02 07:26:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-02 07:26:31]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 07:26 (closed=7199) rc=0 [main 5ec6483] ITR live update 2026-11-02 07:26 (closed=7199)
+ 1 file changed, 45 insertions(+), 82 deletions(-)
+[2026-11-02 07:26:36]  >> git push OK
+[2026-11-02 07:27:21]  >> pages commit rc=128 
+[2026-11-02 07:27:23]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-11-02 07:27:23] cycle OK closed=7199 open=3099 updated=2026-11-02 07:26:27
+[2026-11-02 07:32:24] reused the sync's always-open browser (port 9222)
+[2026-11-02 07:33:24] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-11-02 07:34:10] session expired -> auto-login
+[2026-11-02 07:34:18] ssologin click: no-btn
+[2026-11-02 07:34:30] LOGGED IN
+[2026-11-02 07:34:38] pulled off=0 n=4000 accum=4000
+[2026-11-02 07:34:46] pulled off=4000 n=4000 accum=8000
+[2026-11-02 07:34:54] pulled off=8000 n=4000 accum=12000
+[2026-11-02 07:34:58] pulled off=12000 n=2007 accum=14007
+[2026-11-02 07:34:58] task index refreshed (6319 asset tags)
+[2026-11-02 07:34:59] updated dashboard_data.json itr_summary.live
+[2026-11-02 07:35:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-02 07:35:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 07:35 (closed=7199) rc=0 [main 06a4eb0] ITR live update 2026-11-02 07:35 (closed=7199)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-02 07:35:05]  >> git push OK
+[2026-11-02 07:35:18]  >> pages commit rc=128 
+[2026-11-02 07:35:21]  !! pages push failed: ['fatal: refs/heads/main cannot be resolved to branch']
+[2026-11-02 07:35:21] cycle OK closed=7199 open=3099 updated=2026-11-02 07:34:58
