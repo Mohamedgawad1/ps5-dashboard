@@ -54367,3 +54367,84 @@ Call log:
 [2026-11-02 08:40:33]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 08:40 (closed=7199) rc=0 [main 53837d6] ITR live update 2026-11-02 08:40 (closed=7199)
  2 files changed, 15166 insertions(+), 1 deletion(-)
 [2026-11-02 08:40:40]  >> git push OK
+[2026-11-02 08:43:20]  .. pages fetch retry: anch]      main       -> origin/main
+error: cannot lock ref 'refs/remotes/origin/main': unable to resolve reference 'refs/remotes/origin/main': reference broken
+[2026-11-02 08:44:54]  .. pages fetch retry: anch]      main       -> origin/main
+error: cannot lock ref 'refs/remotes/origin/main': unable to resolve reference 'refs/remotes/origin/main': reference broken
+[2026-11-02 08:44:58]  !! pages checkout -B main failed: - EIT CABLES.xlsx
+	EXCEL/9 - ITR OPEN EIT.xlsx
+	PS5 PLATFORM.xlsx
+	index.html
+	itr_live_state.json
+	sync_cloud_to_excel.py
+Please commit your changes or stash them before you switch branches.
+Aborting
+[2026-11-02 08:45:00]  >> pages commit rc=128 
+[2026-11-02 08:45:01]  !! pages push failed: ['error: src refspec HEAD does not match any', "error: failed to push some refs to 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git'"]
+[2026-11-02 08:45:01] cycle OK closed=7199 open=3099 updated=2026-11-02 08:40:29
+[2026-11-02 08:46:26]  >> published itr_live_state.json (457476 bytes)
+[2026-11-02 08:46:29]  >> published live_itr.js (11383 bytes)
+[2026-11-02 08:46:32]  >> published live_status.js (8477 bytes)
+[2026-11-02 08:46:35]  >> published itr_live.html (6130 bytes)
+[2026-11-02 08:46:36]  >> platform publish OK (4 file(s) updated, closed=7199)
+[2026-11-02 08:46:53] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-02 08:46:55] reused the sync's always-open browser (port 9222)
+[2026-11-02 08:47:03] LOGGED IN
+[2026-11-02 08:47:37] pulled off=0 n=4000 accum=4000
+[2026-11-02 08:48:07] pulled off=4000 n=4000 accum=8000
+[2026-11-02 08:48:08] err off=8000: [object Object]
+[2026-11-02 08:48:08] pull retry 2/3 - reloading Switchboard
+[2026-11-02 08:48:12] goto err: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDa
+[2026-11-02 08:48:58] session expired -> auto-login
+[2026-11-02 08:49:11] ssologin click: no-btn
+[2026-11-02 08:49:38] LOGGED IN
+[2026-11-02 08:50:08] pulled off=0 n=4000 accum=4000
+[2026-11-02 08:50:34] pulled off=4000 n=4000 accum=8000
+[2026-11-02 08:50:50] pulled off=8000 n=4000 accum=12000
+[2026-11-02 08:51:11] pulled off=12000 n=2007 accum=14007
+[2026-11-02 08:51:13] task index refreshed (6319 asset tags)
+[2026-11-02 08:51:13] milestone_map: 290 subsystems
+[2026-11-02 08:51:15] updated dashboard_data.json itr_summary.live
+[2026-11-02 08:51:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-02 08:51:19]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 08:51 (closed=7199) rc=0 [main 668b5d3] ITR live update 2026-11-02 08:51 (closed=7199)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-02 08:51:28]  >> git push OK
+[2026-11-02 08:51:34]  >> published itr_live_state.json (457476 bytes)
+[2026-11-02 08:51:40]  >> platform publish OK (1 file(s) updated, closed=7199)
+[2026-11-02 08:51:40] PAGES PUSH rc=0
+[2026-11-02 08:51:40] cycle OK closed=7199 open=3099 updated=2026-11-02 08:51:15
+[2026-11-02 08:53:41] reused the sync's always-open browser (port 9222)
+[2026-11-02 08:53:49] LOGGED IN
+[2026-11-02 08:54:11] pulled off=0 n=4000 accum=4000
+[2026-11-02 08:54:26] pulled off=4000 n=4000 accum=8000
+[2026-11-02 08:54:38] pulled off=8000 n=4000 accum=12000
+[2026-11-02 08:54:43] pulled off=12000 n=2007 accum=14007
+[2026-11-02 08:54:44] task index refreshed (6319 asset tags)
+[2026-11-02 08:54:46] updated dashboard_data.json itr_summary.live
+[2026-11-02 08:54:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-02 08:54:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 08:54 (closed=7199) rc=0 [main 8c7b940] ITR live update 2026-11-02 08:54 (closed=7199)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-02 08:54:56]  >> git push OK
+[2026-11-02 08:55:04]  >> published itr_live_state.json (457476 bytes)
+[2026-11-02 08:55:08]  >> platform publish OK (1 file(s) updated, closed=7199)
+[2026-11-02 08:55:08] PAGES PUSH rc=0
+[2026-11-02 08:55:08] cycle OK closed=7199 open=3099 updated=2026-11-02 08:54:46
+[2026-11-02 08:57:08] reused the sync's always-open browser (port 9222)
+[2026-11-02 08:57:14] LOGGED IN
+[2026-11-02 08:57:30] pulled off=0 n=4000 accum=4000
+[2026-11-02 08:57:45] pulled off=4000 n=4000 accum=8000
+[2026-11-02 08:57:59] pulled off=8000 n=4000 accum=12000
+[2026-11-02 08:58:09] pulled off=12000 n=2007 accum=14007
+[2026-11-02 08:58:11] task index refreshed (6319 asset tags)
+[2026-11-02 08:58:16] updated dashboard_data.json itr_summary.live
+[2026-11-02 08:58:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-02 08:58:21]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 08:58 (closed=7199) rc=0 [main f13a25a] ITR live update 2026-11-02 08:58 (closed=7199)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-02 08:58:27]  >> pull --rebase (attempt 1)
+[2026-11-02 08:58:28]  !! rebase failed: error: cannot pull with rebase: You have unstaged changes. | error: Please commit or stash them.
+[2026-11-02 08:58:34]  >> published itr_live_state.json (457476 bytes)
+[2026-11-02 08:58:38]  >> platform publish OK (1 file(s) updated, closed=7199)
+[2026-11-02 08:58:38] PAGES PUSH rc=0
+[2026-11-02 08:58:38] cycle OK closed=7199 open=3099 updated=2026-11-02 08:58:15
+[2026-11-02 09:00:42] reusing the Switchboard tab already open - no new tab
+[2026-11-02 09:00:42] reused the sync's always-open browser (port 9222)
