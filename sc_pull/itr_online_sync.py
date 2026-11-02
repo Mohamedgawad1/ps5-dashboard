@@ -72,11 +72,11 @@ PAGE = 4000
 # dashboard stays in sync with the user's live session - no second window, ever.
 DEBUG_PORT = int(os.environ.get("ITR_DEBUG_PORT", "9222"))
 KEEP_OPEN = os.environ.get("ITR_KEEP_OPEN", "1") != "0"
-# Loop interval between pulls. Default 5 minutes; override with ITR_LOOP_SECONDS.
-LOOP_SECONDS = int(os.environ.get("ITR_LOOP_SECONDS", "300"))
+# Loop interval between pulls. Default 2 minutes; override with ITR_LOOP_SECONDS.
+LOOP_SECONDS = int(os.environ.get("ITR_LOOP_SECONDS", "120"))
 # A cycle that hangs (dead CDP link, wedged browser) must never sit silent for hours:
 # after CYCLE_MAX_SECONDS we exit and let the watchdog start a clean session.
-CYCLE_MAX_SECONDS = int(os.environ.get("ITR_CYCLE_MAX", "600"))
+CYCLE_MAX_SECONDS = int(os.environ.get("ITR_CYCLE_MAX", "900"))
 # After this many failed cycles in a row, exit so the watchdog rebuilds the session.
 MAX_FAILED_CYCLES = int(os.environ.get("ITR_MAX_FAILS", "3"))
 
@@ -423,18 +423,28 @@ def open_session(pw):
                 pr("reuse failed after cleanup: %s -> will retry next cycle" % str(e2)[:70])
                 time.sleep(2)
                 raise
-        # reuse the dedicated pull tab if it exists, else open a fresh one for our pull
-        ours = None
+        # Reuse a tab that is ALREADY open: first our marked pull tab, then any
+        # Switchboard tab the user already has open. A new tab is created only when
+        # there is no Switchboard page at all - never once per cycle.
+        pages = []
         for c in (conn.contexts or []):
             for p in c.pages:
-                try:
-                    if p.url.startswith(MARK_URL):
-                        ours = p
-                        break
-                except Exception:
-                    pass
-            if ours:
+                pages.append(p)
+        ours = None
+        switch_pages = []
+        for p in pages:
+            try:
+                u = p.url or ""
+            except Exception:
+                continue
+            if u.startswith(MARK_URL):
+                ours = p
                 break
+            if "vDashboardsUsers/Switchboard.htm" in u:
+                switch_pages.append(p)
+        if ours is None and switch_pages:
+            ours = switch_pages[0]
+            pr("reusing the Switchboard tab already open - no new tab")
         if ours is None:
             try:
                 home = conn.contexts[0]
@@ -443,11 +453,23 @@ def open_session(pw):
                     ours.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
                 except Exception:
                     pass
+                pr("opened the one pull tab (none was open)")
             except Exception as e:
                 pr("new tab err: %s" % str(e)[:60])
                 ours = None
         if ours is None:
             raise RuntimeError("could not create a pull tab")
+        # Drop duplicate pull tabs left behind by older cycles (they used to pile
+        # up one per cycle because the tab lost its marker after each pull).
+        for p in pages:
+            try:
+                if p is ours:
+                    continue
+                if (p.url or "").startswith(MARK_URL):
+                    p.close()
+                    pr("closed a duplicate pull tab")
+            except Exception:
+                pass
         pr("reused the sync's always-open browser (port %d)" % port)
         return None, ours
     # 2) the user's browser is not open right now. Never open a second window and
@@ -547,11 +569,33 @@ def build_state(rows):
     today_key = time.strftime("%Y-%m-%d")
     daily_ts = {}
     ms_today = Counter()
+    subs = {}
+    task_states = {}
     for r in eit:
         d = dc(r.get("TaskDisciplineSummary") or r.get("TaskDiscipline"))
         by[d] += 1
+        tid = str(r.get("TaskName") or "").strip()
+        if tid:
+            task_states[tid] = "Closed" if str(r.get("TaskState")) == "Closed" else "Open"
+        # Live per-subsystem roll-up: the public platform shows one row per
+        # subsystem with its closed / open ITR counts.
+        name = str(r.get("ProcessBreakdown") or r.get("PhysicalLocationUp1Summary") or "").strip()
+        if name:
+            sid = name.split(" - ")[0].strip()
+            s = subs.get(name)
+            if s is None:
+                s = subs[name] = {"sid": sid, "name": name, "total": 0, "closed": 0,
+                                  "E": 0, "I": 0, "T": 0,
+                                  "closed_E": 0, "closed_I": 0, "closed_T": 0}
+            s["total"] += 1
+            if d in ("E", "I", "T"):
+                s[d] += 1
         if str(r.get("TaskState")) == "Closed":
             closed[d] += 1
+            if name:
+                s["closed"] += 1
+                if d in ("E", "I", "T"):
+                    s["closed_" + d] += 1
             k = date_key(r.get("ApprovedDate"))
             if k == today_key:
                 today += 1
@@ -627,6 +671,27 @@ def build_state(rows):
             "pct": round(cls * 100.0 / tot, 1) if tot else 0,
             "status": {k: sub.get(k, 0) for k in MS_ORDER},
         })
+    subsystem_summary = []
+    for name in sorted(subs):
+        s = subs[name]
+        tot, cls = s["total"], s["closed"]
+        if cls >= tot:
+            st = "COMPLETE"
+        elif cls == 0:
+            st = "OPEN"
+        else:
+            st = "IN PROGRESS"
+        subsystem_summary.append({
+            "sid": s["sid"],
+            "name": s["name"],
+            "total": tot,
+            "closed": cls,
+            "open": tot - cls,
+            "pct": round(cls * 100.0 / tot, 1) if tot else 0,
+            "status": st,
+            "by_discipline": {"E": s["E"], "I": s["I"], "T": s["T"]},
+            "closed_by_discipline": {"E": s["closed_E"], "I": s["closed_I"], "T": s["closed_T"]},
+        })
     return {
         "source": "Smart Completions (live authenticated pull)",
         "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
@@ -645,6 +710,8 @@ def build_state(rows):
         "today_milestone": today_milestone,
         "today_milestone_total": sum(ms_today.values()),
         "milestone_summary": milestone_summary,
+        "subsystem_summary": subsystem_summary,
+        "task_states": task_states,
         "recent_closed": recent,
     }
 
@@ -742,6 +809,7 @@ def write_local(state):
 def ensure_web_files():
     local = {
         "live_itr.js": LIVE_ITER_JS,
+        "live_status.js": LIVE_STATUS_JS,
         "itr_live.html": ITR_LIVE_HTML,
     }
     for name, content in local.items():
@@ -766,6 +834,33 @@ def inject_into_index(clone):
     else:
         s = s + "\n" + tag
     open(p, "w", encoding="utf-8").write(s)
+    return True
+
+
+def inject_platform_scripts(clone):
+    """Add the live overlay script to the PUBLIC platform index.html.
+
+    The platform is a huge static snapshot; `live_status.js` refreshes it in the
+    browser every minute from itr_live_state.json (closed/open per ITR and per
+    subsystem) without rebuilding the 7 MB page each cycle.
+    """
+    if not os.path.isdir(clone):
+        return False
+    p = os.path.join(clone, "index.html")
+    if not os.path.exists(p):
+        return False
+    s = open(p, "r", encoding="utf-8", errors="ignore").read()
+    tag = '<script src="live_status.js" charset="utf-8"></script>'
+    changed = False
+    if '<script src="live_status.js"' not in s:
+        idx = s.rfind("</body>")
+        if idx != -1:
+            s = s[:idx] + tag + "\n" + s[idx:]
+        else:
+            s = s + "\n" + tag
+        changed = True
+    if changed:
+        open(p, "w", encoding="utf-8").write(s)
     return True
 
 
@@ -828,12 +923,29 @@ def _token():
         return None
 
 
+def _pages_head_ok():
+    if not os.path.isdir(PAGE_CLONE):
+        return False
+    r = subprocess.run(["git", "-C", PAGE_CLONE, "rev-parse", "--verify", "HEAD"],
+                       capture_output=True, text=True, timeout=60)
+    return r.returncode == 0
+
+
 def ensure_pages_clone():
+    # A half-initialised clone (git init + add, no commit) leaves HEAD
+    # unresolvable and every push dies with
+    # "fatal: refs/heads/main cannot be resolved to branch". Rebuild it.
+    if os.path.isdir(PAGE_CLONE) and not _pages_head_ok():
+        pr(" !! pages clone has no valid HEAD - rebuilding it")
+        try:
+            shutil.rmtree(PAGE_CLONE, ignore_errors=True)
+        except Exception:
+            pass
     if not os.path.isdir(PAGE_CLONE):
         r = subprocess.run(
             ["git", "clone", "--depth", "1",
              "https://github.com/Mohamedgawad1/%s.git" % PAGE_REPO, PAGE_CLONE],
-            capture_output=True, text=True, timeout=300)
+            capture_output=True, text=True, timeout=600)
         if r.returncode != 0:
             pr(" !! pages clone failed:", (r.stderr or "")[-200:])
             return False
@@ -842,9 +954,33 @@ def ensure_pages_clone():
     subprocess.run(git + ["remote", "set-url", "origin",
                           "https://github.com/Mohamedgawad1/%s.git" % PAGE_REPO],
                    capture_output=True, text=True, timeout=120)
-    subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
-                   capture_output=True, text=True, timeout=300)
-    subprocess.run(git + ["reset", "--hard", "origin/main"],
+    fetched = False
+    for _ in range(2):
+        r = subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
+                           capture_output=True, text=True, timeout=300)
+        if r.returncode == 0:
+            fetched = True
+            break
+        pr(" .. pages fetch retry:", (r.stderr or "").strip()[-160:])
+        time.sleep(3)
+    if not fetched and not os.path.exists(os.path.join(PAGE_CLONE, "index.html")):
+        pr(" !! pages fetch failed and no working tree - cannot publish")
+        return False
+    # A shallow clone can end up on a detached HEAD with no local `main`. That is
+    # exactly what produced "fatal: refs/heads/main cannot be resolved to branch"
+    # on every push. Always (re)create the local main branch from origin/main.
+    target = "origin/main"
+    r = subprocess.run(git + ["rev-parse", "--verify", "origin/main"],
+                       capture_output=True, text=True, timeout=120)
+    if r.returncode != 0:
+        target = "FETCH_HEAD"
+    r = subprocess.run(git + ["checkout", "-B", "main", target],
+                       capture_output=True, text=True, timeout=300)
+    if r.returncode != 0:
+        pr(" !! pages checkout -B main failed:", (r.stderr or "").strip()[-200:])
+        subprocess.run(git + ["checkout", "-B", "main"], capture_output=True,
+                       text=True, timeout=120)
+    subprocess.run(git + ["reset", "--hard", target],
                    capture_output=True, text=True, timeout=120)
     return True
 
@@ -858,35 +994,44 @@ def pages_push(state):
     if not ensure_pages_clone():
         return None
     git = ["git", "-C", PAGE_CLONE]
-    for fn in ("itr_live_state.json", "live_itr.js", "itr_live.html"):
+    files = ("itr_live_state.json", "live_itr.js", "live_status.js", "itr_live.html")
+    for fn in files:
         src = os.path.join(WS, fn)
         if os.path.exists(src):
             try:
                 shutil.copy2(src, os.path.join(PAGE_CLONE, fn))
             except Exception as e:
                 pr(" !! copy %s err: %s" % (fn, str(e)[:80]))
-    subprocess.run(git + ["add", "--"] + ["itr_live_state.json", "live_itr.js", "itr_live.html"],
+    inject_platform_scripts(PAGE_CLONE)
+    targets = list(files) + ["index.html"]
+    subprocess.run(git + ["add", "--"] + targets,
                    capture_output=True, text=True, timeout=300)
     r = subprocess.run(
         git + ["commit", "-m", "ITR live update %s (closed=%d)" % (
             time.strftime("%Y-%m-%d %H:%M"), state["closed"])],
         capture_output=True, text=True, timeout=300)
     pr(" >> pages commit rc=%d %s" % (r.returncode, (r.stdout or "").strip()[-80:]))
+    push_url = "https://x-access-ps5:%s@github.com/Mohamedgawad1/%s.git" % (tok, PAGE_REPO)
     for attempt in range(4):
-        push = git + ["push",
-                      "https://x-access-ps5:%s@github.com/Mohamedgawad1/%s.git" % (tok, PAGE_REPO),
-                      "main"]
-        r = subprocess.run(push, capture_output=True, text=True, timeout=600)
+        # Push the checked-out commit explicitly as main. `push origin main` broke
+        # whenever the shallow clone had no local main branch.
+        r = subprocess.run(git + ["push", push_url, "HEAD:main"],
+                           capture_output=True, text=True, timeout=600)
         if r.returncode == 0:
             pr(" >> pages push OK (closed=%d)" % state["closed"])
             return 0
         err = (r.stderr or "").strip()
-        if "fetch first" in err or "rejected" in err:
+        if "fetch first" in err or "rejected" in err or "non-fast-forward" in err:
             pr(" >> pages pull --rebase (attempt %d)" % (attempt + 1))
-            rr = subprocess.run(git + ["pull", "--rebase", "origin", "main"],
+            subprocess.run(git + ["fetch", "--depth", "1", "origin", "main"],
+                           capture_output=True, text=True, timeout=300)
+            rr = subprocess.run(git + ["rebase", "origin/main"],
                                 capture_output=True, text=True, timeout=600)
             if rr.returncode != 0:
                 pr(" !! pages rebase failed:", (rr.stderr or "")[-300:])
+                subprocess.run(git + ["rebase", "--abort"], capture_output=True,
+                               text=True, timeout=120)
+                # Re-sync and retry the whole cycle next time rather than wedge.
                 return rr.returncode
             continue
         transient = ("disconnect" in err or "hung up" in err or "RPC failed" in err
@@ -967,7 +1112,7 @@ def _run_once():
             return 0
         # keep the session alive: switch to Switchboard, wait until user closes it
         try:
-            page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
+            page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
             page.bring_to_front()
         except Exception:
             pass
@@ -977,6 +1122,170 @@ def _run_once():
         pr("Browser window closed — done")
     return 0
     return 0
+
+
+LIVE_STATUS_JS = """(() => {
+  // Live overlay for the PUBLIC PS5 platform page.
+  // The platform ships a static snapshot; this script pulls the fresh
+  // itr_live_state.json every minute, flips each ITR row to its live
+  // Closed/Open state, re-renders the KPIs, and shows a per-subsystem table.
+  const LS = 'live_itr_state_v2';
+  const REFRESH = 60000;
+  let lastSig = '';
+  let subState = null;
+
+  const fmt = n => (Number(n) || 0).toLocaleString('en-US');
+  const esc = s => String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+  function ensureBadge() {
+    let el = document.getElementById('live-status-pill');
+    if (el) return el;
+    el = document.createElement('div');
+    el.id = 'live-status-pill';
+    el.style.cssText = 'position:fixed;right:16px;bottom:16px;z-index:99999;background:#0b2f56;color:#fff;' +
+      'border:1px solid #38bdf8;border-radius:12px;padding:10px 14px;font-family:Segoe UI,Arial,sans-serif;' +
+      'box-shadow:0 6px 18px rgba(0,0,0,.35);min-width:230px';
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function paintBadge(u, ok, err) {
+    const el = ensureBadge();
+    if (!ok) {
+      el.innerHTML = '<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#7dd3fc">ITR LIVE</div>' +
+        '<div style="font-size:13px;color:#fca5a5;margin-top:4px">تعذر التحديث' + (err ? ': ' + esc(err) : '') + '</div>' +
+        '<div style="font-size:10px;color:#94a3b8;margin-top:4px">يعيد المحاولة تلقائياً…</div>';
+      return;
+    }
+    const e = (u.closed_by_discipline || {}).E || 0;
+    const i = (u.closed_by_discipline || {}).I || 0;
+    const t = (u.closed_by_discipline || {}).T || 0;
+    el.innerHTML =
+      '<div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#7dd3fc">ITR LIVE &middot; Smart Completions</div>' +
+      '<div style="font-size:26px;font-weight:800;line-height:1.1;margin-top:2px">' + fmt(u.closed) +
+        ' <span style="font-size:13px;color:#94a3b8;font-weight:400">closed</span></div>' +
+      '<div style="font-size:12px;color:#fca5a5">' + fmt(u.open) + ' open &middot; ' + fmt(u.eit_total) + ' total E&amp;I&amp;T</div>' +
+      '<div style="font-size:11px;color:#cbd5e1;margin-top:2px">E ' + fmt(e) + ' &middot; I ' + fmt(i) + ' &middot; T ' + fmt(t) + '</div>' +
+      '<div style="font-size:10px;color:#94a3b8;margin-top:4px">Updated ' + esc(u.updated) + '</div>';
+  }
+
+  // The platform keeps every ITR in the global ITR array: [id, tag, disc, type,
+  // desc, state, close, scope, subname, sid]. The live Smart Completions pull is
+  // exactly the CPP AGI scope, so only those rows are flipped; EACOP / EITS / KENT
+  // keep their own static values.
+  function applyTaskStates(u) {
+    const ts = u.task_states || {};
+    let changed = 0, matched = 0;
+    try {
+      for (let k = 0; k < ITR.length; k++) {
+        const row = ITR[k];
+        if (String(row[7] == null ? '' : row[7]).trim().toUpperCase() !== 'CPP AGI') continue;
+        const st = ts[row[0]];
+        if (!st) continue;
+        matched++;
+        if (row[5] !== st) { row[5] = st; changed++; }
+      }
+    } catch (e) { /* platform not ready */ }
+    return { changed: changed, matched: matched };
+  }
+
+  function ensureSubPanel() {
+    let p = document.getElementById('live-sub-panel');
+    if (p) return p;
+    const host = document.getElementById('v-dash');
+    if (!host) return null;
+    p = document.createElement('div');
+    p.className = 'panel';
+    p.id = 'live-sub-panel';
+    p.innerHTML =
+      '<h2>ITR LIVE &mdash; Closed / Open by Subsystem <span id="live-sub-meta" style="font-size:11px;color:#6b7280;font-weight:400"></span></h2>' +
+      '<div class="tools"><input type="search" id="live-sub-q" placeholder="Search subsystem...">' +
+      '<span class="hint" id="live-sub-hint" style="margin:0"></span></div>' +
+      '<div class="tblwrap" style="max-height:520px"><table id="live-sub-tbl"></table></div>';
+    const kp = document.getElementById('dash-kpis');
+    if (kp && kp.parentElement === host) host.insertBefore(p, kp.nextSibling);
+    else host.insertBefore(p, host.firstChild);
+    p.querySelector('#live-sub-q').addEventListener('input', () => {
+      if (subState) renderSubTable(subState);
+    });
+    p.querySelector('#live-sub-tbl').addEventListener('click', ev => {
+      const tr = ev.target.closest('tr.live-sub-row');
+      if (tr && tr.dataset.sid && typeof goSub === 'function') goSub(tr.dataset.sid);
+    });
+    return p;
+  }
+
+  function renderSubTable(u) {
+    subState = u;
+    const p = ensureSubPanel();
+    if (!p) return;
+    const list = Array.isArray(u.subsystem_summary) ? u.subsystem_summary.slice() : [];
+    const q = (p.querySelector('#live-sub-q').value || '').trim().toLowerCase();
+    const f = q ? list.filter(s => ((s.name || '') + ' ' + (s.sid || '')).toLowerCase().indexOf(q) !== -1) : list;
+    f.sort((a, b) => String(a.sid).localeCompare(String(b.sid), 'en', { numeric: true }));
+    p.querySelector('#live-sub-meta').textContent =
+      '  ' + fmt(u.closed) + ' closed / ' + fmt(u.open) + ' open  •  updated ' + (u.updated || '—');
+    let h = '<thead><tr><th>SUB SYSTEM</th>' +
+      '<th style="text-align:center">TOTAL</th><th style="text-align:center">CLOSED</th>' +
+      '<th style="text-align:center">OPEN</th><th style="text-align:center">%</th><th>STATUS</th></tr></thead><tbody>';
+    if (!f.length) {
+      h += '<tr><td colspan="6"><div class="empty">No subsystems match</div></td></tr>';
+    } else {
+      for (const s of f) {
+        const st = s.status || '';
+        const col = st === 'COMPLETE' ? '#1a8a4a' : st === 'OPEN' ? '#c0392b' : '#b7791f';
+        const bg = st === 'COMPLETE' ? '#e6f6ec' : st === 'OPEN' ? '#fdeceb' : '#fff7e6';
+        const bd = s.by_discipline || {};
+        const cd = s.closed_by_discipline || {};
+        const nm = String(s.name || '').replace(/^[^-]+ - /, '');
+        h += '<tr class="live-sub-row" data-sid="' + esc(s.sid) + '" style="cursor:pointer">' +
+          '<td><b>' + esc(s.sid) + '</b> &middot; ' + esc(nm) +
+            '<div style="font-size:10px;color:#6b7280">E ' + fmt(cd.E) + '/' + fmt(bd.E) +
+            ' &nbsp; I ' + fmt(cd.I) + '/' + fmt(bd.I) + ' &nbsp; T ' + fmt(cd.T) + '/' + fmt(bd.T) + '</div></td>' +
+          '<td style="text-align:center">' + fmt(s.total) + '</td>' +
+          '<td style="text-align:center;color:#1a8a4a;font-weight:700">' + fmt(s.closed) + '</td>' +
+          '<td style="text-align:center;color:#c0392b;font-weight:700">' + fmt(s.open) + '</td>' +
+          '<td style="text-align:center">' + (s.pct == null ? '' : s.pct + '%') + '</td>' +
+          '<td><span style="display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;' +
+            'font-weight:700;color:' + col + ';background:' + bg + ';border:1px solid ' + col + '55">' +
+            esc(st) + '</span></td></tr>';
+      }
+    }
+    h += '</tbody>';
+    p.querySelector('#live-sub-tbl').innerHTML = h;
+    p.querySelector('#live-sub-hint').textContent = f.length + ' / ' + list.length + ' SUBSYSTEMS';
+  }
+
+  function apply(u) {
+    const res = applyTaskStates(u);
+    const sig = [u.updated, u.closed, u.open, res.changed].join('|');
+    if (sig !== lastSig) {
+      lastSig = sig;
+      try { if (typeof renderDash === 'function') renderDash(); } catch (e) {}
+      try {
+        if (typeof V !== 'undefined') {
+          if (V === 'it' && typeof renderList === 'function') renderList('it');
+          else if (V === 'sub' && typeof renderSub === 'function') renderSub();
+          else if (V === 'blk' && typeof renderBlk === 'function') renderBlk();
+        }
+      } catch (e) {}
+    }
+    renderSubTable(u);
+    paintBadge(u, true);
+    try { localStorage.setItem(LS, JSON.stringify({ updated: u.updated, closed: u.closed, open: u.open })); } catch (e) {}
+  }
+
+  function load() {
+    fetch('itr_live_state.json?v=' + Math.floor(Date.now() / 30000), { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(u => { if (u && u.updated) apply(u); else throw new Error('empty state'); })
+      .catch(e => paintBadge(null, false, String((e && e.message) || e)));
+  }
+
+  load();
+  setInterval(load, REFRESH);
+})();"""
 
 
 LIVE_ITER_JS = """(() => {
@@ -1213,6 +1522,11 @@ ITR_LIVE_HTML = """<!DOCTYPE html>
   <div class="card"><div class="lbl">إجمالي E&amp;I&amp;T</div><div class="num" id="total">&hellip;</div></div>
 </div>
 <div class="meta" id="meta">جارٍ التحديث…</div>
+<h2 style="font-size:15px;color:#7dd3fc;margin-top:28px">ITR مغلق / مفتوح لكل Subsystem — مباشر</h2>
+<div class="wrap"><table id="subtbl">
+<thead><tr><th>Subsystem</th><th>Total</th><th>Closed</th><th>Open</th><th>%</th><th>Status</th></tr></thead>
+<tbody id="subrows"></tbody>
+</table></div>
 <h2 style="font-size:15px;color:#7dd3fc;margin-top:28px">آخر ITRs متقفلة — بالتفاصيل (باشر)</h2>
 <div class="wrap"><table id="tbl">
 <thead><tr><th>Task ID</th><th>Asset Tag</th><th>النظام (System)</th><th>Loop</th><th>Disc</th><th>التشغيل</th><th>تاريخ القفل</th></tr></thead>
@@ -1231,6 +1545,19 @@ ITR_LIVE_HTML = """<!DOCTYPE html>
       'آخر تحديث من المنصة: <b>' + (u.updated||'') + '</b><br>النطاق: ' + (u.scope||'') +
       '<br>يتحدث تلقائياً كل دقيقة. <span class="err" id="st"></span>';
     document.title = 'ITR Closed: ' + fmt(u.closed) + ' | PS5 CPP AGI';
+    const sb = document.getElementById('subrows');
+    if(sb){
+      const esc2 = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const list = Array.isArray(u.subsystem_summary) ? u.subsystem_summary.slice() : [];
+      list.sort((a,b)=>String(a.sid).localeCompare(String(b.sid),'en',{numeric:true}));
+      sb.innerHTML = list.map(s=>{
+        const col = s.status==='COMPLETE' ? '#34d399' : (s.status==='OPEN' ? '#f87171' : '#fbbf24');
+        return '<tr><td><b>'+esc2(s.sid)+'</b> · '+esc2(String(s.name||'').replace(/^[^-]+ - /,''))+'</td>'+
+          '<td>'+fmt(s.total)+'</td><td style="color:#34d399;font-weight:700">'+fmt(s.closed)+'</td>'+
+          '<td style="color:#f87171;font-weight:700">'+fmt(s.open)+'</td><td>'+(s.pct==null?'':s.pct+'%')+'</td>'+
+          '<td style="color:'+col+';font-weight:700">'+esc2(s.status)+'</td></tr>';
+      }).join('') || '<tr><td colspan="6">لا توجد بيانات</td></tr>';
+    }
     const tb = document.getElementById('rows');
     if(tb && Array.isArray(u.recent_closed)){
       tb.innerHTML = u.recent_closed.map(r=>{
@@ -1328,7 +1655,8 @@ if __name__ == "__main__":
                                       "w", encoding="utf-8") as f:
                                 json.dump(state, f, ensure_ascii=False, indent=2)
                             git_push(CLONE, state)
-                            pages_push(state)
+                            prc = pages_push(state)
+                            pr("PAGES PUSH rc=%s" % (prc if prc is not None else "skipped"))
                             fails = 0
                             pr("cycle OK closed=%d open=%d updated=%s" % (
                                 state["closed"], state["open"], state["updated"]))

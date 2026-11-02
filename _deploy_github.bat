@@ -62,16 +62,18 @@ if errorlevel 1 (
 rem --- keep app.html identical to the published index.html ---
 copy /y "index.html" "app.html" >nul
 
-rem --- ITR LIVE page (standalone + badge + live state) ---
+rem --- ITR LIVE page (standalone + badge + live state + platform overlay) ---
 if exist "%~dp0itr_live.html" (
     copy /y "%~dp0itr_live.html" "%D%\itr_live.html" >nul
     copy /y "%~dp0live_itr.js" "%D%\live_itr.js" >nul
+    copy /y "%~dp0live_status.js" "%D%\live_status.js" >nul
     copy /y "%~dp0itr_live_state.json" "%D%\itr_live_state.json" >nul
+    powershell -NoProfile -Command "$p='index.html'; $s=Get-Content -Raw $p; if($s -notmatch 'live_status\.js'){ $s=$s -replace '</body>','<script src=\"live_status.js\" charset=\"utf-8\"></script></body>'; Set-Content -NoNewline -Encoding UTF8 $p $s }" >nul 2>&1
 )
-git add index.html app.html itr_live.html live_itr.js itr_live_state.json
+git add index.html app.html itr_live.html live_itr.js live_status.js itr_live_state.json
 git add dashboard_data.json server_data.json inspection_data.json data.json 2>nul
 git add dashboard.html PS5_Project_Dashboard.html PS5_Project_Dashboard_v2.html "PS5 - CPP AGI Completion Progress Dashboard.html" 2>nul
-git add index.html app.html itr_live.html live_itr.js itr_live_state.json *.json 2>nul
+git add index.html app.html itr_live.html live_itr.js live_status.js itr_live_state.json *.json 2>nul
 git diff --cached --quiet
 if not errorlevel 1 (
     echo [deploy] no changes - already up to date

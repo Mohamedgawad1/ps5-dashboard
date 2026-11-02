@@ -54336,3 +54336,34 @@ Call log:
 [2026-11-02 08:19:39]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 08:19 (closed=7199) rc=0 [main 570647f] ITR live update 2026-11-02 08:19 (closed=7199)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-11-02 08:19:47]  >> git push OK
+[2026-11-02 08:25:05] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-11-02 08:25:09] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-11-02 08:25:23] reused the sync's always-open browser (port 9222)
+[2026-11-02 08:25:39] LOGGED IN
+[2026-11-02 08:28:03] pulled off=0 n=4000 accum=4000
+[2026-11-02 08:29:29] pulled off=4000 n=4000 accum=8000
+[2026-11-02 08:30:46] pulled off=8000 n=4000 accum=12000
+[2026-11-02 08:31:40] pulled off=12000 n=2007 accum=14007
+[2026-11-02 08:31:41] task index refreshed (6319 asset tags)
+[2026-11-02 08:31:41] milestone_map: 290 subsystems
+[2026-11-02 08:31:41] updated dashboard_data.json itr_summary.live
+[2026-11-02 08:31:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-02 08:31:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 08:31 (closed=7199) rc=0 [main 76f224d] ITR live update 2026-11-02 08:31 (closed=7199)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-02 08:31:54]  >> git push OK
+[2026-11-02 08:35:09] !! cycle exceeded 600s - exiting so the watchdog restarts a clean session
+[2026-11-02 08:35:18] LOOP READY (interval 300s, keep_open=True, cycle max 600s)
+[2026-11-02 08:35:22] reusing the Switchboard tab already open - no new tab
+[2026-11-02 08:35:22] reused the sync's always-open browser (port 9222)
+[2026-11-02 08:35:34] LOGGED IN
+[2026-11-02 08:36:12] pulled off=0 n=4000 accum=4000
+[2026-11-02 08:39:37] pulled off=4000 n=4000 accum=8000
+[2026-11-02 08:40:10] pulled off=8000 n=4000 accum=12000
+[2026-11-02 08:40:27] pulled off=12000 n=2007 accum=14007
+[2026-11-02 08:40:27] task index refreshed (6319 asset tags)
+[2026-11-02 08:40:27] milestone_map: 290 subsystems
+[2026-11-02 08:40:29] updated dashboard_data.json itr_summary.live
+[2026-11-02 08:40:31]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-02 08:40:33]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-02 08:40 (closed=7199) rc=0 [main 53837d6] ITR live update 2026-11-02 08:40 (closed=7199)
+ 2 files changed, 15166 insertions(+), 1 deletion(-)
+[2026-11-02 08:40:40]  >> git push OK
