@@ -55518,3 +55518,102 @@ Call log:
 [2026-11-03 11:59:11]  >> platform publish OK (1 file(s) updated, closed=7233)
 [2026-11-03 11:59:11] PAGES PUSH rc=0
 [2026-11-03 11:59:11] cycle OK closed=7233 open=3065 updated=2026-11-03 11:58:52
+[2026-11-03 12:01:12] reusing the Switchboard tab already open - no new tab
+[2026-11-03 12:01:12] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:01:15] LOGGED IN
+[2026-11-03 12:01:24] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:01:33] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:01:42] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:01:47] pulled off=12000 n=2008 accum=14008
+[2026-11-03 12:01:47] task index refreshed (6319 asset tags)
+[2026-11-03 12:01:47] updated dashboard_data.json itr_summary.live
+[2026-11-03 12:01:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 12:01:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 12:01 (closed=7233) rc=0 [main 7bf447b] ITR live update 2026-11-03 12:01 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 12:01:55]  >> git push OK
+[2026-11-03 12:02:10]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 12:02:14]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 12:02:14] PAGES PUSH rc=0
+[2026-11-03 12:02:14] cycle OK closed=7233 open=3065 updated=2026-11-03 12:01:47
+[2026-11-03 12:04:14] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:04:19] LOGGED IN
+[2026-11-03 12:04:28] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:04:39] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:04:48] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:04:53] pulled off=12000 n=2008 accum=14008
+[2026-11-03 12:04:54] task index refreshed (6319 asset tags)
+[2026-11-03 12:04:54] updated dashboard_data.json itr_summary.live
+[2026-11-03 12:04:57]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 12:04:57]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 12:04 (closed=7233) rc=0 [main 08e4947] ITR live update 2026-11-03 12:04 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 12:05:03]  >> git push OK
+[2026-11-03 12:05:32]  .. itr_live_state.json publish hiccup (<urlopen error [WinError 10053] An established connection was aborted by the sof) - retrying
+[2026-11-03 12:05:45]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 12:05:49]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 12:05:49] PAGES PUSH rc=0
+[2026-11-03 12:05:49] cycle OK closed=7233 open=3065 updated=2026-11-03 12:04:54
+[2026-11-03 12:07:50] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:07:53] LOGGED IN
+[2026-11-03 12:08:12] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:08:23] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:08:33] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:08:38] pulled off=12000 n=2008 accum=14008
+[2026-11-03 12:08:38] task index refreshed (6319 asset tags)
+[2026-11-03 12:08:39] updated dashboard_data.json itr_summary.live
+[2026-11-03 12:08:40]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 12:08:40]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 12:08 (closed=7233) rc=0 [main 9b9c370] ITR live update 2026-11-03 12:08 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 12:08:45]  >> git push OK
+[2026-11-03 12:09:01]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 12:09:06]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 12:09:06] PAGES PUSH rc=0
+[2026-11-03 12:09:06] cycle OK closed=7233 open=3065 updated=2026-11-03 12:08:39
+[2026-11-03 12:11:06] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:11:10] LOGGED IN
+[2026-11-03 12:11:21] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:11:30] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:11:38] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:11:42] pulled off=12000 n=2008 accum=14008
+[2026-11-03 12:11:43] task index refreshed (6319 asset tags)
+[2026-11-03 12:11:43] updated dashboard_data.json itr_summary.live
+[2026-11-03 12:11:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 12:11:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 12:11 (closed=7233) rc=0 [main d881404] ITR live update 2026-11-03 12:11 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 12:11:50]  >> git push OK
+[2026-11-03 12:12:12]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 12:12:16]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 12:12:16] PAGES PUSH rc=0
+[2026-11-03 12:12:16] cycle OK closed=7233 open=3065 updated=2026-11-03 12:11:43
+[2026-11-03 12:14:16] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:14:20] LOGGED IN
+[2026-11-03 12:14:29] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:14:39] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:14:47] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:14:51] pulled off=12000 n=2008 accum=14008
+[2026-11-03 12:14:51] task index refreshed (6319 asset tags)
+[2026-11-03 12:14:52] updated dashboard_data.json itr_summary.live
+[2026-11-03 12:14:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 12:14:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 12:14 (closed=7233) rc=0 [main 00ab30a] ITR live update 2026-11-03 12:14 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 12:14:59]  >> git push OK
+[2026-11-03 12:15:45]  .. itr_live_state.json publish hiccup (IncompleteRead(454210 bytes read, 176403 more expected)) - retrying
+[2026-11-03 12:15:58]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 12:16:03]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 12:16:03] PAGES PUSH rc=0
+[2026-11-03 12:16:03] cycle OK closed=7233 open=3065 updated=2026-11-03 12:14:52
+[2026-11-03 12:18:03] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:18:07] LOGGED IN
+[2026-11-03 12:18:17] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:18:27] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:18:34] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:18:39] pulled off=12000 n=2008 accum=14008
+[2026-11-03 12:18:40] task index refreshed (6319 asset tags)
+[2026-11-03 12:18:40] updated dashboard_data.json itr_summary.live
+[2026-11-03 12:18:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 12:18:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 12:18 (closed=7233) rc=0 [main c6a6f14] ITR live update 2026-11-03 12:18 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 12:18:47]  >> git push OK
+[2026-11-03 12:18:59]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 12:19:03]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 12:19:03] PAGES PUSH rc=0
+[2026-11-03 12:19:03] cycle OK closed=7233 open=3065 updated=2026-11-03 12:18:40
