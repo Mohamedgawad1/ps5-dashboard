@@ -13891,3 +13891,20 @@
 2026-11-02 08:48:01    DONE - platform online + all downloads synced.
 2026-11-02 08:48:01 [mirror] PAGES -> _files
 2026-11-02 08:48:01 [done] build in 3038s
+2026-11-03 08:09:10    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -02-nov-2026 .xlsx
+2026-11-03 08:09:10      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4644 | Detail I 14009 | RFC 270
+2026-11-03 08:09:11      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 21975 pinned cells
+2026-11-03 08:09:11    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-03 08:09:12 >> platform full sync
+2026-11-03 08:09:22    Reading newest ovTasks_TestsPlanned_*.xlsx ...
+2026-11-03 08:09:22      Using: C:/Users/mylap/Downloads\ovTasks_TestsPlanned_1369.xlsx
+2026-11-03 08:09:22      Modified: 2026-11-02 11:38
+2026-11-03 08:09:22    
+2026-11-03 08:09:22    >>> C:\Python315\python.exe rebuild_data.py
+2026-11-03 08:09:22    !! FAILED: ['C:\\Python315\\python.exe', 'rebuild_data.py'] exit 1
+2026-11-03 08:09:22    !!   File "C:\Users\mylap\OneDrive\Desktop\PS5-COMPLETION-PLATFORM\rebuild_data.py", line 96, in <module>
+2026-11-03 08:09:22    !!     disc = str(row[8] or '')
+2026-11-03 08:09:22    !!                ~~~^^^
+2026-11-03 08:09:22    !! IndexError: tuple index out of range
+2026-11-03 08:09:22 !! platform full sync FAILED (rc=1)
+2026-11-03 08:09:22 [done] build in 3868s
