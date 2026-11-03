@@ -55270,3 +55270,33 @@ Call log:
 [2026-11-03 10:39:23] ssologin click: ok
 [2026-11-03 10:39:33] sso handoff -> verify password page
 [2026-11-03 10:39:36] verify submit: submitted
+[2026-11-03 10:41:27] auto-login attempt 2 still not logged in
+[2026-11-03 10:41:33] ssologin click: ok
+[2026-11-03 10:41:43] sso handoff -> verify password page
+[2026-11-03 10:41:45] verify submit: submitted
+[2026-11-03 10:43:35] auto-login attempt 3 still not logged in
+[2026-11-03 10:47:32] LOGGED IN
+[2026-11-03 10:48:04] pulled off=0 n=4000 accum=4000
+[2026-11-03 10:49:23] pulled off=4000 n=4000 accum=8000
+[2026-11-03 10:50:27] pulled off=8000 n=4000 accum=12000
+[2026-11-03 10:50:52] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-03 10:52:25] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-03 10:52:43] reusing the Switchboard tab already open - no new tab
+[2026-11-03 10:52:43] reused the sync's always-open browser (port 9222)
+[2026-11-03 10:53:26] LOGGED IN
+[2026-11-03 10:54:12] pulled off=0 n=4000 accum=4000
+[2026-11-03 10:55:03] pulled off=4000 n=4000 accum=8000
+[2026-11-03 10:55:49] pulled off=8000 n=4000 accum=12000
+[2026-11-03 10:56:12] pulled off=12000 n=2008 accum=14008
+[2026-11-03 10:56:15] task index refreshed (6319 asset tags)
+[2026-11-03 10:56:16] milestone_map: 290 subsystems
+[2026-11-03 10:56:23] updated dashboard_data.json itr_summary.live
+[2026-11-03 10:56:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 10:56:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 10:56 (closed=7233) rc=0 [main 1c9d085] ITR live update 2026-11-03 10:56 (closed=7233)
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+[2026-11-03 10:57:49]  >> git push OK
+[2026-11-03 10:57:55]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 10:57:59]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 10:57:59] PAGES PUSH rc=0
+[2026-11-03 10:57:59] cycle OK closed=7233 open=3065 updated=2026-11-03 10:56:22
+[2026-11-03 10:59:59] reused the sync's always-open browser (port 9222)
