@@ -55617,3 +55617,55 @@ Call log:
 [2026-11-03 12:19:03]  >> platform publish OK (1 file(s) updated, closed=7233)
 [2026-11-03 12:19:03] PAGES PUSH rc=0
 [2026-11-03 12:19:03] cycle OK closed=7233 open=3065 updated=2026-11-03 12:18:40
+[2026-11-03 12:21:03] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:21:08] LOGGED IN
+[2026-11-03 12:21:17] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:21:25] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:21:34] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:21:38] pulled off=12000 n=2008 accum=14008
+[2026-11-03 12:21:39] task index refreshed (6319 asset tags)
+[2026-11-03 12:21:39] updated dashboard_data.json itr_summary.live
+[2026-11-03 12:21:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 12:21:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 12:21 (closed=7233) rc=0 [main 9bc4ee7] ITR live update 2026-11-03 12:21 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 12:21:46]  >> git push OK
+[2026-11-03 12:21:55]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 12:21:59]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 12:21:59] PAGES PUSH rc=0
+[2026-11-03 12:21:59] cycle OK closed=7233 open=3065 updated=2026-11-03 12:21:39
+[2026-11-03 12:23:59] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:24:47] LOGGED IN
+[2026-11-03 12:25:17] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:25:46] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:26:29] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:27:04] pulled off=12000 n=2008 accum=14008
+[2026-11-03 12:27:04] task index refreshed (6319 asset tags)
+[2026-11-03 12:27:05] updated dashboard_data.json itr_summary.live
+[2026-11-03 12:27:06]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 12:27:07]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 12:27 (closed=7233) rc=0 [main b2fc198] ITR live update 2026-11-03 12:27 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 12:27:13]  >> git push OK
+[2026-11-03 12:27:20]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 12:27:24]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 12:27:24] PAGES PUSH rc=0
+[2026-11-03 12:27:24] cycle OK closed=7233 open=3065 updated=2026-11-03 12:27:05
+[2026-11-03 12:29:25] reused the sync's always-open browser (port 9222)
+[2026-11-03 12:30:25] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-11-03 12:31:14] session expired -> auto-login
+[2026-11-03 12:33:27] ssologin click: no-btn
+[2026-11-03 12:33:56] LOGGED IN
+[2026-11-03 12:34:40] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:35:25] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:35:25] call err off=8000: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-11-03 12:35:25] pull retry 2/3 - reloading Switchboard
+[2026-11-03 12:35:49] LOGGED IN
+[2026-11-03 12:36:18] pulled off=0 n=4000 accum=4000
+[2026-11-03 12:36:41] pulled off=4000 n=4000 accum=8000
+[2026-11-03 12:37:28] pulled off=8000 n=4000 accum=12000
+[2026-11-03 12:37:31] err off=12000: [object Object]
+[2026-11-03 12:37:31] pull retry 3/3 - reloading Switchboard
+[2026-11-03 12:38:36] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
