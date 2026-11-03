@@ -594,7 +594,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "XBUSC",
+  "from_tb": "XBUS3",
   "to_tb": "XBUS3"
  },
  {
@@ -663,7 +663,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "XT1-I3",
+  "from_tb": "-X131",
   "to_tb": ""
  },
  {
@@ -686,8 +686,8 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-XI3",
+  "to_tb": "-X1361"
  },
  {
   "sheet": 6,
@@ -709,7 +709,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-X136115",
   "to_tb": ""
  },
  {
@@ -732,7 +732,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "X",
+  "from_tb": "-X14511SP",
   "to_tb": ""
  },
  {
@@ -778,7 +778,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-XI2",
   "to_tb": ""
  },
  {
@@ -801,7 +801,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-X1481-XI1",
   "to_tb": ""
  },
  {
@@ -847,7 +847,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-XI2",
   "to_tb": ""
  },
  {
@@ -870,7 +870,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-XBC1",
   "to_tb": ""
  },
  {
@@ -939,8 +939,8 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-XI1",
+  "to_tb": "-XI2"
  },
  {
   "sheet": 7,
@@ -1054,7 +1054,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-XDO24",
   "to_tb": ""
  },
  {
@@ -1215,7 +1215,7 @@
   "to_task": "T-00023-4744",
   "to_subsys": "PS5-62-06 - CRO Generator Building Emergency Lighting DB  - PS5-05-IG-0025",
   "to_sid": "PS5-62-06",
-  "from_tb": "",
+  "from_tb": "-XDI41",
   "to_tb": ""
  },
  {
@@ -1951,7 +1951,7 @@
   "to_task": "T-00023-4978",
   "to_subsys": "PS5-60-27 - Compressed Air Starting Skid",
   "to_sid": "PS5-60-27",
-  "from_tb": "X-EC1",
+  "from_tb": "-X5",
   "to_tb": ""
  },
  {
@@ -2068,7 +2068,7 @@
   "to_task": "",
   "to_subsys": "",
   "to_sid": "",
-  "from_tb": "X",
+  "from_tb": "-X5",
   "to_tb": ""
  },
  {
@@ -2091,7 +2091,7 @@
   "to_task": "",
   "to_subsys": "",
   "to_sid": "",
-  "from_tb": "X",
+  "from_tb": "-X5",
   "to_tb": ""
  },
  {
@@ -2114,7 +2114,7 @@
   "to_task": "",
   "to_subsys": "",
   "to_sid": "",
-  "from_tb": "X",
+  "from_tb": "-X1",
   "to_tb": ""
  },
  {
@@ -2160,7 +2160,7 @@
   "to_task": "T-00023-5151",
   "to_subsys": "PS5-60-16 - Power Generation Package F",
   "to_sid": "PS5-60-16",
-  "from_tb": "X0",
+  "from_tb": "-X1a-X5",
   "to_tb": ""
  },
  {
@@ -2183,7 +2183,7 @@
   "to_task": "T-00023-5151",
   "to_subsys": "PS5-60-16 - Power Generation Package F",
   "to_sid": "PS5-60-16",
-  "from_tb": "X",
+  "from_tb": "-X5",
   "to_tb": ""
  },
  {
@@ -2206,7 +2206,7 @@
   "to_task": "T-00023-5151",
   "to_subsys": "PS5-60-16 - Power Generation Package F",
   "to_sid": "PS5-60-16",
-  "from_tb": "X0",
+  "from_tb": "-X1a",
   "to_tb": ""
  },
  {
@@ -2229,7 +2229,7 @@
   "to_task": "T-00023-5172",
   "to_subsys": "PS5-60-07 - Power Generation Package C",
   "to_sid": "PS5-60-07",
-  "from_tb": "X121",
+  "from_tb": "-X2a",
   "to_tb": ""
  },
  {
@@ -2252,8 +2252,8 @@
   "to_task": "T-00023-5172",
   "to_subsys": "PS5-60-07 - Power Generation Package C",
   "to_sid": "PS5-60-07",
-  "from_tb": "TB",
-  "to_tb": ""
+  "from_tb": "-X2a",
+  "to_tb": "-X291"
  },
  {
   "sheet": 37,
@@ -2321,7 +2321,7 @@
   "to_task": "T-00023-5178",
   "to_subsys": "PS5-60-13 - Power Generation Package E",
   "to_sid": "PS5-60-13",
-  "from_tb": "X121",
+  "from_tb": "-X2a",
   "to_tb": ""
  },
  {
@@ -2344,8 +2344,8 @@
   "to_task": "T-00023-5178",
   "to_subsys": "PS5-60-13 - Power Generation Package E",
   "to_sid": "PS5-60-13",
-  "from_tb": "TB",
-  "to_tb": ""
+  "from_tb": "-X2a",
+  "to_tb": "-X291"
  },
  {
   "sheet": 38,
@@ -2413,7 +2413,7 @@
   "to_task": "T-00023-5181",
   "to_subsys": "PS5-60-16 - Power Generation Package F",
   "to_sid": "PS5-60-16",
-  "from_tb": "X121",
+  "from_tb": "-X2a",
   "to_tb": ""
  },
  {
@@ -2436,8 +2436,8 @@
   "to_task": "T-00023-5181",
   "to_subsys": "PS5-60-16 - Power Generation Package F",
   "to_sid": "PS5-60-16",
-  "from_tb": "TB",
-  "to_tb": ""
+  "from_tb": "-X2a",
+  "to_tb": "-X291"
  },
  {
   "sheet": 38,
@@ -2505,7 +2505,7 @@
   "to_task": "T-00023-5187",
   "to_subsys": "PS5-60-02 - Power Gen Package A (UCP)",
   "to_sid": "PS5-60-02",
-  "from_tb": "XS",
+  "from_tb": "X131",
   "to_tb": ""
  },
  {
@@ -2643,7 +2643,7 @@
   "to_task": "T-00023-5187",
   "to_subsys": "PS5-60-02 - Power Gen Package A (UCP)",
   "to_sid": "PS5-60-02",
-  "from_tb": "XT",
+  "from_tb": "X111",
   "to_tb": ""
  },
  {
@@ -3563,7 +3563,7 @@
   "to_task": "T-00023-5195",
   "to_subsys": "PS5-60-14 - Power Gen Package E (UCP)",
   "to_sid": "PS5-60-14",
-  "from_tb": "XT",
+  "from_tb": "X122",
   "to_tb": ""
  },
  {
@@ -3908,7 +3908,7 @@
   "to_task": "T-00023-5197",
   "to_subsys": "PS5-60-17 - Power Gen Package F (UCP)",
   "to_sid": "PS5-60-17",
-  "from_tb": "X111XT",
+  "from_tb": "-X122",
   "to_tb": ""
  },
  {
@@ -4000,7 +4000,7 @@
   "to_task": "T-00023-5201",
   "to_subsys": "PS5-60-22 - Power Gen Master UCP",
   "to_sid": "PS5-60-22",
-  "from_tb": "XT",
+  "from_tb": "X101",
   "to_tb": ""
  },
  {
@@ -4023,7 +4023,7 @@
   "to_task": "T-00023-5201",
   "to_subsys": "PS5-60-22 - Power Gen Master UCP",
   "to_sid": "PS5-60-22",
-  "from_tb": "X41",
+  "from_tb": "-XDI15",
   "to_tb": ""
  },
  {
@@ -4046,7 +4046,7 @@
   "to_task": "T-00023-5201",
   "to_subsys": "PS5-60-22 - Power Gen Master UCP",
   "to_sid": "PS5-60-22",
-  "from_tb": "X",
+  "from_tb": "X1101",
   "to_tb": ""
  },
  {
@@ -4736,7 +4736,7 @@
   "to_task": "T-00610-0251",
   "to_subsys": "PS5-61-08 - Electrical Control System",
   "to_sid": "PS5-61-08",
-  "from_tb": "X1541",
+  "from_tb": "-XDI35",
   "to_tb": ""
  },
  {
@@ -4760,7 +4760,7 @@
   "to_subsys": "PS5-61-08 - Electrical Control System",
   "to_sid": "PS5-61-08",
   "from_tb": "X1541",
-  "to_tb": ""
+  "to_tb": "-XDI35"
  },
  {
   "sheet": 54,
@@ -4943,8 +4943,8 @@
   "to_task": "T-00023-5335",
   "to_subsys": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
   "to_sid": "PS5-62-10",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-XDI41",
+  "to_tb": "-XDI31"
  },
  {
   "sheet": 54,
@@ -5771,8 +5771,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-XI1",
+  "to_tb": "-XG1"
  },
  {
   "sheet": 56,
@@ -5794,8 +5794,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-XI2",
+  "to_tb": "-XG2"
  },
  {
   "sheet": 56,
@@ -9612,7 +9612,7 @@
   "to_task": "T-00023-9244",
   "to_subsys": "PS5-71-08 - CFO Pre-Pressure Modules",
   "to_sid": "PS5-71-08",
-  "from_tb": "",
+  "from_tb": "-X2",
   "to_tb": ""
  },
  {
@@ -9635,7 +9635,7 @@
   "to_task": "T-00023-9244",
   "to_subsys": "PS5-71-08 - CFO Pre-Pressure Modules",
   "to_sid": "PS5-71-08",
-  "from_tb": "",
+  "from_tb": "-X2",
   "to_tb": ""
  },
  {
@@ -9681,8 +9681,8 @@
   "to_task": "T-00023-9247",
   "to_subsys": "PS5-71-08 - CFO Pre-Pressure Modules",
   "to_sid": "PS5-71-08",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-X1",
+  "to_tb": "-X12-X2"
  },
  {
   "sheet": 75,
@@ -9704,7 +9704,7 @@
   "to_task": "T-00023-9247",
   "to_subsys": "PS5-71-08 - CFO Pre-Pressure Modules",
   "to_sid": "PS5-71-08",
-  "from_tb": "",
+  "from_tb": "-X1",
   "to_tb": ""
  },
  {
@@ -9727,8 +9727,8 @@
   "to_task": "T-00023-9247",
   "to_subsys": "PS5-71-08 - CFO Pre-Pressure Modules",
   "to_sid": "PS5-71-08",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-X1",
+  "to_tb": "-X11"
  },
  {
   "sheet": 75,
@@ -9750,7 +9750,7 @@
   "to_task": "T-00023-9247",
   "to_subsys": "PS5-71-08 - CFO Pre-Pressure Modules",
   "to_sid": "PS5-71-08",
-  "from_tb": "",
+  "from_tb": "-X11",
   "to_tb": ""
  },
  {
@@ -9773,8 +9773,8 @@
   "to_task": "T-00023-9251",
   "to_subsys": "PS5-71-08 - CFO Pre-Pressure Modules",
   "to_sid": "PS5-71-08",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-X2",
+  "to_tb": "-X22"
  },
  {
   "sheet": 75,
@@ -9796,8 +9796,8 @@
   "to_task": "T-00023-9252",
   "to_subsys": "PS5-71-22 - Diesel Fuel Pre Pressure Module",
   "to_sid": "PS5-71-22",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-X1",
+  "to_tb": "-X12-X2"
  },
  {
   "sheet": 75,
@@ -9819,7 +9819,7 @@
   "to_task": "T-00023-9252",
   "to_subsys": "PS5-71-22 - Diesel Fuel Pre Pressure Module",
   "to_sid": "PS5-71-22",
-  "from_tb": "",
+  "from_tb": "-X1",
   "to_tb": ""
  },
  {
@@ -9842,8 +9842,8 @@
   "to_task": "T-00023-9252",
   "to_subsys": "PS5-71-22 - Diesel Fuel Pre Pressure Module",
   "to_sid": "PS5-71-22",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-X1",
+  "to_tb": "-X2"
  },
  {
   "sheet": 76,
@@ -9865,8 +9865,8 @@
   "to_task": "T-00023-9255",
   "to_subsys": "PS5-71-22 - Diesel Fuel Pre Pressure Module",
   "to_sid": "PS5-71-22",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-X2",
+  "to_tb": "-X22"
  },
  {
   "sheet": 76,
@@ -10095,7 +10095,7 @@
   "to_task": "T-00023-5578",
   "to_subsys": "PS5-71-19 - Diesel Separator Module (UCP)",
   "to_sid": "PS5-71-19",
-  "from_tb": "",
+  "from_tb": "-X5",
   "to_tb": ""
  },
  {
@@ -10141,7 +10141,7 @@
   "to_task": "T-00023-5584",
   "to_subsys": "PS5-71-23 - Diesel Fuel Pre Pressure Module (UCP)",
   "to_sid": "PS5-71-23",
-  "from_tb": "",
+  "from_tb": "-X5",
   "to_tb": ""
  },
  {
