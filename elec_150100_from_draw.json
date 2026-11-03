@@ -1,0 +1,818 @@
+[
+ {
+  "sheet": 24,
+  "cable": "PS5-05-IE-8100-CD14",
+  "terminals": [
+   "-XBC1"
+  ]
+ },
+ {
+  "sheet": 24,
+  "cable": "PS5-05-IE-8100-CD17",
+  "terminals": [
+   "-XBC2"
+  ]
+ },
+ {
+  "sheet": 25,
+  "cable": "PS5-05-IE-8100-CD19",
+  "terminals": [
+   "-XI1"
+  ]
+ },
+ {
+  "sheet": 25,
+  "cable": "PS5-05-IE-8100-CD20",
+  "terminals": [
+   "-XI2"
+  ]
+ },
+ {
+  "sheet": 25,
+  "cable": "PS5-05-IE-8100-CD08",
+  "terminals": [
+   "-XI3"
+  ]
+ },
+ {
+  "sheet": 28,
+  "cable": "PS5-05-IE-8100-CD25",
+  "terminals": [
+   "-X1101"
+  ]
+ },
+ {
+  "sheet": 28,
+  "cable": "PS5-05-IE-8100-CD22",
+  "terminals": [
+   "-XDI24",
+   "-XDI26"
+  ]
+ },
+ {
+  "sheet": 29,
+  "cable": "PS5-05-IE-8100-CD24",
+  "terminals": [
+   "-XDI25",
+   "-XDO24"
+  ]
+ },
+ {
+  "sheet": 34,
+  "cable": "PS5-61-IJ-0001-CD04",
+  "terminals": [
+   "-XI1"
+  ]
+ },
+ {
+  "sheet": 34,
+  "cable": "PS5-06-GU-0003A-CD02",
+  "terminals": [
+   "-X947"
+  ]
+ },
+ {
+  "sheet": 35,
+  "cable": "PS5-61-IJ-0001-CD05",
+  "terminals": [
+   "-XI2"
+  ]
+ },
+ {
+  "sheet": 44,
+  "cable": "PS5-61-IJ-0001-CD06",
+  "terminals": [
+   "-XI1",
+   "-XG1"
+  ]
+ },
+ {
+  "sheet": 45,
+  "cable": "PS5-61-IJ-0001-CD07",
+  "terminals": [
+   "-XI2",
+   "-XG2"
+  ]
+ },
+ {
+  "sheet": 109,
+  "cable": "PS5-05-IG-0025-CD01",
+  "terminals": [
+   "-XDI31"
+  ]
+ },
+ {
+  "sheet": 109,
+  "cable": "PS5-61-IG-0015-CD01",
+  "terminals": [
+   "-XDI41"
+  ]
+ },
+ {
+  "sheet": 109,
+  "cable": "PS5-05-IG-0026-CD01",
+  "terminals": [
+   "-XDI31"
+  ]
+ },
+ {
+  "sheet": 109,
+  "cable": "PS5-61-IG-0016-CD01",
+  "terminals": [
+   "-XDI41"
+  ]
+ },
+ {
+  "sheet": 137,
+  "cable": "PS5-60-IE-0003A-CD02",
+  "terminals": [
+   "X1b"
+  ]
+ },
+ {
+  "sheet": 138,
+  "cable": "PS5-60-IE-0003A-CD05",
+  "terminals": [
+   "X2a"
+  ]
+ },
+ {
+  "sheet": 140,
+  "cable": "PS5-60-IE-0003A-CD15",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 141,
+  "cable": "PS5-60-IE-0003A-CD14",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 142,
+  "cable": "PS5-60-IE-0003B-CD02",
+  "terminals": [
+   "X1b"
+  ]
+ },
+ {
+  "sheet": 145,
+  "cable": "PS5-60-IE-0003B-CD15",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 146,
+  "cable": "PS5-60-IE-0003B-CD14",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 147,
+  "cable": "PS5-60-IE-0003C-CD02",
+  "terminals": [
+   "X1b"
+  ]
+ },
+ {
+  "sheet": 150,
+  "cable": "PS5-60-IE-0003C-CD15",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 151,
+  "cable": "PS5-60-IE-0003C-CD14",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 152,
+  "cable": "PS5-60-IE-0003D-CD02",
+  "terminals": [
+   "X1b"
+  ]
+ },
+ {
+  "sheet": 153,
+  "cable": "PS5-60-IE-0003D-CD05",
+  "terminals": [
+   "X2a"
+  ]
+ },
+ {
+  "sheet": 155,
+  "cable": "PS5-60-IE-0003D-CD15",
+  "terminals": [
+   "-X112"
+  ]
+ },
+ {
+  "sheet": 156,
+  "cable": "PS5-60-IE-0003D-CD14",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 157,
+  "cable": "PS5-60-IE-0003E-CD02",
+  "terminals": [
+   "X1b"
+  ]
+ },
+ {
+  "sheet": 158,
+  "cable": "PS5-60-IE-0003E-CD05",
+  "terminals": [
+   "X2a"
+  ]
+ },
+ {
+  "sheet": 160,
+  "cable": "PS5-60-IE-0003E-CD15",
+  "terminals": [
+   "X122"
+  ]
+ },
+ {
+  "sheet": 161,
+  "cable": "PS5-60-IE-0003E-CD14",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 162,
+  "cable": "PS5-60-IE-0003F-CD02",
+  "terminals": [
+   "X1b"
+  ]
+ },
+ {
+  "sheet": 163,
+  "cable": "PS5-60-IE-0003F-CD05",
+  "terminals": [
+   "X2a"
+  ]
+ },
+ {
+  "sheet": 165,
+  "cable": "PS5-60-IE-0003F-CD15",
+  "terminals": [
+   "-X122"
+  ]
+ },
+ {
+  "sheet": 166,
+  "cable": "PS5-60-IE-0003F-CD14",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 167,
+  "cable": "PS5-60-IE-0003G-CD02",
+  "terminals": [
+   "X1b"
+  ]
+ },
+ {
+  "sheet": 168,
+  "cable": "PS5-60-IE-0003G-CD05",
+  "terminals": [
+   "X2a"
+  ]
+ },
+ {
+  "sheet": 170,
+  "cable": "PS5-60-IE-0003G-CD15",
+  "terminals": [
+   "-X122"
+  ]
+ },
+ {
+  "sheet": 171,
+  "cable": "PS5-60-IE-0003G-CD14",
+  "terminals": [
+   "X102"
+  ]
+ },
+ {
+  "sheet": 172,
+  "cable": "PS5-60-BE-0027A-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 172,
+  "cable": "PS5-60-BE-0028A-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 176,
+  "cable": "PS5-60-BE-0027B-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 176,
+  "cable": "PS5-60-BE-0028B-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 180,
+  "cable": "PS5-60-BE-0027C-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 180,
+  "cable": "PS5-60-BE-0028C-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 184,
+  "cable": "PS5-60-BE-0027D-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 184,
+  "cable": "PS5-60-BE-0028D-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 188,
+  "cable": "PS5-60-BE-0027E-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 188,
+  "cable": "PS5-60-BE-0028E-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 192,
+  "cable": "PS5-60-BE-0027F-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 192,
+  "cable": "PS5-60-BE-0028F-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 196,
+  "cable": "PS5-60-BE-0027G-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 196,
+  "cable": "PS5-60-BE-0028G-CL01",
+  "terminals": [
+   "-X32"
+  ]
+ },
+ {
+  "sheet": 200,
+  "cable": "PS5-60-IE-0002A-CD01",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 200,
+  "cable": "PS5-60-IE-0002A-CD02",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 200,
+  "cable": "PS5-60-IE-0001A-CL01",
+  "terminals": [
+   "-X291"
+  ]
+ },
+ {
+  "sheet": 200,
+  "cable": "PS5-60-BI-0015A-CL04",
+  "terminals": [
+   "-X501"
+  ]
+ },
+ {
+  "sheet": 201,
+  "cable": "PS5-60-IE-0002A-CL03",
+  "terminals": [
+   "-X1b"
+  ]
+ },
+ {
+  "sheet": 202,
+  "cable": "PS5-60-IE-0002B-CD01",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 202,
+  "cable": "PS5-60-IE-0002B-CD02",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 202,
+  "cable": "PS5-60-IE-0001B-CL01",
+  "terminals": [
+   "-X291"
+  ]
+ },
+ {
+  "sheet": 202,
+  "cable": "PS5-60-BI-0015B-CL04",
+  "terminals": [
+   "-X501"
+  ]
+ },
+ {
+  "sheet": 203,
+  "cable": "PS5-60-IE-0002B-CL03",
+  "terminals": [
+   "-X1b"
+  ]
+ },
+ {
+  "sheet": 204,
+  "cable": "PS5-60-IE-0002C-CD01",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 204,
+  "cable": "PS5-60-IE-0002C-CD02",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 204,
+  "cable": "PS5-60-IE-0001C-CL01",
+  "terminals": [
+   "-X291"
+  ]
+ },
+ {
+  "sheet": 204,
+  "cable": "PS5-60-BI-0015C-CL04",
+  "terminals": [
+   "-X501"
+  ]
+ },
+ {
+  "sheet": 205,
+  "cable": "PS5-60-IE-0002C-CL03",
+  "terminals": [
+   "-X1b"
+  ]
+ },
+ {
+  "sheet": 206,
+  "cable": "PS5-60-IE-0002D-CD01",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 206,
+  "cable": "PS5-60-IE-0002D-CD02",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 206,
+  "cable": "PS5-60-IE-0001D-CL01",
+  "terminals": [
+   "-X291"
+  ]
+ },
+ {
+  "sheet": 206,
+  "cable": "PS5-60-BI-0015D-CL04",
+  "terminals": [
+   "-X501"
+  ]
+ },
+ {
+  "sheet": 207,
+  "cable": "PS5-60-IE-0002D-CL03",
+  "terminals": [
+   "-X1b"
+  ]
+ },
+ {
+  "sheet": 208,
+  "cable": "PS5-60-IE-0002E-CD01",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 208,
+  "cable": "PS5-60-IE-0002E-CD02",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 208,
+  "cable": "PS5-60-IE-0001E-CL01",
+  "terminals": [
+   "-X291"
+  ]
+ },
+ {
+  "sheet": 208,
+  "cable": "PS5-60-BI-0015E-CL04",
+  "terminals": [
+   "-X501"
+  ]
+ },
+ {
+  "sheet": 209,
+  "cable": "PS5-60-IE-0002E-CL03",
+  "terminals": [
+   "-X1b"
+  ]
+ },
+ {
+  "sheet": 210,
+  "cable": "PS5-60-IE-0002F-CD01",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 210,
+  "cable": "PS5-60-IE-0002F-CD02",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 210,
+  "cable": "PS5-60-IE-0001F-CL01",
+  "terminals": [
+   "-X291"
+  ]
+ },
+ {
+  "sheet": 210,
+  "cable": "PS5-60-BI-0015F-CL04",
+  "terminals": [
+   "-X501"
+  ]
+ },
+ {
+  "sheet": 211,
+  "cable": "PS5-60-IE-0002F-CL03",
+  "terminals": [
+   "-X1b"
+  ]
+ },
+ {
+  "sheet": 212,
+  "cable": "PS5-60-IE-0002G-CD01",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 212,
+  "cable": "PS5-60-IE-0002G-CD02",
+  "terminals": [
+   "-X2a"
+  ]
+ },
+ {
+  "sheet": 212,
+  "cable": "PS5-60-IE-0001G-CL01",
+  "terminals": [
+   "-X291"
+  ]
+ },
+ {
+  "sheet": 212,
+  "cable": "PS5-60-BI-0015G-CL04",
+  "terminals": [
+   "-X501"
+  ]
+ },
+ {
+  "sheet": 213,
+  "cable": "PS5-60-IE-0002G-CL03",
+  "terminals": [
+   "-X1b"
+  ]
+ },
+ {
+  "sheet": 215,
+  "cable": "PS5-61-IE-0002-CD45",
+  "terminals": [
+   "-XI1"
+  ]
+ },
+ {
+  "sheet": 215,
+  "cable": "PS5-61-IE-0002-CD46",
+  "terminals": [
+   "-XI1"
+  ]
+ },
+ {
+  "sheet": 215,
+  "cable": "PS5-61-IE-0002-CD47",
+  "terminals": [
+   "-XI2"
+  ]
+ },
+ {
+  "sheet": 216,
+  "cable": "PS5-61-IE-0002-CD48",
+  "terminals": [
+   "-XI3"
+  ]
+ },
+ {
+  "sheet": 216,
+  "cable": "PS5-61-IE-0002-CD49",
+  "terminals": [
+   "XBC1"
+  ]
+ },
+ {
+  "sheet": 216,
+  "cable": "PS5-61-IE-0002-CD50",
+  "terminals": [
+   "-XBC2"
+  ]
+ },
+ {
+  "sheet": 218,
+  "cable": "PS5-61-IE-0003-CD02",
+  "terminals": [
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 218,
+  "cable": "PS5-61-IE-0003-CD03",
+  "terminals": [
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 218,
+  "cable": "PS5-61-IE-0003-CD04",
+  "terminals": [
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 218,
+  "cable": "PS5-61-IE-0002-CD41",
+  "terminals": [
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 218,
+  "cable": "PS5-61-IE-0002-CD42",
+  "terminals": [
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 218,
+  "cable": "PS5-61-IE-0002-CD43",
+  "terminals": [
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 218,
+  "cable": "PS5-61-IE-0002-CD44",
+  "terminals": [
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 219,
+  "cable": "PS5-61-IE-0003-CD11",
+  "terminals": [
+   "-XI1"
+  ]
+ },
+ {
+  "sheet": 219,
+  "cable": "PS5-61-IE-0003-CD12",
+  "terminals": [
+   "-XI2"
+  ]
+ },
+ {
+  "sheet": 219,
+  "cable": "PS5-61-IE-0003-CD13",
+  "terminals": [
+   "-XBC1"
+  ]
+ },
+ {
+  "sheet": 220,
+  "cable": "PS5-61-IJ-0001-CD61",
+  "terminals": [
+   "X1501",
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 220,
+  "cable": "PS5-61-IJ-0001-CD62",
+  "terminals": [
+   "X1501",
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 221,
+  "cable": "PS5-61-IJ-0001-CD63",
+  "terminals": [
+   "X1501",
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 221,
+  "cable": "PS5-61-IJ-0001-CD64",
+  "terminals": [
+   "X1501",
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 222,
+  "cable": "PS5-61-IJ-0001-CD65",
+  "terminals": [
+   "X1501",
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 222,
+  "cable": "PS5-61-IJ-0001-CD66",
+  "terminals": [
+   "X1501",
+   "X1541"
+  ]
+ },
+ {
+  "sheet": 223,
+  "cable": "PS5-61-IJ-0001-CD67",
+  "terminals": [
+   "X1501",
+   "X1541"
+  ]
+ }
+]

@@ -824,7 +824,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-XBC1",
   "to_tb": ""
  },
  {
@@ -893,7 +893,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-XBC2",
   "to_tb": ""
  },
  {
@@ -962,7 +962,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-XI2",
   "to_tb": ""
  },
  {
@@ -1008,8 +1008,8 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-XDI24",
+  "to_tb": "-XDI26"
  },
  {
   "sheet": 7,
@@ -1054,8 +1054,8 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "-XDO24",
-  "to_tb": ""
+  "from_tb": "-XDI25",
+  "to_tb": "-XDO24"
  },
  {
   "sheet": 7,
@@ -1077,7 +1077,7 @@
   "to_task": "T-00023-4738",
   "to_subsys": "PS5-05-02 - Emergency Diesel Generator Package (UCP)",
   "to_sid": "PS5-05-02",
-  "from_tb": "",
+  "from_tb": "-X1101",
   "to_tb": ""
  },
  {
@@ -1215,7 +1215,7 @@
   "to_task": "T-00023-4744",
   "to_subsys": "PS5-62-06 - CRO Generator Building Emergency Lighting DB  - PS5-05-IG-0025",
   "to_sid": "PS5-62-06",
-  "from_tb": "-XDI41",
+  "from_tb": "-XDI31",
   "to_tb": ""
  },
  {
@@ -1261,7 +1261,7 @@
   "to_task": "T-00023-4745",
   "to_subsys": "PS5-62-07 - CRO Generator Electrical Building Emergency Lighting DB  - PS5-05-IG-0026",
   "to_sid": "PS5-62-07",
-  "from_tb": "",
+  "from_tb": "-XDI31",
   "to_tb": ""
  },
  {
@@ -2298,7 +2298,7 @@
   "to_task": "T-00023-5172",
   "to_subsys": "PS5-60-07 - Power Generation Package C",
   "to_sid": "PS5-60-07",
-  "from_tb": "",
+  "from_tb": "-X1b",
   "to_tb": ""
  },
  {
@@ -2390,7 +2390,7 @@
   "to_task": "T-00023-5178",
   "to_subsys": "PS5-60-13 - Power Generation Package E",
   "to_sid": "PS5-60-13",
-  "from_tb": "",
+  "from_tb": "-X1b",
   "to_tb": ""
  },
  {
@@ -2482,7 +2482,7 @@
   "to_task": "T-00023-5181",
   "to_subsys": "PS5-60-16 - Power Generation Package F",
   "to_sid": "PS5-60-16",
-  "from_tb": "",
+  "from_tb": "-X1b",
   "to_tb": ""
  },
  {
@@ -2689,7 +2689,7 @@
   "to_task": "T-00023-5187",
   "to_subsys": "PS5-60-02 - Power Gen Package A (UCP)",
   "to_sid": "PS5-60-02",
-  "from_tb": "",
+  "from_tb": "X102",
   "to_tb": ""
  },
  {
@@ -2712,7 +2712,7 @@
   "to_task": "T-00023-5187",
   "to_subsys": "PS5-60-02 - Power Gen Package A (UCP)",
   "to_sid": "PS5-60-02",
-  "from_tb": "",
+  "from_tb": "X102",
   "to_tb": ""
  },
  {
@@ -2919,7 +2919,7 @@
   "to_task": "T-00023-5189",
   "to_subsys": "PS5-60-05 - Power Gen Package B (UCP)",
   "to_sid": "PS5-60-05",
-  "from_tb": "",
+  "from_tb": "X102",
   "to_tb": ""
  },
  {
@@ -2942,7 +2942,7 @@
   "to_task": "T-00023-5189",
   "to_subsys": "PS5-60-05 - Power Gen Package B (UCP)",
   "to_sid": "PS5-60-05",
-  "from_tb": "",
+  "from_tb": "X102",
   "to_tb": ""
  },
  {
@@ -3264,7 +3264,7 @@
   "to_task": "T-00023-5191",
   "to_subsys": "PS5-60-08 - Power Gen Package C (UCP)",
   "to_sid": "PS5-60-08",
-  "from_tb": "",
+  "from_tb": "X102",
   "to_tb": ""
  },
  {
@@ -3287,7 +3287,7 @@
   "to_task": "T-00023-5191",
   "to_subsys": "PS5-60-08 - Power Gen Package C (UCP)",
   "to_sid": "PS5-60-08",
-  "from_tb": "X111XT",
+  "from_tb": "X102",
   "to_tb": ""
  },
  {
@@ -3402,7 +3402,7 @@
   "to_task": "T-00023-5195",
   "to_subsys": "PS5-60-14 - Power Gen Package E (UCP)",
   "to_sid": "PS5-60-14",
-  "from_tb": "X122X2a",
+  "from_tb": "X2a",
   "to_tb": ""
  },
  {
@@ -3609,7 +3609,7 @@
   "to_task": "T-00023-5195",
   "to_subsys": "PS5-60-14 - Power Gen Package E (UCP)",
   "to_sid": "PS5-60-14",
-  "from_tb": "",
+  "from_tb": "X102",
   "to_tb": ""
  },
  {
@@ -3632,7 +3632,7 @@
   "to_task": "T-00023-5195",
   "to_subsys": "PS5-60-14 - Power Gen Package E (UCP)",
   "to_sid": "PS5-60-14",
-  "from_tb": "",
+  "from_tb": "X122",
   "to_tb": ""
  },
  {
@@ -3747,7 +3747,7 @@
   "to_task": "T-00023-5197",
   "to_subsys": "PS5-60-17 - Power Gen Package F (UCP)",
   "to_sid": "PS5-60-17",
-  "from_tb": "X122X2a",
+  "from_tb": "X2a",
   "to_tb": ""
  },
  {
@@ -3954,7 +3954,7 @@
   "to_task": "T-00023-5197",
   "to_subsys": "PS5-60-17 - Power Gen Package F (UCP)",
   "to_sid": "PS5-60-17",
-  "from_tb": "",
+  "from_tb": "X102",
   "to_tb": ""
  },
  {
@@ -3977,7 +3977,7 @@
   "to_task": "T-00023-5197",
   "to_subsys": "PS5-60-17 - Power Gen Package F (UCP)",
   "to_sid": "PS5-60-17",
-  "from_tb": "",
+  "from_tb": "-X122",
   "to_tb": ""
  },
  {
@@ -4736,7 +4736,7 @@
   "to_task": "T-00610-0251",
   "to_subsys": "PS5-61-08 - Electrical Control System",
   "to_sid": "PS5-61-08",
-  "from_tb": "-XDI35",
+  "from_tb": "X1541",
   "to_tb": ""
  },
  {
@@ -4989,7 +4989,7 @@
   "to_task": "T-00023-5336",
   "to_subsys": "PS5-62-11 - CRO Generator Electrical Building Normal L&SP DB  - PS5-61-IG-0016",
   "to_sid": "PS5-62-11",
-  "from_tb": "",
+  "from_tb": "-XDI41",
   "to_tb": ""
  },
  {
@@ -5817,8 +5817,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-XI1",
+  "to_tb": "-XG1"
  },
  {
   "sheet": 56,
@@ -5840,8 +5840,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "-XI2",
+  "to_tb": "-XG2"
  },
  {
   "sheet": 56,
@@ -6139,8 +6139,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "X1501",
+  "to_tb": "X1541"
  },
  {
   "sheet": 58,
@@ -6162,8 +6162,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "X1501",
+  "to_tb": "X1541"
  },
  {
   "sheet": 58,
@@ -6185,8 +6185,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "X1501",
+  "to_tb": "X1541"
  },
  {
   "sheet": 58,
@@ -6208,8 +6208,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "X1501",
+  "to_tb": "X1541"
  },
  {
   "sheet": 58,
@@ -6231,8 +6231,8 @@
   "to_task": "T-00604-0248",
   "to_subsys": "PS5-61-01 - 33kV Switchboard EITS Building (PS5-61-IJ-0001)",
   "to_sid": "PS5-61-01",
-  "from_tb": "",
-  "to_tb": ""
+  "from_tb": "X1501",
+  "to_tb": "X1541"
  },
  {
   "sheet": 59,
