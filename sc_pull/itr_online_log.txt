@@ -55370,3 +55370,58 @@ Call log:
 [2026-11-03 11:19:41] reused the sync's always-open browser (port 9222)
 [2026-11-03 11:19:50] LOGGED IN
 [2026-11-03 11:20:20] pulled off=0 n=4000 accum=4000
+[2026-11-03 11:20:55] pulled off=4000 n=4000 accum=8000
+[2026-11-03 11:21:34] pulled off=8000 n=4000 accum=12000
+[2026-11-03 11:21:52] pulled off=12000 n=2008 accum=14008
+[2026-11-03 11:21:52] task index refreshed (6319 asset tags)
+[2026-11-03 11:21:53] updated dashboard_data.json itr_summary.live
+[2026-11-03 11:21:55]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 11:21:55]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 11:21 (closed=7233) rc=0 [main 3e1f3c9] ITR live update 2026-11-03 11:21 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 11:22:00]  >> git push OK
+[2026-11-03 11:22:10]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 11:22:14]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 11:22:14] PAGES PUSH rc=0
+[2026-11-03 11:22:14] cycle OK closed=7233 open=3065 updated=2026-11-03 11:21:52
+[2026-11-03 11:24:18] reused the sync's always-open browser (port 9222)
+[2026-11-03 11:24:33] LOGGED IN
+[2026-11-03 11:25:04] pulled off=0 n=4000 accum=4000
+[2026-11-03 11:25:27] pulled off=4000 n=4000 accum=8000
+[2026-11-03 11:26:06] pulled off=8000 n=4000 accum=12000
+[2026-11-03 11:26:26] pulled off=12000 n=2008 accum=14008
+[2026-11-03 11:26:27] task index refreshed (6319 asset tags)
+[2026-11-03 11:26:27] updated dashboard_data.json itr_summary.live
+[2026-11-03 11:26:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 11:26:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 11:26 (closed=7233) rc=0 [main 1f6b6e4] ITR live update 2026-11-03 11:26 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 11:26:33]  >> git push OK
+[2026-11-03 11:26:41]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 11:26:45]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 11:26:45] PAGES PUSH rc=0
+[2026-11-03 11:26:45] cycle OK closed=7233 open=3065 updated=2026-11-03 11:26:27
+[2026-11-03 11:28:46] reused the sync's always-open browser (port 9222)
+[2026-11-03 11:28:55] LOGGED IN
+[2026-11-03 11:29:34] pulled off=0 n=4000 accum=4000
+[2026-11-03 11:30:14] pulled off=4000 n=4000 accum=8000
+[2026-11-03 11:31:10] pulled off=8000 n=4000 accum=12000
+[2026-11-03 11:32:48] call err off=12000: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-11-03 11:32:48] pull retry 2/3 - reloading Switchboard
+[2026-11-03 11:33:16] LOGGED IN
+[2026-11-03 11:34:12] pulled off=0 n=4000 accum=4000
+[2026-11-03 11:34:42] pulled off=4000 n=4000 accum=8000
+[2026-11-03 11:35:16] pulled off=8000 n=4000 accum=12000
+[2026-11-03 11:35:38] pulled off=12000 n=2008 accum=14008
+[2026-11-03 11:35:38] task index refreshed (6319 asset tags)
+[2026-11-03 11:35:40] updated dashboard_data.json itr_summary.live
+[2026-11-03 11:35:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-03 11:35:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 11:35 (closed=7233) rc=0 [main b788140] ITR live update 2026-11-03 11:35 (closed=7233)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-03 11:35:47]  >> git push OK
+[2026-11-03 11:35:55]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 11:35:59]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 11:35:59] PAGES PUSH rc=0
+[2026-11-03 11:35:59] cycle OK closed=7233 open=3065 updated=2026-11-03 11:35:40
+[2026-11-03 11:38:36] reused the sync's always-open browser (port 9222)
+[2026-11-03 11:38:59] LOGGED IN
+[2026-11-03 11:39:33] pulled off=0 n=4000 accum=4000
+[2026-11-03 11:40:38] pulled off=4000 n=4000 accum=8000
