@@ -55743,3 +55743,30 @@ Call log:
 [2026-11-03 13:00:16]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-03 13:00 (closed=7233) rc=0 [main 474e3f6] ITR live update 2026-11-03 13:00 (closed=7233)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-11-03 13:00:21]  >> git push OK
+[2026-11-03 13:00:57]  >> published itr_live_state.json (456996 bytes)
+[2026-11-03 13:01:01]  >> platform publish OK (1 file(s) updated, closed=7233)
+[2026-11-03 13:01:01] PAGES PUSH rc=0
+[2026-11-03 13:01:01] cycle OK closed=7233 open=3065 updated=2026-11-03 13:00:15
+[2026-11-03 13:03:06] closed pull tab (will reopen) 699626A5 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-03 13:03:06] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-03 13:04:08] opened the one pull tab (none was open)
+[2026-11-03 13:04:08] reused the sync's always-open browser (port 9222)
+[2026-11-03 13:05:22] session expired -> auto-login
+[2026-11-03 13:06:07] ssologin click: ok
+[2026-11-03 13:08:23] auto-login attempt 1 still not logged in
+[2026-11-03 13:09:11] ssologin click: no-btn
+[2026-11-03 13:12:01] auto-login attempt 2 still not logged in
+[2026-11-03 13:12:34] ssologin click: ok
+[2026-11-03 13:12:44] sso handoff -> verify password page
+[2026-11-03 13:12:47] verify submit: no-submit
+[2026-11-03 13:15:18] auto-login attempt 3 still not logged in
+[2026-11-03 13:18:02] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-03 13:18:13] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-03 13:18:46] opened the one pull tab (none was open)
+[2026-11-03 13:18:46] reused the sync's always-open browser (port 9222)
+[2026-11-03 13:20:09] session expired -> auto-login
+[2026-11-03 13:20:23] ssologin click: ok
+[2026-11-03 13:22:15] auto-login attempt 1 still not logged in
+[2026-11-03 13:22:37] ssologin click: ok
+[2026-11-03 13:22:47] sso handoff -> verify password page
+[2026-11-03 13:22:49] verify submit: submitted
