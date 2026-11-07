@@ -14302,3 +14302,13 @@
 2026-11-07 08:38:46 cloud_auto_update started (interval 300s)
 2026-11-07 08:38:46 [trigger] state changed -> rebuilding downloads+pages
 2026-11-07 08:38:46 >> cloud->DPR
+2026-11-07 08:50:43    sync 2026-11-07 08:50:39 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-07 08:50:43    written=329 notes=0 colors=1
+2026-11-07 08:50:43    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-07 08:50:43    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-07 08:50:43    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-07 08:50:43    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-07 08:50:43 >> local->DPR
+2026-11-07 08:59:10    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 81666 cells / 0 notes)
+2026-11-07 08:59:10      [summery-sync] OK -> 57984 cells, 0 notes written, 15557 skipped (no matching column)
+2026-11-07 08:59:10 >> explorer rebuild
