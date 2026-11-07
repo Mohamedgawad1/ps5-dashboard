@@ -60421,3 +60421,21 @@ Call log:
 [2026-11-07 08:59:36] reused the sync's always-open browser (port 9222)
 [2026-11-07 08:59:47] LOGGED IN
 [2026-11-07 09:00:51] pulled off=0 n=4000 accum=4000
+[2026-11-07 09:01:36] pulled off=4000 n=4000 accum=8000
+[2026-11-07 09:02:24] pulled off=8000 n=4000 accum=12000
+[2026-11-07 09:02:49] pulled off=12000 n=2008 accum=14008
+[2026-11-07 09:02:49] task index refreshed (6319 asset tags)
+[2026-11-07 09:02:50] updated dashboard_data.json itr_summary.live
+[2026-11-07 09:02:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-07 09:02:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-07 09:02 (closed=7447) rc=0 [main db2689c] ITR live update 2026-11-07 09:02 (closed=7447)
+ 1 file changed, 51 insertions(+), 45 deletions(-)
+[2026-11-07 09:02:57]  >> git push OK
+[2026-11-07 09:03:23]  .. itr_live_state.json publish hiccup (IncompleteRead(385600 bytes read, 247283 more expected)) - retrying
+[2026-11-07 09:03:49]  .. itr_live_state.json publish hiccup (IncompleteRead(581068 bytes read, 51815 more expected)) - retrying
+[2026-11-07 09:04:16]  >> published itr_live_state.json (458813 bytes)
+[2026-11-07 09:04:22]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-07 09:04:22]  >> platform publish OK (1 file(s) updated, closed=7447)
+[2026-11-07 09:04:22] PAGES PUSH rc=0
+[2026-11-07 09:04:22] cycle OK closed=7447 open=2851 updated=2026-11-07 09:02:50
+[2026-11-07 09:06:22] reused the sync's always-open browser (port 9222)
+[2026-11-07 09:06:37] goto err: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDas

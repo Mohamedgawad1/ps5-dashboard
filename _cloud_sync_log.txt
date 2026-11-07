@@ -14312,3 +14312,29 @@
 2026-11-07 08:59:10    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 81666 cells / 0 notes)
 2026-11-07 08:59:10      [summery-sync] OK -> 57984 cells, 0 notes written, 15557 skipped (no matching column)
 2026-11-07 08:59:10 >> explorer rebuild
+2026-11-07 09:01:38      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9650 rows, 16532 updates
+2026-11-07 09:01:38      Punch rows: 4465 | ITR rows: 23659 | RFC: 270 | Miles: 292
+2026-11-07 09:01:38      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-07 09:01:38      Carry-over: 0 notes, 0 colored rows, 22640 pinned cells
+2026-11-07 09:01:38    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-07 09:01:38    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-07 09:01:38 >> dashboard xlsm
+2026-11-07 09:04:57    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-07 09:04:57      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23659 | RFC 270
+2026-11-07 09:04:57      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22697 pinned cells
+2026-11-07 09:04:57    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-07 09:04:57 >> platform full sync
+2026-11-07 09:14:51      committed the new build
+2026-11-07 09:14:51      pull --rebase failed (1) - pushing our commit anyway
+2026-11-07 09:14:51    fatal: unable to access 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git/': Failed to connect to github.com:443 after 21231 ms: Could not connect to server
+2026-11-07 09:14:51      push rejected (128) - rebasing and retrying
+2026-11-07 09:14:51      push rejected (128) - rebasing and retrying
+2026-11-07 09:14:51    fatal: unable to access 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git/': Failed to connect to github.com:443 after 21120 ms: Could not connect to server
+2026-11-07 09:14:51    !! C:\Python315\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+2026-11-07 09:14:51    !!   warn("Workbook contains no default style, apply openpyxl's default")
+2026-11-07 09:14:51    !! push failed - the live platform was NOT updated
+2026-11-07 09:14:51 !! platform full sync FAILED (rc=1)
+2026-11-07 09:14:51 [done] build in 2165s
+2026-11-07 09:20:12 [warn] cloud fetch failed: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
+2026-11-07 09:20:12 [trigger] state changed -> rebuilding downloads+pages
+2026-11-07 09:20:12 >> cloud->DPR
