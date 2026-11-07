@@ -61237,3 +61237,38 @@ Call log:
 [2026-11-07 13:22:14]  >> platform publish OK (1 file(s) updated, closed=7483)
 [2026-11-07 13:22:14] PAGES PUSH rc=0
 [2026-11-07 13:22:14] cycle OK closed=7483 open=2815 updated=2026-11-07 13:21:52
+[2026-11-07 13:24:31] reused the sync's always-open browser (port 9222)
+[2026-11-07 13:24:50] LOGGED IN
+[2026-11-07 13:27:22] pulled off=0 n=4000 accum=4000
+[2026-11-07 13:30:40] pulled off=4000 n=4000 accum=8000
+[2026-11-07 13:33:57] pulled off=8000 n=4000 accum=12000
+[2026-11-07 13:33:58] call err off=12000: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-11-07 13:33:58] pull retry 2/3 - reloading Switchboard
+[2026-11-07 13:34:49] LOGGED IN
+[2026-11-07 13:35:00] pulled off=0 n=4000 accum=4000
+[2026-11-07 13:35:12] pulled off=4000 n=4000 accum=8000
+[2026-11-07 13:35:24] pulled off=8000 n=4000 accum=12000
+[2026-11-07 13:35:35] pulled off=12000 n=2008 accum=14008
+[2026-11-07 13:35:35] task index refreshed (6319 asset tags)
+[2026-11-07 13:35:37] updated dashboard_data.json itr_summary.live
+[2026-11-07 13:35:40]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-07 13:35:40]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-07 13:35 (closed=7483) rc=0 [main c872ffb] ITR live update 2026-11-07 13:35 (closed=7483)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-07 13:35:45]  >> git push OK
+[2026-11-07 13:35:55]  >> published itr_live_state.json (459214 bytes)
+[2026-11-07 13:36:00]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-07 13:36:00]  >> platform publish OK (1 file(s) updated, closed=7483)
+[2026-11-07 13:36:00] PAGES PUSH rc=0
+[2026-11-07 13:36:00] cycle OK closed=7483 open=2815 updated=2026-11-07 13:35:37
+[2026-11-07 13:38:28] reused the sync's always-open browser (port 9222)
+[2026-11-07 13:38:34] LOGGED IN
+[2026-11-07 13:39:05] pulled off=0 n=4000 accum=4000
+[2026-11-07 13:39:16] pulled off=4000 n=4000 accum=8000
+[2026-11-07 13:39:32] pulled off=8000 n=4000 accum=12000
+[2026-11-07 13:39:37] pulled off=12000 n=2008 accum=14008
+[2026-11-07 13:39:38] task index refreshed (6319 asset tags)
+[2026-11-07 13:39:39] updated dashboard_data.json itr_summary.live
+[2026-11-07 13:39:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-07 13:39:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-07 13:39 (closed=7483) rc=0 [main a1fd101] ITR live update 2026-11-07 13:39 (closed=7483)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-07 13:39:50]  >> git push OK
