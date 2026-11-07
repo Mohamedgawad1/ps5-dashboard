@@ -14265,3 +14265,15 @@
 2026-11-07 07:43:29    !! refusing to build/publish stale ITR states (656 lagging tasks > limit 200)
 2026-11-07 07:43:29 !! platform full sync FAILED (rc=1)
 2026-11-07 07:43:29 [done] build in 2045s
+2026-11-07 07:48:30 [trigger] state changed -> rebuilding downloads+pages
+2026-11-07 07:48:30 >> cloud->DPR
+2026-11-07 07:56:03    [guard]   PS5-01-07 col61: '4' -> ''
+2026-11-07 07:56:03    [guard]   PS5-01-08 col61: '1' -> ''
+2026-11-07 07:56:03    [guard]   PS5-09-03 col61: '2' -> ''
+2026-11-07 07:56:03    [guard]   PS5-28-17 col61: '4' -> ''
+2026-11-07 07:56:03    [guard]   PS5-53-04 col61: '5' -> ''
+2026-11-07 07:56:03    [guard]   PS5-71-01 col61: '1' -> ''
+2026-11-07 07:56:03 >> local->DPR
+2026-11-07 08:00:40    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 81666 cells / 0 notes)
+2026-11-07 08:00:40      [summery-sync] OK -> 57984 cells, 0 notes written, 15557 skipped (no matching column)
+2026-11-07 08:00:40 >> explorer rebuild
