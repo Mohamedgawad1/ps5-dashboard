@@ -13910,3 +13910,358 @@
 2026-11-03 08:09:22 [done] build in 3868s
 2026-11-03 13:06:18 [warn] cloud fetch failed: The read operation timed out
 2026-11-03 13:17:14 [warn] cloud fetch failed: The read operation timed out
+2026-11-03 14:16:08 [warn] cloud fetch failed: The read operation timed out
+2026-11-03 15:03:28 [warn] cloud fetch failed: The read operation timed out
+2026-11-03 15:14:51 [warn] cloud fetch failed: The read operation timed out
+2026-11-03 15:46:02 [warn] cloud fetch failed: <urlopen error _ssl.c:1126: The handshake operation timed out>
+2026-11-03 16:21:29 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-03 17:12:54 [warn] cloud fetch failed: The read operation timed out
+2026-11-03 17:23:14 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-03 17:34:35 [warn] cloud fetch failed: The read operation timed out
+2026-11-03 19:38:15 ==================================================
+2026-11-03 19:38:15 cloud_auto_update started (interval 300s)
+2026-11-03 19:38:17 [trigger] state changed -> rebuilding downloads+pages
+2026-11-03 19:38:17 >> cloud->DPR
+2026-11-03 19:42:51    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-03 19:42:51    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-03 19:42:51    [guard] REFUSING to write - 1 cell(s) outside the platform columns changed:
+2026-11-03 19:42:51    [guard]   PS5-03-14 col97: '2026-10-31 00:00:00' -> ''
+2026-11-03 19:42:51 >> local->DPR
+2026-11-03 19:49:25    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx  (edits: 77974 cells / 0 notes)
+2026-11-03 19:49:25      [summery-sync] OK -> 56034 cells, 0 notes written, 15448 skipped (no matching column)
+2026-11-03 19:49:25 >> explorer rebuild
+2026-11-03 19:51:25      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14020+9632 rows, 16172 updates
+2026-11-03 19:51:25      Punch rows: 4658 | ITR rows: 23652 | RFC: 270 | Miles: 292
+2026-11-03 19:51:25      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-03 19:51:25      Carry-over: 0 notes, 0 colored rows, 21975 pinned cells
+2026-11-03 19:51:25    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-03 19:51:25    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-03 19:51:25 >> dashboard xlsm
+2026-11-03 19:54:19    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-03 19:54:19      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4658 | Detail I 23652 | RFC 270
+2026-11-03 19:54:19      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22268 pinned cells
+2026-11-03 19:54:19    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-03 19:54:19 >> platform full sync
+2026-11-03 20:04:19    >>> git commit / pull --rebase / push
+2026-11-03 20:04:19      committed the new build
+2026-11-03 20:04:19      rebased on origin/main
+2026-11-03 20:04:19      pushed to origin/main
+2026-11-03 20:04:19    
+2026-11-03 20:04:19    DONE - platform online + all downloads synced.
+2026-11-03 20:04:19 [mirror] PAGES -> _files
+2026-11-03 20:04:19 [done] build in 1563s
+2026-11-03 20:09:21 [trigger] state changed -> rebuilding downloads+pages
+2026-11-03 20:09:21 >> cloud->DPR
+2026-11-03 20:18:38    sync 2026-11-03 20:18:33 -> PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-03 20:18:38    written=329 notes=0 colors=1
+2026-11-03 20:18:38    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-03 20:18:38    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-03 20:18:38    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-03 20:18:38    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-03 20:18:38 >> local->DPR
+2026-11-03 20:29:02    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx  (edits: 79269 cells / 0 notes)
+2026-11-03 20:29:02      [summery-sync] OK -> 57217 cells, 0 notes written, 15560 skipped (no matching column)
+2026-11-03 20:29:02 >> explorer rebuild
+2026-11-03 20:32:25      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14020+9632 rows, 16206 updates
+2026-11-03 20:32:25      Punch rows: 4658 | ITR rows: 23652 | RFC: 270 | Miles: 292
+2026-11-03 20:32:25      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-03 20:32:25      Carry-over: 0 notes, 0 colored rows, 22268 pinned cells
+2026-11-03 20:32:25    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-03 20:32:25    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-03 20:32:25 >> dashboard xlsm
+2026-11-03 20:40:05    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-03 20:40:05      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4658 | Detail I 23652 | RFC 270
+2026-11-03 20:40:05      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22268 pinned cells
+2026-11-03 20:40:05    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-03 20:40:05 >> platform full sync
+2026-11-03 20:55:11    >>> git commit / pull --rebase / push
+2026-11-03 20:55:11      committed the new build
+2026-11-03 20:55:11      rebased on origin/main
+2026-11-03 20:55:11      pushed to origin/main
+2026-11-03 20:55:11    
+2026-11-03 20:55:11    DONE - platform online + all downloads synced.
+2026-11-03 20:55:11 [mirror] PAGES -> _files
+2026-11-03 20:55:11 [done] build in 2750s
+2026-11-04 07:06:58 ==================================================
+2026-11-04 07:07:00 cloud_auto_update started (interval 300s)
+2026-11-04 07:07:06 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 07:07:09 >> cloud->DPR
+2026-11-04 07:25:34    sync 2026-11-04 07:25:26 -> PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-04 07:25:34    written=329 notes=0 colors=1
+2026-11-04 07:25:34    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-04 07:25:34    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-04 07:25:34    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-04 07:25:34    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-04 07:25:34 >> local->DPR
+2026-11-04 07:39:23    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx  (edits: 79269 cells / 0 notes)
+2026-11-04 07:39:23      [summery-sync] OK -> 57217 cells, 0 notes written, 15560 skipped (no matching column)
+2026-11-04 07:39:23 >> explorer rebuild
+2026-11-04 07:42:52      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14020+9632 rows, 16206 updates
+2026-11-04 07:42:52      Punch rows: 4658 | ITR rows: 23652 | RFC: 270 | Miles: 292
+2026-11-04 07:42:52      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-04 07:42:52      Carry-over: 0 notes, 0 colored rows, 22268 pinned cells
+2026-11-04 07:42:52    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-04 07:42:52    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-04 07:42:52 >> dashboard xlsm
+2026-11-04 07:48:39    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-04 07:48:39      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4658 | Detail I 23652 | RFC 270
+2026-11-04 07:48:39      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22268 pinned cells
+2026-11-04 07:48:39    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-04 07:48:39 >> platform full sync
+2026-11-04 07:59:36    >>> git commit / pull --rebase / push
+2026-11-04 07:59:36      committed the new build
+2026-11-04 07:59:36      rebased on origin/main
+2026-11-04 07:59:36      pushed to origin/main
+2026-11-04 07:59:36    
+2026-11-04 07:59:36    DONE - platform online + all downloads synced.
+2026-11-04 07:59:36 [mirror] PAGES -> _files
+2026-11-04 07:59:36 [done] build in 3149s
+2026-11-04 08:30:15 [warn] cloud fetch failed: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-11-04 09:11:36 [warn] cloud fetch failed: <urlopen error _ssl.c:1126: The handshake operation timed out>
+2026-11-04 09:27:16 [warn] cloud fetch failed: <urlopen error _ssl.c:1126: The handshake operation timed out>
+2026-11-04 10:49:05 [warn] cloud fetch failed: The read operation timed out
+2026-11-04 11:09:54 [warn] cloud fetch failed: The read operation timed out
+2026-11-04 18:49:01 ==================================================
+2026-11-04 18:49:01 cloud_auto_update started (interval 300s)
+2026-11-04 18:49:02 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 18:49:02 >> cloud->DPR
+2026-11-04 19:02:01    sync 2026-11-04 19:01:55 -> PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-04 19:02:01    written=329 notes=0 colors=1
+2026-11-04 19:02:01    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-04 19:02:01    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-04 19:02:01    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-04 19:02:01    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-04 19:02:01 >> local->DPR
+2026-11-04 19:11:02    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx  (edits: 79269 cells / 0 notes)
+2026-11-04 19:11:02      [summery-sync] OK -> 57217 cells, 0 notes written, 15560 skipped (no matching column)
+2026-11-04 19:11:02 >> explorer rebuild
+2026-11-04 19:13:33      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14020+9632 rows, 16298 updates
+2026-11-04 19:13:33      Punch rows: 4658 | ITR rows: 23652 | RFC: 270 | Miles: 292
+2026-11-04 19:13:33      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-04 19:13:33      Carry-over: 0 notes, 0 colored rows, 22268 pinned cells
+2026-11-04 19:13:33    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-04 19:13:33    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-04 19:13:33 >> dashboard xlsm
+2026-11-04 19:17:17    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-04 19:17:17      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4658 | Detail I 23652 | RFC 270
+2026-11-04 19:17:17      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22360 pinned cells
+2026-11-04 19:17:17    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-04 19:17:17 >> platform full sync
+2026-11-04 19:25:50    >>> git commit / pull --rebase / push
+2026-11-04 19:25:50      committed the new build
+2026-11-04 19:25:50      rebased on origin/main
+2026-11-04 19:25:50      pushed to origin/main
+2026-11-04 19:25:50    
+2026-11-04 19:25:50    DONE - platform online + all downloads synced.
+2026-11-04 19:25:50 [mirror] PAGES -> _files
+2026-11-04 19:25:50 [done] build in 2208s
+2026-11-04 19:30:51 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 19:30:51 >> cloud->DPR
+2026-11-04 19:41:53    sync 2026-11-04 19:41:44 -> PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-04 19:41:53    written=329 notes=0 colors=1
+2026-11-04 19:41:53    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-04 19:41:53    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-04 19:41:53    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-04 19:41:53    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-04 19:41:53 >> local->DPR
+2026-11-04 19:54:20    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx  (edits: 79412 cells / 0 notes)
+2026-11-04 19:54:20      [summery-sync] OK -> 57268 cells, 0 notes written, 15560 skipped (no matching column)
+2026-11-04 19:54:20 >> explorer rebuild
+2026-11-04 19:56:12      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14020+9632 rows, 16298 updates
+2026-11-04 19:56:12      Punch rows: 4658 | ITR rows: 23652 | RFC: 270 | Miles: 292
+2026-11-04 19:56:12      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-04 19:56:12      Carry-over: 0 notes, 0 colored rows, 22360 pinned cells
+2026-11-04 19:56:12    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-04 19:56:12    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-04 19:56:12 >> dashboard xlsm
+2026-11-04 20:00:26    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-04 20:00:26      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4658 | Detail I 23652 | RFC 270
+2026-11-04 20:00:26      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22360 pinned cells
+2026-11-04 20:00:26    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-04 20:00:26 >> platform full sync
+2026-11-04 20:10:26     main -> main (non-fast-forward)
+2026-11-04 20:10:26    error: failed to push some refs to 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git'
+2026-11-04 20:10:26    hint: Updates were rejected because the tip of your current branch is behind
+2026-11-04 20:10:26    hint: its remote counterpart. If you want to integrate the remote changes,
+2026-11-04 20:10:26    hint: use 'git pull' before pushing again.
+2026-11-04 20:10:26    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2026-11-04 20:10:26    !! C:\Python315\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+2026-11-04 20:10:26    !!   warn("Workbook contains no default style, apply openpyxl's default")
+2026-11-04 20:10:26    !! push failed - the live platform was NOT updated
+2026-11-04 20:10:26 !! platform full sync FAILED (rc=1)
+2026-11-04 20:10:26 [done] build in 2375s
+2026-11-04 20:15:26 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-04 20:47:06 ==================================================
+2026-11-04 20:47:06 cloud_auto_update started (interval 300s)
+2026-11-04 20:47:16 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 20:47:16 >> cloud->DPR
+2026-11-04 21:00:53 ==================================================
+2026-11-04 21:00:53 cloud_auto_update started (interval 300s)
+2026-11-04 21:00:54 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 21:00:54 [skip] another build in progress
+2026-11-04 21:07:46 ==================================================
+2026-11-04 21:07:46 cloud_auto_update started (interval 300s)
+2026-11-04 21:07:47 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 21:07:47 [skip] another build in progress
+2026-11-04 21:44:12 ==================================================
+2026-11-04 21:44:12 cloud_auto_update started (interval 300s)
+2026-11-04 21:44:14 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 21:44:15 >> cloud->DPR
+2026-11-04 21:55:58 ==================================================
+2026-11-04 21:55:58 cloud_auto_update started (interval 300s)
+2026-11-04 21:55:59 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 21:55:59 [skip] another build in progress
+2026-11-04 22:11:51 ==================================================
+2026-11-04 22:11:51 cloud_auto_update started (interval 300s)
+2026-11-04 22:11:55 [trigger] state changed -> rebuilding downloads+pages
+2026-11-04 22:11:55 [skip] another build in progress
+2026-11-05 07:03:14 ==================================================
+2026-11-05 07:03:14 cloud_auto_update started (interval 300s)
+2026-11-05 07:03:17 [trigger] state changed -> rebuilding downloads+pages
+2026-11-05 07:03:17 >> cloud->DPR
+2026-11-05 07:15:43    sync 2026-11-05 07:15:37 -> PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-05 07:15:43    written=329 notes=0 colors=1
+2026-11-05 07:15:43    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-05 07:15:43    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-05 07:15:43    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-05 07:15:43    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-05 07:15:43 >> local->DPR
+2026-11-05 07:28:51    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx  (edits: 79412 cells / 0 notes)
+2026-11-05 07:28:51      [summery-sync] OK -> 57268 cells, 0 notes written, 15560 skipped (no matching column)
+2026-11-05 07:28:51 >> explorer rebuild
+2026-11-05 07:33:14      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14020+9632 rows, 16298 updates
+2026-11-05 07:33:14      Punch rows: 4658 | ITR rows: 23652 | RFC: 270 | Miles: 292
+2026-11-05 07:33:14      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-05 07:33:14      Carry-over: 0 notes, 0 colored rows, 22360 pinned cells
+2026-11-05 07:33:14    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-05 07:33:14    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-05 07:33:14 >> dashboard xlsm
+2026-11-05 07:38:36    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-05 07:38:36      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4658 | Detail I 23652 | RFC 270
+2026-11-05 07:38:36      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22360 pinned cells
+2026-11-05 07:38:36    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-05 07:38:36 >> platform full sync
+2026-11-05 07:53:06    >>> git commit / pull --rebase / push
+2026-11-05 07:53:06      committed the new build
+2026-11-05 07:53:06      rebased on origin/main
+2026-11-05 07:53:06      pushed to origin/main
+2026-11-05 07:53:06    
+2026-11-05 07:53:06    DONE - platform online + all downloads synced.
+2026-11-05 07:53:06 [mirror] PAGES -> _files
+2026-11-05 07:53:06 [done] build in 2989s
+2026-11-05 19:06:02 ==================================================
+2026-11-05 19:06:02 cloud_auto_update started (interval 300s)
+2026-11-05 19:06:05 [trigger] state changed -> rebuilding downloads+pages
+2026-11-05 19:06:05 >> cloud->DPR
+2026-11-05 19:17:41    sync 2026-11-05 19:17:33 -> PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-05 19:17:41    written=329 notes=0 colors=1
+2026-11-05 19:17:41    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-05 19:17:41    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-05 19:17:41    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-05 19:17:41    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-05 19:17:41 >> local->DPR
+2026-11-06 07:10:23 ==================================================
+2026-11-06 07:10:23 cloud_auto_update started (interval 300s)
+2026-11-06 07:10:25 [trigger] state changed -> rebuilding downloads+pages
+2026-11-06 07:10:25 >> cloud->DPR
+2026-11-06 07:24:44    sync 2026-11-06 07:24:38 -> PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-06 07:24:44    written=329 notes=0 colors=1
+2026-11-06 07:24:44    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-06 07:24:44    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-06 07:24:44    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-06 07:24:44    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-06 07:24:44 >> local->DPR
+2026-11-06 07:36:33    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx  (edits: 79412 cells / 0 notes)
+2026-11-06 07:36:33      [summery-sync] OK -> 57268 cells, 0 notes written, 15560 skipped (no matching column)
+2026-11-06 07:36:33 >> explorer rebuild
+2026-11-06 07:40:10      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14020+9635 rows, 16474 updates
+2026-11-06 07:40:10      Punch rows: 4658 | ITR rows: 23655 | RFC: 270 | Miles: 292
+2026-11-06 07:40:10      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-06 07:40:10      Carry-over: 0 notes, 0 colored rows, 22360 pinned cells
+2026-11-06 07:40:10    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-06 07:40:10    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-06 07:40:10 >> dashboard xlsm
+2026-11-06 07:43:48    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-06 07:43:48      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4658 | Detail I 23655 | RFC 270
+2026-11-06 07:43:48      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22495 pinned cells
+2026-11-06 07:43:48    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-06 07:43:48 >> platform full sync
+2026-11-06 07:54:09    >>> git commit / pull --rebase / push
+2026-11-06 07:54:09      committed the new build
+2026-11-06 07:54:09      rebased on origin/main
+2026-11-06 07:54:09      pushed to origin/main
+2026-11-06 07:54:09    
+2026-11-06 07:54:09    DONE - platform online + all downloads synced.
+2026-11-06 07:54:10 [mirror] PAGES -> _files
+2026-11-06 07:54:10 [done] build in 2625s
+2026-11-06 07:59:11 [trigger] state changed -> rebuilding downloads+pages
+2026-11-06 07:59:11 >> cloud->DPR
+2026-11-06 08:08:58    sync 2026-11-06 08:08:52 -> PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-06 08:08:58    written=329 notes=0 colors=1
+2026-11-06 08:08:58    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-06 08:08:58    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-06 08:08:58    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-06 08:08:58    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-06 08:08:58 >> local->DPR
+2026-11-06 08:22:00    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx  (edits: 79629 cells / 0 notes)
+2026-11-06 08:22:00      [summery-sync] OK -> 57350 cells, 0 notes written, 15560 skipped (no matching column)
+2026-11-06 08:22:00 >> explorer rebuild
+2026-11-06 08:24:26      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14020+9635 rows, 16474 updates
+2026-11-06 08:24:26      Punch rows: 4658 | ITR rows: 23655 | RFC: 270 | Miles: 292
+2026-11-06 08:24:26      Subsystems: 293 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-06 08:24:26      Carry-over: 0 notes, 0 colored rows, 22495 pinned cells
+2026-11-06 08:24:26    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-06 08:24:26    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-06 08:24:26 >> dashboard xlsm
+2026-11-06 08:29:18    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -03-nov-2026.xlsx
+2026-11-06 08:29:18      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4658 | Detail I 23655 | RFC 270
+2026-11-06 08:29:18      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22495 pinned cells
+2026-11-06 08:29:18    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-06 08:29:18 >> platform full sync
+2026-11-06 08:41:29    >>> git commit / pull --rebase / push
+2026-11-06 08:41:29      committed the new build
+2026-11-06 08:41:29      rebased on origin/main
+2026-11-06 08:41:29      pushed to origin/main
+2026-11-06 08:41:29    
+2026-11-06 08:41:29    DONE - platform online + all downloads synced.
+2026-11-06 08:41:29 [mirror] PAGES -> _files
+2026-11-06 08:41:29 [done] build in 2537s
+2026-11-06 08:56:32 [warn] cloud fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1144)>
+2026-11-06 09:21:36 [warn] cloud fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1144)>
+2026-11-06 09:31:38 [warn] cloud fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1144)>
+2026-11-06 09:36:59 [warn] cloud fetch failed: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
+2026-11-07 07:09:23 ==================================================
+2026-11-07 07:09:23 cloud_auto_update started (interval 300s)
+2026-11-07 07:09:24 [trigger] state changed -> rebuilding downloads+pages
+2026-11-07 07:09:25 >> cloud->DPR
+2026-11-07 07:23:22    sync 2026-11-07 07:23:15 -> PS-5 COMPLETIONS DPR SUMMARY -02-nov-2026 .xlsx
+2026-11-07 07:23:22    written=329 notes=0 colors=1
+2026-11-07 07:23:22    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-07 07:23:22    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-07 07:23:23    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-07 07:23:23    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-07 07:23:23 >> local->DPR
+2026-11-07 07:34:08    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -02-nov-2026 .xlsx  (edits: 79629 cells / 0 notes)
+2026-11-07 07:34:08      [summery-sync] OK -> 57350 cells, 0 notes written, 15560 skipped (no matching column)
+2026-11-07 07:34:08 >> explorer rebuild
+2026-11-07 07:38:01      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9648 rows, 15877 updates
+2026-11-07 07:38:01      Punch rows: 4658 | ITR rows: 23657 | RFC: 270 | Miles: 292
+2026-11-07 07:38:01      Subsystems: 294 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-07 07:38:01      Carry-over: 0 notes, 0 colored rows, 22495 pinned cells
+2026-11-07 07:38:01    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-07 07:38:01    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-07 07:38:01 >> dashboard xlsm
+2026-11-07 07:43:21    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-07 07:43:21      ITR rows 11 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23495 | RFC 270
+2026-11-07 07:43:21      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22640 pinned cells
+2026-11-07 07:43:21    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-07 07:43:21 >> platform full sync
+2026-11-07 07:43:29        e.g. T-00018-0252 (also Closed live)
+2026-11-07 07:43:29        e.g. T-00023-11250 (also Closed live)
+2026-11-07 07:43:29        e.g. T-00023-11251 (also Closed live)
+2026-11-07 07:43:29    
+2026-11-07 07:43:29    >>> C:\Python315\python.exe rebuild_data.py
+2026-11-07 07:43:29    !! FAILED: ['C:\\Python315\\python.exe', 'rebuild_data.py'] exit 1
+2026-11-07 07:43:29    !! refusing to build/publish stale ITR states (656 lagging tasks > limit 200)
+2026-11-07 07:43:29 !! platform full sync FAILED (rc=1)
+2026-11-07 07:43:29 [done] build in 2045s

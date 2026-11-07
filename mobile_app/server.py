@@ -21,8 +21,13 @@ def scan_single_pdf(filepath):
     try:
         import fitz
         doc = fitz.open(filepath)
-        text = ''.join(page.get_text() for page in doc)
-        doc.close()
+        try:
+            # Reading every page of a large scanned PDF can take minutes and freeze
+            # the request thread; the tags we need are almost always on the first
+            # few pages, so cap the scan.
+            text = ''.join(page.get_text() for page in list(doc)[:8])
+        finally:
+            doc.close()
         tags = set(TAG_PATTERN.findall(text))
         return {t.replace(' ', '') for t in tags}
     except Exception:

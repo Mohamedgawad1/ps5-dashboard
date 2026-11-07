@@ -245,8 +245,12 @@ def main():
                 procs[name] = start_process(name, cmd)
                 time.sleep(3)
 
-        keep_sc_window_visible()
-        keep_itr_fresh(procs)
+        # Window guard + freshness checks are heavier; run them less often to
+        # avoid hammering the system (netstat/EnumWindows every 15s can lag).
+        if check_count % 4 == 0:
+            keep_sc_window_visible()
+        if check_count % 4 == 0:
+            keep_itr_fresh(procs)
 
         if check_count % 240 == 0:
             log(f"Watchdog alive - {check_count} checks. URL: {FIXED_URL}")

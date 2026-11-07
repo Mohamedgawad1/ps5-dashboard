@@ -200,6 +200,15 @@ def pick_channel():
 
 
 # ---------------------------------------------------------------- PDF reading
+# Only the first pages are needed: the tag list is on page 1 (or 2-3) and the work
+# description is on page 1. Reading every page of a scanned 8 MB form costs minutes,
+# so the default is the first three pages. The remaining pages are read only when
+# the type cannot be decided from those pages.
+PDF_FIRST_PAGES = 3
+PDF_CACHE = os.path.join(BASE_DIR, "rfi_pdf_cache.json")
+_PDF_CACHE = None
+
+
 def pdf_pages_text(path, limit=None):
     from pypdf import PdfReader
 
@@ -213,6 +222,42 @@ def pdf_pages_text(path, limit=None):
         except Exception:  # noqa: BLE001
             pages.append("")
     return pages
+
+
+def _pdf_key(path):
+    """Identity of a PDF file - a new file or an edited one gets a new key."""
+    p = os.path.abspath(path)
+    try:
+        st = os.stat(p)
+        return "%s|%d|%d" % (p, st.st_size, int(st.st_mtime))
+    except OSError:
+        return p
+
+
+def _pdf_cache():
+    global _PDF_CACHE
+    if _PDF_CACHE is None:
+        try:
+            with open(PDF_CACHE, encoding="utf-8") as f:
+                data = json.load(f)
+            _PDF_CACHE = data if isinstance(data, dict) else {}
+        except Exception:  # noqa: BLE001
+            _PDF_CACHE = {}
+    return _PDF_CACHE
+
+
+def _pdf_cache_save():
+    try:
+        data = _pdf_cache()
+        if len(data) > 300:
+            for k in list(data)[:-200]:
+                data.pop(k, None)
+        tmp = PDF_CACHE + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False)
+        os.replace(tmp, PDF_CACHE)
+    except Exception:  # noqa: BLE001
+        pass
 
 
 def type_from_map(filename):
@@ -238,17 +283,19 @@ def type_from_map(filename):
 RFI_NO_RE = re.compile(r"RFI\s*(?:No\.?|Number|#)?\s*[:\-]?\s*([A-Z]{2,5}-RFI-[A-Z0-9\-/]+)", re.I)
 
 
-def read_rfi_no(path):
+def read_rfi_no(path, pages=None):
     """The RFI number printed on the form, e.g. CPP-RFI-68-64-11-0336.
 
     This is the value the platform stores in the record Caption, so it is the
     only reliable way to tell which task page a PDF belongs to.
     """
-    from pypdf import PdfReader
+    if pages is None:
+        from pypdf import PdfReader
 
-    reader = PdfReader(path)
-    for page in reader.pages[:2]:
-        m = RFI_NO_RE.search(page.extract_text() or "")
+        reader = PdfReader(path)
+        pages = [page.extract_text() or "" for page in reader.pages[:2]]
+    for text in pages[:2]:
+        m = RFI_NO_RE.search(text or "")
         if m:
             return m.group(1).strip().rstrip(".,")
     return None
@@ -260,12 +307,16 @@ def _repair_split_tags(text):
       '...0003B-\\nCA04'            -> the hyphen is at the end of the line
       '...CC01,\\n08-85BT-1901-CN01' -> the fragment lost its own 'PS5-' prefix
       '...,\\nPS5\\n85BT-1904-CJ01'  -> the 'PS5' got separated from the rest
+      'PS5 -09-IES-8406B'           -> the PDF put a space before the dash
     """
     flat = re.sub(r"[ \t]*\r?\n[ \t]*", " ", text or "")
     # a bare 'PS5' that lost the rest of the tag to the next line
     flat = re.sub(r"\bPS5\s+(?=\d{2}-[A-Z0-9])", "PS5-", flat)
     flat = re.sub(r"\bPS5\s+(?=[A-Z]{2,4}-)", "PS5-", flat)
     flat = re.sub(r"\bPS5\s+(?=\d{2}[A-Z0-9]{2}-)", "PS5-", flat)
+    # the PDF renders tags with a space around a dash, e.g. 'PS5 -09-IES-8406B'
+    # or 'PS5-09- IES-8406B'. Glue the dash back so the tag stays one token.
+    flat = re.sub(r"(?<=[A-Z0-9])\s*-\s*(?=[A-Z0-9])", "-", flat)
     # a fragment that lost its own 'PS5-' prefix
     flat = re.sub(r"(?<=[\s,;])(\d{2}-[A-Z0-9]+(?:-[A-Z0-9]+){2,})\b", r"PS5-\1", flat)
     # a tag cut after a hyphen: 'PS5-60-IE-0003B- CA04' has to become 'PS5-60-IE-0003B-CA04'
@@ -276,7 +327,16 @@ def _repair_split_tags(text):
     return _split_glued_tags(glued)
 
 
-TAG_RE = re.compile(r"\b(?:PS|PR)\d-[A-Z0-9]+(?:-[A-Z0-9]+){3,}\b")
+TAG_RE = re.compile(r"\b(?:PS|PR)\d-[A-Z0-9]+(?:-[A-Z0-9]+){2,}\b")
+# 'Date/Time 03-11-2026 03-11-2026' gets welded into a fake tag by the line-break
+# repair above - it is a date, never an asset.
+DATE_TAG_RE = re.compile(
+    r"^(?:PS|PR)\d-\d{2}-\d{2}-(?:19|20)\d{2}(?:-\d{2}-\d{2}-(?:19|20)\d{2})?$", re.I
+)
+
+
+def _is_date_tag(tag):
+    return bool(DATE_TAG_RE.match(tag or ""))
 
 
 def _split_glued_tags(text):
@@ -320,6 +380,39 @@ def _description_block(text):
     return " ".join(ln.strip() for ln in block.splitlines() if ln.strip())
 
 
+def _normalize_ocr_in_tag(tag):
+    """PDF text extraction often confuses digits with look-alike letters
+    (0->O, 1->I/l). In segments that already contain a digit, fix the
+    obvious confusions so 'CCO4' becomes 'CC04'. Segments with no digit
+    (e.g. 'BI', 'LA') are left untouched."""
+    if not tag:
+        return tag
+    out = []
+    for seg in str(tag).split("-"):
+        if any(c.isdigit() for c in seg):
+            seg = seg.replace("O", "0").replace("I", "1").replace("l", "1")
+        out.append(seg)
+    return "-".join(out)
+
+
+def _best_tag_form(tag):
+    """Prefer the form of the tag that actually exists in the task index; fall
+    back to the OCR-normalised form, then the original."""
+    try:
+        idx = task_index()
+    except Exception:
+        idx = {}
+    candidates = [tag, _normalize_ocr_in_tag(tag)]
+    for c in candidates:
+        if c in idx:
+            return c
+    # try a couple of extra confusions just in case
+    extra = _normalize_ocr_in_tag(tag).replace("S", "5").replace("B", "8")
+    if extra in idx:
+        return extra
+    return candidates[1] if candidates[1] != tag else tag
+
+
 def _complete_short_tags(tags):
     """A tag cut at the line break can lose its numeric segment: 'PS5-85BT-1904-CJ01'.
     The rest of the list still carries it, so borrow it from the majority."""
@@ -332,22 +425,27 @@ def _complete_short_tags(tags):
         if re.match(r"^[A-Z0-9]+-[A-Z]{2,4}-", t):
             t = re.sub(r"^([A-Z0-9]+)-", r"\1-%s-" % seg, t)
         out.append(t)
-    return out
+    return [_best_tag_form(t) for t in out]
 
 
 def read_pdf(path):
     """Asset tag from the RFI page, document type from the pages or the mapping file."""
-    pages = pdf_pages_text(path)
+    key = _pdf_key(path)
+    cached = _pdf_cache().get(key)
+    if isinstance(cached, dict) and "asset_tags" in cached:
+        return cached
+
+    pages = pdf_pages_text(path, limit=PDF_FIRST_PAGES)
 
     def _tags_from(page_text):
         page_text = _repair_split_tags(page_text)
         out = []
         for tag in ASSET_TAG_RE.findall(page_text):
-            if tag not in out:
+            if tag not in out and not _is_date_tag(tag):
                 out.append(tag)
         for parts in ASSET_TAG_SPACED_RE.findall(page_text):
             tag = "-".join(parts)
-            if tag not in out:
+            if tag not in out and not _is_date_tag(tag):
                 out.append(tag)
         return _complete_short_tags(out)
 
@@ -378,11 +476,16 @@ def read_pdf(path):
     # page 1 is the tick-box list ("Test crew not available", "Test equipment not
     # available" ...) and would otherwise force every RFI to Static Test.
     desc_low = _description_block(first).lower()
-    hits = []
-    for name, keys in TYPE_KEYWORDS:
-        found = [k for k in keys if k in full]
-        if found:
-            hits.append((name, found))
+
+    def _keyword_hits(text_low):
+        found_hits = []
+        for name, keys in TYPE_KEYWORDS:
+            found = [k for k in keys if k in text_low]
+            if found:
+                found_hits.append((name, found))
+        return found_hits
+
+    hits = _keyword_hits(full)
     # The work description decides. The form title is only a last resort, because
     # every one of these forms is titled "Request for Inspection" no matter the job.
     # 0) the first code of the DESCRIPTION decides, e.g. "TPX13 - Motor LV" is a test
@@ -418,23 +521,32 @@ def read_pdf(path):
             if any(k in desc_low for k in keys.split("|")):
                 ptype, why = name, [k for k in keys.split("|") if k in desc_low]
                 break
+    if ptype is None and not hits:
+        # Nothing on the first pages decided the type. Only now is it worth the
+        # minutes it costs to extract the text of every remaining page.
+        more = pdf_pages_text(path, limit=8)
+        if len(more) > len(pages):
+            hits = _keyword_hits("\n".join(more).lower())
     if ptype is None:
         for name, found in hits:
             ptype, why = name, found
             break
     hits.insert(0, ("work description", why or []))
     mapped = type_from_map(path)
-    return {
+    info = {
         "pdf": os.path.basename(path),
         "path": os.path.abspath(path),
         "pages": len(pages),
-        "rfi_no": read_rfi_no(path),
+        "rfi_no": read_rfi_no(path, pages),
         "asset_tags": tags,
         "suspect_tags": suspect,
         "detected_type": ptype,
         "mapped_type": mapped,
         "type_hits": hits,
     }
+    _pdf_cache()[key] = info
+    _pdf_cache_save()
+    return info
 
 
 # ------------------------------------------------------------- task lookup
