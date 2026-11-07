@@ -7983,5 +7983,93 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00254-5390": {
+  "record": "1125565",
+  "task": "T-00254-5390",
+  "asset": "PS5-71-BI-0001A-CC01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-5399": {
+  "record": "1125574",
+  "task": "T-00254-5399",
+  "asset": "PS5-71-BI-0005-CC01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-5415": {
+  "record": "1125590",
+  "task": "T-00254-5415",
+  "asset": "PS5-71-BI-0011A-CC05",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-5416": {
+  "record": "1125591",
+  "task": "T-00254-5416",
+  "asset": "PS5-71-BI-0011B-CC01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-5417": {
+  "record": "1125592",
+  "task": "T-00254-5417",
+  "asset": "PS5-71-BI-0011B-CC02",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-5420": {
+  "record": "1125595",
+  "task": "T-00254-5420",
+  "asset": "PS5-71-BI-0011B-CC05",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11750": {
+  "record": "1296084",
+  "task": "T-00254-11750",
+  "asset": "PS5-09-PDIT-8207-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5023": {
+  "record": "1123578",
+  "task": "T-00069-5023",
+  "asset": "PS5-60-BI-0016D-CC04",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00069-5035": {
+  "record": "1123590",
+  "task": "T-00069-5035",
+  "asset": "PS5-60-BI-0016G-CC04",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00069-5512": {
+  "record": "1124067",
+  "task": "T-00069-5512",
+  "asset": "PS5-71-LIT-4401-CJ01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-4824": {
+  "record": "1123379",
+  "task": "T-00069-4824",
+  "asset": "PS5-28-LI-1101C-CJ01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
  }
 }
