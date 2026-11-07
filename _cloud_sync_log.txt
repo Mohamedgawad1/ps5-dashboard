@@ -14298,3 +14298,7 @@
 2026-11-07 08:11:27    !! refusing to build/publish stale ITR states (658 lagging tasks > limit 200)
 2026-11-07 08:11:27 !! platform full sync FAILED (rc=1)
 2026-11-07 08:11:27 [done] build in 1377s
+2026-11-07 08:38:46 ==================================================
+2026-11-07 08:38:46 cloud_auto_update started (interval 300s)
+2026-11-07 08:38:46 [trigger] state changed -> rebuilding downloads+pages
+2026-11-07 08:38:46 >> cloud->DPR

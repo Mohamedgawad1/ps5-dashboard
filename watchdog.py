@@ -44,36 +44,35 @@ SC_DEBUG_PORT = 9222
 
 
 def _sc_window_handles():
-    """HWNDs of the Chrome windows that own the SmartCloud debug port."""
-    pids = set()
-    try:
-        out = subprocess.run(["netstat", "-ano", "-p", "TCP"], capture_output=True,
-                             text=True, timeout=30).stdout
-        for line in out.splitlines():
-            parts = line.split()
-            if (len(parts) >= 5 and parts[0] == "TCP"
-                    and parts[1].endswith(":%d" % SC_DEBUG_PORT)
-                    and "LISTENING" in line.upper()):
-                try:
-                    pids.add(int(parts[-1]))
-                except ValueError:
-                    pass
-    except Exception as e:
-        log(f"window guard: netstat failed ({e})")
-        return []
-    if not pids:
-        return []
+    """HWNDs of the Chrome windows that are currently parked off-screen.
+
+    The old implementation shelled out to `netstat -ano` to find which Chrome
+    process owns the debug port. On Windows that command can hang for 30s+ and
+    time out, which made the whole window guard useless (and lagged the
+    watchdog). The off-screen symptom itself is enough to identify the
+    problematic window, so we just enumerate top-level Chrome windows and pick
+    the ones whose rect is parked at -32000 (no netstat needed).
+    """
     import ctypes
     from ctypes import wintypes
     user32 = ctypes.windll.user32
+
     found = []
     WNDENUMPROC = ctypes.WINFUNCTYPE(ctypes.c_bool, wintypes.HWND, wintypes.LPARAM)
 
     def _cb(hwnd, _lparam):
-        pid = wintypes.DWORD()
-        user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
-        if (pid.value in pids and user32.IsWindowVisible(hwnd)
-                and user32.GetWindowTextLengthW(hwnd)):
+        if not user32.IsWindowVisible(hwnd):
+            return True
+        if not user32.GetWindowTextLengthW(hwnd):
+            return True
+        # Only Chrome top-level windows (class Chrome_WidgetWin_1).
+        class_buf = ctypes.create_unicode_buffer(256)
+        user32.GetClassNameW(hwnd, class_buf, 256)
+        if class_buf.value != "Chrome_WidgetWin_1":
+            return True
+        r = wintypes.RECT()
+        user32.GetWindowRect(hwnd, ctypes.byref(r))
+        if r.left <= -30000 or r.top <= -30000:
             found.append(hwnd)
         return True
 
@@ -91,13 +90,18 @@ def keep_sc_window_visible():
                         ("right", ctypes.c_long), ("bottom", ctypes.c_long)]
 
         SW_SHOWMAXIMIZED = 3
+        SW_RESTORE = 9
         SWP_SHOWWINDOW, SWP_NOACTIVATE = 0x0040, 0x0010
         for hwnd in _sc_window_handles():
-            if user32.IsIconic(hwnd):          # minimised on purpose - leave it
-                continue
             r = RECT()
             user32.GetWindowRect(hwnd, ctypes.byref(r))
             if r.left <= -30000 or r.top <= -30000:
+                # A window parked at -32000 is the signature of the broken
+                # launcher, even when it happens to be minimised: a genuinely
+                # user-minimised window keeps a normal on-screen position. So
+                # restore it as well instead of leaving it invisible.
+                if user32.IsIconic(hwnd):
+                    user32.ShowWindow(hwnd, SW_RESTORE)
                 user32.SetWindowPos(hwnd, 0, 80, 50, 1400, 900,
                                     SWP_SHOWWINDOW | SWP_NOACTIVATE)
                 user32.ShowWindow(hwnd, SW_SHOWMAXIMIZED)
@@ -245,12 +249,9 @@ def main():
                 procs[name] = start_process(name, cmd)
                 time.sleep(3)
 
-        # Window guard + freshness checks are heavier; run them less often to
-        # avoid hammering the system (netstat/EnumWindows every 15s can lag).
-        if check_count % 4 == 0:
-            keep_sc_window_visible()
-        if check_count % 4 == 0:
-            keep_itr_fresh(procs)
+        # Window guard is cheap now (no netstat), so run it every cycle.
+        keep_sc_window_visible()
+        keep_itr_fresh(procs)
 
         if check_count % 240 == 0:
             log(f"Watchdog alive - {check_count} checks. URL: {FIXED_URL}")

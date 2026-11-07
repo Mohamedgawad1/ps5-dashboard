@@ -50943,3 +50943,26 @@
 [2026-11-07 07:10:26] ITR data is 1227 min old (limit 40 min) -> restarting itr_online
 [2026-11-07 07:10:29] STARTED itr_online (PID 3628)
 [2026-11-07 08:09:37] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-07 08:37:59] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 08:37:59] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 08:37:59] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 08:37:59] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 08:38:42] ==================================================
+[2026-11-07 08:38:42] Watchdog started - keeping everything alive
+[2026-11-07 08:38:42] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-07 08:38:42] STARTED server (PID 7012)
+[2026-11-07 08:38:43] STARTED auto_sync (PID 12848)
+[2026-11-07 08:38:45] STARTED cloud_sync (PID 20392)
+[2026-11-07 08:38:46] STARTED itr_online (PID 5632)
+[2026-11-07 08:38:47] STARTED tunnel_named (PID 2032)
+[2026-11-07 08:38:48] STARTED tunnel_backup (PID 2008)
+[2026-11-07 08:38:56] TUNNEL URL: https://omissions-buttons-currencies-challenged.trycloudflare.com
+[2026-11-07 08:39:05] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 08:39:22] RESTARTING tunnel_named
+[2026-11-07 08:39:30] STARTED tunnel_named (PID 420)
+[2026-11-07 08:39:34] RESTARTING tunnel_backup
+[2026-11-07 08:39:35] STARTED tunnel_backup (PID 2664)
+[2026-11-07 08:39:40] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 08:39:40] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 08:39:47] TUNNEL URL: https://manufacture-shelf-stop-tokyo.trycloudflare.com
+[2026-11-07 08:43:42] SC window was off-screen (-32000) -> moved back on screen
