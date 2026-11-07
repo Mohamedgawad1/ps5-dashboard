@@ -14338,3 +14338,28 @@
 2026-11-07 09:20:12 [warn] cloud fetch failed: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 2026-11-07 09:20:12 [trigger] state changed -> rebuilding downloads+pages
 2026-11-07 09:20:12 >> cloud->DPR
+2026-11-07 09:20:34    [cloud] download failed: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
+2026-11-07 09:20:34 >> local->DPR
+2026-11-07 09:27:39    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 81805 cells / 0 notes)
+2026-11-07 09:27:39      [summery-sync] OK -> 58066 cells, 0 notes written, 15557 skipped (no matching column)
+2026-11-07 09:27:39 >> explorer rebuild
+2026-11-07 09:29:43      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9650 rows, 16532 updates
+2026-11-07 09:29:43      Punch rows: 4465 | ITR rows: 23659 | RFC: 270 | Miles: 292
+2026-11-07 09:29:43      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-07 09:29:43      Carry-over: 0 notes, 0 colored rows, 22697 pinned cells
+2026-11-07 09:29:43    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-07 09:29:43    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-07 09:29:43 >> dashboard xlsm
+2026-11-07 09:33:41    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-07 09:33:41      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23659 | RFC 270
+2026-11-07 09:33:41      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22697 pinned cells
+2026-11-07 09:33:41    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-07 09:33:41 >> platform full sync
+2026-11-07 09:43:20    >>> git commit / pull --rebase / push
+2026-11-07 09:43:20      committed the new build
+2026-11-07 09:43:20      rebased on origin/main
+2026-11-07 09:43:20      pushed to origin/main
+2026-11-07 09:43:20    
+2026-11-07 09:43:20    DONE - platform online + all downloads synced.
+2026-11-07 09:43:20 [mirror] PAGES -> _files
+2026-11-07 09:43:20 [done] build in 1388s
