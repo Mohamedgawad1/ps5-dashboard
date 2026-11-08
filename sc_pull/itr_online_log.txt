@@ -61984,3 +61984,36 @@ Call log:
 [2026-11-07 17:00:59]  >> platform publish OK (1 file(s) updated, closed=7485)
 [2026-11-07 17:00:59] PAGES PUSH rc=0
 [2026-11-07 17:00:59] cycle OK closed=7485 open=2813 updated=2026-11-07 17:00:35
+[2026-11-07 17:03:16] reusing the Switchboard tab already open - no new tab
+[2026-11-07 17:03:17] reused the sync's always-open browser (port 9222)
+[2026-11-07 17:03:41] LOGGED IN
+[2026-11-07 17:08:26] pulled off=0 n=4000 accum=4000
+[2026-11-07 17:08:47] pulled off=4000 n=4000 accum=8000
+[2026-11-07 17:10:58] pulled off=8000 n=4000 accum=12000
+[2026-11-07 17:11:11] pulled off=12000 n=2008 accum=14008
+[2026-11-07 17:11:12] task index refreshed (6319 asset tags)
+[2026-11-07 17:11:13] updated dashboard_data.json itr_summary.live
+[2026-11-07 17:11:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-07 17:11:15]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-07 17:11 (closed=7485) rc=0 [main 4a1c22b] ITR live update 2026-11-07 17:11 (closed=7485)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-07 17:11:20]  >> git push OK
+[2026-11-07 17:11:30]  >> published itr_live_state.json (459335 bytes)
+[2026-11-07 17:11:36]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-07 17:11:36]  >> platform publish OK (1 file(s) updated, closed=7485)
+[2026-11-07 17:11:36] PAGES PUSH rc=0
+[2026-11-07 17:11:36] cycle OK closed=7485 open=2813 updated=2026-11-07 17:11:13
+[2026-11-07 17:13:50] reusing the Switchboard tab already open - no new tab
+[2026-11-07 17:13:50] reused the sync's always-open browser (port 9222)
+[2026-11-07 17:14:46] LOGGED IN
+[2026-11-07 17:18:26] pulled off=0 n=4000 accum=4000
+[2026-11-07 17:23:11] pulled off=4000 n=4000 accum=8000
+[2026-11-07 17:24:08] pulled off=8000 n=4000 accum=12000
+[2026-11-07 17:24:30] pulled off=12000 n=2008 accum=14008
+[2026-11-07 17:24:35] task index refreshed (6319 asset tags)
+[2026-11-08 07:04:33] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-08 07:04:34] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-08 07:04:34] no pull tab this cycle - retrying in 120s
+[2026-11-08 07:04:53] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-08 07:04:57] opened the one pull tab (none was open)
+[2026-11-08 07:04:57] reused the sync's always-open browser (port 9222)
+[2026-11-08 07:04:57] goto err: Page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vD

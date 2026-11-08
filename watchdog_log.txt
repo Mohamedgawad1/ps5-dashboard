@@ -51019,3 +51019,28 @@
 [2026-11-07 15:39:41] Watchdog alive - 1680 checks. URL: https://app.mohamedgawwad.is-a.dev
 [2026-11-07 16:39:42] Watchdog alive - 1920 checks. URL: https://app.mohamedgawwad.is-a.dev
 [2026-11-07 16:53:28] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 17:02:30] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 17:10:02] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 17:14:33] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 17:15:34] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 17:15:49] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-07 17:16:04] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-08 07:04:21] ==================================================
+[2026-11-08 07:04:21] Watchdog started - keeping everything alive
+[2026-11-08 07:04:21] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-08 07:04:21] STARTED server (PID 16168)
+[2026-11-08 07:04:23] STARTED auto_sync (PID 15852)
+[2026-11-08 07:04:24] STARTED cloud_sync (PID 11452)
+[2026-11-08 07:04:25] STARTED itr_online (PID 16432)
+[2026-11-08 07:04:26] STARTED tunnel_named (PID 16580)
+[2026-11-08 07:04:27] STARTED tunnel_backup (PID 16760)
+[2026-11-08 07:04:28] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-08 07:04:43] RESTARTING tunnel_backup
+[2026-11-08 07:04:43] STARTED tunnel_backup (PID 18868)
+[2026-11-08 07:04:44] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-08 07:04:46] SC window was off-screen (-32000) -> moved back on screen
+[2026-11-08 07:04:46] ITR data is 833 min old (limit 40 min) -> restarting itr_online
+[2026-11-08 07:04:50] STARTED itr_online (PID 16736)
+[2026-11-08 07:05:05] RESTARTING tunnel_backup
+[2026-11-08 07:05:05] STARTED tunnel_backup (PID 16452)
+[2026-11-08 07:05:05] TUNNEL URL: https://api.trycloudflare.com
