@@ -62017,3 +62017,38 @@ Call log:
 [2026-11-08 07:04:57] opened the one pull tab (none was open)
 [2026-11-08 07:04:57] reused the sync's always-open browser (port 9222)
 [2026-11-08 07:04:57] goto err: Page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vD
+[2026-11-08 07:05:44] session expired -> auto-login
+[2026-11-08 07:05:47] ssologin click: no-btn
+[2026-11-08 07:06:34] post-login goto err: Page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vD
+[2026-11-08 07:07:35] auto-login attempt 1 still not logged in
+[2026-11-08 07:07:38] ssologin click: no-btn
+[2026-11-08 07:08:18] post-login goto err: Page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vD
+[2026-11-08 07:09:18] auto-login attempt 2 still not logged in
+[2026-11-08 07:09:21] ssologin click: no-btn
+[2026-11-08 07:10:01] post-login goto err: Page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vD
+[2026-11-08 07:11:03] auto-login attempt 3 still not logged in
+[2026-11-08 07:16:55] LOGGED IN
+[2026-11-08 07:17:07] pulled off=0 n=4000 accum=4000
+[2026-11-08 07:17:18] pulled off=4000 n=4000 accum=8000
+[2026-11-08 07:17:31] pulled off=8000 n=4000 accum=12000
+[2026-11-08 07:17:38] pulled off=12000 n=2008 accum=14008
+[2026-11-08 07:17:38] task index refreshed (6319 asset tags)
+[2026-11-08 07:17:38] milestone_map: 290 subsystems
+[2026-11-08 07:17:39] updated dashboard_data.json itr_summary.live
+[2026-11-08 07:17:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 07:17:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 07:17 (closed=7485) rc=0 [main 0db3863] ITR live update 2026-11-08 07:17 (closed=7485)
+ 1 file changed, 11 insertions(+), 66 deletions(-)
+[2026-11-08 07:17:49]  >> git push OK
+[2026-11-08 07:17:56]  >> published itr_live_state.json (458154 bytes)
+[2026-11-08 07:18:00]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-08 07:18:00]  >> platform publish OK (1 file(s) updated, closed=7485)
+[2026-11-08 07:18:00] PAGES PUSH rc=0
+[2026-11-08 07:18:00] cycle OK closed=7485 open=2813 updated=2026-11-08 07:17:39
+[2026-11-08 07:20:05] closed pull tab (will reopen) B901140A https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-08 07:20:09] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-08 07:20:29] opened the one pull tab (none was open)
+[2026-11-08 07:20:29] reused the sync's always-open browser (port 9222)
+[2026-11-08 07:22:09] LOGGED IN
+[2026-11-08 07:22:56] call err off=0: Page.evaluate: Target page, context or browser has been closed
+[2026-11-08 07:22:56] pull retry 2/3 - reloading Switchboard
+[2026-11-08 07:22:56] cycle got no complete data (fail 1/3)

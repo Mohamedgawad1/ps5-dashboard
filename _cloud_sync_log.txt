@@ -14366,3 +14366,6 @@
 2026-11-08 07:04:24 ==================================================
 2026-11-08 07:04:24 cloud_auto_update started (interval 300s)
 2026-11-08 07:04:25 [warn] cloud fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1144)>
+2026-11-08 07:09:25 [warn] cloud fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1144)>
+2026-11-08 07:14:25 [trigger] state changed -> rebuilding downloads+pages
+2026-11-08 07:14:25 >> cloud->DPR
