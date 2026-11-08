@@ -14369,3 +14369,13 @@
 2026-11-08 07:09:25 [warn] cloud fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1144)>
 2026-11-08 07:14:25 [trigger] state changed -> rebuilding downloads+pages
 2026-11-08 07:14:25 >> cloud->DPR
+2026-11-08 07:25:47    sync 2026-11-08 07:25:42 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-08 07:25:47    written=329 notes=0 colors=1
+2026-11-08 07:25:47    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-08 07:25:47    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-08 07:25:47    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-08 07:25:47    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-08 07:25:47 >> local->DPR
+2026-11-08 07:38:04    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 81805 cells / 0 notes)
+2026-11-08 07:38:04      [summery-sync] OK -> 58066 cells, 0 notes written, 15557 skipped (no matching column)
+2026-11-08 07:38:04 >> explorer rebuild

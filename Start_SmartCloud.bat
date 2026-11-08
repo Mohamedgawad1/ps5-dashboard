@@ -18,7 +18,7 @@ if "%CHROME%"=="" (
   exit /b 1
 )
 
-powershell -NoProfile -Command "Start-Process -FilePath '%CHROME%' -ArgumentList '--remote-debugging-port=9222','--user-data-dir=\"%PROFILE%\"','--window-position=80,50','--start-maximized','--disable-features=MemorySaver,TabDiscarding','--disable-backgrounding-occluded-windows','--disable-renderer-backgrounding','--disable-background-timer-throttling','--disable-background-networking','--disable-hang-monitor','--disable-breakpad','--disable-session-crashed-bubble','%URL%'"
+powershell -NoProfile -Command "Start-Process -FilePath '%CHROME%' -ArgumentList '--remote-debugging-port=9222','--remote-debugging-address=127.0.0.1','--user-data-dir=\"%PROFILE%\"','--window-position=80,50','--start-maximized','--disable-features=MemorySaver,TabDiscarding','--disable-backgrounding-occluded-windows','--disable-renderer-backgrounding','--disable-background-timer-throttling','--disable-background-networking','--disable-hang-monitor','--disable-breakpad','--disable-session-crashed-bubble','%URL%'"
 
 echo.
 echo Waiting for the debug port ...
