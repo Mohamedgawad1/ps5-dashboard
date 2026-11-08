@@ -63504,3 +63504,55 @@ Call log:
 [2026-11-08 13:02:15]  >> platform publish OK (1 file(s) updated, closed=7520)
 [2026-11-08 13:02:15] PAGES PUSH rc=0
 [2026-11-08 13:02:15] cycle OK closed=7520 open=2778 updated=2026-11-08 13:01:51
+[2026-11-08 13:04:27] reusing the Switchboard tab already open - no new tab
+[2026-11-08 13:04:27] reused the sync's always-open browser (port 9222)
+[2026-11-08 13:04:39] LOGGED IN
+[2026-11-08 13:06:15] pulled off=0 n=4000 accum=4000
+[2026-11-08 13:06:52] pulled off=4000 n=4000 accum=8000
+[2026-11-08 13:07:57] pulled off=8000 n=4000 accum=12000
+[2026-11-08 13:08:08] pulled off=12000 n=2008 accum=14008
+[2026-11-08 13:08:08] task index refreshed (6319 asset tags)
+[2026-11-08 13:08:10] updated dashboard_data.json itr_summary.live
+[2026-11-08 13:08:12]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 13:08:13]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 13:08 (closed=7520) rc=0 [main 28a3063] ITR live update 2026-11-08 13:08 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 13:08:17]  >> git push OK
+[2026-11-08 13:08:31]  >> published itr_live_state.json (459515 bytes)
+[2026-11-08 13:08:35]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-08 13:08:35]  >> platform publish OK (1 file(s) updated, closed=7520)
+[2026-11-08 13:08:35] PAGES PUSH rc=0
+[2026-11-08 13:08:35] cycle OK closed=7520 open=2778 updated=2026-11-08 13:08:09
+[2026-11-08 13:10:37] reused the sync's always-open browser (port 9222)
+[2026-11-08 13:10:49] LOGGED IN
+[2026-11-08 13:11:46] pulled off=0 n=4000 accum=4000
+[2026-11-08 13:12:32] pulled off=4000 n=4000 accum=8000
+[2026-11-08 13:13:38] pulled off=8000 n=4000 accum=12000
+[2026-11-08 13:13:45] pulled off=12000 n=2008 accum=14008
+[2026-11-08 13:13:45] task index refreshed (6319 asset tags)
+[2026-11-08 13:13:47] updated dashboard_data.json itr_summary.live
+[2026-11-08 13:13:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 13:13:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 13:13 (closed=7520) rc=0 [main 7eb720a] ITR live update 2026-11-08 13:13 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 13:13:55]  >> git push OK
+[2026-11-08 13:14:04]  >> published itr_live_state.json (459515 bytes)
+[2026-11-08 13:14:08]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-08 13:14:08]  >> platform publish OK (1 file(s) updated, closed=7520)
+[2026-11-08 13:14:08] PAGES PUSH rc=0
+[2026-11-08 13:14:08] cycle OK closed=7520 open=2778 updated=2026-11-08 13:13:47
+[2026-11-08 13:16:09] reused the sync's always-open browser (port 9222)
+[2026-11-08 13:16:23] LOGGED IN
+[2026-11-08 13:17:21] pulled off=0 n=4000 accum=4000
+[2026-11-08 13:18:16] pulled off=4000 n=4000 accum=8000
+[2026-11-08 13:18:49] pulled off=8000 n=4000 accum=12000
+[2026-11-08 13:18:55] pulled off=12000 n=2008 accum=14008
+[2026-11-08 13:18:55] task index refreshed (6319 asset tags)
+[2026-11-08 13:18:56] updated dashboard_data.json itr_summary.live
+[2026-11-08 13:19:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 13:19:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 13:19 (closed=7520) rc=0 [main 0cefd0d] ITR live update 2026-11-08 13:19 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 13:19:05]  >> git push OK
+[2026-11-08 13:19:16]  >> published itr_live_state.json (459515 bytes)
+[2026-11-08 13:19:20]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-08 13:19:20]  >> platform publish OK (1 file(s) updated, closed=7520)
+[2026-11-08 13:19:20] PAGES PUSH rc=0
+[2026-11-08 13:19:20] cycle OK closed=7520 open=2778 updated=2026-11-08 13:18:56
