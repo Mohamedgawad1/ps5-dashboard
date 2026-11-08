@@ -63881,3 +63881,55 @@ Call log:
 [2026-11-08 15:37:20] pulled off=0 n=4000 accum=4000
 [2026-11-08 15:39:54] pulled off=4000 n=4000 accum=8000
 [2026-11-08 15:42:21] pulled off=8000 n=4000 accum=12000
+[2026-11-08 15:42:45] pulled off=12000 n=2008 accum=14008
+[2026-11-08 15:42:47] task index refreshed (6319 asset tags)
+[2026-11-08 15:42:48] updated dashboard_data.json itr_summary.live
+[2026-11-08 15:42:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 15:42:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 15:42 (closed=7520) rc=0 [main b8cc8bd] ITR live update 2026-11-08 15:42 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 15:42:56]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-08 15:42:58]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-08 15:42:58] PAGES PUSH rc=1
+[2026-11-08 15:42:58] cycle OK closed=7520 open=2778 updated=2026-11-08 15:42:48
+[2026-11-08 15:45:09] reused the sync's always-open browser (port 9222)
+[2026-11-08 15:45:24] LOGGED IN
+[2026-11-08 15:48:27] pulled off=0 n=4000 accum=4000
+[2026-11-08 15:50:01] pulled off=4000 n=4000 accum=8000
+[2026-11-08 15:55:06] pulled off=8000 n=4000 accum=12000
+[2026-11-08 15:55:28] pulled off=12000 n=2008 accum=14008
+[2026-11-08 15:55:28] task index refreshed (6319 asset tags)
+[2026-11-08 15:55:30] updated dashboard_data.json itr_summary.live
+[2026-11-08 15:55:31]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 15:55:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 15:55 (closed=7520) rc=0 [main d64cd86] ITR live update 2026-11-08 15:55 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 15:55:39]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-08 15:55:41]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-08 15:55:41] PAGES PUSH rc=1
+[2026-11-08 15:55:41] cycle OK closed=7520 open=2778 updated=2026-11-08 15:55:30
+[2026-11-08 15:57:46] reused the sync's always-open browser (port 9222)
+[2026-11-08 15:57:59] LOGGED IN
+[2026-11-08 16:00:28] pulled off=0 n=4000 accum=4000
+[2026-11-08 16:00:58] pulled off=4000 n=4000 accum=8000
+[2026-11-08 16:02:28] pulled off=8000 n=4000 accum=12000
+[2026-11-08 16:02:36] pulled off=12000 n=2008 accum=14008
+[2026-11-08 16:02:37] task index refreshed (6319 asset tags)
+[2026-11-08 16:02:39] updated dashboard_data.json itr_summary.live
+[2026-11-08 16:02:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 16:02:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 16:02 (closed=7520) rc=0 [main 192cb3b] ITR live update 2026-11-08 16:02 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 16:02:49]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-08 16:02:50]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-08 16:02:50] PAGES PUSH rc=1
+[2026-11-08 16:02:50] cycle OK closed=7520 open=2778 updated=2026-11-08 16:02:38
