@@ -63794,3 +63794,57 @@ Call log:
 [2026-11-08 15:03:18] pull retry 2/3 - reloading Switchboard
 [2026-11-08 15:03:48] LOGGED IN
 [2026-11-08 15:03:58] pulled off=0 n=4000 accum=4000
+[2026-11-08 15:05:40] pulled off=4000 n=4000 accum=8000
+[2026-11-08 15:06:18] pulled off=8000 n=4000 accum=12000
+[2026-11-08 15:06:24] pulled off=12000 n=2008 accum=14008
+[2026-11-08 15:06:24] task index refreshed (6319 asset tags)
+[2026-11-08 15:06:25] updated dashboard_data.json itr_summary.live
+[2026-11-08 15:06:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 15:06:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 15:06 (closed=7520) rc=0 [main f2703b8] ITR live update 2026-11-08 15:06 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 15:06:30]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-08 15:06:32]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-08 15:06:32] PAGES PUSH rc=1
+[2026-11-08 15:06:32] cycle OK closed=7520 open=2778 updated=2026-11-08 15:06:25
+[2026-11-08 15:08:33] reused the sync's always-open browser (port 9222)
+[2026-11-08 15:08:46] LOGGED IN
+[2026-11-08 15:09:04] pulled off=0 n=4000 accum=4000
+[2026-11-08 15:10:07] pulled off=4000 n=4000 accum=8000
+[2026-11-08 15:11:13] pulled off=8000 n=4000 accum=12000
+[2026-11-08 15:11:23] pulled off=12000 n=2008 accum=14008
+[2026-11-08 15:11:24] task index refreshed (6319 asset tags)
+[2026-11-08 15:11:25] updated dashboard_data.json itr_summary.live
+[2026-11-08 15:11:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 15:11:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 15:11 (closed=7520) rc=0 [main ae714ff] ITR live update 2026-11-08 15:11 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 15:11:29]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-08 15:11:31]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-08 15:11:31] PAGES PUSH rc=1
+[2026-11-08 15:11:31] cycle OK closed=7520 open=2778 updated=2026-11-08 15:11:25
+[2026-11-08 15:13:37] reused the sync's always-open browser (port 9222)
+[2026-11-08 15:13:49] LOGGED IN
+[2026-11-08 15:14:48] pulled off=0 n=4000 accum=4000
+[2026-11-08 15:15:53] pulled off=4000 n=4000 accum=8000
+[2026-11-08 15:19:06] pulled off=8000 n=4000 accum=12000
+[2026-11-08 15:19:20] pulled off=12000 n=2008 accum=14008
+[2026-11-08 15:19:20] task index refreshed (6319 asset tags)
+[2026-11-08 15:19:22] updated dashboard_data.json itr_summary.live
+[2026-11-08 15:19:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 15:19:24]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 15:19 (closed=7520) rc=0 [main db70791] ITR live update 2026-11-08 15:19 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 15:19:29]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-08 15:19:31]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-08 15:19:31] PAGES PUSH rc=1
+[2026-11-08 15:19:31] cycle OK closed=7520 open=2778 updated=2026-11-08 15:19:21
