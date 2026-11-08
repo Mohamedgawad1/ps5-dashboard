@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-11-08 09:39:33",
+  "updated": "2026-11-08 09:57:22",
   "total_tasks_ps5": 14008,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 7491,
-  "open": 2807,
-  "today_closed": 6,
+  "closed": 7494,
+  "open": 2804,
+  "today_closed": 9,
   "closed_by_discipline": {
     "I": 3634,
-    "E": 3561,
+    "E": 3564,
     "T": 296
   },
   "open_by_discipline": {
     "I": 959,
-    "E": 1066,
+    "E": 1063,
     "T": 782
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-11-08",
-      "E": 3,
+      "E": 6,
       "I": 3,
       "T": 0,
-      "Total": 6
+      "Total": 9
     }
   ],
-  "closed_this_week": 292,
-  "closed_this_month": 292,
+  "closed_this_week": 295,
+  "closed_this_month": 295,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -250,6 +250,12 @@
       "count": 2
     },
     {
+      "milestone": "Milestone E",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 3
+    },
+    {
       "milestone": "Milestone G",
       "disc": "E",
       "discipline": "Electrical (E)",
@@ -262,7 +268,7 @@
       "count": 1
     }
   ],
-  "today_milestone_total": 6,
+  "today_milestone_total": 9,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -324,13 +330,13 @@
       "label": "Milestone E",
       "raw": "PS5 - Milestone E",
       "total": 1532,
-      "closed": 1410,
-      "remaining": 122,
-      "pct": 92.0,
+      "closed": 1413,
+      "remaining": 119,
+      "pct": 92.2,
       "status": {
-        "Closed": 1410,
+        "Closed": 1413,
         "Submitted": 0,
-        "To be completed": 120,
+        "To be completed": 117,
         "Other": 2
       }
     },
@@ -4747,17 +4753,17 @@
       "sid": "PS5-78-01",
       "name": "PS5-78-01 - Lifting and handling equipment",
       "total": 8,
-      "closed": 5,
-      "open": 3,
-      "pct": 62.5,
-      "status": "IN PROGRESS",
+      "closed": 8,
+      "open": 0,
+      "pct": 100.0,
+      "status": "COMPLETE",
       "by_discipline": {
         "E": 8,
         "I": 0,
         "T": 0
       },
       "closed_by_discipline": {
-        "E": 5,
+        "E": 8,
         "I": 0,
         "T": 0
       }
@@ -6506,9 +6512,9 @@
     "T-00023-5621": "Open",
     "T-00023-5622": "Open",
     "T-00023-5623": "Closed",
-    "T-00023-5624": "Open",
-    "T-00023-5625": "Open",
-    "T-00023-5626": "Open",
+    "T-00023-5624": "Closed",
+    "T-00023-5625": "Closed",
+    "T-00023-5626": "Closed",
     "T-00023-5640": "Closed",
     "T-00023-5641": "Closed",
     "T-00023-5642": "Closed",
@@ -15540,6 +15546,33 @@
   },
   "recent_closed": [
     {
+      "tag": "PS5-78-JC-9100D-CL01",
+      "task": "T-00023-5626",
+      "system": "PS5-78-01 - Lifting and handling equipment",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/8/2026 6:44:48 A"
+    },
+    {
+      "tag": "PS5-78-JC-9100C-CL01",
+      "task": "T-00023-5625",
+      "system": "PS5-78-01 - Lifting and handling equipment",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/8/2026 6:41:40 A"
+    },
+    {
+      "tag": "PS5-78-JC-9100B-CL01",
+      "task": "T-00023-5624",
+      "system": "PS5-78-01 - Lifting and handling equipment",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/8/2026 6:40:41 A"
+    },
+    {
       "tag": "",
       "task": "T-00031-1329",
       "system": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
@@ -16591,33 +16624,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "11/6/2026 4:52:35 A"
-    },
-    {
-      "tag": "PS5-71-BE-0001A-CL07",
-      "task": "T-00233-11259",
-      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 4:50:51 A"
-    },
-    {
-      "tag": "PS5-71-BE-0001A-CL06",
-      "task": "T-00233-11258",
-      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 4:48:41 A"
-    },
-    {
-      "tag": "PS5-09-IES-8324",
-      "task": "T-00067-2766",
-      "system": "PS5-09-03 - HVAC for Generator Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/5/2026 4:22:35 P"
     }
   ]
 }
