@@ -63711,3 +63711,39 @@ Call log:
 [2026-11-08 14:25:04]  >> platform publish OK (1 file(s) updated, closed=7520)
 [2026-11-08 14:25:04] PAGES PUSH rc=0
 [2026-11-08 14:25:04] cycle OK closed=7520 open=2778 updated=2026-11-08 14:24:29
+[2026-11-08 14:27:12] reused the sync's always-open browser (port 9222)
+[2026-11-08 14:27:31] LOGGED IN
+[2026-11-08 14:27:43] pulled off=0 n=4000 accum=4000
+[2026-11-08 14:30:15] pulled off=4000 n=4000 accum=8000
+[2026-11-08 14:30:50] pulled off=8000 n=4000 accum=12000
+[2026-11-08 14:32:10] pulled off=12000 n=2008 accum=14008
+[2026-11-08 14:32:11] task index refreshed (6319 asset tags)
+[2026-11-08 14:32:11] updated dashboard_data.json itr_summary.live
+[2026-11-08 14:32:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 14:32:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 14:32 (closed=7520) rc=0 [main cbaa55b] ITR live update 2026-11-08 14:32 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 14:32:19]  >> git push OK
+[2026-11-08 14:32:29]  >> published itr_live_state.json (459515 bytes)
+[2026-11-08 14:32:33]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-08 14:32:33]  >> platform publish OK (1 file(s) updated, closed=7520)
+[2026-11-08 14:32:33] PAGES PUSH rc=0
+[2026-11-08 14:32:33] cycle OK closed=7520 open=2778 updated=2026-11-08 14:32:11
+[2026-11-08 14:34:37] reused the sync's always-open browser (port 9222)
+[2026-11-08 14:34:58] LOGGED IN
+[2026-11-08 14:35:11] pulled off=0 n=4000 accum=4000
+[2026-11-08 14:38:58] pulled off=4000 n=4000 accum=8000
+[2026-11-08 14:41:01] pulled off=8000 n=4000 accum=12000
+[2026-11-08 14:41:13] pulled off=12000 n=2008 accum=14008
+[2026-11-08 14:41:13] task index refreshed (6319 asset tags)
+[2026-11-08 14:41:15] updated dashboard_data.json itr_summary.live
+[2026-11-08 14:41:17]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 14:41:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 14:41 (closed=7520) rc=0 [main 26ed330] ITR live update 2026-11-08 14:41 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 14:41:22]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-08 14:41:26]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-08 14:41:26] PAGES PUSH rc=1
+[2026-11-08 14:41:26] cycle OK closed=7520 open=2778 updated=2026-11-08 14:41:15
