@@ -63848,3 +63848,36 @@ Call log:
 }
 [2026-11-08 15:19:31] PAGES PUSH rc=1
 [2026-11-08 15:19:31] cycle OK closed=7520 open=2778 updated=2026-11-08 15:19:21
+[2026-11-08 15:21:36] reused the sync's always-open browser (port 9222)
+[2026-11-08 15:21:52] LOGGED IN
+[2026-11-08 15:24:31] pulled off=0 n=4000 accum=4000
+[2026-11-08 15:25:08] pulled off=4000 n=4000 accum=8000
+[2026-11-08 15:27:23] pulled off=8000 n=4000 accum=12000
+[2026-11-08 15:27:39] pulled off=12000 n=2008 accum=14008
+[2026-11-08 15:27:40] task index refreshed (6319 asset tags)
+[2026-11-08 15:27:42] updated dashboard_data.json itr_summary.live
+[2026-11-08 15:27:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-08 15:27:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-08 15:27 (closed=7520) rc=0 [main dd44314] ITR live update 2026-11-08 15:27 (closed=7520)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-08 15:27:49]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-08 15:27:53]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-08 15:27:53] PAGES PUSH rc=1
+[2026-11-08 15:27:53] cycle OK closed=7520 open=2778 updated=2026-11-08 15:27:41
+[2026-11-08 15:30:00] reused the sync's always-open browser (port 9222)
+[2026-11-08 15:30:21] LOGGED IN
+[2026-11-08 15:32:52] pulled off=0 n=4000 accum=4000
+[2026-11-08 15:33:01] call err off=4000: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-11-08 15:33:01] pull retry 2/3 - reloading Switchboard
+[2026-11-08 15:33:45] LOGGED IN
+[2026-11-08 15:33:55] pulled off=0 n=4000 accum=4000
+[2026-11-08 15:36:14] pulled off=4000 n=4000 accum=8000
+[2026-11-08 15:36:20] call err off=8000: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-11-08 15:36:20] pull retry 3/3 - reloading Switchboard
+[2026-11-08 15:37:01] LOGGED IN
+[2026-11-08 15:37:20] pulled off=0 n=4000 accum=4000
+[2026-11-08 15:39:54] pulled off=4000 n=4000 accum=8000
+[2026-11-08 15:42:21] pulled off=8000 n=4000 accum=12000
