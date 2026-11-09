@@ -181,6 +181,8 @@ def open_one_tab(record, tries=4, task_id=None):
                                         pass
                                     c.close()
                                     return False
+                                if body and str(task_id).upper() in (body or "").upper():
+                                    log("      (appeared on page: %s)" % task_id)
                             finally:
                                 c.close()
                     except Exception as exc:
@@ -596,7 +598,7 @@ def main():
                 others = ", ".join("%s/%s" % (r.get("task_id"), r.get("type")) for r in rows) or "مفيش"
                 log("  - %s [%s]: مفيش %s | الموجود: %s" % (tag, want, want, others))
                 fallback.extend((tag, r) for r in rows)
-            if not picked and fallback and not args.no_other_type:
+            if not picked and fallback and args.allow_other_type and not args.no_other_type:
                 kinds = sorted({(r.get("type") or "?") for _, r in fallback})
                 log("  ! الـ RFI طلب %s، لكن الأصول على المنصة: %s"
                     % ("/".join(sorted({w for _, w in items})), ", ".join(kinds)))
