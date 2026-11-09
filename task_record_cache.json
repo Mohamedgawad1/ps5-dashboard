@@ -8119,5 +8119,21 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00610-0273": {
+  "record": "2052887",
+  "task": "T-00610-0273",
+  "asset": "PS5-61-IK-0005-CD02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00610-0272": {
+  "record": "2052886",
+  "task": "T-00610-0272",
+  "asset": "PS5-61-IK-0005-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
