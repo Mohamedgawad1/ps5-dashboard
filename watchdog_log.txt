@@ -51390,3 +51390,8 @@
 [2026-11-09 17:05:40] Watchdog alive - 2400 checks. URL: https://app.mohamedgawwad.is-a.dev
 [2026-11-09 17:16:55] RESTARTING itr_online
 [2026-11-09 17:16:55] STARTED itr_online (PID 7700)
+[2026-11-09 17:34:58] RESTARTING itr_online
+[2026-11-09 17:34:58] STARTED itr_online (PID 22204)
+[2026-11-09 19:17:16] ITR data is 110 min old (limit 40 min) -> restarting itr_online
+[2026-11-09 19:17:20] STARTED itr_online (PID 22600)
+[2026-11-09 19:18:35] SC window was off-screen (-32000) -> moved back on screen

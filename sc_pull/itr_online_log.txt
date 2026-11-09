@@ -66530,3 +66530,64 @@ Call log:
 }
 [2026-11-09 17:17:55] PAGES PUSH rc=1
 [2026-11-09 17:17:55] cycle OK closed=7522 open=2776 updated=2026-11-09 17:17:49
+[2026-11-09 17:19:55] reused the sync's always-open browser (port 9222)
+[2026-11-09 17:20:00] LOGGED IN
+[2026-11-09 17:20:16] pulled off=0 n=4000 accum=4000
+[2026-11-09 17:20:25] pulled off=4000 n=4000 accum=8000
+[2026-11-09 17:20:33] pulled off=8000 n=4000 accum=12000
+[2026-11-09 17:20:38] pulled off=12000 n=2008 accum=14008
+[2026-11-09 17:20:38] task index refreshed (6319 asset tags)
+[2026-11-09 17:20:38] updated dashboard_data.json itr_summary.live
+[2026-11-09 17:20:39]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 17:20:39]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 17:20 (closed=7522) rc=0 [main 7512d9d] ITR live update 2026-11-09 17:20 (closed=7522)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-09 17:20:43]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 17:20:44]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 17:20:44] PAGES PUSH rc=1
+[2026-11-09 17:20:44] cycle OK closed=7522 open=2776 updated=2026-11-09 17:20:38
+[2026-11-09 17:22:45] reused the sync's always-open browser (port 9222)
+[2026-11-09 17:22:53] LOGGED IN
+[2026-11-09 17:24:48] pulled off=0 n=4000 accum=4000
+[2026-11-09 17:26:04] pulled off=4000 n=4000 accum=8000
+[2026-11-09 17:26:16] pulled off=8000 n=4000 accum=12000
+[2026-11-09 17:26:21] pulled off=12000 n=2008 accum=14008
+[2026-11-09 17:26:22] task index refreshed (6319 asset tags)
+[2026-11-09 17:26:22] updated dashboard_data.json itr_summary.live
+[2026-11-09 17:26:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 17:26:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 17:26 (closed=7522) rc=0 [main 819c565] ITR live update 2026-11-09 17:26 (closed=7522)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-09 17:26:27]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 17:26:29]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 17:26:29] PAGES PUSH rc=1
+[2026-11-09 17:26:29] cycle OK closed=7522 open=2776 updated=2026-11-09 17:26:22
+[2026-11-09 17:28:29] reused the sync's always-open browser (port 9222)
+[2026-11-09 17:28:33] LOGGED IN
+[2026-11-09 17:28:52] pulled off=0 n=4000 accum=4000
+[2026-11-09 17:30:10] pulled off=4000 n=4000 accum=8000
+[2026-11-09 17:32:44] pulled off=8000 n=4000 accum=12000
+[2026-11-09 19:17:24] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-09 19:17:40] reusing the Switchboard tab already open - no new tab
+[2026-11-09 19:17:40] reused the sync's always-open browser (port 9222)
+[2026-11-09 19:17:40] goto err: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDa
+[2026-11-09 19:18:26] session expired -> auto-login
+[2026-11-09 19:18:30] ssologin click: no-btn
+[2026-11-09 19:19:10] post-login goto err: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDa
+[2026-11-09 19:19:39] LOGGED IN
+[2026-11-09 19:19:54] pulled off=0 n=4000 accum=4000
+[2026-11-09 19:20:28] pulled off=4000 n=4000 accum=8000
+[2026-11-09 19:20:45] pulled off=8000 n=4000 accum=12000
+[2026-11-09 19:20:56] pulled off=12000 n=2008 accum=14008
+[2026-11-09 19:20:56] task index refreshed (6319 asset tags)
+[2026-11-09 19:20:56] milestone_map: 290 subsystems
+[2026-11-09 19:20:57] updated dashboard_data.json itr_summary.live
+[2026-11-09 19:21:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 19:21:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 19:21 (closed=7522) rc=0 [main eaea768] ITR live update 2026-11-09 19:21 (closed=7522)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
