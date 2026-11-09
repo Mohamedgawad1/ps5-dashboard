@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-11-09 09:42:37",
+  "updated": "2026-11-09 09:45:54",
   "total_tasks_ps5": 14008,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 7520,
-  "open": 2778,
-  "today_closed": 0,
+  "closed": 7521,
+  "open": 2777,
+  "today_closed": 1,
   "closed_by_discipline": {
     "I": 3634,
-    "E": 3590,
+    "E": 3591,
     "T": 296
   },
   "open_by_discipline": {
     "I": 959,
-    "E": 1037,
+    "E": 1036,
     "T": 782
   },
   "daily": [
@@ -228,16 +228,23 @@
     },
     {
       "label": "2026-11-09",
-      "E": 0,
+      "E": 1,
       "I": 0,
       "T": 0,
-      "Total": 0
+      "Total": 1
     }
   ],
-  "closed_this_week": 0,
-  "closed_this_month": 321,
-  "today_milestone": [],
-  "today_milestone_total": 0,
+  "closed_this_week": 1,
+  "closed_this_month": 322,
+  "today_milestone": [
+    {
+      "milestone": "Milestone B",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 1
+    }
+  ],
+  "today_milestone_total": 1,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -257,14 +264,14 @@
       "label": "Milestone B",
       "raw": "PS5 - Milestone B",
       "total": 1714,
-      "closed": 1648,
-      "remaining": 66,
-      "pct": 96.1,
+      "closed": 1649,
+      "remaining": 65,
+      "pct": 96.2,
       "status": {
-        "Closed": 1648,
+        "Closed": 1649,
         "Submitted": 0,
         "To be completed": 64,
-        "Other": 2
+        "Other": 1
       }
     },
     {
@@ -3924,9 +3931,9 @@
       "sid": "PS5-62-10",
       "name": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
       "total": 39,
-      "closed": 31,
-      "open": 8,
-      "pct": 79.5,
+      "closed": 32,
+      "open": 7,
+      "pct": 82.1,
       "status": "IN PROGRESS",
       "by_discipline": {
         "E": 39,
@@ -3934,7 +3941,7 @@
         "T": 0
       },
       "closed_by_discipline": {
-        "E": 31,
+        "E": 32,
         "I": 0,
         "T": 0
       }
@@ -13402,7 +13409,7 @@
     "T-00240-1325": "Open",
     "T-00240-1326": "Open",
     "T-00240-1327": "Open",
-    "T-00240-1328": "Open",
+    "T-00240-1328": "Closed",
     "T-00240-1329": "Open",
     "T-00240-1330": "Open",
     "T-00240-1331": "Open",
@@ -15516,6 +15523,15 @@
   "recent_closed": [
     {
       "tag": "",
+      "task": "T-00240-1328",
+      "system": "PS5-62-10 - CRO Generator Building Normal L&SP DB  - PS5-61-IG-0015",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/9/2026 6:42:05 A"
+    },
+    {
+      "tag": "",
       "task": "T-00244-1717",
       "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
       "loop": "",
@@ -16584,15 +16600,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "11/6/2026 1:00:17 P"
-    },
-    {
-      "tag": "PS5-25-PDIT-0050",
-      "task": "T-00284-0102",
-      "system": "PS5-25-06 - Crude Oil Export Pumps Discharge",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 12:51:51 "
     }
   ]
 }
