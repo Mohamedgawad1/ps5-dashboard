@@ -138,7 +138,7 @@ SEARCH = r"""(async (tid) => {
       const tr = kg.tbody.find('tr[data-uid="' + r.uid + '"]');
       const a = tr && tr.length ? tr[0].querySelector('a[onclick*="vTasks_TestsCompletion"]') : null;
       const m = a ? (a.getAttribute('onclick') || '').match(/vTasks_TestsCompletion",\s*(\d+)/) : null;
-      return {id: String(r.ID || ''), link: m ? m[1] : '',
+      return {id: String(r.TaskID || r.ID || ''), link: m ? m[1] : '',
               task: (r.TaskName || '').trim(), asset: r.AssetTag, type: r.TaskType};
     });
   };
@@ -179,7 +179,7 @@ def find_task_dalc(app, task_id, timeout=45):
     for the grid to redraw. Returns {record, task, asset, type} or None."""
     payload = {
         "v": "vTasks_TestsPlanned",
-        "f": ["ID", "TaskName", "AssetTag", "TaskType", "TaskState"],
+        "f": ["ID", "TaskID", "TaskName", "AssetTag", "TaskType", "TaskState"],
         "r": [{"FieldName": "TaskName", "Term": "like", "ValueCollection": [task_id]}],
         "n": 20, "off": 0, "to": (timeout - 5) * 1000,
     }
@@ -191,7 +191,10 @@ def find_task_dalc(app, task_id, timeout=45):
         name = str(r.get("TaskName") or "").strip()
         if name.upper() != want:
             continue
-        rec = r.get("ID")
+        # The EditForm record id is TaskID, not the internal row ID.
+        rec = r.get("TaskID")
+        if rec in (None, ""):
+            rec = r.get("ID")
         if rec in (None, ""):
             continue
         return {"record": str(rec), "task": name, "asset": r.get("AssetTag"),

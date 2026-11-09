@@ -139,7 +139,7 @@ def keep_tab_alive(tab_id=None, rounds=6):
     return 0
 
 
-def open_one_tab(record, tries=4):
+def open_one_tab(record, tries=4, task_id=None):
     """Open one task page and confirm it really exists - Chrome silently drops tabs
     when they are fired too fast, so we check and retry instead of trusting the PUT."""
     url = EDIT_URL % record
@@ -154,6 +154,37 @@ def open_one_tab(record, tries=4):
         for _ in range(5):
             time.sleep(0.8)
             if str(record) in task_tabs():
+                # verify the opened page actually shows the expected task id, so a
+                # stale/wrong record id can never pass silently
+                if task_id:
+                    try:
+                        tab = None
+                        for t in cdp_tabs(timeout=10):
+                            if t.get("id") == info.get("id"):
+                                tab = t
+                                break
+                        if tab and tab.get("webSocketDebuggerUrl"):
+                            c = Q.Tab(tab["webSocketDebuggerUrl"], timeout=15)
+                            try:
+                                for _ in range(10):
+                                    time.sleep(1)
+                                    body = c.eval("document.body ? document.body.innerText : ''")
+                                    if body and len(body) > 300:
+                                        break
+                                if body and str(task_id).upper() not in (body or "").upper():
+                                    log("      !! record %s opened but did not show %s - closing"
+                                        % (record, task_id))
+                                    try:
+                                        urllib.request.urlopen(
+                                            urllib.request.Request(CDP + "/json/close/" + info["id"], method="GET"), timeout=8)
+                                    except Exception:
+                                        pass
+                                    c.close()
+                                    return False
+                            finally:
+                                c.close()
+                    except Exception as exc:
+                        log("      (verify note: %s)" % str(exc)[:80])
                 return True
         log("      (retry %d for record %s)" % (attempt + 2, record))
         time.sleep(1.5)
@@ -166,7 +197,7 @@ def open_tabs_fast(plan_rows):
     opened_ids = []
     for n, (tid, row) in enumerate(plan_rows, 1):
         rec = str(row["record"])
-        if open_one_tab(rec):
+        if open_one_tab(rec, task_id=tid):
             opened_ids.append(tid)
             log("   [tab %d/%d] %s -> record %s" % (n, len(plan_rows), row["task"], rec))
         else:
@@ -219,7 +250,7 @@ def verify_cached(known, tasks, live=True, stream=None):
         rows.append((tid, hit))
         log("[%d/%d] %s -> %s" % (n, len(tasks), tid, hit["record"]))
         if stream is not None:
-            if open_one_tab(hit["record"]):
+            if open_one_tab(hit["record"], task_id=tid):
                 stream.append(tid)
                 log("      [tab %d/%d] اتفتح" % (len(stream), len(tasks)))
             else:
@@ -663,7 +694,7 @@ def main():
                 fresh += 1
                 save_records(known)
                 # open it right away so the pages start showing while we keep going
-                if open_one_tab(hit["record"]):
+                if open_one_tab(hit["record"], task_id=tid):
                     done.append(tid)
                     log("   %s -> record %s  [tab %d/%d]" % (hit["task"], hit["record"], len(done), len(tasks)))
                 else:
