@@ -66591,3 +66591,58 @@ Call log:
 [2026-11-09 19:21:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
 [2026-11-09 19:21:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 19:21 (closed=7522) rc=0 [main eaea768] ITR live update 2026-11-09 19:21 (closed=7522)
  1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-09 19:21:06]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 19:21:09]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 19:21:09] PAGES PUSH rc=1
+[2026-11-09 19:21:09] cycle OK closed=7522 open=2776 updated=2026-11-09 19:20:57
+[2026-11-09 19:23:11] reused the sync's always-open browser (port 9222)
+[2026-11-09 19:23:18] LOGGED IN
+[2026-11-09 19:23:38] pulled off=0 n=4000 accum=4000
+[2026-11-09 19:23:59] pulled off=4000 n=4000 accum=8000
+[2026-11-09 19:24:18] pulled off=8000 n=4000 accum=12000
+[2026-11-09 19:32:37] err off=12000: [object Object]
+[2026-11-09 19:32:37] pull retry 2/3 - reloading Switchboard
+[2026-11-09 19:32:47] LOGGED IN
+[2026-11-09 19:33:01] pulled off=0 n=4000 accum=4000
+[2026-11-09 19:33:14] pulled off=4000 n=4000 accum=8000
+[2026-11-09 19:33:27] pulled off=8000 n=4000 accum=12000
+[2026-11-09 19:33:36] pulled off=12000 n=2008 accum=14008
+[2026-11-09 19:33:36] task index refreshed (6319 asset tags)
+[2026-11-09 19:33:37] updated dashboard_data.json itr_summary.live
+[2026-11-09 19:33:38]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 19:33:39]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 19:33 (closed=7526) rc=0 [main 2333866] ITR live update 2026-11-09 19:33 (closed=7526)
+ 1 file changed, 67 insertions(+), 61 deletions(-)
+[2026-11-09 19:33:47]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 19:33:48]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 19:33:48] PAGES PUSH rc=1
+[2026-11-09 19:33:48] cycle OK closed=7526 open=2772 updated=2026-11-09 19:33:37
+[2026-11-09 19:35:49] reused the sync's always-open browser (port 9222)
+[2026-11-09 19:35:55] LOGGED IN
+[2026-11-09 19:36:10] pulled off=0 n=4000 accum=4000
+[2026-11-09 19:36:24] pulled off=4000 n=4000 accum=8000
+[2026-11-09 19:36:42] pulled off=8000 n=4000 accum=12000
+[2026-11-09 19:36:57] pulled off=12000 n=2008 accum=14008
+[2026-11-09 19:36:58] task index refreshed (6319 asset tags)
+[2026-11-09 19:36:58] updated dashboard_data.json itr_summary.live
+[2026-11-09 19:37:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 19:37:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 19:37 (closed=7528) rc=0 [main 97e01ab] ITR live update 2026-11-09 19:37 (closed=7528)
+ 1 file changed, 41 insertions(+), 41 deletions(-)
+[2026-11-09 19:37:21]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 19:37:23]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 19:37:23] PAGES PUSH rc=1
+[2026-11-09 19:37:23] cycle OK closed=7528 open=2770 updated=2026-11-09 19:36:58
+[2026-11-09 19:39:28] reused the sync's always-open browser (port 9222)
+[2026-11-09 19:39:49] LOGGED IN
+[2026-11-09 19:40:26] pulled off=0 n=4000 accum=4000
