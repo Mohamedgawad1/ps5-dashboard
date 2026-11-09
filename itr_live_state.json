@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-11-09 19:41:50",
+  "updated": "2026-11-09 19:45:27",
   "total_tasks_ps5": 14008,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 7529,
-  "open": 2769,
-  "today_closed": 9,
+  "closed": 7531,
+  "open": 2767,
+  "today_closed": 11,
   "closed_by_discipline": {
     "I": 3634,
-    "E": 3599,
+    "E": 3601,
     "T": 296
   },
   "open_by_discipline": {
     "I": 959,
-    "E": 1028,
+    "E": 1026,
     "T": 782
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-11-09",
-      "E": 9,
+      "E": 11,
       "I": 0,
       "T": 0,
-      "Total": 9
+      "Total": 11
     }
   ],
-  "closed_this_week": 9,
-  "closed_this_month": 330,
+  "closed_this_week": 11,
+  "closed_this_month": 332,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -247,10 +247,10 @@
       "milestone": "Milestone D",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 7
+      "count": 9
     }
   ],
-  "today_milestone_total": 9,
+  "today_milestone_total": 11,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -298,13 +298,13 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3437,
-      "closed": 2526,
-      "remaining": 911,
-      "pct": 73.5,
+      "closed": 2528,
+      "remaining": 909,
+      "pct": 73.6,
       "status": {
-        "Closed": 2526,
+        "Closed": 2528,
         "Submitted": 2,
-        "To be completed": 906,
+        "To be completed": 904,
         "Other": 3
       }
     },
@@ -1543,9 +1543,9 @@
       "sid": "PS5-09-03",
       "name": "PS5-09-03 - HVAC for Generator Building",
       "total": 1004,
-      "closed": 209,
-      "open": 795,
-      "pct": 20.8,
+      "closed": 211,
+      "open": 793,
+      "pct": 21.0,
       "status": "IN PROGRESS",
       "by_discipline": {
         "E": 380,
@@ -1553,7 +1553,7 @@
         "T": 4
       },
       "closed_by_discipline": {
-        "E": 64,
+        "E": 66,
         "I": 145,
         "T": 0
       }
@@ -12716,9 +12716,9 @@
     "T-00233-9726": "Open",
     "T-00233-9727": "Closed",
     "T-00233-9728": "Open",
-    "T-00233-9729": "Open",
+    "T-00233-9729": "Closed",
     "T-00233-9730": "Open",
-    "T-00233-9731": "Open",
+    "T-00233-9731": "Closed",
     "T-00233-9732": "Open",
     "T-00233-9733": "Open",
     "T-00233-9734": "Open",
@@ -15528,6 +15528,24 @@
   },
   "recent_closed": [
     {
+      "tag": "PS5-09-RF-83500F-CL01",
+      "task": "T-00233-9729",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/9/2026 4:44:51 P"
+    },
+    {
+      "tag": "PS5-09-RF-83500H-CL01",
+      "task": "T-00233-9731",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/9/2026 4:44:36 P"
+    },
+    {
       "tag": "PS5-09-RF-83500D-CL01",
       "task": "T-00233-9727",
       "system": "PS5-09-03 - HVAC for Generator Building",
@@ -16588,24 +16606,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "11/6/2026 2:42:56 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1423",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:42:34 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1422",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:42:12 P"
     }
   ]
 }
