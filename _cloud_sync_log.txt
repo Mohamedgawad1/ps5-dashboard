@@ -14479,3 +14479,5 @@
 2026-11-09 08:33:33    DONE - platform online + all downloads synced.
 2026-11-09 08:33:33 [mirror] PAGES -> _files
 2026-11-09 08:33:33 [done] build in 2311s
+2026-11-09 13:44:37 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-09 13:49:45 [warn] cloud fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1144)>
