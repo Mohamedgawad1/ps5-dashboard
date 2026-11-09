@@ -65670,3 +65670,98 @@ Call log:
 }
 [2026-11-09 12:37:59] PAGES PUSH rc=1
 [2026-11-09 12:37:59] cycle OK closed=7522 open=2776 updated=2026-11-09 12:37:51
+[2026-11-09 12:40:14] reused the sync's always-open browser (port 9222)
+[2026-11-09 12:40:31] LOGGED IN
+[2026-11-09 12:40:49] pulled off=0 n=4000 accum=4000
+[2026-11-09 12:41:30] pulled off=4000 n=4000 accum=8000
+[2026-11-09 12:41:55] pulled off=8000 n=4000 accum=12000
+[2026-11-09 12:42:30] pulled off=12000 n=2008 accum=14008
+[2026-11-09 12:42:30] task index refreshed (6319 asset tags)
+[2026-11-09 12:42:32] updated dashboard_data.json itr_summary.live
+[2026-11-09 12:42:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 12:42:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 12:42 (closed=7522) rc=0 [main b377244] ITR live update 2026-11-09 12:42 (closed=7522)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-09 12:42:38]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 12:42:40]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 12:42:40] PAGES PUSH rc=1
+[2026-11-09 12:42:40] cycle OK closed=7522 open=2776 updated=2026-11-09 12:42:31
+[2026-11-09 12:44:44] reused the sync's always-open browser (port 9222)
+[2026-11-09 12:45:05] LOGGED IN
+[2026-11-09 12:45:23] pulled off=0 n=4000 accum=4000
+[2026-11-09 12:46:00] pulled off=4000 n=4000 accum=8000
+[2026-11-09 12:46:17] pulled off=8000 n=4000 accum=12000
+[2026-11-09 12:46:23] pulled off=12000 n=2008 accum=14008
+[2026-11-09 12:46:23] task index refreshed (6319 asset tags)
+[2026-11-09 12:46:24] updated dashboard_data.json itr_summary.live
+[2026-11-09 12:46:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 12:46:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 12:46 (closed=7522) rc=0 [main aec05a5] ITR live update 2026-11-09 12:46 (closed=7522)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-09 12:46:32]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 12:46:33]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 12:46:33] PAGES PUSH rc=1
+[2026-11-09 12:46:33] cycle OK closed=7522 open=2776 updated=2026-11-09 12:46:24
+[2026-11-09 12:48:48] reused the sync's always-open browser (port 9222)
+[2026-11-09 12:49:01] LOGGED IN
+[2026-11-09 12:49:36] pulled off=0 n=4000 accum=4000
+[2026-11-09 12:49:48] pulled off=4000 n=4000 accum=8000
+[2026-11-09 12:50:16] pulled off=8000 n=4000 accum=12000
+[2026-11-09 12:50:25] pulled off=12000 n=2008 accum=14008
+[2026-11-09 12:50:25] task index refreshed (6319 asset tags)
+[2026-11-09 12:50:26] updated dashboard_data.json itr_summary.live
+[2026-11-09 12:50:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 12:50:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 12:50 (closed=7522) rc=0 [main 83d1235] ITR live update 2026-11-09 12:50 (closed=7522)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-09 12:50:32]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 12:50:33]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 12:50:33] PAGES PUSH rc=1
+[2026-11-09 12:50:33] cycle OK closed=7522 open=2776 updated=2026-11-09 12:50:26
+[2026-11-09 12:52:39] reused the sync's always-open browser (port 9222)
+[2026-11-09 12:52:54] LOGGED IN
+[2026-11-09 12:53:24] pulled off=0 n=4000 accum=4000
+[2026-11-09 12:53:49] pulled off=4000 n=4000 accum=8000
+[2026-11-09 12:54:13] pulled off=8000 n=4000 accum=12000
+[2026-11-09 12:54:21] pulled off=12000 n=2008 accum=14008
+[2026-11-09 12:54:21] task index refreshed (6319 asset tags)
+[2026-11-09 12:54:22] updated dashboard_data.json itr_summary.live
+[2026-11-09 12:54:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 12:54:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 12:54 (closed=7522) rc=0 [main 53533ed] ITR live update 2026-11-09 12:54 (closed=7522)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-09 12:54:37]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 12:54:39]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 12:54:39] PAGES PUSH rc=1
+[2026-11-09 12:54:39] cycle OK closed=7522 open=2776 updated=2026-11-09 12:54:22
+[2026-11-09 12:56:42] reused the sync's always-open browser (port 9222)
+[2026-11-09 12:56:59] LOGGED IN
+[2026-11-09 12:57:33] pulled off=0 n=4000 accum=4000
+[2026-11-09 12:57:53] pulled off=4000 n=4000 accum=8000
+[2026-11-09 12:58:07] pulled off=8000 n=4000 accum=12000
+[2026-11-09 12:58:19] pulled off=12000 n=2008 accum=14008
+[2026-11-09 12:58:20] task index refreshed (6319 asset tags)
+[2026-11-09 12:58:21] updated dashboard_data.json itr_summary.live
+[2026-11-09 12:58:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-09 12:58:24]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-09 12:58 (closed=7522) rc=0 [main d082d69] ITR live update 2026-11-09 12:58 (closed=7522)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-09 12:58:28]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-09 12:58:29]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-09 12:58:29] PAGES PUSH rc=1
+[2026-11-09 12:58:29] cycle OK closed=7522 open=2776 updated=2026-11-09 12:58:20
