@@ -137,13 +137,17 @@
   "record": "1123933",
   "task": "T-00069-5378",
   "asset": "PS5-71-BI-0001A-CC01",
-  "type": "Conformity Check"
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  },
  "T-00069-5379": {
   "record": "1123934",
   "task": "T-00069-5379",
   "asset": "PS5-71-BI-0001B-CC01",
-  "type": "Conformity Check"
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  },
  "T-00614-1076": {
   "record": "2057645",
@@ -8638,6 +8642,70 @@
   "asset": null,
   "type": "Conformity Check",
   "state": "Started (not Completed)",
+  "via": "dalc"
+ },
+ "T-00069-5392": {
+  "record": "1123947",
+  "task": "T-00069-5392",
+  "asset": "PS5-71-BI-0008B-CC01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5393": {
+  "record": "1123948",
+  "task": "T-00069-5393",
+  "asset": "PS5-71-BI-0008B-CC02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5399": {
+  "record": "1123954",
+  "task": "T-00069-5399",
+  "asset": "PS5-71-BI-0011A-CC01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5400": {
+  "record": "1123955",
+  "task": "T-00069-5400",
+  "asset": "PS5-71-BI-0011A-CC02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5401": {
+  "record": "1123956",
+  "task": "T-00069-5401",
+  "asset": "PS5-71-BI-0011A-CC03",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5403": {
+  "record": "1123958",
+  "task": "T-00069-5403",
+  "asset": "PS5-71-BI-0011A-CC05",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5404": {
+  "record": "1123959",
+  "task": "T-00069-5404",
+  "asset": "PS5-71-BI-0011B-CC01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5405": {
+  "record": "1123960",
+  "task": "T-00069-5405",
+  "asset": "PS5-71-BI-0011B-CC02",
+  "type": "Conformity Check",
+  "state": "To be completed",
   "via": "dalc"
  }
 }
