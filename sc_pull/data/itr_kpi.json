@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-11-10 08:19:42",
+  "updated": "2026-11-10 08:37:45",
   "total_tasks_ps5": 14008,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 7538,
-  "open": 2760,
-  "today_closed": 2,
+  "closed": 7545,
+  "open": 2753,
+  "today_closed": 9,
   "closed_by_discipline": {
     "I": 3634,
-    "E": 3608,
+    "E": 3615,
     "T": 296
   },
   "open_by_discipline": {
     "I": 959,
-    "E": 1019,
+    "E": 1012,
     "T": 782
   },
   "daily": [
@@ -228,23 +228,29 @@
     },
     {
       "label": "2026-11-10",
-      "E": 2,
+      "E": 9,
       "I": 0,
       "T": 0,
-      "Total": 2
+      "Total": 9
     }
   ],
-  "closed_this_week": 18,
-  "closed_this_month": 339,
+  "closed_this_week": 25,
+  "closed_this_month": 346,
   "today_milestone": [
     {
       "milestone": "Milestone D",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 2
+      "count": 8
+    },
+    {
+      "milestone": "Milestone H",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 1
     }
   ],
-  "today_milestone_total": 2,
+  "today_milestone_total": 9,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -292,14 +298,14 @@
       "label": "Milestone D",
       "raw": "PS5 - Milestone D",
       "total": 3437,
-      "closed": 2535,
-      "remaining": 902,
-      "pct": 73.8,
+      "closed": 2541,
+      "remaining": 896,
+      "pct": 73.9,
       "status": {
-        "Closed": 2535,
+        "Closed": 2541,
         "Submitted": 2,
-        "To be completed": 897,
-        "Other": 3
+        "To be completed": 892,
+        "Other": 2
       }
     },
     {
@@ -348,13 +354,13 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2822,
-      "remaining": 429,
+      "closed": 2823,
+      "remaining": 428,
       "pct": 86.8,
       "status": {
-        "Closed": 2822,
+        "Closed": 2823,
         "Submitted": 63,
-        "To be completed": 341,
+        "To be completed": 340,
         "Other": 25
       }
     },
@@ -1537,9 +1543,9 @@
       "sid": "PS5-09-03",
       "name": "PS5-09-03 - HVAC for Generator Building",
       "total": 1004,
-      "closed": 218,
-      "open": 786,
-      "pct": 21.7,
+      "closed": 224,
+      "open": 780,
+      "pct": 22.3,
       "status": "IN PROGRESS",
       "by_discipline": {
         "E": 380,
@@ -1547,7 +1553,7 @@
         "T": 4
       },
       "closed_by_discipline": {
-        "E": 73,
+        "E": 79,
         "I": 145,
         "T": 0
       }
@@ -4311,9 +4317,9 @@
       "sid": "PS5-71-07",
       "name": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
       "total": 112,
-      "closed": 102,
-      "open": 10,
-      "pct": 91.1,
+      "closed": 103,
+      "open": 9,
+      "pct": 92.0,
       "status": "IN PROGRESS",
       "by_discipline": {
         "E": 64,
@@ -4321,7 +4327,7 @@
         "T": 4
       },
       "closed_by_discipline": {
-        "E": 54,
+        "E": 55,
         "I": 44,
         "T": 4
       }
@@ -6815,7 +6821,7 @@
     "T-00233-4810": "Closed",
     "T-00233-4811": "Closed",
     "T-00233-4878": "Closed",
-    "T-00233-4879": "Open",
+    "T-00233-4879": "Closed",
     "T-00233-4882": "Closed",
     "T-00233-4883": "Closed",
     "T-00233-4886": "Closed",
@@ -12735,15 +12741,15 @@
     "T-00233-9751": "Open",
     "T-00233-9752": "Closed",
     "T-00233-9753": "Closed",
-    "T-00233-9754": "Open",
-    "T-00233-9755": "Open",
-    "T-00233-9756": "Open",
+    "T-00233-9754": "Closed",
+    "T-00233-9755": "Closed",
+    "T-00233-9756": "Closed",
     "T-00233-9757": "Open",
     "T-00233-9758": "Open",
     "T-00233-9759": "Open",
-    "T-00233-9760": "Open",
+    "T-00233-9760": "Closed",
     "T-00233-9761": "Open",
-    "T-00233-9762": "Open",
+    "T-00233-9762": "Closed",
     "T-00233-9763": "Closed",
     "T-00233-9764": "Closed",
     "T-00233-9765": "Open",
@@ -15476,7 +15482,7 @@
     "T-00233-11270": "Closed",
     "T-00233-11271": "Closed",
     "T-00233-11272": "Open",
-    "T-00233-11273": "Open",
+    "T-00233-11273": "Closed",
     "T-00233-11274": "Closed",
     "T-00233-11275": "Closed",
     "T-00233-11276": "Closed",
@@ -15521,6 +15527,69 @@
     "T-00233-12271": "Closed"
   },
   "recent_closed": [
+    {
+      "tag": "PS5-09-LB-0008-CL02",
+      "task": "T-00233-4879",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 5:31:41 "
+    },
+    {
+      "tag": "PS5-71-BE-0001B-CL09",
+      "task": "T-00233-11273",
+      "system": "PS5-71-07 - Crude Fuel Separation Module (UCP)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 5:29:47 "
+    },
+    {
+      "tag": "PS5-09-RF-83700L-CL01",
+      "task": "T-00233-9762",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 5:27:13 "
+    },
+    {
+      "tag": "PS5-09-RF-83700J-CL01",
+      "task": "T-00233-9760",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 5:25:55 "
+    },
+    {
+      "tag": "PS5-09-RF-83700E-CL01",
+      "task": "T-00233-9756",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 5:23:28 "
+    },
+    {
+      "tag": "PS5-09-RF-83700D-CL01",
+      "task": "T-00233-9755",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 5:22:10 "
+    },
+    {
+      "tag": "PS5-09-RF-83700C-CL01",
+      "task": "T-00233-9754",
+      "system": "PS5-09-03 - HVAC for Generator Building",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 5:20:23 "
+    },
     {
       "tag": "PS5-09-RF-83700B-CL01",
       "task": "T-00233-9753",
@@ -16537,69 +16606,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "11/6/2026 2:48:48 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1439",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:48:02 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1438",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:47:39 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1436",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:47:14 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1435",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:46:54 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1434",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:46:34 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1433",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:46:13 P"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1432",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/6/2026 2:45:47 P"
     }
   ]
 }

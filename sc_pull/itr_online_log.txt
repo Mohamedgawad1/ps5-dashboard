@@ -67214,3 +67214,30 @@ Call log:
 }
 [2026-11-10 08:19:52] PAGES PUSH rc=1
 [2026-11-10 08:19:52] cycle OK closed=7538 open=2760 updated=2026-11-10 08:19:42
+[2026-11-10 08:21:53] reuse failed: BrowserType.connect_over_cdp: Connection closed while reading from the -> deep frozen-tab check
+[2026-11-10 08:21:57] closed frozen tab A530C849 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1
+[2026-11-10 08:22:01] closed frozen tab 3FCF2C7C https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1
+[2026-11-10 08:36:53] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-10 08:37:09] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-10 08:37:09] reused the sync's always-open browser (port 9222)
+[2026-11-10 08:37:09] LOGGED IN
+[2026-11-10 08:37:20] pulled off=0 n=4000 accum=4000
+[2026-11-10 08:37:31] pulled off=4000 n=4000 accum=8000
+[2026-11-10 08:37:40] pulled off=8000 n=4000 accum=12000
+[2026-11-10 08:37:45] pulled off=12000 n=2008 accum=14008
+[2026-11-10 08:37:45] task index refreshed (6319 asset tags)
+[2026-11-10 08:37:45] milestone_map: 290 subsystems
+[2026-11-10 08:37:45] updated dashboard_data.json itr_summary.live
+[2026-11-10 08:37:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 08:37:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 08:37 (closed=7545) rc=0 [main 994b727] ITR live update 2026-11-10 08:37 (closed=7545)
+ 1 file changed, 106 insertions(+), 100 deletions(-)
+[2026-11-10 08:37:50]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 08:37:51]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 08:37:51] PAGES PUSH rc=1
+[2026-11-10 08:37:51] cycle OK closed=7545 open=2753 updated=2026-11-10 08:37:45
+[2026-11-10 08:39:52] reused the sync's always-open browser (port 9222)
+[2026-11-10 08:39:52] LOGGED IN
