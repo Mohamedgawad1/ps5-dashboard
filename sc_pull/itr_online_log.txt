@@ -67855,3 +67855,44 @@ Call log:
 [2026-11-10 11:05:44] reuse failed: BrowserType.connect_over_cdp: Connection closed while reading from the -> deep frozen-tab check
 [2026-11-10 11:05:44] no frozen tab found -> will retry next cycle, no new window
 [2026-11-10 11:05:46] LOOP ERR: BrowserType.connect_over_cdp: Connection closed while reading from the driver (fail 2/3)
+[2026-11-10 11:21:46] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-10 11:22:04] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-10 11:22:08] reused the sync's always-open browser (port 9222)
+[2026-11-10 11:22:08] LOGGED IN
+[2026-11-10 11:23:06] pulled off=0 n=4000 accum=4000
+[2026-11-10 11:32:08] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-10 11:32:08] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 11:32:08] no pull tab this cycle - retrying in 120s
+[2026-11-10 11:33:08] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 11:33:08] no pull tab this cycle - retrying in 120s
+[2026-11-10 11:34:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 11:34:09] no pull tab this cycle - retrying in 120s
+[2026-11-10 11:35:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 11:35:09] no pull tab this cycle - retrying in 120s
+[2026-11-10 11:36:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 11:36:09] no pull tab this cycle - retrying in 120s
+[2026-11-10 11:37:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 11:37:09] no pull tab this cycle - retrying in 120s
+[2026-11-10 11:38:10] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 11:38:10] no pull tab this cycle - retrying in 120s
+[2026-11-10 11:39:13] opened the one pull tab (none was open)
+[2026-11-10 11:39:13] reused the sync's always-open browser (port 9222)
+[2026-11-10 11:40:00] LOGGED IN
+[2026-11-10 11:40:08] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-10 11:40:12] closed frozen tab C8FAA0ED https://wly04-sc.intergraphsmartcloud.com//ISC/Tools/vDashboardsUsers/
+[2026-11-10 11:40:12] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-10 11:40:22] opened the one pull tab (none was open)
+[2026-11-10 11:40:22] reused the sync's always-open browser (port 9222)
+[2026-11-10 11:40:23] LOGGED IN
+[2026-11-10 11:40:34] pulled off=0 n=4000 accum=4000
+[2026-11-10 11:40:48] pulled off=4000 n=4000 accum=8000
+[2026-11-10 11:41:05] pulled off=8000 n=4000 accum=12000
+[2026-11-10 11:41:11] pulled off=12000 n=2008 accum=14008
+[2026-11-10 11:41:11] task index refreshed (6319 asset tags)
+[2026-11-10 11:41:11] milestone_map: 290 subsystems
+[2026-11-10 11:41:12] updated dashboard_data.json itr_summary.live
+[2026-11-10 11:41:13]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 11:41:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 11:41 (closed=7545) rc=0 [main 6f3df38] ITR live update 2026-11-10 11:41 (closed=7545)
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+[2026-11-10 11:41:19]  >> git push OK
+[2026-11-10 11:41:49]  .. itr_live_state.json publish hiccup (IncompleteRead(581265 bytes read, 51426 more expected)) - retrying

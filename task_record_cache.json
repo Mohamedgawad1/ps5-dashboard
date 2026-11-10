@@ -8495,5 +8495,21 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00035-1656": {
+  "record": "1251929",
+  "task": "T-00035-1656",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1688": {
+  "record": "1251961",
+  "task": "T-00035-1688",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "Started (not Completed)",
+  "via": "dalc"
  }
 }

@@ -51652,3 +51652,104 @@
 [2026-11-10 10:37:41] RESTARTING itr_online
 [2026-11-10 10:37:41] STARTED itr_online (PID 14756)
 [2026-11-10 11:07:45] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-10 11:22:00] RESTARTING itr_online
+[2026-11-10 11:22:00] STARTED itr_online (PID 10980)
+[2026-11-10 11:31:55] ==================================================
+[2026-11-10 11:31:55] Watchdog started - keeping everything alive
+[2026-11-10 11:31:55] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-10 11:31:55] STARTED server (PID 17176)
+[2026-11-10 11:31:56] STARTED auto_sync (PID 17368)
+[2026-11-10 11:31:57] STARTED cloud_sync (PID 15724)
+[2026-11-10 11:31:58] STARTED itr_online (PID 16700)
+[2026-11-10 11:31:59] STARTED tunnel_named (PID 16732)
+[2026-11-10 11:32:00] STARTED tunnel_backup (PID 1772)
+[2026-11-10 11:32:01] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:32:16] RESTARTING tunnel_named
+[2026-11-10 11:32:16] STARTED tunnel_named (PID 13184)
+[2026-11-10 11:32:19] RESTARTING tunnel_backup
+[2026-11-10 11:32:19] STARTED tunnel_backup (PID 17912)
+[2026-11-10 11:32:20] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:32:38] RESTARTING tunnel_named
+[2026-11-10 11:32:38] STARTED tunnel_named (PID 11176)
+[2026-11-10 11:32:41] RESTARTING tunnel_backup
+[2026-11-10 11:32:41] STARTED tunnel_backup (PID 18360)
+[2026-11-10 11:32:41] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:32:59] RESTARTING tunnel_named
+[2026-11-10 11:32:59] STARTED tunnel_named (PID 2192)
+[2026-11-10 11:33:02] RESTARTING tunnel_backup
+[2026-11-10 11:33:02] STARTED tunnel_backup (PID 1016)
+[2026-11-10 11:33:02] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:33:20] RESTARTING tunnel_named
+[2026-11-10 11:33:20] STARTED tunnel_named (PID 18472)
+[2026-11-10 11:33:23] RESTARTING tunnel_backup
+[2026-11-10 11:33:23] STARTED tunnel_backup (PID 2964)
+[2026-11-10 11:33:23] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:33:41] RESTARTING tunnel_named
+[2026-11-10 11:33:41] STARTED tunnel_named (PID 9520)
+[2026-11-10 11:33:44] RESTARTING tunnel_backup
+[2026-11-10 11:33:44] STARTED tunnel_backup (PID 13608)
+[2026-11-10 11:33:44] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:34:02] RESTARTING tunnel_named
+[2026-11-10 11:34:02] STARTED tunnel_named (PID 14664)
+[2026-11-10 11:34:05] RESTARTING tunnel_backup
+[2026-11-10 11:34:05] STARTED tunnel_backup (PID 18756)
+[2026-11-10 11:34:05] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:34:23] RESTARTING tunnel_named
+[2026-11-10 11:34:23] STARTED tunnel_named (PID 8416)
+[2026-11-10 11:34:26] RESTARTING tunnel_backup
+[2026-11-10 11:34:26] STARTED tunnel_backup (PID 19276)
+[2026-11-10 11:34:26] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:34:44] RESTARTING tunnel_named
+[2026-11-10 11:34:44] STARTED tunnel_named (PID 2552)
+[2026-11-10 11:34:47] RESTARTING tunnel_backup
+[2026-11-10 11:34:47] STARTED tunnel_backup (PID 13000)
+[2026-11-10 11:34:47] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:35:05] RESTARTING tunnel_named
+[2026-11-10 11:35:05] STARTED tunnel_named (PID 8436)
+[2026-11-10 11:35:08] RESTARTING tunnel_backup
+[2026-11-10 11:35:08] STARTED tunnel_backup (PID 7304)
+[2026-11-10 11:35:08] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:35:26] RESTARTING tunnel_named
+[2026-11-10 11:35:26] STARTED tunnel_named (PID 4952)
+[2026-11-10 11:35:29] RESTARTING tunnel_backup
+[2026-11-10 11:35:29] STARTED tunnel_backup (PID 18164)
+[2026-11-10 11:35:29] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:35:47] RESTARTING tunnel_named
+[2026-11-10 11:35:47] STARTED tunnel_named (PID 17916)
+[2026-11-10 11:35:50] RESTARTING tunnel_backup
+[2026-11-10 11:35:50] STARTED tunnel_backup (PID 3876)
+[2026-11-10 11:35:50] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:36:08] RESTARTING tunnel_named
+[2026-11-10 11:36:08] STARTED tunnel_named (PID 12348)
+[2026-11-10 11:36:11] RESTARTING tunnel_backup
+[2026-11-10 11:36:11] STARTED tunnel_backup (PID 4628)
+[2026-11-10 11:36:11] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:36:29] RESTARTING tunnel_named
+[2026-11-10 11:36:29] STARTED tunnel_named (PID 15412)
+[2026-11-10 11:36:32] RESTARTING tunnel_backup
+[2026-11-10 11:36:32] STARTED tunnel_backup (PID 4320)
+[2026-11-10 11:36:32] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:36:50] RESTARTING tunnel_named
+[2026-11-10 11:36:50] STARTED tunnel_named (PID 19060)
+[2026-11-10 11:36:53] RESTARTING tunnel_backup
+[2026-11-10 11:36:53] STARTED tunnel_backup (PID 18336)
+[2026-11-10 11:36:53] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:37:11] RESTARTING tunnel_named
+[2026-11-10 11:37:11] STARTED tunnel_named (PID 17508)
+[2026-11-10 11:37:14] RESTARTING tunnel_backup
+[2026-11-10 11:37:14] STARTED tunnel_backup (PID 17208)
+[2026-11-10 11:37:14] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:37:32] RESTARTING tunnel_named
+[2026-11-10 11:37:32] STARTED tunnel_named (PID 8640)
+[2026-11-10 11:37:35] RESTARTING tunnel_backup
+[2026-11-10 11:37:35] STARTED tunnel_backup (PID 16408)
+[2026-11-10 11:37:35] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-10 11:37:53] RESTARTING tunnel_named
+[2026-11-10 11:37:53] STARTED tunnel_named (PID 7892)
+[2026-11-10 11:37:56] RESTARTING tunnel_backup
+[2026-11-10 11:37:56] STARTED tunnel_backup (PID 17324)
+[2026-11-10 11:38:05] TUNNEL URL: https://continuously-attendance-praise-luggage.trycloudflare.com
+[2026-11-10 11:38:14] RESTARTING tunnel_named
+[2026-11-10 11:38:14] STARTED tunnel_named (PID 12048)
+[2026-11-10 11:40:02] ITR data is 40 min old (limit 40 min) -> restarting itr_online
+[2026-11-10 11:40:06] STARTED itr_online (PID 1196)
