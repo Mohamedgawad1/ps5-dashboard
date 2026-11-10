@@ -67777,3 +67777,81 @@ Call log:
 [2026-11-10 10:38:46]  >> platform publish OK (1 file(s) updated, closed=7545)
 [2026-11-10 10:38:46] PAGES PUSH rc=0
 [2026-11-10 10:38:46] cycle OK closed=7545 open=2753 updated=2026-11-10 10:38:21
+[2026-11-10 10:40:47] reused the sync's always-open browser (port 9222)
+[2026-11-10 10:40:47] LOGGED IN
+[2026-11-10 10:41:36] pulled off=0 n=4000 accum=4000
+[2026-11-10 10:42:20] pulled off=4000 n=4000 accum=8000
+[2026-11-10 10:43:12] pulled off=8000 n=4000 accum=12000
+[2026-11-10 10:43:40] pulled off=12000 n=2008 accum=14008
+[2026-11-10 10:43:40] task index refreshed (6319 asset tags)
+[2026-11-10 10:43:40] updated dashboard_data.json itr_summary.live
+[2026-11-10 10:43:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 10:43:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 10:43 (closed=7545) rc=0 [main 4010855] ITR live update 2026-11-10 10:43 (closed=7545)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 10:43:48]  >> git push OK
+[2026-11-10 10:43:58]  >> published itr_live_state.json (458505 bytes)
+[2026-11-10 10:44:03]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-10 10:44:03]  >> platform publish OK (1 file(s) updated, closed=7545)
+[2026-11-10 10:44:03] PAGES PUSH rc=0
+[2026-11-10 10:44:03] cycle OK closed=7545 open=2753 updated=2026-11-10 10:43:40
+[2026-11-10 10:46:03] reused the sync's always-open browser (port 9222)
+[2026-11-10 10:46:03] LOGGED IN
+[2026-11-10 10:46:51] pulled off=0 n=4000 accum=4000
+[2026-11-10 10:47:30] pulled off=4000 n=4000 accum=8000
+[2026-11-10 10:48:08] pulled off=8000 n=4000 accum=12000
+[2026-11-10 10:48:35] pulled off=12000 n=2008 accum=14008
+[2026-11-10 10:48:35] task index refreshed (6319 asset tags)
+[2026-11-10 10:48:35] updated dashboard_data.json itr_summary.live
+[2026-11-10 10:48:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 10:48:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 10:48 (closed=7545) rc=0 [main 1891297] ITR live update 2026-11-10 10:48 (closed=7545)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 10:48:41]  >> git push OK
+[2026-11-10 10:49:00]  .. itr_live_state.json publish hiccup (IncompleteRead(581226 bytes read, 51465 more expected)) - retrying
+[2026-11-10 10:49:11]  >> published itr_live_state.json (458505 bytes)
+[2026-11-10 10:49:16]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-10 10:49:16]  >> platform publish OK (1 file(s) updated, closed=7545)
+[2026-11-10 10:49:16] PAGES PUSH rc=0
+[2026-11-10 10:49:16] cycle OK closed=7545 open=2753 updated=2026-11-10 10:48:35
+[2026-11-10 10:51:17] reused the sync's always-open browser (port 9222)
+[2026-11-10 10:51:17] LOGGED IN
+[2026-11-10 10:52:08] pulled off=0 n=4000 accum=4000
+[2026-11-10 10:53:07] pulled off=4000 n=4000 accum=8000
+[2026-11-10 10:54:02] pulled off=8000 n=4000 accum=12000
+[2026-11-10 10:54:30] pulled off=12000 n=2008 accum=14008
+[2026-11-10 10:54:31] task index refreshed (6319 asset tags)
+[2026-11-10 10:54:31] updated dashboard_data.json itr_summary.live
+[2026-11-10 10:54:33]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 10:54:33]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 10:54 (closed=7545) rc=0 [main 19145b5] ITR live update 2026-11-10 10:54 (closed=7545)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 10:54:40]  >> git push OK
+[2026-11-10 10:54:55]  >> published itr_live_state.json (458505 bytes)
+[2026-11-10 10:54:59]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-10 10:54:59]  >> platform publish OK (1 file(s) updated, closed=7545)
+[2026-11-10 10:54:59] PAGES PUSH rc=0
+[2026-11-10 10:54:59] cycle OK closed=7545 open=2753 updated=2026-11-10 10:54:31
+[2026-11-10 10:57:00] reused the sync's always-open browser (port 9222)
+[2026-11-10 10:57:00] LOGGED IN
+[2026-11-10 10:57:57] pulled off=0 n=4000 accum=4000
+[2026-11-10 10:58:36] pulled off=4000 n=4000 accum=8000
+[2026-11-10 10:59:30] pulled off=8000 n=4000 accum=12000
+[2026-11-10 10:59:56] pulled off=12000 n=2008 accum=14008
+[2026-11-10 10:59:56] task index refreshed (6319 asset tags)
+[2026-11-10 10:59:57] updated dashboard_data.json itr_summary.live
+[2026-11-10 10:59:58]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 10:59:58]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 10:59 (closed=7545) rc=0 [main dd493bc] ITR live update 2026-11-10 10:59 (closed=7545)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 11:00:04]  >> git push OK
+[2026-11-10 11:00:14]  >> published itr_live_state.json (458505 bytes)
+[2026-11-10 11:00:20]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-10 11:00:20]  >> platform publish OK (1 file(s) updated, closed=7545)
+[2026-11-10 11:00:20] PAGES PUSH rc=0
+[2026-11-10 11:00:20] cycle OK closed=7545 open=2753 updated=2026-11-10 10:59:57
+[2026-11-10 11:02:22] reused the sync's always-open browser (port 9222)
+[2026-11-10 11:02:22] LOGGED IN
+[2026-11-10 11:03:21] pulled off=0 n=4000 accum=4000
+[2026-11-10 11:03:44] call err off=4000: Page.evaluate: Connection closed while reading from the driver
+[2026-11-10 11:03:44] pull retry 2/3 - reloading Switchboard
+[2026-11-10 11:03:44] cycle got no complete data (fail 1/3)
+[2026-11-10 11:05:44] reuse failed: BrowserType.connect_over_cdp: Connection closed while reading from the -> deep frozen-tab check
+[2026-11-10 11:05:44] no frozen tab found -> will retry next cycle, no new window
+[2026-11-10 11:05:46] LOOP ERR: BrowserType.connect_over_cdp: Connection closed while reading from the driver (fail 2/3)
