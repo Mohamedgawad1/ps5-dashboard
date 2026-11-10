@@ -51784,3 +51784,5 @@
 [2026-11-10 18:46:13] ITR data is 69 min old (limit 40 min) -> restarting itr_online
 [2026-11-10 18:46:17] STARTED itr_online (PID 10180)
 [2026-11-10 18:46:24] TUNNEL URL: https://image-plug-fundamental-elliott.trycloudflare.com
+[2026-11-10 19:05:33] RESTARTING itr_online
+[2026-11-10 19:05:33] STARTED itr_online (PID 19988)

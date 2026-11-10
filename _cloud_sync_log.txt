@@ -14615,3 +14615,18 @@
 2026-11-10 18:59:00    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
 2026-11-10 18:59:00    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
 2026-11-10 18:59:00 >> local->DPR
+2026-11-10 19:08:39    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 82016 cells / 0 notes)
+2026-11-10 19:08:39      [summery-sync] OK -> 58166 cells, 0 notes written, 15557 skipped (no matching column)
+2026-11-10 19:08:39 >> explorer rebuild
+2026-11-10 19:11:12      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9654 rows, 16788 updates
+2026-11-10 19:11:12      Punch rows: 4465 | ITR rows: 23663 | RFC: 270 | Miles: 292
+2026-11-10 19:11:12      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-10 19:11:12      Carry-over: 0 notes, 0 colored rows, 22807 pinned cells
+2026-11-10 19:11:12    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-10 19:11:12    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-10 19:11:12 >> dashboard xlsm
+2026-11-10 19:15:58    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-10 19:15:58      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23663 | RFC 270
+2026-11-10 19:15:58      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 22807 pinned cells
+2026-11-10 19:15:58    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-10 19:15:58 >> platform full sync
