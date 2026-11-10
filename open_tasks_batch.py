@@ -163,25 +163,33 @@ def open_one_tab(record, tries=4, task_id=None):
                             if t.get("id") == info.get("id"):
                                 tab = t
                                 break
+                        if tab is None:
+                            for t in cdp_tabs(timeout=10):
+                                if str(record) in (t.get("url") or ""):
+                                    tab = t
+                                    break
                         if tab and tab.get("webSocketDebuggerUrl"):
                             c = Q.Tab(tab["webSocketDebuggerUrl"], timeout=15)
                             try:
-                                for _ in range(10):
+                                # wait longer for the record to render (first tabs are slow)
+                                body = ""
+                                for _ in range(25):
                                     time.sleep(1)
-                                    body = c.eval("document.body ? document.body.innerText : ''")
-                                    if body and len(body) > 300:
+                                    body = c.eval("document.body ? document.body.innerText : ''") or ""
+                                    if body and str(task_id).upper() in body.upper():
                                         break
-                                if body and str(task_id).upper() not in (body or "").upper():
-                                    log("      !! record %s opened but did not show %s - closing"
+                                    if body and len(body) > 500:
+                                        # page rendered; give it a couple more seconds
+                                        time.sleep(2)
+                                        body = c.eval("document.body ? document.body.innerText : ''") or ""
+                                        if str(task_id).upper() in body.upper():
+                                            break
+                                if body and str(task_id).upper() not in body.upper():
+                                    # do NOT close immediately - the page may still be loading;
+                                    # keep the tab and let the user verify, only log a warning
+                                    log("      !! record %s did not show %s yet (may still be loading) - keeping tab"
                                         % (record, task_id))
-                                    try:
-                                        urllib.request.urlopen(
-                                            urllib.request.Request(CDP + "/json/close/" + info["id"], method="GET"), timeout=8)
-                                    except Exception:
-                                        pass
-                                    c.close()
-                                    return False
-                                if body and str(task_id).upper() in (body or "").upper():
+                                else:
                                     log("      (appeared on page: %s)" % task_id)
                             finally:
                                 c.close()
@@ -204,6 +212,11 @@ def open_tabs_fast(plan_rows):
             log("   [tab %d/%d] %s -> record %s" % (n, len(plan_rows), row["task"], rec))
         else:
             log("   !! %s -> record %s مفتحش" % (row["task"], rec))
+        # keep earlier tabs alive while we keep opening more
+        try:
+            keep_tab_alive()
+        except Exception:
+            pass
     log("   (%d/%d tab متأكد—they in the browser)" % (len(opened_ids), len(plan_rows)))
     return opened_ids
 
@@ -470,13 +483,8 @@ def record_id_for(app, task_id):
                     log("   (found on page %d)" % p)
                     return r
 
-    # last resort: a partial match, so a slightly different name still opens
-    for r in (snap.get("rows") or []):
-        t = (r["task"] or "").strip().upper()
-        if t and want and (want in t or t in want):
-            log("   %s: matched loosely to %s" % (task_id, r["task"]))
-            return r
-
+    # never fall back to a partial match - a slightly different name must not
+    # open the wrong record. Only an exact TaskName match is acceptable.
     log("   %s: مش موجود في الـ grid (%d نتيجة / %d صفحة) - هتخطاه"
         % (task_id, snap.get("total", 0), pages))
     return None
@@ -598,7 +606,7 @@ def main():
                 others = ", ".join("%s/%s" % (r.get("task_id"), r.get("type")) for r in rows) or "مفيش"
                 log("  - %s [%s]: مفيش %s | الموجود: %s" % (tag, want, want, others))
                 fallback.extend((tag, r) for r in rows)
-            if not picked and fallback and args.allow_other_type and not args.no_other_type:
+            if not picked and fallback and not args.no_other_type:
                 kinds = sorted({(r.get("type") or "?") for _, r in fallback})
                 log("  ! الـ RFI طلب %s، لكن الأصول على المنصة: %s"
                     % ("/".join(sorted({w for _, w in items})), ", ".join(kinds)))
@@ -709,6 +717,10 @@ def main():
                     log("   %s -> record %s  [tab %d/%d]" % (hit["task"], hit["record"], len(done), len(tasks)))
                 else:
                     log("   %s -> record %s  !! مفتحش" % (hit["task"], hit["record"]))
+                try:
+                    keep_tab_alive()
+                except Exception:
+                    pass
             app.close()
             if fresh:
                 log("(حفظت %d record id في الـ cache)" % fresh)
