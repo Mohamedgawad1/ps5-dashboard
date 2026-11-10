@@ -8493,7 +8493,7 @@
   "task": "T-00035-1654",
   "asset": null,
   "type": "Conformity Check",
-  "state": "To be completed",
+  "state": "Started (not Completed)",
   "via": "dalc"
  },
  "T-00035-1656": {
@@ -8606,6 +8606,38 @@
   "asset": null,
   "type": "Conformity Check",
   "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1703": {
+  "record": "1251976",
+  "task": "T-00035-1703",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1704": {
+  "record": "1251977",
+  "task": "T-00035-1704",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1706": {
+  "record": "1251979",
+  "task": "T-00035-1706",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1564": {
+  "record": "1251837",
+  "task": "T-00035-1564",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "Started (not Completed)",
   "via": "dalc"
  }
 }
