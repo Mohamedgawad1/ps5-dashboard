@@ -67361,3 +67361,121 @@ Call log:
 [2026-11-10 09:00:11] LOGGED IN
 [2026-11-10 09:00:11] err off=0: [object Object]
 [2026-11-10 09:00:11] cycle got no complete data (fail 2/3)
+[2026-11-10 09:02:11] reused the sync's always-open browser (port 9222)
+[2026-11-10 09:02:11] LOGGED IN
+[2026-11-10 09:02:32] err off=0: [object Object]
+[2026-11-10 09:02:32] pull retry 2/3 - reloading Switchboard
+[2026-11-10 09:02:36] LOGGED IN
+[2026-11-10 09:02:58] err off=0: [object Object]
+[2026-11-10 09:02:58] pull retry 3/3 - reloading Switchboard
+[2026-11-10 09:03:02] LOGGED IN
+[2026-11-10 09:03:13] err off=0: [object Object]
+[2026-11-10 09:03:13] cycle got no complete data (fail 3/3)
+[2026-11-10 09:03:13] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-10 09:03:20] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-10 09:03:20] reused the sync's always-open browser (port 9222)
+[2026-11-10 09:03:20] LOGGED IN
+[2026-11-10 09:03:23] err off=0: [object Object]
+[2026-11-10 09:03:23] pull retry 2/3 - reloading Switchboard
+[2026-11-10 09:03:27] LOGGED IN
+[2026-11-10 09:03:40] err off=0: [object Object]
+[2026-11-10 09:03:40] pull retry 3/3 - reloading Switchboard
+[2026-11-10 09:03:44] LOGGED IN
+[2026-11-10 09:03:48] err off=0: [object Object]
+[2026-11-10 09:03:48] cycle got no complete data (fail 1/3)
+[2026-11-10 09:05:48] reused the sync's always-open browser (port 9222)
+[2026-11-10 09:05:48] LOGGED IN
+[2026-11-10 09:05:49] err off=0: [object Object]
+[2026-11-10 09:05:49] pull retry 2/3 - reloading Switchboard
+[2026-11-10 09:05:53] LOGGED IN
+[2026-11-10 09:06:14] err off=0: [object Object]
+[2026-11-10 09:06:14] pull retry 3/3 - reloading Switchboard
+[2026-11-10 09:06:18] LOGGED IN
+[2026-11-10 09:06:39] err off=0: [object Object]
+[2026-11-10 09:06:39] cycle got no complete data (fail 2/3)
+[2026-11-10 09:08:39] reused the sync's always-open browser (port 9222)
+[2026-11-10 09:08:39] LOGGED IN
+[2026-11-10 09:09:00] err off=0: [object Object]
+[2026-11-10 09:09:00] pull retry 2/3 - reloading Switchboard
+[2026-11-10 09:09:04] LOGGED IN
+[2026-11-10 09:09:07] err off=0: [object Object]
+[2026-11-10 09:09:07] pull retry 3/3 - reloading Switchboard
+[2026-11-10 09:09:11] LOGGED IN
+[2026-11-10 09:09:28] err off=0: [object Object]
+[2026-11-10 09:09:28] cycle got no complete data (fail 3/3)
+[2026-11-10 09:09:28] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-10 09:09:37] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-10 09:09:38] reused the sync's always-open browser (port 9222)
+[2026-11-10 09:09:38] LOGGED IN
+[2026-11-10 09:09:50] err off=0: [object Object]
+[2026-11-10 09:09:50] pull retry 2/3 - reloading Switchboard
+[2026-11-10 09:09:54] LOGGED IN
+[2026-11-10 09:09:56] err off=0: [object Object]
+[2026-11-10 09:09:56] pull retry 3/3 - reloading Switchboard
+[2026-11-10 09:10:00] LOGGED IN
+[2026-11-10 09:10:09] err off=0: [object Object]
+[2026-11-10 09:10:09] cycle got no complete data (fail 1/3)
+[2026-11-10 09:12:10] reused the sync's always-open browser (port 9222)
+[2026-11-10 09:12:10] LOGGED IN
+[2026-11-10 09:12:31] err off=0: [object Object]
+[2026-11-10 09:12:31] pull retry 2/3 - reloading Switchboard
+[2026-11-10 09:12:35] LOGGED IN
+[2026-11-10 09:12:48] err off=0: [object Object]
+[2026-11-10 09:12:48] pull retry 3/3 - reloading Switchboard
+[2026-11-10 09:12:52] LOGGED IN
+[2026-11-10 09:13:23] pulled off=0 n=4000 accum=4000
+[2026-11-10 09:13:30] pulled off=4000 n=4000 accum=8000
+[2026-11-10 09:13:38] pulled off=8000 n=4000 accum=12000
+[2026-11-10 09:13:42] pulled off=12000 n=2008 accum=14008
+[2026-11-10 09:13:42] task index refreshed (6319 asset tags)
+[2026-11-10 09:13:42] milestone_map: 290 subsystems
+[2026-11-10 09:13:43] updated dashboard_data.json itr_summary.live
+[2026-11-10 09:13:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 09:13:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 09:13 (closed=7545) rc=0 [main a7dfbbd] ITR live update 2026-11-10 09:13 (closed=7545)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 09:13:53]  >> git push OK
+[2026-11-10 09:13:54]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 09:13:54] PAGES PUSH rc=1
+[2026-11-10 09:13:54] cycle OK closed=7545 open=2753 updated=2026-11-10 09:13:43
+[2026-11-10 09:15:55] reused the sync's always-open browser (port 9222)
+[2026-11-10 09:15:56] LOGGED IN
+[2026-11-10 09:16:05] pulled off=0 n=4000 accum=4000
+[2026-11-10 09:16:16] pulled off=4000 n=4000 accum=8000
+[2026-11-10 09:16:26] pulled off=8000 n=4000 accum=12000
+[2026-11-10 09:16:32] pulled off=12000 n=2008 accum=14008
+[2026-11-10 09:16:32] task index refreshed (6319 asset tags)
+[2026-11-10 09:16:33] updated dashboard_data.json itr_summary.live
+[2026-11-10 09:16:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 09:16:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 09:16 (closed=7545) rc=0 [main aaa6b12] ITR live update 2026-11-10 09:16 (closed=7545)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 09:16:44]  >> git push OK
+[2026-11-10 09:16:45]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 09:16:45] PAGES PUSH rc=1
+[2026-11-10 09:16:45] cycle OK closed=7545 open=2753 updated=2026-11-10 09:16:32
+[2026-11-10 09:18:45] reused the sync's always-open browser (port 9222)
+[2026-11-10 09:18:45] LOGGED IN
+[2026-11-10 09:18:55] pulled off=0 n=4000 accum=4000
+[2026-11-10 09:19:06] pulled off=4000 n=4000 accum=8000
+[2026-11-10 09:19:16] pulled off=8000 n=4000 accum=12000
+[2026-11-10 09:19:21] pulled off=12000 n=2008 accum=14008
+[2026-11-10 09:19:21] task index refreshed (6319 asset tags)
+[2026-11-10 09:19:22] updated dashboard_data.json itr_summary.live
+[2026-11-10 09:19:25]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 09:19:25]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 09:19 (closed=7545) rc=0 [main 3454501] ITR live update 2026-11-10 09:19 (closed=7545)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 09:19:32]  >> git push OK
+[2026-11-10 09:19:34]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 09:19:34] PAGES PUSH rc=1
+[2026-11-10 09:19:34] cycle OK closed=7545 open=2753 updated=2026-11-10 09:19:22
