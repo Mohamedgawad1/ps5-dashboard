@@ -14515,3 +14515,5 @@
 2026-11-10 08:19:39    DONE - platform online + all downloads synced.
 2026-11-10 08:19:39 [mirror] PAGES -> _files
 2026-11-10 08:19:39 [done] build in 3573s
+2026-11-10 08:54:42 [warn] cloud fetch failed: <urlopen error [WinError 10051] A socket operation was attempted to an unreachable network>
+2026-11-10 08:59:46 [warn] cloud fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1144)>
