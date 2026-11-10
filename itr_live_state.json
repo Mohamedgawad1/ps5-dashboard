@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-11-10 13:40:57",
+  "updated": "2026-11-10 13:46:47",
   "total_tasks_ps5": 14008,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4627,
     "T": 1078
   },
-  "closed": 7578,
-  "open": 2720,
-  "today_closed": 42,
+  "closed": 7585,
+  "open": 2713,
+  "today_closed": 49,
   "closed_by_discipline": {
     "I": 3634,
-    "E": 3648,
+    "E": 3655,
     "T": 296
   },
   "open_by_discipline": {
     "I": 959,
-    "E": 979,
+    "E": 972,
     "T": 782
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-11-10",
-      "E": 42,
+      "E": 49,
       "I": 0,
       "T": 0,
-      "Total": 42
+      "Total": 49
     }
   ],
-  "closed_this_week": 58,
-  "closed_this_month": 379,
+  "closed_this_week": 65,
+  "closed_this_month": 386,
   "today_milestone": [
     {
       "milestone": "Milestone D",
@@ -253,10 +253,10 @@
       "milestone": "Milestone H",
       "disc": "E",
       "discipline": "Electrical (E)",
-      "count": 27
+      "count": 34
     }
   ],
-  "today_milestone_total": 42,
+  "today_milestone_total": 49,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -360,14 +360,14 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3251,
-      "closed": 2849,
-      "remaining": 402,
-      "pct": 87.6,
+      "closed": 2856,
+      "remaining": 395,
+      "pct": 87.8,
       "status": {
-        "Closed": 2849,
+        "Closed": 2856,
         "Submitted": 63,
         "To be completed": 309,
-        "Other": 30
+        "Other": 23
       }
     },
     {
@@ -4969,9 +4969,9 @@
       "sid": "PS5-79-12",
       "name": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
       "total": 80,
-      "closed": 55,
-      "open": 25,
-      "pct": 68.8,
+      "closed": 62,
+      "open": 18,
+      "pct": 77.5,
       "status": "IN PROGRESS",
       "by_discipline": {
         "E": 79,
@@ -4979,7 +4979,7 @@
         "T": 0
       },
       "closed_by_discipline": {
-        "E": 54,
+        "E": 61,
         "I": 1,
         "T": 0
       }
@@ -11343,14 +11343,14 @@
     "T-00035-1696": "Closed",
     "T-00035-1697": "Closed",
     "T-00035-1698": "Open",
-    "T-00035-1699": "Open",
-    "T-00035-1700": "Open",
-    "T-00035-1701": "Open",
-    "T-00035-1702": "Open",
-    "T-00035-1703": "Open",
-    "T-00035-1704": "Open",
+    "T-00035-1699": "Closed",
+    "T-00035-1700": "Closed",
+    "T-00035-1701": "Closed",
+    "T-00035-1702": "Closed",
+    "T-00035-1703": "Closed",
+    "T-00035-1704": "Closed",
     "T-00035-1705": "Open",
-    "T-00035-1706": "Open",
+    "T-00035-1706": "Closed",
     "T-00035-1707": "Closed",
     "T-00035-1708": "Open",
     "T-00035-1709": "Open",
@@ -15535,6 +15535,69 @@
   "recent_closed": [
     {
       "tag": "",
+      "task": "T-00035-1706",
+      "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 10:42:57"
+    },
+    {
+      "tag": "",
+      "task": "T-00035-1704",
+      "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 10:42:40"
+    },
+    {
+      "tag": "",
+      "task": "T-00035-1703",
+      "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 10:42:20"
+    },
+    {
+      "tag": "",
+      "task": "T-00035-1702",
+      "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 10:41:59"
+    },
+    {
+      "tag": "",
+      "task": "T-00035-1701",
+      "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 10:41:36"
+    },
+    {
+      "tag": "",
+      "task": "T-00035-1700",
+      "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 10:41:14"
+    },
+    {
+      "tag": "",
+      "task": "T-00035-1699",
+      "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/10/2026 10:40:40"
+    },
+    {
+      "tag": "",
       "task": "T-00035-1697",
       "system": "PS5-79-12 - Electrical Heat Tracing Transformer/Distribution Board 12 (PS5-79-IG-0012)",
       "loop": "",
@@ -16549,69 +16612,6 @@
       "disc": "E - Electrical",
       "cat": "PCOM - Precommissioning",
       "approved": "11/7/2026 8:26:12 A"
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1442",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/7/2026 8:25:53 A"
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1438",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/7/2026 8:25:20 A"
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1436",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/7/2026 8:24:45 A"
-    },
-    {
-      "tag": "",
-      "task": "T-00244-1389",
-      "system": "PS5-79-02 - Electrical Heat Tracing Transformer/Distribution Board 2 (PS5-79-IG-0002)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/7/2026 8:24:11 A"
-    },
-    {
-      "tag": "",
-      "task": "T-00035-1427",
-      "system": "PS5-79-03 - Electrical Heat Tracing Transformer/Distribution Board 3 (PS5-79-IG-0003)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/7/2026 8:23:05 A"
-    },
-    {
-      "tag": "PS5-74-IG-5101-CL01",
-      "task": "T-00608-0462",
-      "system": "PS5-74-02 - N2 Generation Skid (UCP)",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/7/2026 6:44:41 A"
-    },
-    {
-      "tag": "PS5-02-SWSI-0001-CL01",
-      "task": "T-00023-9120",
-      "system": "PS5-02-01 - Miscellaneous Safety equipment",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/7/2026 6:42:12 A"
     }
   ]
 }
