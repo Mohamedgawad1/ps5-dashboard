@@ -68644,3 +68644,50 @@ Call log:
 [2026-11-10 15:18:42]  >> platform publish OK (1 file(s) updated, closed=7588)
 [2026-11-10 15:18:42] PAGES PUSH rc=0
 [2026-11-10 15:18:42] cycle OK closed=7588 open=2710 updated=2026-11-10 15:17:56
+[2026-11-10 15:20:42] reused the sync's always-open browser (port 9222)
+[2026-11-10 15:20:42] LOGGED IN
+[2026-11-10 15:22:13] pulled off=0 n=4000 accum=4000
+[2026-11-10 15:23:02] pulled off=4000 n=4000 accum=8000
+[2026-11-10 15:23:54] pulled off=8000 n=4000 accum=12000
+[2026-11-10 15:24:19] pulled off=12000 n=2008 accum=14008
+[2026-11-10 15:24:19] task index refreshed (6319 asset tags)
+[2026-11-10 15:24:20] updated dashboard_data.json itr_summary.live
+[2026-11-10 15:24:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 15:24:23]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 15:24 (closed=7588) rc=0 [main 4893a51] ITR live update 2026-11-10 15:24 (closed=7588)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 15:24:31]  >> git push OK
+[2026-11-10 15:25:04]  .. itr_live_state.json publish hiccup (IncompleteRead(581773 bytes read, 51018 more expected)) - retrying
+[2026-11-10 15:25:58]  .. itr_live_state.json publish hiccup (IncompleteRead(459252 bytes read, 173539 more expected)) - retrying
+[2026-11-10 15:26:31]  >> published itr_live_state.json (458575 bytes)
+[2026-11-10 15:26:37]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-10 15:26:37]  >> platform publish OK (1 file(s) updated, closed=7588)
+[2026-11-10 15:26:37] PAGES PUSH rc=0
+[2026-11-10 15:26:37] cycle OK closed=7588 open=2710 updated=2026-11-10 15:24:19
+[2026-11-10 15:28:37] reused the sync's always-open browser (port 9222)
+[2026-11-10 15:28:37] LOGGED IN
+[2026-11-10 15:29:12] pulled off=0 n=4000 accum=4000
+[2026-11-10 15:30:16] pulled off=4000 n=4000 accum=8000
+[2026-11-10 15:30:16] call err off=8000: Page.evaluate: Execution context was destroyed, most likely because of a navigation
+[2026-11-10 15:30:16] pull retry 2/3 - reloading Switchboard
+[2026-11-10 15:30:41] LOGGED IN
+[2026-11-10 15:31:32] pulled off=0 n=4000 accum=4000
+[2026-11-10 15:32:38] pulled off=4000 n=4000 accum=8000
+[2026-11-10 15:33:45] pulled off=8000 n=4000 accum=12000
+[2026-11-10 15:34:19] pulled off=12000 n=2008 accum=14008
+[2026-11-10 15:34:19] task index refreshed (6319 asset tags)
+[2026-11-10 15:34:19] updated dashboard_data.json itr_summary.live
+[2026-11-10 15:34:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 15:34:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 15:34 (closed=7588) rc=0 [main 875031a] ITR live update 2026-11-10 15:34 (closed=7588)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-11-10 15:34:28]  >> git push OK
+[2026-11-10 15:34:56]  .. itr_live_state.json publish hiccup (IncompleteRead(459804 bytes read, 172987 more expected)) - retrying
+[2026-11-10 15:35:26]  .. itr_live_state.json publish hiccup (IncompleteRead(454379 bytes read, 178412 more expected)) - retrying
+[2026-11-10 15:35:44]  .. itr_live_state.json publish hiccup (IncompleteRead(581829 bytes read, 50962 more expected)) - retrying
+[2026-11-10 15:36:26]  !! publish itr_live_state.json failed: IncompleteRead(380940 bytes read, 251851 more expected)
+[2026-11-10 15:36:26] PAGES PUSH rc=1
+[2026-11-10 15:36:26] cycle OK closed=7588 open=2710 updated=2026-11-10 15:34:19
+[2026-11-10 15:38:26] reused the sync's always-open browser (port 9222)
+[2026-11-10 15:38:26] LOGGED IN
+[2026-11-10 15:39:13] pulled off=0 n=4000 accum=4000
+[2026-11-10 15:39:48] pulled off=4000 n=4000 accum=8000
+[2026-11-10 15:40:41] pulled off=8000 n=4000 accum=12000
