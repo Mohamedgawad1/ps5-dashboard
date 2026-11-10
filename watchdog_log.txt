@@ -51649,3 +51649,5 @@
 [2026-11-10 10:07:36] STARTED tunnel_named (PID 5848)
 [2026-11-10 10:07:38] STARTED tunnel_backup (PID 12244)
 [2026-11-10 10:07:55] TUNNEL URL: https://proportion-researcher-away-sensitivity.trycloudflare.com
+[2026-11-10 10:37:41] RESTARTING itr_online
+[2026-11-10 10:37:41] STARTED itr_online (PID 14756)
