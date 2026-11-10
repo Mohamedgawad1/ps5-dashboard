@@ -58,6 +58,72 @@ def products_ready(page, seconds=45):
     return False
 
 
+def bring_chrome_to_front():
+    """Bring the SmartCloud Chrome OS window to the foreground.
+
+    Playwright's ``page.bring_to_front()`` only reorders tabs inside the
+    browser; it does not lift the whole Chrome window over other applications.
+    When task pages are opened through CDP they can end up in a window that
+    never pops up by itself, so this uses the Win32 API to restore + activate
+    the Chrome window that owns the SmartCloud profile.
+    """
+    try:
+        import ctypes
+        from ctypes import wintypes
+        user32 = ctypes.windll.user32
+
+        SW_RESTORE = 9
+        SW_SHOWMAXIMIZED = 3
+        targets = []
+
+        WNDENUMPROC = ctypes.WINFUNCTYPE(ctypes.c_bool, wintypes.HWND, wintypes.LPARAM)
+
+        def _cb(hwnd, _lparam):
+            if not user32.IsWindowVisible(hwnd):
+                return True
+            if not user32.GetWindowTextLengthW(hwnd):
+                return True
+            cls = ctypes.create_unicode_buffer(256)
+            user32.GetClassNameW(hwnd, cls, 256)
+            if cls.value != "Chrome_WidgetWin_1":
+                return True
+            title = ctypes.create_unicode_buffer(256)
+            user32.GetWindowTextW(hwnd, title, 256)
+            t = title.value or ""
+            low = t.lower()
+            if "google chrome" not in low:
+                return True
+            # Prefer the SmartCloud Chrome window; collect those first.
+            if any(k in low for k in ("smart", "completions", "switchboard",
+                                     "intergraph", "vtasks", "login")):
+                targets.insert(0, hwnd)
+            else:
+                targets.append(hwnd)
+            return True
+
+        user32.EnumWindows(WNDENUMPROC(_cb), 0)
+        if not targets:
+            return False
+        try:
+            user32.AllowSetForegroundWindow(0xFFFFFFFF)  # ASFW_ANY
+        except Exception:
+            pass
+        for hwnd in targets[:1]:
+            if user32.IsIconic(hwnd):
+                user32.ShowWindow(hwnd, SW_RESTORE)
+            user32.SetWindowPos(hwnd, 0, 80, 50, 1400, 900, 0x0040)
+            user32.ShowWindow(hwnd, SW_SHOWMAXIMIZED)
+            user32.BringWindowToTop(hwnd)
+            user32.SetForegroundWindow(hwnd)
+        return True
+    except Exception as exc:
+        try:
+            log("bring_chrome_to_front failed: %s" % str(exc)[:80])
+        except Exception:
+            pass
+        return False
+
+
 def session_page(ctx):
     """Return the tab that shows the switchboard, opening one if needed."""
     home = None
@@ -70,6 +136,10 @@ def session_page(ctx):
             continue
     if home is None:
         home = ctx.new_page()
+    try:
+        bring_chrome_to_front()
+    except Exception:
+        pass
     try:
         home.bring_to_front()
     except Exception:
@@ -87,12 +157,14 @@ def open_browser_window():
     """Start the standalone Chrome (only if it is not running yet)."""
     if cdp_alive():
         log("المتصفح شغال بالفعل")
+        bring_chrome_to_front()
         return True
     log("بنحل المتصفح من: %s" % BAT)
     os.startfile(BAT)
     v = wait_for_cdp(120)
     if v:
         log("المتصفح جاهز: %s" % v)
+        bring_chrome_to_front()
         return True
     log("!! المتصفح مفتحش - افتح الاختصار من الـ Desktop وجرب تاني")
     return False

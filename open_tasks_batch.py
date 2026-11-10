@@ -631,6 +631,10 @@ def main():
     if not ensure_browser():
         log("!! المتصفح لسه مش راد على 9222 - اقفل أي Chrome تاني و شغّل SmartCloud - Open Tasks")
         return 1
+    try:
+        sc_browser.bring_chrome_to_front()
+    except Exception:
+        pass
 
     # every record id is in the cache, but we still re-check the task id live so a
     # stale record can never open the wrong page (the check costs ~0s per task)
@@ -658,6 +662,10 @@ def main():
             for p in sorted(Path(PDF_DIR).glob("*.pdf")):
                 log("الملف: %s" % p)
             log("==================================================")
+            try:
+                sc_browser.bring_chrome_to_front()
+            except Exception:
+                pass
             wait_browser_open(len(done), minutes=(240 if args.keep_open is None else args.keep_open))
             return 0
 
@@ -713,6 +721,10 @@ def main():
                 for p in sorted(Path(PDF_DIR).glob("*.pdf")):
                     log("الملف: %s" % p)
                 log("==================================================")
+                try:
+                    sc_browser.bring_chrome_to_front()
+                except Exception:
+                    pass
                 wait_browser_open(len(done), minutes=(240 if args.keep_open is None else args.keep_open))
                 return 0
 
@@ -832,6 +844,11 @@ def main():
                 pass
             tabs.append((tid, row, page))
             log("   [tab %d/%d] %s -> record %s" % (len(tabs), len(plan_rows), row["task"], row["record"]))
+
+        try:
+            sc_browser.bring_chrome_to_front()
+        except Exception:
+            pass
 
         # ---- phase 3: one single pass, the tabs already load on their own
         log("\nالصفحات بتحمّل دلوقتي - استنى 30 ثانية وأتأكد مرة واحدة بس...")

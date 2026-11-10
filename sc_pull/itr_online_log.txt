@@ -67699,3 +67699,61 @@ Call log:
 [2026-11-10 10:00:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 10:00 (closed=7545) rc=0 [main a25fcaf] ITR live update 2026-11-10 10:00 (closed=7545)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-11-10 10:00:57]  >> git push OK
+[2026-11-10 10:01:03]  >> published itr_live_state.json (458505 bytes)
+[2026-11-10 10:01:06]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-10 10:01:06]  >> platform publish OK (1 file(s) updated, closed=7545)
+[2026-11-10 10:01:06] PAGES PUSH rc=0
+[2026-11-10 10:01:06] cycle OK closed=7545 open=2753 updated=2026-11-10 10:00:50
+[2026-11-10 10:03:07] reused the sync's always-open browser (port 9222)
+[2026-11-10 10:03:07] LOGGED IN
+[2026-11-10 10:03:21] pulled off=0 n=4000 accum=4000
+[2026-11-10 10:03:34] pulled off=4000 n=4000 accum=8000
+[2026-11-10 10:08:04] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-10 10:08:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:08:09] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:09:10] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:09:10] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:10:11] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:10:11] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:11:13] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:11:13] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:12:18] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:12:18] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:13:19] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:13:19] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:14:20] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:14:20] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:15:21] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:15:21] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:16:21] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:16:21] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:17:22] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:17:22] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:18:23] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 10:18:23] no pull tab this cycle - retrying in 120s
+[2026-11-10 10:19:28] closed pull tab (will reopen) CBD76C48 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-10 10:19:28] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-10 10:19:34] opened the one pull tab (none was open)
+[2026-11-10 10:19:34] reused the sync's always-open browser (port 9222)
+[2026-11-10 10:19:34] LOGGED IN
+[2026-11-10 10:19:44] pulled off=0 n=4000 accum=4000
+[2026-11-10 10:19:54] pulled off=4000 n=4000 accum=8000
+[2026-11-10 10:20:05] pulled off=8000 n=4000 accum=12000
+[2026-11-10 10:20:09] pulled off=12000 n=2008 accum=14008
+[2026-11-10 10:20:09] task index refreshed (6319 asset tags)
+[2026-11-10 10:20:10] milestone_map: 290 subsystems
+[2026-11-10 10:20:10] updated dashboard_data.json itr_summary.live
+[2026-11-10 10:20:13]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 10:20:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 10:20 (closed=7545) rc=0 [main cb38b84] ITR live update 2026-11-10 10:20 (closed=7545)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-11-10 10:20:21]  >> git push OK
+[2026-11-10 10:20:30]  >> published itr_live_state.json (458505 bytes)
+[2026-11-10 10:20:34]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-10 10:20:34]  >> platform publish OK (1 file(s) updated, closed=7545)
+[2026-11-10 10:20:34] PAGES PUSH rc=0
+[2026-11-10 10:20:34] cycle OK closed=7545 open=2753 updated=2026-11-10 10:20:10
+[2026-11-10 10:22:35] reused the sync's always-open browser (port 9222)
+[2026-11-10 10:22:35] LOGGED IN
+[2026-11-10 10:22:37] call err off=0: Page.evaluate: Connection closed while reading from the driver
+[2026-11-10 10:22:37] pull retry 2/3 - reloading Switchboard
+[2026-11-10 10:22:37] cycle got no complete data (fail 1/3)

@@ -96,7 +96,8 @@ def keep_sc_window_visible():
 
         SW_SHOWMAXIMIZED = 3
         SW_RESTORE = 9
-        SWP_SHOWWINDOW, SWP_NOACTIVATE = 0x0040, 0x0010
+        SWP_SHOWWINDOW = 0x0040
+        HWND_TOP = 0
         for hwnd in _sc_window_handles():
             r = RECT()
             user32.GetWindowRect(hwnd, ctypes.byref(r))
@@ -105,9 +106,18 @@ def keep_sc_window_visible():
                 # launcher, even when it happens to be minimised: a genuinely
                 # user-minimised window keeps a normal on-screen position. So
                 # restore it as well instead of leaving it invisible.
-                user32.SetWindowPos(hwnd, 0, 80, 50, 1400, 900,
-                                    SWP_SHOWWINDOW | SWP_NOACTIVATE)
-                log("SC window was off-screen (-32000) -> moved back on screen")
+                if user32.IsIconic(hwnd):
+                    user32.ShowWindow(hwnd, SW_RESTORE)
+                try:
+                    user32.AllowSetForegroundWindow(0xFFFFFFFF)  # ASFW_ANY
+                except Exception:
+                    pass
+                user32.SetWindowPos(hwnd, HWND_TOP, 80, 50, 1400, 900,
+                                    SWP_SHOWWINDOW)
+                user32.ShowWindow(hwnd, SW_SHOWMAXIMIZED)
+                user32.BringWindowToTop(hwnd)
+                user32.SetForegroundWindow(hwnd)
+                log("SC window was off-screen (-32000) -> moved back on screen & brought to front")
     except Exception as e:
         log(f"window guard failed: {e}")
 
