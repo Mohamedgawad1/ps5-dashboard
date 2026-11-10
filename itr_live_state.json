@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-11-09 20:57:33",
+  "updated": "2026-11-10 07:33:05",
   "total_tasks_ps5": 14008,
   "eit_total": 10298,
   "eit_by_discipline": {
@@ -11,7 +11,7 @@
   },
   "closed": 7536,
   "open": 2762,
-  "today_closed": 16,
+  "today_closed": 0,
   "closed_by_discipline": {
     "I": 3634,
     "E": 3606,
@@ -23,13 +23,6 @@
     "T": 782
   },
   "daily": [
-    {
-      "label": "2026-10-11",
-      "E": 22,
-      "I": 6,
-      "T": 0,
-      "Total": 28
-    },
     {
       "label": "2026-10-12",
       "E": 19,
@@ -232,25 +225,19 @@
       "I": 0,
       "T": 0,
       "Total": 16
+    },
+    {
+      "label": "2026-11-10",
+      "E": 0,
+      "I": 0,
+      "T": 0,
+      "Total": 0
     }
   ],
   "closed_this_week": 16,
   "closed_this_month": 337,
-  "today_milestone": [
-    {
-      "milestone": "Milestone B",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 2
-    },
-    {
-      "milestone": "Milestone D",
-      "disc": "E",
-      "discipline": "Electrical (E)",
-      "count": 14
-    }
-  ],
-  "today_milestone_total": 16,
+  "today_milestone": [],
+  "today_milestone_total": 0,
   "milestone_summary": [
     {
       "label": "Milestone A",
