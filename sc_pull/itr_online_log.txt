@@ -66998,3 +66998,219 @@ Call log:
 [2026-11-10 07:20:36] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
 [2026-11-10 07:20:36] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
 [2026-11-10 07:20:36] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:21:38] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:21:38] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:22:42] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:22:42] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:23:42] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:23:42] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:24:43] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:24:43] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:25:43] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:25:43] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:26:44] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:26:44] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:27:44] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:27:44] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:28:45] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:28:45] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:29:45] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:29:45] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:30:51] opened the one pull tab (none was open)
+[2026-11-10 07:30:51] reused the sync's always-open browser (port 9222)
+[2026-11-10 07:31:30] LOGGED IN
+[2026-11-10 07:32:01] pulled off=0 n=4000 accum=4000
+[2026-11-10 07:32:32] pulled off=4000 n=4000 accum=8000
+[2026-11-10 07:32:52] pulled off=8000 n=4000 accum=12000
+[2026-11-10 07:33:04] pulled off=12000 n=2008 accum=14008
+[2026-11-10 07:33:04] task index refreshed (6319 asset tags)
+[2026-11-10 07:33:04] milestone_map: 290 subsystems
+[2026-11-10 07:33:05] updated dashboard_data.json itr_summary.live
+[2026-11-10 07:33:08]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 07:33:09]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 07:33 (closed=7536) rc=0 [main df0beba] ITR live update 2026-11-10 07:33 (closed=7536)
+ 1 file changed, 11 insertions(+), 24 deletions(-)
+[2026-11-10 07:33:14]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 07:33:15]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 07:33:15] PAGES PUSH rc=1
+[2026-11-10 07:33:15] cycle OK closed=7536 open=2762 updated=2026-11-10 07:33:05
+[2026-11-10 07:35:17] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:35:17] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:36:18] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:36:18] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:37:29] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:37:29] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:38:29] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:38:29] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:39:30] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:39:30] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:40:30] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:40:30] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:41:31] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:41:31] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:42:32] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:42:32] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:43:36] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:43:36] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:44:37] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:44:37] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:45:38] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:45:38] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:46:39] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:46:39] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:47:43] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:47:43] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:48:44] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-10 07:48:44] no pull tab this cycle - retrying in 120s
+[2026-11-10 07:50:28] opened the one pull tab (none was open)
+[2026-11-10 07:50:28] reused the sync's always-open browser (port 9222)
+[2026-11-10 07:51:16] session expired -> auto-login
+[2026-11-10 07:51:21] ssologin click: ok
+[2026-11-10 07:51:31] sso handoff -> verify password page
+[2026-11-10 07:51:34] verify submit: submitted
+[2026-11-10 07:53:12] LOGGED IN
+[2026-11-10 07:53:31] pulled off=0 n=4000 accum=4000
+[2026-11-10 07:53:49] pulled off=4000 n=4000 accum=8000
+[2026-11-10 07:54:07] pulled off=8000 n=4000 accum=12000
+[2026-11-10 07:54:15] pulled off=12000 n=2008 accum=14008
+[2026-11-10 07:54:15] task index refreshed (6319 asset tags)
+[2026-11-10 07:54:16] updated dashboard_data.json itr_summary.live
+[2026-11-10 07:54:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 07:54:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 07:54 (closed=7536) rc=0 [main 05a61f1] ITR live update 2026-11-10 07:54 (closed=7536)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 07:54:21]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 07:54:22]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 07:54:22] PAGES PUSH rc=1
+[2026-11-10 07:54:22] cycle OK closed=7536 open=2762 updated=2026-11-10 07:54:16
+[2026-11-10 07:56:24] reused the sync's always-open browser (port 9222)
+[2026-11-10 07:56:28] LOGGED IN
+[2026-11-10 07:56:37] pulled off=0 n=4000 accum=4000
+[2026-11-10 07:56:49] pulled off=4000 n=4000 accum=8000
+[2026-11-10 07:56:59] pulled off=8000 n=4000 accum=12000
+[2026-11-10 07:57:06] pulled off=12000 n=2008 accum=14008
+[2026-11-10 07:57:06] task index refreshed (6319 asset tags)
+[2026-11-10 07:57:08] updated dashboard_data.json itr_summary.live
+[2026-11-10 07:57:09]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 07:57:10]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 07:57 (closed=7536) rc=0 [main 445e0af] ITR live update 2026-11-10 07:57 (closed=7536)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 07:57:16]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 07:57:17]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 07:57:17] PAGES PUSH rc=1
+[2026-11-10 07:57:17] cycle OK closed=7536 open=2762 updated=2026-11-10 07:57:07
+[2026-11-10 07:59:20] reused the sync's always-open browser (port 9222)
+[2026-11-10 07:59:32] LOGGED IN
+[2026-11-10 08:00:02] pulled off=0 n=4000 accum=4000
+[2026-11-10 08:00:35] pulled off=4000 n=4000 accum=8000
+[2026-11-10 08:00:55] pulled off=8000 n=4000 accum=12000
+[2026-11-10 08:01:12] pulled off=12000 n=2008 accum=14008
+[2026-11-10 08:01:13] task index refreshed (6319 asset tags)
+[2026-11-10 08:01:14] updated dashboard_data.json itr_summary.live
+[2026-11-10 08:01:16]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 08:01:17]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 08:01 (closed=7536) rc=0 [main ba05d86] ITR live update 2026-11-10 08:01 (closed=7536)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 08:01:22]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 08:01:24]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 08:01:24] PAGES PUSH rc=1
+[2026-11-10 08:01:24] cycle OK closed=7536 open=2762 updated=2026-11-10 08:01:14
+[2026-11-10 08:03:26] reused the sync's always-open browser (port 9222)
+[2026-11-10 08:03:34] LOGGED IN
+[2026-11-10 08:03:53] pulled off=0 n=4000 accum=4000
+[2026-11-10 08:04:05] pulled off=4000 n=4000 accum=8000
+[2026-11-10 08:04:16] pulled off=8000 n=4000 accum=12000
+[2026-11-10 08:04:22] pulled off=12000 n=2008 accum=14008
+[2026-11-10 08:04:22] task index refreshed (6319 asset tags)
+[2026-11-10 08:04:24] updated dashboard_data.json itr_summary.live
+[2026-11-10 08:04:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 08:04:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 08:04 (closed=7536) rc=0 [main 1a9d9c3] ITR live update 2026-11-10 08:04 (closed=7536)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 08:04:32]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 08:04:33]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 08:04:33] PAGES PUSH rc=1
+[2026-11-10 08:04:33] cycle OK closed=7536 open=2762 updated=2026-11-10 08:04:23
+[2026-11-10 08:06:36] reused the sync's always-open browser (port 9222)
+[2026-11-10 08:06:43] LOGGED IN
+[2026-11-10 08:06:55] pulled off=0 n=4000 accum=4000
+[2026-11-10 08:07:10] pulled off=4000 n=4000 accum=8000
+[2026-11-10 08:07:58] pulled off=8000 n=4000 accum=12000
+[2026-11-10 08:08:11] pulled off=12000 n=2008 accum=14008
+[2026-11-10 08:08:12] task index refreshed (6319 asset tags)
+[2026-11-10 08:08:13] updated dashboard_data.json itr_summary.live
+[2026-11-10 08:08:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 08:08:19]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 08:08 (closed=7536) rc=0 [main 651e963] ITR live update 2026-11-10 08:08 (closed=7536)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-10 08:08:24]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 08:08:25]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 08:08:25] PAGES PUSH rc=1
+[2026-11-10 08:08:25] cycle OK closed=7536 open=2762 updated=2026-11-10 08:08:12
+[2026-11-10 08:10:43] reused the sync's always-open browser (port 9222)
+[2026-11-10 08:11:06] LOGGED IN
+[2026-11-10 08:12:04] pulled off=0 n=4000 accum=4000
+[2026-11-10 08:12:33] pulled off=4000 n=4000 accum=8000
+[2026-11-10 08:13:13] pulled off=8000 n=4000 accum=12000
+[2026-11-10 08:13:51] pulled off=12000 n=2008 accum=14008
+[2026-11-10 08:13:51] task index refreshed (6319 asset tags)
+[2026-11-10 08:13:53] updated dashboard_data.json itr_summary.live
+[2026-11-10 08:13:56]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 08:13:56]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 08:13 (closed=7536) rc=0 [main 4d0d18d] ITR live update 2026-11-10 08:13 (closed=7536)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-11-10 08:14:00]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 08:14:02]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 08:14:02] PAGES PUSH rc=1
+[2026-11-10 08:14:02] cycle OK closed=7536 open=2762 updated=2026-11-10 08:13:52
+[2026-11-10 08:16:07] closed frozen tab C3875A1F https://wly04-sc.intergraphsmartcloud.com//ISC/Tools/vDashboardsUsers/
+[2026-11-10 08:16:10] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-10 08:16:30] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-10 08:16:34] closed frozen tab F686E26E https://wly04-sc.intergraphsmartcloud.com/ISC/tools/vTasks_TestsPlanne
+[2026-11-10 08:16:38] closed frozen tab E0774455 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1
+[2026-11-10 08:16:43] closed frozen tab 35DCEE71 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1
+[2026-11-10 08:16:48] closed frozen tab 6BF664A1 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1
+[2026-11-10 08:16:53] closed pull tab (will reopen) 34234423 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-10 08:17:04] opened the one pull tab (none was open)
+[2026-11-10 08:17:04] reused the sync's always-open browser (port 9222)
+[2026-11-10 08:17:13] LOGGED IN
+[2026-11-10 08:17:52] pulled off=0 n=4000 accum=4000
+[2026-11-10 08:18:47] pulled off=4000 n=4000 accum=8000
+[2026-11-10 08:19:22] pulled off=8000 n=4000 accum=12000
+[2026-11-10 08:19:41] pulled off=12000 n=2008 accum=14008
+[2026-11-10 08:19:41] task index refreshed (6319 asset tags)
+[2026-11-10 08:19:43] updated dashboard_data.json itr_summary.live
+[2026-11-10 08:19:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-10 08:19:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-10 08:19 (closed=7538) rc=0 [main eeda355] ITR live update 2026-11-10 08:19 (closed=7538)
+ 1 file changed, 48 insertions(+), 41 deletions(-)
+[2026-11-10 08:19:50]  !! push failed: ['remote: Invalid username or token. Password authentication is not supported for Git operations.', "fatal: Authentication failed for 'https://github.com/Mohamedgawad1/ps5-dashboard.git/'"]
+[2026-11-10 08:19:52]  !! publish itr_live_state.json failed: HTTP 401 {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+[2026-11-10 08:19:52] PAGES PUSH rc=1
+[2026-11-10 08:19:52] cycle OK closed=7538 open=2760 updated=2026-11-10 08:19:42

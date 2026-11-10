@@ -434,7 +434,6 @@ def open_session(pw):
             for p in c.pages:
                 pages.append(p)
         ours = None
-        switch_pages = []
         for p in pages:
             try:
                 u = p.url or ""
@@ -443,11 +442,8 @@ def open_session(pw):
             if u.startswith(MARK_URL):
                 ours = p
                 break
-            if "vDashboardsUsers/Switchboard.htm" in u:
-                switch_pages.append(p)
-        if ours is None and switch_pages:
-            ours = switch_pages[0]
-            pr("reusing the Switchboard tab already open - no new tab")
+        # Never reuse the user's own work tab: navigating it makes the page jump
+        # over the user. Only our dedicated, markered pull tab is safe to drive.
         if ours is None:
             try:
                 home = conn.contexts[0]
@@ -490,7 +486,8 @@ def _pull_once(page):
     show a wrong "ITR Closed" number for one cycle).
     """
     try:
-        page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
+        if "vDashboardsUsers/Switchboard.htm" not in (page.url or ""):
+            page.goto(SWITCHBOARD_URL, wait_until="domcontentloaded", timeout=60000)
     except Exception as e:
         pr("goto err:", str(e)[:100])
     if not wait_products(page, timeout_sec=45):
@@ -549,7 +546,10 @@ def pull_live(page, attempts=3):
         if attempt:
             pr("pull retry %d/%d - reloading Switchboard" % (attempt + 1, attempts))
             try:
-                page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                try:
+                    page.evaluate("location.hash = 'itr-sync'")
+                except Exception:
+                    page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
                 page.wait_for_timeout(4000)
             except Exception:
                 try:
@@ -1163,10 +1163,12 @@ def _run_once():
             return 0
         # keep the session alive: switch to Switchboard, wait until user closes it
         try:
-            page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
-            page.bring_to_front()
+            page.evaluate("location.hash = 'itr-sync'")
         except Exception:
-            pass
+            try:
+                page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+            except Exception:
+                pass
         pr("Session KEPT OPEN (Switchboard). Close the browser window to finish.")
         while not page.is_closed():
             time.sleep(5)
@@ -1716,9 +1718,12 @@ if __name__ == "__main__":
                             pr("cycle got no complete data (fail %d/%d)" % (fails, MAX_FAILED_CYCLES))
                         try:
                             if not page.is_closed():
-                                page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                                page.evaluate("location.hash = 'itr-sync'")
                         except Exception:
-                            pass
+                            try:
+                                page.goto(MARK_URL, wait_until="domcontentloaded", timeout=60000)
+                            except Exception:
+                                pass
                 except Exception as e:
                     fails += 1
                     pr("LOOP ERR:", str(e)[:200], "(fail %d/%d)" % (fails, MAX_FAILED_CYCLES))

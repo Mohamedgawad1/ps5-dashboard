@@ -63,6 +63,8 @@ def _sc_window_handles():
     def _cb(hwnd, _lparam):
         if not user32.IsWindowVisible(hwnd):
             return True
+        if user32.IsIconic(hwnd):
+            return True  # user-minimised: leave it alone, don't pop it back
         if not user32.GetWindowTextLengthW(hwnd):
             return True
         # Only Chrome top-level windows (class Chrome_WidgetWin_1).
@@ -72,7 +74,10 @@ def _sc_window_handles():
             return True
         r = wintypes.RECT()
         user32.GetWindowRect(hwnd, ctypes.byref(r))
-        if r.left <= -30000 or r.top <= -30000:
+        # A genuinely parked (invisible) window sits at -32000 WITHOUT being
+        # minimised. A minimised window also reports -32000 but is iconic and
+        # already skipped above, so this only catches the broken launcher case.
+        if (r.left <= -30000 or r.top <= -30000) and not user32.IsIconic(hwnd):
             found.append(hwnd)
         return True
 
@@ -100,11 +105,8 @@ def keep_sc_window_visible():
                 # launcher, even when it happens to be minimised: a genuinely
                 # user-minimised window keeps a normal on-screen position. So
                 # restore it as well instead of leaving it invisible.
-                if user32.IsIconic(hwnd):
-                    user32.ShowWindow(hwnd, SW_RESTORE)
                 user32.SetWindowPos(hwnd, 0, 80, 50, 1400, 900,
                                     SWP_SHOWWINDOW | SWP_NOACTIVATE)
-                user32.ShowWindow(hwnd, SW_SHOWMAXIMIZED)
                 log("SC window was off-screen (-32000) -> moved back on screen")
     except Exception as e:
         log(f"window guard failed: {e}")
