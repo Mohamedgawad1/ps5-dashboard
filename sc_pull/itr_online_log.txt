@@ -69031,3 +69031,7 @@ Call log:
 [2026-11-10 18:48:23]  >> platform publish OK (1 file(s) updated, closed=7588)
 [2026-11-10 18:48:23] PAGES PUSH rc=0
 [2026-11-10 18:48:23] cycle OK closed=7588 open=2710 updated=2026-11-10 18:47:39
+[2026-11-10 18:50:26] reused the sync's always-open browser (port 9222)
+[2026-11-10 18:50:26] LOGGED IN
+[2026-11-10 18:50:28] call err off=0: Page.evaluate: Connection closed while reading from the driver
+[2026-11-10 18:50:28] pull retry 2/3 - reloading Switchboard
