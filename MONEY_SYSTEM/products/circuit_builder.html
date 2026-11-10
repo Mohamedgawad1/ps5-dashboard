@@ -1,0 +1,3097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Classic Control — Circuit Builder</title>
+<style>
+:root{--bg:#0f172a;--panel:#111c33;--card:#1e293b;--accent:#93c5fd;--gold:#f5c518;--green:#00E676;--red:#ef4444;--amber:#f59e0b;--text:#f1f5f9;--muted:#94a3b8;--border:#334155}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;display:flex;flex-direction:column}
+.topbar{background:#0f172a;border-bottom:1px solid var(--border);padding:8px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:56px;flex:0 0 auto;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.topbar h1{font-size:15px;color:var(--accent);white-space:nowrap;font-weight:800}
+.topbar .sub{font-size:10.5px;color:var(--muted);white-space:nowrap}
+.topbar button,.topbar select,.topbar input{padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:600;cursor:pointer;font-size:12px}
+.topbar input{cursor:text;width:130px;font-weight:500}
+.topbar button:hover{border-color:var(--accent);color:var(--accent)}
+.topbar button.run{background:var(--green);border:none;color:#052e16;font-weight:900;box-shadow:0 4px 16px rgba(0,230,118,.35)}
+.topbar button.run:hover{filter:brightness(1.1);color:#052e16}
+.topbar button.danger{background:linear-gradient(135deg,var(--red),#b91c1c);border:none;color:#fff}
+.spacer{flex:1}
+.main{display:grid;grid-template-columns:186px 1fr 292px;gap:8px;padding:8px;flex:1;min-height:0}
+@media (max-width:1100px){.main{grid-template-columns:160px 1fr 240px;gap:6px;padding:6px}.pane{padding:6px}}
+.pane{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:8px;overflow:auto}
+.pane h3{color:var(--accent);font-size:11px;margin:8px 0 6px;border-bottom:1px solid var(--border);padding-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.pane h3:first-child{margin-top:0}
+.compbtn{display:flex;align-items:center;gap:6px;width:100%;padding:7px 8px;margin-bottom:5px;border-radius:9px;border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:600;font-size:11.5px;cursor:pointer;text-align:left;transition:.15s}
+.compbtn:hover{border-color:var(--green);color:var(--green);transform:translateX(2px)}
+.compbtn.active{background:var(--green);color:#052e16;border-color:var(--green);font-weight:800}
+.ar-only{display:inline}.en-only{display:none}
+body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
+.pgroup{border:1px solid var(--border);border-radius:10px;margin-bottom:8px;padding:4px 6px;background:rgba(15,23,42,.5)}
+.pgroup>summary{cursor:pointer;color:var(--accent);font-weight:800;font-size:11px;padding:4px 2px;list-style:none}
+.pgroup>summary::-webkit-details-marker{display:none}
+.pgroup>summary::before{content:'▸ ';color:var(--muted)}
+.pgroup[open]>summary::before{content:'▾ '}
+.pgroup .compbtn{margin-top:4px}
+.canvasWrap{display:flex;padding:6px;overflow:hidden}
+.canvas{position:relative;flex:1;height:100%;min-height:600px;background:#0a1020;border:2px solid var(--border);border-radius:10px;overflow:auto;touch-action:none}
+.stage{position:relative;min-width:900px;min-height:640px;width:100%;height:100%;background-image:linear-gradient(rgba(0,212,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.05) 1px,transparent 1px);background-size:24px 24px}
+.wires{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+.comp{position:absolute;z-index:2;border-radius:10px;background:linear-gradient(180deg,rgba(30,41,59,.96),rgba(15,23,42,.96));box-shadow:0 3px 10px rgba(0,0,0,.55),inset 0 0 0 1px #334155;cursor:grab;user-select:none;touch-action:none}
+.comp.selected{box-shadow:0 0 0 2px var(--accent),0 0 18px rgba(0,212,255,.45)}
+.comp .sym{position:absolute;inset:0}
+.comp .sym svg{width:100%;height:100%;overflow:visible;display:block}
+.port{position:absolute;width:14px;height:14px;border-radius:50%;background:#475569;border:2px solid #94a3b8;z-index:5;cursor:crosshair;touch-action:none}
+.port:hover{background:var(--gold);border-color:#fde68a}
+.port.hot{background:var(--gold);border-color:#fde68a;box-shadow:0 0 9px var(--gold)}
+.port.pending{background:var(--accent);border-color:#fff;box-shadow:0 0 12px var(--accent)}
+.wire{stroke:#64748b;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.wire.live{stroke:var(--gold);stroke-width:3;filter:drop-shadow(0 0 4px rgba(245,197,24,.8))}
+.statusrow{display:flex;justify-content:space-between;gap:6px;padding:4px 5px;border-bottom:1px solid #1e2a45;font-size:11px;align-items:center}
+.statusrow .v{font-weight:800;white-space:nowrap;font-size:10.5px}
+.on{color:var(--green)}.off{color:var(--muted)}.fault{color:var(--red)}
+.io{font-family:Consolas,monospace;font-size:10.5px;background:#0a1020;border:1px solid var(--border);border-radius:6px;padding:6px;margin-top:6px;max-height:170px;overflow:auto}
+.io div{padding:1px 0}.io .hi{color:var(--gold);font-weight:700}.io .lo{color:#5b6b8c}
+.prop{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;font-size:11px}
+.prop label{color:var(--muted)}
+.prop input,.prop select{width:100px;padding:4px 6px;border-radius:6px;border:1px solid var(--border);background:#0a1020;color:var(--text);font-size:11px}
+.prop input[type=text]{width:110px}
+.del{width:100%;padding:6px;border-radius:8px;border:1px solid #7f1d1d;background:#450a0a;color:#fecaca;font-weight:700;cursor:pointer;font-size:11px}
+.mini{padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:#0a1020;color:var(--text);font-weight:700;font-size:10.5px;cursor:pointer}
+.mini.go{border-color:#166534;background:#052e16;color:#86efac}
+.mini.stop{border-color:#7f1d1d;background:#450a0a;color:#fecaca}
+.muted{color:var(--muted);font-size:11px;line-height:1.6}
+.banner{position:absolute;left:50%;top:10px;transform:translateX(-50%);z-index:20;display:none;padding:8px 20px;border-radius:10px;font-weight:900;font-size:13px;letter-spacing:.5px;box-shadow:0 0 22px rgba(239,68,68,.8);white-space:nowrap}
+.banner.show{display:block}
+.banner.alarm{background:linear-gradient(135deg,#dc2626,#7f1d1d);color:#fff;animation:blink .7s infinite}
+.banner.short{background:linear-gradient(135deg,#f59e0b,#b45309);color:#1a1200}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin 1.05s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes vib{0%,100%{transform:translate(0,0)}25%{transform:translate(1px,-1px)}50%{transform:translate(-1px,1px)}75%{transform:translate(1px,1px)}}
+.vib{animation:vib .12s linear infinite;transform-box:fill-box;transform-origin:center}
+.pulse{animation:blink .45s infinite}
+.toast{position:fixed;right:16px;bottom:16px;background:#0f766e;color:#fff;padding:9px 16px;border-radius:9px;font-size:12px;font-weight:700;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.show{opacity:1}
+.hint{font-size:10.5px;color:var(--muted);line-height:1.7}
+.hint b{color:var(--gold)}
+.wide{width:100%;padding:7px;border-radius:8px;border:1px solid #1d4ed8;background:#0b2545;color:#bfdbfe;font-weight:800;font-size:11px;cursor:pointer;margin-bottom:6px}
+.plcio{font-family:Consolas,monospace;font-size:9.5px;color:#7dd3fc;background:#07101f;border:1px solid var(--border);border-radius:6px;padding:5px;margin-top:6px;word-break:break-all}
+.modal{position:fixed;inset:0;background:rgba(2,6,23,.82);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
+.modal.show{display:flex}
+.modalCard{width:min(840px,96vw);max-height:86vh;background:#0f172a;border:1px solid #334155;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.7);display:flex;flex-direction:column;overflow:hidden}
+.modalHead{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #1e2a45;color:#bfdbfe;font-size:13px;font-weight:800}
+.modalBody{padding:14px;overflow:auto}
+.rung{display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:#0a1020;border:1px solid #1e2a45;border-radius:8px;padding:6px;margin-bottom:7px}
+.rungNo{width:18px;height:18px;border-radius:50%;background:#1e293b;color:#93c5fd;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex:none}
+.rungContact{display:inline-flex;gap:3px;align-items:center;background:#0b1220;border:1px dashed #334155;border-radius:6px;padding:3px}
+.rung select{padding:3px 5px;border-radius:5px;border:1px solid #334155;background:#0a1020;color:#e8ecf4;font-size:10px}
+.rungArrow{color:#00d4ff;font-weight:900}
+.alarm-live{background:#450a0a;border:1px solid #ef4444;color:#fecaca;padding:8px;border-radius:8px;text-align:center;font-weight:900;font-size:12px;animation:blink .6s infinite}
+.alarm-idle{background:#0a1020;border:1px solid #1e2a45;color:#5b6b8c;padding:8px;border-radius:8px;text-align:center;font-weight:700;font-size:11px}
+@media print{
+  body{overflow:visible;background:#fff}
+  .topbar,.palette,.right,.toast,.banner{display:none!important}
+  .main{display:block;height:auto;padding:0}
+  .canvasWrap{padding:0;border:none}
+  .canvas{min-height:760px;background:#0f172a;border:1px solid #334155;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>⚡ Classic Control — منشئ الدوائر</h1>
+  <span class="sub">محاكي التحكم الكلاسيكي · PLC · VFD</span>
+  <button class="run" onclick="setSupply(true)"><span class="ar-only">▶ تشغيل</span><span class="en-only">▶ RUN</span></button>
+  <button onclick="setSupply(false)"><span class="ar-only">■ إيقاف</span><span class="en-only">■ STOP</span></button>
+  <button onclick="resetSim()"><span class="ar-only">↺ إعادة</span><span class="en-only">↺ RESET</span></button>
+  <button class="danger" onclick="clearAll()"><span class="ar-only">🗑 مسح</span><span class="en-only">🗑 CLEAR</span></button>
+  <span class="spacer"></span>
+  <input id="projName" value="My Circuit" title="Project name">
+  <select id="presetSel" onchange="loadPreset(this.value)">
+    <option value="">📚 Load Example…</option>
+    <option value="dol">DOL Starter</option>
+    <option value="startstop">Start / Stop + Lamp</option>
+    <option value="alarm">Alarm &amp; Protection</option>
+    <option value="reversing">Reversing Interlock</option>
+    <option value="timer">Timer (On-Delay)</option>
+    <option value="stardelta">Star-Delta Starter (Auto)</option>
+    <option value="multistart">Multi-Start / Multi-Stop</option>
+    <option value="generator">Generator / ATS Changeover</option>
+    <option value="level">Tank Level Control</option>
+    <option value="pressure">Pressure Booster Control</option>
+    <option value="temperature">Temperature / Heater Control</option>
+    <option value="flasher">Flasher / Blinking Lamps</option>
+    <option value="phase">Phase Failure Protection</option>
+    <option value="protection">MCCB + RCCB Protection</option>
+    <option value="motors">Motor Types Gallery</option>
+    <option value="vfd">VFD Motor Drive</option>
+    <option value="plc">PLC Motor Control (Ladder)</option>
+  </select>
+  <button onclick="saveProject()"><span class="ar-only">💾 حفظ</span><span class="en-only">💾 SAVE</span></button>
+  <button onclick="loadProject()"><span class="ar-only">📂 فتح</span><span class="en-only">📂 LOAD</span></button>
+  <button onclick="exportProject()"><span class="ar-only">⬇ JSON</span><span class="en-only">⬇ JSON</span></button>
+  <button onclick="document.getElementById('fileInput').click()"><span class="ar-only">⬆ JSON</span><span class="en-only">⬆ JSON</span></button>
+  <button onclick="window.print()"><span class="ar-only">🖨 طباعة</span><span class="en-only">🖨 PRINT</span></button>
+  <button id="langBtn" onclick="toggleLang()" title="Language">🌐 AR</button>
+  <button id="muteBtn" onclick="toggleMute()" title="Mute horn">🔊</button>
+</div>
+
+<div class="main">
+  <aside class="pane palette">
+    <details open class="pgroup"><summary><span class="ar-only">⚡ التحكم</span><span class="en-only">⚡ Control</span></summary>
+      <button class="compbtn" data-type="power" onclick="selectPlace('power')">🔌 Power 3Φ (L1 L2 L3 N PE)</button>
+      <button class="compbtn" data-type="power_1ph" onclick="selectPlace('power_1ph')">🔌 Power 1Φ (L N PE)</button>
+      <button class="compbtn" data-type="mcb" onclick="selectPlace('mcb')">🛑 MCB 1P</button>
+      <button class="compbtn" data-type="mcb_3p" onclick="selectPlace('mcb_3p')">🛑 MCB 3P</button>
+      <button class="compbtn" data-type="pb_no" onclick="selectPlace('pb_no')">🟢 Push Button (NO)</button>
+      <button class="compbtn" data-type="pb_nc" onclick="selectPlace('pb_nc')">🔴 Push Button (NC)</button>
+      <button class="compbtn" data-type="estop" onclick="selectPlace('estop')">⛔ E-STOP</button>
+      <button class="compbtn" data-type="selector" onclick="selectPlace('selector')">🎚 Selector Switch</button>
+      <button class="compbtn" data-type="contactor" onclick="selectPlace('contactor')">⚡ Contactor</button>
+      <button class="compbtn" data-type="relay" onclick="selectPlace('relay')">🔁 Aux Relay</button>
+      <button class="compbtn" data-type="timer" onclick="selectPlace('timer')">⏱ Timer (On-Delay)</button>
+      <button class="compbtn" data-type="timer_sd" onclick="selectPlace('timer_sd')">⏱ Star-Delta Timer</button>
+      <button class="compbtn" data-type="ol" onclick="selectPlace('ol')">📐 Overload Relay</button>
+      <button class="compbtn" data-type="lamp" onclick="selectPlace('lamp')">💡 Indicator Lamp</button>
+      <button class="compbtn" data-type="alarm" onclick="selectPlace('alarm')">🚨 Alarm (Horn)</button>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">⚙️ المواتير</span><span class="en-only">⚙️ Motors</span></summary>
+      <button class="compbtn" data-type="motor" onclick="selectPlace('motor')">⚙️ Motor 3-Phase</button>
+      <button class="compbtn" data-type="motor_1ph" onclick="selectPlace('motor_1ph')">⚙️ Motor 1-Phase</button>
+      <button class="compbtn" data-type="motor_dc" onclick="selectPlace('motor_dc')">⚙️ DC Motor</button>
+      <button class="compbtn" data-type="motor_stepper" onclick="selectPlace('motor_stepper')">⚙️ Stepper Motor</button>
+      <button class="compbtn" data-type="motor_servo" onclick="selectPlace('motor_servo')">⚙️ Servo Motor</button>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">🛡 الحماية والمصادر</span><span class="en-only">🛡 Protection &amp; Sources</span></summary>
+      <button class="compbtn" data-type="mccb" onclick="selectPlace('mccb')">🔲 MCCB 1P</button>
+      <button class="compbtn" data-type="mccb_3p" onclick="selectPlace('mccb_3p')">🔲 MCCB 3P</button>
+      <button class="compbtn" data-type="rccb" onclick="selectPlace('rccb')">🛡 RCCB / RCBO</button>
+      <button class="compbtn" data-type="fuse" onclick="selectPlace('fuse')">🧯 Fuse</button>
+      <button class="compbtn" data-type="spd" onclick="selectPlace('spd')">⚡ SPD Surge</button>
+      <button class="compbtn" data-type="phase" onclick="selectPlace('phase')">🟢 Phase Monitor</button>
+      <button class="compbtn" data-type="generator" onclick="selectPlace('generator')">🔋 Generator</button>
+      <button class="compbtn" data-type="ats" onclick="selectPlace('ats')">🔀 ATS Changeover</button>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">⏱ المؤقتات والمستشعرات</span><span class="en-only">⏱ Timers &amp; Sensors</span></summary>
+      <button class="compbtn" data-type="timer_off" onclick="selectPlace('timer_off')">⏱ Off-Delay Timer</button>
+      <button class="compbtn" data-type="flasher" onclick="selectPlace('flasher')">🔔 Flasher Relay</button>
+      <button class="compbtn" data-type="float" onclick="selectPlace('float')">🌊 Level / Float</button>
+      <button class="compbtn" data-type="pressure" onclick="selectPlace('pressure')">🎛 Pressure Switch</button>
+      <button class="compbtn" data-type="thermostat" onclick="selectPlace('thermostat')">🌡 Thermostat</button>
+      <button class="compbtn" data-type="ctmeter" onclick="selectPlace('ctmeter')">📟 CT / Ammeter</button>
+      <button class="compbtn" data-type="voltmeter" onclick="selectPlace('voltmeter')">🔵 Voltmeter</button>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">🔗 التوصيل</span><span class="en-only">🔗 Wiring</span></summary>
+      <button class="compbtn" data-type="terminal" onclick="selectPlace('terminal')">🔗 Terminal Block</button>
+      <button class="compbtn" data-type="busbar" onclick="selectPlace('busbar')">🟫 Busbar</button>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">🧠 PLC ومحركات السرعة</span><span class="en-only">🧠 PLC &amp; Drives</span></summary>
+      <button class="compbtn" data-type="plc" onclick="selectPlace('plc')">🧠 PLC (Ladder)</button>
+      <button class="compbtn" data-type="vfd" onclick="selectPlace('vfd')">🎛 VFD Motor Drive</button>
+    </details>
+    <details class="pgroup"><summary><span class="ar-only">⭐ دليل توصيل Star-Delta</span><span class="en-only">⭐ Star-Delta Guide</span></summary>
+      <div class="hint ar-only">
+        <b>الموتور 3 فاز = 6 أطراف:</b> U1,V1,W1 دخل / U2,V2,W2 خرج.<br><br>
+        <b>1) الخط الرئيسي:</b> L1,L2,L3 ← قاطع 3P ← كونتاكتور رئيسي K1 ← أوفرلود 3P ← U1,V1,W1.<br><br>
+        <b>2) Star (تشغيل):</b> وصّل U2+V2+W2 مع بعض (عبر كونتاكتور Star K3).<br>
+        <b>3) Delta (تشغيل دائم):</b> وصّل U2→V1 و V2→W1 و W2→U1 (عبر كونتاكتور Delta K2).<br><br>
+        <b>4) التحكم:</b> زر Stop NC ← E-Stop ← Overload 95/96 ← زر Start NO ← كويل K1، مع Hold من K1 13/14.<br>
+        <b>5) التايمر:</b> كويل Star-Delta Timer مع K1. الطرف 15-16 يغذي K3 (Star)، والطرف 15-18 يغذي K2 (Delta).<br>
+        <b>6) التعشيق:</b> ضع NC بتاع K2 قبل كويل K3، وNC بتاع K3 قبل كويل K2.<br><br>
+        <b>النتيجة:</b> يبدأ الموتور Star ثم يتحول Delta تلقائياً، والمؤشر على الموتور يوضح STAR / DELTA / OPEN.
+      </div>
+      <div class="hint en-only">
+        <b>3-phase motor = 6 terminals:</b> U1,V1,W1 = IN / U2,V2,W2 = OUT.<br><br>
+        <b>1) Main line:</b> L1,L2,L3 → 3P breaker → main contactor K1 → 3P overload → U1,V1,W1.<br><br>
+        <b>2) Star:</b> link U2+V2+W2 together (through star contactor K3).<br>
+        <b>3) Delta:</b> link U2→V1, V2→W1, W2→U1 (through delta contactor K2).<br><br>
+        <b>4) Control:</b> Stop NC → E-Stop → Overload 95/96 → Start NO → K1 coil, with K1 13/14 hold.<br>
+        <b>5) Timer:</b> Star-Delta timer coil with K1. 15-16 feeds K3 (star), 15-18 feeds K2 (delta).<br>
+        <b>6) Interlock:</b> K2 NC in series with K3 coil, K3 NC in series with K2 coil.<br><br>
+        <b>Result:</b> motor starts in star, changes to delta automatically, and the motor badge shows STAR / DELTA / OPEN.
+      </div>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">ℹ️ طريقة الاستخدام</span><span class="en-only">ℹ️ How to use</span></summary>
+      <div class="hint ar-only">
+        1. اختر مكوّن ثم انقر على اللوحة لوضعه.<br>
+        2. اسحب المكوّن لتحريكه.<br>
+        3. انقر منفذين (نقاط) لتوصيل سلك.<br>
+        4. انقر جسم المكوّن: تشغيل/فصل، ضغط زر، فصل أوفرلود.<br>
+        5. زر <b>تشغيل</b> اضغط واستمر (momentary).<br>
+        6. كليك يمين على المكوّن = حذف.
+      </div>
+      <div class="hint en-only">
+        1. Choose a component, then click on canvas to place it.<br>
+        2. Drag a component to move it.<br>
+        3. Click two ports (dots) to wire them.<br>
+        4. Click a component body: toggle, push, or reset overload.<br>
+        5. RUN button is momentary (press and hold).<br>
+        6. Right-click a component to delete it.
+      </div>
+    </details>
+  </aside>
+
+  <section class="pane canvasWrap">
+    <div class="canvas" id="canvas">
+      <div class="stage" id="stage">
+        <svg class="wires" id="wireLayer"></svg>
+        <div class="banner" id="banner"></div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="pane right">
+    <h3>البيانات · Properties</h3>
+    <div id="props"><div class="muted">اختر مكوّناً لتعديل بياناته.</div></div>
+    <h3>الحالة المباشرة · Live Status</h3>
+    <div id="statuslist"></div>
+    <h3>الإنذار · Alarm</h3>
+    <div id="alarmBox"><div class="alarm-idle">SILENT</div></div>
+    <h3>مراقبة I/O · I/O Monitor</h3>
+    <div class="io" id="iomonitor"></div>
+  </aside>
+</div>
+
+<input type="file" id="fileInput" accept=".json,application/json" style="display:none" onchange="importProject(event)">
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="plcModal" onclick="if(event.target===this)closePlcEditor()">
+  <div class="modalCard">
+    <div class="modalHead">
+      <span id="plcTitle">PLC Ladder Editor</span>
+      <button class="mini" onclick="closePlcEditor()">✕ Close</button>
+    </div>
+    <div class="modalBody">
+      <div id="plcRungs"></div>
+      <button class="wide" onclick="plcAddRung()">＋ Add rung</button>
+      <div class="muted">Contacts: <b>I1–I4</b> inputs · <b>Q1–Q4</b> outputs · <b>M1–M4</b> memory · <b>T1</b> timer · <b>C1</b> counter. Choose NO or NC for each contact. Rungs are evaluated top-to-bottom every PLC scan.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const CANVAS = $('canvas');
+const STAGE = $('stage');
+const NS = 'http://www.w3.org/2000/svg';
+
+/* ---------- Component types (size + port geometry) ---------- */
+const TYPES = {
+  power:    { label:'Power Supply 3Φ',  w:120, h:160, color:'#ef4444', ports:[
+    {id:'L1',x:115,y:25},{id:'L2',x:115,y:50},{id:'L3',x:115,y:75},
+    {id:'N',x:115,y:115},{id:'PE',x:115,y:145}] },
+  power_1ph:{ label:'Power Supply 1Φ',  w:120, h:125, color:'#ef4444', ports:[
+    {id:'L',x:115,y:30},{id:'N',x:115,y:70},{id:'PE',x:115,y:110}] },
+  mcb:      { label:'MCB 1P',         w:90,  h:90,  color:'#f59e0b', ports:[{id:'1',x:7,y:55},{id:'2',x:83,y:55}] },
+  mcb_3p:   { label:'MCB 3P',         w:110, h:170, color:'#f59e0b', ports:[
+    {id:'1',x:22,y:8},{id:'3',x:55,y:8},{id:'5',x:88,y:8},
+    {id:'2',x:22,y:162},{id:'4',x:55,y:162},{id:'6',x:88,y:162}] },
+  pb_no:    { label:'Push Button NO',w:90,  h:95,  color:'#22c55e', ports:[{id:'1',x:7,y:68},{id:'2',x:83,y:68}] },
+  pb_nc:    { label:'Push Button NC',w:90,  h:95,  color:'#ef4444', ports:[{id:'1',x:7,y:68},{id:'2',x:83,y:68}] },
+  estop:    { label:'E-STOP',        w:90,  h:100, color:'#ef4444', ports:[{id:'1',x:7,y:72},{id:'2',x:83,y:72}] },
+  selector: { label:'Selector',      w:90,  h:95,  color:'#38bdf8', ports:[{id:'1',x:7,y:68},{id:'2',x:83,y:68}] },
+  contactor:{ label:'Contactor 3P',     w:180, h:240, color:'#00d4ff', ports:[
+    {id:'A1',x:12,y:40},{id:'A2',x:12,y:210},
+    {id:'1',x:60,y:8},{id:'3',x:105,y:8},{id:'5',x:150,y:8},
+    {id:'2',x:60,y:232},{id:'4',x:105,y:232},{id:'6',x:150,y:232},
+    {id:'13',x:168,y:130},{id:'14',x:168,y:155},
+    {id:'21',x:168,y:180},{id:'22',x:168,y:205}] },
+  relay:    { label:'Aux Relay',      w:130, h:150, color:'#a78bfa', ports:[
+    {id:'A1',x:10,y:30},{id:'A2',x:10,y:120},
+    {id:'13',x:120,y:40},{id:'14',x:120,y:70},
+    {id:'21',x:120,y:95},{id:'22',x:120,y:125}] },
+  timer:    { label:'Timer',         w:140, h:150, color:'#f472b6', ports:[
+    {id:'A1',x:10,y:30},{id:'A2',x:10,y:120},
+    {id:'15',x:130,y:45},{id:'18',x:130,y:105}] },
+  ol:       { label:'Overload 3P',    w:140, h:170, color:'#f59e0b', ports:[
+    {id:'1',x:30,y:8},{id:'3',x:70,y:8},{id:'5',x:110,y:8},
+    {id:'2',x:30,y:122},{id:'4',x:70,y:122},{id:'6',x:110,y:122},
+    {id:'95',x:30,y:145},{id:'96',x:70,y:145},
+    {id:'97',x:30,y:162},{id:'98',x:70,y:162}] },
+  lamp:     { label:'Lamp',          w:90,  h:90,  color:'#f5c518', ports:[{id:'1',x:8,y:55},{id:'2',x:82,y:55}] },
+  motor:    { label:'Motor 3-Phase', w:180, h:180, color:'#a78bfa', ports:[
+    {id:'U1',x:8,y:55},{id:'V1',x:8,y:90},{id:'W1',x:8,y:125},
+    {id:'U2',x:172,y:55},{id:'V2',x:172,y:90},{id:'W2',x:172,y:125}] },
+  motor_1ph:{ label:'Motor 1-Phase', w:110, h:110, color:'#c084fc', ports:[{id:'1',x:8,y:55},{id:'2',x:102,y:55}] },
+  motor_dc: { label:'DC Motor',      w:110, h:110, color:'#60a5fa', ports:[{id:'1',x:8,y:55},{id:'2',x:102,y:55}] },
+  motor_stepper:{label:'Stepper Motor',w:110,h:110,color:'#34d399', ports:[{id:'1',x:8,y:55},{id:'2',x:102,y:55}] },
+  motor_servo:{label:'Servo Motor',  w:110, h:110, color:'#fb923c', ports:[{id:'1',x:8,y:55},{id:'2',x:102,y:55}] },
+  alarm:    { label:'Alarm Horn',    w:100, h:100, color:'#ef4444', ports:[{id:'1',x:8,y:60},{id:'2',x:92,y:60}] },
+  mccb:     { label:'MCCB',          w:104, h:110, color:'#f59e0b', ports:[{id:'1',x:8,y:55},{id:'2',x:96,y:55}] },
+  mccb_3p:  { label:'MCCB 3P',       w:140, h:160, color:'#f59e0b', ports:[
+    {id:'1',x:35,y:8},{id:'3',x:70,y:8},{id:'5',x:105,y:8},
+    {id:'2',x:35,y:152},{id:'4',x:70,y:152},{id:'6',x:105,y:152}] },
+  rccb:     { label:'RCCB / RCBO',   w:104, h:110, color:'#f59e0b', ports:[{id:'1',x:8,y:55},{id:'2',x:96,y:55}] },
+  fuse:     { label:'Fuse',          w:84,  h:90,  color:'#f59e0b', ports:[{id:'1',x:7,y:55},{id:'2',x:77,y:55}] },
+  spd:      { label:'SPD Surge',     w:92,  h:110, color:'#38bdf8', ports:[{id:'1',x:8,y:55},{id:'2',x:84,y:55}] },
+  timer_off:{ label:'Timer Off-Delay',w:140,h:150, color:'#f472b6', ports:[
+    {id:'A1',x:10,y:30},{id:'A2',x:10,y:120},{id:'15',x:130,y:45},{id:'18',x:130,y:105}] },
+  timer_sd: { label:'Star-Delta Timer',w:150,h:170, color:'#f472b6', ports:[
+    {id:'A1',x:10,y:40},{id:'A2',x:10,y:150},
+    {id:'15',x:140,y:45},{id:'16',x:140,y:80},{id:'18',x:140,y:125}] },
+  flasher:  { label:'Flasher Relay', w:140, h:150, color:'#f472b6', ports:[
+    {id:'A1',x:10,y:30},{id:'A2',x:10,y:120},{id:'15',x:130,y:45},{id:'18',x:130,y:105}] },
+  phase:    { label:'Phase Monitor', w:130, h:140, color:'#22c55e', ports:[
+    {id:'13',x:120,y:45},{id:'14',x:120,y:75},{id:'21',x:120,y:100},{id:'22',x:120,y:130}] },
+  terminal: { label:'Terminal Block',w:100, h:70,  color:'#94a3b8', ports:[
+    {id:'1',x:8,y:20},{id:'2',x:92,y:20},{id:'3',x:8,y:50},{id:'4',x:92,y:50}] },
+  busbar:   { label:'Busbar',        w:150, h:100, color:'#f59e0b', ports:[
+    {id:'1',x:8,y:50},{id:'2',x:40,y:15},{id:'3',x:75,y:15},{id:'4',x:110,y:15},{id:'5',x:142,y:50},{id:'6',x:75,y:85}] },
+  generator:{ label:'Generator',     w:110, h:100, color:'#22c55e', ports:[{id:'L',x:102,y:35},{id:'N',x:102,y:70}] },
+  ats:      { label:'ATS Changeover',w:160, h:180, color:'#00d4ff', ports:[
+    {id:'AL',x:8,y:35},{id:'AN',x:8,y:70},{id:'BL',x:8,y:110},{id:'BN',x:8,y:145},{id:'OL',x:152,y:70},{id:'ON',x:152,y:110}] },
+  ctmeter:  { label:'CT / Ammeter',  w:100, h:100, color:'#38bdf8', ports:[{id:'1',x:8,y:55},{id:'2',x:92,y:55}] },
+  voltmeter:{ label:'Voltmeter',     w:120, h:110, color:'#38bdf8', ports:[{id:'1',x:8,y:60},{id:'2',x:112,y:60}] },
+  float:    { label:'Float / Level', w:100, h:120, color:'#38bdf8', ports:[{id:'1',x:8,y:60},{id:'2',x:92,y:60}] },
+  pressure: { label:'Pressure Switch',w:110,h:110, color:'#38bdf8', ports:[{id:'1',x:8,y:70},{id:'2',x:102,y:70}] },
+  thermostat:{label:'Thermostat',    w:100, h:120, color:'#38bdf8', ports:[{id:'1',x:8,y:60},{id:'2',x:92,y:60}] },
+  plc:      { label:'PLC Controller', w:240, h:230, color:'#00d4ff', ports:[
+    {id:'L',x:8,y:22},{id:'N',x:8,y:48},
+    {id:'I1',x:8,y:92},{id:'I2',x:8,y:122},{id:'I3',x:8,y:152},{id:'I4',x:8,y:182},
+    {id:'Q1',x:232,y:92},{id:'Q2',x:232,y:122},{id:'Q3',x:232,y:152},{id:'Q4',x:232,y:182}] },
+  vfd:      { label:'VFD Drive',      w:180, h:180, color:'#00d4ff', ports:[
+    {id:'L',x:8,y:38},{id:'N',x:8,y:70},
+    {id:'1',x:172,y:60},{id:'2',x:172,y:105}] }
+};
+
+const PREFIX = {
+  power:'PS',power_1ph:'PS',mcb:'F',mcb_3p:'QF',pb_no:'S',pb_nc:'S',estop:'E',selector:'SA',contactor:'K',
+  relay:'KA',timer:'KT',timer_sd:'KT',ol:'F',lamp:'H',motor:'M',motor_1ph:'M',motor_dc:'M',motor_stepper:'SM',motor_servo:'SV',alarm:'HA',
+  mccb:'Q',mccb_3p:'QM',rccb:'Q',fuse:'FU',spd:'SPD',timer_off:'KT',flasher:'KF',phase:'KP',
+  terminal:'XT',busbar:'BB',generator:'G',ats:'ATS',ctmeter:'PA',voltmeter:'PV',float:'LS',
+  pressure:'PS',thermostat:'TS',plc:'PLC',vfd:'VFD'
+};
+
+let components = [];
+let wires = [];
+let idCounter = 1;
+let placing = null;
+let selectedComp = null;
+let pendingPort = null;
+let supplyOn = true;
+let supplyV = 230;
+let counters = {};
+let dragState = null;
+let hotMap = {};
+let shorted = false;
+let sourceFault = false;
+let muted = false;
+let beepTimer = null;
+let audioCtx = null;
+
+function nextLabel(type){
+  const p = PREFIX[type] || 'X';
+  counters[p] = (counters[p] || 0) + 1;
+  return p + counters[p];
+}
+function isMotor(type){
+  return type === 'motor' || type === 'motor_1ph' || type === 'motor_dc' ||
+         type === 'motor_stepper' || type === 'motor_servo';
+}
+function isPower(type){ return type === 'power' || type === 'power_1ph'; }
+function defaultData(type){
+  if(type === 'motor')  return { kw:2.2, fla:4.8, rpm:1440, poles:4, volts:'400 V Δ/Y', connection:'DELTA' };
+  if(type === 'motor_1ph') return { kw:0.75, fla:4.2, rpm:1440, cap:25, volts:'230 V' };
+  if(type === 'motor_dc')  return { kw:1.5, fla:8, rpm:1500, volts:'220 V DC' };
+  if(type === 'motor_stepper') return { kw:0.1, fla:2, rpm:300, steps:200 };
+  if(type === 'motor_servo')   return { kw:0.75, fla:3, rpm:3000, encoder:'2500 ppr' };
+  if(type === 'ol')     return { setA:6, cls:'Class 10' };
+  if(type === 'flasher')return { period:1 };
+  if(type === 'generator') return { kva:50, volts:'400 V', fuel:'Diesel' };
+  if(type === 'ats')    return { auto:false, poles:'4P', rating:'100 A' };
+  if(type === 'float')  return { value:30, setpoint:70, unit:'%', contact:'NO' };
+  if(type === 'pressure') return { value:3, setpoint:6, unit:'bar', contact:'NO' };
+  if(type === 'thermostat') return { value:25, setpoint:80, unit:'°C', contact:'NO' };
+  if(type === 'vfd')    return { kw:2.2, ratedA:4.8, target:50, accel:10, decel:10, mode:'V/f', volts:'400 V' };
+  if(type === 'mcb')    return { curve:'C', rating:16, poles:'1P' };
+  if(type === 'mcb_3p') return { curve:'C', rating:25, poles:'3P' };
+  if(type === 'mccb')   return { rating:63, poles:'3P', trip:'Thermal-Magnetic' };
+  if(type === 'mccb_3p')return { rating:63, poles:'3P', trip:'Thermal-Magnetic' };
+  if(type === 'rccb')   return { sens:'30 mA', poles:'4P', type:'AC' };
+  if(type === 'fuse')   return { rating:16, type:'gG', volts:'400 V' };
+  if(type === 'spd')    return { type:'Type 2', uc:'400 V' };
+  if(type === 'terminal') return { size:'4 mm²' };
+  if(type === 'busbar')   return { bar:'100 A' };
+  if(type === 'ctmeter')  return { ratio:'100/5', cls:'0.5' };
+  if(type === 'voltmeter')return { cls:'1.5', range:'0–500 V AC', mode:'Digital' };
+  if(type === 'contactor') return { coil:'230 V AC', ac3:'9 A' };
+  if(type === 'relay')     return { coil:'230 V AC' };
+  if(type === 'timer' || type === 'timer_off' || type === 'timer_sd') return { range:'0–30 s' };
+  if(type === 'phase')     return { };
+  if(type === 'plc')    return {
+    model:'LOGO! 8', timerDelay:3, counterPreset:3,
+    rungs:[
+      { contacts:[{addr:'I1',nc:false},{addr:'I2',nc:false}], out:'M1' },
+      { contacts:[{addr:'M1',nc:false},{addr:'I2',nc:false}], out:'M1' },
+      { contacts:[{addr:'M1',nc:false}], out:'Q1' },
+      { contacts:[{addr:'M1',nc:false}], out:'Q2' }
+    ]
+  };
+  return {};
+}
+function defaultState(type){
+  switch(type){
+    case 'mcb':      return { closed:true };
+    case 'mcb_3p':   return { closed:true };
+    case 'pb_no':    return { pressed:false };
+    case 'pb_nc':    return { pressed:false };
+    case 'estop':    return { tripped:false };
+    case 'selector': return { on:false };
+    case 'contactor':
+    case 'relay':    return { coil:false };
+    case 'timer':    return { coil:false, t:0, delay:3, elapsed:false };
+    case 'timer_sd': return { coil:false, t:0, delay:8, elapsed:false };
+    case 'ol':       return { tripped:false };
+    case 'lamp':
+    case 'motor':
+    case 'motor_1ph':
+    case 'motor_dc':
+    case 'motor_stepper':
+    case 'motor_servo':
+    case 'alarm':    return { energized:false, amps:0, runTime:0 };
+    case 'mccb':     return { closed:true };
+    case 'mccb_3p':  return { closed:true };
+    case 'rccb':     return { closed:true, tripped:false };
+    case 'fuse':     return { blown:false };
+    case 'spd':      return { fault:false };
+    case 'timer_off':return { coil:false, t:0, delay:3, held:false };
+    case 'flasher':  return { coil:false, t:0, period:1, blinkOn:false };
+    case 'phase':    return { fault:false, healthy:true };
+    case 'generator':return { on:false };
+    case 'ats':      return { pos:'A' };
+    case 'ctmeter':  return { energized:false, amps:0 };
+    case 'voltmeter':return { energized:false, volts:null };
+    case 'float':
+    case 'pressure':
+    case 'thermostat': return { triggered:false };
+    case 'plc':       return {
+      in:{I1:false,I2:false,I3:false,I4:false},
+      out:{Q1:false,Q2:false,Q3:false,Q4:false},
+      mem:{M1:false,M2:false,M3:false,M4:false},
+      timer:{t:0,done:false}, counter:{count:0,done:false,prev:false}, scans:0, run:true
+    };
+    case 'vfd':       return { on:false, fault:false, freq:0 };
+    default:         return {};
+  }
+}
+function addComp(type, x, y, label){
+  const c = { id:'c'+(idCounter++), type, x, y, label:label || nextLabel(type),
+              state:defaultState(type), data:defaultData(type) };
+  components.push(c);
+  return c;
+}
+function changeType(id, newType){
+  const c = byId(id); if(!c || c.type === newType || !TYPES[newType]) return;
+  const oldPrefix = PREFIX[c.type] || 'X';
+  const newPrefix = PREFIX[newType] || 'X';
+  const m = c.label.match(new RegExp('^' + oldPrefix + '(\\d+)$'));
+  if(m) c.label = newPrefix + m[1];
+  c.type = newType;
+  c.data = defaultData(newType);
+  c.state = defaultState(newType);
+  simulate(0); render();
+  toast('Changed to ' + TYPES[newType].label);
+}
+function setMeta(id, key, val){
+  const c = byId(id); if(!c) return;
+  c.data[key] = val;
+  simulate(0); renderProps(); paint();
+}
+
+/* ---------- PLC ladder editor ---------- */
+let plcEditing = null;
+const PLC_ADDRS = ['I1','I2','I3','I4','Q1','Q2','Q3','Q4','M1','M2','M3','M4','T1','C1'];
+const PLC_OUTS  = ['Q1','Q2','Q3','Q4','M1','M2','M3','M4','T1','C1'];
+function plcAddrOptions(sel){
+  return PLC_ADDRS.map(a => `<option${a===sel?' selected':''}>${a}</option>`).join('');
+}
+function plcOutOptions(sel){
+  return '<option value="">—</option>' + PLC_OUTS.map(a => `<option${a===sel?' selected':''}>${a}</option>`).join('');
+}
+function openPlcEditor(id){
+  const c = byId(id); if(!c || c.type !== 'plc') return;
+  plcEditing = id;
+  $('plcTitle').textContent = c.label + ' · Ladder Editor';
+  renderPlcEditor();
+  $('plcModal').classList.add('show');
+}
+function closePlcEditor(){
+  plcEditing = null;
+  $('plcModal').classList.remove('show');
+}
+function renderPlcEditor(){
+  const c = byId(plcEditing);
+  if(!c){ closePlcEditor(); return; }
+  const box = $('plcRungs');
+  if(!box) return;
+  box.innerHTML = (c.data.rungs || []).map((r, ri) => {
+    const contacts = (r.contacts || []).map((ct, ci) => `
+      <span class="rungContact">
+        <select onchange="plcSetContact('${c.id}',${ri},${ci},'addr',this.value)">${plcAddrOptions(ct.addr)}</select>
+        <select onchange="plcSetContact('${c.id}',${ri},${ci},'nc',this.value==='1')">
+          <option value="0"${!ct.nc?' selected':''}>NO</option>
+          <option value="1"${ct.nc?' selected':''}>NC</option>
+        </select>
+        <button class="mini" onclick="plcDelContact('${c.id}',${ri},${ci})">－</button>
+      </span>`).join('');
+    return `<div class="rung">
+      <span class="rungNo">${ri + 1}</span>
+      ${contacts}
+      <button class="mini" onclick="plcAddContact('${c.id}',${ri})">＋ contact</button>
+      <span class="rungArrow">→</span>
+      <select onchange="plcSetOut('${c.id}',${ri},this.value)">${plcOutOptions(r.out)}</select>
+      <button class="mini stop" onclick="plcDelRung('${c.id}',${ri})">🗑 rung</button>
+    </div>`;
+  }).join('') || '<div class="muted" style="margin-bottom:8px">No rungs yet — add one below.</div>';
+}
+function plcCommit(){
+  const c = byId(plcEditing);
+  if(c){ simulate(0); paint(); }
+  renderPlcEditor();
+}
+function plcSetContact(id, ri, ci, key, val){
+  const c = byId(id); if(!c || !c.data.rungs[ri]) return;
+  c.data.rungs[ri].contacts[ci][key] = val;
+  plcCommit();
+}
+function plcAddContact(id, ri){
+  const c = byId(id); if(!c || !c.data.rungs[ri]) return;
+  c.data.rungs[ri].contacts.push({ addr:'I1', nc:false });
+  plcCommit();
+}
+function plcDelContact(id, ri, ci){
+  const c = byId(id); if(!c || !c.data.rungs[ri]) return;
+  c.data.rungs[ri].contacts.splice(ci, 1);
+  plcCommit();
+}
+function plcSetOut(id, ri, val){
+  const c = byId(id); if(!c || !c.data.rungs[ri]) return;
+  c.data.rungs[ri].out = val;
+  plcCommit();
+}
+function plcAddRung(){
+  const c = byId(plcEditing); if(!c) return;
+  if(!Array.isArray(c.data.rungs)) c.data.rungs = [];
+  c.data.rungs.push({ contacts:[{ addr:'I1', nc:false }], out:'Q1' });
+  plcCommit();
+}
+function plcDelRung(id, ri){
+  const c = byId(id); if(!c) return;
+  c.data.rungs.splice(ri, 1);
+  plcCommit();
+}
+function resetPlcCounter(id){
+  const c = byId(id); if(!c) return;
+  c.state.counter.count = 0;
+  c.state.counter.done = false;
+  c.state.counter.prev = false;
+  simulate(0); renderProps(); paint();
+  if(plcEditing === id) renderPlcEditor();
+  toast('Counter C1 reset');
+}
+function byId(id){ return components.find(c => c.id === id); }function portOf(c, pid){ return TYPES[c.type].ports.find(p => p.id === pid); }
+function portAbs(c, pid){
+  const p = portOf(c, pid);
+  return p ? { x:c.x + p.x, y:c.y + p.y } : { x:c.x, y:c.y };
+}
+
+/* ---------- Styling helpers used by the SVG symbols ---------- */
+const CL = {
+  metal:'#94a3b8', dim:'#64748b', body:'#0f172a', edge:'#475569',
+  text:'#e8ecf4', muted:'#9aa3bf', hot:'#f5c518', cyan:'#00d4ff',
+  green:'#22c55e', red:'#ef4444', blue:'#38bdf8', amber:'#f59e0b'
+};
+function term(x,y){ return `<circle cx="${x}" cy="${y}" r="3" fill="${CL.metal}"/>`; }
+function contactH(x1,x2,y,closed){
+  return `<line x1="${x1}" y1="${y}" x2="${x1+7}" y2="${y}" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<circle cx="${x1+7}" cy="${y}" r="2.5" fill="${CL.metal}"/>`
+    + `<line x1="${x1+7}" y1="${y}" x2="${closed ? x2-7 : x2-13}" y2="${closed ? y : y-14}" stroke="${closed?'#1e293b':CL.red}" stroke-width="2"/>`
+    + `<circle cx="${x2-7}" cy="${y}" r="2.5" fill="${CL.metal}"/>`
+    + `<line x1="${x2-7}" y1="${y}" x2="${x2}" y2="${y}" stroke="${CL.metal}" stroke-width="2"/>`;
+}
+function contactV(x,y1,y2,closed){
+  return `<line x1="${x}" y1="${y1}" x2="${x}" y2="${y1+7}" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<circle cx="${x}" cy="${y1+7}" r="2.5" fill="${CL.metal}"/>`
+    + `<line x1="${x}" y1="${y1+7}" x2="${closed ? x : x+14}" y2="${closed ? y2-7 : y2-13}" stroke="${closed?'#1e293b':CL.red}" stroke-width="2"/>`
+    + `<circle cx="${x}" cy="${y2-7}" r="2.5" fill="${CL.metal}"/>`
+    + `<line x1="${x}" y1="${y2-7}" x2="${x}" y2="${y2}" stroke="${CL.metal}" stroke-width="2"/>`;
+}
+function txt(x,y,s,size,fill,anchor){
+  return `<text x="${x}" y="${y}" text-anchor="${anchor||'middle'}" fill="${fill||CL.muted}" font-size="${size||9}" font-family="Segoe UI,Arial">${s}</text>`;
+}
+function wrap(c, inner){
+  const t = TYPES[c.type];
+  return `<svg width="${t.w}" height="${t.h}" viewBox="0 0 ${t.w} ${t.h}"><defs><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="2" dy="3" stdDeviation="2.5" flood-color="#000" flood-opacity="0.55"/></filter><linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient><linearGradient id="motorGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78836b"/><stop offset=".5" stop-color="#414b3c"/><stop offset="1" stop-color="#242b25"/></linearGradient><linearGradient id="genGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffbd21"/><stop offset="1" stop-color="#d86b00"/></linearGradient></defs><g filter="url(#sh)">${inner}</g></svg>`;
+}
+
+/* ---------- Realistic component symbols ---------- */
+function symPower(c){
+  const on = supplyOn;
+  const three = c.type === 'power';
+  if(three){
+    return wrap(c,
+      `<rect x="8" y="8" width="80" height="144" rx="8" fill="url(#bodyGrad)" stroke="${CL.edge}" stroke-width="2"/>`
+      + `<rect x="16" y="16" width="64" height="18" rx="3" fill="#1e293b"/>`
+      + txt(48,29,'3~ SUPPLY',7,'#e2e8f0')
+      + `<path d="M48 40 L37 62 h9 l-6 20 17-26 h-9 l6-16 z" fill="${on?CL.hot:CL.dim}"/>`
+      + `<text x="48" y="96" text-anchor="middle" fill="${CL.muted}" font-size="9" font-family="Segoe UI,Arial">${supplyV} V</text>`
+      + `<text x="48" y="108" text-anchor="middle" fill="${CL.muted}" font-size="7" font-family="Segoe UI,Arial">50 Hz</text>`
+      + `<line x1="88" y1="25" x2="115" y2="25" stroke="${on?'#ef4444':CL.dim}" stroke-width="3"/>`
+      + `<line x1="88" y1="50" x2="115" y2="50" stroke="${on?'#f59e0b':CL.dim}" stroke-width="3"/>`
+      + `<line x1="88" y1="75" x2="115" y2="75" stroke="${on?'#3b82f6':CL.dim}" stroke-width="3"/>`
+      + `<line x1="88" y1="115" x2="115" y2="115" stroke="${on?'#93c5fd':CL.dim}" stroke-width="3"/>`
+      + `<line x1="88" y1="145" x2="115" y2="145" stroke="${on?'#22c55e':CL.dim}" stroke-width="3"/>`
+      + `<text x="92" y="22" fill="#ef4444" font-size="7" font-weight="bold" font-family="Segoe UI,Arial">L1</text>`
+      + `<text x="92" y="47" fill="#f59e0b" font-size="7" font-weight="bold" font-family="Segoe UI,Arial">L2</text>`
+      + `<text x="92" y="72" fill="#3b82f6" font-size="7" font-weight="bold" font-family="Segoe UI,Arial">L3</text>`
+      + `<text x="92" y="112" fill="#93c5fd" font-size="7" font-weight="bold" font-family="Segoe UI,Arial">N</text>`
+      + `<text x="92" y="142" fill="#22c55e" font-size="7" font-weight="bold" font-family="Segoe UI,Arial">PE</text>`
+      + `<circle cx="60" cy="132" r="4" fill="${on?CL.green:CL.red}"/>`
+      + txt(48,140,on?'ON':'OFF',7,on?CL.green:CL.red)
+    );
+  }
+  return wrap(c,
+    `<rect x="8" y="8" width="80" height="109" rx="8" fill="url(#bodyGrad)" stroke="${CL.edge}" stroke-width="2"/>`
+    + `<rect x="16" y="16" width="64" height="18" rx="3" fill="#1e293b"/>`
+    + txt(48,29,'1~ SUPPLY',7,'#e2e8f0')
+    + `<path d="M48 42 L37 64 h9 l-6 20 17-26 h-9 l6-16 z" fill="${on?CL.hot:CL.dim}"/>`
+    + `<text x="48" y="98" text-anchor="middle" fill="${CL.muted}" font-size="8" font-family="Segoe UI,Arial">${supplyV} V</text>`
+    + `<line x1="88" y1="30" x2="115" y2="30" stroke="${on?'#ef4444':CL.dim}" stroke-width="3"/>`
+    + `<line x1="88" y1="70" x2="115" y2="70" stroke="${on?'#93c5fd':CL.dim}" stroke-width="3"/>`
+    + `<line x1="88" y1="110" x2="115" y2="110" stroke="${on?'#22c55e':CL.dim}" stroke-width="3"/>`
+    + `<text x="92" y="27" fill="#ef4444" font-size="7" font-weight="bold" font-family="Segoe UI,Arial">L</text>`
+    + `<text x="92" y="67" fill="#93c5fd" font-size="7" font-weight="bold" font-family="Segoe UI,Arial">N</text>`
+    + `<text x="92" y="107" fill="#22c55e" font-size="7" font-weight="bold" font-family="Segoe UI,Arial">PE</text>`
+    + `<circle cx="60" cy="82" r="4" fill="${on?CL.green:CL.red}"/>`
+  );
+}
+
+function symMcb(c){
+  const on = c.state.closed;
+  return wrap(c,
+    `<rect x="8" y="12" width="74" height="66" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>`
+    + `<rect x="16" y="20" width="58" height="14" rx="3" fill="#1e293b" stroke="#334155"/>`
+    + txt(45,30,c.label,8,'#1e293b')
+    + `<rect x="20" y="40" width="50" height="16" rx="3" fill="${on?'#052e16':'#450a0a'}" stroke="${on?CL.green:CL.red}"/>`
+    + txt(45,52,on?'I':'O',9,on?CL.green:CL.red)
+    + `<line x1="7" y1="55" x2="20" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<circle cx="22" cy="55" r="3.5" fill="${CL.metal}" stroke="#0f172a"/>`
+    + (on
+        ? `<line x1="24" y1="55" x2="66" y2="55" stroke="${'#1e293b'}" stroke-width="2.5"/>`
+        : `<line x1="24" y1="55" x2="62" y2="38" stroke="${CL.red}" stroke-width="2.5"/>`)
+    + `<circle cx="68" cy="55" r="3.5" fill="${CL.metal}" stroke="#0f172a"/>`
+    + `<line x1="70" y1="55" x2="83" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + txt(45,72,(c.data.curve||'C')+' · '+(c.data.rating||16)+'A · '+(c.data.poles||'3P'),7,CL.muted)
+    + txt(45,88,on?'ON':'OFF',9,on?CL.green:CL.red)
+  );
+}
+
+function symMcb3(c){
+  const on = c.state.closed;
+  const xs = [22,55,88];
+  let poles = '';
+  xs.forEach((x,i) => {
+    poles += `<rect x="${x-13}" y="22" width="26" height="118" rx="3" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>`
+      + `<line x1="${x}" y1="8" x2="${x}" y2="22" stroke="${CL.metal}" stroke-width="2.5"/>`
+      + `<line x1="${x}" y1="140" x2="${x}" y2="162" stroke="${CL.metal}" stroke-width="2.5"/>`
+      + `<rect x="${x-6}" y="34" width="12" height="30" rx="2" fill="${on?'#052e16':'#450a0a'}" stroke="${on?CL.green:CL.red}" stroke-width="1.5"/>`
+      + (on
+          ? `<line x1="${x}" y1="40" x2="${x}" y2="112" stroke="#1e293b" stroke-width="3"/>`
+          : `<line x1="${x}" y1="40" x2="${x+9}" y2="86" stroke="${CL.red}" stroke-width="3"/>`)
+      + `<circle cx="${x}" cy="116" r="3" fill="${CL.metal}" stroke="#0f172a"/>`
+      + txt(x,132,['1','3','5'][i],6,CL.muted);
+  });
+  return wrap(c,
+    `<rect x="4" y="16" width="102" height="132" rx="5" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>`
+    + poles
+    + `<rect x="18" y="118" width="74" height="13" rx="3" fill="${on?'#052e16':'#450a0a'}" stroke="${on?CL.green:CL.red}"/>`
+    + txt(55,128,on?'I  ON':'O  OFF',7,on?CL.green:CL.red)
+    + txt(55,156,(c.data.curve||'C')+' · '+(c.data.rating||25)+'A · 3P',7,CL.muted)
+  );
+}
+
+function symMccb3(c){
+  const on = c.state.closed;
+  const xs = [35,70,105];
+  let poles = '';
+  xs.forEach((x,i) => {
+    poles += `<rect x="${x-14}" y="24" width="28" height="104" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>`
+      + `<line x1="${x}" y1="8" x2="${x}" y2="24" stroke="${CL.metal}" stroke-width="3"/>`
+      + `<line x1="${x}" y1="128" x2="${x}" y2="152" stroke="${CL.metal}" stroke-width="3"/>`
+      + `<rect x="${x-8}" y="34" width="16" height="36" rx="2" fill="#111c33" stroke="${on?CL.green:CL.red}" stroke-width="1.5"/>`
+      + (on
+          ? `<line x1="${x}" y1="42" x2="${x}" y2="112" stroke="${CL.green}" stroke-width="3"/>`
+          : `<line x1="${x}" y1="42" x2="${x+10}" y2="82" stroke="${CL.red}" stroke-width="3"/>`)
+      + `<circle cx="${x}" cy="116" r="3" fill="${CL.metal}"/>`
+      + txt(x,36,['1','3','5'][i],5,'#e2e8f0');
+  });
+  return wrap(c,
+    `<rect x="4" y="16" width="132" height="130" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>`
+    + poles
+    + `<rect x="22" y="76" width="96" height="18" rx="3" fill="#0b1220" stroke="${on?CL.green:CL.red}"/>`
+    + txt(70,89,on?'I  ON':'TRIP',8,on?CL.green:CL.red)
+    + txt(70,142,(c.data.rating||63)+'A · 3P · '+(c.data.trip||'TM'),7,CL.muted)
+  );
+}
+
+function symTimerSd(c){
+  const on = c.state.coil;
+  const done = on && c.state.elapsed;
+  const remain = Math.max(0, c.state.delay - c.state.t);
+  const star = !done;
+  return wrap(c,
+    `<rect x="4" y="4" width="142" height="162" rx="10" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + txt(75,18,c.label,10,'#1e293b')
+    + `<polyline points="10,40 22,40 22,62" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<polyline points="10,150 22,150 22,126" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<rect x="22" y="62" width="34" height="64" rx="5" fill="#334155" stroke="${on?CL.blue:CL.edge}" stroke-width="2"/>`
+    + `<path d="M39 72 q-7 6 0 12 q7 6 0 12 q-7 6 0 12 q7 6 0 12" fill="none" stroke="${on?CL.blue:CL.dim}" stroke-width="2"/>`
+    + txt(39,146,'COIL',7,on?CL.blue:CL.dim)
+    + `<circle cx="92" cy="60" r="16" fill="#0b1220" stroke="${done?CL.green:CL.amber}" stroke-width="2"/>`
+    + `<line x1="92" y1="60" x2="${done?104:99}" y2="${done?60:50}" stroke="${done?CL.green:CL.amber}" stroke-width="2.5"/>`
+    + txt(92,88,on?(done?'Δ DELTA':remain.toFixed(1)+' s'):'IDLE',7,on?(done?CL.green:CL.amber):CL.dim)
+    + `<line x1="120" y1="45" x2="140" y2="45" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="120" y1="80" x2="140" y2="80" stroke="${CL.metal}" stroke-width="2"/>`
+    + contactV(120,45,80,star)
+    + txt(96,108,'15-16 ★',7,star?CL.green:CL.dim)
+    + `<line x1="120" y1="125" x2="140" y2="125" stroke="${CL.metal}" stroke-width="2"/>`
+    + txt(96,140,'15-18 Δ',7,done?CL.green:CL.dim)
+    + txt(75,158,done?'STAR → DELTA DONE':(on?'STAR TIMER RUNNING':'STAR READY'),7,on?CL.green:CL.muted)
+  );
+}
+
+
+function symPb(c){
+  const no = c.type === 'pb_no';
+  const color = no ? CL.green : CL.red;
+  const pressed = c.state.pressed;
+  const closed = no ? pressed : !pressed;
+  return wrap(c,
+    `<rect x="10" y="5" width="70" height="85" rx="6" fill="url(#bodyGrad)" stroke="${CL.edge}"/>`
+    + `<circle cx="45" cy="26" r="18" fill="${color}" stroke="#0f172a" stroke-width="3"/>`
+    + `<circle cx="45" cy="26" r="11" fill="none" stroke="#ffffff88" stroke-width="2"/>`
+    + (pressed ? `<circle cx="45" cy="26" r="22" fill="none" stroke="${color}" stroke-width="2" opacity="0.7"/>` : '')
+    + txt(45,9,c.label,8,CL.muted)
+    + contactH(28,62,68,closed)
+    + `<line x1="7" y1="68" x2="28" y2="68" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="62" y1="68" x2="83" y2="68" stroke="${CL.metal}" stroke-width="2"/>`
+    + txt(45,87,(no?'NO':'NC') + (pressed?' • PRESSED':''),8,pressed?CL.hot:CL.dim)
+  );
+}
+
+function symEstop(c){
+  const tripped = c.state.tripped;
+  return wrap(c,
+    `<circle cx="45" cy="30" r="23" fill="#f5c518" stroke="#0f172a" stroke-width="2"/>`
+    + `<circle cx="45" cy="30" r="16" fill="${CL.red}" stroke="#7f1d1d" stroke-width="2"/>`
+    + `<circle cx="45" cy="30" r="9" fill="none" stroke="#ffffff77" stroke-width="2"/>`
+    + txt(45,10,c.label,8,CL.muted)
+    + contactH(28,62,72,!tripped)
+    + `<line x1="7" y1="72" x2="28" y2="72" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="62" y1="72" x2="83" y2="72" stroke="${CL.metal}" stroke-width="2"/>`
+    + txt(45,92,tripped?'TRIPPED':'NC CLOSED',8,tripped?CL.red:CL.green)
+  );
+}
+
+function symSelector(c){
+  const on = c.state.on;
+  return wrap(c,
+    `<circle cx="45" cy="28" r="18" fill="#1e293b" stroke="${on?CL.cyan:CL.edge}" stroke-width="2"/>`
+    + `<line x1="45" y1="28" x2="${on?58:32}" y2="15" stroke="${on?CL.cyan:CL.metal}" stroke-width="3" stroke-linecap="round"/>`
+    + `<circle cx="45" cy="28" r="4" fill="${on?CL.cyan:CL.metal}"/>`
+    + txt(45,9,c.label,8,CL.muted)
+    + contactH(28,62,68,on)
+    + `<line x1="7" y1="68" x2="28" y2="68" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="62" y1="68" x2="83" y2="68" stroke="${CL.metal}" stroke-width="2"/>`
+    + txt(45,87,on?'ON':'OFF',8,on?CL.green:CL.dim)
+  );
+}
+
+function symContactor(c){
+  const on = c.state.coil;
+  const xs = [60,105,150];
+  let poles = '';
+  xs.forEach((x,i) => {
+    poles += `<line x1="${x}" y1="8" x2="${x}" y2="56" stroke="${CL.metal}" stroke-width="3"/>`
+      + `<line x1="${x}" y1="128" x2="${x}" y2="232" stroke="${CL.metal}" stroke-width="3"/>`
+      + `<circle cx="${x}" cy="56" r="4" fill="${CL.metal}" stroke="#0f172a"/>`
+      + `<circle cx="${x}" cy="128" r="4" fill="${CL.metal}" stroke="#0f172a"/>`
+      + (on
+          ? `<line x1="${x}" y1="58" x2="${x}" y2="126" stroke="#1e293b" stroke-width="3"/>`
+          : `<line x1="${x}" y1="58" x2="${x+24}" y2="112" stroke="${CL.dim}" stroke-width="3"/>`)
+      + txt(x,42,['1','3','5'][i],7,'#1e293b')
+      + txt(x,150,['2','4','6'][i],7,'#1e293b');
+  });
+  return wrap(c,
+    `<rect x="4" y="4" width="172" height="232" rx="12" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>`
+    + `<rect x="14" y="10" width="152" height="24" rx="4" fill="#334155"/>`
+    + txt(90,27,c.label,10,'#f8fafc')
+    + poles
+    + `<polyline points="12,40 32,40 32,84" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<polyline points="12,210 32,210 32,166" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<rect x="32" y="84" width="28" height="82" rx="5" fill="#334155" stroke="${on?CL.blue:CL.edge}" stroke-width="2"/>`
+    + `<path d="M46 96 q-6 6 0 12 q6 6 0 12 q-6 6 0 12 q6 6 0 12" fill="none" stroke="${on?CL.blue:CL.dim}" stroke-width="2"/>`
+    + txt(24,78,'A1',7,'#1e293b','start')
+    + txt(24,162,'A2',7,'#1e293b','start')
+    + txt(90,92,'MAIN',7,CL.muted)
+    + (on ? `<circle cx="90" cy="110" r="34" fill="${CL.blue}" opacity="0.10"/>` : '')
+    + txt(90,190,on?'ENERGIZED':'OFF',8,on?CL.green:CL.dim)
+    + `<line x1="168" y1="130" x2="152" y2="130" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + `<line x1="168" y1="155" x2="152" y2="155" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + contactV(152,130,155,on)
+    + txt(140,146,'13-14',6,'#1e293b','end')
+    + `<line x1="168" y1="180" x2="152" y2="180" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + `<line x1="168" y1="205" x2="152" y2="205" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + contactV(152,180,205,!on)
+    + txt(140,196,'21-22',6,'#1e293b','end')
+    + txt(90,218,on?'NO CLOSED · NC OPEN':'NO OPEN · NC CLOSED',6,CL.muted)
+  );
+}
+
+function symRelay(c){
+  const on = c.state.coil;
+  return wrap(c,
+    `<rect x="4" y="4" width="122" height="142" rx="10" fill="none" stroke="#334155"/>`
+    + txt(65,17,c.label,10,'#1e293b')
+    + `<polyline points="10,30 20,30 20,45" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<polyline points="10,120 20,120 20,110" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<rect x="20" y="45" width="36" height="65" rx="5" fill="#0b1220" stroke="${on?CL.blue:CL.edge}" stroke-width="2"/>`
+    + `<path d="M38 55 q-7 6 0 12 q7 6 0 12 q-7 6 0 12" fill="none" stroke="${on?CL.blue:CL.dim}" stroke-width="2"/>`
+    + (on ? `<circle cx="38" cy="78" r="21" fill="${CL.blue}" opacity="0.13"/>` : '')
+    + `<line x1="104" y1="40" x2="120" y2="40" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="104" y1="70" x2="120" y2="70" stroke="${CL.metal}" stroke-width="2"/>`
+    + contactV(104,40,70,on)
+    + txt(86,58,'NO',7,on?CL.green:CL.dim,'end')
+    + `<line x1="104" y1="95" x2="120" y2="95" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="104" y1="125" x2="120" y2="125" stroke="${CL.metal}" stroke-width="2"/>`
+    + contactV(104,95,125,!on)
+    + txt(86,113,'NC',7,on?CL.dim:CL.green,'end')
+    + txt(65,138,on?'ENERGIZED':'OFF',8,on?CL.green:CL.dim)
+  );
+}
+
+function symTimer(c){
+  const on = c.state.coil;
+  const done = on && c.state.elapsed;
+  const remain = Math.max(0, c.state.delay - c.state.t);
+  return wrap(c,
+    `<rect x="4" y="4" width="132" height="142" rx="10" fill="none" stroke="#334155"/>`
+    + txt(65,17,c.label,10,'#1e293b')
+    + `<polyline points="10,30 20,30 20,45" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<polyline points="10,120 20,120 20,110" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<rect x="20" y="45" width="36" height="65" rx="5" fill="#0b1220" stroke="${on?CL.blue:CL.edge}" stroke-width="2"/>`
+    + `<path d="M38 55 q-7 6 0 12 q7 6 0 12 q-7 6 0 12" fill="none" stroke="${on?CL.blue:CL.dim}" stroke-width="2"/>`
+    + `<circle cx="82" cy="56" r="14" fill="#0b1220" stroke="${done?CL.green:CL.edge}" stroke-width="2"/>`
+    + `<line x1="82" y1="56" x2="82" y2="47" stroke="${done?CL.green:CL.metal}" stroke-width="2"/>`
+    + `<line x1="82" y1="56" x2="${done?90:88}" y2="56" stroke="${done?CL.green:CL.metal}" stroke-width="2"/>`
+    + txt(82,82,on?(done?'DONE':remain.toFixed(1)+'s'):'IDLE',8,on?(done?CL.green:CL.amber):CL.dim)
+    + `<line x1="112" y1="45" x2="130" y2="45" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="112" y1="105" x2="130" y2="105" stroke="${CL.metal}" stroke-width="2"/>`
+    + contactV(112,45,105,done)
+    + txt(94,120,'15-18',7,done?CL.green:CL.dim)
+  );
+}
+
+function symOl(c){
+  const trip = c.state.tripped;
+  const xs = [30,70,110];
+  let heaters = '';
+  xs.forEach((x,i) => {
+    heaters += `<line x1="${x}" y1="8" x2="${x}" y2="26" stroke="${CL.metal}" stroke-width="2.5"/>`
+      + `<path d="M${x} 26 l-8 8 l16 10 l-16 10 l16 10 l-16 10 l16 10 l-8 8" fill="none" stroke="${trip?CL.red:CL.amber}" stroke-width="2"/>`
+      + `<line x1="${x}" y1="92" x2="${x}" y2="122" stroke="${CL.metal}" stroke-width="2.5"/>`
+      + txt(x,74,['1','3','5'][i],6,'#1e293b')
+      + txt(x,116,['2','4','6'][i],6,'#1e293b');
+  });
+  return wrap(c,
+    `<rect x="4" y="4" width="132" height="162" rx="8" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<rect x="14" y="10" width="112" height="18" rx="3" fill="#334155"/>`
+    + txt(70,23,c.label,9,'#f8fafc')
+    + heaters
+    + txt(70,104,(c.data.setA||0)+' A',7,trip?CL.red:CL.amber)
+    + `<rect x="52" y="128" width="36" height="14" rx="3" fill="${trip?'#7f1d1d':'#1e293b'}" stroke="${trip?CL.red:CL.edge}"/>`
+    + txt(70,138,trip?'RESET':'SET',6,'#ffffff')
+    + `<line x1="30" y1="145" x2="42" y2="145" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + `<line x1="58" y1="145" x2="70" y2="145" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + contactV(42,145,145,!trip)
+    + txt(84,148,'95-96',6,'#1e293b','start')
+    + `<line x1="30" y1="162" x2="42" y2="162" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + `<line x1="58" y1="162" x2="70" y2="162" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + contactV(42,162,162,trip)
+    + txt(84,165,'97-98',6,'#1e293b','start')
+    + txt(70,178,trip?'OVERLOAD TRIPPED':'THERMAL OK',7,trip?CL.red:CL.green)
+  );
+}
+
+function symLamp(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<line x1="8" y1="55" x2="28" y2="55" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<polyline points="28,55 34,48" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<polyline points="56,48 62,55 82,55" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + (on ? `<circle cx="45" cy="36" r="23" fill="${CL.hot}" opacity="0.22"/>` : '')
+    + `<circle cx="45" cy="36" r="16" fill="${on?'#fde68a':'#1e293b'}" stroke="${on?CL.hot:CL.edge}" stroke-width="2"/>`
+    + `<path d="M39 30 q6 -6 12 0" fill="none" stroke="${on?'#fff7cc':CL.dim}" stroke-width="1.5"/>`
+    + `<line x1="41" y1="52" x2="49" y2="52" stroke="${on?CL.hot:CL.dim}" stroke-width="2"/>`
+    + `<line x1="41" y1="56" x2="49" y2="56" stroke="${on?CL.hot:CL.dim}" stroke-width="2"/>`
+    + txt(45,74,c.label,8,'#1e293b')
+    + txt(45,85,on?'ON':'OFF',8,on?CL.green:CL.dim)
+  );
+}
+
+function symMotor(c){
+  const on = c.state.energized;
+  const d = c.data || {};
+  const kind = c.type;
+  const accent = kind === 'motor_1ph' ? '#c084fc' : kind === 'motor_dc' ? '#60a5fa' : kind === 'motor_stepper' ? '#34d399' : kind === 'motor_servo' ? '#fb923c' : '#24b99b';
+  const badge = kind === 'motor_1ph' ? '1~' : kind === 'motor_dc' ? 'DC' : kind === 'motor_stepper' ? 'STEP' : kind === 'motor_servo' ? 'SERVO' : '3~';
+
+  if(kind !== 'motor'){
+    let extra = '';
+    if(kind === 'motor_1ph'){
+      extra = `<line x1="68" y1="76" x2="76" y2="76" stroke="${CL.metal}" stroke-width="1.5"/>`
+        + `<line x1="72" y1="72" x2="72" y2="80" stroke="${CL.metal}" stroke-width="1.5"/>`
+        + `<line x1="76" y1="72" x2="76" y2="80" stroke="${CL.metal}" stroke-width="1.5"/>`
+        + txt(78,84,'C '+(d.cap||0)+'µF',6,CL.muted,'start');
+    } else if(kind === 'motor_dc'){
+      extra = `<line x1="46" y1="56" x2="60" y2="56" stroke="${on?accent:CL.metal}" stroke-width="2"/>`
+        + `<line x1="53" y1="49" x2="53" y2="63" stroke="${on?accent:CL.metal}" stroke-width="1.5" stroke-dasharray="2 2"/>`;
+    } else if(kind === 'motor_stepper'){
+      extra = [0,1,2,3].map(i => {
+        const a = i * Math.PI / 2;
+        return `<circle cx="${55+22*Math.cos(a)}" cy="${45+22*Math.sin(a)}" r="2.5" fill="${on?accent:CL.dim}"/>`;
+      }).join('');
+    } else if(kind === 'motor_servo'){
+      extra = `<circle cx="83" cy="45" r="9" fill="#0b1220" stroke="${on?accent:CL.edge}" stroke-width="1.5"/>`
+        + txt(83,48,'E',7,on?accent:CL.muted);
+    }
+    return wrap(c,
+      `<line x1="8" y1="55" x2="29" y2="55" stroke="${CL.metal}" stroke-width="2"/>`
+      + `<line x1="81" y1="55" x2="102" y2="55" stroke="${CL.metal}" stroke-width="2"/>`
+      + `<g class="${on?'vib':''}">`
+      + `<ellipse cx="55" cy="45" rx="30" ry="24" fill="url(#motorGrad)" stroke="#222a23" stroke-width="2.5"/>`
+      + `<g stroke="#8a947b" stroke-width="1" opacity=".7">${[0,1,2,3,4,5,6,7].map(i=>`<path d="M${39+i*3} 24 L${42+i*3} 66"/>`).join('')}</g>`
+      + `<rect x="40" y="8" width="30" height="12" rx="3" fill="#68745c" stroke="#30392e" stroke-width="2"/>`
+      + `<rect x="42" y="10" width="26" height="8" rx="2" fill="#b76524"/>`
+      + `<g fill="#d9d2bd" stroke="#514b3e" stroke-width="1">${[0,1,2].map(i=>`<circle cx="${46+i*8}" cy="14" r="2.5"/>`).join('')}</g>`
+      + `<g class="${on?'spin':''}">`
+      + `<line x1="37" y1="45" x2="73" y2="45" stroke="${on?accent:CL.metal}" stroke-width="2"/>`
+      + `<line x1="55" y1="27" x2="55" y2="63" stroke="${on?accent:CL.metal}" stroke-width="2"/>`
+      + `<circle cx="55" cy="45" r="7" fill="${CL.body}" stroke="${on?accent:CL.metal}" stroke-width="2"/>`
+      + `</g>`
+      + extra
+      + `<rect x="72" y="16" width="32" height="13" rx="3" fill="#0b1220" stroke="${on?accent:CL.edge}"/>`
+      + txt(88,25,badge,7,on?accent:CL.muted)
+      + `</g>`
+      + txt(55,90,c.label,8,'#1e293b')
+      + txt(55,102,(d.kw||0)+' kW · '+(d.rpm||0)+' rpm',7,on?CL.green:CL.muted)
+      + (on ? txt(55,112,(c.state.amps||0).toFixed(1)+' A',7,CL.amber) : '')
+    );
+  }
+
+  const mode = c.state.mode || 'OPEN';
+  const modeColor = mode === 'DELTA' ? CL.green : mode === 'STAR' ? CL.cyan : CL.red;
+  const modeText = mode === 'DELTA' ? 'Δ DELTA' : mode === 'STAR' ? 'Y STAR' : 'OPEN';
+
+  return wrap(c,
+    `<line x1="8" y1="55" x2="42" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="8" y1="90" x2="42" y2="90" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="8" y1="125" x2="42" y2="125" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="138" y1="55" x2="172" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="138" y1="90" x2="172" y2="90" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="138" y1="125" x2="172" y2="125" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + txt(12,48,'U1',6,'#1e293b','start') + txt(12,83,'V1',6,'#1e293b','start') + txt(12,118,'W1',6,'#1e293b','start')
+    + txt(166,48,'U2',6,'#1e293b','end') + txt(166,83,'V2',6,'#1e293b','end') + txt(166,118,'W2',6,'#1e293b','end')
+    + `<rect x="4" y="34" width="20" height="12" rx="2" fill="#e2e8f0" stroke="#64748b"/>`
+    + txt(14,43,'IN',6,'#1e293b')
+    + `<rect x="156" y="34" width="20" height="12" rx="2" fill="#e2e8f0" stroke="#64748b"/>`
+    + txt(166,43,'OUT',6,'#1e293b')
+    + `<g class="${on?'vib':''}">`
+    + `<ellipse cx="90" cy="90" rx="48" ry="44" fill="url(#motorGrad)" stroke="#222a23" stroke-width="3"/>`
+    + `<g stroke="#8a947b" stroke-width="1.2" opacity=".65">${Array.from({length:11},(_,i)=>`<path d="M${64+i*5} 48 L${68+i*5} 132"/>`).join('')}</g>`
+    + `<rect x="66" y="10" width="48" height="20" rx="3" fill="#68745c" stroke="#30392e" stroke-width="2"/>`
+    + `<rect x="69" y="13" width="42" height="14" rx="2" fill="#b76524"/>`
+    + `<g fill="#d9d2bd" stroke="#514b3e" stroke-width="1">${[0,1,2,3,4,5].map(i=>`<circle cx="${73+i*7}" cy="20" r="2.3"/>`).join('')}</g>`
+    + `<g class="${on?'spin':''}">`
+    + `<line x1="62" y1="90" x2="118" y2="90" stroke="${on?accent:CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="90" y1="62" x2="90" y2="118" stroke="${on?accent:CL.metal}" stroke-width="2.5"/>`
+    + `<circle cx="90" cy="90" r="10" fill="${CL.body}" stroke="${on?accent:CL.metal}" stroke-width="2"/>`
+    + `</g>`
+    + `<rect x="118" y="34" width="34" height="13" rx="3" fill="#0b1220" stroke="${on?accent:CL.edge}"/>`
+    + txt(135,43,badge,7,on?accent:CL.muted)
+    + `</g>`
+    + `<rect x="60" y="140" width="60" height="14" rx="3" fill="${modeColor}22" stroke="${modeColor}"/>`
+    + txt(90,150,modeText,7,modeColor)
+    + txt(90,162,c.label,8,'#1e293b')
+    + txt(90,172,(d.kw||0)+' kW · '+(d.rpm||0)+' rpm',7,on?CL.green:CL.muted)
+    + txt(90,178,on?((c.state.amps||0).toFixed(1)+' A'):'0.0 A',7,on?CL.amber:CL.dim)
+  );
+}
+
+function symAlarm(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<line x1="8" y1="60" x2="28" y2="60" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="70" y1="60" x2="92" y2="60" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<g class="${on?'pulse':''}">`
+    + `<path d="M30 46 L50 34 L50 76 L30 64 Z" fill="${on?'#7f1d1d':'#1e293b'}" stroke="${on?CL.red:CL.edge}" stroke-width="2"/>`
+    + `<ellipse cx="30" cy="55" rx="7" ry="10" fill="${on?CL.red:'#334155'}" stroke="${on?CL.red:CL.edge}"/>`
+    + (on ? `<path d="M58 42 q12 13 0 26" fill="none" stroke="${CL.red}" stroke-width="2"/>` + `<path d="M64 36 q18 19 0 38" fill="none" stroke="${CL.red}" stroke-width="2" opacity="0.6"/>` : '')
+    + `</g>`
+    + txt(50,90,c.label,8,'#1e293b')
+    + txt(50,101,on?'SOUNDING':'SILENT',8,on?CL.red:CL.dim)
+  );
+}
+
+function symMccb(c){
+  const on = c.state.closed;
+  return wrap(c,
+    `<rect x="16" y="14" width="72" height="80" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>`
+    + `<rect x="27" y="22" width="50" height="34" rx="4" fill="#111c33" stroke="${on?CL.green:CL.red}"/>`
+    + txt(52,40,c.label,9,'#1e293b')
+    + (on
+        ? `<line x1="34" y1="49" x2="70" y2="49" stroke="${CL.green}" stroke-width="3"/>`
+        : `<line x1="34" y1="49" x2="64" y2="38" stroke="${CL.red}" stroke-width="3"/>`)
+    + `<line x1="8" y1="55" x2="24" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="80" y1="55" x2="96" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<circle cx="25" cy="55" r="3" fill="${CL.metal}"/>`
+    + `<circle cx="79" cy="55" r="3" fill="${CL.metal}"/>`
+    + `<rect x="30" y="66" width="44" height="16" rx="3" fill="${on?'#052e16':'#450a0a'}" stroke="${on?CL.green:CL.red}"/>`
+    + txt(52,77,on?'I ON':'TRIPPED',8,'#ffffff')
+    + txt(52,100,(c.data.rating||63)+'A · '+(c.data.poles||'3P')+' · '+(c.data.trip||'TM'),7,CL.muted)
+  );
+}
+
+function symRccb(c){
+  const on = c.state.closed && !c.state.tripped;
+  return wrap(c,
+    `<rect x="16" y="12" width="72" height="86" rx="7" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>`
+    + txt(52,25,c.label,9,'#1e293b')
+    + `<circle cx="52" cy="40" r="11" fill="${on?'#052e16':'#450a0a'}" stroke="${on?CL.green:CL.red}" stroke-width="2"/>`
+    + `<line x1="52" y1="40" x2="${closingLineX(on)}" y2="${on?30:49}" stroke="${on?CL.green:CL.red}" stroke-width="2.5"/>`
+    + (on
+        ? `<line x1="28" y1="58" x2="76" y2="58" stroke="${CL.green}" stroke-width="3"/>`
+        : `<line x1="28" y1="58" x2="66" y2="48" stroke="${CL.red}" stroke-width="3"/>`)
+    + `<line x1="8" y1="55" x2="24" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="80" y1="55" x2="96" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + txt(52,72,'IΔn '+(c.data.sens||'30 mA')+' · '+(c.data.poles||'4P'),7,CL.amber)
+    + txt(52,86,on?'ON':'TRIPPED',8,on?CL.green:CL.red)
+  );
+}
+function closingLineX(on){ return on ? 60 : 44; }
+
+function symFuse(c){
+  const ok = !c.state.blown;
+  return wrap(c,
+    `<line x1="7" y1="55" x2="20" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<rect x="20" y="43" width="44" height="24" rx="12" fill="url(#bodyGrad)" stroke="${ok?CL.metal:CL.red}" stroke-width="2"/>`
+    + (ok
+        ? `<line x1="25" y1="55" x2="59" y2="55" stroke="${CL.amber}" stroke-width="2"/>`
+        : `<path d="M27 55 l7 -8 l7 16 l7 -16 l7 16 l7 -8" fill="none" stroke="${CL.red}" stroke-width="2"/>`)
+    + `<line x1="64" y1="55" x2="77" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + txt(42,34,c.label,9,'#1e293b')
+    + txt(42,46,(c.data.rating||16)+'A · '+(c.data.type||'gG'),7,CL.muted)
+    + txt(42,82,ok?'HEALTHY':'BLOWN',8,ok?CL.green:CL.red)
+  );
+}
+
+function symSpd(c){
+  const fault = c.state.fault;
+  return wrap(c,
+    `<rect x="14" y="14" width="64" height="82" rx="7" fill="url(#bodyGrad)" stroke="${CL.edge}"/>`
+    + txt(46,27,c.label,9,'#1e293b')
+    + `<line x1="8" y1="55" x2="24" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="68" y1="55" x2="84" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<path d="M34 40 L58 40 L46 54 L58 68 L34 68 L46 54 Z" fill="${fault?'#450a0a':'#0b1220'}" stroke="${fault?CL.red:CL.blue}" stroke-width="2"/>`
+    + `<line x1="46" y1="54" x2="46" y2="84" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + `<line x1="38" y1="84" x2="54" y2="84" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="41" y1="88" x2="51" y2="88" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + txt(46,105,fault?'FAULT':'PROTECTED',8,fault?CL.red:CL.green)
+  );
+}
+
+function symGenerator(c){
+  const on = c.state.on;
+  return wrap(c,
+    `<rect x="10" y="10" width="72" height="76" rx="8" fill="url(#genGrad)" stroke="#bd5c00" stroke-width="2.5"/>`
+    + `<text x="46" y="40" text-anchor="middle" fill="#fff" font-size="20" font-weight="800" font-family="Segoe UI,Arial">G</text>`
+    + `<rect x="16" y="52" width="60" height="24" rx="4" fill="#252a2d" stroke="#494c4d" stroke-width="2"/>`
+    + txt(46,67,on?'RUN':'STOP',8,on?CL.green:CL.dim)
+    + `<path d="M33 60 q6 -8 13 0 q6 8 13 0" fill="none" stroke="${on?CL.green:CL.dim}" stroke-width="2"/>`
+    + `<line x1="77" y1="35" x2="102" y2="35" stroke="${on?CL.amber:CL.dim}" stroke-width="2.5"/>`
+    + `<line x1="77" y1="70" x2="102" y2="70" stroke="${CL.blue}" stroke-width="2.5"/>`
+    + txt(84,28,'L',8,CL.red)
+    + txt(84,86,'N',8,CL.blue)
+    + txt(46,93,c.label,8,'#1e293b')
+    + txt(46,102,(c.data.kva||50)+' kVA · '+(c.data.volts||'400 V'),7,CL.muted)
+    + txt(46,112,on?'RUNNING':'STOPPED',8,on?CL.green:CL.muted)
+  );
+}
+
+function symAts(c){
+  const pos = c.state.pos;
+  const aOn = pos === 'A', bOn = pos === 'B';
+  return wrap(c,
+    `<rect x="4" y="4" width="152" height="172" rx="10" fill="none" stroke="#334155"/>`
+    + txt(80,18,c.label,10,'#1e293b')
+    + `<rect x="18" y="30" width="36" height="50" rx="5" fill="${aOn?'#052e16':'#0f172a'}" stroke="${aOn?CL.green:CL.edge}"/>`
+    + txt(36,46,'A',11,aOn?CL.green:CL.muted)
+    + txt(36,62,'MAIN',7,aOn?CL.green:CL.dim)
+    + txt(36,73,aOn?'CLOSED':'OPEN',7,aOn?CL.green:CL.dim)
+    + `<rect x="18" y="104" width="36" height="50" rx="5" fill="${bOn?'#052e16':'#0f172a'}" stroke="${bOn?CL.green:CL.edge}"/>`
+    + txt(36,120,'B',11,bOn?CL.green:CL.muted)
+    + txt(36,136,'GEN',7,bOn?CL.green:CL.dim)
+    + txt(36,147,bOn?'CLOSED':'OPEN',7,bOn?CL.green:CL.dim)
+    + `<line x1="8" y1="35" x2="18" y2="35" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="8" y1="70" x2="18" y2="70" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="8" y1="110" x2="18" y2="110" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="8" y1="145" x2="18" y2="145" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<circle cx="80" cy="90" r="12" fill="#0b1220" stroke="${pos==='OFF'?CL.red:(aOn||bOn)?CL.cyan:CL.edge}" stroke-width="2"/>`
+    + `<line x1="80" y1="90" x2="${aOn?63:bOn?63:88}" y2="${aOn?56:bOn?122:80}" stroke="${pos==='OFF'?CL.red:CL.cyan}" stroke-width="3" stroke-linecap="round"/>`
+    + `<line x1="80" y1="90" x2="140" y2="70" stroke="${aOn||bOn?CL.cyan:CL.dim}" stroke-width="2.5"/>`
+    + `<line x1="80" y1="90" x2="140" y2="110" stroke="${aOn||bOn?CL.cyan:CL.dim}" stroke-width="2.5"/>`
+    + `<line x1="140" y1="70" x2="152" y2="70" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="140" y1="110" x2="152" y2="110" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + txt(80,158,(c.data.poles||'4P')+' · '+(c.data.rating||'100 A'),7,CL.muted)
+    + txt(80,166,pos==='OFF'?'OFF':pos==='A'?'SOURCE A':'SOURCE B',8,pos==='OFF'?CL.red:CL.green)
+  );
+}
+
+function symTimerOff(c){
+  const on = c.state.coil, held = c.state.held;
+  const remain = Math.max(0, (c.state.delay || 0) - (c.state.t || 0));
+  return wrap(c,
+    `<rect x="4" y="4" width="132" height="142" rx="10" fill="none" stroke="#334155"/>`
+    + txt(65,17,c.label,10,'#1e293b')
+    + `<polyline points="10,30 20,30 20,45" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<polyline points="10,120 20,120 20,110" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<rect x="20" y="45" width="36" height="65" rx="5" fill="#0b1220" stroke="${on?CL.blue:CL.edge}" stroke-width="2"/>`
+    + `<path d="M38 55 q-7 6 0 12 q7 6 0 12 q-7 6 0 12" fill="none" stroke="${on?CL.blue:CL.dim}" stroke-width="2"/>`
+    + `<circle cx="82" cy="56" r="14" fill="#0b1220" stroke="${held?CL.amber:CL.edge}" stroke-width="2"/>`
+    + `<line x1="82" y1="56" x2="82" y2="47" stroke="${held?CL.amber:CL.metal}" stroke-width="2"/>`
+    + txt(82,82,on?'COIL ON':held?remain.toFixed(1)+'s':'IDLE',8,on?CL.green:held?CL.amber:CL.dim)
+    + `<line x1="112" y1="45" x2="130" y2="45" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="112" y1="105" x2="130" y2="105" stroke="${CL.metal}" stroke-width="2"/>`
+    + contactV(112,45,105,held)
+    + txt(94,120,'OFF DELAY',7,held?CL.amber:CL.dim)
+  );
+}
+
+function symFlasher(c){
+  const on = c.state.coil, blink = c.state.blinkOn;
+  return wrap(c,
+    `<rect x="4" y="4" width="132" height="142" rx="10" fill="none" stroke="#334155"/>`
+    + txt(65,17,c.label,10,'#1e293b')
+    + `<polyline points="10,30 20,30 20,45" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<polyline points="10,120 20,120 20,110" fill="none" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<rect x="20" y="45" width="36" height="65" rx="5" fill="#0b1220" stroke="${on?CL.blue:CL.edge}" stroke-width="2"/>`
+    + `<path d="M38 55 q-7 6 0 12 q7 6 0 12 q-7 6 0 12" fill="none" stroke="${on?CL.blue:CL.dim}" stroke-width="2"/>`
+    + (blink ? `<circle cx="82" cy="58" r="18" fill="${CL.hot}" opacity="0.25"/>` : '')
+    + `<circle cx="82" cy="58" r="11" fill="${blink?'#fde68a':'#1e293b'}" stroke="${blink?CL.hot:CL.edge}" stroke-width="2"/>`
+    + txt(82,84,on?(blink?'ON':'OFF'):'IDLE',8,on?CL.amber:CL.dim)
+    + `<line x1="112" y1="45" x2="130" y2="45" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="112" y1="105" x2="130" y2="105" stroke="${CL.metal}" stroke-width="2"/>`
+    + contactV(112,45,105,blink)
+    + txt(94,120,'FLASHER',7,blink?CL.green:CL.dim)
+  );
+}
+
+function symPhase(c){
+  const fault = c.state.fault;
+  return wrap(c,
+    `<rect x="4" y="4" width="122" height="132" rx="10" fill="none" stroke="#334155"/>`
+    + txt(66,18,c.label,9,'#1e293b')
+    + ['L1','L2','L3'].map((p,i) => `<circle cx="${34+i*22}" cy="40" r="5" fill="${fault?CL.dim:CL.green}"/>` + txt(34+i*22,58,p,8,fault?CL.dim:CL.green)).join('')
+    + txt(66,78,fault?'PHASE LOSS':'3-PHASE OK',9,fault?CL.red:CL.green)
+    + `<line x1="110" y1="45" x2="120" y2="45" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="110" y1="75" x2="120" y2="75" stroke="${CL.metal}" stroke-width="2"/>`
+    + contactV(110,45,75,!fault)
+    + txt(92,88,'13-14',7,fault?CL.dim:CL.green,'end')
+    + `<line x1="110" y1="100" x2="120" y2="100" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="110" y1="130" x2="120" y2="130" stroke="${CL.metal}" stroke-width="2"/>`
+    + contactV(110,100,130,fault)
+    + txt(92,118,'21-22',7,fault?CL.green:CL.dim,'end')
+  );
+}
+
+function symTerminal(c){
+  return wrap(c,
+    `<rect x="6" y="8" width="88" height="54" rx="6" fill="#1e293b" stroke="${CL.edge}"/>`
+    + `<line x1="8" y1="20" x2="92" y2="20" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="8" y1="50" x2="92" y2="50" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<circle cx="24" cy="20" r="5" fill="url(#bodyGrad)" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<circle cx="76" cy="20" r="5" fill="url(#bodyGrad)" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<circle cx="24" cy="50" r="5" fill="url(#bodyGrad)" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<circle cx="76" cy="50" r="5" fill="url(#bodyGrad)" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="24" y1="20" x2="24" y2="50" stroke="${CL.dim}" stroke-width="1.5" stroke-dasharray="3 3"/>`
+    + `<line x1="76" y1="20" x2="76" y2="50" stroke="${CL.dim}" stroke-width="1.5" stroke-dasharray="3 3"/>`
+    + txt(50,35,c.label,8,'#1e293b')
+    + txt(50,67,(c.data.size||'4 mm²')+' · TERMINAL',7,CL.muted)
+  );
+}
+
+function symBusbar(c){
+  return wrap(c,
+    `<rect x="8" y="42" width="134" height="16" rx="4" fill="${CL.amber}" opacity="0.8"/>`
+    + `<rect x="8" y="42" width="134" height="16" rx="4" fill="none" stroke="#fde68a"/>`
+    + [40,75,110].map(x => `<circle cx="${x}" cy="35" r="5" fill="url(#bodyGrad)" stroke="${CL.metal}" stroke-width="2"/>` + `<line x1="${x}" y1="40" x2="${x}" y2="43" stroke="${CL.metal}" stroke-width="2"/>`).join('')
+    + `<circle cx="75" cy="75" r="5" fill="url(#bodyGrad)" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="75" y1="58" x2="75" y2="70" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="14" y1="50" x2="8" y2="50" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="136" y1="50" x2="142" y2="50" stroke="${CL.metal}" stroke-width="2"/>`
+    + txt(75,25,c.label,8,'#1e293b')
+    + txt(75,92,(c.data.bar||'100 A')+' · BUSBAR',7,CL.muted)
+  );
+}
+
+function symCtMeter(c){
+  const on = c.state.energized;
+  const amps = Number(c.state.amps) || 0;
+  const angle = -120 + Math.min(240, amps / 30 * 240);
+  return wrap(c,
+    `<line x1="8" y1="55" x2="20" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="80" y1="55" x2="92" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<circle cx="50" cy="45" r="30" fill="#0b1220" stroke="${CL.edge}" stroke-width="2"/>`
+    + `<path d="M27 55 A23 23 0 0 1 73 55" fill="none" stroke="${CL.dim}" stroke-width="2"/>`
+    + `<line x1="50" y1="55" x2="${50+22*Math.cos(angle*Math.PI/180)}" y2="${55+22*Math.sin(angle*Math.PI/180)}" stroke="${on?CL.cyan:CL.metal}" stroke-width="2"/>`
+    + `<circle cx="50" cy="55" r="3" fill="${on?CL.cyan:CL.metal}"/>`
+    + txt(50,74,on?amps.toFixed(1)+' A':'0.0 A',9,on?CL.green:CL.muted)
+    + txt(50,90,c.label,8,'#1e293b')
+    + txt(50,101,(c.data.ratio||'100/5')+' · CT',7,CL.muted)
+  );
+}
+
+function symVoltmeter(c){
+  const v = c.state.volts;
+  const live = v !== null && v !== undefined;
+  const shown = !live ? '---' : v === 0 ? '0' : String(v);
+  return wrap(c,
+    `<line x1="8" y1="60" x2="22" y2="60" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="98" y1="60" x2="112" y2="60" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<rect x="18" y="8" width="84" height="94" rx="7" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<rect x="26" y="16" width="68" height="32" rx="3" fill="#0b1220" stroke="${live?'#14532d':'#334155'}" stroke-width="1.5"/>`
+    + txt(60,38,shown,15,live?(v>0?CL.green:CL.amber):'#334155')
+    + txt(88,44,'V',8,live?CL.green:CL.muted)
+    + `<text x="60" y="60" text-anchor="middle" fill="${CL.muted}" font-size="7" font-family="Segoe UI,Arial">AC VOLTMETER</text>`
+    + `<circle cx="60" cy="76" r="11" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>`
+    + `<line x1="60" y1="76" x2="66" y2="67" stroke="#334155" stroke-width="2"/>`
+    + txt(60,98,(c.data.cls||'1.5')+' · '+(c.data.range||'0–500 V'),6,CL.muted)
+    + txt(14,54,'1',6,'#1e293b') + txt(106,54,'2',6,'#1e293b')
+    + `<circle cx="60" cy="14" r="3" fill="${live&&v>0?CL.green:CL.dim}"/>`
+  );
+}
+
+function symFloat(c){
+  const trig = c.state.triggered;
+  return wrap(c,
+    `<rect x="22" y="18" width="56" height="74" rx="5" fill="#0b1220" stroke="${CL.edge}" stroke-width="2"/>`
+    + `<rect x="24" y="${trig?46:58}" width="52" height="${trig?44:32}" fill="${CL.blue}" opacity="0.28"/>`
+    + `<line x1="50" y1="18" x2="50" y2="${trig?54:66}" stroke="${CL.metal}" stroke-width="1.5"/>`
+    + `<circle cx="50" cy="${trig?54:66}" r="8" fill="${trig?CL.green:CL.amber}" stroke="#0f172a" stroke-width="2"/>`
+    + `<line x1="8" y1="60" x2="22" y2="60" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="78" y1="60" x2="92" y2="60" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + txt(50,105,c.label,8,'#1e293b')
+    + txt(50,116,trig?'HIGH · CLOSED':'LOW · OPEN',8,trig?CL.green:CL.dim)
+  );
+}
+
+function symPressure(c){
+  const trig = c.state.triggered;
+  const val = Number(c.data.value) || 0;
+  const angle = -210 + Math.min(240, Math.max(0, val / Math.max(1, Number(c.data.setpoint) || 1)) * 240);
+  return wrap(c,
+    `<circle cx="55" cy="42" r="28" fill="#0b1220" stroke="${trig?CL.green:CL.edge}" stroke-width="2"/>`
+    + `<path d="M33 52 A24 24 0 0 1 77 52" fill="none" stroke="${CL.dim}" stroke-width="2"/>`
+    + `<line x1="55" y1="52" x2="${55+20*Math.cos(angle*Math.PI/180)}" y2="${52+20*Math.sin(angle*Math.PI/180)}" stroke="${trig?CL.red:CL.cyan}" stroke-width="2"/>`
+    + `<circle cx="55" cy="52" r="3" fill="${trig?CL.red:CL.cyan}"/>`
+    + txt(55,38,(Number(c.data.setpoint)||0)+' bar',8,CL.amber)
+    + `<line x1="8" y1="70" x2="28" y2="70" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="82" y1="70" x2="102" y2="70" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + txt(55,92,c.label,8,'#1e293b')
+    + txt(55,104,trig?'PRESSURE OK':'LOW',8,trig?CL.green:CL.dim)
+  );
+}
+
+function symThermostat(c){
+  const trig = c.state.triggered;
+  const angle = -210 + Math.min(240, Math.max(0, (Number(c.data.value)||0) / Math.max(1, Number(c.data.setpoint)||1) * 240));
+  return wrap(c,
+    `<circle cx="50" cy="40" r="27" fill="#0b1220" stroke="${trig?CL.red:CL.edge}" stroke-width="2"/>`
+    + `<path d="M29 50 A23 23 0 0 1 71 50" fill="none" stroke="${CL.dim}" stroke-width="2"/>`
+    + `<line x1="50" y1="50" x2="${50+19*Math.cos(angle*Math.PI/180)}" y2="${50+19*Math.sin(angle*Math.PI/180)}" stroke="${trig?CL.red:CL.cyan}" stroke-width="2"/>`
+    + `<circle cx="50" cy="50" r="3" fill="${trig?CL.red:CL.cyan}"/>`
+    + txt(50,36,(Number(c.data.value)||0)+'°C',8,trig?CL.red:CL.blue)
+    + `<line x1="8" y1="60" x2="24" y2="60" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="76" y1="60" x2="92" y2="60" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + txt(50,90,c.label,8,'#1e293b')
+    + txt(50,102,trig?'HEAT CALL':'SATISFIED',8,trig?CL.red:CL.green)
+  );
+}
+
+function symPlc(c){
+  const s = c.state;
+  const outs = s.out || {};
+  const ins = s.in || {};
+  const rungs = c.data.rungs || [];
+  const rows = rungs.slice(0,4).map((r,i) => {
+    const y = 82 + i * 20;
+    const cs = (r.contacts || []).map((ct,ci) => {
+      const x = 82 + ci * 34;
+      return `<line x1="${x}" y1="${y}" x2="${x+7}" y2="${y}" stroke="${CL.metal}" stroke-width="1.5"/>`
+        + `<line x1="${x+7}" y1="${y-6}" x2="${x+7}" y2="${y+6}" stroke="${CL.metal}" stroke-width="1.5"/>`
+        + `<line x1="${x+13}" y1="${y-6}" x2="${x+13}" y2="${y+6}" stroke="${CL.metal}" stroke-width="1.5"/>`
+        + `<line x1="${x+13}" y1="${y}" x2="${x+20}" y2="${y}" stroke="${CL.metal}" stroke-width="1.5"/>`;
+    }).join('');
+    return `<line x1="78" y1="${y}" x2="82" y2="${y}" stroke="${CL.metal}" stroke-width="1.5"/>`
+      + cs
+      + `<line x1="176" y1="${y}" x2="188" y2="${y}" stroke="${CL.metal}" stroke-width="1.5"/>`
+      + `<rect x="188" y="${y-5}" width="10" height="10" fill="${outs[r.out]?'#052e16':'none'}" stroke="${CL.metal}" stroke-width="1.5"/>`
+      + txt(204,y+3,(r.out||'—'),7,outs[r.out]?CL.green:CL.muted);
+  }).join('');
+  return wrap(c,
+    `<rect x="4" y="4" width="232" height="222" rx="12" fill="url(#bodyGrad)" stroke="${CL.edge}" stroke-width="2"/>`
+    + `<rect x="12" y="10" width="216" height="22" rx="5" fill="#111c33" stroke="${CL.edge}"/>`
+    + txt(120,25,c.label+'  ·  PLC',9,'#1e293b')
+    + `<circle cx="34" cy="21" r="4" fill="${s.run?CL.green:CL.red}"/>`
+    + txt(44,25,'RUN',7,s.run?CL.green:CL.red,'start')
+    + ['I1','I2','I3','I4'].map((a,i) => {
+      const y = 92 + i*30;
+      return `<line x1="8" y1="${y}" x2="18" y2="${y}" stroke="${CL.metal}" stroke-width="2"/>`
+        + `<circle cx="26" cy="${y}" r="5" fill="${ins[a]?CL.hot:'#1e293b'}" stroke="${CL.metal}"/>`
+        + txt(36,y+3,a,8,ins[a]?CL.hot:CL.muted,'start');
+    }).join('')
+    + ['Q1','Q2','Q3','Q4'].map((a,i) => {
+      const y = 92 + i*30;
+      return `<circle cx="214" cy="${y}" r="5" fill="${outs[a]?CL.green:'#1e293b'}" stroke="${CL.metal}"/>`
+        + txt(204,y+3,a,8,outs[a]?CL.green:CL.muted,'end')
+        + `<line x1="222" y1="${y}" x2="232" y2="${y}" stroke="${CL.metal}" stroke-width="2"/>`;
+    }).join('')
+    + `<rect x="76" y="40" width="130" height="108" rx="5" fill="#07101f" stroke="#1e2a45"/>`
+    + rows
+    + `<line x1="76" y1="52" x2="206" y2="52" stroke="#1e2a45"/>`
+    + txt(141,50,'LADDER PROGRAM',7,CL.cyan)
+    + `<rect x="76" y="156" width="60" height="26" rx="4" fill="#07101f" stroke="#1e2a45"/>`
+    + txt(106,168,'T1 '+(s.timer? (s.timer.done?'DONE':s.timer.t.toFixed(1)+'s'):'0s'),7,s.timer&&s.timer.done?CL.green:CL.amber)
+    + `<rect x="146" y="156" width="60" height="26" rx="4" fill="#07101f" stroke="#1e2a45"/>`
+    + txt(176,168,'C1 '+(s.counter?s.counter.count:0)+'/'+(c.data.counterPreset||0),7,s.counter&&s.counter.done?CL.green:CL.amber)
+    + txt(141,205,(c.data.model||'LOGO! 8')+' · 24V DC',7,CL.dim)
+    + txt(141,218,'SCAN '+(s.scans||0),7,CL.dim)
+  );
+}
+
+function symVfd(c){
+  const s = c.state;
+  const freq = Number(s.freq) || 0;
+  const target = Number(c.data.target) || 50;
+  const running = s.on && !s.fault;
+  return wrap(c,
+    `<rect x="4" y="4" width="172" height="172" rx="10" fill="url(#bodyGrad)" stroke="${s.fault?CL.red:CL.edge}" stroke-width="2"/>`
+    + `<rect x="12" y="10" width="156" height="20" rx="4" fill="#111c33" stroke="${CL.edge}"/>`
+    + txt(90,24,c.label+'  ·  VFD',9,'#1e293b')
+    + `<circle cx="26" cy="20" r="4" fill="${s.fault?CL.red:running?CL.green:CL.dim}"/>`
+    + `<rect x="16" y="38" width="118" height="58" rx="5" fill="#03170f" stroke="#134e2a"/>`
+    + `<text x="34" y="78" fill="${running?'#86efac':'#334155'}" font-size="26" font-weight="800" font-family="Consolas,monospace">${freq.toFixed(1)}</text>`
+    + `<text x="98" y="78" fill="${running?CL.green:CL.dim}" font-size="12" font-family="Consolas,monospace">Hz</text>`
+    + txt(75,92,running?('TARGET '+target.toFixed(0)+' Hz'):s.fault?'FAULT — TRIP':'STOPPED',7,running?CL.muted:CL.red)
+    + `<circle cx="150" cy="50" r="9" fill="#1e293b" stroke="${running?CL.cyan:CL.edge}"/>`
+    + `<line x1="150" y1="50" x2="156" y2="44" stroke="${running?CL.cyan:CL.dim}" stroke-width="2"/>`
+    + txt(150,72,running?'RUN':'STOP',7,running?CL.green:CL.dim)
+    + `<line x1="8" y1="38" x2="16" y2="38" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="8" y1="70" x2="16" y2="70" stroke="${CL.metal}" stroke-width="2"/>`
+    + txt(20,35,'L',7,CL.red,'start')
+    + txt(20,82,'N',7,CL.blue,'start')
+    + `<line x1="164" y1="60" x2="172" y2="60" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<line x1="164" y1="105" x2="172" y2="105" stroke="${CL.metal}" stroke-width="2"/>`
+    + txt(158,56,'U',7,CL.amber,'end')
+    + txt(158,101,'V',7,CL.amber,'end')
+    + [0,1,2,3,4,5].map(i => `<line x1="${20+i*22}" y1="128" x2="${20+i*22}" y2="142" stroke="${CL.dim}" stroke-width="3"/>`).join('')
+    + txt(90,158,running?'MOTOR DRIVE ACTIVE':'READY',8,running?CL.green:CL.muted)
+    + txt(90,171,(c.data.kw||0)+' kW · '+(c.data.ratedA||0)+' A · '+(c.data.mode||'V/f'),7,CL.muted)
+  );
+}
+
+function svgFor(c){
+  switch(c.type){
+    case 'power':
+  case 'power_1ph': return symPower(c);
+    case 'mcb':      return symMcb(c);
+    case 'mcb_3p':   return symMcb3(c);
+    case 'pb_no':
+    case 'pb_nc':    return symPb(c);
+    case 'estop':    return symEstop(c);
+    case 'selector': return symSelector(c);
+    case 'contactor':return symContactor(c);
+    case 'relay':    return symRelay(c);
+    case 'timer':    return symTimer(c);
+    case 'ol':       return symOl(c);
+    case 'lamp':     return symLamp(c);
+    case 'motor':    return symMotor(c);
+    case 'motor_1ph':
+    case 'motor_dc':
+    case 'motor_stepper':
+    case 'motor_servo': return symMotor(c);
+    case 'alarm':    return symAlarm(c);
+    case 'mccb':     return symMccb(c);
+    case 'mccb_3p':  return symMccb3(c);
+    case 'rccb':     return symRccb(c);
+    case 'fuse':     return symFuse(c);
+    case 'spd':      return symSpd(c);
+    case 'timer_off':return symTimerOff(c);
+    case 'timer_sd': return symTimerSd(c);
+    case 'flasher':  return symFlasher(c);
+    case 'phase':    return symPhase(c);
+    case 'terminal': return symTerminal(c);
+    case 'busbar':   return symBusbar(c);
+    case 'generator':return symGenerator(c);
+    case 'ats':      return symAts(c);
+    case 'ctmeter':  return symCtMeter(c);
+    case 'voltmeter':return symVoltmeter(c);
+    case 'float':    return symFloat(c);
+    case 'pressure': return symPressure(c);
+    case 'thermostat': return symThermostat(c);
+    case 'plc':      return symPlc(c);
+    case 'vfd':      return symVfd(c);
+    default:         return wrap(c, txt(20,20,'?',10,CL.red));
+  }
+}
+
+/* ---------- Simulation engine ---------- */
+let UF = {};
+function ufFind(a){
+  if(!UF[a]) UF[a] = a;
+  let r = a;
+  while(UF[r] !== r) r = UF[r];
+  while(UF[a] !== r){ const n = UF[a]; UF[a] = r; a = n; }
+  return r;
+}
+function ufUnion(a,b){ const ra = ufFind(a), rb = ufFind(b); if(ra !== rb) UF[ra] = rb; }
+
+function internalEdges(c){
+  const id = c.id + ':', s = c.state, e = [];
+  switch(c.type){
+    case 'mcb':      if(s.closed)  e.push([id+'1', id+'2']); break;
+    case 'mcb_3p':   if(s.closed)  e.push([id+'1', id+'2'], [id+'3', id+'4'], [id+'5', id+'6']); break;
+    case 'mccb':     if(s.closed)  e.push([id+'1', id+'2']); break;
+    case 'mccb_3p':  if(s.closed)  e.push([id+'1', id+'2'], [id+'3', id+'4'], [id+'5', id+'6']); break;
+    case 'rccb':     if(s.closed && !s.tripped) e.push([id+'1', id+'2']); break;
+    case 'fuse':     if(!s.blown)  e.push([id+'1', id+'2']); break;
+    case 'spd':      break;
+    case 'pb_no':    if(s.pressed) e.push([id+'1', id+'2']); break;
+    case 'pb_nc':    if(!s.pressed)e.push([id+'1', id+'2']); break;
+    case 'estop':    if(!s.tripped)e.push([id+'1', id+'2']); break;
+    case 'selector': if(s.on)      e.push([id+'1', id+'2']); break;
+    case 'contactor':
+      if(s.coil){ e.push([id+'1', id+'2'], [id+'3', id+'4'], [id+'5', id+'6'], [id+'13', id+'14']); }
+      else      { e.push([id+'21', id+'22']); }
+      break;
+    case 'relay':
+      if(s.coil) e.push([id+'13', id+'14']);
+      else       e.push([id+'21', id+'22']);
+      break;
+    case 'timer':
+      if(s.coil && s.elapsed) e.push([id+'15', id+'18']);
+      break;
+    case 'timer_sd':
+      if(!s.elapsed) e.push([id+'15', id+'16']);
+      else           e.push([id+'15', id+'18']);
+      break;
+    case 'timer_off':
+      if(s.held) e.push([id+'15', id+'18']);
+      break;
+    case 'flasher':
+      if(s.coil && s.blinkOn) e.push([id+'15', id+'18']);
+      break;
+    case 'ol':
+      if(!s.tripped){ e.push([id+'1', id+'2'], [id+'3', id+'4'], [id+'5', id+'6'], [id+'95', id+'96']); }
+      else          { e.push([id+'97', id+'98']); }
+      break;
+    case 'phase':
+      if(!s.fault) e.push([id+'13', id+'14']);
+      else         e.push([id+'21', id+'22']);
+      break;
+    case 'terminal':
+      e.push([id+'1', id+'3'], [id+'2', id+'4']);
+      break;
+    case 'busbar':
+      ['1','2','3','4','5'].forEach(p => e.push([id+p, id+'6']));
+      break;
+    case 'ats':
+      if(s.pos === 'A'){ e.push([id+'AL', id+'OL'], [id+'AN', id+'ON']); }
+      else if(s.pos === 'B'){ e.push([id+'BL', id+'OL'], [id+'BN', id+'ON']); }
+      break;
+    case 'float':
+    case 'pressure':
+    case 'thermostat':
+      if(s.triggered) e.push([id+'1', id+'2']);
+      break;
+    case 'plc':
+      ['Q1','Q2','Q3','Q4'].forEach(q => { if(s.out && s.out[q]) e.push([id+q, id+'L']); });
+      break;
+    case 'vfd':
+      if(s.on && !s.fault) e.push([id+'L', id+'1'], [id+'N', id+'2']);
+      break;
+  }
+  return e;
+}
+
+function buildUF(){
+  UF = {};
+  components.forEach(c => TYPES[c.type].ports.forEach(p => { UF[c.id+':'+p.id] = c.id+':'+p.id; }));
+  wires.forEach(w => ufUnion(w.from.comp+':'+w.from.port, w.to.comp+':'+w.to.port));
+  components.forEach(c => internalEdges(c).forEach(e => ufUnion(e[0], e[1])));
+}
+
+function acrossRoots(c, p1, p2, roots){
+  const a = ufFind(c.id+':'+p1), b = ufFind(c.id+':'+p2);
+  if(a === b) return false;
+  return roots.some(r => (a === r.hot && b === r.neu) || (b === r.hot && a === r.neu));
+}
+
+/* Detect how a 6-terminal 3-phase motor is wired (external links). */
+function motorMode(c){
+  const setting = c.data && c.data.connection;
+  if(setting === 'STAR' || setting === 'DELTA') return setting;
+  const r = p => ufFind(c.id + ':' + p);
+  const same = (a,b) => r(a) === r(b);
+  if(same('U2','V2') && same('V2','W2')) return 'STAR';
+  if(same('U2','V1') && same('V2','W1') && same('W2','U1')) return 'DELTA';
+  return 'OPEN';
+}
+
+/* Voltmeter reading: 400 V phase-phase, 230 V phase-neutral, 0 V same node. */
+function meterVolts(c, roots){
+  if(!roots.length) return null;
+  const a = ufFind(c.id+':1'), b = ufFind(c.id+':2');
+  if(a === b) return 0;
+  const aHot = roots.some(r => r.hot === a), bHot = roots.some(r => r.hot === b);
+  const aNeu = roots.some(r => r.neu === a), bNeu = roots.some(r => r.neu === b);
+  if((aHot && bHot)) return 400;
+  if((aHot && bNeu) || (bHot && aNeu)) return 230;
+  return null;
+}
+
+function deenergizeAll(){
+  components.forEach(c => {
+    if(c.state.coil !== undefined) c.state.coil = false;
+    if(c.state.energized !== undefined) c.state.energized = false;
+    if(c.type === 'timer' || c.type === 'timer_off' || c.type === 'timer_sd'){
+      c.state.t = 0;
+      if(c.type === 'timer_off') c.state.held = false;
+      else c.state.elapsed = false;
+    }
+    if(c.type === 'flasher'){ c.state.t = 0; c.state.blinkOn = false; }
+    if(c.type === 'ctmeter') c.state.amps = 0;
+    if(c.type === 'plc'){
+      ['I1','I2','I3','I4'].forEach(a => { c.state.in[a] = false; });
+      ['Q1','Q2','Q3','Q4'].forEach(a => { c.state.out[a] = false; });
+      ['M1','M2','M3','M4'].forEach(a => { c.state.mem[a] = false; });
+      c.state.timer.t = 0; c.state.timer.done = false;
+      c.state.counter.prev = false;
+    }
+  });
+}
+
+function sourceList(){
+  const out = [];
+  const pc = components.find(c => c.type === 'power');
+  if(pc && supplyOn){
+    out.push({ comp: pc, port: 'L1' });
+    out.push({ comp: pc, port: 'L2' });
+    out.push({ comp: pc, port: 'L3' });
+  }
+  const pc1 = components.find(c => c.type === 'power_1ph');
+  if(pc1 && supplyOn){
+    out.push({ comp: pc1, port: 'L' });
+  }
+  components.filter(c => c.type === 'generator' && c.state.on).forEach(g => {
+    out.push({ comp: g, port: 'L' });
+  });
+  return out;
+}
+
+function plcContact(c, addr, nc){
+  const s = c.state;
+  let v = false;
+  if(addr && addr[0] === 'I') v = !!s.in[addr];
+  else if(addr && addr[0] === 'Q') v = !!s.out[addr];
+  else if(addr && addr[0] === 'M') v = !!s.mem[addr];
+  else if(addr === 'T1') v = !!s.timer.done;
+  else if(addr === 'C1') v = !!s.counter.done;
+  return nc ? !v : v;
+}
+
+function plcScan(c, roots, dt, doTime){
+  const s = c.state;
+  const before = JSON.stringify([s.in, s.out, s.mem, s.timer, s.counter]);
+  if(!s.run){
+    s.out = { Q1:false, Q2:false, Q3:false, Q4:false };
+    s.mem = { M1:false, M2:false, M3:false, M4:false };
+    return before !== JSON.stringify([s.in, s.out, s.mem, s.timer, s.counter]);
+  }
+  ['I1','I2','I3','I4'].forEach(a => {
+    s.in[a] = roots.some(r => ufFind(c.id+':'+a) === r.hot);
+  });
+  const outs = { Q1:false, Q2:false, Q3:false, Q4:false };
+  const mem  = { M1:false, M2:false, M3:false, M4:false };
+  let tOn = false, cOn = false;
+  (c.data.rungs || []).forEach(r => {
+    const ok = (r.contacts || []).every(ct => ct.addr && plcContact(c, ct.addr, ct.nc));
+    if(!ok) return;
+    if(outs[r.out] !== undefined) outs[r.out] = true;
+    else if(mem[r.out] !== undefined) mem[r.out] = true;
+    else if(r.out === 'T1') tOn = true;
+    else if(r.out === 'C1') cOn = true;
+  });
+  s.out = outs;
+  s.mem = mem;
+  if(doTime){
+    if(tOn){
+      s.timer.t += dt;
+      if(s.timer.t >= (Number(c.data.timerDelay) || 0)) s.timer.done = true;
+    } else { s.timer.t = 0; s.timer.done = false; }
+    if(cOn && !s.counter.prev){
+      s.counter.count++;
+      if(s.counter.count >= (Number(c.data.counterPreset) || 0)) s.counter.done = true;
+    }
+    s.counter.prev = cOn;
+    s.scans++;
+  }
+  return before !== JSON.stringify([s.in, s.out, s.mem, s.timer, s.counter]);
+}
+
+function simulate(dt){
+  shorted = false;
+  sourceFault = false;
+  hotMap = {};
+
+  const genOn = components.some(c => c.type === 'generator' && c.state.on);
+  components.forEach(c => {
+    if(c.type === 'ats' && c.data.auto) c.state.pos = (!supplyOn && genOn) ? 'B' : 'A';
+  });
+
+  components.forEach(c => {
+    if((c.type === 'float' || c.type === 'pressure' || c.type === 'thermostat') && c.data.auto){
+      c.state.triggered = Number(c.data.value) >= Number(c.data.setpoint);
+    }
+  });
+
+  const srcs = sourceList();
+  if(!srcs.length){ deenergizeAll(); return; }
+
+  let it = 0, changed = true;
+  while(changed && it++ < 24){
+    changed = false;
+    buildUF();
+    const roots = srcs.map(s => ({ hot: ufFind(s.comp.id+':'+s.port), neu: ufFind(s.comp.id+':N') }));
+    if(roots.some(r => r.hot === r.neu)){ shorted = true; break; }
+    for(let i=0;i<roots.length;i++) for(let j=i+1;j<roots.length;j++){
+      if(roots[i].hot === roots[j].hot) sourceFault = true;
+    }
+    components.forEach(c => {
+      if(c.type === 'contactor' || c.type === 'relay' || c.type === 'timer' ||
+         c.type === 'timer_off' || c.type === 'timer_sd' || c.type === 'flasher'){
+        const en = acrossRoots(c, 'A1', 'A2', roots);
+        if(en !== c.state.coil){
+          c.state.coil = en;
+          changed = true;
+          if(!en && c.type === 'timer'){ c.state.t = 0; c.state.elapsed = false; }
+          if(en && c.type === 'timer_off'){ c.state.t = 0; }
+        }
+      }
+    });
+    components.forEach(c => {
+      if(c.type === 'plc' && plcScan(c, roots, 0, false)) changed = true;
+    });
+  }
+
+  buildUF();
+  const timeRoots = srcs.map(s => ({ hot: ufFind(s.comp.id+':'+s.port), neu: ufFind(s.comp.id+':N') }));
+  components.forEach(c => {
+    if(c.type === 'timer'){
+      if(c.state.coil && !shorted){
+        c.state.t += (dt || 0);
+        if(c.state.t >= c.state.delay) c.state.elapsed = true;
+      } else if(!c.state.coil){ c.state.t = 0; c.state.elapsed = false; }
+    }
+    if(c.type === 'timer_sd'){
+      if(c.state.coil && !shorted){
+        c.state.t += (dt || 0);
+        if(c.state.t >= c.state.delay) c.state.elapsed = true;
+      } else if(!c.state.coil){ c.state.t = 0; c.state.elapsed = false; }
+    }
+    if(c.type === 'timer_off'){
+      if(c.state.coil){ c.state.held = true; c.state.t = 0; }
+      else if(c.state.held){
+        c.state.t += (dt || 0);
+        if(c.state.t >= c.state.delay){ c.state.held = false; c.state.t = 0; }
+      }
+    }
+    if(c.type === 'flasher'){
+      if(c.state.coil && !shorted){
+        c.state.t += (dt || 0);
+        const period = Math.max(0.2, Number(c.data.period) || 1);
+        c.state.blinkOn = (c.state.t % period) < (period / 2);
+      } else { c.state.t = 0; c.state.blinkOn = false; }
+    }
+    if(c.type === 'plc'){
+      if(!shorted) plcScan(c, timeRoots, dt || 0, true);
+    }
+    if(c.type === 'vfd'){
+      const target = (c.state.on && !c.state.fault) ? (Number(c.data.target) || 50) : 0;
+      const rate = target > c.state.freq ? (Number(c.data.accel) || 10) : (Number(c.data.decel) || 10);
+      const step = rate * (dt || 0);
+      if(c.state.freq < target) c.state.freq = Math.min(target, c.state.freq + step);
+      else if(c.state.freq > target) c.state.freq = Math.max(target, c.state.freq - step);
+    }
+  });
+
+  if(!shorted){
+    let it2 = 0, changed2 = true;
+    while(changed2 && it2++ < 24){
+      changed2 = false;
+      buildUF();
+      const roots2 = srcs.map(s => ({ hot: ufFind(s.comp.id+':'+s.port), neu: ufFind(s.comp.id+':N') }));
+      if(roots2.some(r => r.hot === r.neu)){ shorted = true; break; }
+      components.forEach(c => {
+        if(c.type === 'contactor' || c.type === 'relay' || c.type === 'timer' ||
+           c.type === 'timer_off' || c.type === 'timer_sd' || c.type === 'flasher'){
+          const en = acrossRoots(c, 'A1', 'A2', roots2);
+          if(en !== c.state.coil){
+            c.state.coil = en;
+            changed2 = true;
+            if(!en && c.type === 'timer'){ c.state.t = 0; c.state.elapsed = false; }
+            if(en && c.type === 'timer_off'){ c.state.t = 0; }
+          }
+        }
+      });
+      components.forEach(c => {
+        if(c.type === 'plc' && plcScan(c, roots2, 0, false)) changed2 = true;
+      });
+    }
+  }
+
+  if(shorted){ deenergizeAll(); return; }
+
+  buildUF();
+  const roots = srcs.map(s => ({ hot: ufFind(s.comp.id+':'+s.port), neu: ufFind(s.comp.id+':N') }));
+  if(roots.some(r => r.hot === r.neu)){ shorted = true; deenergizeAll(); return; }
+  for(let i=0;i<roots.length;i++) for(let j=i+1;j<roots.length;j++){
+    if(roots[i].hot === roots[j].hot) sourceFault = true;
+  }
+  const hotRoots = new Set(roots.map(r => r.hot));
+  components.forEach(c => TYPES[c.type].ports.forEach(p => {
+    hotMap[c.id+':'+p.id] = hotRoots.has(ufFind(c.id+':'+p.id));
+  }));
+
+  let totalAmps = 0;
+  components.forEach(c => {
+    if(c.type === 'lamp' || c.type === 'alarm'){
+      c.state.energized = acrossRoots(c, '1', '2', roots);
+    }
+    if(isMotor(c.type) && c.type !== 'motor'){
+      const was = c.state.energized;
+      c.state.energized = acrossRoots(c, '1', '2', roots);
+      if(c.state.energized){
+        c.state.runTime = (was ? (c.state.runTime || 0) : 0) + (dt || 0);
+        const fla = Number(c.data.fla) || 0;
+        const inrush = fla * (1 + 5 * Math.exp(-(c.state.runTime || 0) / 0.6));
+        c.state.amps = inrush;
+        totalAmps += inrush;
+      } else {
+        c.state.runTime = 0;
+        c.state.amps = 0;
+      }
+    }
+    if(c.type === 'motor'){
+      const was = c.state.energized;
+      const mode = motorMode(c);
+      const wasMode = c.state.mode || 'OPEN';
+      const hotIn = ['U1','V1','W1'].filter(p =>
+        roots.some(r => ufFind(c.id + ':' + p) === r.hot)).length;
+      c.state.mode = mode;
+      c.state.energized = (mode === 'STAR' || mode === 'DELTA') && hotIn >= 2;
+      if(c.state.energized){
+        const sameRun = was && wasMode === mode;
+        c.state.runTime = (sameRun ? (c.state.runTime || 0) : 0) + (dt || 0);
+        const fla = Number(c.data.fla) || 0;
+        const factor = mode === 'STAR' ? 0.33 : 1;
+        const inrush = fla * factor * (1 + 5 * Math.exp(-(c.state.runTime || 0) / 0.6));
+        c.state.amps = inrush;
+        totalAmps += inrush;
+      } else {
+        c.state.runTime = 0;
+        c.state.amps = 0;
+      }
+    }
+    if(c.type === 'ctmeter'){
+      c.state.energized = acrossRoots(c, '1', '2', roots);
+      c.state.amps = c.state.energized ? totalAmps : 0;
+    }
+    if(c.type === 'voltmeter'){
+      c.state.volts = meterVolts(c, roots);
+      c.state.energized = c.state.volts !== null && c.state.volts > 0;
+    }
+    if(c.type === 'spd'){
+      c.state.energized = acrossRoots(c, '1', '2', roots);
+    }
+  });
+}
+
+/* ---------- Rendering ---------- */
+function signature(c){
+  return c.type + '|' + c.label + '|' + JSON.stringify(c.state) + '|' + JSON.stringify(c.data||{}) + '|' + supplyV + '|' + (supplyOn?1:0);
+}
+
+function fitStage(){
+  let w = 900, h = 640;
+  components.forEach(c => {
+    const t = TYPES[c.type];
+    if(!t) return;
+    w = Math.max(w, c.x + t.w + 80);
+    h = Math.max(h, c.y + t.h + 80);
+  });
+  STAGE.style.width = w + 'px';
+  STAGE.style.height = h + 'px';
+}
+
+function render(){
+  [...STAGE.querySelectorAll('.comp')].forEach(el => el.remove());  components.forEach(c => {
+    const t = TYPES[c.type];
+    const d = document.createElement('div');
+    d.className = 'comp';
+    d.dataset.id = c.id;
+    d.style.left = c.x + 'px'; d.style.top = c.y + 'px';
+    d.style.width = t.w + 'px'; d.style.height = t.h + 'px';
+    d.innerHTML = '<div class="sym"></div>';
+    t.ports.forEach(p => {
+      const pd = document.createElement('div');
+      pd.className = 'port';
+      pd.dataset.comp = c.id; pd.dataset.port = p.id;
+      pd.title = c.label + ' · ' + p.id;
+      pd.style.left = (p.x - 7) + 'px';
+      pd.style.top = (p.y - 7) + 'px';
+      pd.addEventListener('pointerdown', ev => {
+        ev.stopPropagation(); ev.preventDefault();
+        ensureAudio();
+        handlePortClick(c.id, p.id);
+      });
+      d.appendChild(pd);
+    });
+    d.addEventListener('pointerdown', ev => compPointerDown(ev, c.id));
+    d.addEventListener('contextmenu', ev => { ev.preventDefault(); deleteComp(c.id); });
+    STAGE.appendChild(d);
+    c.el = d;
+    c._sig = null;
+  });
+  fitStage();
+  paint();
+  renderProps();
+}
+
+function paint(){
+  components.forEach(c => {
+    if(!c.el) return;
+    const running = (isMotor(c.type) && c.state.energized) || (c.type === 'generator' && c.state.on);
+    c.el.classList.toggle('vib', running);
+    const sig = signature(c);
+    if(c._sig !== sig){
+      c._sig = sig;
+      const sym = c.el.querySelector('.sym');
+      if(sym) sym.innerHTML = svgFor(c);
+    }
+    c.el.classList.toggle('selected', selectedComp === c.id);
+    c.el.querySelectorAll('.port').forEach(pd => {
+      const pid = pd.dataset.port;
+      pd.classList.toggle('hot', !!hotMap[c.id+':'+pid]);
+      pd.classList.toggle('pending', !!pendingPort && pendingPort.comp === c.id && pendingPort.port === pid);
+    });
+  });
+  drawWires();
+  updateStatus();
+  updateAlarm();
+}
+
+function drawWires(){
+  const svg = $('wireLayer');
+  const parts = [];
+  wires.forEach(w => {
+    const a = byId(w.from.comp), b = byId(w.to.comp);
+    if(!a || !b) return;
+    const p1 = portAbs(a, w.from.port), p2 = portAbs(b, w.to.port);
+    const live = isWireLive(w);
+    let d;
+    if(Math.abs(p1.x - p2.x) >= Math.abs(p1.y - p2.y)){
+      const mx = (p1.x + p2.x) / 2;
+      d = `M${p1.x},${p1.y} L${mx},${p1.y} L${mx},${p2.y} L${p2.x},${p2.y}`;
+    } else {
+      const my = (p1.y + p2.y) / 2;
+      d = `M${p1.x},${p1.y} L${p1.x},${my} L${p2.x},${my} L${p2.x},${p2.y}`;
+    }
+    parts.push(`<path d="${d}" class="wire${live?' live':''}"/>`);
+    const col = live ? '#f5c518' : '#64748b';
+    parts.push(`<circle cx="${p1.x}" cy="${p1.y}" r="2.2" fill="${col}"/>`);
+    parts.push(`<circle cx="${p2.x}" cy="${p2.y}" r="2.2" fill="${col}"/>`);
+  });
+  svg.innerHTML = parts.join('');
+}
+
+function isWireLive(w){
+  return !!hotMap[w.from.comp+':'+w.from.port] || !!hotMap[w.to.comp+':'+w.to.port];
+}
+
+function statusRow(label, val, cls){
+  return `<div class="statusrow"><span>${label}</span><span class="v ${cls}">${val}</span></div>`;
+}
+
+function updateStatus(){
+  const rows = [];
+  if(sourceFault) rows.push(statusRow('⚠ SOURCES PARALLELED','FAULT','fault'));
+  if(shorted) rows.push(statusRow('⚡ SHORT CIRCUIT','FAULT','fault'));
+  if(!supplyOn) rows.push(statusRow('SUPPLY','OFF','off'));
+  components.forEach(c => {
+    const L = c.label;
+    switch(c.type){
+      case 'mcb':       rows.push(statusRow(L+' · MCB', c.state.closed?'ON':'OFF', c.state.closed?'on':'off')); break;
+      case 'mcb_3p':    rows.push(statusRow(L+' · MCB 3P', c.state.closed?'ON':'OFF', c.state.closed?'on':'off')); break;
+      case 'pb_no':
+      case 'pb_nc':     rows.push(statusRow(L+' · '+(c.type==='pb_no'?'START':'STOP'), c.state.pressed?'PRESSED':'released', c.state.pressed?'on':'off')); break;
+      case 'estop':     rows.push(statusRow(L+' · E-STOP', c.state.tripped?'TRIPPED':'RESET', c.state.tripped?'fault':'on')); break;
+      case 'selector':  rows.push(statusRow(L+' · SELECTOR', c.state.on?'ON':'OFF', c.state.on?'on':'off')); break;
+      case 'contactor': rows.push(statusRow(L+' · COIL', c.state.coil?'ENERGIZED':'off', c.state.coil?'on':'off')); break;
+      case 'relay':     rows.push(statusRow(L+' · COIL', c.state.coil?'ENERGIZED':'off', c.state.coil?'on':'off')); break;
+      case 'timer':     rows.push(statusRow(L+' · TIMER', c.state.coil?(c.state.elapsed?'DONE':c.state.t.toFixed(1)+'/'+c.state.delay+'s'):'IDLE', c.state.elapsed?'on':(c.state.coil?'fault':'off'))); break;
+      case 'ol':        rows.push(statusRow(L+' · OVERLOAD', c.state.tripped?'TRIPPED':'OK', c.state.tripped?'fault':'on')); break;
+      case 'lamp':      rows.push(statusRow(L+' · LAMP', c.state.energized?'ON':'OFF', c.state.energized?'on':'off')); break;
+      case 'motor':
+      case 'motor_1ph':
+      case 'motor_dc':
+      case 'motor_stepper':
+      case 'motor_servo':{
+        const tag = {motor:'MOTOR 3~',motor_1ph:'MOTOR 1~',motor_dc:'MOTOR DC',motor_stepper:'STEPPER',motor_servo:'SERVO'}[c.type];
+        const extra = c.type === 'motor' ? ' · ' + (c.state.mode || 'OPEN') : '';
+        rows.push(statusRow(L+' · '+tag, (c.state.energized?'RUNNING':'STOPPED')+extra, c.state.energized?'on':'off'));
+        break;
+      }
+      case 'alarm':     rows.push(statusRow(L+' · HORN', c.state.energized?'SOUNDING':'SILENT', c.state.energized?'fault':'off')); break;
+      case 'mccb':      rows.push(statusRow(L+' · MCCB', c.state.closed?'ON':'OFF', c.state.closed?'on':'off')); break;
+      case 'mccb_3p':   rows.push(statusRow(L+' · MCCB 3P', c.state.closed?'ON':'OFF', c.state.closed?'on':'off')); break;
+      case 'rccb':      rows.push(statusRow(L+' · RCCB', c.state.tripped?'TRIPPED':c.state.closed?'ON':'OFF', c.state.tripped?'fault':c.state.closed?'on':'off')); break;
+      case 'fuse':      rows.push(statusRow(L+' · FUSE', c.state.blown?'BLOWN':'HEALTHY', c.state.blown?'fault':'on')); break;
+      case 'spd':       rows.push(statusRow(L+' · SPD', c.state.fault?'FAULT':'OK', c.state.fault?'fault':'on')); break;
+      case 'timer_off': rows.push(statusRow(L+' · OFF-DELAY', c.state.coil?(c.state.held?'HOLD '+Math.max(0,c.state.delay-c.state.t).toFixed(1)+'s':'IDLE'):(c.state.held?'TIMING':'IDLE'), c.state.held?'fault':'off')); break;
+      case 'flasher':   rows.push(statusRow(L+' · FLASHER', c.state.coil?(c.state.blinkOn?'ON':'OFF'):'IDLE', c.state.blinkOn?'on':'off')); break;
+      case 'phase':     rows.push(statusRow(L+' · PHASE', c.state.fault?'PHASE LOSS':'HEALTHY', c.state.fault?'fault':'on')); break;
+      case 'generator': rows.push(statusRow(L+' · GENERATOR', c.state.on?'RUNNING':'STOPPED', c.state.on?'on':'off')); break;
+      case 'ats':       rows.push(statusRow(L+' · ATS', c.state.pos==='OFF'?'OFF':'SOURCE '+c.state.pos, c.state.pos==='OFF'?'fault':'on')); break;
+      case 'ctmeter':   rows.push(statusRow(L+' · AMMETER', (c.state.amps||0).toFixed(1)+' A', c.state.energized?'on':'off')); break;
+      case 'voltmeter': rows.push(statusRow(L+' · VOLTMETER', (c.state.volts===null||c.state.volts===undefined)?'---':c.state.volts+' V', c.state.volts>0?'on':'off')); break;
+      case 'timer_sd':  rows.push(statusRow(L+' · STAR-DELTA', c.state.coil?(c.state.elapsed?'DELTA':'STAR '+c.state.t.toFixed(1)+'/'+c.state.delay+'s'):'IDLE', c.state.elapsed?'on':(c.state.coil?'fault':'off'))); break;
+      case 'float':     rows.push(statusRow(L+' · LEVEL', c.state.triggered?'HIGH':'LOW', c.state.triggered?'on':'off')); break;
+      case 'pressure':  rows.push(statusRow(L+' · PRESSURE', c.state.triggered?'OK':'LOW', c.state.triggered?'on':'off')); break;
+      case 'thermostat':rows.push(statusRow(L+' · THERMOSTAT', c.state.triggered?'HEAT CALL':'SATISFIED', c.state.triggered?'fault':'on')); break;
+      case 'plc':       rows.push(statusRow(L+' · PLC', c.state.run?('RUN · Q'+['1','2','3','4'].filter(q=>c.state.out['Q'+q]).join('')||'0'):'STOP', c.state.run?'on':'off')); break;
+      case 'vfd':       rows.push(statusRow(L+' · VFD', c.state.fault?'FAULT':(c.state.freq||0).toFixed(1)+' Hz', c.state.fault?'fault':c.state.on?'on':'off')); break;
+      case 'terminal':
+      case 'busbar':    rows.push(statusRow(L+' · '+(c.type==='terminal'?'TERMINAL':'BUSBAR'), 'LINKED', 'on')); break;
+    }
+  });
+  if(!rows.length) rows.push(statusRow('No components','—','off'));
+  $('statuslist').innerHTML = rows.join('');
+
+  const io = [];
+  components.forEach(c => TYPES[c.type].ports.forEach(p => {
+    const hi = !!hotMap[c.id+':'+p.id];
+    io.push(`<div class="${hi?'hi':'lo'}">${c.label}.${p.id} : ${hi?'HOT':'--'}</div>`);
+  }));
+  $('iomonitor').innerHTML = io.length ? io.join('') : '<div class="lo">No components</div>';
+}
+
+function alarmActive(){
+  return components.some(c => c.type === 'alarm' && c.state.energized);
+}
+
+function updateAlarm(){
+  const on = alarmActive();
+  $('alarmBox').innerHTML = on
+    ? '<div class="alarm-live">🚨 HORN SOUNDING</div>'
+    : '<div class="alarm-idle">SILENT</div>';
+  const b = $('banner');
+  if(sourceFault){
+    b.className = 'banner show short';
+    b.textContent = '⚠ TWO SOURCES PARALLELED — CHECK ATS INTERLOCK';
+  } else if(shorted){
+    b.className = 'banner show short';
+    b.textContent = '⚡ SHORT CIRCUIT DETECTED — CHECK WIRING';
+  } else if(on){
+    b.className = 'banner show alarm';
+    b.textContent = '🚨 ALARM ACTIVE — HORN SOUNDING';
+  } else {
+    b.className = 'banner';
+    b.textContent = '';
+  }
+  if(on && !muted) startBeep(); else stopBeep();
+}
+
+/* ---------- Horn audio ---------- */
+function ensureAudio(){
+  try{
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+  }catch(e){}
+}
+function beepOnce(){
+  try{
+    ensureAudio();
+    if(!audioCtx) return;
+    const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.type = 'square'; o.frequency.value = 880;
+    g.gain.value = 0.045;
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start();
+    o.stop(audioCtx.currentTime + 0.22);
+  }catch(e){}
+}
+function startBeep(){
+  if(beepTimer || muted) return;
+  beepOnce();
+  beepTimer = setInterval(beepOnce, 650);
+}
+function stopBeep(){ if(beepTimer){ clearInterval(beepTimer); beepTimer = null; } }
+function toggleMute(){
+  muted = !muted;
+  $('muteBtn').textContent = muted ? '🔇' : '🔊';
+  if(muted) stopBeep(); else if(alarmActive()) startBeep();
+  toast(muted ? 'Horn muted' : 'Horn on');
+}
+let LANG = (localStorage.getItem('cc_lang') || 'en');
+function applyLang(){
+  document.body.classList.toggle('lang-en', LANG === 'en');
+  document.body.classList.toggle('lang-ar', LANG === 'ar');
+  const btn = $('langBtn');
+  if(btn) btn.textContent = LANG === 'en' ? '🌐 AR' : '🌐 EN';
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
+}
+function toggleLang(){
+  LANG = LANG === 'en' ? 'ar' : 'en';
+  localStorage.setItem('cc_lang', LANG);
+  applyLang();
+  toast(LANG === 'en' ? 'English' : 'العربية');
+}
+applyLang();
+
+let toastTimer = null;
+function toast(msg){
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+/* ---------- Data entry / properties ---------- */
+function renderProps(){
+  const box = $('props');
+  const c = selectedComp ? byId(selectedComp) : null;
+  if(!c){ box.innerHTML = '<div class="muted">اختر مكوّناً لتعديل بياناته.</div>'; return; }
+  let h = '';
+  h += `<div class="prop"><label>Label</label><input type="text" value="${c.label}" onchange="setLabel('${c.id}',this.value)"></div>`;
+  if(isMotor(c.type)){
+    const kinds = [['motor','3-Phase AC Induction'],['motor_1ph','1-Phase AC (Capacitor)'],['motor_dc','DC Motor'],['motor_stepper','Stepper Motor'],['motor_servo','Servo Motor']];
+    h += `<div class="prop"><label>Motor type</label><select onchange="changeType('${c.id}',this.value)">${kinds.map(([v,n]) => `<option value="${v}"${c.type===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Power kW</label><input type="number" step="0.1" min="0.1" value="${c.data.kw}" onchange="setData('${c.id}','kw',this.value)"></div>`;
+    h += `<div class="prop"><label>FLA (A)</label><input type="number" step="0.1" min="0" value="${c.data.fla}" onchange="setData('${c.id}','fla',this.value)"></div>`;
+    h += `<div class="prop"><label>Speed RPM</label><input type="number" step="1" min="0" value="${c.data.rpm}" onchange="setData('${c.id}','rpm',this.value)"></div>`;
+    if(c.type === 'motor'){
+      h += `<div class="prop"><label>Poles</label><select onchange="setMeta('${c.id}','poles',this.value)">${[2,4,6,8].map(v => `<option value="${v}"${Number(c.data.poles)===v?' selected':''}>${v} pole</option>`).join('')}</select></div>`;
+      h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['400 V Δ/Y','415 V','690 V'].map(v => `<option value="${v}"${c.data.volts===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+      h += `<div class="prop"><label>Wiring</label><select onchange="setMeta('${c.id}','connection',this.value)">${[['AUTO','AUTO (external links)'],['STAR','STAR Y (internal)'],['DELTA','DELTA Δ (internal)']].map(([v,n]) => `<option value="${v}"${(c.data.connection||'DELTA')===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
+      h += `<div class="prop"><label>Mode</label><span class="mini ${c.state.mode==='DELTA'?'go':c.state.mode==='STAR'?'':'stop'}">${c.state.mode==='DELTA'?'DELTA Δ':c.state.mode==='STAR'?'STAR Y':'OPEN'}</span></div>`;
+      h += `<div class="prop"><label>Terminals</label><span class="mini">U1 V1 W1 / U2 V2 W2</span></div>`;
+    }
+    if(c.type === 'motor_1ph'){
+      h += `<div class="prop"><label>Run capacitor</label><input type="number" step="1" min="0" value="${c.data.cap}" onchange="setData('${c.id}','cap',this.value)"></div>`;
+      h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['230 V','115 V'].map(v => `<option value="${v}"${c.data.volts===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    }
+    if(c.type === 'motor_dc'){
+      h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['220 V DC','110 V DC','24 V DC'].map(v => `<option value="${v}"${String(c.data.volts)===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    }
+    if(c.type === 'motor_stepper'){
+      h += `<div class="prop"><label>Steps / rev</label><select onchange="setMeta('${c.id}','steps',this.value)">${[200,400,800].map(v => `<option value="${v}"${Number(c.data.steps)===v?' selected':''}>${v} steps</option>`).join('')}</select></div>`;
+    }
+    if(c.type === 'motor_servo'){
+      h += `<div class="prop"><label>Encoder</label><select onchange="setMeta('${c.id}','encoder',this.value)">${['2500 ppr','17-bit abs'].map(v => `<option value="${v}"${String(c.data.encoder)===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    }
+  }
+  // Family selectors (organize types)
+  const powerKinds = [['power','Power 3Φ'],['power_1ph','Power 1Φ']];
+  if(powerKinds.some(([v]) => v === c.type)){
+    h += `<div class="prop"><label>Power type</label><select onchange="changeType('${c.id}',this.value)">${powerKinds.map(([v,n]) => `<option value="${v}"${c.type===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
+  }
+  const protectionKinds = [['mcb','MCB 1P'],['mcb_3p','MCB 3P'],['mccb','MCCB 1P'],['mccb_3p','MCCB 3P'],['rccb','RCCB / RCBO'],['fuse','Fuse Cartridge']];
+  if(protectionKinds.some(([v]) => v === c.type)){
+    h += `<div class="prop"><label>Protection type</label><select onchange="changeType('${c.id}',this.value)">${protectionKinds.map(([v,n]) => `<option value="${v}"${c.type===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
+  }
+  const timerKinds = [['timer','On-Delay Timer'],['timer_off','Off-Delay Timer'],['timer_sd','Star-Delta Timer'],['flasher','Flasher Relay']];
+  if(timerKinds.some(([v]) => v === c.type)){
+    h += `<div class="prop"><label>Timer type</label><select onchange="changeType('${c.id}',this.value)">${timerKinds.map(([v,n]) => `<option value="${v}"${c.type===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
+  }
+  const sensorKinds = [['float','Float / Level'],['pressure','Pressure Switch'],['thermostat','Thermostat']];
+  if(sensorKinds.some(([v]) => v === c.type)){
+    h += `<div class="prop"><label>Sensor type</label><select onchange="changeType('${c.id}',this.value)">${sensorKinds.map(([v,n]) => `<option value="${v}"${c.type===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
+  }
+  const switchKinds = [['pb_no','Push Button NO'],['pb_nc','Push Button NC'],['estop','E-STOP'],['selector','Selector Switch']];
+  if(switchKinds.some(([v]) => v === c.type)){
+    h += `<div class="prop"><label>Switch type</label><select onchange="changeType('${c.id}',this.value)">${switchKinds.map(([v,n]) => `<option value="${v}"${c.type===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'ol'){
+    h += `<div class="prop"><label>Set current A</label><input type="number" step="0.1" min="0" value="${c.data.setA}" onchange="setData('${c.id}','setA',this.value)"></div>`;
+    h += `<div class="prop"><label>Trip class</label><select onchange="setMeta('${c.id}','cls',this.value)">${['Class 10','Class 10A','Class 20','Class 30'].map(v => `<option${(c.data.cls||'Class 10')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'mcb' || c.type === 'mcb_3p'){
+    h += `<div class="prop"><label>Curve</label><select onchange="setMeta('${c.id}','curve',this.value)">${['B','C','D'].map(v => `<option${(c.data.curve||'C')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Rating</label><select onchange="setMeta('${c.id}','rating',this.value)">${[6,10,16,20,25,32,40,50,63].map(v => `<option value="${v}"${Number(c.data.rating||16)===v?' selected':''}>${v} A</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Poles</label><select onchange="setMeta('${c.id}','poles',this.value)">${(c.type==='mcb_3p'?['3P']:['1P','2P']).map(v => `<option${(c.data.poles||'1P')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'mccb' || c.type === 'mccb_3p'){
+    h += `<div class="prop"><label>Rating</label><select onchange="setMeta('${c.id}','rating',this.value)">${[16,25,40,63,100,160,250,400,630].map(v => `<option value="${v}"${Number(c.data.rating||63)===v?' selected':''}>${v} A</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Poles</label><select onchange="setMeta('${c.id}','poles',this.value)">${(c.type==='mccb_3p'?['3P','4P']:['1P','2P']).map(v => `<option${(c.data.poles||'3P')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Trip unit</label><select onchange="setMeta('${c.id}','trip',this.value)">${['Thermal-Magnetic','Electronic','Motor Protection'].map(v => `<option${(c.data.trip||'Thermal-Magnetic')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'rccb'){
+    h += `<div class="prop"><label>Sensitivity</label><select onchange="setMeta('${c.id}','sens',this.value)">${['10 mA','30 mA','100 mA','300 mA'].map(v => `<option${(c.data.sens||'30 mA')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Poles</label><select onchange="setMeta('${c.id}','poles',this.value)">${['2P','4P'].map(v => `<option${(c.data.poles||'4P')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Type</label><select onchange="setMeta('${c.id}','type',this.value)">${['AC','A','B','F'].map(v => `<option${(c.data.type||'AC')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'contactor' || c.type === 'relay'){
+    h += `<div class="prop"><label>Coil voltage</label><select onchange="setMeta('${c.id}','coil',this.value)">${['24 V DC','230 V AC','400 V AC'].map(v => `<option${(c.data.coil||'230 V AC')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    if(c.type === 'contactor') h += `<div class="prop"><label>AC-3 rating</label><select onchange="setMeta('${c.id}','ac3',this.value)">${['9 A','12 A','18 A','25 A','32 A','40 A','65 A'].map(v => `<option${(c.data.ac3||'9 A')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'timer' || c.type === 'timer_off' || c.type === 'timer_sd'){
+    h += `<div class="prop"><label>Range</label><select onchange="setMeta('${c.id}','range',this.value)">${['0–1 s','0–10 s','0–30 s','0–60 s','0–10 min'].map(v => `<option${(c.data.range||'0–30 s')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'terminal'){
+    h += `<div class="prop"><label>Size</label><select onchange="setMeta('${c.id}','size',this.value)">${['2.5 mm²','4 mm²','6 mm²','10 mm²'].map(v => `<option${(c.data.size||'4 mm²')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'busbar'){
+    h += `<div class="prop"><label>Bar rating</label><select onchange="setMeta('${c.id}','bar',this.value)">${['63 A','100 A','160 A','250 A','400 A'].map(v => `<option${(c.data.bar||'100 A')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'ats'){
+    h += `<div class="prop"><label>Poles</label><select onchange="setMeta('${c.id}','poles',this.value)">${['3P','4P'].map(v => `<option${(c.data.poles||'4P')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Rating</label><select onchange="setMeta('${c.id}','rating',this.value)">${['63 A','100 A','160 A','250 A','400 A'].map(v => `<option${(c.data.rating||'100 A')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'timer' || c.type === 'timer_off' || c.type === 'timer_sd'){
+    h += `<div class="prop"><label>Delay (s)</label><input type="number" step="0.1" min="0.1" value="${c.state.delay}" onchange="setDelay('${c.id}',this.value)"></div>`;
+  }
+  if(c.type === 'flasher'){
+    h += `<div class="prop"><label>Period (s)</label><input type="number" step="0.1" min="0.2" value="${c.data.period}" onchange="setData('${c.id}','period',this.value)"></div>`;
+  }
+  if(c.type === 'power' || c.type === 'power_1ph'){
+    h += `<div class="prop"><label>Voltage</label><select onchange="setSupplyV(this.value)">${[24,230,400].map(v => `<option value="${v}"${supplyV==v?' selected':''}>${v} V</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'generator'){
+    h += `<div class="prop"><label>Rating kVA</label><input type="number" step="1" min="1" value="${c.data.kva||50}" onchange="setData('${c.id}','kva',this.value)"></div>`;
+    h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['230 V','400 V','690 V'].map(v => `<option${(c.data.volts||'400 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Fuel</label><select onchange="setMeta('${c.id}','fuel',this.value)">${['Diesel','Gas','Petrol'].map(v => `<option${(c.data.fuel||'Diesel')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Engine</label><button class="mini ${c.state.on?'go':'stop'}" onclick="toggleState('${c.id}','on')">${c.state.on?'RUNNING — STOP':'STOPPED — START'}</button></div>`;
+  }
+  if(c.type === 'ats'){
+    h += `<div class="prop"><label>Auto mode</label><input type="checkbox" ${c.data.auto?'checked':''} onchange="setState('${c.id}','auto',this.checked)" style="width:auto"></div>`;
+    h += `<div class="prop"><label>Position</label><select onchange="setState('${c.id}','pos',this.value)">${['A','B','OFF'].map(v => `<option value="${v}"${c.state.pos===v?' selected':''}>${v==='A'?'SOURCE A':v==='B'?'SOURCE B':'OFF'}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'float' || c.type === 'pressure' || c.type === 'thermostat'){
+    const unit = c.data.unit || '';
+    h += `<div class="prop"><label>Value ${unit}</label><input type="number" step="0.1" value="${c.data.value}" onchange="setData('${c.id}','value',this.value)"></div>`;
+    h += `<div class="prop"><label>Setpoint ${unit}</label><input type="number" step="0.1" value="${c.data.setpoint}" onchange="setData('${c.id}','setpoint',this.value)"></div>`;
+    h += `<div class="prop"><label>Contact type</label><select onchange="setMeta('${c.id}','contact',this.value)">${['NO','NC'].map(v => `<option${(c.data.contact||'NO')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Auto sense</label><input type="checkbox" ${c.data.auto?'checked':''} onchange="setState('${c.id}','auto',this.checked)" style="width:auto"></div>`;
+    h += `<div class="prop"><label>Contact</label><button class="mini ${c.state.triggered?'go':'stop'}" onclick="toggleState('${c.id}','triggered')">${c.state.triggered?'CLOSED':'OPEN'}</button></div>`;
+  }
+  if(c.type === 'rccb'){
+    h += `<div class="prop"><label>Leakage</label><button class="mini ${c.state.tripped?'stop':'go'}" onclick="toggleState('${c.id}','tripped')">${c.state.tripped?'TRIPPED — RESET':'TEST TRIP'}</button></div>`;
+  }
+  if(c.type === 'fuse'){
+    h += `<div class="prop"><label>Rating</label><select onchange="setMeta('${c.id}','rating',this.value)">${[6,10,16,20,25,32,40,50,63,80,100,125].map(v => `<option value="${v}"${Number(c.data.rating||16)===v?' selected':''}>${v} A</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Type</label><select onchange="setMeta('${c.id}','type',this.value)">${['gG','aM','NH','D','Diazed'].map(v => `<option${(c.data.type||'gG')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['400 V','500 V','690 V'].map(v => `<option${(c.data.volts||'400 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Element</label><button class="mini ${c.state.blown?'stop':'go'}" onclick="toggleState('${c.id}','blown')">${c.state.blown?'BLOWN — REPLACE':'BLOW FUSE'}</button></div>`;
+  }
+  if(c.type === 'spd'){
+    h += `<div class="prop"><label>Type</label><select onchange="setMeta('${c.id}','type',this.value)">${['Type 1','Type 2','Type 3'].map(v => `<option${(c.data.type||'Type 2')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Uc (V)</label><select onchange="setMeta('${c.id}','uc',this.value)">${['275 V','320 V','400 V','440 V'].map(v => `<option${(c.data.uc||'400 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'spd' || c.type === 'phase'){
+    h += `<div class="prop"><label>Status</label><button class="mini ${c.state.fault?'stop':'go'}" onclick="toggleState('${c.id}','fault')">${c.state.fault?'FAULT — RESET':'INJECT FAULT'}</button></div>`;
+  }
+  if(c.type === 'mcb' || c.type === 'mcb_3p' || c.type === 'mccb' || c.type === 'mccb_3p'){
+    h += `<div class="prop"><label>Breaker</label><button class="mini ${c.state.closed?'go':'stop'}" onclick="toggleState('${c.id}','closed')">${c.state.closed?'ON — OPEN':'OFF — CLOSE'}</button></div>`;
+  }
+  if(c.type === 'ctmeter'){
+    h += `<div class="prop"><label>Ratio</label><select onchange="setMeta('${c.id}','ratio',this.value)">${['50/5','100/5','200/5','300/5','600/5'].map(v => `<option${(c.data.ratio||'100/5')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Class</label><select onchange="setMeta('${c.id}','cls',this.value)">${['0.2','0.5','1','3'].map(v => `<option${(c.data.cls||'0.5')===v?' selected':''}>Class ${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'voltmeter'){
+    h += `<div class="prop"><label>Reading</label><span class="mini ${c.state.volts>0?'go':'stop'}">${c.state.volts===null||c.state.volts===undefined?'---':c.state.volts+' V'}</span></div>`;
+    h += `<div class="prop"><label>Accuracy class</label><select onchange="setMeta('${c.id}','cls',this.value)">${['0.5','1','1.5','2.5'].map(v => `<option${(c.data.cls||'1.5')===v?' selected':''}>Class ${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Range</label><select onchange="setMeta('${c.id}','range',this.value)">${['0–250 V','0–500 V','0–750 V'].map(v => `<option${(c.data.range||'0–500 V AC')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'vfd'){
+    h += `<div class="prop"><label>Drive</label><button class="mini ${c.state.on?'go':'stop'}" onclick="toggleState('${c.id}','on')">${c.state.on?'RUNNING — STOP':'STOPPED — RUN'}</button></div>`;
+    h += `<div class="prop"><label>Target Hz</label><input type="number" step="1" min="0" max="60" value="${c.data.target}" onchange="setData('${c.id}','target',this.value)"></div>`;
+    h += `<div class="prop"><label>Accel s</label><input type="number" step="0.5" min="0.1" value="${c.data.accel}" onchange="setData('${c.id}','accel',this.value)"></div>`;
+    h += `<div class="prop"><label>Decel s</label><input type="number" step="0.5" min="0.1" value="${c.data.decel}" onchange="setData('${c.id}','decel',this.value)"></div>`;
+    h += `<div class="prop"><label>Motor kW</label><input type="number" step="0.1" min="0" value="${c.data.kw}" onchange="setData('${c.id}','kw',this.value)"></div>`;
+    h += `<div class="prop"><label>Motor A</label><input type="number" step="0.1" min="0" value="${c.data.ratedA}" onchange="setData('${c.id}','ratedA',this.value)"></div>`;
+    h += `<div class="prop"><label>Control mode</label><select onchange="setMeta('${c.id}','mode',this.value)">${['V/f','Sensorless Vector','Torque'].map(v => `<option${(c.data.mode||'V/f')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Supply</label><select onchange="setMeta('${c.id}','volts',this.value)">${['400 V','230 V'].map(v => `<option${(c.data.volts||'400 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Fault</label><button class="mini ${c.state.fault?'stop':'go'}" onclick="toggleState('${c.id}','fault')">${c.state.fault?'TRIP — RESET':'INJECT FAULT'}</button></div>`;
+  }
+  if(c.type === 'plc'){
+    h += `<div class="prop"><label>PLC model</label><select onchange="setMeta('${c.id}','model',this.value)">${['LOGO! 8','S7-1200','Generic'].map(v => `<option${(c.data.model||'LOGO! 8')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<button class="wide" onclick="openPlcEditor('${c.id}')">🧠 Open Ladder Editor</button>`;
+    h += `<div class="prop"><label>Timer T1 (s)</label><input type="number" step="0.1" min="0.1" value="${c.data.timerDelay}" onchange="setData('${c.id}','timerDelay',this.value)"></div>`;
+    h += `<div class="prop"><label>Counter C1</label><input type="number" step="1" min="1" value="${c.data.counterPreset}" onchange="setData('${c.id}','counterPreset',this.value)"></div>`;
+    h += `<div class="prop"><label>Counter now</label><button class="mini" onclick="resetPlcCounter('${c.id}')">${(c.state.counter&&c.state.counter.count)||0} — RESET</button></div>`;
+    h += `<div class="prop"><label>Run / Stop</label><button class="mini ${c.state.run?'go':'stop'}" onclick="toggleState('${c.id}','run')">${c.state.run?'RUN':'STOP'}</button></div>`;
+    const io = ['I1','I2','I3','I4'].map(a => a+'='+(c.state.in[a]?'1':'0')).join('  ');
+    const oo = ['Q1','Q2','Q3','Q4'].map(a => a+'='+(c.state.out[a]?'1':'0')).join('  ');
+    h += `<div class="plcio">${io}<br>${oo}</div>`;
+  }
+  const desc = {power:'Main supply',mcb:'Miniature circuit breaker',pb_no:'Normally open push button',pb_nc:'Normally closed push button',estop:'Emergency stop (latching)',selector:'Maintained selector switch',contactor:'Coil + main / NO / NC contacts',relay:'Auxiliary relay (NO + NC)',timer:'On-delay timer',ol:'Thermal overload relay',lamp:'Indicator lamp',motor:'Three-phase motor',alarm:'Audible horn',mccb:'Moulded case circuit breaker',rccb:'Residual current breaker (30 mA)',fuse:'Fuse cartridge',spd:'Surge protection device',timer_off:'Off-delay timer',flasher:'Flashing / blinking relay',phase:'Phase failure monitor',terminal:'Terminal block (2 through-links)',busbar:'Distribution busbar',generator:'Standby generator',ats:'Automatic transfer switch',ctmeter:'Current transformer ammeter',float:'Float / level switch',pressure:'Pressure switch',thermostat:'Thermostat',plc:'Ladder PLC (LOGO! style)',vfd:'Variable frequency drive'}[c.type] || '';
+  h += `<div class="muted" style="margin:6px 0">${desc}</div>`;
+  h += `<button class="del" onclick="deleteComp('${c.id}')">🗑 حذف المكوّن</button>`;
+  box.innerHTML = h;
+}
+
+/* ---------- Interaction ---------- */
+function selectPlace(type){
+  placing = type;
+  document.querySelectorAll('.compbtn').forEach(b => b.classList.toggle('active', b.dataset.type === type));
+}
+
+function canvasPointerDown(e){
+  if(e.target.closest('.comp')) return;
+  ensureAudio();
+  if(placing){
+    const rect = STAGE.getBoundingClientRect();
+    const t = TYPES[placing];
+    const x = Math.max(4, Math.min(rect.width - t.w - 4, e.clientX - rect.left - t.w/2));
+    const y = Math.max(4, Math.min(rect.height - t.h - 4, e.clientY - rect.top - t.h/2));
+    addComp(placing, Math.round(x), Math.round(y));
+    placing = null;
+    document.querySelectorAll('.compbtn').forEach(b => b.classList.remove('active'));
+    simulate(0); render();
+    return;
+  }
+  if(pendingPort){ pendingPort = null; paint(); return; }
+  if(selectedComp){ selectedComp = null; renderProps(); paint(); }
+}
+
+function handlePortClick(cid, pid){
+  if(!pendingPort){ pendingPort = { comp:cid, port:pid }; paint(); return; }
+  if(pendingPort.comp === cid && pendingPort.port === pid){ pendingPort = null; paint(); return; }
+  const dup = wires.some(w =>
+    (w.from.comp === pendingPort.comp && w.from.port === pendingPort.port && w.to.comp === cid && w.to.port === pid) ||
+    (w.to.comp === pendingPort.comp && w.to.port === pendingPort.port && w.from.comp === cid && w.from.port === pid));
+  if(!dup){
+    wires.push({ id:'w'+(idCounter++), from:{...pendingPort}, to:{ comp:cid, port:pid } });
+    toast('Wire connected');
+  }
+  pendingPort = null;
+  simulate(0); paint();
+}
+
+function compPointerDown(ev, id){
+  if(ev.button !== 0) return;
+  const c = byId(id);
+  if(!c) return;
+  ev.preventDefault();
+  ensureAudio();
+  selectedComp = id;
+  renderProps();
+  components.forEach(x => x.el && x.el.classList.toggle('selected', x.id === id));
+  if(c._releaseTimer){ clearTimeout(c._releaseTimer); c._releaseTimer = null; }
+  dragState = { id, sx:ev.clientX, sy:ev.clientY, ox:c.x, oy:c.y, moved:false };
+  if(c.type === 'pb_no' || c.type === 'pb_nc') c.state.pressed = true;
+  window.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('pointerup', onPointerUp, { once:true });
+  window.addEventListener('pointercancel', onPointerUp, { once:true });
+  simulate(0); paint();
+}
+
+function onPointerMove(ev){
+  if(!dragState) return;
+  const c = byId(dragState.id);
+  if(!c) return;
+  const dx = ev.clientX - dragState.sx, dy = ev.clientY - dragState.sy;
+  if(!dragState.moved && (Math.abs(dx) > 3 || Math.abs(dy) > 3)) dragState.moved = true;
+  if(dragState.moved){
+    c.x = Math.round(dragState.ox + dx);
+    c.y = Math.round(dragState.oy + dy);
+    if(c.el){ c.el.style.left = c.x + 'px'; c.el.style.top = c.y + 'px'; }
+    drawWires();
+    fitStage();
+  }
+}
+
+function onPointerUp(){
+  window.removeEventListener('pointermove', onPointerMove);
+  const st = dragState;
+  dragState = null;
+  if(!st) return;
+  const c = byId(st.id);
+  if(c){
+    if(c.type === 'pb_no' || c.type === 'pb_nc'){
+      c._releaseTimer = setTimeout(() => {
+        c.state.pressed = false;
+        c._releaseTimer = null;
+        simulate(0); paint();
+      }, 180);
+    }
+    if(!st.moved && c.type !== 'pb_no' && c.type !== 'pb_nc') handleClickAction(c);
+  }
+  simulate(0); paint();
+}
+
+function handleClickAction(c){
+  switch(c.type){
+    case 'power':
+    case 'power_1ph':supplyOn = !supplyOn; break;
+    case 'mcb':
+    case 'mcb_3p':   c.state.closed = !c.state.closed; break;
+    case 'mccb':
+    case 'mccb_3p':  c.state.closed = !c.state.closed; break;
+    case 'rccb':
+      if(c.state.tripped){ c.state.tripped = false; c.state.closed = true; }
+      else c.state.closed = !c.state.closed;
+      break;
+    case 'fuse':     c.state.blown = !c.state.blown; break;
+    case 'spd':      c.state.fault = !c.state.fault; break;
+    case 'phase':    c.state.fault = !c.state.fault; break;
+    case 'estop':    c.state.tripped = !c.state.tripped; break;
+    case 'selector': c.state.on = !c.state.on; break;
+    case 'ol':       c.state.tripped = !c.state.tripped; break;
+    case 'generator':c.state.on = !c.state.on; break;
+    case 'ats':      c.state.pos = c.state.pos === 'A' ? 'B' : c.state.pos === 'B' ? 'OFF' : 'A'; break;
+    case 'float':
+    case 'pressure':
+    case 'thermostat': c.state.triggered = !c.state.triggered; break;
+    case 'vfd':      c.state.on = !c.state.on; break;
+    case 'plc':      openPlcEditor(c.id); return;
+    default: return;
+  }
+  simulate(0); renderProps(); paint();
+  toast(c.label + ' → ' + (c.state.pos || (c.state.on ? 'ON' : c.state.tripped ? 'TRIPPED' : c.state.blown ? 'BLOWN' : c.state.fault ? 'FAULT' : 'CLOSED')));
+}
+
+function deleteComp(id){
+  components = components.filter(c => c.id !== id);
+  wires = wires.filter(w => w.from.comp !== id && w.to.comp !== id);
+  if(selectedComp === id) selectedComp = null;
+  if(pendingPort && pendingPort.comp === id) pendingPort = null;
+  simulate(0); render();
+}
+
+function setSupply(on){
+  supplyOn = on;
+  ensureAudio();
+  if(!on) stopBeep();
+  simulate(0); paint();
+  toast(on ? 'Supply ON' : 'Supply OFF');
+}
+
+function resetSim(){
+  stopBeep();
+  components.forEach(c => {
+    const d = defaultState(c.type);
+    Object.keys(d).forEach(k => { c.state[k] = d[k]; });
+  });
+  supplyOn = true;
+  pendingPort = null;
+  selectedComp = null;
+  simulate(0); render();
+  toast('Simulation reset');
+}
+
+function clearAll(){
+  if(!confirm('Clear all components and wires?')) return;
+  stopBeep();
+  components = []; wires = []; idCounter = 1; counters = {};
+  placing = null; selectedComp = null; pendingPort = null;
+  supplyOn = true; supplyV = 230;
+  document.querySelectorAll('.compbtn').forEach(b => b.classList.remove('active'));
+  $('projName').value = 'My Circuit';
+  render();
+  toast('Canvas cleared');
+}
+
+/* ---------- Data setters ---------- */
+function setLabel(id, v){
+  const c = byId(id); if(!c) return;
+  c.label = (v || '').trim() || c.label;
+  renderProps(); paint();
+}
+function setData(id, key, v){
+  const c = byId(id); if(!c) return;
+  c.data[key] = parseFloat(v) || 0;
+  simulate(0); paint();
+}
+function setState(id, key, val){
+  const c = byId(id); if(!c) return;
+  if(key === 'auto') c.data.auto = !!val;
+  else c.state[key] = val;
+  simulate(0); renderProps(); paint();
+}
+function toggleState(id, key){
+  const c = byId(id); if(!c) return;
+  c.state[key] = !c.state[key];
+  simulate(0); renderProps(); paint();
+}
+function setDelay(id, v){
+  const c = byId(id); if(!c) return;
+  c.state.delay = Math.max(0.1, parseFloat(v) || 0.1);
+  renderProps(); paint();
+}
+function setSupplyV(v){
+  supplyV = parseFloat(v) || 230;
+  paint();
+}
+
+/* ---------- Project save / load / export ---------- */
+const STORAGE_KEY = 'ccs_builder_project_v2';
+
+function serialize(){
+  return {
+    project: $('projName').value,
+    supplyV, supplyOn,
+    components: components.map(c => ({ id:c.id, type:c.type, x:c.x, y:c.y, label:c.label, state:{...c.state}, data:{...c.data} })),
+    wires: wires.map(w => ({ id:w.id, from:{...w.from}, to:{...w.to} })),
+    idCounter
+  };
+}
+
+function restore(data){
+  stopBeep();
+  components = (data.components || []).map(c => ({
+    id:c.id, type:c.type, x:c.x, y:c.y, label:c.label,
+    state:Object.assign(defaultState(c.type), c.state || {}),
+    data:Object.assign(defaultData(c.type), c.data || {})
+  }));
+  wires = (data.wires || []).map(w => ({ id:w.id, from:{...w.from}, to:{...w.to} }));
+  idCounter = data.idCounter || (components.length + wires.length + 1);
+  supplyV = data.supplyV || 230;
+  supplyOn = data.supplyOn !== false;
+  $('projName').value = data.project || 'My Circuit';
+  counters = {};
+  components.forEach(c => {
+    const m = /^([A-Z]+)(\d+)$/.exec(c.label || '');
+    if(m) counters[m[1]] = Math.max(counters[m[1]] || 0, parseInt(m[2]));
+  });
+  selectedComp = null; pendingPort = null; placing = null;
+  document.querySelectorAll('.compbtn').forEach(b => b.classList.remove('active'));
+  simulate(0); render();
+}
+
+function saveProject(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(serialize()));
+    toast('Project saved');
+  }catch(e){ toast('Save failed'); }
+}
+function loadProject(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(!raw){ toast('No saved project'); return; }
+  try{ restore(JSON.parse(raw)); toast('Project loaded'); }
+  catch(e){ toast('Load failed'); }
+}
+function exportProject(){
+  const blob = new Blob([JSON.stringify(serialize(), null, 2)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = ($('projName').value || 'circuit').replace(/[^A-Za-z0-9_-]+/g, '_') + '.json';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  toast('Exported JSON');
+}
+function importProject(ev){
+  const f = ev.target.files && ev.target.files[0];
+  if(!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try{ restore(JSON.parse(r.result)); toast('Imported JSON'); }
+    catch(e){ toast('Invalid file'); }
+  };
+  r.readAsText(f);
+  ev.target.value = '';
+}
+
+/* ---------- Example circuits ---------- */
+function clearForPreset(){
+  stopBeep();
+  components = []; wires = []; idCounter = 1; counters = {};
+  selectedComp = null; pendingPort = null; placing = null; supplyOn = true;
+  document.querySelectorAll('.compbtn').forEach(b => b.classList.remove('active'));
+}
+function link(a, pa, b, pb){
+  wires.push({ id:'w'+(idCounter++), from:{ comp:a.id, port:pa }, to:{ comp:b.id, port:pb } });
+}
+
+/* ---- preset helpers ---- */
+function feed3(p, qf, k, ol, m){
+  const rows = [
+    { ph:'L1', t:'1', b:'2', mp:'U1' },
+    { ph:'L2', t:'3', b:'4', mp:'V1' },
+    { ph:'L3', t:'5', b:'6', mp:'W1' }
+  ];
+  rows.forEach(r => {
+    link(p, r.ph, qf, r.t);
+    if(k){ link(qf, r.b, k, r.t); link(k, r.b, ol, r.t); }
+    else { link(qf, r.b, ol, r.t); }
+    link(ol, r.b, m, r.mp);
+  });
+}
+function feed1(p, f, k, ol, m){
+  link(p, 'L', f, '1');
+  let cur = f, cp = '2';
+  if(k){ link(cur, cp, k, '1'); cur = k; cp = '2'; }
+  if(ol){ link(cur, cp, ol, '1'); cur = ol; cp = '2'; }
+  if(m) link(cur, cp, m, '1');
+}
+function coilLamp(h, k, n){
+  link(h, '1', k, 'A1');
+  link(h, '2', n, 'N');
+}
+
+function presetDol(){
+  $('projName').value = 'DOL Motor Starter (3-Phase)';
+  const p  = addComp('power', 10, 240, 'PS1');
+  const qf = addComp('mcb_3p', 160, 240, 'QF1');
+  const k  = addComp('contactor', 310, 200, 'K1');
+  const ol = addComp('ol', 522, 250, 'F2');
+  const m  = addComp('motor', 700, 245, 'M1');
+  const s1 = addComp('pb_nc', 160, 470, 'S1');
+  const e1 = addComp('estop', 20, 470, 'E1');
+  const s2 = addComp('pb_no', 300, 470, 'S2');
+  const h  = addComp('lamp', 460, 470, 'H1');
+  const pv = addComp('voltmeter', 700, 470, 'PV1');
+  feed3(p, qf, k, ol, m);
+  m.data.connection = 'DELTA';
+  link(qf,'2', s1,'1');
+  link(s1,'2', e1,'1');
+  link(e1,'2', ol,'95');
+  link(ol,'96', s2,'1');
+  link(s2,'2', k,'A1');
+  link(k,'A2', p,'N');
+  link(k,'13', s2,'1');
+  link(k,'14', s2,'2');
+  coilLamp(h, k, p);
+  link(p,'L1', pv,'1');
+  link(p,'L2', pv,'2');
+}
+
+function presetStartStop(){
+  $('projName').value = 'Start Stop with Lamp (1-Phase)';
+  const p  = addComp('power_1ph', 20, 250, 'PS1');
+  const f  = addComp('mcb', 160, 240, 'F1');
+  const s1 = addComp('pb_nc', 300, 160, 'S1');
+  const s2 = addComp('pb_no', 300, 300, 'S2');
+  const k  = addComp('contactor', 470, 140, 'K1');
+  const h  = addComp('lamp', 680, 300, 'H1');
+  link(p,'L', f,'1');
+  link(f,'2', s1,'1');
+  link(s1,'2', s2,'1');
+  link(s2,'2', k,'A1');
+  link(k,'A2', p,'N');
+  link(k,'13', s2,'1');
+  link(k,'14', s2,'2');
+  coilLamp(h, k, p);
+}
+
+function presetAlarm(){
+  $('projName').value = 'Alarm & Protection (1-Phase)';
+  const p  = addComp('power_1ph', 20, 240, 'PS1');
+  const f  = addComp('mcb', 150, 240, 'F1');
+  const ol = addComp('ol', 290, 150, 'F2');
+  const s1 = addComp('pb_nc', 290, 380, 'S1');
+  const ka = addComp('relay', 460, 210, 'KA1');
+  const h  = addComp('lamp', 620, 140, 'H1');
+  const ha = addComp('alarm', 620, 360, 'HA1');
+  link(p,'L', f,'1');
+  link(f,'2', ol,'95');
+  link(ol,'96', s1,'1');
+  link(s1,'2', ka,'A1');
+  link(ka,'A2', p,'N');
+  link(f,'2', ka,'21');
+  link(ka,'22', ha,'1');
+  link(ha,'2', p,'N');
+  coilLamp(h, ka, p);
+}
+
+function presetReversing(){
+  $('projName').value = 'Reversing Interlock (3-Phase)';
+  const p  = addComp('power', 10, 300, 'PS1');
+  const qf = addComp('mcb_3p', 150, 300, 'QF1');
+  const ol = addComp('ol', 300, 305, 'F2');
+  const k1 = addComp('contactor', 470, 60, 'K1');
+  const k2 = addComp('contactor', 470, 420, 'K2');
+  const m  = addComp('motor', 700, 280, 'M1');
+  const s0 = addComp('pb_nc', 20, 620, 'S0');
+  const sf = addComp('pb_no', 150, 620, 'S1');
+  const sr = addComp('pb_no', 270, 620, 'S2');
+  const h1 = addComp('lamp', 700, 60, 'H1');
+  const h2 = addComp('lamp', 700, 500, 'H2');
+  [['L1','1','2'],['L2','3','4'],['L3','5','6']].forEach(([ph,t,b]) => {
+    link(p, ph, qf, t);
+    link(qf, b, ol, t);
+    link(ol, b, k1, t);
+    link(ol, b, k2, t);
+  });
+  link(k1,'2', m,'U1'); link(k1,'4', m,'V1'); link(k1,'6', m,'W1');
+  link(k2,'2', m,'W1'); link(k2,'4', m,'V1'); link(k2,'6', m,'U1');
+  m.data.connection = 'DELTA';
+  link(qf,'2', s0,'1');
+  link(s0,'2', sf,'1');
+  link(s0,'2', sr,'1');
+  link(sf,'2', k2,'21');
+  link(k2,'22', k1,'A1');
+  link(k1,'A2', p,'N');
+  link(k1,'13', sf,'1');
+  link(k1,'14', sf,'2');
+  link(sr,'2', k1,'21');
+  link(k1,'22', k2,'A1');
+  link(k2,'A2', p,'N');
+  link(k2,'13', sr,'1');
+  link(k2,'14', sr,'2');
+  coilLamp(h1, k1, p);
+  coilLamp(h2, k2, p);
+}
+
+function presetTimer(){
+  $('projName').value = 'Timer On-Delay (1-Phase)';
+  const p  = addComp('power_1ph', 20, 250, 'PS1');
+  const f  = addComp('mcb', 160, 240, 'F1');
+  const sa = addComp('selector', 300, 250, 'SA1');
+  const kt = addComp('timer', 470, 120, 'KT1');
+  const h0 = addComp('lamp', 470, 360, 'H0');
+  const h1 = addComp('lamp', 670, 160, 'H1');
+  link(p,'L', f,'1');
+  link(f,'2', sa,'1');
+  link(sa,'2', kt,'A1');
+  link(kt,'A2', p,'N');
+  link(f,'2', kt,'15');
+  link(kt,'18', h1,'1');
+  link(h1,'2', p,'N');
+  link(sa,'2', h0,'1');
+  link(h0,'2', p,'N');
+  kt.state.delay = 3;
+}
+
+function presetStarDelta(){
+  $('projName').value = 'Star-Delta Starter (Auto)';
+  const p  = addComp('power', 8, 260, 'PS1');
+  const qm = addComp('mccb_3p', 150, 260, 'QM1');
+  const k1 = addComp('contactor', 300, 200, 'K1');
+  const ol = addComp('ol', 512, 255, 'F2');
+  const m  = addComp('motor', 690, 260, 'M1');
+  const k3 = addComp('contactor', 300, 500, 'K3');
+  const k2 = addComp('contactor', 690, 500, 'K2');
+  const kt = addComp('timer_sd', 515, 480, 'KT1');
+  const s1 = addComp('pb_nc', 8, 790, 'S1');
+  const e1 = addComp('estop', 120, 790, 'E1');
+  const s2 = addComp('pb_no', 250, 790, 'S2');
+  const h1 = addComp('lamp', 400, 790, 'H1');
+  const h2 = addComp('lamp', 530, 790, 'H2');
+  const h3 = addComp('lamp', 660, 790, 'H3');
+  const pv = addComp('voltmeter', 900, 700, 'PV1');
+
+  feed3(p, qm, k1, ol, m);
+  m.data.connection = 'AUTO';
+
+  /* Star: U2/V2/W2 shorted through K3 poles */
+  link(m,'U2', k3,'1');
+  link(m,'V2', k3,'3');
+  link(m,'W2', k3,'5');
+  link(k3,'2', k3,'4');
+  link(k3,'4', k3,'6');
+
+  /* Delta: U2->V1, V2->W1, W2->U1 through K2 poles */
+  link(m,'U2', k2,'1'); link(k2,'2', m,'V1');
+  link(m,'V2', k2,'3'); link(k2,'4', m,'W1');
+  link(m,'W2', k2,'5'); link(k2,'6', m,'U1');
+
+  /* Control */
+  link(qm,'2', s1,'1');
+  link(s1,'2', e1,'1');
+  link(e1,'2', ol,'95');
+  link(ol,'96', s2,'1');
+  link(s2,'2', k1,'A1');
+  link(k1,'A2', p,'N');
+  link(k1,'13', s2,'1');
+  link(k1,'14', s2,'2');
+
+  /* Timer coil runs with K1 */
+  link(s2,'2', kt,'A1');
+  link(kt,'A2', p,'N');
+
+  /* Star path: 15-16 closed until elapsed, through K2 NC */
+  link(s2,'2', kt,'15');
+  link(kt,'16', k2,'21');
+  link(k2,'22', k3,'A1');
+  link(k3,'A2', p,'N');
+
+  /* Delta path: 15-18 closed after elapsed, through K3 NC */
+  link(kt,'18', k3,'21');
+  link(k3,'22', k2,'A1');
+  link(k2,'A2', p,'N');
+
+  coilLamp(h1, k1, p);
+  coilLamp(h2, k3, p);
+  coilLamp(h3, k2, p);
+  link(p,'L1', pv,'1');
+  link(p,'L2', pv,'2');
+  kt.state.delay = 6;
+}
+
+function presetMultiStart(){
+  $('projName').value = 'Multi-Start / Multi-Stop (3-Phase)';
+  const p  = addComp('power', 10, 240, 'PS1');
+  const qf = addComp('mcb_3p', 160, 240, 'QF1');
+  const k  = addComp('contactor', 310, 200, 'K1');
+  const ol = addComp('ol', 522, 250, 'F2');
+  const m  = addComp('motor', 700, 245, 'M1');
+  const s1 = addComp('pb_nc', 160, 470, 'S1');
+  const s4 = addComp('pb_nc', 290, 470, 'S4');
+  const s2 = addComp('pb_no', 160, 600, 'S2');
+  const s3 = addComp('pb_no', 290, 600, 'S3');
+  const h  = addComp('lamp', 470, 470, 'H1');
+  feed3(p, qf, k, ol, m);
+  m.data.connection = 'DELTA';
+  link(qf,'2', s1,'1');
+  link(s1,'2', s4,'1');
+  link(s4,'2', s2,'1');
+  link(s4,'2', s3,'1');
+  link(s2,'2', k,'A1');
+  link(s3,'2', k,'A1');
+  link(k,'A2', p,'N');
+  link(k,'13', s4,'2');
+  link(k,'14', k,'A1');
+  coilLamp(h, k, p);
+}
+
+function presetGenerator(){
+  $('projName').value = 'Generator / ATS Changeover (1-Phase)';
+  const p  = addComp('power_1ph', 20, 180, 'PS1');
+  const g  = addComp('generator', 20, 380, 'G1');
+  const at = addComp('ats', 240, 250, 'ATS1');
+  const f  = addComp('mcb', 470, 250, 'F1');
+  const h1 = addComp('lamp', 630, 110, 'H1');
+  const h2 = addComp('lamp', 630, 290, 'H2');
+  const m  = addComp('motor_1ph', 800, 250, 'M1');
+  link(p,'L', at,'AL'); link(p,'N', at,'AN');
+  link(g,'L', at,'BL'); link(g,'N', at,'BN');
+  link(at,'OL', f,'1');
+  link(f,'2', m,'1');
+  link(m,'2', at,'ON');
+  link(at,'OL', h1,'1');
+  link(h1,'2', at,'ON');
+  link(g,'L', h2,'1');
+  link(h2,'2', g,'N');
+  g.state.on = true;
+  at.data.auto = false;
+}
+
+function presetLevel(){
+  $('projName').value = 'Tank Level Control (3-Phase)';
+  const p  = addComp('power', 10, 240, 'PS1');
+  const qf = addComp('mcb_3p', 160, 240, 'QF1');
+  const k  = addComp('contactor', 310, 200, 'K1');
+  const ol = addComp('ol', 522, 250, 'F2');
+  const m  = addComp('motor', 700, 245, 'M1');
+  const s1 = addComp('pb_nc', 160, 450, 'S1');
+  const s2 = addComp('pb_no', 290, 450, 'S2');
+  const ls = addComp('float', 430, 450, 'LS1');
+  const ka = addComp('relay', 620, 450, 'KA1');
+  const h1 = addComp('lamp', 820, 450, 'H1');
+  const h2 = addComp('lamp', 820, 580, 'H2');
+  feed3(p, qf, k, ol, m);
+  m.data.connection = 'DELTA';
+  link(qf,'2', s1,'1');
+  link(s1,'2', s2,'1');
+  link(s2,'2', ka,'21');
+  link(ka,'22', k,'A1');
+  link(k,'A2', p,'N');
+  link(k,'13', s2,'1');
+  link(k,'14', s2,'2');
+  link(qf,'2', ls,'1');
+  link(ls,'2', ka,'A1');
+  link(ka,'A2', p,'N');
+  coilLamp(h1, k, p);
+  coilLamp(h2, ka, p);
+  ls.data.value = 30;
+  ls.data.setpoint = 70;
+}
+
+function presetPressure(){
+  $('projName').value = 'Pressure Booster Control (3-Phase)';
+  const p  = addComp('power', 10, 240, 'PS1');
+  const qf = addComp('mcb_3p', 160, 240, 'QF1');
+  const k  = addComp('contactor', 310, 200, 'K1');
+  const ol = addComp('ol', 522, 250, 'F2');
+  const m  = addComp('motor', 700, 245, 'M1');
+  const sa = addComp('selector', 160, 450, 'SA1');
+  const ps = addComp('pressure', 300, 450, 'PS2');
+  const ka = addComp('relay', 470, 450, 'KA1');
+  const h1 = addComp('lamp', 660, 450, 'H1');
+  const h2 = addComp('lamp', 830, 450, 'H2');
+  feed3(p, qf, k, ol, m);
+  m.data.connection = 'DELTA';
+  link(qf,'2', sa,'1');
+  link(sa,'2', ka,'21');
+  link(ka,'22', k,'A1');
+  link(k,'A2', p,'N');
+  link(qf,'2', ps,'1');
+  link(ps,'2', ka,'A1');
+  link(ka,'A2', p,'N');
+  coilLamp(h1, k, p);
+  coilLamp(h2, ka, p);
+  ps.data.value = 3;
+  ps.data.setpoint = 6;
+}
+
+function presetTemperature(){
+  $('projName').value = 'Temperature / Heater Control (1-Phase)';
+  const p  = addComp('power_1ph', 20, 240, 'PS1');
+  const f  = addComp('mcb', 150, 240, 'F1');
+  const sa = addComp('selector', 290, 250, 'SA1');
+  const k  = addComp('contactor', 440, 150, 'K1');
+  const ts = addComp('thermostat', 440, 405, 'TS1');
+  const ka = addComp('relay', 620, 380, 'KA1');
+  const h1 = addComp('lamp', 630, 120, 'H1');
+  const ha = addComp('alarm', 800, 240, 'HA1');
+  const h2 = addComp('lamp', 800, 380, 'H2');
+  link(p,'L', f,'1');
+  link(f,'2', sa,'1');
+  link(sa,'2', ka,'21');
+  link(ka,'22', k,'A1');
+  link(k,'A2', p,'N');
+  link(f,'2', ts,'1');
+  link(ts,'2', ka,'A1');
+  link(ka,'A2', p,'N');
+  link(f,'2', k,'1');
+  link(k,'2', h1,'1');
+  link(h1,'2', p,'N');
+  link(f,'2', ka,'13');
+  link(ka,'14', ha,'1');
+  link(ha,'2', p,'N');
+  coilLamp(h2, ka, p);
+  ts.data.value = 25;
+  ts.data.setpoint = 80;
+}
+
+function presetFlasher(){
+  $('projName').value = 'Flasher / Blinking Lamps (1-Phase)';
+  const p  = addComp('power_1ph', 20, 240, 'PS1');
+  const f  = addComp('mcb', 150, 230, 'F1');
+  const sa = addComp('selector', 290, 250, 'SA1');
+  const kf = addComp('flasher', 440, 140, 'KF1');
+  const h1 = addComp('lamp', 650, 120, 'H1');
+  const h2 = addComp('lamp', 650, 280, 'H2');
+  const ha = addComp('alarm', 650, 430, 'HA1');
+  link(p,'L', f,'1');
+  link(f,'2', sa,'1');
+  link(sa,'2', kf,'A1');
+  link(kf,'A2', p,'N');
+  link(f,'2', kf,'15');
+  link(kf,'18', h1,'1'); link(h1,'2', p,'N');
+  link(kf,'18', h2,'1'); link(h2,'2', p,'N');
+  link(kf,'18', ha,'1'); link(ha,'2', p,'N');
+  kf.data.period = 0.8;
+}
+
+function presetPhase(){
+  $('projName').value = 'Phase Failure Protection (3-Phase)';
+  const p  = addComp('power', 10, 240, 'PS1');
+  const qf = addComp('mcb_3p', 160, 240, 'QF1');
+  const kp = addComp('phase', 300, 120, 'KP1');
+  const k  = addComp('contactor', 500, 200, 'K1');
+  const ol = addComp('ol', 710, 255, 'F2');
+  const m  = addComp('motor', 890, 250, 'M1');
+  const h  = addComp('lamp', 300, 340, 'H1');
+  const ha = addComp('alarm', 500, 455, 'HA1');
+  feed3(p, qf, k, ol, m);
+  m.data.connection = 'DELTA';
+  link(qf,'2', kp,'13');
+  link(kp,'14', k,'A1');
+  link(k,'A2', p,'N');
+  link(qf,'2', kp,'21');
+  link(kp,'22', ha,'1');
+  link(ha,'2', p,'N');
+  link(kp,'14', h,'1');
+  link(h,'2', p,'N');
+}
+
+function presetProtection(){
+  $('projName').value = 'MCCB + RCCB Protection (1-Phase)';
+  const p  = addComp('power_1ph', 20, 240, 'PS1');
+  const q1 = addComp('mccb', 150, 240, 'Q1');
+  const q2 = addComp('rccb', 300, 240, 'Q2');
+  const fu = addComp('fuse', 450, 250, 'FU1');
+  const k  = addComp('contactor', 570, 150, 'K1');
+  const ol = addComp('ol', 760, 255, 'F2');
+  const m  = addComp('motor_1ph', 930, 250, 'M1');
+  const st = addComp('pb_nc', 300, 430, 'S1');
+  const sa = addComp('pb_no', 440, 430, 'S2');
+  const sp = addComp('spd', 300, 560, 'SPD1');
+  const h  = addComp('lamp', 620, 430, 'H1');
+  link(p,'L', q1,'1');
+  link(q1,'2', q2,'1');
+  link(q2,'2', fu,'1');
+  link(fu,'2', k,'1');
+  link(k,'2', ol,'1');
+  link(ol,'2', m,'1');
+  link(m,'2', p,'N');
+  link(fu,'2', st,'1');
+  link(st,'2', sa,'1');
+  link(sa,'2', k,'A1');
+  link(k,'A2', p,'N');
+  link(k,'13', sa,'1');
+  link(k,'14', sa,'2');
+  link(fu,'2', sp,'1');
+  link(sp,'2', p,'N');
+  coilLamp(h, k, p);
+}
+
+function presetMotors(){
+  $('projName').value = 'Motor Types Gallery';
+  const p3 = addComp('power', 10, 60, 'PS1');
+  const p1 = addComp('power_1ph', 10, 320, 'PS2');
+  const m1 = addComp('motor', 230, 40, 'M1');
+  const m2 = addComp('motor_1ph', 230, 300, 'M2');
+  const m3 = addComp('motor_dc', 430, 60, 'M3');
+  const m4 = addComp('motor_stepper', 430, 300, 'M4');
+  const m5 = addComp('motor_servo', 630, 60, 'M5');
+  link(p3,'L1', m1,'U1');
+  link(p3,'L2', m1,'V1');
+  link(p3,'L3', m1,'W1');
+  link(m1,'U2', m1,'V1');
+  link(m1,'V2', m1,'W1');
+  link(m1,'W2', m1,'U1');
+  m1.data.connection = 'AUTO';
+  [m2,m3,m4,m5].forEach(x => {
+    link(p1,'L', x,'1');
+    link(x,'2', p1,'N');
+  });
+}
+
+function presetVfd(){
+  $('projName').value = 'VFD Motor Drive (1-Phase in)';
+  const p  = addComp('power_1ph', 20, 240, 'PS1');
+  const f  = addComp('mcb', 150, 230, 'F1');
+  const v  = addComp('vfd', 300, 180, 'VFD1');
+  const m  = addComp('motor_1ph', 540, 240, 'M1');
+  const h  = addComp('lamp', 560, 420, 'H1');
+  link(p,'L', f,'1');
+  link(f,'2', v,'L');
+  link(p,'N', v,'N');
+  link(v,'1', m,'1');
+  link(v,'2', m,'2');
+  link(v,'1', h,'1');
+  link(h,'2', v,'2');
+  v.data.target = 50;
+  v.data.accel = 8;
+  v.data.decel = 6;
+  v.state.on = true;
+}
+
+function presetPlc(){
+  $('projName').value = 'PLC Motor Control (Ladder)';
+  const p  = addComp('power', 10, 240, 'PS1');
+  const qf = addComp('mcb_3p', 160, 240, 'QF1');
+  const pc = addComp('plc', 310, 120, 'PLC1');
+  const k  = addComp('contactor', 600, 200, 'K1');
+  const ol = addComp('ol', 810, 255, 'F2');
+  const m  = addComp('motor', 990, 250, 'M1');
+  const s1 = addComp('pb_nc', 160, 430, 'S1');
+  const s2 = addComp('pb_no', 310, 430, 'S2');
+  const h  = addComp('lamp', 600, 470, 'H1');
+  feed3(p, qf, k, ol, m);
+  m.data.connection = 'DELTA';
+  link(qf,'2', pc,'L');
+  link(p,'N', pc,'N');
+  link(qf,'2', s1,'1');
+  link(s1,'2', pc,'I2');
+  link(qf,'2', s2,'1');
+  link(s2,'2', pc,'I1');
+  link(pc,'Q1', k,'A1');
+  link(k,'A2', p,'N');
+  link(pc,'Q2', h,'1');
+  link(h,'2', p,'N');
+}
+
+function loadPreset(name){
+  if(!name) return;
+  clearForPreset();
+  if(name === 'dol') presetDol();
+  else if(name === 'startstop') presetStartStop();
+  else if(name === 'alarm') presetAlarm();
+  else if(name === 'reversing') presetReversing();
+  else if(name === 'timer') presetTimer();
+  else if(name === 'stardelta') presetStarDelta();
+  else if(name === 'multistart') presetMultiStart();
+  else if(name === 'generator') presetGenerator();
+  else if(name === 'level') presetLevel();
+  else if(name === 'pressure') presetPressure();
+  else if(name === 'temperature') presetTemperature();
+  else if(name === 'flasher') presetFlasher();
+  else if(name === 'phase') presetPhase();
+  else if(name === 'protection') presetProtection();
+  else if(name === 'vfd') presetVfd();
+  else if(name === 'plc') presetPlc();
+  else if(name === 'motors') presetMotors();
+  simulate(0); render();
+  $('presetSel').value = '';
+  toast('Example loaded — press RUN / hold START');
+}
+
+/* ---------- Drag & drop from palette ---------- */
+function initPaletteDrag(){
+  document.querySelectorAll('.compbtn').forEach(b => {
+    b.draggable = true;
+    b.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', b.dataset.type);
+      e.dataTransfer.effectAllowed = 'copy';
+      b.classList.add('active');
+    });
+    b.addEventListener('dragend', () => b.classList.remove('active'));
+  });
+}
+function stageDrop(e){
+  e.preventDefault();
+  const type = e.dataTransfer.getData('text/plain');
+  if(!TYPES[type]) return;
+  const rect = STAGE.getBoundingClientRect();
+  const t = TYPES[type];
+  const x = Math.max(4, Math.min(rect.width - t.w - 4, e.clientX - rect.left - t.w/2));
+  const y = Math.max(4, Math.min(rect.height - t.h - 4, e.clientY - rect.top - t.h/2));
+  addComp(type, Math.round(x), Math.round(y));
+  simulate(0); render();
+  toast(t.label + ' added');
+}
+
+/* ---------- Start ---------- */
+CANVAS.addEventListener('pointerdown', canvasPointerDown);
+STAGE.addEventListener('dragover', e => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+STAGE.addEventListener('drop', stageDrop);
+initPaletteDrag();
+loadPreset('dol');
+setInterval(() => {
+  simulate(0.1);
+  paint();
+}, 100);
+setTimeout(() => toast('Example loaded — drag, wire, and hold START'), 500);
+</script>
+</body>
+</html>
