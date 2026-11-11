@@ -70592,3 +70592,67 @@ Call log:
 [2026-11-11 14:15:50] LOGGED IN
 [2026-11-11 14:17:39] pulled off=0 n=4000 accum=4000
 [2026-11-11 14:19:13] pulled off=4000 n=4000 accum=8000
+[2026-11-11 14:20:28] pulled off=8000 n=4000 accum=12000
+[2026-11-11 14:21:05] pulled off=12000 n=2064 accum=14064
+[2026-11-11 14:21:05] task index refreshed (6350 asset tags)
+[2026-11-11 14:21:06] updated dashboard_data.json itr_summary.live
+[2026-11-11 14:21:07]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 14:21:07]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 14:21 (closed=7626) rc=0 [main f4b3235] ITR live update 2026-11-11 14:21 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 14:30:49] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 14:30:54] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 14:30:55] reused the sync's always-open browser (port 9222)
+[2026-11-11 14:30:55] LOGGED IN
+[2026-11-11 14:31:11] pulled off=0 n=4000 accum=4000
+[2026-11-11 14:31:23] pulled off=4000 n=4000 accum=8000
+[2026-11-11 14:31:33] pulled off=8000 n=4000 accum=12000
+[2026-11-11 14:31:39] pulled off=12000 n=2064 accum=14064
+[2026-11-11 14:31:39] task index refreshed (6350 asset tags)
+[2026-11-11 14:31:39] milestone_map: 290 subsystems
+[2026-11-11 14:31:40] updated dashboard_data.json itr_summary.live
+[2026-11-11 14:31:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 14:31:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 14:31 (closed=7626) rc=0 [main 1d7bf6c] ITR live update 2026-11-11 14:31 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 14:45:54] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 14:45:57] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 14:46:01] reused the sync's always-open browser (port 9222)
+[2026-11-11 14:46:01] LOGGED IN
+[2026-11-11 14:46:20] pulled off=0 n=4000 accum=4000
+[2026-11-11 14:46:46] pulled off=4000 n=4000 accum=8000
+[2026-11-11 14:47:14] pulled off=8000 n=4000 accum=12000
+[2026-11-11 14:47:28] pulled off=12000 n=2064 accum=14064
+[2026-11-11 14:47:28] task index refreshed (6350 asset tags)
+[2026-11-11 14:47:28] milestone_map: 290 subsystems
+[2026-11-11 14:47:29] updated dashboard_data.json itr_summary.live
+[2026-11-11 14:47:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 14:47:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 14:47 (closed=7626) rc=0 [main 63a4042] ITR live update 2026-11-11 14:47 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 15:00:48]  >> git push OK
+[2026-11-11 15:00:57] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 15:01:01] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 15:01:02] reused the sync's always-open browser (port 9222)
+[2026-11-11 15:01:02] LOGGED IN
+[2026-11-11 15:02:45] pulled off=0 n=4000 accum=4000
+[2026-11-11 15:04:38] pulled off=4000 n=4000 accum=8000
+[2026-11-11 15:06:28] pulled off=8000 n=4000 accum=12000
+[2026-11-11 15:07:18] pulled off=12000 n=2064 accum=14064
+[2026-11-11 15:07:18] task index refreshed (6350 asset tags)
+[2026-11-11 15:07:18] milestone_map: 290 subsystems
+[2026-11-11 15:07:19] updated dashboard_data.json itr_summary.live
+[2026-11-11 15:07:21]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 15:07:22]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 15:07 (closed=7626) rc=0 [main 0ac9d6b] ITR live update 2026-11-11 15:07 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 15:16:01] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 15:16:04] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 15:16:05] reused the sync's always-open browser (port 9222)
+[2026-11-11 15:16:06] LOGGED IN
+[2026-11-11 15:16:25] pulled off=0 n=4000 accum=4000
+[2026-11-11 15:16:55] pulled off=4000 n=4000 accum=8000
+[2026-11-11 15:17:22] pulled off=8000 n=4000 accum=12000
+[2026-11-11 15:17:40] pulled off=12000 n=2064 accum=14064
+[2026-11-11 15:17:40] task index refreshed (6350 asset tags)
+[2026-11-11 15:17:40] milestone_map: 290 subsystems
+[2026-11-11 15:17:41] updated dashboard_data.json itr_summary.live
+[2026-11-11 15:17:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 15:17:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 15:17 (closed=7626) rc=0 [main 1b9c18c] ITR live update 2026-11-11 15:17 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
