@@ -70656,3 +70656,231 @@ Call log:
 [2026-11-11 15:17:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
 [2026-11-11 15:17:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 15:17 (closed=7626) rc=0 [main 1b9c18c] ITR live update 2026-11-11 15:17 (closed=7626)
  1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 15:31:04] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 15:31:06] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 15:31:07] reused the sync's always-open browser (port 9222)
+[2026-11-11 15:31:07] LOGGED IN
+[2026-11-11 15:32:41] pulled off=0 n=4000 accum=4000
+[2026-11-11 15:34:20] pulled off=4000 n=4000 accum=8000
+[2026-11-11 15:35:43] pulled off=8000 n=4000 accum=12000
+[2026-11-11 15:36:31] pulled off=12000 n=2064 accum=14064
+[2026-11-11 15:36:31] task index refreshed (6350 asset tags)
+[2026-11-11 15:36:31] milestone_map: 290 subsystems
+[2026-11-11 15:36:31] updated dashboard_data.json itr_summary.live
+[2026-11-11 15:36:32]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 15:36:33]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 15:36 (closed=7626) rc=0 [main b0cb0de] ITR live update 2026-11-11 15:36 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 15:46:06] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 15:46:10] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 15:46:10] reused the sync's always-open browser (port 9222)
+[2026-11-11 15:46:10] LOGGED IN
+[2026-11-11 15:47:35] pulled off=0 n=4000 accum=4000
+[2026-11-11 15:49:10] pulled off=4000 n=4000 accum=8000
+[2026-11-11 15:50:42] pulled off=8000 n=4000 accum=12000
+[2026-11-11 15:51:24] pulled off=12000 n=2064 accum=14064
+[2026-11-11 15:51:24] task index refreshed (6350 asset tags)
+[2026-11-11 15:51:24] milestone_map: 290 subsystems
+[2026-11-11 15:51:25] updated dashboard_data.json itr_summary.live
+[2026-11-11 15:51:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 15:51:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 15:51 (closed=7626) rc=0 [main 410e805] ITR live update 2026-11-11 15:51 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 16:01:10] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 16:01:13] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 16:01:16] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:01:16] LOGGED IN
+[2026-11-11 16:01:17] err off=0: [object Object]
+[2026-11-11 16:01:17] pull retry 2/3 - reloading Switchboard
+[2026-11-11 16:01:21] LOGGED IN
+[2026-11-11 16:01:21] err off=0: [object Object]
+[2026-11-11 16:01:21] pull retry 3/3 - reloading Switchboard
+[2026-11-11 16:01:25] LOGGED IN
+[2026-11-11 16:01:25] err off=0: [object Object]
+[2026-11-11 16:01:25] cycle got no complete data (fail 1/3)
+[2026-11-11 16:03:25] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:03:25] LOGGED IN
+[2026-11-11 16:03:25] err off=0: [object Object]
+[2026-11-11 16:03:25] pull retry 2/3 - reloading Switchboard
+[2026-11-11 16:03:29] LOGGED IN
+[2026-11-11 16:03:29] err off=0: [object Object]
+[2026-11-11 16:03:29] pull retry 3/3 - reloading Switchboard
+[2026-11-11 16:03:33] LOGGED IN
+[2026-11-11 16:03:33] err off=0: [object Object]
+[2026-11-11 16:03:33] cycle got no complete data (fail 2/3)
+[2026-11-11 16:05:33] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:05:33] LOGGED IN
+[2026-11-11 16:05:33] err off=0: [object Object]
+[2026-11-11 16:05:33] pull retry 2/3 - reloading Switchboard
+[2026-11-11 16:05:37] LOGGED IN
+[2026-11-11 16:05:38] err off=0: [object Object]
+[2026-11-11 16:05:38] pull retry 3/3 - reloading Switchboard
+[2026-11-11 16:05:42] LOGGED IN
+[2026-11-11 16:05:42] err off=0: [object Object]
+[2026-11-11 16:05:42] cycle got no complete data (fail 3/3)
+[2026-11-11 16:05:42] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-11 16:05:49] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 16:05:50] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:05:50] LOGGED IN
+[2026-11-11 16:05:50] err off=0: [object Object]
+[2026-11-11 16:05:50] pull retry 2/3 - reloading Switchboard
+[2026-11-11 16:05:54] LOGGED IN
+[2026-11-11 16:05:54] err off=0: [object Object]
+[2026-11-11 16:05:54] pull retry 3/3 - reloading Switchboard
+[2026-11-11 16:05:58] LOGGED IN
+[2026-11-11 16:05:58] err off=0: [object Object]
+[2026-11-11 16:05:58] cycle got no complete data (fail 1/3)
+[2026-11-11 16:07:58] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:07:58] LOGGED IN
+[2026-11-11 16:07:58] err off=0: [object Object]
+[2026-11-11 16:07:58] pull retry 2/3 - reloading Switchboard
+[2026-11-11 16:08:02] LOGGED IN
+[2026-11-11 16:08:02] err off=0: [object Object]
+[2026-11-11 16:08:02] pull retry 3/3 - reloading Switchboard
+[2026-11-11 16:08:06] LOGGED IN
+[2026-11-11 16:08:06] err off=0: [object Object]
+[2026-11-11 16:08:06] cycle got no complete data (fail 2/3)
+[2026-11-11 16:10:06] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:10:06] LOGGED IN
+[2026-11-11 16:10:18] err off=0: [object Object]
+[2026-11-11 16:10:18] pull retry 2/3 - reloading Switchboard
+[2026-11-11 16:10:22] LOGGED IN
+[2026-11-11 16:10:29] err off=0: [object Object]
+[2026-11-11 16:10:29] pull retry 3/3 - reloading Switchboard
+[2026-11-11 16:10:33] LOGGED IN
+[2026-11-11 16:10:51] err off=0: [object Object]
+[2026-11-11 16:10:51] cycle got no complete data (fail 3/3)
+[2026-11-11 16:10:51] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-11 16:11:06] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 16:11:07] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:11:07] LOGGED IN
+[2026-11-11 16:11:07] err off=0: [object Object]
+[2026-11-11 16:11:07] pull retry 2/3 - reloading Switchboard
+[2026-11-11 16:11:13] LOGGED IN
+[2026-11-11 16:12:36] err off=0: [object Object]
+[2026-11-11 16:12:36] pull retry 3/3 - reloading Switchboard
+[2026-11-11 16:12:40] LOGGED IN
+[2026-11-11 16:12:52] err off=0: [object Object]
+[2026-11-11 16:12:52] cycle got no complete data (fail 1/3)
+[2026-11-11 16:14:52] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:14:52] LOGGED IN
+[2026-11-11 16:16:33] pulled off=0 n=4000 accum=4000
+[2026-11-11 16:16:44] pulled off=4000 n=4000 accum=8000
+[2026-11-11 16:16:55] pulled off=8000 n=4000 accum=12000
+[2026-11-11 16:17:00] pulled off=12000 n=2064 accum=14064
+[2026-11-11 16:17:00] task index refreshed (6350 asset tags)
+[2026-11-11 16:17:00] milestone_map: 290 subsystems
+[2026-11-11 16:17:00] updated dashboard_data.json itr_summary.live
+[2026-11-11 16:17:02]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 16:17:03]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 16:17 (closed=7626) rc=0 [main 01d2701] ITR live update 2026-11-11 16:17 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 16:29:52] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 16:30:07] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 16:30:08] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:30:08] LOGGED IN
+[2026-11-11 16:30:21] pulled off=0 n=4000 accum=4000
+[2026-11-11 16:30:38] pulled off=4000 n=4000 accum=8000
+[2026-11-11 16:30:56] pulled off=8000 n=4000 accum=12000
+[2026-11-11 16:31:05] pulled off=12000 n=2064 accum=14064
+[2026-11-11 16:31:05] task index refreshed (6350 asset tags)
+[2026-11-11 16:31:05] milestone_map: 290 subsystems
+[2026-11-11 16:31:06] updated dashboard_data.json itr_summary.live
+[2026-11-11 16:31:07]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 16:31:07]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 16:31 (closed=7626) rc=0 [main 343218f] ITR live update 2026-11-11 16:31 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 16:45:08] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 16:45:11] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 16:45:12] reused the sync's always-open browser (port 9222)
+[2026-11-11 16:45:12] LOGGED IN
+[2026-11-11 16:45:24] pulled off=0 n=4000 accum=4000
+[2026-11-11 16:45:42] pulled off=4000 n=4000 accum=8000
+[2026-11-11 16:45:52] pulled off=8000 n=4000 accum=12000
+[2026-11-11 16:45:58] pulled off=12000 n=2064 accum=14064
+[2026-11-11 16:45:58] task index refreshed (6350 asset tags)
+[2026-11-11 16:45:58] milestone_map: 290 subsystems
+[2026-11-11 16:45:58] updated dashboard_data.json itr_summary.live
+[2026-11-11 16:46:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 16:46:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 16:46 (closed=7626) rc=0 [main e3b34c4] ITR live update 2026-11-11 16:46 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 17:00:11] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 17:00:16] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 17:00:17] reused the sync's always-open browser (port 9222)
+[2026-11-11 17:00:17] LOGGED IN
+[2026-11-11 17:00:30] pulled off=0 n=4000 accum=4000
+[2026-11-11 17:00:43] pulled off=4000 n=4000 accum=8000
+[2026-11-11 17:00:57] pulled off=8000 n=4000 accum=12000
+[2026-11-11 17:01:08] pulled off=12000 n=2064 accum=14064
+[2026-11-11 17:01:08] task index refreshed (6350 asset tags)
+[2026-11-11 17:01:08] milestone_map: 290 subsystems
+[2026-11-11 17:01:09] updated dashboard_data.json itr_summary.live
+[2026-11-11 17:01:10]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 17:01:11]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 17:01 (closed=7630) rc=0 [main fc18df1] ITR live update 2026-11-11 17:01 (closed=7630)
+ 1 file changed, 68 insertions(+), 61 deletions(-)
+[2026-11-11 17:15:16] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 17:15:32] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 17:15:34] reused the sync's always-open browser (port 9222)
+[2026-11-11 17:15:35] LOGGED IN
+[2026-11-11 17:15:48] pulled off=0 n=4000 accum=4000
+[2026-11-11 17:15:57] pulled off=4000 n=4000 accum=8000
+[2026-11-11 17:16:08] pulled off=8000 n=4000 accum=12000
+[2026-11-11 17:16:15] pulled off=12000 n=2064 accum=14064
+[2026-11-11 17:16:16] task index refreshed (6350 asset tags)
+[2026-11-11 17:16:16] milestone_map: 290 subsystems
+[2026-11-11 17:16:16] updated dashboard_data.json itr_summary.live
+[2026-11-11 17:16:17]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 17:16:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 17:16 (closed=7643) rc=0 [main c0fec65] ITR live update 2026-11-11 17:16 (closed=7643)
+ 1 file changed, 151 insertions(+), 151 deletions(-)
+[2026-11-11 17:21:38]  >> git push OK
+[2026-11-11 17:22:11]  >> published itr_live_state.json (459636 bytes)
+[2026-11-11 17:22:19]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 17:22:19]  >> platform publish OK (1 file(s) updated, closed=7643)
+[2026-11-11 17:22:19] PAGES PUSH rc=0
+[2026-11-11 17:22:19] cycle OK closed=7643 open=2711 updated=2026-11-11 17:16:16
+[2026-11-11 17:24:20] reused the sync's always-open browser (port 9222)
+[2026-11-11 17:24:20] LOGGED IN
+[2026-11-11 17:24:29] pulled off=0 n=4000 accum=4000
+[2026-11-11 17:24:38] pulled off=4000 n=4000 accum=8000
+[2026-11-11 17:24:47] pulled off=8000 n=4000 accum=12000
+[2026-11-11 17:25:04] pulled off=12000 n=2064 accum=14064
+[2026-11-11 17:25:05] task index refreshed (6350 asset tags)
+[2026-11-11 17:25:06] updated dashboard_data.json itr_summary.live
+[2026-11-11 17:25:09]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 17:25:09]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 17:25 (closed=7655) rc=0 [main 2de2b6a] ITR live update 2026-11-11 17:25 (closed=7655)
+ 1 file changed, 149 insertions(+), 149 deletions(-)
+[2026-11-11 17:25:40]  >> git push OK
+[2026-11-11 17:26:14]  .. itr_live_state.json publish hiccup (IncompleteRead(581773 bytes read, 52478 more expected)) - retrying
+[2026-11-11 17:26:24]  >> published itr_live_state.json (459945 bytes)
+[2026-11-11 17:26:29]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 17:26:29]  >> platform publish OK (1 file(s) updated, closed=7655)
+[2026-11-11 17:26:29] PAGES PUSH rc=0
+[2026-11-11 17:26:29] cycle OK closed=7655 open=2699 updated=2026-11-11 17:25:06
+[2026-11-11 17:28:36] reused the sync's always-open browser (port 9222)
+[2026-11-11 17:28:36] LOGGED IN
+[2026-11-11 17:29:17] pulled off=0 n=4000 accum=4000
+[2026-11-11 17:29:37] pulled off=4000 n=4000 accum=8000
+[2026-11-11 17:29:46] pulled off=8000 n=4000 accum=12000
+[2026-11-11 17:29:51] pulled off=12000 n=2064 accum=14064
+[2026-11-11 17:29:51] task index refreshed (6350 asset tags)
+[2026-11-11 17:29:52] updated dashboard_data.json itr_summary.live
+[2026-11-11 17:29:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 17:29:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 17:29 (closed=7664) rc=0 [main 0c349d0] ITR live update 2026-11-11 17:29 (closed=7664)
+ 1 file changed, 111 insertions(+), 111 deletions(-)
+[2026-11-11 17:30:15]  >> git push OK
+[2026-11-11 17:30:47]  .. itr_live_state.json publish hiccup (IncompleteRead(581343 bytes read, 53332 more expected)) - retrying
+[2026-11-11 17:30:58]  >> published itr_live_state.json (460187 bytes)
+[2026-11-11 17:31:03]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 17:31:03]  >> platform publish OK (1 file(s) updated, closed=7664)
+[2026-11-11 17:31:03] PAGES PUSH rc=0
+[2026-11-11 17:31:03] cycle OK closed=7664 open=2690 updated=2026-11-11 17:29:52
+[2026-11-11 17:33:09] closed frozen tab 6465786F https://wly04-sc.intergraphsmartcloud.com//ISC/Tools/vDashboardsUsers/
+[2026-11-11 17:33:09] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-11 17:33:22] reused the sync's always-open browser (port 9222)
+[2026-11-11 17:33:24] LOGGED IN
+[2026-11-11 17:33:36] pulled off=0 n=4000 accum=4000
+[2026-11-11 17:33:47] pulled off=4000 n=4000 accum=8000
+[2026-11-11 17:33:58] pulled off=8000 n=4000 accum=12000
+[2026-11-11 17:34:04] pulled off=12000 n=2064 accum=14064
+[2026-11-11 17:34:05] task index refreshed (6350 asset tags)
+[2026-11-11 17:34:05] updated dashboard_data.json itr_summary.live
+[2026-11-11 17:34:06]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 17:34:09]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 17:34 (closed=7664) rc=0 [main bfea5fd] ITR live update 2026-11-11 17:34 (closed=7664)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 17:47:04]  !! push failed: []
