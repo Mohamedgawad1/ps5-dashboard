@@ -70515,3 +70515,51 @@ Call log:
 [2026-11-11 13:40:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 13:40 (closed=7626) rc=0 [main d710a9d] ITR live update 2026-11-11 13:40 (closed=7626)
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-11-11 13:41:17]  >> git push OK
+[2026-11-11 13:42:03]  .. itr_live_state.json publish hiccup (IncompleteRead(333187 bytes read, 300844 more expected)) - retrying
+[2026-11-11 13:42:16]  >> published itr_live_state.json (459475 bytes)
+[2026-11-11 13:42:24]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 13:42:24]  >> platform publish OK (1 file(s) updated, closed=7626)
+[2026-11-11 13:42:24] PAGES PUSH rc=0
+[2026-11-11 13:42:24] cycle OK closed=7626 open=2728 updated=2026-11-11 13:40:49
+[2026-11-11 13:44:40] reused the sync's always-open browser (port 9222)
+[2026-11-11 13:44:40] LOGGED IN
+[2026-11-11 13:45:09] pulled off=0 n=4000 accum=4000
+[2026-11-11 13:45:55] pulled off=4000 n=4000 accum=8000
+[2026-11-11 13:46:34] pulled off=8000 n=4000 accum=12000
+[2026-11-11 13:46:56] pulled off=12000 n=2064 accum=14064
+[2026-11-11 13:46:57] task index refreshed (6350 asset tags)
+[2026-11-11 13:46:58] updated dashboard_data.json itr_summary.live
+[2026-11-11 13:46:59]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 13:47:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 13:46 (closed=7626) rc=0 [main defdb43] ITR live update 2026-11-11 13:46 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 13:47:15]  >> git push OK
+[2026-11-11 13:47:24]  >> published itr_live_state.json (459475 bytes)
+[2026-11-11 13:47:29]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 13:47:29]  >> platform publish OK (1 file(s) updated, closed=7626)
+[2026-11-11 13:47:29] PAGES PUSH rc=0
+[2026-11-11 13:47:29] cycle OK closed=7626 open=2728 updated=2026-11-11 13:46:58
+[2026-11-11 13:49:52] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-11 13:49:58] no frozen tab found -> will retry next cycle, no new window
+[2026-11-11 13:50:00] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/2cc3e2 (fail 1/3)
+[2026-11-11 13:51:02] reused the sync's always-open browser (port 9222)
+[2026-11-11 13:51:02] LOGGED IN
+[2026-11-11 13:51:08] call err off=0: Page.evaluate: Execution context was destroyed, most likely because of a navigation.
+[2026-11-11 13:51:08] pull retry 2/3 - reloading Switchboard
+[2026-11-11 13:51:59] session expired -> auto-login
+[2026-11-11 13:52:08] ssologin click: ok
+[2026-11-11 13:52:18] sso handoff -> verify password page
+[2026-11-11 13:52:23] verify submit: submitted
+[2026-11-11 13:54:30] auto-login attempt 1 still not logged in
+[2026-11-11 13:54:42] ssologin click: ok
+[2026-11-11 13:54:52] sso handoff -> verify password page
+[2026-11-11 13:54:55] verify submit: submitted
+[2026-11-11 13:56:43] auto-login attempt 2 still not logged in
+[2026-11-11 13:56:52] ssologin click: ok
+[2026-11-11 13:57:02] sso handoff -> verify password page
+[2026-11-11 13:57:04] verify submit: submitted
+[2026-11-11 13:58:55] auto-login attempt 3 still not logged in
