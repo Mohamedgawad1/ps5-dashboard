@@ -70563,3 +70563,32 @@ Call log:
 [2026-11-11 13:57:02] sso handoff -> verify password page
 [2026-11-11 13:57:04] verify submit: submitted
 [2026-11-11 13:58:55] auto-login attempt 3 still not logged in
+[2026-11-11 14:06:01] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-11 14:06:05] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-11 14:06:11] opened the one pull tab (none was open)
+[2026-11-11 14:06:11] reused the sync's always-open browser (port 9222)
+[2026-11-11 14:07:04] session expired -> auto-login
+[2026-11-11 14:07:09] ssologin click: no-btn
+[2026-11-11 14:07:19] sso handoff -> verify password page
+[2026-11-11 14:07:21] verify submit: submitted
+[2026-11-11 14:08:09] LOGGED IN
+[2026-11-11 14:09:31] pulled off=0 n=4000 accum=4000
+[2026-11-11 14:11:01] pulled off=4000 n=4000 accum=8000
+[2026-11-11 14:12:28] pulled off=8000 n=4000 accum=12000
+[2026-11-11 14:13:15] pulled off=12000 n=2064 accum=14064
+[2026-11-11 14:13:15] task index refreshed (6350 asset tags)
+[2026-11-11 14:13:15] milestone_map: 290 subsystems
+[2026-11-11 14:13:16] updated dashboard_data.json itr_summary.live
+[2026-11-11 14:13:17]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 14:13:18]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 14:13 (closed=7626) rc=0 [main 8acd770] ITR live update 2026-11-11 14:13 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 14:13:34]  >> git push OK
+[2026-11-11 14:13:44]  >> published itr_live_state.json (459475 bytes)
+[2026-11-11 14:13:49]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 14:13:49]  >> platform publish OK (1 file(s) updated, closed=7626)
+[2026-11-11 14:13:49] PAGES PUSH rc=0
+[2026-11-11 14:13:49] cycle OK closed=7626 open=2728 updated=2026-11-11 14:13:16
+[2026-11-11 14:15:50] reused the sync's always-open browser (port 9222)
+[2026-11-11 14:15:50] LOGGED IN
+[2026-11-11 14:17:39] pulled off=0 n=4000 accum=4000
+[2026-11-11 14:19:13] pulled off=4000 n=4000 accum=8000
