@@ -70326,3 +70326,54 @@ Call log:
 [2026-11-11 12:19:13] pulled off=0 n=4000 accum=4000
 [2026-11-11 12:19:44] pulled off=4000 n=4000 accum=8000
 [2026-11-11 12:20:26] pulled off=8000 n=4000 accum=12000
+[2026-11-11 12:20:47] pulled off=12000 n=2064 accum=14064
+[2026-11-11 12:20:47] task index refreshed (6350 asset tags)
+[2026-11-11 12:20:48] updated dashboard_data.json itr_summary.live
+[2026-11-11 12:20:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 12:20:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 12:20 (closed=7626) rc=0 [main 0902d36] ITR live update 2026-11-11 12:20 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 12:21:08]  >> git push OK
+[2026-11-11 12:21:40]  .. itr_live_state.json publish hiccup (IncompleteRead(456899 bytes read, 177132 more expected)) - retrying
+[2026-11-11 12:21:53]  >> published itr_live_state.json (459475 bytes)
+[2026-11-11 12:21:57]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 12:21:57]  >> platform publish OK (1 file(s) updated, closed=7626)
+[2026-11-11 12:21:57] PAGES PUSH rc=0
+[2026-11-11 12:21:57] cycle OK closed=7626 open=2728 updated=2026-11-11 12:20:48
+[2026-11-11 12:24:03] reused the sync's always-open browser (port 9222)
+[2026-11-11 12:24:04] LOGGED IN
+[2026-11-11 12:24:36] pulled off=0 n=4000 accum=4000
+[2026-11-11 12:25:04] pulled off=4000 n=4000 accum=8000
+[2026-11-11 12:25:29] pulled off=8000 n=4000 accum=12000
+[2026-11-11 12:25:39] pulled off=12000 n=2064 accum=14064
+[2026-11-11 12:25:40] task index refreshed (6350 asset tags)
+[2026-11-11 12:25:40] updated dashboard_data.json itr_summary.live
+[2026-11-11 12:25:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 12:25:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 12:25 (closed=7626) rc=0 [main 2c3b6b5] ITR live update 2026-11-11 12:25 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 12:25:59]  >> git push OK
+[2026-11-11 12:26:33]  .. itr_live_state.json publish hiccup (IncompleteRead(583860 bytes read, 50171 more expected)) - retrying
+[2026-11-11 12:27:09]  .. itr_live_state.json publish hiccup (IncompleteRead(581564 bytes read, 52467 more expected)) - retrying
+[2026-11-11 12:27:24]  >> published itr_live_state.json (459475 bytes)
+[2026-11-11 12:27:29]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 12:27:29]  >> platform publish OK (1 file(s) updated, closed=7626)
+[2026-11-11 12:27:29] PAGES PUSH rc=0
+[2026-11-11 12:27:29] cycle OK closed=7626 open=2728 updated=2026-11-11 12:25:40
+[2026-11-11 12:29:34] reused the sync's always-open browser (port 9222)
+[2026-11-11 12:29:35] LOGGED IN
+[2026-11-11 12:30:03] pulled off=0 n=4000 accum=4000
+[2026-11-11 12:30:19] pulled off=4000 n=4000 accum=8000
+[2026-11-11 12:30:46] pulled off=8000 n=4000 accum=12000
+[2026-11-11 12:30:51] pulled off=12000 n=2064 accum=14064
+[2026-11-11 12:30:51] task index refreshed (6350 asset tags)
+[2026-11-11 12:30:52] updated dashboard_data.json itr_summary.live
+[2026-11-11 12:30:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-11 12:30:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-11 12:30 (closed=7626) rc=0 [main f3f46c9] ITR live update 2026-11-11 12:30 (closed=7626)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-11 12:35:20]  >> git push OK
+[2026-11-11 12:35:47]  >> published itr_live_state.json (459475 bytes)
+[2026-11-11 12:35:53]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-11 12:35:53]  >> platform publish OK (1 file(s) updated, closed=7626)
+[2026-11-11 12:35:53] PAGES PUSH rc=0
+[2026-11-11 12:35:53] cycle OK closed=7626 open=2728 updated=2026-11-11 12:30:52
+[2026-11-11 12:37:53] reused the sync's always-open browser (port 9222)
+[2026-11-11 12:37:53] LOGGED IN
