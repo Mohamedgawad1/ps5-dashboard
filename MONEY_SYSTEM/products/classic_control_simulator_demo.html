@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Classic Control Simulator Pro — Real Components, Power Sources, All Circuits</title>
+<style>
+:root{--bg:#0f172a;--panel:#111c33;--card:#1e293b;--accent:#93c5fd;--gold:#f5c518;--green:#00E676;--red:#ef4444;--amber:#f59e0b;--text:#f1f5f9;--muted:#94a3b8;--border:#334155}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.topbar{background:#0f172a;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.topbar h1{font-size:18px;color:var(--accent);font-weight:800}
+.topbar select,.topbar button,.topbar input{padding:7px 12px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:600;cursor:pointer;font-size:13px}
+.topbar button.run{background:var(--green);border:none;color:#052e16;font-weight:900;box-shadow:0 4px 16px rgba(0,230,118,.35)}
+.topbar button.stop{background:linear-gradient(135deg,var(--red),#b91c1c);border:none}
+.topbar button.reset{background:linear-gradient(135deg,var(--amber),#d97706);border:none}
+.psrc{display:flex;gap:6px;align-items:center}
+.psrc label{font-size:12px;color:var(--muted)}
+.main{display:grid;grid-template-columns:250px 1fr 320px;gap:10px;padding:10px;height:calc(100vh - 60px)}
+.pane{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:10px;overflow:auto}
+.pane h3{color:var(--accent);font-size:13px;margin-bottom:8px;border-bottom:1px solid var(--border);padding-bottom:4px}
+.comp{background:linear-gradient(180deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:10px;padding:8px;margin-bottom:8px;display:flex;align-items:center;gap:10px;cursor:grab;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)}
+.comp .ico{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,#1e3a8a,#0f172a);border-radius:8px;font-size:20px;box-shadow:inset 0 2px 4px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.3)}
+.canvas{background:linear-gradient(180deg,#0a1020,#0f172a);border:2px solid var(--border);border-radius:10px;position:relative;min-height:520px;overflow:hidden;box-shadow:inset 0 0 40px rgba(0,0,0,.5);background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);background-size:40px 40px}
+.svgwrap{width:100%;height:100%}
+.node{cursor:pointer}
+.node:hover{filter:brightness(1.3)}
+.wire{stroke:#475569;stroke-width:2.5;fill:none}
+.wire.live{stroke:var(--gold);stroke-width:3;filter:drop-shadow(0 0 4px var(--gold))}
+.wire.neutral{stroke:#64748b;stroke-dasharray:4 3}
+.wire.power{stroke:var(--red);stroke-width:2}
+.compbox{fill:#1e293b;stroke:#475569;stroke-width:2}
+.compbox.on{fill:#0f2a1a;stroke:var(--green)}
+.lamp{fill:#334155}
+.lamp.on{fill:var(--gold);filter:drop-shadow(0 0 8px var(--gold))}
+.coil{fill:#1e293b;stroke:#94a3b8;stroke-width:2}
+.coil.energized{fill:#1e3a8a;stroke:var(--accent);filter:drop-shadow(0 0 6px var(--accent))}
+.contact{stroke:#94a3b8;stroke-width:2.5;fill:none}
+.contact.closed{stroke:var(--green)}
+.statusrow{display:flex;justify-content:space-between;padding:4px 6px;border-bottom:1px solid var(--border);font-size:12px}
+.statusrow .v{font-weight:800}
+.statusrow .on{color:var(--green)}
+.statusrow .off{color:var(--red)}
+.io{font-family:monospace;font-size:11px;background:#0a1020;border:1px solid var(--border);border-radius:6px;padding:6px;margin-top:6px;max-height:180px;overflow:auto}
+.io div{padding:2px 0}
+.io .hi{color:var(--green);font-weight:700}
+.io .lo{color:var(--muted)}
+.tankwrap{position:relative;width:100%;height:150px;background:#0a1020;border:2px solid var(--border);border-radius:8px;margin-top:8px;overflow:hidden}
+.tank{position:absolute;bottom:0;left:15%;width:70%;height:85%;border:3px solid #475569;border-top:none;border-radius:0 0 12px 12px;background:linear-gradient(180deg,#1e293b,#0f172a)}
+.liquid{position:absolute;bottom:0;left:0;width:100%;height:0%;background:linear-gradient(180deg,#0ea5e9,#0369a1);transition:height .3s}
+.levelsensor{position:absolute;right:3%;font-size:10px;color:var(--muted)}
+.levelsensor.active{color:var(--green);font-weight:700}
+.motor{width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,#334155,#0f172a);border:3px solid #475569;display:flex;align-items:center;justify-content:center;font-size:28px;margin:8px auto;transition:transform .3s}
+.motor.spin{animation:spin 0.8s linear infinite;border-color:var(--green);box-shadow:0 0 12px var(--green)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ladder{font-family:monospace;font-size:11px;background:#0a1020;border:1px solid var(--border);border-radius:6px;padding:8px;margin-top:6px;line-height:1.5;white-space:pre;max-height:220px;overflow:auto}
+.legend{font-size:10px;color:var(--muted);margin-top:6px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px;vertical-align:middle}
+.dot.live{background:var(--gold)}.dot.off{background:#475569}
+.psrcbox{background:#0a1020;border:1px solid var(--border);border-radius:8px;padding:8px;margin-top:8px}
+.psrcrow{display:flex;justify-content:space-between;font-size:11px;padding:3px 0}
+.realimg{width:100%;height:80px;background:#0f172a;border:1px dashed var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;margin-top:6px;text-align:center;padding:4px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>⚙️ محاكي التحكم الكلاسيكي Pro</h1>
+  <select id="circuit" onchange="loadCircuit()">
+    <option value="motor">1. Motor Start/Stop (Seal-in)</option>
+    <option value="tank">2. Tank Level Control (Pump + Floats)</option>
+    <option value="stardelta">3. Star-Delta Starter</option>
+    <option value="conveyor">4. Conveyor + Proximity Sensor</option>
+    <option value="dol">5. DOL Motor Starter (Direct On Line)</option>
+    <option value="reversing">6. Reversing Motor Starter (Fwd/Rev)</option>
+    <option value="sequential">7. Sequential Control (Timer-based)</option>
+
+  </select>
+  <div class="psrc">
+    <label>Power:</label>
+    <select id="powersrc" onchange="setPower()">
+      <option value="220">220V AC 1Φ</option>
+      <option value="400">400V AC 3Φ</option>
+      <option value="24">24V DC</option>
+    </select>
+  </div>
+  <button class="run" onclick="runSim()">▶ تشغيل</button>
+  <button class="stop" onclick="stopSim()">■ STOP</button>
+  <button class="reset" onclick="resetSim()">↻ RESET</button>
+  <span style="margin-left:auto;font-size:11px;color:var(--muted)">Click inputs to toggle • Outputs update live</span>
+</div>
+
+<div class="main">
+  <div class="pane">
+    <h3>Component Palette</h3>
+    <div class="comp"><div class="ico">🔘</div>Push Button (NO)</div>
+    <div class="comp"><div class="ico">🔴</div>Push Button (NC/Stop)</div>
+    <div class="comp"><div class="ico">🔀</div>Selector Switch</div>
+    <div class="comp"><div class="ico">⚡</div>Contactor (Coil + Aux)</div>
+    <div class="comp"><div class="ico">🔌</div>Relay (Coil)</div>
+    <div class="comp"><div class="ico">⏱️</div>Timer (TON/TOFF)</div>
+    <div class="comp"><div class="ico">🔢</div>Counter</div>
+    <div class="comp"><div class="ico">💡</div>Indicator Lamp</div>
+    <div class="comp"><div class="ico">💧</div>Solenoid Valve</div>
+    <div class="comp"><div class="ico">⚙️</div>Motor (3Φ)</div>
+    <div class="comp"><div class="ico">📐</div>Overload Relay</div>
+    <div class="comp"><div class="ico">📡</div>Proximity Sensor</div>
+    <div class="comp"><div class="ico">🎯</div>Limit Switch</div>
+    <div class="comp"><div class="ico">🌊</div>Float Switch (Level)</div>
+    <div class="comp"><div class="ico">🪣</div>Tank</div>
+    <div class="comp"><div class="ico">🔋</div>Power Source</div>
+    <div class="psrcbox">
+      <div class="psrcrow"><span>Power Source</span><span id="psrcval" class="hi">220V AC</span></div>
+      <div class="psrcrow"><span>Voltage</span><span id="psrcv">220 V</span></div>
+      <div class="psrcrow"><span>Frequency</span><span id="psrcf">50 Hz</span></div>
+      <div class="psrcrow"><span>Status</span><span id="psrcs" class="hi">ON</span></div>
+    </div>
+    <div class="realimg">Real component photos: replace SVG with your own images. Drop PNG/JPG here (future).</div>
+    <div class="legend" style="margin-top:6px">
+      <span><span class="dot live"></span>Energized</span>
+      <span><span class="dot off"></span>De-energized</span>
+    </div>
+  </div>
+
+  <div class="pane">
+    <h3 id="ctitle">Circuit: Motor Start/Stop</h3>
+    <div class="canvas" id="canvas">
+      <svg id="svg" class="svgwrap" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="tankwrap" id="tankwrap" style="display:none">
+      <div class="tank"><div class="liquid" id="liquid"></div></div>
+      <div class="levelsensor" id="ls_low" style="top:70%">LOW LEVEL</div>
+      <div class="levelsensor" id="ls_high" style="top:10%">HIGH LEVEL</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:8px;flex-wrap:wrap">
+      <div class="motor" id="motor">⚙️</div>
+      <div style="font-size:12px;color:var(--muted)">Motor: <span id="motorstatus" class="off">STOPPED</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-left:auto" id="lampstatus">Lamp: OFF</div>
+      <div style="font-size:12px;color:var(--muted)" id="extrastatus"></div>
+    </div>
+  </div>
+
+  <div class="pane">
+    <h3>Live Status</h3>
+    <div id="statuslist"></div>
+    <h3 style="margin-top:8px">I/O Monitor</h3>
+    <div class="io" id="iomonitor"></div>
+    <h3 style="margin-top:8px">Ladder Logic</h3>
+    <div class="ladder" id="ladder"></div>
+  </div>
+</div>
+
+<script>
+let running=false,circuit='motor',power='220';
+let state={};
+function resetState(){
+  state={
+    pb_start:false,pb_stop:true,seal:false,overload_ok:true,contactor_K1:false,motor_run:false,lamp_run:false,
+    float_low:true,float_high:false,pump:false,alarm_high:false,level:30,valve_open:false,
+    sd_start:false,sd_stop:true,K_main:false,K_star:false,K_delta:false,timer_done:false,timer_val:0,
+    conv_start:false,conv_stop:true,conv_motor:false,prox:false,counter:0,jam:false,_prox_prev:false,
+    dol_start:false,dol_stop:true,dol_K:false,dol_motor:false,dol_ol:true,
+    fwd_start:false,rev_start:false,dir_stop:true,fwd_K:false,rev_K:false,interlock_ok:true,motor_dir:'stop',
+    seq_start:false,seq_stop:true,seq_step:0,seq_timer:0,seq_done:false,sol1:false,sol2:false,heater:false,
+    _prox_prev2:false,
+    level1:30,level2:60,pump1:false,pump2:false,valve1:false,valve2:false,pressure:4.2,temp:45,flow:12.5,
+    pressure_high:false,temp_high:false,flow_ok:true,alarm:false,fan:false,
+  };
+}
+resetState();
+
+const circuits={
+ motor:{title:"Circuit: Motor Start/Stop (Seal-in / Holding)",ladder:`Rung 1: [PB_STOP (NC)] -- [PB_START (NO)] --+-- [K1 seal (NO)] -- [OL (NC)] -- ( K1 coil )
+                                                          |
+                                                          +-- seal contact closes when K1 energized
+Rung 2: [K1 (NO, aux)] ------------------------------------------- ( RUN lamp )
+Rung 3: [K1 (NO, aux)] ------------------------------------------- ( Motor contactor )`,svg:()=>`
+ <text x="20" y="28" fill="#94a3bf" font-size="11">L1 (${power}V)</text>
+ <line class="wire" x1="40" y1="38" x2="40" y2="490"/>
+ <line class="wire neutral" x1="40" y1="490" x2="860" y2="490"/>
+ <g class="node" onclick="toggle('pb_stop')" transform="translate(110,70)"><rect class="compbox ${state.pb_stop?'on':''}" x="0" y="0" width="85" height="46" rx="6"/><text x="42" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB STOP</text><text x="42" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NC)</text></g>
+ <line class="wire ${state.pb_stop?'live':''}" x1="195" y1="93" x2="225" y2="93"/>
+ <g class="node" onclick="toggle('pb_start')" transform="translate(225,70)"><rect class="compbox ${state.pb_start?'on':''}" x="0" y="0" width="85" height="46" rx="6"/><text x="42" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB START</text><text x="42" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NO)</text></g>
+ <line class="wire ${state.pb_start?'live':''}" x1="310" y1="93" x2="350" y2="93"/>
+ <g transform="translate(350,70)"><rect class="compbox ${state.seal?'on':''}" x="0" y="0" width="65" height="46" rx="6"/><text x="32" y="18" text-anchor="middle" fill="#e8ecf4" font-size="9" font-weight="700">K1 seal</text><text x="32" y="33" text-anchor="middle" fill="#94a3bf" font-size="8">(NO aux)</text></g>
+ <line class="wire" x1="310" y1="93" x2="310" y2="145"/>
+ <line class="wire ${state.seal?'live':''}" x1="310" y1="145" x2="350" y2="145"/>
+ <line class="wire ${state.seal?'live':''}" x1="415" y1="145" x2="415" y2="93"/>
+ <line class="wire ${state.seal?'live':''}" x1="350" y1="93" x2="350" y2="120"/>
+ <g transform="translate(430,70)"><rect class="compbox ${state.overload_ok?'on':''}" x="0" y="0" width="60" height="46" rx="6"/><text x="30" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">OL</text><text x="30" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NC)</text></g>
+ <line class="wire ${state.contactor_K1?'live':''}" x1="490" y1="93" x2="540" y2="93"/>
+ <g transform="translate(540,68)"><rect class="coil ${state.contactor_K1?'energized':''}" x="0" y="0" width="75" height="50" rx="8"/><text x="37" y="22" text-anchor="middle" fill="#e8ecf4" font-size="11" font-weight="700">K1</text><text x="37" y="38" text-anchor="middle" fill="#94a3bf" font-size="9">coil</text></g>
+ <line class="wire ${state.contactor_K1?'live':''}" x1="615" y1="93" x2="660" y2="93"/>
+ <line class="wire ${state.contactor_K1?'live':''}" x1="660" y1="93" x2="660" y2="490"/>
+ <g transform="translate(700,70)"><circle class="lamp ${state.lamp_run?'on':''}" cx="28" cy="23" r="20"/><text x="28" y="58" text-anchor="middle" fill="#94a3bf" font-size="9">RUN</text></g>
+ <line class="wire ${state.lamp_run?'live':''}" x1="660" y1="93" x2="700" y2="93"/>
+`},
+ tank:{title:"Circuit: Tank Level Control (Pump + Float Switches)",ladder:`Rung 1: [Float LOW (NO)] -- [Float HIGH (NC)] -- ( Pump contactor )
+Rung 2: [Pump (NO, aux)] ------------------------------ ( RUN lamp )
+Rung 3: [Float HIGH (NO)] ------------------------------ ( High-level alarm )`,svg:()=>`
+ <text x="20" y="28" fill="#94a3bf" font-size="11">L1 (${power}V)</text>
+ <line class="wire" x1="40" y1="38" x2="40" y2="490"/>
+ <line class="wire neutral" x1="40" y1="490" x2="860" y2="490"/>
+ <g class="node" onclick="toggle('float_low')" transform="translate(110,90)"><rect class="compbox ${state.float_low?'on':''}" x="0" y="0" width="95" height="46" rx="6"/><text x="47" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">Float LOW</text><text x="47" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NO)</text></g>
+ <line class="wire ${state.float_low?'live':''}" x1="205" y1="113" x2="260" y2="113"/>
+ <g class="node" onclick="toggle('float_high')" transform="translate(260,90)"><rect class="compbox ${state.float_high?'on':''}" x="0" y="0" width="95" height="46" rx="6"/><text x="47" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">Float HIGH</text><text x="47" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NC)</text></g>
+ <line class="wire ${state.pump?'live':''}" x1="355" y1="113" x2="420" y2="113"/>
+ <g transform="translate(420,88)"><rect class="coil ${state.pump?'energized':''}" x="0" y="0" width="85" height="50" rx="8"/><text x="42" y="22" text-anchor="middle" fill="#e8ecf4" font-size="11" font-weight="700">K_PUMP</text><text x="42" y="38" text-anchor="middle" fill="#94a3bf" font-size="9">coil</text></g>
+ <line class="wire ${state.pump?'live':''}" x1="505" y1="113" x2="560" y2="113"/>
+ <line class="wire ${state.pump?'live':''}" x1="560" y1="113" x2="560" y2="490"/>
+ <g transform="translate(600,90)"><circle class="lamp ${state.pump?'on':''}" cx="28" cy="23" r="20"/><text x="28" y="58" text-anchor="middle" fill="#94a3bf" font-size="9">PUMP RUN</text></g>
+ <line class="wire ${state.pump?'live':''}" x1="560" y1="113" x2="600" y2="113"/>
+ <g class="node" onclick="toggle('float_high')" transform="translate(110,230)"><rect class="compbox ${state.float_high?'on':''}" x="0" y="0" width="95" height="46" rx="6"/><text x="47" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">Float HIGH</text><text x="47" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NO alarm)</text></g>
+ <line class="wire ${state.alarm_high?'live':''}" x1="205" y1="253" x2="280" y2="253"/>
+ <g transform="translate(280,230)"><circle class="lamp ${state.alarm_high?'on':''}" cx="28" cy="23" r="20" style="fill:${state.alarm_high?'#ef4444':'#334155'};filter:${state.alarm_high?'drop-shadow(0 0 8px #ef4444)':'none'}"/><text x="28" y="58" text-anchor="middle" fill="#94a3bf" font-size="9">HIGH ALARM</text></g>
+`},
+ stardelta:{title:"Circuit: Star-Delta Motor Starter",ladder:`Rung 1: [PB_STOP (NC)] -- [PB_START (NO)] -- ( K_main ) + ( K_star ) + ( Timer T1 )
+Rung 2: [Timer T1 done] -- [K_star (NC interlock)] -- ( K_delta ) -- drop K_star
+Rung 3: [K_main (NO, aux)] -- ( RUN lamp )
+Note: Star for 5s then switch to Delta`,svg:()=>`
+ <text x="20" y="28" fill="#94a3bf" font-size="11">L1 (${power}V 3Φ)</text>
+ <line class="wire" x1="40" y1="38" x2="40" y2="490"/>
+ <line class="wire neutral" x1="40" y1="490" x2="860" y2="490"/>
+ <g class="node" onclick="toggle('sd_stop')" transform="translate(90,70)"><rect class="compbox ${state.sd_stop?'on':''}" x="0" y="0" width="80" height="46" rx="6"/><text x="40" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB STOP</text><text x="40" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NC)</text></g>
+ <line class="wire ${state.sd_stop?'live':''}" x1="170" y1="93" x2="200" y2="93"/>
+ <g class="node" onclick="toggle('sd_start')" transform="translate(200,70)"><rect class="compbox ${state.sd_start?'on':''}" x="0" y="0" width="80" height="46" rx="6"/><text x="40" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB START</text><text x="40" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NO)</text></g>
+ <line class="wire ${state.K_main?'live':''}" x1="280" y1="93" x2="340" y2="93"/>
+ <g transform="translate(340,68)"><rect class="coil ${state.K_main?'energized':''}" x="0" y="0" width="75" height="50" rx="8"/><text x="37" y="22" text-anchor="middle" fill="#e8ecf4" font-size="11" font-weight="700">K_MAIN</text><text x="37" y="38" text-anchor="middle" fill="#94a3bf" font-size="9">coil</text></g>
+ <line class="wire ${state.K_main?'live':''}" x1="415" y1="93" x2="470" y2="93"/>
+ <g transform="translate(470,68)"><rect class="coil ${state.K_star?'energized':''}" x="0" y="0" width="75" height="50" rx="8"/><text x="37" y="22" text-anchor="middle" fill="#e8ecf4" font-size="11" font-weight="700">K_STAR</text><text x="37" y="38" text-anchor="middle" fill="#94a3bf" font-size="9">coil</text></g>
+ <line class="wire ${state.K_star?'live':''}" x1="545" y1="93" x2="610" y2="93"/>
+ <line class="wire ${state.K_star?'live':''}" x1="610" y1="93" x2="610" y2="490"/>
+ <g transform="translate(340,170)"><rect class="coil ${state.timer_done?'energized':''}" x="0" y="0" width="75" height="50" rx="8" style="fill:${state.timer_done?'#7c2d12':'#1e293b'};stroke:${state.timer_done?'#f97316':'#94a3b8'}"/><text x="37" y="22" text-anchor="middle" fill="#e8ecf4" font-size="11" font-weight="700">T1</text><text x="37" y="38" text-anchor="middle" fill="#94a3bf" font-size="9">5s TON</text></g>
+ <g transform="translate(470,170)"><rect class="coil ${state.K_delta?'energized':''}" x="0" y="0" width="75" height="50" rx="8"/><text x="37" y="22" text-anchor="middle" fill="#e8ecf4" font-size="11" font-weight="700">K_DELTA</text><text x="37" y="38" text-anchor="middle" fill="#94a3bf" font-size="9">coil</text></g>
+ <g transform="translate(700,75)"><circle class="lamp ${state.K_main?'on':''}" cx="28" cy="23" r="20"/><text x="28" y="60" text-anchor="middle" fill="#94a3bf" font-size="9">RUN</text></g>
+ <line class="wire ${state.K_main?'live':''}" x1="610" y1="93" x2="700" y2="93"/>
+`},
+ conveyor:{title:"Circuit: Conveyor with Proximity Sensor & Counter",ladder:`Rung 1: [PB_START (NO)] -- [PB_STOP (NC)] -- ( Conveyor motor )
+Rung 2: [Proximity sensor (NO)] -- ( Counter +1 ) + ( Detect lamp )
+Rung 3: [Counter >= 10] -- ( Jam/Full alarm )
+Rung 4: [Conveyor motor (NO, aux)] -- ( RUN lamp )`,svg:()=>`
+ <text x="20" y="28" fill="#94a3bf" font-size="11">L1 (${power}V)</text>
+ <line class="wire" x1="40" y1="38" x2="40" y2="490"/>
+ <line class="wire neutral" x1="40" y1="490" x2="860" y2="490"/>
+ <g class="node" onclick="toggle('conv_stop')" transform="translate(90,70)"><rect class="compbox ${state.conv_stop?'on':''}" x="0" y="0" width="80" height="46" rx="6"/><text x="40" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB STOP</text><text x="40" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NC)</text></g>
+ <line class="wire ${state.conv_stop?'live':''}" x1="170" y1="93" x2="200" y2="93"/>
+ <g class="node" onclick="toggle('conv_start')" transform="translate(200,70)"><rect class="compbox ${state.conv_start?'on':''}" x="0" y="0" width="80" height="46" rx="6"/><text x="40" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB START</text><text x="40" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NO)</text></g>
+ <line class="wire ${state.conv_motor?'live':''}" x1="280" y1="93" x2="340" y2="93"/>
+ <g transform="translate(340,68)"><rect class="coil ${state.conv_motor?'energized':''}" x="0" y="0" width="75" height="50" rx="8"/><text x="37" y="22" text-anchor="middle" fill="#e8ecf4" font-size="11" font-weight="700">K_CONV</text><text x="37" y="38" text-anchor="middle" fill="#94a3bf" font-size="9">coil</text></g>
+ <line class="wire ${state.conv_motor?'live':''}" x1="415" y1="93" x2="610" y2="93"/>
+ <line class="wire ${state.conv_motor?'live':''}" x1="610" y1="93" x2="610" y2="490"/>
+ <g transform="translate(650,75)"><circle class="lamp ${state.conv_motor?'on':''}" cx="28" cy="23" r="20"/><text x="28" y="60" text-anchor="middle" fill="#94a3bf" font-size="9">RUN</text></g>
+ <line class="wire ${state.conv_motor?'live':''}" x1="610" y1="93" x2="650" y2="93"/>
+ <g class="node" onclick="toggle('prox')" transform="translate(110,210)"><rect class="compbox ${state.prox?'on':''}" x="0" y="0" width="100" height="46" rx="6"/><text x="50" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">Proximity</text><text x="50" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">Sensor (NO)</text></g>
+ <line class="wire ${state.prox?'live':''}" x1="210" y1="233" x2="270" y2="233"/>
+ <g transform="translate(270,210)"><circle class="lamp ${state.prox?'on':''}" cx="23" cy="23" r="18" style="fill:${state.prox?'#22c55e':'#334155'}"/><text x="23" y="52" text-anchor="middle" fill="#94a3bf" font-size="9">DETECT</text></g>
+ <g transform="translate(360,210)"><rect class="compbox" x="0" y="0" width="110" height="46" rx="6" style="fill:#1e293b;stroke:#94a3b8"/><text x="55" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">Counter</text><text x="55" y="36" text-anchor="middle" fill="#f5c518" font-size="13" font-weight="800" id="ctrval">0</text></g>
+ <g transform="translate(520,210)"><circle class="lamp ${state.jam?'on':''}" cx="28" cy="23" r="20" style="fill:${state.jam?'#ef4444':'#334155'};filter:${state.jam?'drop-shadow(0 0 8px #ef4444)':'none'}"/><text x="28" y="58" text-anchor="middle" fill="#94a3bf" font-size="9">JAM/FULL</text></g>
+`},
+ dol:{title:"Circuit: DOL (Direct On Line) Motor Starter",ladder:`Rung 1: [PB_STOP (NC)] -- [PB_START (NO)] -- [OL (NC)] -- ( K_DOL coil )
+Rung 2: [K_DOL (NO, aux)] -- ( RUN lamp )
+Rung 3: [K_DOL (NO, aux)] -- ( Motor contactor )
+Note: Simplest motor starter. Full voltage applied directly.`,svg:()=>`
+ <text x="20" y="28" fill="#94a3bf" font-size="11">L1 (${power}V)</text>
+ <line class="wire" x1="40" y1="38" x2="40" y2="490"/>
+ <line class="wire neutral" x1="40" y1="490" x2="860" y2="490"/>
+ <g class="node" onclick="toggle('dol_stop')" transform="translate(100,80)"><rect class="compbox ${state.dol_stop?'on':''}" x="0" y="0" width="85" height="46" rx="6"/><text x="42" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB STOP</text><text x="42" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NC)</text></g>
+ <line class="wire ${state.dol_stop?'live':''}" x1="185" y1="103" x2="215" y2="103"/>
+ <g class="node" onclick="toggle('dol_start')" transform="translate(215,80)"><rect class="compbox ${state.dol_start?'on':''}" x="0" y="0" width="85" height="46" rx="6"/><text x="42" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB START</text><text x="42" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NO)</text></g>
+ <line class="wire ${state.dol_start?'live':''}" x1="300" y1="103" x2="340" y2="103"/>
+ <g transform="translate(340,80)"><rect class="compbox ${state.dol_ol?'on':''}" x="0" y="0" width="60" height="46" rx="6"/><text x="30" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">OL</text><text x="30" y="33" text-anchor="middle" fill="#94a3bf" font-size="9">(NC)</text></g>
+ <line class="wire ${state.dol_K?'live':''}" x1="400" y1="103" x2="450" y2="103"/>
+ <g transform="translate(450,78)"><rect class="coil ${state.dol_K?'energized':''}" x="0" y="0" width="80" height="50" rx="8"/><text x="40" y="22" text-anchor="middle" fill="#e8ecf4" font-size="11" font-weight="700">K_DOL</text><text x="40" y="38" text-anchor="middle" fill="#94a3bf" font-size="9">coil</text></g>
+ <line class="wire ${state.dol_K?'live':''}" x1="530" y1="103" x2="580" y2="103"/>
+ <line class="wire ${state.dol_K?'live':''}" x1="580" y1="103" x2="580" y2="490"/>
+ <g transform="translate(620,80)"><circle class="lamp ${state.dol_motor?'on':''}" cx="28" cy="23" r="20"/><text x="28" y="58" text-anchor="middle" fill="#94a3bf" font-size="9">RUN</text></g>
+ <line class="wire ${state.dol_motor?'live':''}" x1="580" y1="103" x2="620" y2="103"/>
+`},
+ reversing:{title:"Circuit: Reversing Motor Starter (Forward / Reverse)",ladder:`Rung 1: [PB_STOP (NC)] -- [PB_FWD (NO)] -- [K_REV (NC interlock)] -- [OL (NC)] -- ( K_FWD coil )
+Rung 2: [PB_STOP (NC)] -- [PB_REV (NO)] -- [K_FWD (NC interlock)] -- [OL (NC)] -- ( K_REV coil )
+Rung 3: [K_FWD (NO, aux)] -- ( FWD lamp ) + ( Motor FWD )
+Rung 4: [K_REV (NO, aux)] -- ( REV lamp ) + ( Motor REV )
+Note: Mechanical/electrical interlock prevents FWD+REV simultaneously.`,svg:()=>`
+ <text x="20" y="28" fill="#94a3bf" font-size="11">L1 (${power}V)</text>
+ <line class="wire" x1="40" y1="38" x2="40" y2="490"/>
+ <line class="wire neutral" x1="40" y1="490" x2="860" y2="490"/>
+ <g class="node" onclick="toggle('dir_stop')" transform="translate(90,60)"><rect class="compbox ${state.dir_stop?'on':''}" x="0" y="0" width="80" height="40" rx="6"/><text x="40" y="16" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">PB STOP</text><text x="40" y="30" text-anchor="middle" fill="#94a3bf" font-size="9">(NC)</text></g>
+ <line class="wire ${state.dir_stop?'live':''}" x1="170" y1="80" x2="200" y2="80"/>
+ <!-- FWD branch -->
+ <g class="node" onclick="toggle('fwd_start')" transform="translate(200,50)"><rect class="compbox ${state.fwd_start?'on':''}" x="0" y="0" width="75" height="40" rx="6"/><text x="37" y="16" text-anchor="middle" fill="#e8ecf4" font-size="9" font-weight="700">PB FWD</text><text x="37" y="30" text-anchor="middle" fill="#94a3bf" font-size="8">(NO)</text></g>
+ <g transform="translate(285,50)"><rect class="compbox ${!state.rev_K?'on':''}" x="0" y="0" width="70" height="40" rx="6"/><text x="35" y="16" text-anchor="middle" fill="#e8ecf4" font-size="9" font-weight="700">K_REV</text><text x="35" y="30" text-anchor="middle" fill="#94a3bf" font-size="8">(NC inter)</text></g>
+ <g transform="translate(365,50)"><rect class="compbox ${state.interlock_ok?'on':''}" x="0" y="0" width="60" height="40" rx="6"/><text x="30" y="16" text-anchor="middle" fill="#e8ecf4" font-size="9" font-weight="700">OL</text><text x="30" y="30" text-anchor="middle" fill="#94a3bf" font-size="8">(NC)</text></g>
+ <line class="wire ${state.fwd_K?'live':''}" x1="425" y1="70" x2="470" y2="70"/>
+ <g transform="translate(470,48)"><rect class="coil ${state.fwd_K?'energized':''}" x="0" y="0" width="70" height="44" rx="8"/><text x="35" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">K_FWD</text><text x="35" y="34" text-anchor="middle" fill="#94a3bf" font-size="8">coil</text></g>
+ <line class="wire ${state.fwd_K?'live':''}" x1="540" y1="70" x2="590" y2="70"/>
+ <line class="wire ${state.fwd_K?'live':''}" x1="590" y1="70" x2="590" y2="490"/>
+ <!-- REV branch -->
+ <g class="node" onclick="toggle('rev_start')" transform="translate(200,120)"><rect class="compbox ${state.rev_start?'on':''}" x="0" y="0" width="75" height="40" rx="6"/><text x="37" y="16" text-anchor="middle" fill="#e8ecf4" font-size="9" font-weight="700">PB REV</text><text x="37" y="30" text-anchor="middle" fill="#94a3bf" font-size="8">(NO)</text></g>
+ <g transform="translate(285,120)"><rect class="compbox ${!state.fwd_K?'on':''}" x="0" y="0" width="70" height="40" rx="6"/><text x="35" y="16" text-anchor="middle" fill="#e8ecf4" font-size="9" font-weight="700">K_FWD</text><text x="35" y="30" text-anchor="middle" fill="#94a3bf" font-size="8">(NC inter)</text></g>
+ <g transform="translate(365,120)"><rect class="compbox ${state.interlock_ok?'on':''}" x="0" y="0" width="60" height="40" rx="6"/><text x="30" y="16" text-anchor="middle" fill="#e8ecf4" font-size="9" font-weight="700">OL</text><text x="30" y="30" text-anchor="middle" fill="#94a3bf" font-size="8">(NC)</text></g>
+ <line class="wire ${state.rev_K?'live':''}" x1="425" y1="140" x2="470" y2="140"/>
+ <g transform="translate(470,118)"><rect class="coil ${state.rev_K?'energized':''}" x="0" y="0" width="70" height="44" rx="8"/><text x="35" y="18" text-anchor="middle" fill="#e8ecf4" font-size="10" font-weight="700">K_REV</text><text x="35" y="34" text-anchor="middle" fill="#94a3bf" font-size="8">coil</text></g>
+ <line class="wire ${state.rev_K?'live':''}" x1="540" y1="140" x2="590" y2="140"/>
+ <line class="wire ${state.rev_K?'live':''}" x1="590" y1="140" x2="590" y2="490"/>
+ <!-- lamps -->
+ <g transform="translate(640,55)"><circle class="lamp ${state.fwd_K?'on':''}" cx="22" cy="18" r="16" style="fill:${state.fwd_K?'#22c55e':'#334155'}"/><text x="22" y="48" text-anchor="middle" fill="#94a3bf" font-size="9">FWD</text></g>
+ <g transform="translate(640,125)"><circle class="lamp ${state.rev_K?'on':''}" cx="22" cy="18" r="16" style="fill:${state.rev_K?'#f97316':'#334155'}"/><text x="22" y="48" text-anchor="middle" fill="#94a3bf" font-size="9">REV</text></g>
+`},
+  sequential:{title:"Circuit: Sequential Control (Timer-based)",ladder:`Rung 1: [PB_START (NO)] -- [PB_STOP (NC)] -- ( Solenoid 1 ) + ( Timer T1 )
+Rung 2: [Timer T1 done (NO)] -- ( Solenoid 2 ) + ( Timer T2 )
+Rung 3: [Timer T2 done (NO)] -- ( Heater )
+Rung 4: [PB_STOP (NC)] -- ( reset all )
+Note: Step 1 SOL1 3s -> Step 2 SOL2 3s -> Step 3 Heater`,svg:()=>`
+ <text x="20" y="28" fill="#94a3bf" font-size="11">L1 (${power}V)</text>
+ <g transform="translate(100,180)"><rect x="0" y="0" width="700" height="60" rx="8" fill="#1e293b" stroke="#475569"/><text x="350" y="25" text-anchor="middle" fill="#e8ecf4" font-size="13" font-weight="700">Step: ${state.seq_step}</text></g>
+ <g transform="translate(120,270)"><circle cx="30" cy="30" r="24" style="fill:${state.sol1?'#22c55e':'#334155'}"/><text x="30" y="70" text-anchor="middle" fill="#94a3bf" font-size="10">SOL 1</text></g>
+ <g transform="translate(300,270)"><circle cx="30" cy="30" r="24" style="fill:${state.sol2?'#22c55e':'#334155'}"/><text x="30" y="70" text-anchor="middle" fill="#94a3bf" font-size="10">SOL 2</text></g>
+ <g transform="translate(480,270)"><circle cx="30" cy="30" r="24" style="fill:${state.heater?'#f97316':'#334155'}"/><text x="30" y="70" text-anchor="middle" fill="#94a3bf" font-size="10">HEATER</text></g>
+`},
+};
+function setPower(){
+  power = document.getElementById('powersrc').value;
+  const freq = power==='24'?'DC':'50 Hz';
+  document.getElementById('psrcval').textContent = power==='24'?'24V DC':(power==='400'?'400V AC 3Φ':'220V AC 1Φ');
+  document.getElementById('psrcv').textContent = power + ' V';
+  document.getElementById('psrcf').textContent = freq;
+  render();
+}
+
+function runLogic(){
+  // Motor
+  const startPressed=state.pb_start; const stopPressed=!state.pb_stop;
+  if(state.overload_ok){ if(startPressed && state.pb_stop) state.contactor_K1=true; if(!state.pb_stop) state.contactor_K1=false; } else state.contactor_K1=false;
+  state.seal=state.contactor_K1; state.motor_run=state.contactor_K1; state.lamp_run=state.contactor_K1;
+
+  // Tank
+  if(state.float_low && !state.float_high) state.pump=true;
+  if(state.float_high) state.pump=false;
+  state.alarm_high=state.float_high;
+  if(state.pump) state.level=Math.min(95,state.level+0.8);
+  else state.level=Math.max(5,state.level-0.4);
+  state.float_low=state.level<40; state.float_high=state.level>85;
+
+  // Star-delta
+  if(state.sd_start && state.sd_stop){ if(!state.K_main){ state.K_main=true; state.K_star=true; state.timer_done=false; state.timer_val=0; } }
+  if(!state.sd_stop){ state.K_main=false; state.K_star=false; state.K_delta=false; state.timer_done=false; state.timer_val=0; }
+  if(state.K_main && state.K_star && !state.timer_done){ state.timer_val+=0.5; if(state.timer_val>=5){ state.timer_done=true; state.K_star=false; state.K_delta=true; } }
+
+  // Conveyor
+  if(state.conv_start && state.conv_stop) state.conv_motor=true;
+  if(!state.conv_stop) state.conv_motor=false;
+  state.conv_run=state.conv_motor;
+  if(state.prox && state.conv_motor){ if(!state._prox_prev) state.counter++; state._prox_prev=true; } else state._prox_prev=false;
+  state.jam=state.counter>=10;
+
+  // DOL
+  if(state.dol_ol){ if(state.dol_start && state.dol_stop) state.dol_K=true; if(!state.dol_stop) state.dol_K=false; } else state.dol_K=false;
+  state.dol_motor=state.dol_K;
+
+  // Reversing
+  if(state.interlock_ok){ if(state.fwd_start && state.dir_stop && !state.rev_K) state.fwd_K=true; if(state.rev_start && state.dir_stop && !state.fwd_K) state.rev_K=true; }
+  if(!state.dir_stop){ state.fwd_K=false; state.rev_K=false; }
+  state.motor_dir = state.fwd_K?'FWD':(state.rev_K?'REV':'STOP');
+
+  // Sequential
+  if(state.seq_start && state.seq_stop){
+    if(state.seq_step===0){ state.sol1=true; state.seq_step=1; state.seq_timer=0; }
+  }
+  if(!state.seq_stop){ state.sol1=false; state.sol2=false; state.heater=false; state.seq_step=0; state.seq_timer=0; state.seq_done=false; }
+  if(state.seq_step===1){ state.seq_timer+=0.5; if(state.seq_timer>=3){ state.seq_step=2; state.sol1=false; state.sol2=true; state.seq_timer=0; } }
+  if(state.seq_step===2){ state.seq_timer+=0.5; if(state.seq_timer>=3){ state.seq_step=3; state.sol2=false; state.heater=true; state.seq_timer=0; state.seq_done=true; } }
+  // Factory
+  if(state.level1<40) state.pump1=true; if(state.level1>85) state.pump1=false;
+  if(state.level2<40) state.pump2=true; if(state.level2>85) state.pump2=false;
+  if(state.pump1) state.level1=Math.min(95,state.level1+0.5); else state.level1=Math.max(5,state.level1-0.3);
+  if(state.pump2) state.level2=Math.min(95,state.level2+0.4); else state.level2=Math.max(5,state.level2-0.2);
+  state.pressure_high = state.pressure>6;
+  state.temp_high = state.temp>60;
+  state.flow_ok = state.flow>5;
+  state.alarm = state.pressure_high || state.level1>90 || state.level2>90;
+  state.fan = state.temp_high;
+  state.valve1 = state.pump1; state.valve2 = state.pump2;
+}
+
+let simInterval=null;
+function runSim(){ if(simInterval) return; running=true; simInterval=setInterval(()=>{runLogic();render();},500); }
+function stopSim(){ running=false; if(simInterval){clearInterval(simInterval);simInterval=null;} }
+function resetSim(){ stopSim(); resetState(); state.level=30; state.counter=0; state._prox_prev=false; render(); }
+function toggle(key){
+  if(key==='pb_stop'||key==='sd_stop'||key==='conv_stop'||key==='dol_stop'||key==='dir_stop'||key==='seq_stop'||key==='float_high') state[key]=!state[key];
+  else state[key]=!state[key];
+  runLogic(); render();
+}
+function loadCircuit(){ circuit=document.getElementById('circuit').value; document.getElementById('ctitle').textContent=circuits[circuit].title; document.getElementById('tankwrap').style.display=(circuit==='tank')?'block':'none'; render(); }
+function render(){
+  const c=circuits[circuit]; document.getElementById('svg').innerHTML=c.svg(); document.getElementById('ladder').textContent=c.ladder;
+  if(circuit==='tank'){ document.getElementById('liquid').style.height=state.level+'%'; document.getElementById('ls_low').className='levelsensor'+(state.float_low?' active':''); document.getElementById('ls_high').className='levelsensor'+(state.float_high?' active':''); }
+  const motorEl=document.getElementById('motor'); const run=(state.motor_run||state.conv_motor||state.dol_motor||state.fwd_K||state.rev_K||state.K_main);
+  if(run) motorEl.classList.add('spin'); else motorEl.classList.remove('spin');
+  document.getElementById('motorstatus').textContent=run?'RUNNING':'STOPPED'; document.getElementById('motorstatus').className=run?'on':'off';
+  document.getElementById('lampstatus').textContent='Lamp: '+(state.lamp_run||state.conv_motor||state.dol_motor||state.fwd_K||state.rev_K||state.K_main?'ON':'OFF');
+  document.getElementById('extrastatus').textContent = circuit==='reversing'?'Direction: '+state.motor_dir : (circuit==='sequential'?'Step: '+state.seq_step:'');
+  const ctr=document.getElementById('ctrval'); if(ctr) ctr.textContent=state.counter;
+  // status list
+  const sl=document.getElementById('statuslist'); let rows=[];
+  if(circuit==='motor') rows=[['PB START',state.pb_start],['PB STOP (NC)',state.pb_stop],['Contactor K1',state.contactor_K1],['Seal',state.seal],['Overload OK',state.overload_ok],['Motor',state.motor_run],['Run Lamp',state.lamp_run]];
+  else if(circuit==='tank') rows=[['Float LOW',state.float_low],['Float HIGH',state.float_high],['Pump',state.pump],['High Alarm',state.alarm_high],['Level %',state.level.toFixed(0)]];
+  else if(circuit==='stardelta') rows=[['PB START',state.sd_start],['PB STOP (NC)',state.sd_stop],['K_MAIN',state.K_main],['K_STAR',state.K_star],['K_DELTA',state.K_delta],['Timer done',state.timer_done],['Timer (s)',state.timer_val.toFixed(1)]];
+  else if(circuit==='conveyor') rows=[['PB START',state.conv_start],['PB STOP (NC)',state.conv_stop],['Conveyor motor',state.conv_motor],['Proximity',state.prox],['Counter',state.counter],['Jam/Full',state.jam]];
+  else if(circuit==='dol') rows=[['PB START',state.dol_start],['PB STOP (NC)',state.dol_stop],['OL OK',state.dol_ol],['Contactor K_DOL',state.dol_K],['Motor',state.dol_motor]];
+  else if(circuit==='reversing') rows=[['PB FWD',state.fwd_start],['PB REV',state.rev_start],['PB STOP (NC)',state.dir_stop],['OL OK',state.interlock_ok],['K_FWD',state.fwd_K],['K_REV',state.rev_K],['Direction',state.motor_dir]];
+  else if(circuit==='factory') rows=[['Pump 1',state.pump1],['Pump 2',state.pump2],['Valve 1',state.valve1],['Valve 2',state.valve2],['Pressure (bar)',state.pressure.toFixed(1)],['Temp (°C)',state.temp.toFixed(1)],['Flow (L/min)',state.flow.toFixed(1)],['Alarm',state.alarm],['Cooling Fan',state.fan]];
+  else rows=[['PB START',state.seq_start],['PB STOP (NC)',state.seq_stop],['Step',state.seq_step],['SOL1',state.sol1],['SOL2',state.sol2],['HEATER',state.heater],['Timer (s)',state.seq_timer.toFixed(1)],['Done',state.seq_done]];
+  sl.innerHTML=rows.map(([k,v])=>{const isBool=typeof v==='boolean';const cls=isBool?(v?'on':'off'):'';const txt=isBool?(v?'ON':'OFF'):v;return `<div class="statusrow"><span>${k}</span><span class="v ${cls}">${txt}</span></div>`;}).join('');
+  // I/O
+  const io=document.getElementById('iomonitor'); let lines=[];
+  const addIO=(n,v)=>{const hi=(v===true||(typeof v==='number'&&v>0));lines.push(`<div class="${hi?'hi':'lo'}">${n}: ${typeof v==='boolean'?(v?'1':'0'):v}</div>`);};
+  if(circuit==='motor'){addIO('I0.0 PB_START',state.pb_start);addIO('I0.1 PB_STOP (NC)',state.pb_stop);addIO('I0.2 OVERLOAD',state.overload_ok);addIO('Q0.0 K1',state.contactor_K1);addIO('Q0.1 RUN_LAMP',state.lamp_run);addIO('Q0.2 MOTOR',state.motor_run);}
+  else if(circuit==='tank'){addIO('I0.0 FLOAT_LOW',state.float_low);addIO('I0.1 FLOAT_HIGH',state.float_high);addIO('Q0.0 PUMP',state.pump);addIO('Q0.1 HIGH_ALARM',state.alarm_high);addIO('IW0 LEVEL_%',state.level.toFixed(0));}
+  else if(circuit==='stardelta'){addIO('I0.0 PB_START',state.sd_start);addIO('I0.1 PB_STOP (NC)',state.sd_stop);addIO('Q0.0 K_MAIN',state.K_main);addIO('Q0.1 K_STAR',state.K_star);addIO('Q0.2 K_DELTA',state.K_delta);addIO('T0 TIMER_DONE',state.timer_done);}
+  else if(circuit==='conveyor'){addIO('I0.0 PB_START',state.conv_start);addIO('I0.1 PB_STOP (NC)',state.conv_stop);addIO('I0.2 PROX',state.prox);addIO('Q0.0 CONV_MOTOR',state.conv_motor);addIO('Q0.1 DETECT',state.prox);addIO('Q0.2 JAM_ALARM',state.jam);addIO('C0 COUNTER',state.counter);}
+  else if(circuit==='dol'){addIO('I0.0 PB_START',state.dol_start);addIO('I0.1 PB_STOP (NC)',state.dol_stop);addIO('I0.2 OL',state.dol_ol);addIO('Q0.0 K_DOL',state.dol_K);addIO('Q0.1 MOTOR',state.dol_motor);}
+  else if(circuit==='reversing'){addIO('I0.0 PB_FWD',state.fwd_start);addIO('I0.1 PB_REV',state.rev_start);addIO('I0.2 PB_STOP (NC)',state.dir_stop);addIO('I0.3 OL',state.interlock_ok);addIO('Q0.0 K_FWD',state.fwd_K);addIO('Q0.1 K_REV',state.rev_K);}
+  else if(circuit==='factory'){addIO('I0.0 SYS_RUN',true);addIO('I1.0 TANK1_LOW',state.level1<40);addIO('I1.1 TANK1_HIGH',state.level1>85);addIO('I1.2 TANK2_LOW',state.level2<40);addIO('I1.3 TANK2_HIGH',state.level2>85);addIO('IW0 PRESSURE',state.pressure.toFixed(1));addIO('IW2 TEMP',state.temp.toFixed(1));addIO('IW4 FLOW',state.flow.toFixed(1));addIO('Q0.0 PUMP1',state.pump1);addIO('Q0.1 PUMP2',state.pump2);addIO('Q0.2 VALVE1',state.valve1);addIO('Q0.3 VALVE2',state.valve2);addIO('Q0.4 ALARM',state.alarm);addIO('Q0.5 FAN',state.fan);}
+  else {addIO('I0.0 PB_START',state.seq_start);addIO('I0.1 PB_STOP (NC)',state.seq_stop);addIO('Q0.0 SOL1',state.sol1);addIO('Q0.1 SOL2',state.sol2);addIO('Q0.2 HEATER',state.heater);addIO('TM0 TIMER',state.seq_timer.toFixed(1));}
+  io.innerHTML=lines.join('');
+}
+loadCircuit(); render();
+</script>
+</body>
+</html>
