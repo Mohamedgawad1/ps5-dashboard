@@ -9115,5 +9115,53 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00233-9741": {
+  "record": "1295827",
+  "task": "T-00233-9741",
+  "asset": "PS5-09-RF-83600D-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-9745": {
+  "record": "1295831",
+  "task": "T-00233-9745",
+  "asset": "PS5-09-RF-83600H-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-9746": {
+  "record": "1295832",
+  "task": "T-00233-9746",
+  "asset": "PS5-09-RF-83600J-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-9772": {
+  "record": "1295858",
+  "task": "T-00233-9772",
+  "asset": "PS5-09-RF-83800G-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-9748": {
+  "record": "1295834",
+  "task": "T-00233-9748",
+  "asset": "PS5-09-RF-83600L-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-9749": {
+  "record": "1295835",
+  "task": "T-00233-9749",
+  "asset": "PS5-09-RF-83600M-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
