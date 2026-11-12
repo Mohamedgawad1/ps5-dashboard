@@ -51856,3 +51856,464 @@
 [2026-11-11 20:03:38] ITR data is 149 min old (limit 40 min) -> restarting itr_online
 [2026-11-11 20:03:40] TUNNEL URL: https://ceremony-denver-aluminum-microwave.trycloudflare.com
 [2026-11-11 20:03:41] STARTED itr_online (PID 16336)
+[2026-11-11 21:03:31] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-12 07:16:33] ==================================================
+[2026-11-12 07:16:33] Watchdog started - keeping everything alive
+[2026-11-12 07:16:33] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-12 07:16:33] STARTED server (PID 14644)
+[2026-11-12 07:16:34] STARTED auto_sync (PID 2000)
+[2026-11-12 07:16:35] STARTED cloud_sync (PID 10876)
+[2026-11-12 07:16:36] STARTED itr_online (PID 7236)
+[2026-11-12 07:16:37] STARTED tunnel_named (PID 17504)
+[2026-11-12 07:16:38] STARTED tunnel_backup (PID 17752)
+[2026-11-12 07:16:55] ITR data is 611 min old (limit 40 min) -> restarting itr_online
+[2026-11-12 07:16:59] STARTED itr_online (PID 18528)
+[2026-11-12 07:17:02] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:17:14] RESTARTING itr_online
+[2026-11-12 07:17:14] STARTED itr_online (PID 20396)
+[2026-11-12 07:17:17] RESTARTING tunnel_backup
+[2026-11-12 07:17:17] STARTED tunnel_backup (PID 6416)
+[2026-11-12 07:17:34] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:17:35] RESTARTING tunnel_backup
+[2026-11-12 07:17:35] STARTED tunnel_backup (PID 16816)
+[2026-11-12 07:17:51] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:17:53] RESTARTING tunnel_backup
+[2026-11-12 07:17:53] STARTED tunnel_backup (PID 9188)
+[2026-11-12 07:18:10] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:18:11] RESTARTING tunnel_backup
+[2026-11-12 07:18:11] STARTED tunnel_backup (PID 18876)
+[2026-11-12 07:18:27] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:18:30] RESTARTING tunnel_backup
+[2026-11-12 07:18:30] STARTED tunnel_backup (PID 5052)
+[2026-11-12 07:18:45] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:18:48] RESTARTING tunnel_backup
+[2026-11-12 07:18:48] STARTED tunnel_backup (PID 19864)
+[2026-11-12 07:19:03] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:19:06] RESTARTING tunnel_backup
+[2026-11-12 07:19:06] STARTED tunnel_backup (PID 13568)
+[2026-11-12 07:19:23] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:19:24] RESTARTING tunnel_backup
+[2026-11-12 07:19:24] STARTED tunnel_backup (PID 20104)
+[2026-11-12 07:19:51] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:19:57] RESTARTING tunnel_backup
+[2026-11-12 07:19:57] STARTED tunnel_backup (PID 18076)
+[2026-11-12 07:20:15] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:20:16] RESTARTING tunnel_backup
+[2026-11-12 07:20:16] STARTED tunnel_backup (PID 16804)
+[2026-11-12 07:20:31] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:20:34] RESTARTING tunnel_backup
+[2026-11-12 07:20:34] STARTED tunnel_backup (PID 14248)
+[2026-11-12 07:20:49] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:20:52] RESTARTING tunnel_backup
+[2026-11-12 07:20:52] STARTED tunnel_backup (PID 8368)
+[2026-11-12 07:21:08] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:21:10] RESTARTING tunnel_backup
+[2026-11-12 07:21:10] STARTED tunnel_backup (PID 3768)
+[2026-11-12 07:21:28] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:21:28] RESTARTING tunnel_backup
+[2026-11-12 07:21:28] STARTED tunnel_backup (PID 10968)
+[2026-11-12 07:21:45] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:21:47] RESTARTING tunnel_backup
+[2026-11-12 07:21:47] STARTED tunnel_backup (PID 19488)
+[2026-11-12 07:22:02] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:22:05] RESTARTING tunnel_backup
+[2026-11-12 07:22:05] STARTED tunnel_backup (PID 19576)
+[2026-11-12 07:22:20] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:22:23] RESTARTING tunnel_backup
+[2026-11-12 07:22:23] STARTED tunnel_backup (PID 20120)
+[2026-11-12 07:22:38] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:22:41] RESTARTING tunnel_backup
+[2026-11-12 07:22:41] STARTED tunnel_backup (PID 7984)
+[2026-11-12 07:22:56] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:22:59] RESTARTING tunnel_backup
+[2026-11-12 07:22:59] STARTED tunnel_backup (PID 19508)
+[2026-11-12 07:23:14] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:23:17] RESTARTING tunnel_backup
+[2026-11-12 07:23:17] STARTED tunnel_backup (PID 18636)
+[2026-11-12 07:23:33] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:23:35] RESTARTING tunnel_backup
+[2026-11-12 07:23:35] STARTED tunnel_backup (PID 12088)
+[2026-11-12 07:23:50] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:23:53] RESTARTING tunnel_backup
+[2026-11-12 07:23:53] STARTED tunnel_backup (PID 15644)
+[2026-11-12 07:24:08] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:24:11] RESTARTING tunnel_backup
+[2026-11-12 07:24:11] STARTED tunnel_backup (PID 14352)
+[2026-11-12 07:24:26] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:24:29] RESTARTING tunnel_backup
+[2026-11-12 07:24:29] STARTED tunnel_backup (PID 2744)
+[2026-11-12 07:24:44] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-12 07:24:47] RESTARTING tunnel_backup
+[2026-11-12 07:24:47] STARTED tunnel_backup (PID 8408)
+[2026-11-12 07:25:05] RESTARTING tunnel_backup
+[2026-11-12 07:25:05] STARTED tunnel_backup (PID 18072)
+[2026-11-12 07:25:23] RESTARTING tunnel_backup
+[2026-11-12 07:25:23] STARTED tunnel_backup (PID 12232)
+[2026-11-12 07:25:41] RESTARTING tunnel_backup
+[2026-11-12 07:25:41] STARTED tunnel_backup (PID 17136)
+[2026-11-12 07:25:59] RESTARTING tunnel_backup
+[2026-11-12 07:25:59] STARTED tunnel_backup (PID 18552)
+[2026-11-12 07:26:17] RESTARTING tunnel_backup
+[2026-11-12 07:26:17] STARTED tunnel_backup (PID 7512)
+[2026-11-12 07:26:35] RESTARTING tunnel_backup
+[2026-11-12 07:26:35] STARTED tunnel_backup (PID 19676)
+[2026-11-12 07:26:53] RESTARTING tunnel_backup
+[2026-11-12 07:26:53] STARTED tunnel_backup (PID 18716)
+[2026-11-12 07:27:11] RESTARTING tunnel_backup
+[2026-11-12 07:27:11] STARTED tunnel_backup (PID 17928)
+[2026-11-12 07:27:29] RESTARTING tunnel_backup
+[2026-11-12 07:27:29] STARTED tunnel_backup (PID 19560)
+[2026-11-12 07:27:47] RESTARTING tunnel_backup
+[2026-11-12 07:27:47] STARTED tunnel_backup (PID 13304)
+[2026-11-12 07:28:05] RESTARTING tunnel_backup
+[2026-11-12 07:28:05] STARTED tunnel_backup (PID 17364)
+[2026-11-12 07:28:23] RESTARTING tunnel_backup
+[2026-11-12 07:28:23] STARTED tunnel_backup (PID 13148)
+[2026-11-12 07:28:41] RESTARTING tunnel_backup
+[2026-11-12 07:28:41] STARTED tunnel_backup (PID 5656)
+[2026-11-12 07:28:59] RESTARTING tunnel_backup
+[2026-11-12 07:29:00] STARTED tunnel_backup (PID 16072)
+[2026-11-12 07:29:18] RESTARTING tunnel_backup
+[2026-11-12 07:29:18] STARTED tunnel_backup (PID 16928)
+[2026-11-12 07:29:36] RESTARTING tunnel_backup
+[2026-11-12 07:29:36] STARTED tunnel_backup (PID 2604)
+[2026-11-12 07:29:54] RESTARTING tunnel_backup
+[2026-11-12 07:29:54] STARTED tunnel_backup (PID 20284)
+[2026-11-12 07:30:12] RESTARTING tunnel_backup
+[2026-11-12 07:30:12] STARTED tunnel_backup (PID 6592)
+[2026-11-12 07:30:30] RESTARTING tunnel_backup
+[2026-11-12 07:30:30] STARTED tunnel_backup (PID 20252)
+[2026-11-12 07:30:48] RESTARTING tunnel_backup
+[2026-11-12 07:30:48] STARTED tunnel_backup (PID 9000)
+[2026-11-12 07:31:06] RESTARTING tunnel_backup
+[2026-11-12 07:31:06] STARTED tunnel_backup (PID 17944)
+[2026-11-12 07:31:24] RESTARTING tunnel_backup
+[2026-11-12 07:31:24] STARTED tunnel_backup (PID 16116)
+[2026-11-12 07:31:42] RESTARTING tunnel_backup
+[2026-11-12 07:31:42] STARTED tunnel_backup (PID 19820)
+[2026-11-12 07:32:00] RESTARTING tunnel_backup
+[2026-11-12 07:32:00] STARTED tunnel_backup (PID 18884)
+[2026-11-12 07:32:18] RESTARTING tunnel_backup
+[2026-11-12 07:32:19] STARTED tunnel_backup (PID 6444)
+[2026-11-12 07:32:37] RESTARTING tunnel_backup
+[2026-11-12 07:32:37] STARTED tunnel_backup (PID 17944)
+[2026-11-12 07:32:55] RESTARTING tunnel_backup
+[2026-11-12 07:32:55] STARTED tunnel_backup (PID 14408)
+[2026-11-12 07:33:13] RESTARTING tunnel_backup
+[2026-11-12 07:33:13] STARTED tunnel_backup (PID 12488)
+[2026-11-12 07:33:31] RESTARTING tunnel_backup
+[2026-11-12 07:33:31] STARTED tunnel_backup (PID 15824)
+[2026-11-12 07:33:49] RESTARTING tunnel_backup
+[2026-11-12 07:33:49] STARTED tunnel_backup (PID 8564)
+[2026-11-12 07:34:07] RESTARTING tunnel_backup
+[2026-11-12 07:34:07] STARTED tunnel_backup (PID 11864)
+[2026-11-12 07:34:25] RESTARTING tunnel_backup
+[2026-11-12 07:34:25] STARTED tunnel_backup (PID 12328)
+[2026-11-12 07:34:43] RESTARTING tunnel_backup
+[2026-11-12 07:34:43] STARTED tunnel_backup (PID 19704)
+[2026-11-12 07:35:01] RESTARTING tunnel_backup
+[2026-11-12 07:35:01] STARTED tunnel_backup (PID 16772)
+[2026-11-12 07:35:20] RESTARTING tunnel_backup
+[2026-11-12 07:35:20] STARTED tunnel_backup (PID 17120)
+[2026-11-12 07:35:38] RESTARTING tunnel_backup
+[2026-11-12 07:35:38] STARTED tunnel_backup (PID 19436)
+[2026-11-12 07:35:56] RESTARTING tunnel_backup
+[2026-11-12 07:35:56] STARTED tunnel_backup (PID 19000)
+[2026-11-12 07:36:14] RESTARTING tunnel_backup
+[2026-11-12 07:36:14] STARTED tunnel_backup (PID 20464)
+[2026-11-12 07:36:32] RESTARTING tunnel_backup
+[2026-11-12 07:36:32] STARTED tunnel_backup (PID 6636)
+[2026-11-12 07:36:50] RESTARTING tunnel_backup
+[2026-11-12 07:36:50] STARTED tunnel_backup (PID 18052)
+[2026-11-12 07:37:08] RESTARTING tunnel_backup
+[2026-11-12 07:37:08] STARTED tunnel_backup (PID 5264)
+[2026-11-12 07:37:27] RESTARTING tunnel_backup
+[2026-11-12 07:37:27] STARTED tunnel_backup (PID 5876)
+[2026-11-12 07:37:45] RESTARTING tunnel_backup
+[2026-11-12 07:37:45] STARTED tunnel_backup (PID 17224)
+[2026-11-12 07:38:03] RESTARTING tunnel_backup
+[2026-11-12 07:38:03] STARTED tunnel_backup (PID 19388)
+[2026-11-12 07:38:22] RESTARTING tunnel_backup
+[2026-11-12 07:38:22] STARTED tunnel_backup (PID 12656)
+[2026-11-12 07:38:40] RESTARTING tunnel_backup
+[2026-11-12 07:38:40] STARTED tunnel_backup (PID 3588)
+[2026-11-12 07:38:58] RESTARTING tunnel_backup
+[2026-11-12 07:38:58] STARTED tunnel_backup (PID 20052)
+[2026-11-12 07:39:16] RESTARTING tunnel_backup
+[2026-11-12 07:39:16] STARTED tunnel_backup (PID 17600)
+[2026-11-12 07:39:34] RESTARTING tunnel_backup
+[2026-11-12 07:39:34] STARTED tunnel_backup (PID 10060)
+[2026-11-12 07:39:52] RESTARTING tunnel_backup
+[2026-11-12 07:39:53] STARTED tunnel_backup (PID 18184)
+[2026-11-12 07:40:11] RESTARTING tunnel_backup
+[2026-11-12 07:40:11] STARTED tunnel_backup (PID 3380)
+[2026-11-12 07:40:29] RESTARTING tunnel_backup
+[2026-11-12 07:40:29] STARTED tunnel_backup (PID 18780)
+[2026-11-12 07:40:47] RESTARTING tunnel_backup
+[2026-11-12 07:40:47] STARTED tunnel_backup (PID 15336)
+[2026-11-12 07:41:05] RESTARTING tunnel_backup
+[2026-11-12 07:41:05] STARTED tunnel_backup (PID 17872)
+[2026-11-12 07:41:23] RESTARTING tunnel_backup
+[2026-11-12 07:41:23] STARTED tunnel_backup (PID 7336)
+[2026-11-12 07:41:41] RESTARTING tunnel_backup
+[2026-11-12 07:41:41] STARTED tunnel_backup (PID 9192)
+[2026-11-12 07:41:59] RESTARTING tunnel_backup
+[2026-11-12 07:41:59] STARTED tunnel_backup (PID 10664)
+[2026-11-12 07:42:17] RESTARTING tunnel_backup
+[2026-11-12 07:42:17] STARTED tunnel_backup (PID 2724)
+[2026-11-12 07:42:35] RESTARTING tunnel_backup
+[2026-11-12 07:42:35] STARTED tunnel_backup (PID 18468)
+[2026-11-12 07:42:53] RESTARTING tunnel_backup
+[2026-11-12 07:42:53] STARTED tunnel_backup (PID 8528)
+[2026-11-12 07:43:11] RESTARTING tunnel_backup
+[2026-11-12 07:43:11] STARTED tunnel_backup (PID 5648)
+[2026-11-12 07:43:29] RESTARTING tunnel_backup
+[2026-11-12 07:43:29] STARTED tunnel_backup (PID 13584)
+[2026-11-12 07:43:47] RESTARTING tunnel_backup
+[2026-11-12 07:43:47] STARTED tunnel_backup (PID 18400)
+[2026-11-12 07:44:05] RESTARTING tunnel_backup
+[2026-11-12 07:44:05] STARTED tunnel_backup (PID 4560)
+[2026-11-12 07:44:23] RESTARTING tunnel_backup
+[2026-11-12 07:44:23] STARTED tunnel_backup (PID 2016)
+[2026-11-12 07:44:42] RESTARTING tunnel_backup
+[2026-11-12 07:44:42] STARTED tunnel_backup (PID 13324)
+[2026-11-12 07:45:00] RESTARTING tunnel_backup
+[2026-11-12 07:45:00] STARTED tunnel_backup (PID 8324)
+[2026-11-12 07:45:18] RESTARTING tunnel_backup
+[2026-11-12 07:45:18] STARTED tunnel_backup (PID 6868)
+[2026-11-12 07:45:36] RESTARTING tunnel_backup
+[2026-11-12 07:45:36] STARTED tunnel_backup (PID 3592)
+[2026-11-12 07:45:54] RESTARTING tunnel_backup
+[2026-11-12 07:45:54] STARTED tunnel_backup (PID 8816)
+[2026-11-12 07:46:12] RESTARTING tunnel_backup
+[2026-11-12 07:46:12] STARTED tunnel_backup (PID 1888)
+[2026-11-12 07:46:30] RESTARTING tunnel_backup
+[2026-11-12 07:46:30] STARTED tunnel_backup (PID 8072)
+[2026-11-12 07:46:48] RESTARTING tunnel_backup
+[2026-11-12 07:46:48] STARTED tunnel_backup (PID 20144)
+[2026-11-12 07:47:06] RESTARTING tunnel_backup
+[2026-11-12 07:47:06] STARTED tunnel_backup (PID 9004)
+[2026-11-12 07:47:24] RESTARTING tunnel_backup
+[2026-11-12 07:47:24] STARTED tunnel_backup (PID 14528)
+[2026-11-12 07:47:42] RESTARTING tunnel_backup
+[2026-11-12 07:47:42] STARTED tunnel_backup (PID 15984)
+[2026-11-12 07:48:00] RESTARTING tunnel_backup
+[2026-11-12 07:48:00] STARTED tunnel_backup (PID 5792)
+[2026-11-12 07:48:18] RESTARTING tunnel_backup
+[2026-11-12 07:48:18] STARTED tunnel_backup (PID 10092)
+[2026-11-12 07:48:36] RESTARTING tunnel_backup
+[2026-11-12 07:48:36] STARTED tunnel_backup (PID 6384)
+[2026-11-12 07:48:54] RESTARTING tunnel_backup
+[2026-11-12 07:48:54] STARTED tunnel_backup (PID 20160)
+[2026-11-12 07:49:12] RESTARTING tunnel_backup
+[2026-11-12 07:49:12] STARTED tunnel_backup (PID 14240)
+[2026-11-12 07:49:30] RESTARTING tunnel_backup
+[2026-11-12 07:49:30] STARTED tunnel_backup (PID 12276)
+[2026-11-12 07:49:48] RESTARTING tunnel_backup
+[2026-11-12 07:49:48] STARTED tunnel_backup (PID 13548)
+[2026-11-12 07:50:06] RESTARTING tunnel_backup
+[2026-11-12 07:50:06] STARTED tunnel_backup (PID 19832)
+[2026-11-12 07:50:24] RESTARTING tunnel_backup
+[2026-11-12 07:50:24] STARTED tunnel_backup (PID 13600)
+[2026-11-12 07:50:42] RESTARTING tunnel_backup
+[2026-11-12 07:50:43] STARTED tunnel_backup (PID 10892)
+[2026-11-12 07:51:01] RESTARTING tunnel_backup
+[2026-11-12 07:51:01] STARTED tunnel_backup (PID 13676)
+[2026-11-12 07:51:19] RESTARTING tunnel_backup
+[2026-11-12 07:51:19] STARTED tunnel_backup (PID 12276)
+[2026-11-12 07:51:53] RESTARTING tunnel_backup
+[2026-11-12 07:51:53] STARTED tunnel_backup (PID 16764)
+[2026-11-12 07:52:12] RESTARTING tunnel_backup
+[2026-11-12 07:52:12] STARTED tunnel_backup (PID 15216)
+[2026-11-12 07:52:30] RESTARTING tunnel_backup
+[2026-11-12 07:52:30] STARTED tunnel_backup (PID 16936)
+[2026-11-12 07:52:49] RESTARTING tunnel_backup
+[2026-11-12 07:52:49] STARTED tunnel_backup (PID 8724)
+[2026-11-12 07:53:07] RESTARTING tunnel_backup
+[2026-11-12 07:53:08] STARTED tunnel_backup (PID 8072)
+[2026-11-12 07:54:42] RESTARTING tunnel_backup
+[2026-11-12 07:54:42] STARTED tunnel_backup (PID 7724)
+[2026-11-12 07:55:00] RESTARTING tunnel_backup
+[2026-11-12 07:55:01] STARTED tunnel_backup (PID 18896)
+[2026-11-12 07:55:19] RESTARTING tunnel_backup
+[2026-11-12 07:55:22] STARTED tunnel_backup (PID 15852)
+[2026-11-12 07:55:41] RESTARTING tunnel_backup
+[2026-11-12 07:55:41] STARTED tunnel_backup (PID 16748)
+[2026-11-12 07:56:00] RESTARTING tunnel_backup
+[2026-11-12 07:56:00] STARTED tunnel_backup (PID 9348)
+[2026-11-12 07:56:19] RESTARTING tunnel_backup
+[2026-11-12 07:56:19] STARTED tunnel_backup (PID 14616)
+[2026-11-12 07:56:38] RESTARTING tunnel_backup
+[2026-11-12 07:56:38] STARTED tunnel_backup (PID 5440)
+[2026-11-12 07:57:12] RESTARTING tunnel_backup
+[2026-11-12 07:57:12] STARTED tunnel_backup (PID 16280)
+[2026-11-12 07:57:30] RESTARTING tunnel_backup
+[2026-11-12 07:57:31] STARTED tunnel_backup (PID 11768)
+[2026-11-12 07:57:49] RESTARTING tunnel_backup
+[2026-11-12 07:57:49] STARTED tunnel_backup (PID 11324)
+[2026-11-12 07:58:09] RESTARTING tunnel_backup
+[2026-11-12 07:58:09] STARTED tunnel_backup (PID 18748)
+[2026-11-12 07:58:42] RESTARTING tunnel_backup
+[2026-11-12 07:58:42] STARTED tunnel_backup (PID 3528)
+[2026-11-12 07:59:00] RESTARTING tunnel_backup
+[2026-11-12 07:59:00] STARTED tunnel_backup (PID 17996)
+[2026-11-12 07:59:19] RESTARTING tunnel_backup
+[2026-11-12 07:59:19] STARTED tunnel_backup (PID 14636)
+[2026-11-12 07:59:38] RESTARTING tunnel_backup
+[2026-11-12 07:59:38] STARTED tunnel_backup (PID 11656)
+[2026-11-12 07:59:56] RESTARTING tunnel_backup
+[2026-11-12 07:59:56] STARTED tunnel_backup (PID 14848)
+[2026-11-12 08:00:14] RESTARTING tunnel_backup
+[2026-11-12 08:00:15] STARTED tunnel_backup (PID 4544)
+[2026-11-12 08:00:33] RESTARTING tunnel_backup
+[2026-11-12 08:00:33] STARTED tunnel_backup (PID 18868)
+[2026-11-12 08:00:52] RESTARTING tunnel_backup
+[2026-11-12 08:00:52] STARTED tunnel_backup (PID 14588)
+[2026-11-12 08:01:10] RESTARTING tunnel_backup
+[2026-11-12 08:01:10] STARTED tunnel_backup (PID 12404)
+[2026-11-12 08:01:29] RESTARTING tunnel_backup
+[2026-11-12 08:01:29] STARTED tunnel_backup (PID 3496)
+[2026-11-12 08:01:47] RESTARTING tunnel_backup
+[2026-11-12 08:01:47] STARTED tunnel_backup (PID 17384)
+[2026-11-12 08:02:06] RESTARTING tunnel_backup
+[2026-11-12 08:02:07] STARTED tunnel_backup (PID 12276)
+[2026-11-12 08:03:11] RESTARTING tunnel_backup
+[2026-11-12 08:03:11] STARTED tunnel_backup (PID 1672)
+[2026-11-12 08:03:29] RESTARTING tunnel_backup
+[2026-11-12 08:03:35] STARTED tunnel_backup (PID 17988)
+[2026-11-12 08:03:54] RESTARTING tunnel_backup
+[2026-11-12 08:03:54] STARTED tunnel_backup (PID 12620)
+[2026-11-12 08:04:13] RESTARTING tunnel_backup
+[2026-11-12 08:04:13] STARTED tunnel_backup (PID 15212)
+[2026-11-12 08:04:47] RESTARTING tunnel_backup
+[2026-11-12 08:04:47] STARTED tunnel_backup (PID 6076)
+[2026-11-12 08:05:06] RESTARTING tunnel_backup
+[2026-11-12 08:05:06] STARTED tunnel_backup (PID 7252)
+[2026-11-12 08:05:24] RESTARTING tunnel_backup
+[2026-11-12 08:05:24] STARTED tunnel_backup (PID 11152)
+[2026-11-12 08:05:42] RESTARTING tunnel_backup
+[2026-11-12 08:05:42] STARTED tunnel_backup (PID 12116)
+[2026-11-12 08:06:01] RESTARTING tunnel_backup
+[2026-11-12 08:06:01] STARTED tunnel_backup (PID 3176)
+[2026-11-12 08:06:35] RESTARTING tunnel_backup
+[2026-11-12 08:06:35] STARTED tunnel_backup (PID 2600)
+[2026-11-12 08:06:53] RESTARTING tunnel_backup
+[2026-11-12 08:06:53] STARTED tunnel_backup (PID 8092)
+[2026-11-12 08:07:12] RESTARTING tunnel_backup
+[2026-11-12 08:07:12] STARTED tunnel_backup (PID 4748)
+[2026-11-12 08:07:31] RESTARTING tunnel_backup
+[2026-11-12 08:07:31] STARTED tunnel_backup (PID 12428)
+[2026-11-12 08:07:50] RESTARTING tunnel_backup
+[2026-11-12 08:07:50] STARTED tunnel_backup (PID 17056)
+[2026-11-12 08:08:09] RESTARTING tunnel_backup
+[2026-11-12 08:08:09] STARTED tunnel_backup (PID 9536)
+[2026-11-12 08:08:27] RESTARTING tunnel_backup
+[2026-11-12 08:08:28] STARTED tunnel_backup (PID 5172)
+[2026-11-12 08:08:46] RESTARTING tunnel_backup
+[2026-11-12 08:08:46] STARTED tunnel_backup (PID 7788)
+[2026-11-12 08:09:04] RESTARTING tunnel_backup
+[2026-11-12 08:09:04] STARTED tunnel_backup (PID 12428)
+[2026-11-12 08:09:22] RESTARTING tunnel_backup
+[2026-11-12 08:09:22] STARTED tunnel_backup (PID 19848)
+[2026-11-12 08:09:40] RESTARTING tunnel_backup
+[2026-11-12 08:09:41] STARTED tunnel_backup (PID 19644)
+[2026-11-12 08:09:59] RESTARTING tunnel_backup
+[2026-11-12 08:09:59] STARTED tunnel_backup (PID 16764)
+[2026-11-12 08:10:17] RESTARTING tunnel_backup
+[2026-11-12 08:10:17] STARTED tunnel_backup (PID 14180)
+[2026-11-12 08:10:35] RESTARTING tunnel_backup
+[2026-11-12 08:10:35] STARTED tunnel_backup (PID 17336)
+[2026-11-12 08:10:54] RESTARTING tunnel_backup
+[2026-11-12 08:10:54] STARTED tunnel_backup (PID 9048)
+[2026-11-12 08:11:12] RESTARTING tunnel_backup
+[2026-11-12 08:11:12] STARTED tunnel_backup (PID 3028)
+[2026-11-12 08:11:30] RESTARTING tunnel_backup
+[2026-11-12 08:11:30] STARTED tunnel_backup (PID 13420)
+[2026-11-12 08:11:48] RESTARTING tunnel_backup
+[2026-11-12 08:11:48] STARTED tunnel_backup (PID 18104)
+[2026-11-12 08:12:06] RESTARTING tunnel_backup
+[2026-11-12 08:12:06] STARTED tunnel_backup (PID 9536)
+[2026-11-12 08:12:25] RESTARTING tunnel_backup
+[2026-11-12 08:12:25] STARTED tunnel_backup (PID 17868)
+[2026-11-12 08:12:43] RESTARTING tunnel_backup
+[2026-11-12 08:12:43] STARTED tunnel_backup (PID 10620)
+[2026-11-12 08:13:01] RESTARTING tunnel_backup
+[2026-11-12 08:13:01] STARTED tunnel_backup (PID 4088)
+[2026-11-12 08:13:19] RESTARTING tunnel_backup
+[2026-11-12 08:13:19] STARTED tunnel_backup (PID 20064)
+[2026-11-12 08:13:37] RESTARTING tunnel_backup
+[2026-11-12 08:13:37] STARTED tunnel_backup (PID 20016)
+[2026-11-12 08:13:55] RESTARTING tunnel_backup
+[2026-11-12 08:13:55] STARTED tunnel_backup (PID 19720)
+[2026-11-12 08:14:13] RESTARTING tunnel_backup
+[2026-11-12 08:14:13] STARTED tunnel_backup (PID 19812)
+[2026-11-12 08:14:31] RESTARTING tunnel_backup
+[2026-11-12 08:14:31] STARTED tunnel_backup (PID 10224)
+[2026-11-12 08:14:49] RESTARTING tunnel_backup
+[2026-11-12 08:14:49] STARTED tunnel_backup (PID 20372)
+[2026-11-12 08:15:07] RESTARTING tunnel_backup
+[2026-11-12 08:15:07] STARTED tunnel_backup (PID 9796)
+[2026-11-12 08:15:25] RESTARTING tunnel_backup
+[2026-11-12 08:15:26] STARTED tunnel_backup (PID 17496)
+[2026-11-12 08:15:44] RESTARTING tunnel_backup
+[2026-11-12 08:15:44] STARTED tunnel_backup (PID 10348)
+[2026-11-12 08:16:02] RESTARTING tunnel_backup
+[2026-11-12 08:16:02] STARTED tunnel_backup (PID 8072)
+[2026-11-12 08:16:20] RESTARTING tunnel_backup
+[2026-11-12 08:16:20] STARTED tunnel_backup (PID 12064)
+[2026-11-12 08:16:38] RESTARTING tunnel_backup
+[2026-11-12 08:16:38] STARTED tunnel_backup (PID 12588)
+[2026-11-12 08:16:56] RESTARTING tunnel_backup
+[2026-11-12 08:16:56] STARTED tunnel_backup (PID 16580)
+[2026-11-12 08:17:15] RESTARTING tunnel_backup
+[2026-11-12 08:17:15] STARTED tunnel_backup (PID 12384)
+[2026-11-12 08:17:33] RESTARTING tunnel_backup
+[2026-11-12 08:17:33] STARTED tunnel_backup (PID 4120)
+[2026-11-12 08:17:51] RESTARTING tunnel_backup
+[2026-11-12 08:17:51] STARTED tunnel_backup (PID 12776)
+[2026-11-12 08:18:09] RESTARTING tunnel_backup
+[2026-11-12 08:18:10] STARTED tunnel_backup (PID 19012)
+[2026-11-12 08:18:28] RESTARTING tunnel_backup
+[2026-11-12 08:18:28] STARTED tunnel_backup (PID 1840)
+[2026-11-12 08:18:46] RESTARTING tunnel_backup
+[2026-11-12 08:18:46] STARTED tunnel_backup (PID 16100)
+[2026-11-12 08:19:04] RESTARTING tunnel_backup
+[2026-11-12 08:19:04] STARTED tunnel_backup (PID 7920)
+[2026-11-12 08:19:22] RESTARTING tunnel_backup
+[2026-11-12 08:19:23] STARTED tunnel_backup (PID 7080)
+[2026-11-12 08:19:41] RESTARTING tunnel_backup
+[2026-11-12 08:19:41] STARTED tunnel_backup (PID 5264)
+[2026-11-12 08:19:59] RESTARTING tunnel_backup
+[2026-11-12 08:19:59] STARTED tunnel_backup (PID 19592)
+[2026-11-12 08:20:17] RESTARTING tunnel_backup
+[2026-11-12 08:20:17] STARTED tunnel_backup (PID 3856)
+[2026-11-12 08:20:35] RESTARTING tunnel_backup
+[2026-11-12 08:20:35] STARTED tunnel_backup (PID 13928)
+[2026-11-12 08:21:09] RESTARTING tunnel_backup
+[2026-11-12 08:21:09] STARTED tunnel_backup (PID 19828)
+[2026-11-12 08:21:29] RESTARTING tunnel_backup
+[2026-11-12 08:21:29] STARTED tunnel_backup (PID 14000)
+[2026-11-12 08:21:47] RESTARTING tunnel_backup
+[2026-11-12 08:21:47] STARTED tunnel_backup (PID 11932)
+[2026-11-12 08:22:06] RESTARTING tunnel_backup
+[2026-11-12 08:22:06] STARTED tunnel_backup (PID 14524)
+[2026-11-12 08:22:25] RESTARTING tunnel_backup
+[2026-11-12 08:22:25] STARTED tunnel_backup (PID 3156)
+[2026-11-12 08:22:45] RESTARTING tunnel_backup
+[2026-11-12 08:22:45] STARTED tunnel_backup (PID 17960)
+[2026-11-12 08:23:03] RESTARTING tunnel_backup
+[2026-11-12 08:23:03] STARTED tunnel_backup (PID 2464)
+[2026-11-12 08:23:21] RESTARTING tunnel_backup
+[2026-11-12 08:23:25] STARTED tunnel_backup (PID 11780)
+[2026-11-12 08:23:43] RESTARTING tunnel_backup
+[2026-11-12 08:23:43] STARTED tunnel_backup (PID 18668)
+[2026-11-12 08:24:01] RESTARTING tunnel_backup
+[2026-11-12 08:24:02] STARTED tunnel_backup (PID 17512)
+[2026-11-12 08:24:20] RESTARTING tunnel_backup
+[2026-11-12 08:24:20] STARTED tunnel_backup (PID 17320)
+[2026-11-12 08:24:38] RESTARTING tunnel_backup
+[2026-11-12 08:24:38] STARTED tunnel_backup (PID 5832)
+[2026-11-12 08:24:57] RESTARTING tunnel_backup
+[2026-11-12 08:24:57] STARTED tunnel_backup (PID 18020)
+[2026-11-12 08:25:04] TUNNEL URL: https://poly-share-walking-drawn.trycloudflare.com
+[2026-11-12 08:28:31] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
