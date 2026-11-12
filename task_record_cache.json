@@ -9403,5 +9403,21 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00069-5394": {
+  "record": "1123949",
+  "task": "T-00069-5394",
+  "asset": "PS5-71-BI-0009-CC01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5381": {
+  "record": "1123936",
+  "task": "T-00069-5381",
+  "asset": "PS5-71-BI-0002-CC01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
