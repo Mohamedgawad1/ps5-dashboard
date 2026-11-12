@@ -222,7 +222,7 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
         <b>5) التايمر:</b> كويل Star-Delta Timer مع K1. الطرف 15-16 يغذي K3 (Star)، والطرف 15-18 يغذي K2 (Delta).<br>
         <b>6) التعشيق:</b> ضع NC بتاع K2 قبل كويل K3، وNC بتاع K3 قبل كويل K2.<br><br>
         <b>النتيجة:</b> يبدأ الموتور Star ثم يتحول Delta تلقائياً، والمؤشر على الموتور يوضح STAR / DELTA / OPEN.<br><br>
-        <b>ألوان الأسلاك:</b> L1 بني · L2 أبيض · L3 رمادي · N أزرق · PE أخضر متقطع · التحكم أصفر. جرّب مثال «Star-Delta Panel (Real Layout)» لترى البار 3Φ والترمينال 6P.
+        <b>ألوان الأسلاك:</b> L1 بني · L2 أسود · L3 رمادي · N أزرق · PE أخضر/أصفر متقطع · التحكم ذهبي (IEC 60446). جرّب مثال «Star-Delta Panel (Real Layout)» لترى البار 3Φ والترمينال 6P.
       </div>
       <div class="hint en-only">
         <b>3-phase motor = 6 terminals:</b> U1,V1,W1 = IN / U2,V2,W2 = OUT.<br><br>
@@ -233,7 +233,7 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
         <b>5) Timer:</b> Star-Delta timer coil with K1. 15-16 feeds K3 (star), 15-18 feeds K2 (delta).<br>
         <b>6) Interlock:</b> K2 NC in series with K3 coil, K3 NC in series with K2 coil.<br><br>
         <b>Result:</b> motor starts in star, changes to delta automatically, and the motor badge shows STAR / DELTA / OPEN.<br><br>
-        <b>Wire colours:</b> L1 brown · L2 white · L3 grey · N blue · PE green dashed · control yellow. Try the “Star-Delta Panel (Real Layout)” preset to see the 3Φ busbar and 6P terminal strip.
+        <b>Wire colours:</b> L1 brown · L2 black · L3 grey · N blue · PE green/yellow dashed · control gold (IEC 60446 international standard). Try the “Star-Delta Panel (Real Layout)” preset to see the 3Φ busbar and 6P terminal strip.
       </div>
     </details>
     <details open class="pgroup"><summary><span class="ar-only">ℹ️ طريقة الاستخدام</span><span class="en-only">ℹ️ How to use</span></summary>
@@ -274,9 +274,9 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
 
   <section class="pane canvasWrap">
     <div class="phaseLegend" id="phaseLegend">
-      <span><i style="background:#c2410c"></i>L1</span>
-      <span><i style="background:#e2e8f0"></i>L2</span>
-      <span><i style="background:#8b98ab"></i>L3</span>
+      <span><i style="background:#b45309"></i>L1</span>
+      <span><i style="background:#475569"></i>L2</span>
+      <span><i style="background:#94a3b8"></i>L3</span>
       <span><i style="background:#3b82f6"></i>N</span>
       <span><i class="pe"></i>PE</span>
       <span><i style="background:#f5c518"></i><span class="ar-only">تحكم</span><span class="en-only">Control</span></span>
@@ -452,7 +452,7 @@ let hotMap = {};
 let phaseRoots = {};
 let wireColorMode = true;
 try { wireColorMode = localStorage.getItem('cc_wireColors') !== 'live'; } catch(e){}
-const PHASE_COLORS = { L1:'#c2410c', L2:'#e2e8f0', L3:'#8b98ab', L:'#c2410c', N:'#3b82f6', PE:'#22c55e', G:'#22c55e' };
+const PHASE_COLORS = { L1:'#b45309', L2:'#475569', L3:'#94a3b8', L:'#b45309', N:'#3b82f6', PE:'#22c55e', G:'#22c55e' };
 function toggleWireColors(){
   wireColorMode = !wireColorMode;
   try { localStorage.setItem('cc_wireColors', wireColorMode ? 'phase' : 'live'); } catch(e){}
@@ -1257,7 +1257,7 @@ function trCoil(x,y,col){
 function symGenerator3(c){
   const on = c.state.on;
   const rows = [35,62,89,120];
-  const cols = ['#c2410c','#e2e8f0','#8b98ab','#3b82f6'];
+  const cols = ['#b45309','#475569','#94a3b8','#3b82f6'];
   const tags = ['L1','L2','L3','N'];
   return wrap(c,
     `<rect x="8" y="8" width="112" height="134" rx="9" fill="url(#genGrad)" stroke="#bd5c00" stroke-width="2.5"/>`
@@ -1321,7 +1321,7 @@ function symTransformer(c){
 function symTransformer3(c){
   const ratio = (c.data.primary||'400 V')+' / '+(c.data.secondary||'400 V');
   const ys = [45,95,145];
-  const ph = ['#c2410c','#e2e8f0','#8b98ab'];
+  const ph = ['#b45309','#475569','#94a3b8'];
   return wrap(c,
     `<rect x="4" y="4" width="202" height="182" rx="10" fill="#111c2e" stroke="${CL.edge}" stroke-width="1.5"/>`
     + txt(105,17,c.label+' · 3Φ',6,CL.muted)
@@ -1461,9 +1461,9 @@ function symBusbar(c){
 
 function symBusbar3(c){
   const bars = [
-    { y:30, col:'#c2410c', tag:'L1' },
-    { y:55, col:'#e2e8f0', tag:'L2' },
-    { y:80, col:'#8b98ab', tag:'L3' }
+    { y:30, col:'#b45309', tag:'L1' },
+    { y:55, col:'#475569', tag:'L2' },
+    { y:80, col:'#94a3b8', tag:'L3' }
   ];
   return wrap(c,
     `<rect x="4" y="4" width="182" height="102" rx="9" fill="#111c2e" stroke="${CL.edge}" stroke-width="1.5"/>`
@@ -2770,7 +2770,7 @@ function renderProps(){
     const w = wires.find(x => x.id === selectedWire);
     if(w){
       const a = byId(w.from.comp), b = byId(w.to.comp);
-      const colors = [['auto','Auto (phase/live)'],['#c2410c','L1 brown'],['#e2e8f0','L2 white'],['#8b98ab','L3 grey'],['#3b82f6','N blue'],['#22c55e','PE green'],['#f5c518','Control yellow'],['#ef4444','Red'],['#22c55e','Green']];
+      const colors = [['auto','Auto (phase/live)'],['#b45309','L1 brown'],['#475569','L2 black'],['#94a3b8','L3 grey'],['#3b82f6','N blue'],['#22c55e','PE green'],['#f5c518','Control gold'],['#ef4444','Red'],['#22c55e','Green']];
       box.innerHTML =
         `<div class="prop"><label>Cable</label><span class="mini">${a?a.label:'?'} · ${w.from.port} → ${b?b.label:'?'} · ${w.to.port}</span></div>`
         + `<div class="prop"><label>Colour</label><select onchange="setWireColor('${w.id}',this.value)">${colors.map(([v,n])=>`<option value="${v}"${(w.color||'auto')===v?' selected':''}>${n}</option>`).join('')}</select></div>`
