@@ -71990,3 +71990,53 @@ Call log:
 [2026-11-12 12:59:12] LOGGED IN
 [2026-11-12 13:00:25] pulled off=0 n=4000 accum=4000
 [2026-11-12 13:01:22] pulled off=4000 n=4000 accum=8000
+[2026-11-12 13:02:29] pulled off=8000 n=4000 accum=12000
+[2026-11-12 13:02:52] pulled off=12000 n=2064 accum=14064
+[2026-11-12 13:02:52] task index refreshed (6350 asset tags)
+[2026-11-12 13:02:53] updated dashboard_data.json itr_summary.live
+[2026-11-12 13:02:55]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 13:02:56]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 13:02 (closed=7692) rc=0 [main 14bf04a] ITR live update 2026-11-12 13:02 (closed=7692)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-12 13:03:05]  >> git push OK
+[2026-11-12 13:03:39]  >> published itr_live_state.json (460068 bytes)
+[2026-11-12 13:03:47]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 13:03:47]  >> platform publish OK (1 file(s) updated, closed=7692)
+[2026-11-12 13:03:47] PAGES PUSH rc=0
+[2026-11-12 13:03:47] cycle OK closed=7692 open=2662 updated=2026-11-12 13:02:53
+[2026-11-12 13:05:52] reused the sync's always-open browser (port 9222)
+[2026-11-12 13:05:53] LOGGED IN
+[2026-11-12 13:06:46] pulled off=0 n=4000 accum=4000
+[2026-11-12 13:07:39] pulled off=4000 n=4000 accum=8000
+[2026-11-12 13:08:17] pulled off=8000 n=4000 accum=12000
+[2026-11-12 13:08:39] pulled off=12000 n=2064 accum=14064
+[2026-11-12 13:08:39] task index refreshed (6350 asset tags)
+[2026-11-12 13:08:40] updated dashboard_data.json itr_summary.live
+[2026-11-12 13:08:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 13:08:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 13:08 (closed=7702) rc=0 [main 555defb] ITR live update 2026-11-12 13:08 (closed=7702)
+ 1 file changed, 126 insertions(+), 120 deletions(-)
+[2026-11-12 13:08:51]  >> git push OK
+[2026-11-12 13:09:00]  >> published itr_live_state.json (460210 bytes)
+[2026-11-12 13:09:05]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 13:09:05]  >> platform publish OK (1 file(s) updated, closed=7702)
+[2026-11-12 13:09:05] PAGES PUSH rc=0
+[2026-11-12 13:09:05] cycle OK closed=7702 open=2652 updated=2026-11-12 13:08:40
+[2026-11-12 13:11:05] reused the sync's always-open browser (port 9222)
+[2026-11-12 13:11:06] LOGGED IN
+[2026-11-12 13:12:40] pulled off=0 n=4000 accum=4000
+[2026-11-12 13:14:17] pulled off=4000 n=4000 accum=8000
+[2026-11-12 13:15:56] pulled off=8000 n=4000 accum=12000
+[2026-11-12 13:16:46] pulled off=12000 n=2064 accum=14064
+[2026-11-12 13:16:47] task index refreshed (6350 asset tags)
+[2026-11-12 13:16:49] updated dashboard_data.json itr_summary.live
+[2026-11-12 13:16:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 13:16:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 13:16 (closed=7707) rc=0 [main 2512f67] ITR live update 2026-11-12 13:16 (closed=7707)
+ 1 file changed, 71 insertions(+), 71 deletions(-)
+[2026-11-12 13:17:04]  >> git push OK
+[2026-11-12 13:17:49]  .. itr_live_state.json publish hiccup (IncompleteRead(365373 bytes read, 269670 more expected)) - retrying
+[2026-11-12 13:18:35]  .. itr_live_state.json publish hiccup (IncompleteRead(378436 bytes read, 256607 more expected)) - retrying
+[2026-11-12 13:19:27]  .. itr_live_state.json publish hiccup (IncompleteRead(374698 bytes read, 260345 more expected)) - retrying
+[2026-11-12 13:19:43]  >> published itr_live_state.json (460215 bytes)
+[2026-11-12 13:19:49]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 13:19:49]  >> platform publish OK (1 file(s) updated, closed=7707)
+[2026-11-12 13:19:49] PAGES PUSH rc=0
+[2026-11-12 13:19:49] cycle OK closed=7707 open=2647 updated=2026-11-12 13:16:48
