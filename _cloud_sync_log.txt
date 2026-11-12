@@ -14803,3 +14803,7 @@
 2026-11-12 09:45:35    DONE - platform online + all downloads synced.
 2026-11-12 09:45:35 [mirror] PAGES -> _files
 2026-11-12 09:45:35 [done] build in 3599s
+2026-11-12 09:52:54 ==================================================
+2026-11-12 09:52:54 cloud_auto_update started (interval 300s)
+2026-11-12 09:52:55 [trigger] state changed -> rebuilding downloads+pages
+2026-11-12 09:52:55 >> cloud->DPR

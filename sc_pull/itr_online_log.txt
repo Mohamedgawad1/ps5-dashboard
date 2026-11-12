@@ -71600,3 +71600,63 @@ Call log:
 [2026-11-12 09:43:37] cycle OK closed=7688 open=2666 updated=2026-11-12 09:40:24
 [2026-11-12 09:45:43] reused the sync's always-open browser (port 9222)
 [2026-11-12 09:45:43] LOGGED IN
+[2026-11-12 09:46:18] pulled off=0 n=4000 accum=4000
+[2026-11-12 09:46:32] pulled off=4000 n=4000 accum=8000
+[2026-11-12 09:46:50] pulled off=8000 n=4000 accum=12000
+[2026-11-12 09:46:58] pulled off=12000 n=2064 accum=14064
+[2026-11-12 09:46:58] task index refreshed (6350 asset tags)
+[2026-11-12 09:47:00] updated dashboard_data.json itr_summary.live
+[2026-11-12 09:47:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 09:47:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 09:47 (closed=7688) rc=0 [main 9543e71] ITR live update 2026-11-12 09:47 (closed=7688)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-12 09:47:37]  >> git push OK
+[2026-11-12 09:47:45]  >> published itr_live_state.json (459899 bytes)
+[2026-11-12 09:47:49]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 09:47:49]  >> platform publish OK (1 file(s) updated, closed=7688)
+[2026-11-12 09:47:49] PAGES PUSH rc=0
+[2026-11-12 09:47:49] cycle OK closed=7688 open=2666 updated=2026-11-12 09:46:59
+[2026-11-12 09:53:04] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-12 09:53:05] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 09:53:05] no pull tab this cycle - retrying in 120s
+[2026-11-12 09:54:08] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 09:54:09] no pull tab this cycle - retrying in 120s
+[2026-11-12 09:55:09] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 09:55:09] no pull tab this cycle - retrying in 120s
+[2026-11-12 09:56:15] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 09:56:16] no pull tab this cycle - retrying in 120s
+[2026-11-12 09:57:18] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 09:57:18] no pull tab this cycle - retrying in 120s
+[2026-11-12 09:58:29] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 09:58:29] no pull tab this cycle - retrying in 120s
+[2026-11-12 09:59:34] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 09:59:34] no pull tab this cycle - retrying in 120s
+[2026-11-12 10:00:40] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 10:00:40] no pull tab this cycle - retrying in 120s
+[2026-11-12 10:01:51] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 10:01:51] no pull tab this cycle - retrying in 120s
+[2026-11-12 10:03:03] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 10:03:03] no pull tab this cycle - retrying in 120s
+[2026-11-12 10:04:05] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 10:04:05] no pull tab this cycle - retrying in 120s
+[2026-11-12 10:05:11] target list err: timed out
+[2026-11-12 10:05:31] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-12 10:05:32] no frozen tab found -> will retry next cycle, no new window
+[2026-11-12 10:05:34] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/cff1df (fail 1/3)
+[2026-11-12 10:06:40] target list err: timed out
+[2026-11-12 10:07:00] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-12 10:07:06] no frozen tab found -> will retry next cycle, no new window
+[2026-11-12 10:07:08] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/cff1df (fail 2/3)
+[2026-11-12 10:08:58] opened the one pull tab (none was open)
+[2026-11-12 10:08:58] reused the sync's always-open browser (port 9222)
+[2026-11-12 10:09:49] session expired -> auto-login
+[2026-11-12 10:09:59] ssologin click: ok
