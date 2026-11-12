@@ -72672,3 +72672,11 @@ Call log:
 [2026-11-12 19:16:28] no pull tab this cycle - retrying in 120s
 [2026-11-12 19:17:28] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
 [2026-11-12 19:17:28] no pull tab this cycle - retrying in 120s
+[2026-11-12 19:18:29] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-12 19:18:29] no pull tab this cycle - retrying in 120s
+[2026-11-12 19:19:34] opened the one pull tab (none was open)
+[2026-11-12 19:19:34] reused the sync's always-open browser (port 9222)
+[2026-11-12 19:20:28] session expired -> auto-login
+[2026-11-12 19:20:34] ssologin click: ok
+[2026-11-12 19:20:44] sso handoff -> verify password page
+[2026-11-12 19:20:46] verify submit: submitted
