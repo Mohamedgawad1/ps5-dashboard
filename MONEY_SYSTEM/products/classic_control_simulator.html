@@ -314,7 +314,18 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
 <input type="file" id="fileInput" accept=".json,application/json" style="display:none" onchange="importProject(event)">
 <div class="toast" id="toast"></div>
 
-<div class="modal" id="plcModal" onclick="if(event.target===this)closePlcEditor()">
+<div class="modal" id="inspectModal" onclick="if(event.target===this)closeInspect()">
+  <div class="modalCard" style="max-width:520px">
+    <div class="modalHead">
+      <span id="inspectTitle">Component</span>
+      <button class="mini" onclick="closeInspect()">✕ Close</button>
+    </div>
+    <div class="modalBody" style="text-align:center">
+      <div id="inspectSvg" style="display:inline-block;transform:scale(2.4);transform-origin:center;margin:40px 0"></div>
+      <div id="inspectTerms" class="muted" style="margin-top:12px;font-size:11px"></div>
+    </div>
+  </div>
+</div>
   <div class="modalCard">
     <div class="modalHead">
       <span id="plcTitle">PLC Ladder Editor</span>
@@ -491,11 +502,22 @@ function wirePhase(w){
   const a = byId(w.from.comp), b = byId(w.to.comp);
   if(!a || !b) return null;
   if(!powerPortSet(a).includes(w.from.port) || !powerPortSet(b).includes(w.to.port)) return null;
+  // motor terminal identity hint (U→L1, V→L2, W→L3) — used when the node
+  // is floating (not energised) so the user can still tell leads apart
+  const motorHint = (comp, port) => {
+    if(comp.type !== 'motor') return null;
+    if(port === 'U1' || port === 'U2') return 'L1';
+    if(port === 'V1' || port === 'V2') return 'L2';
+    if(port === 'W1' || port === 'W2') return 'L3';
+    return null;
+  };
   const ra = ufFind(w.from.comp+':'+w.from.port);
-  if(phaseRoots[ra]) return phaseRoots[ra];
+  const nodePhase = phaseRoots[ra] || null;
+  if(nodePhase) return nodePhase;
   const rb = ufFind(w.to.comp+':'+w.to.port);
-  if(phaseRoots[rb]) return phaseRoots[rb];
-  return null;
+  const nodePhase2 = phaseRoots[rb] || null;
+  if(nodePhase2) return nodePhase2;
+  return motorHint(a, w.from.port) || motorHint(b, w.to.port);
 }
 let shorted = false;
 let sourceFault = false;
@@ -1134,8 +1156,8 @@ function symMotor(c){
     + `<line x1="138" y1="55" x2="172" y2="55" stroke="${CL.metal}" stroke-width="2.5"/>`
     + `<line x1="138" y1="90" x2="172" y2="90" stroke="${CL.metal}" stroke-width="2.5"/>`
     + `<line x1="138" y1="125" x2="172" y2="125" stroke="${CL.metal}" stroke-width="2.5"/>`
-    + txt(12,48,'U1',6,'#1e293b','start') + txt(12,83,'V1',6,'#1e293b','start') + txt(12,118,'W1',6,'#1e293b','start')
-    + txt(166,48,'U2',6,'#1e293b','end') + txt(166,83,'V2',6,'#1e293b','end') + txt(166,118,'W2',6,'#1e293b','end')
+    + txt(12,48,'U1',6,'#b45309','start') + txt(12,83,'V1',6,'#475569','start') + txt(12,118,'W1',6,'#94a3b8','start')
+    + txt(166,48,'U2',6,'#b45309','end') + txt(166,83,'V2',6,'#475569','end') + txt(166,118,'W2',6,'#94a3b8','end')
     + `<rect x="4" y="34" width="20" height="12" rx="2" fill="#e2e8f0" stroke="#64748b"/>`
     + txt(14,43,'IN',6,'#1e293b')
     + `<rect x="156" y="34" width="20" height="12" rx="2" fill="#e2e8f0" stroke="#64748b"/>`
@@ -2319,6 +2341,7 @@ function render(){
       d.appendChild(pd);
     });
     d.addEventListener('pointerdown', ev => compPointerDown(ev, c.id));
+    d.addEventListener('dblclick', ev => { ev.preventDefault(); inspectComp(c.id); });
     d.addEventListener('contextmenu', ev => { ev.preventDefault(); deleteComp(c.id); });
     STAGE.appendChild(d);
     c.el = d;
@@ -3093,6 +3116,17 @@ function setWireColor(id, val){
   paint();
   toast('Wire colour set');
 }
+function inspectComp(id){
+  const c = byId(id); if(!c) return;
+  const t = TYPES[c.type];
+  $('inspectTitle').textContent = c.label + ' · ' + (t.label || c.type);
+  const svg = svgFor(c);
+  $('inspectSvg').innerHTML = svg;
+  const ports = t.ports.map(p => p.id).join('  ');
+  $('inspectTerms').textContent = 'Terminals: ' + ports;
+  $('inspectModal').classList.add('show');
+}
+function closeInspect(){ $('inspectModal').classList.remove('show'); $('inspectSvg').innerHTML = ''; }
 function canvasPointerDown(e){
   if(e.target.closest('.comp')) return;
   ensureAudio();
@@ -4092,6 +4126,15 @@ CANVAS.addEventListener('pointerdown', canvasPointerDown);
 STAGE.addEventListener('dragover', e => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
 STAGE.addEventListener('drop', stageDrop);
 initPaletteDrag();
+window.addEventListener('keydown', e => {
+  const t = e.target;
+  if(t && (t.tagName === 'INPUT' || t.tagName === 'SELECT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+  if(e.key === 'Escape'){ closeInspect(); closePlcEditor(); }
+  if(e.key === '+' || e.key === '='){ if(typeof zoomBy==='function') zoomBy(1.15); e.preventDefault(); }
+  else if(e.key === '-'){ if(typeof zoomBy==='function') zoomBy(0.87); e.preventDefault(); }
+  else if(e.key === '0'){ if(typeof setZoom==='function') setZoom(1); e.preventDefault(); }
+  else if(e.key === 'f' || e.key === 'F'){ if(typeof zoomFit==='function') zoomFit(); }
+});
 const _pb = $('phaseBtn'); if(_pb) _pb.classList.toggle('tog', wireColorMode);
 loadPreset('dol');
 setInterval(() => {
