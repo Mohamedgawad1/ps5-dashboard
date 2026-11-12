@@ -52355,3 +52355,5 @@
 [2026-11-12 17:01:08] SC window was off-screen (-32000) -> moved back on screen & brought to front
 [2026-11-12 17:10:09] ITR data is 40 min old (limit 40 min) -> restarting itr_online
 [2026-11-12 17:10:12] STARTED itr_online (PID 10136)
+[2026-11-12 17:39:02] RESTARTING itr_online
+[2026-11-12 17:39:02] STARTED itr_online (PID 17236)

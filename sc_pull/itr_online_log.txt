@@ -72615,3 +72615,32 @@ Call log:
 [2026-11-12 17:21:51]  >> platform publish OK (1 file(s) updated, closed=7716)
 [2026-11-12 17:21:51] PAGES PUSH rc=0
 [2026-11-12 17:21:51] cycle OK closed=7716 open=2638 updated=2026-11-12 17:21:24
+[2026-11-12 17:23:58] reused the sync's always-open browser (port 9222)
+[2026-11-12 17:23:58] LOGGED IN
+[2026-11-12 17:25:11] pulled off=0 n=4000 accum=4000
+[2026-11-12 17:26:24] pulled off=4000 n=4000 accum=8000
+[2026-11-12 17:27:30] pulled off=8000 n=4000 accum=12000
+[2026-11-12 17:30:48] pulled off=12000 n=2064 accum=14064
+[2026-11-12 17:30:48] task index refreshed (6350 asset tags)
+[2026-11-12 17:30:50] updated dashboard_data.json itr_summary.live
+[2026-11-12 17:30:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 17:30:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 17:30 (closed=7718) rc=0 [main 15d77c3] ITR live update 2026-11-12 17:30 (closed=7718)
+ 1 file changed, 49 insertions(+), 43 deletions(-)
+[2026-11-12 17:31:06]  >> git push OK
+[2026-11-12 17:31:14]  >> published itr_live_state.json (460621 bytes)
+[2026-11-12 17:31:19]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 17:31:19]  >> platform publish OK (1 file(s) updated, closed=7718)
+[2026-11-12 17:31:19] PAGES PUSH rc=0
+[2026-11-12 17:31:19] cycle OK closed=7718 open=2636 updated=2026-11-12 17:30:50
+[2026-11-12 17:38:52] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-12 17:39:11] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-12 17:39:16] closed frozen tab DAF9C862 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-12 17:39:22] closed pull tab (will reopen) 4D52672B https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-12 17:39:26] closed frozen tab B0CE58FF https://wly04-sc.intergraphsmartcloud.com//ISC/Tools/vDashboardsUsers/
+[2026-11-12 17:39:30] closed frozen tab 3D214097 https://wly04-sc.intergraphsmartcloud.com//ISC/Tools/vDashboardsUsers/
+[2026-11-12 17:39:30] pre-cycle cleanup: 4 wedged tab(s) closed
+[2026-11-12 17:39:51] opened the one pull tab (none was open)
+[2026-11-12 17:39:51] reused the sync's always-open browser (port 9222)
+[2026-11-12 17:39:51] LOGGED IN
+[2026-11-12 17:40:52] pulled off=0 n=4000 accum=4000
+[2026-11-12 17:41:05] pulled off=4000 n=4000 accum=8000
