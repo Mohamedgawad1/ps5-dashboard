@@ -72080,3 +72080,27 @@ Call log:
 [2026-11-12 13:37:58] cycle OK closed=7707 open=2647 updated=2026-11-12 13:35:35
 [2026-11-12 13:40:04] reused the sync's always-open browser (port 9222)
 [2026-11-12 13:40:04] LOGGED IN
+[2026-11-12 13:54:59] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-12 13:55:20] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-12 13:55:33] closed pull tab (will reopen) 0868CB68 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-12 13:55:33] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-12 13:55:53] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-12 13:56:01] closed frozen tab 2F6CC0A2 https://wly04-sc.intergraphsmartcloud.com//ISC/Tools/vDashboardsUsers/
+[2026-11-12 13:56:19] opened the one pull tab (none was open)
+[2026-11-12 13:56:19] reused the sync's always-open browser (port 9222)
+[2026-11-12 13:56:19] LOGGED IN
+[2026-11-12 13:57:28] pulled off=0 n=4000 accum=4000
+[2026-11-12 13:58:55] pulled off=4000 n=4000 accum=8000
+[2026-11-12 13:59:56] pulled off=8000 n=4000 accum=12000
+[2026-11-12 14:00:30] pulled off=12000 n=2064 accum=14064
+[2026-11-12 14:00:31] task index refreshed (6350 asset tags)
+[2026-11-12 14:00:31] milestone_map: 290 subsystems
+[2026-11-12 14:00:32] updated dashboard_data.json itr_summary.live
+[2026-11-12 14:00:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 14:00:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 14:00 (closed=7708) rc=0 [main 7421366] ITR live update 2026-11-12 14:00 (closed=7708)
+ 1 file changed, 39 insertions(+), 33 deletions(-)
+[2026-11-12 14:00:42]  >> git push OK
+[2026-11-12 14:01:13]  .. itr_live_state.json publish hiccup (IncompleteRead(332603 bytes read, 302444 more expected)) - retrying
+[2026-11-12 14:01:27]  .. itr_live_state.json publish hiccup (IncompleteRead(581997 bytes read, 53050 more expected)) - retrying
