@@ -190,7 +190,7 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
       <button class="compbtn" data-type="generator_3p" onclick="selectPlace('generator_3p')">🔋 Generator 3Φ</button>
       <button class="compbtn" data-type="battery" onclick="selectPlace('battery')">🔋 Battery 24V</button>
       <button class="compbtn" data-type="transformer" onclick="selectPlace('transformer')">🧲 Transformer 1Φ</button>
-      <button class="compbtn" data-type="transformer_3p" onclick="selectPlace('transformer_3p')">🧲 Transformer 3Φ</button>
+      <button class="compbtn" data-type="transformer_3p" onclick="selectPlace('transformer_3p')">🧲 Power Transformer 3Φ</button>
       <button class="compbtn" data-type="ats" onclick="selectPlace('ats')">🔀 ATS Changeover</button>
     </details>
     <details open class="pgroup"><summary><span class="ar-only">⏱ المؤقتات والمستشعرات</span><span class="en-only">⏱ Timers &amp; Sensors</span></summary>
@@ -201,6 +201,8 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
       <button class="compbtn" data-type="thermostat" onclick="selectPlace('thermostat')">🌡 Thermostat</button>
       <button class="compbtn" data-type="ctmeter" onclick="selectPlace('ctmeter')">📟 CT / Ammeter</button>
       <button class="compbtn" data-type="voltmeter" onclick="selectPlace('voltmeter')">🔵 Voltmeter</button>
+      <button class="compbtn" data-type="pt" onclick="selectPlace('pt')">📐 Potential Transformer (PT)</button>
+      <button class="compbtn" data-type="pt_3p" onclick="selectPlace('pt_3p')">📐 Potential Transformer 3Φ (PT)</button>
     </details>
     <details open class="pgroup"><summary><span class="ar-only">🔗 التوصيل</span><span class="en-only">🔗 Wiring</span></summary>
       <button class="compbtn" data-type="terminal" onclick="selectPlace('terminal')">🔗 Terminal Block</button>
@@ -410,9 +412,15 @@ const TYPES = {
   transformer:{ label:'Transformer 1Φ', w:160, h:140, color:'#a78bfa', ports:[
     {id:'1',x:8,y:38},{id:'2',x:8,y:100},
     {id:'3',x:152,y:38},{id:'4',x:152,y:100}] },
-  transformer_3p:{ label:'Transformer 3Φ', w:210, h:190, color:'#a78bfa', ports:[
+  transformer_3p:{ label:'Power Transformer 3Φ', w:210, h:190, color:'#a78bfa', ports:[
     {id:'1',x:8,y:45},{id:'3',x:8,y:95},{id:'5',x:8,y:145},
     {id:'2',x:202,y:45},{id:'4',x:202,y:95},{id:'6',x:202,y:145}] },
+  pt:{ label:'Potential Transformer (PT)', w:150, h:120, color:'#f472b6', ports:[
+    {id:'1',x:8,y:32},{id:'2',x:8,y:88},
+    {id:'3',x:142,y:32},{id:'4',x:142,y:88}] },
+  pt_3p:{ label:'Potential Transformer 3Φ (PT)', w:200, h:170, color:'#f472b6', ports:[
+    {id:'1',x:8,y:40},{id:'3',x:8,y:85},{id:'5',x:8,y:130},
+    {id:'2',x:192,y:40},{id:'4',x:192,y:85},{id:'6',x:192,y:130}] },
   ats:      { label:'ATS Changeover',w:160, h:180, color:'#00d4ff', ports:[
     {id:'AL',x:8,y:35},{id:'AN',x:8,y:70},{id:'BL',x:8,y:110},{id:'BN',x:8,y:145},{id:'OL',x:152,y:70},{id:'ON',x:152,y:110}] },
   ctmeter:  { label:'CT / Ammeter',  w:100, h:100, color:'#38bdf8', ports:[{id:'1',x:8,y:55},{id:'2',x:92,y:55}] },
@@ -433,7 +441,7 @@ const PREFIX = {
   power:'PS',power_1ph:'PS',mcb:'F',mcb_3p:'QF',pb_no:'S',pb_nc:'S',estop:'E',selector:'SA',contactor:'K',
   relay:'KA',timer:'KT',timer_sd:'KT',ol:'F',lamp:'H',motor:'M',motor_1ph:'M',motor_dc:'M',motor_stepper:'SM',motor_servo:'SV',alarm:'HA',
   mccb:'Q',mccb_3p:'QM',rccb:'Q',fuse:'FU',spd:'SPD',timer_off:'KT',flasher:'KF',phase:'KP',
-  terminal:'XT',busbar:'BB',busbar_3p:'BB',terminal_6:'XT',generator:'G',generator_3p:'G',battery:'GB',transformer:'T',transformer_3p:'T',ats:'ATS',ctmeter:'PA',voltmeter:'PV',float:'LS',
+  terminal:'XT',busbar:'BB',busbar_3p:'BB',terminal_6:'XT',generator:'G',generator_3p:'G',battery:'GB',transformer:'T',transformer_3p:'T',pt:'PT',pt_3p:'PT',ats:'ATS',ctmeter:'PA',voltmeter:'PV',float:'LS',
   pressure:'PS',thermostat:'TS',plc:'PLC',vfd:'VFD'
 };
 
@@ -465,7 +473,9 @@ function powerPortSet(c){
   switch(c.type){
     case 'power':     return ['L1','L2','L3','N','PE'];
     case 'power_1ph': return ['L','N','PE'];
-    case 'generator': return ['L','N'];
+    case 'generator': case 'generator_3p': return ['L','N','L1','L2','L3'];
+    case 'transformer': case 'transformer_3p': case 'pt': case 'pt_3p':
+      return ['1','2','3','4','5','6'];
     case 'mcb': case 'mccb': case 'rccb': case 'fuse': case 'spd':
     case 'motor_1ph': case 'motor_dc': case 'motor_stepper': case 'motor_servo':
       return ['1','2'];
@@ -516,6 +526,8 @@ function defaultData(type){
   if(type === 'battery')   return { volts:'24 V DC', ah:7 };
   if(type === 'transformer') return { kva:1, primary:'400 V', secondary:'230 V' };
   if(type === 'transformer_3p') return { kva:100, primary:'400 V', secondary:'400 V' };
+  if(type === 'pt') return { ratio:'400/110 V', burden:'VA' };
+  if(type === 'pt_3p') return { ratio:'400/110 V', burden:'VA' };
   if(type === 'ats')    return { auto:false, poles:'4P', rating:'100 A', retDelay:0 };
   if(type === 'float')  return { value:30, setpoint:70, unit:'%', contact:'NO' };
   if(type === 'pressure') return { value:3, setpoint:6, unit:'bar', contact:'NO' };
@@ -578,7 +590,7 @@ function defaultState(type){
     case 'generator':return { on:false };
     case 'generator_3p':return { on:false };
     case 'battery':  return { off:false };
-    case 'transformer': case 'transformer_3p': return { energized:false };
+    case 'transformer': case 'transformer_3p': case 'pt': case 'pt_3p': return { energized:false };
     case 'ats':      return { pos:'A', retT:0 };
     case 'ctmeter':  return { energized:false, amps:0 };
     case 'voltmeter':return { energized:false, volts:null };
@@ -1343,6 +1355,49 @@ function symTransformer3(c){
   );
 }
 
+function symPt(c){
+  const ratio = (c.data.primary||'400 V')+' / '+(c.data.secondary||'110 V');
+  return wrap(c,
+    `<rect x="4" y="4" width="148" height="112" rx="9" fill="#1a1024" stroke="#f472b6" stroke-width="1.5"/>`
+    + txt(76,16,'POTENTIAL TRANSFORMER (PT)',5,'#f9a8d4')
+    + `<line x1="74" y1="22" x2="74" y2="100" stroke="#f472b6" stroke-width="2" stroke-dasharray="4 3"/>`
+    + `<line x1="80" y1="22" x2="80" y2="100" stroke="#f472b6" stroke-width="2" stroke-dasharray="4 3"/>`
+    + trCoil(66,30,'#f59e0b') + trCoil(66,50,'#f59e0b') + trCoil(66,70,'#f59e0b')
+    + trCoil(88,30,'#38bdf8') + trCoil(88,50,'#38bdf8') + trCoil(88,70,'#38bdf8')
+    + `<line x1="8" y1="38" x2="53" y2="38" stroke="#f59e0b" stroke-width="2"/>`
+    + `<line x1="8" y1="88" x2="53" y2="88" stroke="#f59e0b" stroke-width="2"/>`
+    + `<line x1="152" y1="38" x2="101" y2="38" stroke="#38bdf8" stroke-width="2"/>`
+    + `<line x1="152" y1="88" x2="101" y2="88" stroke="#38bdf8" stroke-width="2"/>`
+    + txt(76,104,c.label,7,'#cbd5e1')
+    + txt(76,112,ratio+' · PT',5,CL.muted)
+  );
+}
+
+function symPt3(c){
+  const ratio = (c.data.primary||'400 V')+' / '+(c.data.secondary||'110 V');
+  const ys = [40,85,130];
+  const ph = ['#f59e0b','#f59e0b','#f59e0b'];
+  return wrap(c,
+    `<rect x="4" y="4" width="196" height="162" rx="10" fill="#1a1024" stroke="#f472b6" stroke-width="1.5"/>`
+    + txt(100,15,'POTENTIAL TRANSFORMER 3Φ (PT)',5,'#f9a8d4')
+    + `<line x1="96" y1="22" x2="96" y2="150" stroke="#f472b6" stroke-width="2" stroke-dasharray="4 3"/>`
+    + `<line x1="106" y1="22" x2="106" y2="150" stroke="#f472b6" stroke-width="2" stroke-dasharray="4 3"/>`
+    + ys.map((y,i) =>
+        trCoil(84,y,'#f59e0b') + trCoil(112,y,'#38bdf8')
+        + `<line x1="8" y1="${y}" x2="24" y2="${y}" stroke="#f59e0b" stroke-width="2"/>`
+        + `<line x1="24" y1="${y}" x2="24" y2="${y+3}" stroke="#f59e0b" stroke-width="2"/>`
+        + `<line x1="24" y1="${y+3}" x2="71" y2="${y+3}" stroke="#f59e0b" stroke-width="2"/>`
+        + `<circle cx="8" cy="${y}" r="3" fill="#f59e0b" stroke="#0f172a"/>`
+        + `<line x1="192" y1="${y}" x2="176" y2="${y}" stroke="#38bdf8" stroke-width="2"/>`
+        + `<line x1="176" y1="${y}" x2="176" y2="${y+3}" stroke="#38bdf8" stroke-width="2"/>`
+        + `<line x1="176" y1="${y+3}" x2="125" y2="${y+3}" stroke="#38bdf8" stroke-width="2"/>`
+        + `<circle cx="192" cy="${y}" r="3" fill="#38bdf8" stroke="#0f172a"/>`
+      ).join('')
+    + txt(100,158,c.label,7,'#cbd5e1')
+    + txt(100,166,ratio+' · PT 3Φ',5,CL.muted)
+  );
+}
+
 function symAts(c){
   const pos = c.state.pos;
   const aOn = pos === 'A', bOn = pos === 'B';
@@ -1699,6 +1754,8 @@ function svgFor(c){
     case 'battery':  return symBattery(c);
     case 'transformer':return symTransformer(c);
     case 'transformer_3p':return symTransformer3(c);
+    case 'pt':return symPt(c);
+    case 'pt_3p':return symPt3(c);
     case 'ats':      return symAts(c);
     case 'ctmeter':  return symCtMeter(c);
     case 'voltmeter':return symVoltmeter(c);
@@ -1785,6 +1842,12 @@ function internalEdges(c){
     case 'transformer':
       break;
     case 'transformer_3p':
+      e.push([id+'1', id+'2'], [id+'3', id+'4'], [id+'5', id+'6']);
+      break;
+    case 'pt':
+      e.push([id+'1', id+'3'], [id+'2', id+'4']);
+      break;
+    case 'pt_3p':
       e.push([id+'1', id+'2'], [id+'3', id+'4'], [id+'5', id+'6']);
       break;
     case 'float':
@@ -2269,7 +2332,7 @@ function render(){
 function paint(){
   components.forEach(c => {
     if(!c.el) return;
-    const running = (isMotor(c.type) && c.state.energized) || (c.type === 'generator' && c.state.on);
+    const running = (isMotor(c.type) && c.state.energized) || ((c.type === 'generator' || c.type === 'generator_3p') && c.state.on);
     c.el.classList.toggle('vib', running);
     const sig = signature(c);
     if(c._sig !== sig){
@@ -2647,9 +2710,12 @@ function updateStatus(){
       case 'phase':     rows.push(statusRow(L+' · PHASE', c.state.healthy?'HEALTHY':'PHASE LOSS', c.state.healthy?'on':'fault')); break;
       case 'generator': rows.push(statusRow(L+' · GENERATOR', c.state.on?'RUNNING':'STOPPED', c.state.on?'on':'off')); break;
       case 'generator_3p': rows.push(statusRow(L+' · GENERATOR 3Φ', c.state.on?'RUNNING':'STOPPED', c.state.on?'on':'off')); break;
+      case 'generator_3p': rows.push(statusRow(L+' · GENERATOR 3Φ', c.state.on?'RUNNING':'STOPPED', c.state.on?'on':'off')); break;
       case 'battery':   rows.push(statusRow(L+' · BATTERY', c.state.off?'OFFLINE':'ONLINE · '+(c.data.volts||'24 V DC'), c.state.off?'off':'on')); break;
       case 'transformer': rows.push(statusRow(L+' · TRANSFORMER', c.state.energized?'SEC LIVE · '+(c.data.secondary||'230 V'):'PRIMARY OFF', c.state.energized?'on':'off')); break;
       case 'transformer_3p': rows.push(statusRow(L+' · TRANSFORMER', 'LINKED', 'on')); break;
+      case 'pt':
+      case 'pt_3p': rows.push(statusRow(L+' · PT', 'LINKED', 'on')); break;
       case 'ats':       rows.push(statusRow(L+' · ATS', c.state.pos==='OFF'?'OFF':'SOURCE '+c.state.pos, c.state.pos==='OFF'?'fault':'on')); break;
       case 'ctmeter':   rows.push(statusRow(L+' · AMMETER', (c.state.amps||0).toFixed(1)+' A', c.state.energized?'on':'off')); break;
       case 'voltmeter': rows.push(statusRow(L+' · VOLTMETER', (c.state.volts===null||c.state.volts===undefined)?'---':c.state.volts+' V', c.state.volts>0?'on':'off')); break;
@@ -2909,6 +2975,11 @@ function renderProps(){
       h += `<div class="prop"><label>Status</label><span class="mini ${c.state.energized?'go':'stop'}">${c.state.energized?'SECONDARY LIVE · '+(c.data.secondary||'230 V'):'PRIMARY NOT ENERGIZED'}</span></div>`;
     }
   }
+  if(c.type === 'pt' || c.type === 'pt_3p'){
+    h += `<div class="prop"><label>Primary</label><select onchange="setMeta('${c.id}','primary',this.value)">${['400 V','11 kV','33 kV'].map(v => `<option${(c.data.primary||'400 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Secondary</label><select onchange="setMeta('${c.id}','secondary',this.value)">${['110 V','100 V','230 V'].map(v => `<option${(c.data.secondary||'110 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Ratio</label><span class="mini">${c.data.primary||'400 V'} / ${c.data.secondary||'110 V'}</span></div>`;
+  }
   if(c.type === 'ats'){
     h += `<div class="prop"><label>Auto mode</label><input type="checkbox" ${c.data.auto?'checked':''} onchange="setState('${c.id}','auto',this.checked)" style="width:auto"></div>`;
     h += `<div class="prop"><label>Return delay</label><select onchange="setMeta('${c.id}','retDelay',this.value)">${['0','5','10','30','60'].map(v => `<option value="${v}"${String(c.data.retDelay!==undefined?c.data.retDelay:0)===v?' selected':''}>${v==='0'?'Instant':v+' s'}</option>`).join('')}</select></div>`;
@@ -2972,7 +3043,7 @@ function renderProps(){
     const oo = ['Q1','Q2','Q3','Q4'].map(a => a+'='+(c.state.out[a]?'1':'0')).join('  ');
     h += `<div class="plcio">${io}<br>${oo}</div>`;
   }
-  const desc = {power:'Main supply',mcb:'Miniature circuit breaker',pb_no:'Normally open push button',pb_nc:'Normally closed push button',estop:'Emergency stop (latching)',selector:'Maintained selector switch',contactor:'Coil + main / NO / NC contacts',relay:'Auxiliary relay (NO + NC)',timer:'On-delay timer',ol:'Thermal overload relay',lamp:'Indicator lamp',motor:'Three-phase motor',alarm:'Audible horn',mccb:'Moulded case circuit breaker',rccb:'Residual current breaker (30 mA)',fuse:'Fuse cartridge',spd:'Surge protection device',timer_off:'Off-delay timer',flasher:'Flashing / blinking relay',phase:'Phase failure monitor',terminal:'Terminal block (2 through-links)',busbar:'Distribution busbar',generator:'Standby generator',ats:'Automatic transfer switch',ctmeter:'Current transformer ammeter',float:'Float / level switch',pressure:'Pressure switch',thermostat:'Thermostat',plc:'Ladder PLC (LOGO! style)',vfd:'Variable frequency drive',motor_1ph:'Single-phase motor',motor_dc:'DC motor',motor_stepper:'Stepper motor',motor_servo:'Servo motor',timer_sd:'Star-delta timer',mcb_3p:'3-pole MCB',mccb_3p:'3-pole MCCB',power_1ph:'Single-phase supply',busbar_3p:'3-phase busbar',terminal_6:'6-way terminal strip',generator_3p:'3-phase generator',battery:'Standby control battery (24 V DC)',transformer:'Control transformer',transformer_3p:'3-phase transformer'}[c.type] || '';
+  const desc = {power:'Main supply',mcb:'Miniature circuit breaker',pb_no:'Normally open push button',pb_nc:'Normally closed push button',estop:'Emergency stop (latching)',selector:'Maintained selector switch',contactor:'Coil + main / NO / NC contacts',relay:'Auxiliary relay (NO + NC)',timer:'On-delay timer',ol:'Thermal overload relay',lamp:'Indicator lamp',motor:'Three-phase motor',alarm:'Audible horn',mccb:'Moulded case circuit breaker',rccb:'Residual current breaker (30 mA)',fuse:'Fuse cartridge',spd:'Surge protection device',timer_off:'Off-delay timer',flasher:'Flashing / blinking relay',phase:'Phase failure monitor',terminal:'Terminal block (2 through-links)',busbar:'Distribution busbar',generator:'Standby generator',ats:'Automatic transfer switch',ctmeter:'Current transformer ammeter',float:'Float / level switch',pressure:'Pressure switch',thermostat:'Thermostat',plc:'Ladder PLC (LOGO! style)',vfd:'Variable frequency drive',motor_1ph:'Single-phase motor',motor_dc:'DC motor',motor_stepper:'Stepper motor',motor_servo:'Servo motor',timer_sd:'Star-delta timer',mcb_3p:'3-pole MCB',mccb_3p:'3-pole MCCB',power_1ph:'Single-phase supply',busbar_3p:'3-phase busbar',terminal_6:'6-way terminal strip',generator_3p:'3-phase generator',battery:'Standby control battery (24 V DC)',transformer:'Control transformer',transformer_3p:'3-phase transformer',pt:'Potential transformer (voltage)',pt_3p:'Potential transformer 3Φ'}[c.type] || '';
   h += `<div class="muted" style="margin:6px 0">${desc}</div>`;
   h += `<button class="del" onclick="deleteComp('${c.id}')">🗑 حذف المكوّن</button>`;
   box.innerHTML = h;
