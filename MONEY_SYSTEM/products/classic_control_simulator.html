@@ -653,6 +653,8 @@ function changeType(id, newType){
   if(m) c.label = newPrefix + m[1];
   c.type = newType;
   c.data = defaultData(newType);
+  c.data.scale = c.data.scale || 1;
+  c.data.rot = c.data.rot || 0;
   c.state = defaultState(newType);
   simulate(0); render();
   toast('Changed to ' + TYPES[newType].label);
@@ -661,6 +663,22 @@ function setMeta(id, key, val){
   const c = byId(id); if(!c) return;
   c.data[key] = val;
   simulate(0); renderProps(); paint();
+}
+function setScale(id, val){
+  const c = byId(id); if(!c) return;
+  c.data.scale = Math.max(0.4, Math.min(2.5, parseFloat(val) || 1));
+  simulate(0); render(); renderProps(); paint();
+}
+function setRot(id, val){
+  const c = byId(id); if(!c) return;
+  c.data.rot = ((parseInt(val) || 0) % 360 + 360) % 360;
+  // snap to multiples of 90 for cleaner wiring
+  c.data.rot = Math.round(c.data.rot / 90) * 90 % 360;
+  simulate(0); render(); renderProps(); paint();
+}
+function rotBy(id, delta){
+  const c = byId(id); if(!c) return;
+  setRot(id, (c.data.rot || 0) + delta);
 }
 
 /* ---------- PLC ladder editor ---------- */
@@ -756,8 +774,18 @@ function resetPlcCounter(id){
 }
 function byId(id){ return components.find(c => c.id === id); }function portOf(c, pid){ return TYPES[c.type].ports.find(p => p.id === pid); }
 function portAbs(c, pid){
+  const t = TYPES[c.type];
   const p = portOf(c, pid);
-  return p ? { x:c.x + p.x, y:c.y + p.y } : { x:c.x, y:c.y };
+  if(!p) return { x: c.x + (t?t.w/2:0), y: c.y + (t?t.h/2:0) };
+  const sc = c.data.scale || 1;
+  const rot = c.data.rot || 0;
+  const cx = t.w / 2, cy = t.h / 2;
+  let vx = (p.x - cx) * sc;
+  let vy = (p.y - cy) * sc;
+  const rad = rot * Math.PI / 180;
+  const rx = vx * Math.cos(rad) - vy * Math.sin(rad);
+  const ry = vx * Math.sin(rad) + vy * Math.cos(rad);
+  return { x: c.x + cx + rx, y: c.y + cy + ry };
 }
 
 /* ---------- Styling helpers used by the SVG symbols ---------- */
@@ -2338,8 +2366,17 @@ function fitStage(){
   components.forEach(c => {
     const t = TYPES[c.type];
     if(!t) return;
-    w = Math.max(w, c.x + t.w + 80);
-    h = Math.max(h, c.y + t.h + 80);
+    const sc = c.data.scale || 1;
+    const rot = c.data.rot || 0;
+    const rad = rot * Math.PI / 180;
+    const aw = t.w * sc, ah = t.h * sc;
+    const hw = (Math.abs(aw * Math.cos(rad)) + Math.abs(ah * Math.sin(rad))) / 2;
+    const hh = (Math.abs(aw * Math.sin(rad)) + Math.abs(ah * Math.cos(rad))) / 2;
+    const cx = c.x + t.w / 2, cy = c.y + t.h / 2;
+    w = Math.max(w, cx + hw + 80);
+    h = Math.max(h, cy + hh + 80);
+    w = Math.max(w, cx - hw + 80); // ensure left margin
+    h = Math.max(h, cy - hh + 80);
   });
   STAGE.style.width = w + 'px';
   STAGE.style.height = h + 'px';
@@ -2376,6 +2413,10 @@ function render(){
     d.dataset.id = c.id;
     d.style.left = c.x + 'px'; d.style.top = c.y + 'px';
     d.style.width = t.w + 'px'; d.style.height = t.h + 'px';
+    const sc = c.data.scale || 1;
+    const rot = c.data.rot || 0;
+    d.style.transformOrigin = 'center center';
+    d.style.transform = 'scale(' + sc + ') rotate(' + rot + 'deg)';
     d.innerHTML = '<div class="sym"></div>';
     t.ports.forEach(p => {
       const pd = document.createElement('div');
@@ -2925,6 +2966,13 @@ function renderProps(){
   if(!c){ box.innerHTML = '<div class="muted">اختر مكوّناً لتعديل بياناته.</div>'; return; }
   let h = '';
   h += `<div class="prop"><label>Label</label><input type="text" value="${c.label}" onchange="setLabel('${c.id}',this.value)"></div>`;
+  h += `<div class="prop"><label>Size</label><input type="range" min="0.5" max="2" step="0.1" value="${c.data.scale||1}" oninput="this.nextElementSibling.textContent=(+this.value).toFixed(1)+'×'" onchange="setScale('${c.id}',this.value)" style="width:90px"><span style="min-width:34px;text-align:right;font-size:10.5px;color:var(--muted)">${(c.data.scale||1).toFixed(1)}×</span></div>`;
+  h += `<div class="prop"><label>Rotate</label>
+    <button class="mini" onclick="rotBy('${c.id}',-90)" title="Rotate left">↺ 90°</button>
+    <button class="mini" onclick="rotBy('${c.id}',90)" title="Rotate right">↻ 90°</button>
+    <select onchange="setRot('${c.id}',this.value)" style="width:70px">
+      ${[0,90,180,270].map(v=>`<option value="${v}"${(c.data.rot||0)===v?' selected':''}>${v}°</option>`).join('')}
+    </select></div>`;
   if(isMotor(c.type)){
     const kinds = [['motor','3-Phase AC Induction'],['motor_1ph','1-Phase AC (Capacitor)'],['motor_dc','DC Motor'],['motor_stepper','Stepper Motor'],['motor_servo','Servo Motor']];
     h += `<div class="prop"><label>Motor type</label><select onchange="changeType('${c.id}',this.value)">${kinds.map(([v,n]) => `<option value="${v}"${c.type===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
@@ -3395,8 +3443,10 @@ function restore(data){
   components = (data.components || []).map(c => ({
     id:c.id, type:c.type, x:c.x, y:c.y, label:c.label,
     state:Object.assign(defaultState(c.type), c.state || {}),
-    data:Object.assign(defaultData(c.type), c.data || {})
+    data:Object.assign(defaultData(c.type), c.data || {}),
   }));
+  // ensure scale/rot
+  components.forEach(c => { c.data.scale = c.data.scale || 1; c.data.rot = c.data.rot || 0; });
   wires = (data.wires || []).map(w => ({ id:w.id, from:{...w.from}, to:{...w.to} }));
   idCounter = data.idCounter || (components.length + wires.length + 1);
   supplyV = data.supplyV || 230;
