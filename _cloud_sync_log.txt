@@ -14814,3 +14814,6 @@
 2026-11-12 10:15:19    written=333 notes=0 colors=1
 2026-11-12 10:15:19    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
 2026-11-12 10:15:19 >> local->DPR
+2026-11-12 10:42:12    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 82777 cells / 0 notes)
+2026-11-12 10:42:12      [summery-sync] OK -> 58583 cells, 0 notes written, 15557 skipped (no matching column)
+2026-11-12 10:42:12 >> explorer rebuild

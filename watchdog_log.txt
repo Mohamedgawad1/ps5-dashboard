@@ -52331,3 +52331,9 @@
 [2026-11-12 09:52:57] STARTED tunnel_backup (PID 9000)
 [2026-11-12 09:53:04] TUNNEL URL: https://pts-halloween-mit-financial.trycloudflare.com
 [2026-11-12 10:04:58] SC window was off-screen (-32000) -> moved back on screen & brought to front
+[2026-11-12 10:23:15] RESTARTING itr_online
+[2026-11-12 10:23:15] STARTED itr_online (PID 7036)
+[2026-11-12 10:27:04] ITR data is 40 min old (limit 40 min) -> restarting itr_online
+[2026-11-12 10:27:08] STARTED itr_online (PID 5644)
+[2026-11-12 10:42:26] RESTARTING itr_online
+[2026-11-12 10:42:26] STARTED itr_online (PID 2776)

@@ -71669,3 +71669,39 @@ Call log:
 [2026-11-12 10:15:01] sso handoff -> verify password page
 [2026-11-12 10:15:09] verify submit: submitted
 [2026-11-12 10:17:08] auto-login attempt 3 still not logged in
+[2026-11-12 10:23:08] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-12 10:23:23] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-12 10:23:59] opened the one pull tab (none was open)
+[2026-11-12 10:23:59] reused the sync's always-open browser (port 9222)
+[2026-11-12 10:24:59] goto err: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://wly04-sc.intergraphsmartcl
+[2026-11-12 10:25:45] session expired -> auto-login
+[2026-11-12 10:25:53] ssologin click: ok
+[2026-11-12 10:26:03] sso handoff -> verify password page
+[2026-11-12 10:26:09] verify submit: submitted
+[2026-11-12 10:27:04] pull attempt 1 crashed: Page.wait_for_timeout: Connection closed while reading from the driver
+[2026-11-12 10:27:04] pull retry 2/3 - reloading Switchboard
+[2026-11-12 10:27:05] cycle got no complete data (fail 1/3)
+[2026-11-12 10:27:18] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-12 10:28:19] opened the one pull tab (none was open)
+[2026-11-12 10:28:19] reused the sync's always-open browser (port 9222)
+[2026-11-12 10:29:12] session expired -> auto-login
+[2026-11-12 10:29:27] ssologin click: ok
+[2026-11-12 10:29:37] sso handoff -> verify password page
+[2026-11-12 10:29:40] verify submit: submitted
+[2026-11-12 10:31:34] auto-login attempt 1 still not logged in
+[2026-11-12 10:31:46] ssologin click: ok
+[2026-11-12 10:31:56] sso handoff -> verify password page
+[2026-11-12 10:32:00] verify submit: submitted
+[2026-11-12 10:34:09] auto-login attempt 2 still not logged in
+[2026-11-12 10:34:47] ssologin click: ok
+[2026-11-12 10:38:57] auto-login attempt 3 still not logged in
+[2026-11-12 10:42:18] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-12 10:42:41] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-12 10:44:18] opened the one pull tab (none was open)
+[2026-11-12 10:44:18] reused the sync's always-open browser (port 9222)
+[2026-11-12 10:45:06] session expired -> auto-login
+[2026-11-12 10:45:24] ssologin click: ok
+[2026-11-12 10:45:34] sso handoff -> verify password page
+[2026-11-12 10:45:41] verify submit: submitted

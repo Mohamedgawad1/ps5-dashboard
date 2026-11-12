@@ -178,6 +178,7 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
       <button class="compbtn" data-type="motor_dc" onclick="selectPlace('motor_dc')">⚙️ DC Motor</button>
       <button class="compbtn" data-type="motor_stepper" onclick="selectPlace('motor_stepper')">⚙️ Stepper Motor</button>
       <button class="compbtn" data-type="motor_servo" onclick="selectPlace('motor_servo')">⚙️ Servo Motor</button>
+      <button class="compbtn" data-type="motor_arrow" onclick="selectPlace('motor_arrow')">🔄 Motor Rotation Arrow</button>
     </details>
     <details open class="pgroup"><summary><span class="ar-only">🛡 الحماية والمصادر</span><span class="en-only">🛡 Protection &amp; Sources</span></summary>
       <button class="compbtn" data-type="mccb" onclick="selectPlace('mccb')">🔲 MCCB 1P</button>
@@ -209,6 +210,7 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
       <button class="compbtn" data-type="terminal_6" onclick="selectPlace('terminal_6')">🔗 Terminal 6P (3 pairs)</button>
       <button class="compbtn" data-type="busbar" onclick="selectPlace('busbar')">🟫 Busbar</button>
       <button class="compbtn" data-type="busbar_3p" onclick="selectPlace('busbar_3p')">🟫 Busbar 3Φ (L1 L2 L3)</button>
+      <button class="compbtn" data-type="arrow" onclick="selectPlace('arrow')">➡️ Current Arrow</button>
     </details>
     <details open class="pgroup"><summary><span class="ar-only">🧠 PLC ومحركات السرعة</span><span class="en-only">🧠 PLC &amp; Drives</span></summary>
       <button class="compbtn" data-type="plc" onclick="selectPlace('plc')">🧠 PLC (Ladder)</button>
@@ -395,6 +397,8 @@ const TYPES = {
   rccb:     { label:'RCCB / RCBO',   w:104, h:110, color:'#f59e0b', ports:[{id:'1',x:8,y:55},{id:'2',x:96,y:55}] },
   fuse:     { label:'Fuse',          w:84,  h:90,  color:'#f59e0b', ports:[{id:'1',x:7,y:55},{id:'2',x:77,y:55}] },
   spd:      { label:'SPD Surge',     w:92,  h:110, color:'#38bdf8', ports:[{id:'1',x:8,y:55},{id:'2',x:84,y:55}] },
+  arrow:    { label:'Current Arrow', w:70,  h:34,  color:'#22d3ee', ports:[{id:'1',x:6,y:17},{id:'2',x:64,y:17}] },
+  motor_arrow:{ label:'Motor Rotation', w:78, h:78, color:'#f472b6', ports:[] },
   timer_off:{ label:'Timer Off-Delay',w:140,h:150, color:'#f472b6', ports:[
     {id:'A1',x:10,y:30},{id:'A2',x:10,y:120},{id:'15',x:130,y:45},{id:'18',x:130,y:105}] },
   timer_sd: { label:'Star-Delta Timer',w:150,h:170, color:'#f472b6', ports:[
@@ -452,7 +456,7 @@ const PREFIX = {
   power:'PS',power_1ph:'PS',mcb:'F',mcb_3p:'QF',pb_no:'S',pb_nc:'S',estop:'E',selector:'SA',contactor:'K',
   relay:'KA',timer:'KT',timer_sd:'KT',ol:'F',lamp:'H',motor:'M',motor_1ph:'M',motor_dc:'M',motor_stepper:'SM',motor_servo:'SV',alarm:'HA',
   mccb:'Q',mccb_3p:'QM',rccb:'Q',fuse:'FU',spd:'SPD',timer_off:'KT',flasher:'KF',phase:'KP',
-  terminal:'XT',busbar:'BB',busbar_3p:'BB',terminal_6:'XT',generator:'G',generator_3p:'G',battery:'GB',transformer:'T',transformer_3p:'T',pt:'PT',pt_3p:'PT',ats:'ATS',ctmeter:'PA',voltmeter:'PV',float:'LS',
+  terminal:'XT',busbar:'BB',busbar_3p:'BB',terminal_6:'XT',generator:'G',generator_3p:'G',battery:'GB',transformer:'T',transformer_3p:'T',pt:'PT',pt_3p:'PT',arrow:'AR',motor_arrow:'MA',ats:'ATS',ctmeter:'PA',voltmeter:'PV',float:'LS',
   pressure:'PS',thermostat:'TS',plc:'PLC',vfd:'VFD'
 };
 
@@ -487,7 +491,7 @@ function powerPortSet(c){
     case 'generator': case 'generator_3p': return ['L','N','L1','L2','L3'];
     case 'transformer': case 'transformer_3p': case 'pt': case 'pt_3p':
       return ['1','2','3','4','5','6'];
-    case 'mcb': case 'mccb': case 'rccb': case 'fuse': case 'spd':
+    case 'mcb': case 'mccb': case 'rccb': case 'fuse': case 'spd': case 'arrow':
     case 'motor_1ph': case 'motor_dc': case 'motor_stepper': case 'motor_servo':
       return ['1','2'];
     case 'ats':       return ['AL','AN','BL','BN','OL','ON'];
@@ -550,6 +554,8 @@ function defaultData(type){
   if(type === 'transformer_3p') return { kva:100, primary:'400 V', secondary:'400 V' };
   if(type === 'pt') return { ratio:'400/110 V', burden:'VA' };
   if(type === 'pt_3p') return { ratio:'400/110 V', burden:'VA' };
+  if(type === 'arrow') return {};
+  if(type === 'motor_arrow') return { motor:'', dir:'CW' };
   if(type === 'ats')    return { auto:false, poles:'4P', rating:'100 A', retDelay:0 };
   if(type === 'float')  return { value:30, setpoint:70, unit:'%', contact:'NO' };
   if(type === 'pressure') return { value:3, setpoint:6, unit:'bar', contact:'NO' };
@@ -613,6 +619,8 @@ function defaultState(type){
     case 'generator_3p':return { on:false };
     case 'battery':  return { off:false };
     case 'transformer': case 'transformer_3p': case 'pt': case 'pt_3p': return { energized:false };
+    case 'arrow': return { energized:false };
+    case 'motor_arrow': return { energized:false, dir:'CW' };
     case 'ats':      return { pos:'A', retT:0 };
     case 'ctmeter':  return { energized:false, amps:0 };
     case 'voltmeter':return { energized:false, volts:null };
@@ -632,6 +640,8 @@ function defaultState(type){
 function addComp(type, x, y, label){
   const c = { id:'c'+(idCounter++), type, x, y, label:label || nextLabel(type),
               state:defaultState(type), data:defaultData(type) };
+  c.data.scale = c.data.scale || 1;
+  c.data.rot = c.data.rot || 0;
   components.push(c);
   return c;
 }
@@ -1420,6 +1430,34 @@ function symPt3(c){
   );
 }
 
+function symArrow(c){
+  const on = c.state.energized;
+  const dir = c.data.dir || 'R';
+  return wrap(c,
+    `<rect x="4" y="4" width="62" height="26" rx="6" fill="#0b1220" stroke="${CL.edge}" stroke-width="1.5"/>`
+    + `<line x1="10" y1="17" x2="46" y2="17" stroke="${on?'#22d3ee':CL.dim}" stroke-width="3" stroke-linecap="round"/>`
+    + `<polygon points="46,11 58,17 46,23" fill="${on?'#22d3ee':CL.dim}"/>`
+    + txt(32,30,c.label,6,CL.muted)
+  );
+}
+
+function symMotorArrow(c){
+  const on = c.state.energized;
+  const dir = c.data.dir || 'CW';
+  const arrow = dir === 'CW'
+    ? `<path d="M 24 39 A 15 15 0 1 1 54 39" fill="none" stroke="${on?CL.green:CL.dim}" stroke-width="3" stroke-linecap="round"/>`
+      + `<polygon points="54,33 60,39 54,45" fill="${on?CL.green:CL.dim}"/>`
+    : `<path d="M 54 39 A 15 15 0 1 1 24 39" fill="none" stroke="${on?CL.green:CL.dim}" stroke-width="3" stroke-linecap="round"/>`
+      + `<polygon points="24,33 18,39 24,45" fill="${on?CL.green:CL.dim}"/>`;
+  return wrap(c,
+    `<circle cx="39" cy="39" r="32" fill="#0b1220" stroke="${CL.edge}" stroke-width="2"/>`
+    + `<circle cx="39" cy="39" r="24" fill="none" stroke="${on?CL.green:CL.dim}" stroke-width="1.5" stroke-dasharray="3 3"/>`
+    + (on ? `<g class="spin">${arrow}</g>` : arrow)
+    + txt(39,42,dir,9,on?CL.green:CL.muted)
+    + txt(39,70,c.label,6,CL.muted)
+  );
+}
+
 function symAts(c){
   const pos = c.state.pos;
   const aOn = pos === 'A', bOn = pos === 'B';
@@ -1778,6 +1816,8 @@ function svgFor(c){
     case 'transformer_3p':return symTransformer3(c);
     case 'pt':return symPt(c);
     case 'pt_3p':return symPt3(c);
+    case 'arrow':return symArrow(c);
+    case 'motor_arrow':return symMotorArrow(c);
     case 'ats':      return symAts(c);
     case 'ctmeter':  return symCtMeter(c);
     case 'voltmeter':return symVoltmeter(c);
@@ -1871,6 +1911,9 @@ function internalEdges(c){
       break;
     case 'pt_3p':
       e.push([id+'1', id+'2'], [id+'3', id+'4'], [id+'5', id+'6']);
+      break;
+    case 'arrow':
+      e.push([id+'1', id+'2']);
       break;
     case 'float':
     case 'pressure':
@@ -2166,6 +2209,11 @@ function simulate(dt){
     if(c.type === 'plc'){
       if(!shorted) plcScan(c, timeRoots, dt || 0, true);
     }
+    if(c.type === 'motor_arrow'){
+      const m = byId(c.data.motor);
+      c.state.energized = !!(m && isMotor(m.type) && m.state.energized);
+      c.state.dir = c.data.dir || 'CW';
+    }
     if(c.type === 'vfd'){
       const target = (c.state.on && !c.state.fault) ? (Number(c.data.target) || 50) : 0;
       const rate = target > c.state.freq ? (Number(c.data.accel) || 10) : (Number(c.data.decel) || 10);
@@ -2227,6 +2275,9 @@ function simulate(dt){
   components.forEach(c => {
     if(c.type === 'lamp' || c.type === 'alarm'){
       c.state.energized = acrossRoots(c, '1', '2', roots);
+    }
+    if(c.type === 'arrow'){
+      c.state.energized = !!hotMap[c.id+':1'] || !!hotMap[c.id+':2'];
     }
     if(isMotor(c.type) && c.type !== 'motor'){
       const was = c.state.energized;
@@ -2355,7 +2406,7 @@ function render(){
 function paint(){
   components.forEach(c => {
     if(!c.el) return;
-    const running = (isMotor(c.type) && c.state.energized) || ((c.type === 'generator' || c.type === 'generator_3p') && c.state.on);
+    const running = (isMotor(c.type) && c.state.energized) || ((c.type === 'generator' || c.type === 'generator_3p') && c.state.on) || (c.type === 'motor_arrow' && c.state.energized);
     c.el.classList.toggle('vib', running);
     const sig = signature(c);
     if(c._sig !== sig){
@@ -2741,6 +2792,8 @@ function updateStatus(){
       case 'pt_3p': rows.push(statusRow(L+' · PT', 'LINKED', 'on')); break;
       case 'ats':       rows.push(statusRow(L+' · ATS', c.state.pos==='OFF'?'OFF':'SOURCE '+c.state.pos, c.state.pos==='OFF'?'fault':'on')); break;
       case 'ctmeter':   rows.push(statusRow(L+' · AMMETER', (c.state.amps||0).toFixed(1)+' A', c.state.energized?'on':'off')); break;
+      case 'arrow':     rows.push(statusRow(L+' · ARROW', c.state.energized?'FLOWING':'IDLE', c.state.energized?'on':'off')); break;
+      case 'motor_arrow': rows.push(statusRow(L+' · ROTATION', (c.data.dir||'CW')+' · '+(c.state.energized?'RUNNING':'STOPPED'), c.state.energized?'on':'off')); break;
       case 'voltmeter': rows.push(statusRow(L+' · VOLTMETER', (c.state.volts===null||c.state.volts===undefined)?'---':c.state.volts+' V', c.state.volts>0?'on':'off')); break;
       case 'timer_sd':  rows.push(statusRow(L+' · STAR-DELTA', c.state.coil?(c.state.elapsed?'DELTA':'STAR '+c.state.t.toFixed(1)+'/'+c.state.delay+'s'):'IDLE', c.state.elapsed?'on':(c.state.coil?'fault':'off'))); break;
       case 'float':     rows.push(statusRow(L+' · LEVEL', c.state.triggered?'HIGH':'LOW', c.state.triggered?'on':'off')); break;
@@ -3003,6 +3056,11 @@ function renderProps(){
     h += `<div class="prop"><label>Secondary</label><select onchange="setMeta('${c.id}','secondary',this.value)">${['110 V','100 V','230 V'].map(v => `<option${(c.data.secondary||'110 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
     h += `<div class="prop"><label>Ratio</label><span class="mini">${c.data.primary||'400 V'} / ${c.data.secondary||'110 V'}</span></div>`;
   }
+  if(c.type === 'motor_arrow'){
+    const motors = components.filter(x => isMotor(x.type));
+    h += `<div class="prop"><label>Motor</label><select onchange="setMeta('${c.id}','motor',this.value)">${motors.map(m => `<option value="${m.id}"${c.data.motor===m.id?' selected':''}>${m.label}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Direction</label><select onchange="setMeta('${c.id}','dir',this.value)">${['CW','CCW'].map(v => `<option${(c.data.dir||'CW')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
   if(c.type === 'ats'){
     h += `<div class="prop"><label>Auto mode</label><input type="checkbox" ${c.data.auto?'checked':''} onchange="setState('${c.id}','auto',this.checked)" style="width:auto"></div>`;
     h += `<div class="prop"><label>Return delay</label><select onchange="setMeta('${c.id}','retDelay',this.value)">${['0','5','10','30','60'].map(v => `<option value="${v}"${String(c.data.retDelay!==undefined?c.data.retDelay:0)===v?' selected':''}>${v==='0'?'Instant':v+' s'}</option>`).join('')}</select></div>`;
@@ -3066,7 +3124,7 @@ function renderProps(){
     const oo = ['Q1','Q2','Q3','Q4'].map(a => a+'='+(c.state.out[a]?'1':'0')).join('  ');
     h += `<div class="plcio">${io}<br>${oo}</div>`;
   }
-  const desc = {power:'Main supply',mcb:'Miniature circuit breaker',pb_no:'Normally open push button',pb_nc:'Normally closed push button',estop:'Emergency stop (latching)',selector:'Maintained selector switch',contactor:'Coil + main / NO / NC contacts',relay:'Auxiliary relay (NO + NC)',timer:'On-delay timer',ol:'Thermal overload relay',lamp:'Indicator lamp',motor:'Three-phase motor',alarm:'Audible horn',mccb:'Moulded case circuit breaker',rccb:'Residual current breaker (30 mA)',fuse:'Fuse cartridge',spd:'Surge protection device',timer_off:'Off-delay timer',flasher:'Flashing / blinking relay',phase:'Phase failure monitor',terminal:'Terminal block (2 through-links)',busbar:'Distribution busbar',generator:'Standby generator',ats:'Automatic transfer switch',ctmeter:'Current transformer ammeter',float:'Float / level switch',pressure:'Pressure switch',thermostat:'Thermostat',plc:'Ladder PLC (LOGO! style)',vfd:'Variable frequency drive',motor_1ph:'Single-phase motor',motor_dc:'DC motor',motor_stepper:'Stepper motor',motor_servo:'Servo motor',timer_sd:'Star-delta timer',mcb_3p:'3-pole MCB',mccb_3p:'3-pole MCCB',power_1ph:'Single-phase supply',busbar_3p:'3-phase busbar',terminal_6:'6-way terminal strip',generator_3p:'3-phase generator',battery:'Standby control battery (24 V DC)',transformer:'Control transformer',transformer_3p:'3-phase transformer',pt:'Potential transformer (voltage)',pt_3p:'Potential transformer 3Φ'}[c.type] || '';
+  const desc = {power:'Main supply',mcb:'Miniature circuit breaker',pb_no:'Normally open push button',pb_nc:'Normally closed push button',estop:'Emergency stop (latching)',selector:'Maintained selector switch',contactor:'Coil + main / NO / NC contacts',relay:'Auxiliary relay (NO + NC)',timer:'On-delay timer',ol:'Thermal overload relay',lamp:'Indicator lamp',motor:'Three-phase motor',alarm:'Audible horn',mccb:'Moulded case circuit breaker',rccb:'Residual current breaker (30 mA)',fuse:'Fuse cartridge',spd:'Surge protection device',timer_off:'Off-delay timer',flasher:'Flashing / blinking relay',phase:'Phase failure monitor',terminal:'Terminal block (2 through-links)',busbar:'Distribution busbar',generator:'Standby generator',ats:'Automatic transfer switch',ctmeter:'Current transformer ammeter',float:'Float / level switch',pressure:'Pressure switch',thermostat:'Thermostat',plc:'Ladder PLC (LOGO! style)',vfd:'Variable frequency drive',motor_1ph:'Single-phase motor',motor_dc:'DC motor',motor_stepper:'Stepper motor',motor_servo:'Servo motor',timer_sd:'Star-delta timer',mcb_3p:'3-pole MCB',mccb_3p:'3-pole MCCB',power_1ph:'Single-phase supply',busbar_3p:'3-phase busbar',terminal_6:'6-way terminal strip',generator_3p:'3-phase generator',battery:'Standby control battery (24 V DC)',transformer:'Control transformer',transformer_3p:'3-phase transformer',pt:'Potential transformer (voltage)',pt_3p:'Potential transformer 3Φ',arrow:'Current direction indicator',motor_arrow:'Motor rotation indicator (CW/CCW)'}[c.type] || '';
   h += `<div class="muted" style="margin:6px 0">${desc}</div>`;
   h += `<button class="del" onclick="deleteComp('${c.id}')">🗑 حذف المكوّن</button>`;
   box.innerHTML = h;
