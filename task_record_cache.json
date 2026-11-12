@@ -9283,5 +9283,69 @@
   "type": "Static Test",
   "state": "Closed",
   "via": "dalc"
+ },
+ "T-00035-1596": {
+  "record": "1251869",
+  "task": "T-00035-1596",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "Started (not Completed)",
+  "via": "dalc"
+ },
+ "T-00035-1598": {
+  "record": "1251871",
+  "task": "T-00035-1598",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1599": {
+  "record": "1251872",
+  "task": "T-00035-1599",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1601": {
+  "record": "1251874",
+  "task": "T-00035-1601",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1603": {
+  "record": "1251876",
+  "task": "T-00035-1603",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1606": {
+  "record": "1251879",
+  "task": "T-00035-1606",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1607": {
+  "record": "1251880",
+  "task": "T-00035-1607",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1608": {
+  "record": "1251881",
+  "task": "T-00035-1608",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
