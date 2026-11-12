@@ -14773,3 +14773,10 @@
 2026-11-12 08:41:36 [done] build in 1482s (deferred)
 2026-11-12 08:45:36 [trigger] retrying postponed build
 2026-11-12 08:45:36 >> cloud->DPR
+2026-11-12 08:58:48    sync 2026-11-12 08:58:42 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-12 08:58:48    written=329 notes=0 colors=1
+2026-11-12 08:58:48    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-12 08:58:48    formula cells protected: RFC PROGRESS!AG53, RFC PROGRESS!AG6, RFC PROGRESS!Q10
+2026-11-12 08:58:48    rows NOT found: ITR LIST/T-00609-0416, ITR LIST/T-00611-0243, ITR LIST/T-00615-0922, ITR LIST/T-00615-0923, ITR LIST/T-00615-1065
+2026-11-12 08:58:48    columns missing/unmapped: DETAILED ITR LIST: 'Asset - Tag' missing, ITR LIST: DESCRIPTION unmapped, ITR LIST: TAG unmapped, ITR LIST: TEST FORM unmapped, RFC PROGRESS: CPP-1 unmapped, RFC PROGRESS: EACOP unmapped, RFC PROGRESS: EIT unmapped, RFC PROGRESS: REMARK CPP-1 unmapped, RFC PROGRESS: REMARK CPP-EIT unmapped, RFC PROGRESS: REMARK EACOP unmapped
+2026-11-12 08:58:48 >> local->DPR
