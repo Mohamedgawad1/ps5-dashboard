@@ -71922,3 +71922,33 @@ Call log:
 [2026-11-12 12:18:35] reused the sync's always-open browser (port 9222)
 [2026-11-12 12:18:35] LOGGED IN
 [2026-11-12 12:20:01] pulled off=0 n=4000 accum=4000
+[2026-11-12 12:21:30] pulled off=4000 n=4000 accum=8000
+[2026-11-12 12:22:55] pulled off=8000 n=4000 accum=12000
+[2026-11-12 12:23:44] pulled off=12000 n=2064 accum=14064
+[2026-11-12 12:23:45] task index refreshed (6350 asset tags)
+[2026-11-12 12:23:47] updated dashboard_data.json itr_summary.live
+[2026-11-12 12:23:57]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 12:24:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 12:23 (closed=7692) rc=0 [main f8758f8] ITR live update 2026-11-12 12:23 (closed=7692)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-12 12:24:21]  >> git push OK
+[2026-11-12 12:24:43]  >> published itr_live_state.json (460068 bytes)
+[2026-11-12 12:24:47]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 12:24:47]  >> platform publish OK (1 file(s) updated, closed=7692)
+[2026-11-12 12:24:48] PAGES PUSH rc=0
+[2026-11-12 12:24:48] cycle OK closed=7692 open=2662 updated=2026-11-12 12:23:47
+[2026-11-12 12:27:24] reused the sync's always-open browser (port 9222)
+[2026-11-12 12:27:27] LOGGED IN
+[2026-11-12 12:31:15] pulled off=0 n=4000 accum=4000
+[2026-11-12 12:37:09] pulled off=4000 n=4000 accum=8000
+[2026-11-12 12:38:34] err off=8000: [object Object]
+[2026-11-12 12:38:34] pull retry 2/3 - reloading Switchboard
+[2026-11-12 12:38:38] LOGGED IN
+[2026-11-12 12:38:38] err off=0: [object Object]
+[2026-11-12 12:38:38] pull retry 3/3 - reloading Switchboard
+[2026-11-12 12:38:42] LOGGED IN
+[2026-11-12 12:38:42] err off=0: [object Object]
+[2026-11-12 12:38:42] cycle got no complete data (fail 1/3)
+[2026-11-12 12:40:50] closed frozen tab 164A9CBA https://wly04-sc.intergraphsmartcloud.com//ISC/Tools/vDashboardsUsers/
+[2026-11-12 12:40:54] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-12 12:40:57] reused the sync's always-open browser (port 9222)
+[2026-11-12 12:41:01] LOGGED IN
