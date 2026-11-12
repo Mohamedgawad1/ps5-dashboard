@@ -45,6 +45,14 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
 .wires{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
 .comp{position:absolute;z-index:2;border-radius:10px;background:linear-gradient(180deg,rgba(30,41,59,.96),rgba(15,23,42,.96));box-shadow:0 3px 10px rgba(0,0,0,.55),inset 0 0 0 1px #334155;cursor:grab;user-select:none;touch-action:none}
 .comp.selected{box-shadow:0 0 0 2px var(--accent),0 0 18px rgba(0,212,255,.45)}
+.comp .ch{position:absolute;display:none;z-index:20;touch-action:none}
+.comp.selected .ch{display:block}
+.comp .ch.rz{right:-8px;bottom:-8px;width:8px;height:8px;border-radius:0 0 3px 0;background:var(--green);border:1.5px solid #0b1220;cursor:nwse-resize;box-shadow:0 0 6px rgba(0,230,118,.8)}
+.comp .ch.rt{left:50%;top:-22px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#f5c518;border:2px solid #0b1220;cursor:grab;box-shadow:0 0 6px rgba(245,197,24,.8)}
+.comp .ch.rt:after{content:'';position:absolute;left:50%;top:11px;width:1.5px;height:10px;background:#f5c518}
+.wire-flow{stroke-dasharray:4 13;stroke-linecap:round;animation:wireflow .65s linear infinite;pointer-events:none}
+.wire-flow.rev{animation-direction:reverse}
+@keyframes wireflow{to{stroke-dashoffset:-34}}
 .comp .sym{position:absolute;inset:0}
 .comp .sym svg{width:100%;height:100%;overflow:visible;display:block}
 .port{position:absolute;width:14px;height:14px;border-radius:50%;background:#475569;border:2px solid #94a3b8;z-index:5;cursor:crosshair;touch-action:none}
@@ -201,6 +209,7 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
       <button class="compbtn" data-type="pressure" onclick="selectPlace('pressure')">🎛 Pressure Switch</button>
       <button class="compbtn" data-type="thermostat" onclick="selectPlace('thermostat')">🌡 Thermostat</button>
       <button class="compbtn" data-type="ctmeter" onclick="selectPlace('ctmeter')">📟 CT / Ammeter</button>
+      <button class="compbtn" data-type="ammeter" onclick="selectPlace('ammeter')">📟 Ammeter (A) — inline</button>
       <button class="compbtn" data-type="voltmeter" onclick="selectPlace('voltmeter')">🔵 Voltmeter</button>
       <button class="compbtn" data-type="pt" onclick="selectPlace('pt')">📐 Potential Transformer (PT)</button>
       <button class="compbtn" data-type="pt_3p" onclick="selectPlace('pt_3p')">📐 Potential Transformer 3Φ (PT)</button>
@@ -212,11 +221,73 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
       <button class="compbtn" data-type="busbar_3p" onclick="selectPlace('busbar_3p')">🟫 Busbar 3Φ (L1 L2 L3)</button>
       <button class="compbtn" data-type="arrow" onclick="selectPlace('arrow')">➡️ Current Arrow</button>
     </details>
+    <details open class="pgroup"><summary><span class="ar-only">🔌 مكونات إلكترونية (R · C · L · D)</span><span class="en-only">🔌 Passive / Electronics (R · C · L · D)</span></summary>
+      <button class="compbtn" data-type="resistor" onclick="selectPlace('resistor')">🟫 Resistor (R)</button>
+      <button class="compbtn" data-type="potentiometer" onclick="selectPlace('potentiometer')">🎚 Potentiometer (VR)</button>
+      <button class="compbtn" data-type="capacitor" onclick="selectPlace('capacitor')">🔵 Capacitor (C)</button>
+      <button class="compbtn" data-type="capacitor_elec" onclick="selectPlace('capacitor_elec')">🔵 Electrolytic Capacitor</button>
+      <button class="compbtn" data-type="inductor" onclick="selectPlace('inductor')">🌀 Inductor (L)</button>
+      <button class="compbtn" data-type="diode" onclick="selectPlace('diode')">▶ Diode (D)</button>
+      <button class="compbtn" data-type="led" onclick="selectPlace('led')">💡 LED</button>
+      <button class="compbtn" data-type="zener" onclick="selectPlace('zener')">▶ Zener Diode (DZ)</button>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">🏭 معدات القوى</span><span class="en-only">🏭 Power Equipment</span></summary>
+      <button class="compbtn" data-type="capbank" onclick="selectPlace('capbank')">🔋 Capacitor Bank (PFC)</button>
+      <button class="compbtn" data-type="isolator" onclick="selectPlace('isolator')">🔌 Isolator 3P</button>
+      <button class="compbtn" data-type="changeover" onclick="selectPlace('changeover')">🔀 Changeover Switch</button>
+      <button class="compbtn" data-type="variac" onclick="selectPlace('variac')">🎛 Variac / Auto-Transformer</button>
+      <button class="compbtn" data-type="ct" onclick="selectPlace('ct')">🧲 Current Transformer (CT)</button>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">📊 أجهزة القياس</span><span class="en-only">📊 Instrumentation</span></summary>
+      <button class="compbtn" data-type="ammeter" onclick="selectPlace('ammeter')">📟 Ammeter (A)</button>
+      <button class="compbtn" data-type="voltmeter" onclick="selectPlace('voltmeter')">🔵 Voltmeter (V)</button>
+      <button class="compbtn" data-type="wattmeter" onclick="selectPlace('wattmeter')">📊 Wattmeter (kW)</button>
+      <button class="compbtn" data-type="energymeter" onclick="selectPlace('energymeter')">⚡ Energy Meter (kWh)</button>
+      <button class="compbtn" data-type="pfmeter" onclick="selectPlace('pfmeter')">📐 Power Factor Meter</button>
+      <button class="compbtn" data-type="freqmeter" onclick="selectPlace('freqmeter')">📶 Frequency Meter (Hz)</button>
+      <button class="compbtn" data-type="multimeter" onclick="selectPlace('multimeter')">🔧 Multimeter</button>
+      <button class="compbtn" data-type="ctmeter" onclick="selectPlace('ctmeter')">📟 CT Ammeter (panel)</button>
+    </details>
+    <details open class="pgroup"><summary><span class="ar-only">🤖 الأتمتة والحساسات</span><span class="en-only">🤖 Automation &amp; Sensors</span></summary>
+      <button class="compbtn" data-type="limit_switch" onclick="selectPlace('limit_switch')">🕹 Limit Switch</button>
+      <button class="compbtn" data-type="proximity" onclick="selectPlace('proximity')">📡 Proximity Sensor</button>
+      <button class="compbtn" data-type="counter" onclick="selectPlace('counter')">🔢 Counter</button>
+      <button class="compbtn" data-type="float" onclick="selectPlace('float')">🌊 Level / Float</button>
+      <button class="compbtn" data-type="pressure" onclick="selectPlace('pressure')">🎛 Pressure Switch</button>
+      <button class="compbtn" data-type="thermostat" onclick="selectPlace('thermostat')">🌡 Thermostat</button>
+    </details>
     <details open class="pgroup"><summary><span class="ar-only">🧠 PLC ومحركات السرعة</span><span class="en-only">🧠 PLC &amp; Drives</span></summary>
       <button class="compbtn" data-type="plc" onclick="selectPlace('plc')">🧠 PLC (Ladder)</button>
       <button class="compbtn" data-type="vfd" onclick="selectPlace('vfd')">🎛 VFD Motor Drive</button>
     </details>
-    <details class="pgroup"><summary><span class="ar-only">⭐ دليل توصيل Star-Delta</span><span class="en-only">⭐ Star-Delta Guide</span></summary>
+    <details class="pgroup"><summary><span class="ar-only">📐 قوانين وصيغ المحركات</span><span class="en-only">📐 Motor Formulas & Laws</span></summary>
+    <div class="hint ar-only">
+      <b>سرعة تزامن (Synchronous speed):</b> n_s = 120·f / P  (rpm) — f=50/60 Hz، P=أقطاب.<br>
+      <b>Slip (انزلاق):</b> s = (n_s − n) / n_s × 100 %<br>
+      <b>عزم (Torque):</b> T = P / ω = (P×60)/(2π·n)  [N·m] — P بالواط، n بـ rpm.<br>
+      &nbsp;&nbsp;أو T = 9550 × P(kW) / n(rpm)  [N·m]<br>
+      <b>قدرة (Power):</b> P = T·ω = T·(2π·n/60)  [W]<br>
+      <b>تيار 3Φ:</b> I = P / (√3 · V · cosφ · η)<br>
+      <b>تيار 1Φ:</b> I = P / (V · cosφ · η)<br>
+      <b>قانون Ohm:</b> V = I·R،  P = V·I = I²·R = V²/R<br>
+      <b>قانون Faraday:</b> E = −N·dΦ/dt (القوة الدافعة الكهربائية)<br>
+      <b>قانون Ampere:</b> F = B·I·L (القوة على موصل في مجال مغناطيسي)<br>
+      <b>العزم (Torque):</b> T = F·r (قوة × ذراع)<br>
+      <b>القدرة الميكانيكية:</b> P_mech = T·ω (عزم × سرعة زاوية)<br>
+      <b>Efficiency:</b> η = P_out / P_in × 100 %<br>
+      <b>Power factor:</b> cosφ = P / S = P / (V·I)<br><br>
+      <i>القيم تُحسب تلقائيًا في لوحة الخصائص (Properties) عند اختيار محرك.</i>
+    </div>
+    <div class="hint en-only">
+      <b>Synchronous speed:</b> n_s = 120·f / P (rpm).<br>
+      <b>Slip:</b> s = (n_s − n)/n_s × 100 %.<br>
+      <b>Torque:</b> T = P/ω = (P·60)/(2π·n) [N·m]; or T = 9550·P(kW)/n(rpm).<br>
+      <b>Power:</b> P = T·ω.  <b>Current 3Φ:</b> I = P/(√3·V·cosφ·η).  <b>1Φ:</b> I = P/(V·cosφ·η).<br>
+      <b>Ohm:</b> V=I·R, P=V·I=I²·R=V²/R.  <b>Faraday:</b> E=−N·dΦ/dt.  <b>Ampere:</b> F=B·I·L.  <b>Torque:</b> T=F·r.  <b>Mechanical power:</b> P_mech=T·ω.  <b>Efficiency:</b> η=P_out/P_in.  <b>Power factor:</b> cosφ=P/S.<br><br>
+      <i>Values are auto-computed in the Properties panel when a motor is selected.</i>
+    </div>
+  </details>
+  <details class="pgroup"><summary><span class="ar-only">⭐ دليل توصيل Star-Delta</span><span class="en-only">⭐ Star-Delta Guide</span></summary>
       <div class="hint ar-only">
         <b>الموتور 3 فاز = 6 أطراف:</b> U1,V1,W1 دخل / U2,V2,W2 خرج.<br><br>
         <b>1) الخط الرئيسي:</b> L1,L2,L3 ← قاطع 3P ← كونتاكتور رئيسي K1 ← أوفرلود 3P ← U1,V1,W1.<br><br>
@@ -399,6 +470,34 @@ const TYPES = {
   spd:      { label:'SPD Surge',     w:92,  h:110, color:'#38bdf8', ports:[{id:'1',x:8,y:55},{id:'2',x:84,y:55}] },
   arrow:    { label:'Current Arrow', w:70,  h:34,  color:'#22d3ee', ports:[{id:'1',x:6,y:17},{id:'2',x:64,y:17}] },
   motor_arrow:{ label:'Motor Rotation', w:78, h:78, color:'#f472b6', ports:[] },
+  resistor:  { label:'Resistor',       w:100, h:50, color:'#e2e8f0', ports:[{id:'1',x:4,y:24},{id:'2',x:96,y:24}] },
+  potentiometer:{ label:'Potentiometer',w:110,h:64, color:'#e2e8f0', ports:[{id:'1',x:4,y:30},{id:'2',x:106,y:30}] },
+  capacitor: { label:'Capacitor',      w:100, h:60, color:'#38bdf8', ports:[{id:'1',x:4,y:28},{id:'2',x:96,y:28}] },
+  capacitor_elec:{ label:'Electrolytic',w:100,h:68, color:'#38bdf8', ports:[{id:'1',x:4,y:32},{id:'2',x:96,y:32}] },
+  inductor:  { label:'Inductor',       w:110, h:60, color:'#c084fc', ports:[{id:'1',x:4,y:28},{id:'2',x:106,y:28}] },
+  diode:     { label:'Diode',          w:100, h:50, color:'#f59e0b', ports:[{id:'1',x:4,y:24},{id:'2',x:96,y:24}] },
+  led:       { label:'LED',            w:100, h:68, color:'#22c55e', ports:[{id:'1',x:4,y:30},{id:'2',x:96,y:30}] },
+  zener:     { label:'Zener Diode',    w:100, h:52, color:'#f59e0b', ports:[{id:'1',x:4,y:26},{id:'2',x:96,y:26}] },
+  capbank:   { label:'Capacitor Bank', w:130, h:120, color:'#38bdf8', ports:[
+    {id:'1',x:8,y:50},{id:'2',x:122,y:50},{id:'3',x:8,y:80},{id:'4',x:122,y:80}] },
+  isolator:  { label:'Isolator 3P',    w:120, h:150, color:'#f59e0b', ports:[
+    {id:'1',x:24,y:8},{id:'3',x:60,y:8},{id:'5',x:96,y:8},
+    {id:'2',x:24,y:142},{id:'4',x:60,y:142},{id:'6',x:96,y:142}] },
+  changeover:{ label:'Changeover',     w:140, h:130, color:'#22c55e', ports:[
+    {id:'A',x:8,y:32},{id:'B',x:8,y:88},{id:'O',x:132,y:60}] },
+  ct:        { label:'Current Transformer', w:120, h:110, color:'#38bdf8', ports:[
+    {id:'P1',x:8,y:32},{id:'P2',x:112,y:32},{id:'S1',x:34,y:100},{id:'S2',x:86,y:100}] },
+  variac:    { label:'Variac',         w:130, h:120, color:'#a78bfa', ports:[
+    {id:'1',x:8,y:50},{id:'2',x:122,y:50},{id:'3',x:122,y:82}] },
+  wattmeter: { label:'Wattmeter',      w:130, h:116, color:'#38bdf8', ports:[{id:'1',x:8,y:58},{id:'2',x:122,y:58}] },
+  energymeter:{ label:'Energy Meter',  w:130, h:116, color:'#38bdf8', ports:[{id:'1',x:8,y:58},{id:'2',x:122,y:58}] },
+  pfmeter:   { label:'PF Meter',       w:130, h:116, color:'#38bdf8', ports:[{id:'1',x:8,y:58},{id:'2',x:122,y:58}] },
+  freqmeter: { label:'Frequency Meter',w:130, h:116, color:'#38bdf8', ports:[{id:'1',x:8,y:58},{id:'2',x:122,y:58}] },
+  multimeter:{ label:'Multimeter',     w:130, h:116, color:'#38bdf8', ports:[{id:'1',x:8,y:58},{id:'2',x:122,y:58}] },
+  limit_switch:{ label:'Limit Switch', w:110, h:100, color:'#22c55e', ports:[{id:'1',x:8,y:60},{id:'2',x:102,y:60}] },
+  proximity: { label:'Proximity Sensor', w:110, h:104, color:'#22c55e', ports:[{id:'1',x:8,y:60},{id:'2',x:102,y:60}] },
+  counter:   { label:'Counter',        w:140, h:130, color:'#f472b6', ports:[
+    {id:'A1',x:8,y:30},{id:'A2',x:8,y:100},{id:'15',x:132,y:50},{id:'18',x:132,y:90}] },
   timer_off:{ label:'Timer Off-Delay',w:140,h:150, color:'#f472b6', ports:[
     {id:'A1',x:10,y:30},{id:'A2',x:10,y:120},{id:'15',x:130,y:45},{id:'18',x:130,y:105}] },
   timer_sd: { label:'Star-Delta Timer',w:150,h:170, color:'#f472b6', ports:[
@@ -439,6 +538,7 @@ const TYPES = {
   ats:      { label:'ATS Changeover',w:160, h:180, color:'#00d4ff', ports:[
     {id:'AL',x:8,y:35},{id:'AN',x:8,y:70},{id:'BL',x:8,y:110},{id:'BN',x:8,y:145},{id:'OL',x:152,y:70},{id:'ON',x:152,y:110}] },
   ctmeter:  { label:'CT / Ammeter',  w:100, h:100, color:'#38bdf8', ports:[{id:'1',x:8,y:55},{id:'2',x:92,y:55}] },
+  ammeter:  { label:'Ammeter',       w:104, h:104, color:'#38bdf8', ports:[{id:'1',x:6,y:58},{id:'2',x:98,y:58}], internal:[['1','2']] },
   voltmeter:{ label:'Voltmeter',     w:120, h:110, color:'#38bdf8', ports:[{id:'1',x:8,y:60},{id:'2',x:112,y:60}] },
   float:    { label:'Float / Level', w:100, h:120, color:'#38bdf8', ports:[{id:'1',x:8,y:60},{id:'2',x:92,y:60}] },
   pressure: { label:'Pressure Switch',w:110,h:110, color:'#38bdf8', ports:[{id:'1',x:8,y:70},{id:'2',x:102,y:70}] },
@@ -456,7 +556,7 @@ const PREFIX = {
   power:'PS',power_1ph:'PS',mcb:'F',mcb_3p:'QF',pb_no:'S',pb_nc:'S',estop:'E',selector:'SA',contactor:'K',
   relay:'KA',timer:'KT',timer_sd:'KT',ol:'F',lamp:'H',motor:'M',motor_1ph:'M',motor_dc:'M',motor_stepper:'SM',motor_servo:'SV',alarm:'HA',
   mccb:'Q',mccb_3p:'QM',rccb:'Q',fuse:'FU',spd:'SPD',timer_off:'KT',flasher:'KF',phase:'KP',
-  terminal:'XT',busbar:'BB',busbar_3p:'BB',terminal_6:'XT',generator:'G',generator_3p:'G',battery:'GB',transformer:'T',transformer_3p:'T',pt:'PT',pt_3p:'PT',arrow:'AR',motor_arrow:'MA',ats:'ATS',ctmeter:'PA',voltmeter:'PV',float:'LS',
+  terminal:'XT',busbar:'BB',busbar_3p:'BB',terminal_6:'XT',generator:'G',generator_3p:'G',battery:'GB',transformer:'T',transformer_3p:'T',pt:'PT',pt_3p:'PT',arrow:'AR',motor_arrow:'MA',ats:'ATS',ctmeter:'PA',voltmeter:'PV',ammeter:'PA',wattmeter:'PW',energymeter:'KWH',pfmeter:'PF',freqmeter:'HZ',multimeter:'MM',resistor:'R',potentiometer:'VR',capacitor:'C',capacitor_elec:'CE',inductor:'L',diode:'D',led:'LED',zener:'DZ',capbank:'CB',isolator:'ISO',changeover:'CO',ct:'CT',variac:'VAR',limit_switch:'LS',proximity:'PX',counter:'CNT',float:'LS',
   pressure:'PS',thermostat:'TS',plc:'PLC',vfd:'VFD'
 };
 
@@ -469,6 +569,7 @@ let selectedWire = null;
 let pendingPort = null;
 let supplyOn = true;
 let supplyV = 230;
+let supplyFreq = 50;
 let counters = {};
 let dragState = null;
 let hotMap = {};
@@ -556,6 +657,27 @@ function defaultData(type){
   if(type === 'pt_3p') return { ratio:'400/110 V', burden:'VA' };
   if(type === 'arrow') return {};
   if(type === 'motor_arrow') return { motor:'', dir:'CW' };
+  if(type === 'resistor') return { value:'1 kΩ', tol:'±5%', power:'0.25 W' };
+  if(type === 'potentiometer') return { value:'10 kΩ', lin:'Linear' };
+  if(type === 'capacitor') return { value:'100 µF', v:'400 V', kind:'Film' };
+  if(type === 'capacitor_elec') return { value:'470 µF', v:'25 V', kind:'Electrolytic' };
+  if(type === 'inductor') return { value:'10 mH', current:'1 A' };
+  if(type === 'diode') return { value:'1N4007', v:'1000 V', current:'1 A' };
+  if(type === 'led') return { color:'Green', v:'2.1 V', current:'20 mA' };
+  if(type === 'zener') return { value:'1N4742', v:'12 V', power:'1 W' };
+  if(type === 'capbank') return { kvar:50, steps:6, volts:'400 V' };
+  if(type === 'isolator') return { rating:100, poles:'3P' };
+  if(type === 'changeover') return { rating:63, poles:'2P' };
+  if(type === 'ct') return { ratio:'200/5', cls:'0.5', burden:'5 VA' };
+  if(type === 'variac') return { input:'230 V', output:'0–250 V', kva:2, pct:100 };
+  if(type === 'wattmeter') return { range:'0–5 kW', cls:'1.5' };
+  if(type === 'energymeter') return { cls:'1', kwh:0 };
+  if(type === 'pfmeter') return { range:'0.5–1', cls:'1.5' };
+  if(type === 'freqmeter') return { range:'45–65 Hz' };
+  if(type === 'multimeter') return { mode:'V' };
+  if(type === 'limit_switch') return { actuator:'Roller lever' };
+  if(type === 'proximity') return { kind:'Inductive', range:'8 mm' };
+  if(type === 'counter') return { preset:5, unit:'pcs' };
   if(type === 'ats')    return { auto:false, poles:'4P', rating:'100 A', retDelay:0 };
   if(type === 'float')  return { value:30, setpoint:70, unit:'%', contact:'NO' };
   if(type === 'pressure') return { value:3, setpoint:6, unit:'bar', contact:'NO' };
@@ -571,6 +693,7 @@ function defaultData(type){
   if(type === 'terminal') return { size:'4 mm²' };
   if(type === 'busbar')   return { bar:'100 A' };
   if(type === 'ctmeter')  return { ratio:'100/5', cls:'0.5' };
+  if(type === 'ammeter')  return { cls:'1.5', range:'0–50 A', ratio:'direct' };
   if(type === 'voltmeter')return { cls:'1.5', range:'0–500 V AC', mode:'Digital' };
   if(type === 'contactor') return { coil:'230 V AC', ac3:'9 A' };
   if(type === 'relay')     return { coil:'230 V AC' };
@@ -606,7 +729,7 @@ function defaultState(type){
     case 'motor_dc':
     case 'motor_stepper':
     case 'motor_servo':
-    case 'alarm':    return { energized:false, amps:0, runTime:0 };
+    case 'alarm':    return { energized:false, amps:0, runTime:0, dir:'CW' };
     case 'mccb':     return { closed:true };
     case 'mccb_3p':  return { closed:true };
     case 'rccb':     return { closed:true, tripped:false };
@@ -620,9 +743,26 @@ function defaultState(type){
     case 'battery':  return { off:false };
     case 'transformer': case 'transformer_3p': case 'pt': case 'pt_3p': return { energized:false };
     case 'arrow': return { energized:false };
+    case 'resistor': case 'potentiometer': case 'capacitor': case 'capacitor_elec':
+    case 'inductor': case 'diode': case 'led': case 'zener':
+      return { energized:false };
+    case 'capbank':  return { energized:false };
+    case 'isolator': return { closed:true };
+    case 'changeover': return { pos:'A' };
+    case 'ct':       return { energized:false, amps:0 };
+    case 'variac':   return { energized:false, out:0 };
+    case 'wattmeter':
+    case 'energymeter':
+    case 'pfmeter':
+    case 'freqmeter':
+    case 'multimeter': return { energized:false, volts:0, amps:0, kw:0, pf:0, hz:0, kwh:0 };
+    case 'limit_switch': return { pressed:false };
+    case 'proximity': return { active:false };
+    case 'counter':   return { coil:false, count:0, prev:false };
     case 'motor_arrow': return { energized:false, dir:'CW' };
     case 'ats':      return { pos:'A', retT:0 };
     case 'ctmeter':  return { energized:false, amps:0 };
+    case 'ammeter':  return { energized:false, amps:0 };
     case 'voltmeter':return { energized:false, volts:null };
     case 'float':
     case 'pressure':
@@ -1132,6 +1272,24 @@ function symLamp(c){
   );
 }
 
+function rotIndicator(cx, cy, r, dir, on, labelY){
+  const cw = (dir || 'CW') !== 'CCW';
+  const col = on ? '#00E676' : '#94a3b8';
+  const a0 = cw ? 202 : 338, a1 = cw ? 338 : 202;
+  const pt = a => [cx + r * Math.cos(a * Math.PI / 180), cy + r * Math.sin(a * Math.PI / 180)];
+  const p0 = pt(a0), p1 = pt(a1);
+  const ta = (a1 + (cw ? 90 : -90)) * Math.PI / 180;
+  const ux = Math.cos(ta), uy = Math.sin(ta);
+  const px = -uy, py = ux;
+  const tip = [p1[0] + ux * 7, p1[1] + uy * 7];
+  const b1 = [p1[0] + px * 4, p1[1] + py * 4];
+  const b2 = [p1[0] - px * 4, p1[1] - py * 4];
+  const f = n => n.toFixed(1);
+  return `<path d="M ${f(p0[0])} ${f(p0[1])} A ${r} ${r} 0 0 ${cw?1:0} ${f(p1[0])} ${f(p1[1])}" fill="none" stroke="${col}" stroke-width="2.2" stroke-linecap="round" opacity="${on?1:.7}"/>`
+    + `<path d="M ${f(tip[0])} ${f(tip[1])} L ${f(b1[0])} ${f(b1[1])} L ${f(b2[0])} ${f(b2[1])} Z" fill="${col}" opacity="${on?1:.7}"/>`
+    + (labelY !== undefined ? txt(cx, labelY, cw ? 'CW' : 'CCW', 7, col) : '');
+}
+
 function symMotor(c){
   const on = c.state.energized;
   const d = c.data || {};
@@ -1172,6 +1330,7 @@ function symMotor(c){
       + `<line x1="55" y1="27" x2="55" y2="63" stroke="${on?accent:CL.metal}" stroke-width="2"/>`
       + `<circle cx="55" cy="45" r="7" fill="${CL.body}" stroke="${on?accent:CL.metal}" stroke-width="2"/>`
       + `</g>`
+      + rotIndicator(55, 45, 17, c.state.dir, on)
       + extra
       + `<rect x="72" y="16" width="32" height="13" rx="3" fill="#0b1220" stroke="${on?accent:CL.edge}"/>`
       + txt(88,25,badge,7,on?accent:CL.muted)
@@ -1211,6 +1370,7 @@ function symMotor(c){
     + `<line x1="90" y1="62" x2="90" y2="118" stroke="${on?accent:CL.metal}" stroke-width="2.5"/>`
     + `<circle cx="90" cy="90" r="10" fill="${CL.body}" stroke="${on?accent:CL.metal}" stroke-width="2"/>`
     + `</g>`
+    + rotIndicator(90, 90, 36, c.state.dir, on, 127)
     + `<rect x="118" y="34" width="34" height="13" rx="3" fill="#0b1220" stroke="${on?accent:CL.edge}"/>`
     + txt(135,43,badge,7,on?accent:CL.muted)
     + `</g>`
@@ -1654,6 +1814,273 @@ function symCtMeter(c){
   );
 }
 
+function symResistor(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<line x1="4" y1="24" x2="22" y2="24" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="78" y1="24" x2="96" y2="24" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<rect x="20" y="13" width="60" height="22" rx="9" fill="url(#bodyGrad)" stroke="#64748b" stroke-width="1.5"/>`
+    + `<rect x="31" y="13" width="5" height="22" fill="#b45309"/>`
+    + `<rect x="41" y="13" width="4" height="22" fill="#0f172a"/>`
+    + `<rect x="49" y="13" width="5" height="22" fill="#dc2626"/>`
+    + `<rect x="60" y="13" width="4" height="22" fill="#f5c518"/>`
+    + txt(20,10,'R',6,CL.muted,'start')
+    + txt(50,47,c.data.value||'',7,on?CL.green:CL.muted)
+  );
+}
+function symPotentiometer(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<line x1="4" y1="30" x2="26" y2="30" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="84" y1="30" x2="106" y2="30" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<rect x="24" y="20" width="62" height="20" rx="4" fill="#cbd5e1" stroke="#64748b" stroke-width="1.5"/>`
+    + `<line x1="55" y1="52" x2="55" y2="20" stroke="${on?CL.hot:CL.metal}" stroke-width="2"/>`
+    + `<path d="M50 27 L55 20 L60 27" fill="none" stroke="${on?CL.hot:CL.metal}" stroke-width="2"/>`
+    + txt(55,62,c.data.value||'',7,on?CL.green:CL.muted)
+  );
+}
+function symCapacitor(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<line x1="4" y1="28" x2="40" y2="28" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="60" y1="28" x2="96" y2="28" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="40" y1="12" x2="40" y2="44" stroke="${on?CL.cyan:'#cbd5e1'}" stroke-width="3.5"/>`
+    + `<line x1="60" y1="12" x2="60" y2="44" stroke="${on?CL.cyan:'#cbd5e1'}" stroke-width="3.5"/>`
+    + txt(20,8,'C',6,CL.muted,'start')
+    + txt(50,56,c.data.value||'',7,on?CL.green:CL.muted)
+  );
+}
+function symCapacitorElec(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<line x1="4" y1="32" x2="40" y2="32" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="62" y1="32" x2="96" y2="32" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="40" y1="14" x2="40" y2="50" stroke="${on?CL.cyan:'#cbd5e1'}" stroke-width="3.5"/>`
+    + `<path d="M62 16 Q52 32 62 48" fill="none" stroke="${on?CL.cyan:'#cbd5e1'}" stroke-width="3.5"/>`
+    + `<line x1="26" y1="18" x2="34" y2="18" stroke="#dc2626" stroke-width="2"/>`
+    + `<line x1="30" y1="14" x2="30" y2="22" stroke="#dc2626" stroke-width="2"/>`
+    + txt(50,64,c.data.value||'',7,on?CL.green:CL.muted)
+  );
+}
+function symInductor(c){
+  const on = c.state.energized;
+  const col = on ? CL.hot : '#cbd5e1';
+  return wrap(c,
+    `<line x1="4" y1="28" x2="26" y2="28" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="84" y1="28" x2="106" y2="28" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + [0,1,2].map(i=>`<path d="M${26+i*20} 38 A10 10 0 0 1 ${46+i*20} 38" fill="none" stroke="${col}" stroke-width="3"/>`).join('')
+    + `<line x1="26" y1="38" x2="86" y2="38" stroke="#0f172a" stroke-width="1" opacity=".4"/>`
+    + txt(20,10,'L',6,CL.muted,'start')
+    + txt(55,54,c.data.value||'',7,on?CL.green:CL.muted)
+  );
+}
+function symDiode(c){
+  const on = c.state.energized;
+  const col = on ? CL.hot : '#e2e8f0';
+  return wrap(c,
+    `<line x1="4" y1="24" x2="36" y2="24" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="66" y1="24" x2="96" y2="24" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<path d="M36 10 L36 38 L66 24 Z" fill="#1e293b" stroke="${col}" stroke-width="2"/>`
+    + `<line x1="66" y1="10" x2="66" y2="38" stroke="${col}" stroke-width="3"/>`
+    + txt(20,8,'D',6,CL.muted,'start')
+    + txt(50,47,c.data.value||'',7,on?CL.green:CL.muted)
+  );
+}
+function symLed(c){
+  const on = c.state.energized;
+  const col = c.data.color === 'Red' ? '#ef4444' : c.data.color === 'Blue' ? '#3b82f6' : c.data.color === 'Yellow' ? '#f5c518' : '#22c55e';
+  return wrap(c,
+    `<line x1="4" y1="30" x2="38" y2="30" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="64" y1="30" x2="96" y2="30" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + (on?`<circle cx="52" cy="30" r="20" fill="${col}" opacity=".22"/>`:'')
+    + `<path d="M38 16 L38 44 L64 30 Z" fill="${on?col:'#1e293b'}" stroke="${col}" stroke-width="2"/>`
+    + `<line x1="64" y1="16" x2="64" y2="44" stroke="${on?col:'#e2e8f0'}" stroke-width="3"/>`
+    + `<g stroke="${on?col:CL.muted}" stroke-width="1.6" stroke-linecap="round"><line x1="70" y1="16" x2="76" y2="10"/><line x1="74" y1="22" x2="82" y2="19"/><line x1="70" y1="10" x2="72" y2="6"/></g>`
+    + txt(50,63,(c.data.color||'Green')+' · '+(c.data.v||'2.1 V'),7,on?CL.green:CL.muted)
+  );
+}
+function symZener(c){
+  const on = c.state.energized;
+  const col = on ? CL.hot : '#e2e8f0';
+  return wrap(c,
+    `<line x1="4" y1="26" x2="36" y2="26" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="66" y1="26" x2="96" y2="26" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<path d="M36 12 L36 40 L66 26 Z" fill="#1e293b" stroke="${col}" stroke-width="2"/>`
+    + `<path d="M60 40 L66 12 L72 40" fill="none" stroke="${col}" stroke-width="3"/>`
+    + txt(20,9,'DZ',6,CL.muted,'start')
+    + txt(50,50,c.data.value||'',7,on?CL.green:CL.muted)
+  );
+}
+
+function symMeterPanel(c, title, value, unit, color){
+  const on = c.state.energized;
+  const ang = -120 + Math.min(240, (Number(c.state.kw)||0) / 5 * 240);
+  return wrap(c,
+    `<line x1="8" y1="58" x2="20" y2="58" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="110" y1="58" x2="122" y2="58" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<rect x="16" y="8" width="98" height="96" rx="7" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<rect x="24" y="16" width="82" height="30" rx="3" fill="#0b1220" stroke="${on?'#14532d':'#334155'}" stroke-width="1.5"/>`
+    + txt(64,37,value,14,on?color:'#334155')
+    + txt(99,43,unit,7,on?color:CL.muted)
+    + txt(64,58,title,6.5,CL.muted)
+    + `<circle cx="64" cy="76" r="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>`
+    + `<line x1="64" y1="76" x2="${64+9*Math.cos(ang*Math.PI/180)}" y2="${76+9*Math.sin(ang*Math.PI/180)}" stroke="#334155" stroke-width="1.8"/>`
+    + txt(64,98,c.label,7,'#1e293b')
+  );
+}
+function symWattmeter(c){ return symMeterPanel(c,'WATTMETER',(Number(c.state.kw)||0).toFixed(2),'kW',CL.green); }
+function symEnergyMeter(c){ return symMeterPanel(c,'ENERGY METER',(Number(c.state.kwh)||0).toFixed(2),'kWh',CL.cyan); }
+function symPfMeter(c){ return symMeterPanel(c,'POWER FACTOR',(Number(c.state.pf)||0).toFixed(2),'cosφ',CL.amber); }
+function symFreqMeter(c){ return symMeterPanel(c,'FREQUENCY',(Number(c.state.hz)||0).toFixed(1),'Hz',CL.cyan); }
+function symMultimeter(c){
+  const m = c.data.mode || 'V';
+  const val = m === 'A' ? (Number(c.state.amps)||0).toFixed(2)
+            : m === 'Ω' ? '----'
+            : (Number(c.state.volts)||0).toFixed(0);
+  const unit = m === 'A' ? 'A' : m === 'Ω' ? 'Ω' : 'V';
+  return symMeterPanel(c,'MULTIMETER',val,unit,CL.green);
+}
+function symCapBank(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<rect x="10" y="8" width="110" height="104" rx="6" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<rect x="16" y="14" width="98" height="18" rx="3" fill="#0b1220"/>`
+    + txt(65,27,(c.data.kvar||0)+' kVAr · '+(c.data.volts||''),8,on?CL.cyan:CL.muted)
+    + [0,1,2].map(i=>`
+        <line x1="${26+i*30}" y1="42" x2="${26+i*30}" y2="66" stroke="${on?CL.cyan:'#cbd5e1'}" stroke-width="3"/>
+        <line x1="${34+i*30}" y1="42" x2="${34+i*30}" y2="66" stroke="${on?CL.cyan:'#cbd5e1'}" stroke-width="3"/>
+        <line x1="${20+i*30}" y1="54" x2="${26+i*30}" y2="54" stroke="${CL.metal}" stroke-width="1.5"/>
+        <line x1="${34+i*30}" y1="54" x2="${40+i*30}" y2="54" stroke="${CL.metal}" stroke-width="1.5"/>`).join('')
+    + [[26,42],[56,42],[86,42]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2" fill="${CL.metal}"/>`).join('')
+    + txt(65,80,c.label,8,'#1e293b')
+    + `<circle cx="65" cy="94" r="4" fill="${on?CL.green:CL.dim}"/>`
+    + txt(65,108,(c.data.steps||0)+' steps',6,CL.muted)
+  );
+}
+function symIsolator(c){
+  const on = c.state.closed;
+  return wrap(c,
+    `<rect x="14" y="8" width="92" height="134" rx="6" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + [0,1,2].map(i=>{
+        const x = 24 + i*36;
+        return `<line x1="${x}" y1="14" x2="${x}" y2="42" stroke="${CL.metal}" stroke-width="2.5"/>`
+          + `<line x1="${x}" y1="108" x2="${x}" y2="136" stroke="${CL.metal}" stroke-width="2.5"/>`
+          + `<line x1="${x}" y1="42" x2="${x}" y2="${on?108:96}" stroke="${on?CL.green:CL.red}" stroke-width="3"/>`
+          + `<circle cx="${x}" cy="42" r="3" fill="${CL.metal}"/>`
+          + `<circle cx="${x}" cy="108" r="3" fill="${CL.metal}"/>`;
+      }).join('')
+    + `<rect x="34" y="60" width="52" height="16" rx="3" fill="#0b1220" stroke="${on?CL.green:CL.red}"/>`
+    + txt(60,72,on?'CLOSED':'OPEN',7,on?CL.green:CL.red)
+    + txt(60,88,(c.data.rating||'')+' A · '+(c.data.poles||'3P'),7,CL.muted)
+    + `<circle cx="60" cy="124" r="4" fill="${on?CL.green:CL.red}"/>`
+  );
+}
+function symChangeover(c){
+  const pos = c.state.pos || 'A';
+  return wrap(c,
+    `<rect x="10" y="8" width="120" height="114" rx="6" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<circle cx="26" cy="32" r="4" fill="${pos==='A'?CL.green:CL.dim}"/>`
+    + `<circle cx="26" cy="88" r="4" fill="${pos==='B'?CL.green:CL.dim}"/>`
+    + `<circle cx="116" cy="60" r="4" fill="${pos!=='OFF'?CL.green:CL.dim}"/>`
+    + txt(14,24,'A',7,pos==='A'?CL.green:CL.muted,'start')
+    + txt(14,82,'B',7,pos==='B'?CL.green:CL.muted,'start')
+    + txt(108,50,'O',7,CL.muted,'end')
+    + `<line x1="30" y1="60" x2="112" y2="${pos==='A'?32:pos==='B'?88:60}" stroke="${pos==='OFF'?CL.dim:CL.green}" stroke-width="3"/>`
+    + `<circle cx="30" cy="60" r="3" fill="${CL.metal}"/>`
+    + txt(70,112,'CHANGEOVER · '+(c.data.rating||'')+' A',6,CL.muted)
+  );
+}
+function symCt(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<line x1="8" y1="32" x2="112" y2="32" stroke="${on?CL.amber:CL.metal}" stroke-width="4"/>`
+    + `<rect x="30" y="16" width="18" height="32" rx="4" fill="#334155" stroke="${CL.edge}" stroke-width="1.5"/>`
+    + `<rect x="72" y="16" width="18" height="32" rx="4" fill="#334155" stroke="${CL.edge}" stroke-width="1.5"/>`
+    + `<ellipse cx="60" cy="32" rx="22" ry="16" fill="none" stroke="${on?CL.cyan:CL.dim}" stroke-width="3"/>`
+    + `<line x1="34" y1="48" x2="34" y2="100" stroke="${CL.edge}" stroke-width="1.5"/>`
+    + `<line x1="86" y1="48" x2="86" y2="100" stroke="${CL.edge}" stroke-width="1.5"/>`
+    + txt(60,68,(c.data.ratio||'')+' · CT',8,on?CL.green:CL.muted)
+    + txt(60,84,c.label,7,'#1e293b')
+    + txt(30,108,'S1',6,CL.muted,'end') + txt(90,108,'S2',6,CL.muted,'start')
+    + `<circle cx="34" cy="94" r="3" fill="${CL.metal}"/>`
+    + `<circle cx="86" cy="94" r="3" fill="${CL.metal}"/>`
+  );
+}
+function symVariac(c){
+  const on = c.state.energized;
+  return wrap(c,
+    `<rect x="14" y="10" width="102" height="100" rx="8" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<ellipse cx="65" cy="48" rx="34" ry="26" fill="#8a6b2a" stroke="#5a4418" stroke-width="2"/>`
+    + `<ellipse cx="65" cy="48" rx="24" ry="17" fill="#a8873e" stroke="#5a4418" stroke-width="1.5"/>`
+    + `<line x1="65" y1="48" x2="${65+30*Math.cos((c.data.pct||100)/100*Math.PI*1.6-2.6)}" y2="${48+30*Math.sin((c.data.pct||100)/100*Math.PI*1.6-2.6)}" stroke="${on?CL.hot:CL.metal}" stroke-width="2"/>`
+    + `<circle cx="65" cy="48" r="5" fill="#0b1220" stroke="${CL.metal}"/>`
+    + `<rect x="26" y="80" width="78" height="18" rx="3" fill="#0b1220" stroke="${on?'#14532d':'#334155'}"/>`
+    + txt(65,93,(on?(c.state.out||0):0)+' V',10,on?CL.green:CL.muted)
+    + txt(65,112,c.label+' · '+(c.data.kva||0)+' kVA',7,'#1e293b')
+  );
+}
+function symLimitSwitch(c){
+  const on = c.state.pressed;
+  return wrap(c,
+    `<rect x="18" y="18" width="72" height="56" rx="5" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<circle cx="36" cy="46" r="4" fill="${CL.metal}"/>`
+    + `<circle cx="72" cy="46" r="4" fill="${CL.metal}"/>`
+    + `<line x1="36" y1="46" x2="${on?72:62}" y2="${on?46:36}" stroke="${on?CL.green:CL.red}" stroke-width="2.5"/>`
+    + `<line x1="72" y1="46" x2="96" y2="46" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<circle cx="98" cy="46" r="6" fill="url(#bodyGrad)" stroke="${CL.edge}" stroke-width="1.5"/>`
+    + `<line x1="98" y1="52" x2="90" y2="72" stroke="${CL.metal}" stroke-width="2"/>`
+    + `<circle cx="86" cy="77" r="6" fill="#334155" stroke="${CL.edge}" stroke-width="1.5"/>`
+    + txt(54,88,c.label,7,'#1e293b')
+    + txt(54,98,on?'ACTUATED':'RELEASED',6,on?CL.green:CL.muted)
+  );
+}
+function symProximity(c){
+  const on = c.state.active;
+  return wrap(c,
+    `<rect x="12" y="30" width="26" height="52" rx="4" fill="#334155" stroke="${CL.edge}" stroke-width="2"/>`
+    + `<rect x="14" y="48" width="8" height="16" rx="2" fill="${on?CL.green:CL.dim}"/>`
+    + [0,1,2].map(i=>`<path d="M${42+i*12} ${30+i*6} Q${58+i*12} 56 ${42+i*12} ${82-i*6}" fill="none" stroke="${on?CL.green:CL.dim}" stroke-width="2" opacity="${on?'.9':'.45'}"/>`).join('')
+    + `<rect x="88" y="42" width="14" height="28" rx="2" fill="#64748b" stroke="${CL.edge}"/>`
+    + txt(60,102,c.label,7,'#1e293b')
+    + txt(60,112,(c.data.kind||'Inductive')+' · '+(c.data.range||''),6,CL.muted)
+  );
+}
+function symCounter(c){
+  const on = c.state.coil;
+  const count = Number(c.state.count)||0;
+  return wrap(c,
+    `<rect x="14" y="8" width="112" height="114" rx="6" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<rect x="22" y="16" width="96" height="34" rx="3" fill="#0b1220" stroke="${on?'#14532d':'#334155'}"/>`
+    + txt(70,42,String(count).padStart(2,'0'),17,on?CL.green:CL.muted)
+    + txt(70,62,'PRESET '+(c.data.preset||0)+' '+(c.data.unit||''),7,CL.muted)
+    + `<circle cx="34" cy="78" r="6" fill="${on?CL.green:CL.dim}"/>`
+    + txt(34,94,'A1',6,CL.muted)
+    + `<circle cx="106" cy="78" r="6" fill="${count>=(Number(c.data.preset)||0)?CL.green:CL.dim}"/>`
+    + txt(106,94,'15/18',6,CL.muted)
+    + txt(70,110,c.label,7,'#1e293b')
+  );
+}
+
+function symAmmeter(c){
+  const on = c.state.energized;
+  const amps = Number(c.state.amps) || 0;
+  const ang = -120 + Math.min(240, amps / 50 * 240);
+  return wrap(c,
+    `<line x1="6" y1="58" x2="20" y2="58" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<line x1="84" y1="58" x2="98" y2="58" stroke="${CL.metal}" stroke-width="2.5"/>`
+    + `<rect x="18" y="8" width="68" height="88" rx="7" fill="url(#bodyGrad)" stroke="#475569" stroke-width="2"/>`
+    + `<rect x="24" y="16" width="56" height="26" rx="3" fill="#0b1220" stroke="${on?'#14532d':'#334155'}" stroke-width="1.5"/>`
+    + txt(50,34,on?amps.toFixed(1):'0.0',13,on?CL.green:CL.muted)
+    + txt(72,34,'A',8,on?CL.green:CL.muted)
+    + `<path d="M29 66 A23 23 0 0 1 75 66" fill="none" stroke="${CL.dim}" stroke-width="2"/>`
+    + `<line x1="52" y1="66" x2="${52+20*Math.cos(ang*Math.PI/180)}" y2="${66+20*Math.sin(ang*Math.PI/180)}" stroke="${on?CL.cyan:CL.metal}" stroke-width="2"/>`
+    + `<circle cx="52" cy="66" r="2.5" fill="${on?CL.cyan:CL.metal}"/>`
+    + txt(52,88,c.label,8,'#1e293b')
+    + txt(52,99,c.data.range||'0–50 A',6,CL.muted)
+    + txt(16,52,'1',6,'#1e293b') + txt(88,52,'2',6,'#1e293b')
+  );
+}
+
 function symVoltmeter(c){
   const v = c.state.volts;
   const live = v !== null && v !== undefined;
@@ -1848,6 +2275,28 @@ function svgFor(c){
     case 'motor_arrow':return symMotorArrow(c);
     case 'ats':      return symAts(c);
     case 'ctmeter':  return symCtMeter(c);
+    case 'ammeter':  return symAmmeter(c);
+    case 'resistor': return symResistor(c);
+    case 'potentiometer': return symPotentiometer(c);
+    case 'capacitor': return symCapacitor(c);
+    case 'capacitor_elec': return symCapacitorElec(c);
+    case 'inductor': return symInductor(c);
+    case 'diode':    return symDiode(c);
+    case 'led':      return symLed(c);
+    case 'zener':    return symZener(c);
+    case 'capbank':  return symCapBank(c);
+    case 'isolator': return symIsolator(c);
+    case 'changeover': return symChangeover(c);
+    case 'ct':       return symCt(c);
+    case 'variac':   return symVariac(c);
+    case 'wattmeter':return symWattmeter(c);
+    case 'energymeter': return symEnergyMeter(c);
+    case 'pfmeter':  return symPfMeter(c);
+    case 'freqmeter':return symFreqMeter(c);
+    case 'multimeter': return symMultimeter(c);
+    case 'limit_switch': return symLimitSwitch(c);
+    case 'proximity':return symProximity(c);
+    case 'counter':  return symCounter(c);
     case 'voltmeter':return symVoltmeter(c);
     case 'float':    return symFloat(c);
     case 'pressure': return symPressure(c);
@@ -1942,6 +2391,28 @@ function internalEdges(c){
       break;
     case 'arrow':
       e.push([id+'1', id+'2']);
+      break;
+    case 'ammeter':
+      e.push([id+'1', id+'2']);   /* inline ammeter: a short through-link */
+      break;
+    case 'isolator':
+      if(s.closed) e.push([id+'1', id+'2'], [id+'3', id+'4'], [id+'5', id+'6']);
+      break;
+    case 'changeover':
+      if(s.pos === 'A') e.push([id+'A', id+'O']);
+      else if(s.pos === 'B') e.push([id+'B', id+'O']);
+      break;
+    case 'ct':
+      e.push([id+'P1', id+'P2']);   /* primary is just a bar through the core */
+      break;
+    case 'limit_switch':
+      if(s.pressed) e.push([id+'1', id+'2']);
+      break;
+    case 'proximity':
+      if(s.active) e.push([id+'1', id+'2']);
+      break;
+    case 'counter':
+      if((Number(s.count)||0) >= (Number(c.data.preset)||0)) e.push([id+'15', id+'18']);
       break;
     case 'float':
     case 'pressure':
@@ -2234,6 +2705,12 @@ function simulate(dt){
         c.state.blinkOn = (c.state.t % period) < (period / 2);
       } else { c.state.t = 0; c.state.blinkOn = false; }
     }
+    if(c.type === 'counter'){
+      const on = acrossRoots(c, 'A1', 'A2', timeRoots);
+      if(on && !c.state.coil) c.state.count = (Number(c.state.count) || 0) + 1;
+      if(c.state.count > 9999) c.state.count = 0;
+      c.state.coil = on;
+    }
     if(c.type === 'plc'){
       if(!shorted) plcScan(c, timeRoots, dt || 0, true);
     }
@@ -2299,9 +2776,31 @@ function simulate(dt){
     hotMap[c.id+':'+p.id] = hotRoots.has(ufFind(c.id+':'+p.id));
   }));
 
+  /* wire-graph distance from the sources — gives every live wire a direction */
+  const _adj = {}, _dist = {}, _q = [];
+  const _add = (a, b) => { (_adj[a] = _adj[a] || []).push(b); (_adj[b] = _adj[b] || []).push(a); };
+  wires.forEach(w => _add(w.from.comp + ':' + w.from.port, w.to.comp + ':' + w.to.port));
+  components.forEach(c => internalEdges(c).forEach(e => _add(e[0], e[1])));
+  srcs.forEach(s => {
+    const k = s.comp.id + ':' + s.port;
+    if(_dist[k] === undefined){ _dist[k] = 0; _q.push(k); }
+  });
+  while(_q.length){
+    const k = _q.shift();
+    (_adj[k] || []).forEach(n => { if(_dist[n] === undefined){ _dist[n] = _dist[k] + 1; _q.push(n); } });
+  }
+  wires.forEach(w => {
+    const da = _dist[w.from.comp + ':' + w.from.port];
+    const db = _dist[w.to.comp + ':' + w.to.port];
+    w._dir = (da !== undefined && db !== undefined && da !== db) ? (da < db ? 1 : -1) : 0;
+  });
+
   let totalAmps = 0;
   components.forEach(c => {
-    if(c.type === 'lamp' || c.type === 'alarm'){
+    if(c.type === 'lamp' || c.type === 'alarm' ||
+       c.type === 'resistor' || c.type === 'potentiometer' || c.type === 'capacitor' ||
+       c.type === 'capacitor_elec' || c.type === 'inductor' || c.type === 'diode' ||
+       c.type === 'led' || c.type === 'zener'){
       c.state.energized = acrossRoots(c, '1', '2', roots);
     }
     if(c.type === 'arrow'){
@@ -2329,6 +2828,19 @@ function simulate(dt){
         roots.some(r => ufFind(c.id + ':' + p) === r.hot)).length;
       c.state.mode = mode;
       c.state.energized = (mode === 'STAR' || mode === 'DELTA') && hotIn >= 2 && !sourceFault;
+      /* rotation direction follows the phase sequence: L1-L2-L3 = CW, any swap = CCW */
+      const seq = ['U1','V1','W1'].map(p => phaseRoots[ufFind(c.id + ':' + p)] || '');
+      const idx = seq.map(x => ['L1','L2','L3'].indexOf(x));
+      const forced = String(c.data.dir || 'AUTO').toUpperCase();
+      if(forced === 'CW' || forced === 'CCW'){
+        c.state.dir = forced;
+      } else if(idx.every(i => i >= 0)){
+        let inv = 0;
+        for(let i = 0; i < 3; i++) for(let j = i + 1; j < 3; j++) if(idx[i] > idx[j]) inv++;
+        c.state.dir = inv % 2 === 0 ? 'CW' : 'CCW';
+      } else if(!c.state.dir){
+        c.state.dir = 'CW';
+      }
       if(c.state.energized){
         const sameRun = was && wasMode === mode;
         c.state.runTime = (sameRun ? (c.state.runTime || 0) : 0) + (dt || 0);
@@ -2351,6 +2863,46 @@ function simulate(dt){
       c.state.energized = c.state.volts !== null && c.state.volts > 0;
     }
     if(c.type === 'spd'){
+      c.state.energized = acrossRoots(c, '1', '2', roots);
+    }
+  });
+  /* inline ammeter: reads the current of every motor fed through the same node */
+  components.forEach(c => {
+    if(c.type !== 'ammeter') return;
+    const node = ufFind(c.id + ':1');
+    let sum = 0;
+    components.forEach(m => {
+      if(!isMotor(m.type) || !m.state.energized) return;
+      const ports = TYPES[m.type].ports.map(p => p.id);
+      if(ports.some(pid => ufFind(m.id + ':' + pid) === node)) sum += Number(m.state.amps) || 0;
+    });
+    c.state.amps = sum;
+    c.state.energized = sum > 0.01;
+  });
+  /* panel meters and power-quality instruments read the live circuit */
+  components.forEach(c => {
+    if(c.type === 'wattmeter' || c.type === 'energymeter' || c.type === 'pfmeter' ||
+       c.type === 'freqmeter' || c.type === 'multimeter'){
+      const v = meterVolts(c, roots);
+      c.state.energized = v !== null && v > 0;
+      c.state.volts = c.state.energized ? v : 0;
+      c.state.amps = c.state.energized ? totalAmps : 0;
+      const pf = 0.85;
+      const kw = c.state.energized ? (Math.sqrt(3) * v * totalAmps * pf) / 1000 : 0;
+      c.state.kw = kw;
+      c.state.pf = c.state.energized ? pf : 0;
+      c.state.hz = c.state.energized ? supplyFreq : 0;
+      if(c.type === 'energymeter' && c.state.energized)
+        c.state.kwh = (c.state.kwh || 0) + kw * (dt || 0) / 3600;
+    }
+    if(c.type === 'capbank'){
+      c.state.energized = acrossRoots(c, '1', '3', roots) || acrossRoots(c, '2', '4', roots);
+    }
+    if(c.type === 'variac'){
+      c.state.energized = acrossRoots(c, '1', '3', roots) || acrossRoots(c, '1', '2', roots);
+      c.state.out = c.state.energized ? Math.round(supplyV * (Number(c.data.pct) || 100) / 100) : 0;
+    }
+    if(c.type === 'limit_switch' || c.type === 'proximity'){
       c.state.energized = acrossRoots(c, '1', '2', roots);
     }
   });
@@ -2435,6 +2987,15 @@ function render(){
     d.addEventListener('pointerdown', ev => compPointerDown(ev, c.id));
     d.addEventListener('dblclick', ev => { ev.preventDefault(); inspectComp(c.id); });
     d.addEventListener('contextmenu', ev => { ev.preventDefault(); deleteComp(c.id); });
+    /* on-canvas resize + rotate grips */
+    const rz = document.createElement('div');
+    rz.className = 'ch rz'; rz.title = 'Drag to resize / اسحب للتكبير';
+    rz.addEventListener('pointerdown', ev => startResize(ev, c.id));
+    d.appendChild(rz);
+    const rt = document.createElement('div');
+    rt.className = 'ch rt'; rt.title = 'Drag to rotate / اسحب للتدوير';
+    rt.addEventListener('pointerdown', ev => startRotate(ev, c.id));
+    d.appendChild(rt);
     STAGE.appendChild(d);
     c.el = d;
     c._sig = null;
@@ -2769,12 +3330,33 @@ function drawWires(){
        parallel runs read clean, and the colours pop */
     parts.push(`<path d="${d}" fill="none" stroke="#0f172a" stroke-width="${width + 2.6}" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>`);
     parts.push(`<path d="${d}" class="${cls + (w.id===selectedWire?' sel':'')}" stroke="${stroke}" stroke-width="${width}"${dash?` stroke-dasharray="${dash}"`:''} onclick="selectWire('${w.id}')" oncontextmenu="deleteWire('${w.id}');return false;"/>`);
+    const hotA = !!hotMap[w.from.comp + ':' + w.from.port];
+    const hotB = !!hotMap[w.to.comp + ':' + w.to.port];
+    if(live && (hotA || hotB) && w._dir){
+      const rev = w._dir < 0;
+      parts.push(`<path class="wire-flow${rev?' rev':''}" d="${d}" fill="none" stroke="#eafff4" stroke-width="${Math.max(1.5, width - 0.9)}" opacity=".8" data-flow="1" pointer-events="none"/>`);
+    }
     parts.push(`<circle cx="${p1.x}" cy="${p1.y}" r="2.2" fill="#0f172a"/>`);
     parts.push(`<circle cx="${p2.x}" cy="${p2.y}" r="2.2" fill="#0f172a"/>`);
     parts.push(`<circle cx="${p1.x}" cy="${p1.y}" r="2.6" fill="none" stroke="${stroke}" stroke-width="1.4"/>`);
     parts.push(`<circle cx="${p2.x}" cy="${p2.y}" r="2.6" fill="none" stroke="${stroke}" stroke-width="1.4"/>`);
   });
   svg.innerHTML = parts.join('');
+  /* current-direction arrowheads on energised wires */
+  svg.querySelectorAll('path[data-flow]').forEach(pth => {
+    try{
+      const L = pth.getTotalLength();
+      if(!L || L < 28) return;
+      const at = L * 0.5;
+      const a = pth.getPointAtLength(at - 2), b = pth.getPointAtLength(at + 2);
+      const ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('transform', 'translate(' + b.x.toFixed(1) + ',' + b.y.toFixed(1) + ') rotate(' + ang.toFixed(1) + ')');
+      g.setAttribute('pointer-events', 'none');
+      g.innerHTML = '<path d="M -7 -4.2 L 3 0 L -7 4.2 Z" fill="#eafff4" opacity=".95"/>';
+      svg.appendChild(g);
+    }catch(e){}
+  });
 }
 
 function isWireLive(w){
@@ -2966,7 +3548,7 @@ function renderProps(){
   if(!c){ box.innerHTML = '<div class="muted">اختر مكوّناً لتعديل بياناته.</div>'; return; }
   let h = '';
   h += `<div class="prop"><label>Label</label><input type="text" value="${c.label}" onchange="setLabel('${c.id}',this.value)"></div>`;
-  h += `<div class="prop"><label>Size</label><input type="range" min="0.5" max="2" step="0.1" value="${c.data.scale||1}" oninput="this.nextElementSibling.textContent=(+this.value).toFixed(1)+'×'" onchange="setScale('${c.id}',this.value)" style="width:90px"><span style="min-width:34px;text-align:right;font-size:10.5px;color:var(--muted)">${(c.data.scale||1).toFixed(1)}×</span></div>`;
+  h += `<div class="prop"><label>Size</label><input type="range" min="0.4" max="3" step="0.05" value="${c.data.scale||1}" oninput="this.nextElementSibling.textContent=(+this.value).toFixed(2)+'×'" onchange="setScale('${c.id}',this.value)" style="width:90px"><span style="min-width:38px;text-align:right;font-size:10.5px;color:var(--muted)">${(c.data.scale||1).toFixed(2)}×</span></div>`;
   h += `<div class="prop"><label>Rotate</label>
     <button class="mini" onclick="rotBy('${c.id}',-90)" title="Rotate left">↺ 90°</button>
     <button class="mini" onclick="rotBy('${c.id}',90)" title="Rotate right">↻ 90°</button>
@@ -2979,16 +3561,55 @@ function renderProps(){
     h += `<div class="prop"><label>Power kW</label><input type="number" step="0.1" min="0.1" value="${c.data.kw}" onchange="setData('${c.id}','kw',this.value)"></div>`;
     h += `<div class="prop"><label>FLA (A)</label><input type="number" step="0.1" min="0" value="${c.data.fla}" onchange="setData('${c.id}','fla',this.value)"></div>`;
     h += `<div class="prop"><label>Speed RPM</label><input type="number" step="1" min="0" value="${c.data.rpm}" onchange="setData('${c.id}','rpm',this.value)"></div>`;
+    h += `<div class="prop"><label>Rotation</label><select onchange="setMeta('${c.id}','dir',this.value)">${['AUTO','CW','CCW'].map(v => `<option value="${v}"${(c.data.dir||'AUTO')===v?' selected':''}>${v==='AUTO'?'AUTO (phase sequence)':v==='CW'?'CW — clockwise':'CCW — counter-clockwise'}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Turning</label><span class="mini ${c.state.energized?'go':'stop'}">${c.state.energized?(c.state.dir||'CW'):'STOPPED'}</span></div>`;
     if(c.type === 'motor'){
       h += `<div class="prop"><label>Poles</label><select onchange="setMeta('${c.id}','poles',this.value)">${[2,4,6,8].map(v => `<option value="${v}"${Number(c.data.poles)===v?' selected':''}>${v} pole</option>`).join('')}</select></div>`;
       h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['400 V Δ/Y','415 V','690 V'].map(v => `<option value="${v}"${c.data.volts===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
       h += `<div class="prop"><label>Wiring</label><select onchange="setMeta('${c.id}','connection',this.value)">${[['AUTO','AUTO — wire outputs to star/delta contactor'],['STAR','STAR Y (internal links)'],['DELTA','DELTA Δ (internal links)']].map(([v,n]) => `<option value="${v}"${(c.data.connection||'AUTO')===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
       h += `<div class="prop"><label>Mode</label><span class="mini ${c.state.mode==='DELTA'?'go':c.state.mode==='STAR'?'':'stop'}">${c.state.mode==='DELTA'?'DELTA Δ':c.state.mode==='STAR'?'STAR Y':'OPEN — wire outputs (K3 star / K2 delta)'}</span></div>`;
       h += `<div class="prop"><label>Terminals</label><span class="mini">U1 V1 W1 / U2 V2 W2</span></div>`;
+      // Torque & electrical calculations (IEC motor laws)
+      (function(){
+        const kw = Number(c.data.kw) || 0;
+        const rpm = Number(c.data.rpm) || 1;
+        const poles = Number(c.data.poles) || 4;
+        const fla = Number(c.data.fla) || 0;
+        const volts = parseFloat(String(c.data.volts||'400').replace(/[^0-9.]/g,'')) || 400;
+        const ns = (120 * supplyFreq) / poles;            // synchronous speed
+        const slip = Math.max(0, (ns - rpm) / ns * 100);  // slip %
+        const torque = (kw * 1000 * 60) / (2 * Math.PI * rpm); // T = P/ω  (N·m), P in W
+        const torque2 = (9550 * kw) / rpm;                 // T = 9550*P(kW)/n
+        const cosphi = 0.85, eta = 0.90;
+        const I3 = (kw * 1000) / (Math.sqrt(3) * volts * cosphi * eta);
+        const I1 = (kw * 1000) / (volts * cosphi * eta);
+        h += `<div style="margin-top:8px;padding:6px;border:1px solid var(--border);border-radius:8px;background:#0a1020;font-size:10.5px">`;
+        h += `<div style="color:var(--accent);font-weight:800;margin-bottom:4px">📐 Motor calculations (IEC)</div>`;
+        h += `<div class="prop"><label>Sync speed ns</label><span class="mini">${ns.toFixed(0)} rpm</span></div>`;
+        h += `<div class="prop"><label>Slip</label><span class="mini">${slip.toFixed(2)} %</span></div>`;
+        h += `<div class="prop"><label>Torque T</label><span class="mini">${torque.toFixed(1)} N·m  (9550·P/n = ${torque2.toFixed(1)})</span></div>`;
+        h += `<div class="prop"><label>Current (3Φ)</label><span class="mini">${I3.toFixed(2)} A  (cosφ 0.85, η 0.90)</span></div>`;
+        h += `<div class="prop"><label>Current (1Φ)</label><span class="mini">${I1.toFixed(2)} A</span></div>`;
+        h += `<div class="prop"><label>FLA (nameplate)</label><span class="mini">${fla} A</span></div>`;
+        h += `</div>`;
+      })();
     }
     if(c.type === 'motor_1ph'){
       h += `<div class="prop"><label>Run capacitor</label><input type="number" step="1" min="0" value="${c.data.cap}" onchange="setData('${c.id}','cap',this.value)"></div>`;
       h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['230 V','115 V'].map(v => `<option value="${v}"${c.data.volts===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+      (function(){
+        const kw = Number(c.data.kw)||0; const rpm = Number(c.data.rpm)||1; const fla = Number(c.data.fla)||0;
+        const volts = parseFloat(String(c.data.volts||'230').replace(/[^0-9.]/g,''))||230;
+        const torque = (kw*1000*60)/(2*Math.PI*rpm);
+        const cosphi=0.9, eta=0.85;
+        const I = (kw*1000)/(volts*cosphi*eta);
+        h += `<div style="margin-top:8px;padding:6px;border:1px solid var(--border);border-radius:8px;background:#0a1020;font-size:10.5px">`;
+        h += `<div style="color:var(--accent);font-weight:800;margin-bottom:4px">📐 Motor calculations (IEC)</div>`;
+        h += `<div class="prop"><label>Torque T</label><span class="mini">${torque.toFixed(2)} N·m</span></div>`;
+        h += `<div class="prop"><label>Current</label><span class="mini">${I.toFixed(2)} A  (cosφ 0.9, η 0.85)</span></div>`;
+        h += `<div class="prop"><label>FLA (nameplate)</label><span class="mini">${fla} A</span></div>`;
+        h += `</div>`;
+      })();
     }
     if(c.type === 'motor_dc'){
       h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['220 V DC','110 V DC','24 V DC'].map(v => `<option value="${v}"${String(c.data.volts)===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
@@ -3076,6 +3697,7 @@ function renderProps(){
   }
   if(c.type === 'power' || c.type === 'power_1ph'){
     h += `<div class="prop"><label>Voltage</label><select onchange="setSupplyV(this.value)">${[24,230,400].map(v => `<option value="${v}"${supplyV==v?' selected':''}>${v} V</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Frequency</label><select onchange="setSupplyFreq(this.value)">${[50,60].map(v => `<option value="${v}"${supplyFreq==v?' selected':''}>${v} Hz</option>`).join('')}</select></div>`;
   }
   if(c.type === 'generator' || c.type === 'generator_3p'){
     h += `<div class="prop"><label>Rating kVA</label><input type="number" step="1" min="1" value="${c.data.kva||50}" onchange="setData('${c.id}','kva',this.value)"></div>`;
@@ -3172,7 +3794,90 @@ function renderProps(){
     const oo = ['Q1','Q2','Q3','Q4'].map(a => a+'='+(c.state.out[a]?'1':'0')).join('  ');
     h += `<div class="plcio">${io}<br>${oo}</div>`;
   }
-  const desc = {power:'Main supply',mcb:'Miniature circuit breaker',pb_no:'Normally open push button',pb_nc:'Normally closed push button',estop:'Emergency stop (latching)',selector:'Maintained selector switch',contactor:'Coil + main / NO / NC contacts',relay:'Auxiliary relay (NO + NC)',timer:'On-delay timer',ol:'Thermal overload relay',lamp:'Indicator lamp',motor:'Three-phase motor',alarm:'Audible horn',mccb:'Moulded case circuit breaker',rccb:'Residual current breaker (30 mA)',fuse:'Fuse cartridge',spd:'Surge protection device',timer_off:'Off-delay timer',flasher:'Flashing / blinking relay',phase:'Phase failure monitor',terminal:'Terminal block (2 through-links)',busbar:'Distribution busbar',generator:'Standby generator',ats:'Automatic transfer switch',ctmeter:'Current transformer ammeter',float:'Float / level switch',pressure:'Pressure switch',thermostat:'Thermostat',plc:'Ladder PLC (LOGO! style)',vfd:'Variable frequency drive',motor_1ph:'Single-phase motor',motor_dc:'DC motor',motor_stepper:'Stepper motor',motor_servo:'Servo motor',timer_sd:'Star-delta timer',mcb_3p:'3-pole MCB',mccb_3p:'3-pole MCCB',power_1ph:'Single-phase supply',busbar_3p:'3-phase busbar',terminal_6:'6-way terminal strip',generator_3p:'3-phase generator',battery:'Standby control battery (24 V DC)',transformer:'Control transformer',transformer_3p:'3-phase transformer',pt:'Potential transformer (voltage)',pt_3p:'Potential transformer 3Φ',arrow:'Current direction indicator',motor_arrow:'Motor rotation indicator (CW/CCW)'}[c.type] || '';
+  /* ---- Passive / electronic parts: standard presets + free value ---- */
+  const valRow = (label, key, opts) => {
+    const cur = String(c.data[key] === undefined ? '' : c.data[key]);
+    return `<div class="prop"><label>${label}</label><select onchange="setMeta('${c.id}','${key}',this.value)">${opts.map(v => `<option value="${v}"${v===cur?' selected':''}>${v}</option>`).join('')}</select></div>`
+      + `<div class="prop"><label>Custom</label><input type="text" value="${cur}" onchange="setMeta('${c.id}','${key}',this.value)"></div>`;
+  };
+  if(c.type === 'resistor')       h += valRow('Value','value',['10 Ω','47 Ω','100 Ω','470 Ω','1 kΩ','2.2 kΩ','4.7 kΩ','10 kΩ','47 kΩ','100 kΩ','1 MΩ']);
+  if(c.type === 'potentiometer')  h += valRow('Value','value',['1 kΩ','5 kΩ','10 kΩ','50 kΩ','100 kΩ','470 kΩ']);
+  if(c.type === 'capacitor')      h += valRow('Value','value',['1 nF','10 nF','100 nF','1 µF','10 µF','100 µF','470 µF']);
+  if(c.type === 'capacitor_elec') h += valRow('Value','value',['1 µF','10 µF','47 µF','100 µF','470 µF','1000 µF','2200 µF']);
+  if(c.type === 'inductor')       h += valRow('Value','value',['1 mH','10 mH','100 mH','1 H','10 H']);
+  if(c.type === 'diode')          h += valRow('Type','value',['1N4007','1N5408','1N4148','BYV26','MUR1560']);
+  if(c.type === 'zener')          h += valRow('Type','value',['1N4728 (3.3 V)','1N4733 (5.1 V)','1N4742 (12 V)','1N4746 (18 V)','1N4752 (33 V)']);
+  if(c.type === 'led'){
+    h += `<div class="prop"><label>Colour</label><select onchange="setMeta('${c.id}','color',this.value)">${['Green','Red','Yellow','Blue','White'].map(v => `<option${(c.data.color||'Green')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += valRow('Forward V','v',['1.8 V','2.1 V','2.4 V','3.0 V','3.3 V']);
+    h += `<div class="prop"><label>State</label><span class="mini ${c.state.energized?'go':'stop'}">${c.state.energized?'LIT':'OFF'}</span></div>`;
+  }
+  /* ---- Power equipment ---- */
+  if(c.type === 'capbank'){
+    h += `<div class="prop"><label>Rating kVAr</label><select onchange="setMeta('${c.id}','kvar',this.value)">${[10,15,20,25,30,40,50,75,100].map(v => `<option value="${v}"${Number(c.data.kvar||50)===v?' selected':''}>${v} kVAr</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Steps</label><select onchange="setMeta('${c.id}','steps',this.value)">${[3,6,8,10,12].map(v => `<option value="${v}"${Number(c.data.steps||6)===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Voltage</label><select onchange="setMeta('${c.id}','volts',this.value)">${['230 V','400 V','690 V'].map(v => `<option${(c.data.volts||'400 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'isolator'){
+    h += `<div class="prop"><label>Rating</label><select onchange="setMeta('${c.id}','rating',this.value)">${[32,63,100,125,160,200,250,400,630].map(v => `<option value="${v}"${Number(c.data.rating||100)===v?' selected':''}>${v} A</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Poles</label><select onchange="setMeta('${c.id}','poles',this.value)">${['3P','4P'].map(v => `<option${(c.data.poles||'3P')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Switch</label><button class="mini ${c.state.closed?'go':'stop'}" onclick="toggleState('${c.id}','closed')">${c.state.closed?'CLOSED':'OPEN'}</button></div>`;
+  }
+  if(c.type === 'changeover'){
+    h += `<div class="prop"><label>Rating</label><select onchange="setMeta('${c.id}','rating',this.value)">${[32,63,100,125,160,250,400].map(v => `<option value="${v}"${Number(c.data.rating||63)===v?' selected':''}>${v} A</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Poles</label><select onchange="setMeta('${c.id}','poles',this.value)">${['2P','3P','4P'].map(v => `<option${(c.data.poles||'2P')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Position</label><select onchange="setState('${c.id}','pos',this.value)">${['A','B','OFF'].map(v => `<option value="${v}"${c.state.pos===v?' selected':''}>${v==='A'?'SOURCE A':v==='B'?'SOURCE B':'OFF'}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'ct'){
+    h += `<div class="prop"><label>Ratio</label><select onchange="setMeta('${c.id}','ratio',this.value)">${['50/5','100/5','150/5','200/5','300/5','400/5','600/5','1000/5'].map(v => `<option${(c.data.ratio||'200/5')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Class</label><select onchange="setMeta('${c.id}','cls',this.value)">${['0.2','0.5','1','3'].map(v => `<option${(c.data.cls||'0.5')===v?' selected':''}>Class ${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Burden</label><select onchange="setMeta('${c.id}','burden',this.value)">${['2.5 VA','5 VA','10 VA','15 VA'].map(v => `<option${(c.data.burden||'5 VA')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'variac'){
+    h += `<div class="prop"><label>Input</label><select onchange="setMeta('${c.id}','input',this.value)">${['110 V','230 V','400 V'].map(v => `<option${(c.data.input||'230 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Rating kVA</label><select onchange="setMeta('${c.id}','kva',this.value)">${[0.5,1,2,3,5,10].map(v => `<option value="${v}"${Number(c.data.kva||2)===v?' selected':''}>${v} kVA</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Output %</label><input type="range" min="0" max="100" step="1" value="${c.data.pct||100}" oninput="setMeta('${c.id}','pct',this.value)"><span class="mini">${c.data.pct||100}%</span></div>`;
+    h += `<div class="prop"><label>Output V</label><span class="mini ${c.state.energized?'go':'stop'}">${c.state.energized?(c.state.out||0)+' V':'0 V'}</span></div>`;
+  }
+  /* ---- Instruments ---- */
+  if(c.type === 'ammeter'){
+    h += `<div class="prop"><label>Reading</label><span class="mini ${c.state.energized?'go':'stop'}">${(Number(c.state.amps)||0).toFixed(2)} A</span></div>`;
+    h += `<div class="prop"><label>Range</label><select onchange="setMeta('${c.id}','range',this.value)">${['0–5 A','0–20 A','0–50 A','0–100 A','0–400 A'].map(v => `<option${(c.data.range||'0–50 A')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Class</label><select onchange="setMeta('${c.id}','cls',this.value)">${['0.5','1','1.5','2.5'].map(v => `<option${(c.data.cls||'1.5')===v?' selected':''}>Class ${v}</option>`).join('')}</select></div>`;
+  }
+  if(c.type === 'wattmeter' || c.type === 'energymeter' || c.type === 'pfmeter' || c.type === 'freqmeter' || c.type === 'multimeter'){
+    if(c.type === 'multimeter'){
+      h += `<div class="prop"><label>Mode</label><select onchange="setMeta('${c.id}','mode',this.value)">${[['V','Voltage V'],['A','Current A'],['Ω','Resistance Ω']].map(([v,n]) => `<option value="${v}"${(c.data.mode||'V')===v?' selected':''}>${n}</option>`).join('')}</select></div>`;
+    }
+    h += `<div class="prop"><label>Range</label><select onchange="setMeta('${c.id}','range',this.value)">${['0–100 V','0–250 V','0–500 V','0–750 V','0–20 A','0–50 A','0–100 A','0–5 kW','0–50 kW','0–500 kWh','40–70 Hz'].map(v => `<option${(c.data.range||'0–500 V')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Class</label><select onchange="setMeta('${c.id}','cls',this.value)">${['0.5','1','1.5','2.5'].map(v => `<option${(c.data.cls||'1')===v?' selected':''}>Class ${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Voltage</label><span class="mini">${(Number(c.state.volts)||0).toFixed(0)} V</span></div>`;
+    h += `<div class="prop"><label>Current</label><span class="mini">${(Number(c.state.amps)||0).toFixed(2)} A</span></div>`;
+    h += `<div class="prop"><label>Power</label><span class="mini">${(Number(c.state.kw)||0).toFixed(2)} kW</span></div>`;
+    h += `<div class="prop"><label>PF</label><span class="mini">${(Number(c.state.pf)||0).toFixed(2)}</span></div>`;
+    h += `<div class="prop"><label>Frequency</label><span class="mini">${(Number(c.state.hz)||0).toFixed(1)} Hz</span></div>`;
+    if(c.type === 'energymeter'){
+      h += `<div class="prop"><label>Energy</label><span class="mini">${(Number(c.state.kwh)||0).toFixed(3)} kWh</span></div>`;
+      h += `<button class="wide" onclick="setState('${c.id}','kwh',0)">Reset kWh</button>`;
+    }
+  }
+  /* ---- Automation ---- */
+  if(c.type === 'limit_switch'){
+    h += `<div class="prop"><label>Actuator</label><select onchange="setMeta('${c.id}','actuator',this.value)">${['Roller lever','Plunger','Rod','Whisker'].map(v => `<option${(c.data.actuator||'Roller lever')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Contact</label><button class="mini ${c.state.pressed?'go':'stop'}" onclick="toggleState('${c.id}','pressed')">${c.state.pressed?'ACTUATED':'RELEASED'}</button></div>`;
+  }
+  if(c.type === 'proximity'){
+    h += `<div class="prop"><label>Type</label><select onchange="setMeta('${c.id}','kind',this.value)">${['Inductive','Capacitive','Photoelectric','Magnetic'].map(v => `<option${(c.data.kind||'Inductive')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Sensing mm</label><select onchange="setMeta('${c.id}','range',this.value)">${['2 mm','4 mm','8 mm','12 mm','20 mm'].map(v => `<option${(c.data.range||'8 mm')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Target</label><button class="mini ${c.state.active?'go':'stop'}" onclick="toggleState('${c.id}','active')">${c.state.active?'DETECTED':'NO TARGET'}</button></div>`;
+  }
+  if(c.type === 'counter'){
+    h += `<div class="prop"><label>Preset</label><input type="number" step="1" min="1" value="${c.data.preset||5}" onchange="setData('${c.id}','preset',this.value)"></div>`;
+    h += `<div class="prop"><label>Unit</label><select onchange="setMeta('${c.id}','unit',this.value)">${['pcs','cycles','L','m'].map(v => `<option${(c.data.unit||'pcs')===v?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    h += `<div class="prop"><label>Count</label><span class="mini">${c.state.count||0}</span></div>`;
+    h += `<button class="wide" onclick="setState('${c.id}','count',0)">Reset counter</button>`;
+  }
+  const desc = {power:'Main supply',mcb:'Miniature circuit breaker',pb_no:'Normally open push button',pb_nc:'Normally closed push button',estop:'Emergency stop (latching)',selector:'Maintained selector switch',contactor:'Coil + main / NO / NC contacts',relay:'Auxiliary relay (NO + NC)',timer:'On-delay timer',ol:'Thermal overload relay',lamp:'Indicator lamp',motor:'Three-phase motor',alarm:'Audible horn',mccb:'Moulded case circuit breaker',rccb:'Residual current breaker (30 mA)',fuse:'Fuse cartridge',spd:'Surge protection device',timer_off:'Off-delay timer',flasher:'Flashing / blinking relay',phase:'Phase failure monitor',terminal:'Terminal block (2 through-links)',busbar:'Distribution busbar',generator:'Standby generator',ats:'Automatic transfer switch',ctmeter:'Current transformer ammeter',float:'Float / level switch',pressure:'Pressure switch',thermostat:'Thermostat',plc:'Ladder PLC (LOGO! style)',vfd:'Variable frequency drive',motor_1ph:'Single-phase motor',motor_dc:'DC motor',motor_stepper:'Stepper motor',motor_servo:'Servo motor',timer_sd:'Star-delta timer',mcb_3p:'3-pole MCB',mccb_3p:'3-pole MCCB',power_1ph:'Single-phase supply',busbar_3p:'3-phase busbar',terminal_6:'6-way terminal strip',generator_3p:'3-phase generator',battery:'Standby control battery (24 V DC)',transformer:'Control transformer',transformer_3p:'3-phase transformer',pt:'Potential transformer (voltage)',pt_3p:'Potential transformer 3Φ',arrow:'Current direction indicator',motor_arrow:'Motor rotation indicator (CW/CCW)',resistor:'Fixed resistor',potentiometer:'Variable resistor',capacitor:'Fixed capacitor',capacitor_elec:'Polarised electrolytic capacitor',inductor:'Inductor / choke',diode:'Rectifier diode',led:'Light emitting diode',zener:'Zener / voltage reference diode',capbank:'Power-factor correction capacitor bank',isolator:'3-pole isolation switch',changeover:'Manual changeover switch A/B/Off',ct:'Current transformer',variac:'Variable auto-transformer',wattmeter:'Power meter',energymeter:'Kilowatt-hour meter',pfmeter:'Power factor meter',freqmeter:'Frequency meter',multimeter:'Digital multimeter',ammeter:'Inline ammeter',limit_switch:'Mechanical limit switch',proximity:'Proximity sensor',counter:'Pulse counter with preset contact'}[c.type] || '';
   h += `<div class="muted" style="margin:6px 0">${desc}</div>`;
   h += `<button class="del" onclick="deleteComp('${c.id}')">🗑 حذف المكوّن</button>`;
   box.innerHTML = h;
@@ -3267,6 +3972,53 @@ function handlePortClick(cid, pid){
   simulate(0); paint();
 }
 
+function startResize(ev, id){
+  ev.stopPropagation(); ev.preventDefault();
+  const c = byId(id); if(!c || !c.el) return;
+  ensureAudio();
+  selectedWire = null; selectedComp = id;
+  const r = c.el.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const d0 = Math.max(6, Math.hypot(ev.clientX - cx, ev.clientY - cy));
+  const s0 = c.data.scale || 1;
+  const mv = e => {
+    const d = Math.hypot(e.clientX - cx, e.clientY - cy);
+    c.data.scale = Math.round(Math.max(0.4, Math.min(3, s0 * d / d0)) * 100) / 100;
+    c.el.style.transform = 'scale(' + c.data.scale + ') rotate(' + (c.data.rot || 0) + 'deg)';
+    fitStage(); drawWires();
+  };
+  const up = () => {
+    window.removeEventListener('pointermove', mv);
+    simulate(0); paint(); renderProps();
+  };
+  window.addEventListener('pointermove', mv);
+  window.addEventListener('pointerup', up, { once:true });
+}
+function startRotate(ev, id){
+  ev.stopPropagation(); ev.preventDefault();
+  const c = byId(id); if(!c || !c.el) return;
+  ensureAudio();
+  selectedWire = null; selectedComp = id;
+  const r = c.el.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const a0 = Math.atan2(ev.clientY - cy, ev.clientX - cx);
+  const r0 = c.data.rot || 0;
+  const mv = e => {
+    const a = Math.atan2(e.clientY - cy, e.clientX - cx) - a0;
+    let deg = Math.round((r0 + a * 180 / Math.PI) / 15) * 15;
+    deg = ((deg % 360) + 360) % 360;
+    c.data.rot = deg;
+    c.el.style.transform = 'scale(' + (c.data.scale || 1) + ') rotate(' + deg + 'deg)';
+    fitStage(); drawWires();
+  };
+  const up = () => {
+    window.removeEventListener('pointermove', mv);
+    simulate(0); paint(); renderProps();
+  };
+  window.addEventListener('pointermove', mv);
+  window.addEventListener('pointerup', up, { once:true });
+}
+
 function compPointerDown(ev, id){
   if(ev.button !== 0) return;
   const c = byId(id);
@@ -3328,6 +4080,11 @@ function handleClickAction(c){
     case 'mcb_3p':   c.state.closed = !c.state.closed; break;
     case 'mccb':
     case 'mccb_3p':  c.state.closed = !c.state.closed; break;
+    case 'isolator': c.state.closed = !c.state.closed; break;
+    case 'changeover': c.state.pos = c.state.pos === 'A' ? 'B' : c.state.pos === 'B' ? 'OFF' : 'A'; break;
+    case 'limit_switch': c.state.pressed = !c.state.pressed; break;
+    case 'proximity': c.state.active = !c.state.active; break;
+    case 'counter': c.state.count = 0; break;
     case 'rccb':
       if(c.state.tripped){ c.state.tripped = false; c.state.closed = true; }
       else c.state.closed = !c.state.closed;
@@ -3422,6 +4179,10 @@ function setDelay(id, v){
 }
 function setSupplyV(v){
   supplyV = parseFloat(v) || 230;
+  paint();
+}
+function setSupplyFreq(v){
+  supplyFreq = parseFloat(v) || 50;
   paint();
 }
 
