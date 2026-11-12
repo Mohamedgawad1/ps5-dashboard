@@ -72104,3 +72104,56 @@ Call log:
 [2026-11-12 14:00:42]  >> git push OK
 [2026-11-12 14:01:13]  .. itr_live_state.json publish hiccup (IncompleteRead(332603 bytes read, 302444 more expected)) - retrying
 [2026-11-12 14:01:27]  .. itr_live_state.json publish hiccup (IncompleteRead(581997 bytes read, 53050 more expected)) - retrying
+[2026-11-12 14:01:55]  >> published itr_live_state.json (460324 bytes)
+[2026-11-12 14:02:02]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 14:02:02]  >> platform publish OK (1 file(s) updated, closed=7708)
+[2026-11-12 14:02:02] PAGES PUSH rc=0
+[2026-11-12 14:02:02] cycle OK closed=7708 open=2646 updated=2026-11-12 14:00:32
+[2026-11-12 14:04:05] reused the sync's always-open browser (port 9222)
+[2026-11-12 14:04:05] LOGGED IN
+[2026-11-12 14:05:13] pulled off=0 n=4000 accum=4000
+[2026-11-12 14:06:53] pulled off=4000 n=4000 accum=8000
+[2026-11-12 14:08:34] pulled off=8000 n=4000 accum=12000
+[2026-11-12 14:09:35] pulled off=12000 n=2064 accum=14064
+[2026-11-12 14:09:35] task index refreshed (6350 asset tags)
+[2026-11-12 14:09:36] updated dashboard_data.json itr_summary.live
+[2026-11-12 14:09:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 14:09:38]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 14:09 (closed=7708) rc=0 [main 61e7a03] ITR live update 2026-11-12 14:09 (closed=7708)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-12 14:09:44]  >> git push OK
+[2026-11-12 14:10:05]  .. itr_live_state.json publish hiccup (IncompleteRead(580804 bytes read, 54397 more expected)) - retrying
+[2026-11-12 14:10:23]  >> published itr_live_state.json (460324 bytes)
+[2026-11-12 14:10:28]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 14:10:28]  >> platform publish OK (1 file(s) updated, closed=7708)
+[2026-11-12 14:10:28] PAGES PUSH rc=0
+[2026-11-12 14:10:28] cycle OK closed=7708 open=2646 updated=2026-11-12 14:09:36
+[2026-11-12 14:12:29] reused the sync's always-open browser (port 9222)
+[2026-11-12 14:12:29] LOGGED IN
+[2026-11-12 14:25:15] err off=0: [object Object]
+[2026-11-12 14:25:15] pull retry 2/3 - reloading Switchboard
+[2026-11-12 14:25:19] LOGGED IN
+[2026-11-12 14:27:28] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-12 14:27:43] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-12 14:27:47] closed pull tab (will reopen) B14B736E https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-12 14:27:47] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-12 14:27:56] opened the one pull tab (none was open)
+[2026-11-12 14:27:56] reused the sync's always-open browser (port 9222)
+[2026-11-12 14:27:56] LOGGED IN
+[2026-11-12 14:29:38] pulled off=0 n=4000 accum=4000
+[2026-11-12 14:31:04] pulled off=4000 n=4000 accum=8000
+[2026-11-12 14:32:15] err off=8000: [object Object]
+[2026-11-12 14:32:16] pull retry 2/3 - reloading Switchboard
+[2026-11-12 14:32:20] LOGGED IN
+[2026-11-12 14:32:20] err off=0: [object Object]
+[2026-11-12 14:32:20] pull retry 3/3 - reloading Switchboard
+[2026-11-12 14:32:24] LOGGED IN
+[2026-11-12 14:32:26] err off=0: [object Object]
+[2026-11-12 14:32:26] cycle got no complete data (fail 1/3)
+[2026-11-12 14:34:27] reused the sync's always-open browser (port 9222)
+[2026-11-12 14:34:27] LOGGED IN
+[2026-11-12 14:36:32] pulled off=0 n=4000 accum=4000
+[2026-11-12 14:38:50] pulled off=4000 n=4000 accum=8000
+[2026-11-12 14:40:46] pulled off=8000 n=4000 accum=12000
+[2026-11-12 14:41:44] pulled off=12000 n=2064 accum=14064
+[2026-11-12 14:41:44] task index refreshed (6350 asset tags)
+[2026-11-12 14:41:44] milestone_map: 290 subsystems
