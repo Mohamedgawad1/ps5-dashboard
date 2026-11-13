@@ -73028,3 +73028,19 @@ Call log:
 [2026-11-13 08:57:40] sso handoff -> verify password page
 [2026-11-13 08:57:42] verify submit: submitted
 [2026-11-13 08:59:30] auto-login attempt 3 still not logged in
+[2026-11-13 09:07:12] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-13 09:07:19] opened the one pull tab (none was open)
+[2026-11-13 09:07:19] reused the sync's always-open browser (port 9222)
+[2026-11-13 09:08:08] session expired -> auto-login
+[2026-11-13 09:08:13] ssologin click: ok
+[2026-11-13 09:08:23] sso handoff -> verify password page
+[2026-11-13 09:08:25] verify submit: submitted
+[2026-11-13 09:10:12] auto-login attempt 1 still not logged in
+[2026-11-13 09:10:16] ssologin click: ok
+[2026-11-13 09:10:26] sso handoff -> verify password page
+[2026-11-13 09:10:29] verify submit: submitted
+[2026-11-13 09:12:14] auto-login attempt 2 still not logged in
+[2026-11-13 09:12:20] ssologin click: ok
+[2026-11-13 09:12:30] sso handoff -> verify password page
+[2026-11-13 09:12:32] verify submit: submitted
+[2026-11-13 09:14:19] auto-login attempt 3 still not logged in
