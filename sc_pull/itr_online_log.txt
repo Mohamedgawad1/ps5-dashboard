@@ -74403,3 +74403,50 @@ Call log:
 [2026-11-13 17:19:55]  >> platform publish OK (1 file(s) updated, closed=7767)
 [2026-11-13 17:19:55] PAGES PUSH rc=0
 [2026-11-13 17:19:55] cycle OK closed=7767 open=2587 updated=2026-11-13 17:19:26
+[2026-11-13 17:22:12] reused the sync's always-open browser (port 9222)
+[2026-11-13 17:22:18] LOGGED IN
+[2026-11-13 17:22:49] pulled off=0 n=4000 accum=4000
+[2026-11-13 17:23:13] pulled off=4000 n=4000 accum=8000
+[2026-11-13 17:23:34] pulled off=8000 n=4000 accum=12000
+[2026-11-13 17:23:45] pulled off=12000 n=2064 accum=14064
+[2026-11-13 17:23:45] task index refreshed (6350 asset tags)
+[2026-11-13 17:23:46] updated dashboard_data.json itr_summary.live
+[2026-11-13 17:23:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-13 17:23:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-13 17:23 (closed=7771) rc=0 [main 16bc88f] ITR live update 2026-11-13 17:23 (closed=7771)
+ 1 file changed, 61 insertions(+), 61 deletions(-)
+[2026-11-13 17:23:54]  >> git push OK
+[2026-11-13 17:24:07]  .. itr_live_state.json publish hiccup (IncompleteRead(586602 bytes read, 48393 more expected)) - retrying
+[2026-11-13 17:24:18]  >> published itr_live_state.json (460183 bytes)
+[2026-11-13 17:24:23]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-13 17:24:23]  >> platform publish OK (1 file(s) updated, closed=7771)
+[2026-11-13 17:24:23] PAGES PUSH rc=0
+[2026-11-13 17:24:23] cycle OK closed=7771 open=2583 updated=2026-11-13 17:23:46
+[2026-11-13 17:26:29] reused the sync's always-open browser (port 9222)
+[2026-11-13 17:26:30] LOGGED IN
+[2026-11-13 17:26:54] pulled off=0 n=4000 accum=4000
+[2026-11-13 17:27:17] pulled off=4000 n=4000 accum=8000
+[2026-11-13 17:27:32] pulled off=8000 n=4000 accum=12000
+[2026-11-13 17:27:39] pulled off=12000 n=2064 accum=14064
+[2026-11-13 17:27:39] task index refreshed (6350 asset tags)
+[2026-11-13 17:27:40] updated dashboard_data.json itr_summary.live
+[2026-11-13 17:27:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-13 17:27:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-13 17:27 (closed=7771) rc=0 [main 47de010] ITR live update 2026-11-13 17:27 (closed=7771)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-13 17:27:48]  >> git push OK
+[2026-11-13 17:28:14]  .. itr_live_state.json publish hiccup (IncompleteRead(582382 bytes read, 52625 more expected)) - retrying
+[2026-11-13 17:28:32]  .. itr_live_state.json publish hiccup (IncompleteRead(581784 bytes read, 53223 more expected)) - retrying
+[2026-11-13 17:29:04]  >> published itr_live_state.json (460183 bytes)
+[2026-11-13 17:29:10]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-13 17:29:10]  >> platform publish OK (1 file(s) updated, closed=7771)
+[2026-11-13 17:29:10] PAGES PUSH rc=0
+[2026-11-13 17:29:10] cycle OK closed=7771 open=2583 updated=2026-11-13 17:27:40
+[2026-11-13 17:31:12] reused the sync's always-open browser (port 9222)
+[2026-11-13 17:31:12] LOGGED IN
+[2026-11-13 18:55:35] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-13 18:55:36] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-13 18:55:36] no pull tab this cycle - retrying in 120s
+[2026-11-13 18:55:53] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-13 18:55:53] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-13 18:55:53] no pull tab this cycle - retrying in 120s
+[2026-11-13 18:56:53] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-13 18:56:53] no pull tab this cycle - retrying in 120s
