@@ -74035,3 +74035,29 @@ Call log:
 [2026-11-13 15:39:29]  >> platform publish OK (1 file(s) updated, closed=7762)
 [2026-11-13 15:39:29] PAGES PUSH rc=0
 [2026-11-13 15:39:29] cycle OK closed=7762 open=2592 updated=2026-11-13 15:38:22
+[2026-11-13 15:41:35] reused the sync's always-open browser (port 9222)
+[2026-11-13 15:41:36] LOGGED IN
+[2026-11-13 15:56:29] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-13 15:56:45] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-13 15:56:50] closed pull tab (will reopen) 48A248DF https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-13 15:56:50] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-13 15:56:57] opened the one pull tab (none was open)
+[2026-11-13 15:56:57] reused the sync's always-open browser (port 9222)
+[2026-11-13 15:56:57] LOGGED IN
+[2026-11-13 15:57:07] pulled off=0 n=4000 accum=4000
+[2026-11-13 15:57:24] pulled off=4000 n=4000 accum=8000
+[2026-11-13 15:57:36] pulled off=8000 n=4000 accum=12000
+[2026-11-13 15:57:46] pulled off=12000 n=2064 accum=14064
+[2026-11-13 15:57:46] task index refreshed (6350 asset tags)
+[2026-11-13 15:57:46] milestone_map: 290 subsystems
+[2026-11-13 15:57:47] updated dashboard_data.json itr_summary.live
+[2026-11-13 15:57:49]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-13 15:57:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-13 15:57 (closed=7762) rc=0 [main 2dfc9ab] ITR live update 2026-11-13 15:57 (closed=7762)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-13 15:57:56]  >> git push OK
+[2026-11-13 15:58:35]  .. itr_live_state.json publish hiccup (IncompleteRead(581177 bytes read, 53628 more expected)) - retrying
+[2026-11-13 15:59:03]  .. itr_live_state.json publish hiccup (IncompleteRead(386088 bytes read, 248717 more expected)) - retrying
+[2026-11-13 15:59:36]  .. itr_live_state.json publish hiccup (IncompleteRead(581565 bytes read, 53240 more expected)) - retrying
+[2026-11-13 16:00:18]  !! publish itr_live_state.json failed: IncompleteRead(581420 bytes read, 53385 more expected)
+[2026-11-13 16:00:18] PAGES PUSH rc=1
+[2026-11-13 16:00:18] cycle OK closed=7762 open=2592 updated=2026-11-13 15:57:47
