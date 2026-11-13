@@ -52473,3 +52473,5 @@
 [2026-11-13 18:55:36] TUNNEL URL: https://hitting-teams-convicted-leave.trycloudflare.com
 [2026-11-13 18:55:45] ITR data is 88 min old (limit 40 min) -> restarting itr_online
 [2026-11-13 18:55:49] STARTED itr_online (PID 16428)
+[2026-11-13 19:26:35] RESTARTING itr_online
+[2026-11-13 19:26:35] STARTED itr_online (PID 5388)
