@@ -14875,3 +14875,14 @@
 2026-11-12 20:10:00 [done] build in 2911s
 2026-11-12 20:15:04 [trigger] state changed -> rebuilding downloads+pages
 2026-11-12 20:15:04 >> cloud->DPR
+2026-11-12 20:21:38    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-12 20:21:38    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-12 20:21:38    [guard] ok - 270 rows intact, 333 cell(s) written in mapped columns
+2026-11-12 20:21:38    sync 2026-11-12 20:21:33 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-12 20:21:38    written=333 notes=0 colors=1
+2026-11-12 20:21:38    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-12 20:21:38 >> local->DPR
+2026-11-13 07:06:23 ==================================================
+2026-11-13 07:06:23 cloud_auto_update started (interval 300s)
+2026-11-13 07:06:24 [trigger] state changed -> rebuilding downloads+pages
+2026-11-13 07:06:24 >> cloud->DPR

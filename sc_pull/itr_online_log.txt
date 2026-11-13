@@ -72858,3 +72858,23 @@ Call log:
 [2026-11-12 20:19:32] LOGGED IN
 [2026-11-12 20:19:48] pulled off=0 n=4000 accum=4000
 [2026-11-12 20:20:05] pulled off=4000 n=4000 accum=8000
+[2026-11-12 20:20:26] pulled off=8000 n=4000 accum=12000
+[2026-11-12 20:20:33] pulled off=12000 n=2064 accum=14064
+[2026-11-12 20:20:33] task index refreshed (6350 asset tags)
+[2026-11-12 20:20:34] updated dashboard_data.json itr_summary.live
+[2026-11-12 20:20:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-12 20:20:38]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-12 20:20 (closed=7747) rc=0 [main fc8e14c] ITR live update 2026-11-12 20:20 (closed=7747)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-12 20:20:47]  >> git push OK
+[2026-11-12 20:21:01]  >> published itr_live_state.json (460993 bytes)
+[2026-11-12 20:21:07]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-12 20:21:07]  >> platform publish OK (1 file(s) updated, closed=7747)
+[2026-11-12 20:21:07] PAGES PUSH rc=0
+[2026-11-12 20:21:07] cycle OK closed=7747 open=2607 updated=2026-11-12 20:20:34
+[2026-11-13 07:06:57] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-13 07:06:59] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-13 07:06:59] no pull tab this cycle - retrying in 120s
+[2026-11-13 07:07:59] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-13 07:07:59] no pull tab this cycle - retrying in 120s
+[2026-11-13 07:09:00] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-13 07:09:00] no pull tab this cycle - retrying in 120s
