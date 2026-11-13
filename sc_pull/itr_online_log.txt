@@ -73044,3 +73044,29 @@ Call log:
 [2026-11-13 09:12:30] sso handoff -> verify password page
 [2026-11-13 09:12:32] verify submit: submitted
 [2026-11-13 09:14:19] auto-login attempt 3 still not logged in
+[2026-11-13 09:22:12] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-13 09:22:27] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-13 09:22:35] opened the one pull tab (none was open)
+[2026-11-13 09:22:35] reused the sync's always-open browser (port 9222)
+[2026-11-13 09:23:27] session expired -> auto-login
+[2026-11-13 09:23:34] ssologin click: ok
+[2026-11-13 09:23:44] sso handoff -> verify password page
+[2026-11-13 09:23:47] verify submit: submitted
+[2026-11-13 09:25:34] auto-login attempt 1 still not logged in
+[2026-11-13 09:25:39] ssologin click: ok
+[2026-11-13 09:25:49] sso handoff -> verify password page
+[2026-11-13 09:25:52] verify submit: submitted
+[2026-11-13 09:27:38] auto-login attempt 2 still not logged in
+[2026-11-13 09:27:43] ssologin click: ok
+[2026-11-13 09:29:40] auto-login attempt 3 still not logged in
+[2026-11-13 09:37:19] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-13 09:37:24] opened the one pull tab (none was open)
+[2026-11-13 09:37:24] reused the sync's always-open browser (port 9222)
+[2026-11-13 09:38:15] session expired -> auto-login
+[2026-11-13 09:38:19] ssologin click: ok
+[2026-11-13 09:38:29] sso handoff -> verify password page
+[2026-11-13 09:38:31] verify submit: submitted
+[2026-11-13 09:40:19] auto-login attempt 1 still not logged in
+[2026-11-13 09:40:24] ssologin click: ok
+[2026-11-13 09:40:34] sso handoff -> verify password page
+[2026-11-13 09:40:36] verify submit: submitted
