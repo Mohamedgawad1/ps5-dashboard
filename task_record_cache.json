@@ -9579,5 +9579,37 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00035-1585": {
+  "record": "1251858",
+  "task": "T-00035-1585",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1587": {
+  "record": "1251860",
+  "task": "T-00035-1587",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1590": {
+  "record": "1251863",
+  "task": "T-00035-1590",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1605": {
+  "record": "1251878",
+  "task": "T-00035-1605",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
