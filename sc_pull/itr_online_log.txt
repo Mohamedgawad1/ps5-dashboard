@@ -73092,3 +73092,22 @@ Call log:
 [2026-11-13 09:58:23] sso handoff -> verify password page
 [2026-11-13 09:58:25] verify submit: submitted
 [2026-11-13 10:00:12] auto-login attempt 3 still not logged in
+[2026-11-13 10:07:20] pull attempt 1 crashed: Page.wait_for_timeout: Connection closed while reading from the driver
+[2026-11-13 10:07:20] pull retry 2/3 - reloading Switchboard
+[2026-11-13 10:07:20] cycle got no complete data (fail 1/3)
+[2026-11-13 10:07:25] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-13 10:07:33] opened the one pull tab (none was open)
+[2026-11-13 10:07:33] reused the sync's always-open browser (port 9222)
+[2026-11-13 10:08:23] session expired -> auto-login
+[2026-11-13 10:08:27] ssologin click: ok
+[2026-11-13 10:08:37] sso handoff -> verify password page
+[2026-11-13 10:08:39] verify submit: submitted
+[2026-11-13 10:10:26] auto-login attempt 1 still not logged in
+[2026-11-13 10:10:30] ssologin click: ok
+[2026-11-13 10:10:40] sso handoff -> verify password page
+[2026-11-13 10:10:42] verify submit: submitted
+[2026-11-13 10:12:28] auto-login attempt 2 still not logged in
+[2026-11-13 10:12:33] ssologin click: ok
+[2026-11-13 10:12:43] sso handoff -> verify password page
+[2026-11-13 10:12:46] verify submit: submitted
+[2026-11-13 10:14:33] auto-login attempt 3 still not logged in
