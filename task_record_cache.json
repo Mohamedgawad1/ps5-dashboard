@@ -9651,5 +9651,133 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00234-3634": {
+  "record": "1295866",
+  "task": "T-00234-3634",
+  "asset": "PS5-09-IES-8101A-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3635": {
+  "record": "1295867",
+  "task": "T-00234-3635",
+  "asset": "PS5-09-IES-8101B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3636": {
+  "record": "1295868",
+  "task": "T-00234-3636",
+  "asset": "PS5-09-IES-8102A-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3637": {
+  "record": "1295869",
+  "task": "T-00234-3637",
+  "asset": "PS5-09-IES-8102B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3651": {
+  "record": "1295883",
+  "task": "T-00234-3651",
+  "asset": "PS5-09-IES-8305A-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-3679": {
+  "record": "1295507",
+  "task": "T-00024-3679",
+  "asset": "PS5-09-IES-8406A-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-3680": {
+  "record": "1295508",
+  "task": "T-00024-3680",
+  "asset": "PS5-09-IES-8406B-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-3681": {
+  "record": "1295509",
+  "task": "T-00024-3681",
+  "asset": "PS5-09-IES-8406C-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-3682": {
+  "record": "1295510",
+  "task": "T-00024-3682",
+  "asset": "PS5-09-IES-8406D-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-3683": {
+  "record": "1295511",
+  "task": "T-00024-3683",
+  "asset": "PS5-09-IES-8406E-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-3684": {
+  "record": "1295512",
+  "task": "T-00024-3684",
+  "asset": "PS5-09-IES-8406F-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-3685": {
+  "record": "1295513",
+  "task": "T-00024-3685",
+  "asset": "PS5-09-IES-8406G-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00024-3686": {
+  "record": "1295514",
+  "task": "T-00024-3686",
+  "asset": "PS5-09-IES-8406H-CD01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-9706": {
+  "record": "1295388",
+  "task": "T-00023-9706",
+  "asset": "PS5-09-FCU-8442E-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-9708": {
+  "record": "1295390",
+  "task": "T-00023-9708",
+  "asset": "PS5-09-FCU-8442G-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-9709": {
+  "record": "1295391",
+  "task": "T-00023-9709",
+  "asset": "PS5-09-FCU-8442H-CL01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
