@@ -10211,5 +10211,77 @@
   "type": "Conformity Check",
   "state": "Started (not Completed)",
   "via": "dalc"
+ },
+ "T-00241-0165": {
+  "record": "1174174",
+  "task": "T-00241-0165",
+  "asset": "PS5-25-UD-3100A",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00032-0165": {
+  "record": "1174164",
+  "task": "T-00032-0165",
+  "asset": "PS5-25-UD-3100A",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00233-12610": {
+  "record": "2407239",
+  "task": "T-00233-12610",
+  "asset": "PS5-60-BE-0025A-CL02",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00233-12611": {
+  "record": "2407240",
+  "task": "T-00233-12611",
+  "asset": "PS5-60-BE-0025B-CL02",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00233-12612": {
+  "record": "2407241",
+  "task": "T-00233-12612",
+  "asset": "PS5-60-BE-0025C-CL02",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00233-12613": {
+  "record": "2407242",
+  "task": "T-00233-12613",
+  "asset": "PS5-60-BE-0025D-CL02",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00233-12614": {
+  "record": "2407243",
+  "task": "T-00233-12614",
+  "asset": "PS5-60-BE-0025E-CL02",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00233-12615": {
+  "record": "2407244",
+  "task": "T-00233-12615",
+  "asset": "PS5-60-BE-0025F-CL02",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00233-12616": {
+  "record": "2407245",
+  "task": "T-00233-12616",
+  "asset": "PS5-60-BE-0025G-CL02",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
  }
 }

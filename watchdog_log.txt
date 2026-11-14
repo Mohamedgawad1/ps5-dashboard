@@ -52513,3 +52513,5 @@
 [2026-11-14 15:24:09] STARTED itr_online (PID 1088)
 [2026-11-14 15:39:12] RESTARTING itr_online
 [2026-11-14 15:39:12] STARTED itr_online (PID 14952)
+[2026-11-14 15:44:45] ITR data is 40 min old (limit 40 min) -> restarting itr_online
+[2026-11-14 15:44:49] STARTED itr_online (PID 5532)
