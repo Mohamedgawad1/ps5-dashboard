@@ -10340,3 +10340,100 @@
   "state": "To be completed",
   "via": "dalc"
  },
+ "T-00069-5505": {
+  "record": "1124060",
+  "task": "T-00069-5505",
+  "asset": "PS5-71-LI-4201B-CJ01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3640": {
+  "record": "1295872",
+  "task": "T-00234-3640",
+  "asset": "PS5-09-IES-8201B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3641": {
+  "record": "1295873",
+  "task": "T-00234-3641",
+  "asset": "PS5-09-IES-8202A-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3652": {
+  "record": "1295884",
+  "task": "T-00234-3652",
+  "asset": "PS5-09-IES-8305B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3655": {
+  "record": "1295887",
+  "task": "T-00234-3655",
+  "asset": "PS5-09-IES-8308A-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3642": {
+  "record": "1295874",
+  "task": "T-00234-3642",
+  "asset": "PS5-09-IES-8202B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3643": {
+  "record": "1295875",
+  "task": "T-00234-3643",
+  "asset": "PS5-09-IES-8202C-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3654": {
+  "record": "1295886",
+  "task": "T-00234-3654",
+  "asset": "PS5-09-IES-8307B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3656": {
+  "record": "1295888",
+  "task": "T-00234-3656",
+  "asset": "PS5-09-IES-8308B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3650": {
+  "record": "1295882",
+  "task": "T-00234-3650",
+  "asset": "PS5-09-IES-8304B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3646": {
+  "record": "1295878",
+  "task": "T-00234-3646",
+  "asset": "PS5-09-IES-8301B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3657": {
+  "record": "1295889",
+  "task": "T-00234-3657",
+  "asset": "PS5-09-IES-8311A-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ }
+}
