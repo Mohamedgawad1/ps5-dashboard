@@ -76309,3 +76309,31 @@ Call log:
 [2026-11-14 13:39:15]  >> platform publish OK (1 file(s) updated, closed=7848)
 [2026-11-14 13:39:15] PAGES PUSH rc=0
 [2026-11-14 13:39:15] cycle OK closed=7848 open=2506 updated=2026-11-14 13:38:29
+[2026-11-14 13:41:16] reused the sync's always-open browser (port 9222)
+[2026-11-14 13:41:16] LOGGED IN
+[2026-11-14 13:41:26] pulled off=0 n=4000 accum=4000
+[2026-11-14 13:41:35] pulled off=4000 n=4000 accum=8000
+[2026-11-14 13:41:43] pulled off=8000 n=4000 accum=12000
+[2026-11-14 13:56:15] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-14 13:56:22] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-14 13:56:27] closed pull tab (will reopen) D75E8FC8 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-14 13:56:27] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-14 13:56:37] opened the one pull tab (none was open)
+[2026-11-14 13:56:37] reused the sync's always-open browser (port 9222)
+[2026-11-14 13:56:37] LOGGED IN
+[2026-11-14 13:56:50] pulled off=0 n=4000 accum=4000
+[2026-11-14 13:57:14] pulled off=4000 n=4000 accum=8000
+[2026-11-14 13:57:41] pulled off=8000 n=4000 accum=12000
+[2026-11-14 13:57:49] pulled off=12000 n=2064 accum=14064
+[2026-11-14 13:57:49] task index refreshed (6350 asset tags)
+[2026-11-14 13:57:49] milestone_map: 290 subsystems
+[2026-11-14 13:57:50] updated dashboard_data.json itr_summary.live
+[2026-11-14 13:57:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-14 13:57:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-14 13:57 (closed=7852) rc=0 [main bf29c78] ITR live update 2026-11-14 13:57 (closed=7852)
+ 1 file changed, 61 insertions(+), 61 deletions(-)
+[2026-11-14 13:57:57]  >> git push OK
+[2026-11-14 13:58:05]  >> published itr_live_state.json (460591 bytes)
+[2026-11-14 13:58:09]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-14 13:58:09]  >> platform publish OK (1 file(s) updated, closed=7852)
+[2026-11-14 13:58:09] PAGES PUSH rc=0
+[2026-11-14 13:58:09] cycle OK closed=7852 open=2502 updated=2026-11-14 13:57:50
