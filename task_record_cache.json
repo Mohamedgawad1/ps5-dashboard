@@ -10283,5 +10283,60 @@
   "type": "Static Test",
   "state": "Closed",
   "via": "dalc"
- }
-}
+ },
+ "T-00069-5402": {
+  "record": "1123957",
+  "task": "T-00069-5402",
+  "asset": "PS5-71-BI-0011A-CC04",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5407": {
+  "record": "1123962",
+  "task": "T-00069-5407",
+  "asset": "PS5-71-BI-0011B-CC04",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00614-1131": {
+  "record": "2057700",
+  "task": "T-00614-1131",
+  "asset": "PS5-75-BI-0001-CC01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00614-1132": {
+  "record": "2057701",
+  "task": "T-00614-1132",
+  "asset": "PS5-75-BI-0002-CC01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00614-1133": {
+  "record": "2057702",
+  "task": "T-00614-1133",
+  "asset": "PS5-75-BI-0002-CC02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00614-1134": {
+  "record": "2057703",
+  "task": "T-00614-1134",
+  "asset": "PS5-75-BI-0002-CC03",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00069-5504": {
+  "record": "1124059",
+  "task": "T-00069-5504",
+  "asset": "PS5-71-LCV-4101-CC01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
