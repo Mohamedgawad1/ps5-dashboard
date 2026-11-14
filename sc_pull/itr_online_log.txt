@@ -75149,3 +75149,119 @@ Call log:
  1 file changed, 1 insertion(+), 1 deletion(-)
 [2026-11-14 09:18:47]  >> git push OK
 [2026-11-14 09:19:51]  .. itr_live_state.json publish hiccup (The read operation timed out) - retrying
+[2026-11-14 09:20:06]  .. itr_live_state.json publish hiccup (IncompleteRead(586376 bytes read, 48247 more expected)) - retrying
+[2026-11-14 09:21:20]  .. itr_live_state.json publish hiccup (The read operation timed out) - retrying
+[2026-11-14 09:21:40]  >> published itr_live_state.json (459904 bytes)
+[2026-11-14 09:21:43]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-14 09:21:43]  >> platform publish OK (1 file(s) updated, closed=7812)
+[2026-11-14 09:21:43] PAGES PUSH rc=0
+[2026-11-14 09:21:43] cycle OK closed=7812 open=2542 updated=2026-11-14 09:18:39
+[2026-11-14 09:23:46] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:23:46] LOGGED IN
+[2026-11-14 09:23:55] pulled off=0 n=4000 accum=4000
+[2026-11-14 09:24:05] pulled off=4000 n=4000 accum=8000
+[2026-11-14 09:24:16] pulled off=8000 n=4000 accum=12000
+[2026-11-14 09:24:24] pulled off=12000 n=2064 accum=14064
+[2026-11-14 09:24:24] task index refreshed (6350 asset tags)
+[2026-11-14 09:24:25] updated dashboard_data.json itr_summary.live
+[2026-11-14 09:24:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-14 09:24:27]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-14 09:24 (closed=7812) rc=0 [main 06e4679] ITR live update 2026-11-14 09:24 (closed=7812)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-11-14 09:24:33]  >> git push OK
+[2026-11-14 09:24:50]  >> published itr_live_state.json (459904 bytes)
+[2026-11-14 09:24:54]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-14 09:24:54]  >> platform publish OK (1 file(s) updated, closed=7812)
+[2026-11-14 09:24:54] PAGES PUSH rc=0
+[2026-11-14 09:24:54] cycle OK closed=7812 open=2542 updated=2026-11-14 09:24:24
+[2026-11-14 09:26:57] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:26:57] LOGGED IN
+[2026-11-14 09:27:07] pulled off=0 n=4000 accum=4000
+[2026-11-14 09:27:16] pulled off=4000 n=4000 accum=8000
+[2026-11-14 09:27:26] pulled off=8000 n=4000 accum=12000
+[2026-11-14 09:27:30] pulled off=12000 n=2064 accum=14064
+[2026-11-14 09:27:31] task index refreshed (6350 asset tags)
+[2026-11-14 09:27:32] updated dashboard_data.json itr_summary.live
+[2026-11-14 09:27:32]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-14 09:27:33]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-14 09:27 (closed=7812) rc=0 [main fe3a643] ITR live update 2026-11-14 09:27 (closed=7812)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-11-14 09:27:40]  >> git push OK
+[2026-11-14 09:27:55]  .. itr_live_state.json publish hiccup (IncompleteRead(581373 bytes read, 53250 more expected)) - retrying
+[2026-11-14 09:28:17]  >> published itr_live_state.json (459904 bytes)
+[2026-11-14 09:28:20]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-14 09:28:20]  >> platform publish OK (1 file(s) updated, closed=7812)
+[2026-11-14 09:28:20] PAGES PUSH rc=0
+[2026-11-14 09:28:20] cycle OK closed=7812 open=2542 updated=2026-11-14 09:27:31
+[2026-11-14 09:30:27] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:30:27] LOGGED IN
+[2026-11-14 09:30:27] err off=0: [object Object]
+[2026-11-14 09:30:27] pull retry 2/3 - reloading Switchboard
+[2026-11-14 09:30:31] LOGGED IN
+[2026-11-14 09:30:31] err off=0: [object Object]
+[2026-11-14 09:30:31] pull retry 3/3 - reloading Switchboard
+[2026-11-14 09:30:35] LOGGED IN
+[2026-11-14 09:30:35] err off=0: [object Object]
+[2026-11-14 09:30:35] cycle got no complete data (fail 1/3)
+[2026-11-14 09:32:35] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:32:35] LOGGED IN
+[2026-11-14 09:32:35] err off=0: [object Object]
+[2026-11-14 09:32:35] pull retry 2/3 - reloading Switchboard
+[2026-11-14 09:32:39] LOGGED IN
+[2026-11-14 09:32:39] err off=0: [object Object]
+[2026-11-14 09:32:39] pull retry 3/3 - reloading Switchboard
+[2026-11-14 09:32:43] LOGGED IN
+[2026-11-14 09:32:43] err off=0: [object Object]
+[2026-11-14 09:32:43] cycle got no complete data (fail 2/3)
+[2026-11-14 09:34:44] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:34:44] LOGGED IN
+[2026-11-14 09:34:44] err off=0: [object Object]
+[2026-11-14 09:34:44] pull retry 2/3 - reloading Switchboard
+[2026-11-14 09:34:48] LOGGED IN
+[2026-11-14 09:34:48] err off=0: [object Object]
+[2026-11-14 09:34:48] pull retry 3/3 - reloading Switchboard
+[2026-11-14 09:34:52] LOGGED IN
+[2026-11-14 09:34:52] err off=0: [object Object]
+[2026-11-14 09:34:52] cycle got no complete data (fail 3/3)
+[2026-11-14 09:34:52] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-14 09:35:01] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-14 09:35:02] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:35:02] LOGGED IN
+[2026-11-14 09:35:02] err off=0: [object Object]
+[2026-11-14 09:35:02] pull retry 2/3 - reloading Switchboard
+[2026-11-14 09:35:06] LOGGED IN
+[2026-11-14 09:35:06] err off=0: [object Object]
+[2026-11-14 09:35:06] pull retry 3/3 - reloading Switchboard
+[2026-11-14 09:35:10] LOGGED IN
+[2026-11-14 09:35:10] err off=0: [object Object]
+[2026-11-14 09:35:10] cycle got no complete data (fail 1/3)
+[2026-11-14 09:37:10] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:37:11] LOGGED IN
+[2026-11-14 09:37:11] err off=0: [object Object]
+[2026-11-14 09:37:11] pull retry 2/3 - reloading Switchboard
+[2026-11-14 09:37:15] LOGGED IN
+[2026-11-14 09:37:15] err off=0: [object Object]
+[2026-11-14 09:37:15] pull retry 3/3 - reloading Switchboard
+[2026-11-14 09:37:19] LOGGED IN
+[2026-11-14 09:37:19] err off=0: [object Object]
+[2026-11-14 09:37:19] cycle got no complete data (fail 2/3)
+[2026-11-14 09:39:19] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:39:19] LOGGED IN
+[2026-11-14 09:39:19] err off=0: [object Object]
+[2026-11-14 09:39:19] pull retry 2/3 - reloading Switchboard
+[2026-11-14 09:39:23] LOGGED IN
+[2026-11-14 09:39:23] err off=0: [object Object]
+[2026-11-14 09:39:23] pull retry 3/3 - reloading Switchboard
+[2026-11-14 09:39:27] LOGGED IN
+[2026-11-14 09:39:27] err off=0: [object Object]
+[2026-11-14 09:39:27] cycle got no complete data (fail 3/3)
+[2026-11-14 09:39:27] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-14 09:39:34] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-14 09:39:35] reused the sync's always-open browser (port 9222)
+[2026-11-14 09:39:35] LOGGED IN
+[2026-11-14 09:39:35] err off=0: [object Object]
+[2026-11-14 09:39:35] pull retry 2/3 - reloading Switchboard
+[2026-11-14 09:39:39] LOGGED IN
+[2026-11-14 09:39:39] err off=0: [object Object]
+[2026-11-14 09:39:39] pull retry 3/3 - reloading Switchboard
+[2026-11-14 09:39:43] LOGGED IN
+[2026-11-14 09:39:43] err off=0: [object Object]
+[2026-11-14 09:39:43] cycle got no complete data (fail 1/3)

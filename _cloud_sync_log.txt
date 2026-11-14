@@ -14999,3 +14999,5 @@
 2026-11-14 07:49:10    DONE - platform online + all downloads synced.
 2026-11-14 07:49:10 [mirror] PAGES -> _files
 2026-11-14 07:49:10 [done] build in 2482s
+2026-11-14 09:34:31 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-14 09:39:31 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
