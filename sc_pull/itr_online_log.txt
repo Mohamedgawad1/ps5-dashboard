@@ -76645,3 +76645,58 @@ Call log:
 [2026-11-14 14:57:39] cycle OK closed=7852 open=2502 updated=2026-11-14 14:57:20
 [2026-11-14 14:59:39] reused the sync's always-open browser (port 9222)
 [2026-11-14 14:59:39] LOGGED IN
+[2026-11-14 15:00:10] pulled off=0 n=4000 accum=4000
+[2026-11-14 15:00:39] pulled off=4000 n=4000 accum=8000
+[2026-11-14 15:01:13] pulled off=8000 n=4000 accum=12000
+[2026-11-14 15:01:21] pulled off=12000 n=2064 accum=14064
+[2026-11-14 15:01:21] task index refreshed (6350 asset tags)
+[2026-11-14 15:01:22] updated dashboard_data.json itr_summary.live
+[2026-11-14 15:01:24]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-14 15:01:24]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-14 15:01 (closed=7852) rc=0 [main a412c67] ITR live update 2026-11-14 15:01 (closed=7852)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-14 15:01:30]  >> git push OK
+[2026-11-14 15:01:37]  >> published itr_live_state.json (460591 bytes)
+[2026-11-14 15:01:41]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-14 15:01:41]  >> platform publish OK (1 file(s) updated, closed=7852)
+[2026-11-14 15:01:41] PAGES PUSH rc=0
+[2026-11-14 15:01:41] cycle OK closed=7852 open=2502 updated=2026-11-14 15:01:22
+[2026-11-14 15:03:46] reused the sync's always-open browser (port 9222)
+[2026-11-14 15:03:48] LOGGED IN
+[2026-11-14 15:04:07] pulled off=0 n=4000 accum=4000
+[2026-11-14 15:04:17] pulled off=4000 n=4000 accum=8000
+[2026-11-14 15:04:32] pulled off=8000 n=4000 accum=12000
+[2026-11-14 15:04:37] pulled off=12000 n=2064 accum=14064
+[2026-11-14 15:04:37] task index refreshed (6350 asset tags)
+[2026-11-14 15:04:38] updated dashboard_data.json itr_summary.live
+[2026-11-14 15:04:40]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-14 15:04:40]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-14 15:04 (closed=7852) rc=0 [main e095c24] ITR live update 2026-11-14 15:04 (closed=7852)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-14 15:04:48]  >> git push OK
+[2026-11-14 15:04:54]  >> published itr_live_state.json (460591 bytes)
+[2026-11-14 15:04:57]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-14 15:04:57]  >> platform publish OK (1 file(s) updated, closed=7852)
+[2026-11-14 15:04:57] PAGES PUSH rc=0
+[2026-11-14 15:04:57] cycle OK closed=7852 open=2502 updated=2026-11-14 15:04:38
+[2026-11-14 15:07:06] target list err: timed out
+[2026-11-14 15:07:26] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-14 15:07:36] closed pull tab (will reopen) 3725E356 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-14 15:07:45] closed frozen tab DF42BA4C https://auth.intergraphsmartcloud.com/app/hexagonppm_wly04scompsaml_1/
+[2026-11-14 15:07:56] new tab err: BrowserContext.new_page: Target page, context or browser has
+[2026-11-14 15:07:56] LOOP ERR: could not create a pull tab (fail 1/3)
+[2026-11-14 15:09:01] opened the one pull tab (none was open)
+[2026-11-14 15:09:01] reused the sync's always-open browser (port 9222)
+[2026-11-14 15:09:51] session expired -> auto-login
+[2026-11-14 15:09:55] ssologin click: ok
+[2026-11-14 15:10:05] sso handoff -> verify password page
+[2026-11-14 15:10:07] verify submit: submitted
+[2026-11-14 15:11:54] auto-login attempt 1 still not logged in
+[2026-11-14 15:11:59] ssologin click: ok
+[2026-11-14 15:12:09] sso handoff -> verify password page
+[2026-11-14 15:12:12] verify submit: submitted
+[2026-11-14 15:13:59] auto-login attempt 2 still not logged in
+[2026-11-14 15:14:04] ssologin click: ok
+[2026-11-14 15:14:14] sso handoff -> verify password page
+[2026-11-14 15:14:17] verify submit: submitted
+[2026-11-14 15:16:02] auto-login attempt 3 still not logged in
