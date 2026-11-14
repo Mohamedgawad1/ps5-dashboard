@@ -9923,5 +9923,21 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00035-1477": {
+  "record": "1251750",
+  "task": "T-00035-1477",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1482": {
+  "record": "1251755",
+  "task": "T-00035-1482",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }

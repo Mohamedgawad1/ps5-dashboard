@@ -75026,3 +75026,38 @@ Call log:
 [2026-11-14 08:39:30] reused the sync's always-open browser (port 9222)
 [2026-11-14 08:39:30] LOGGED IN
 [2026-11-14 08:39:55] pulled off=0 n=4000 accum=4000
+[2026-11-14 08:54:19] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-14 08:54:28] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-14 08:54:33] closed pull tab (will reopen) CE89DC79 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-14 08:54:33] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-14 08:54:40] opened the one pull tab (none was open)
+[2026-11-14 08:54:40] reused the sync's always-open browser (port 9222)
+[2026-11-14 08:54:40] LOGGED IN
+[2026-11-14 08:55:02] pulled off=0 n=4000 accum=4000
+[2026-11-14 08:55:15] pulled off=4000 n=4000 accum=8000
+[2026-11-14 08:55:36] pulled off=8000 n=4000 accum=12000
+[2026-11-14 08:55:48] pulled off=12000 n=2064 accum=14064
+[2026-11-14 08:55:48] task index refreshed (6350 asset tags)
+[2026-11-14 08:55:48] milestone_map: 290 subsystems
+[2026-11-14 08:55:49] updated dashboard_data.json itr_summary.live
+[2026-11-14 08:55:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-14 08:55:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-14 08:55 (closed=7812) rc=0 [main cf1ecd3] ITR live update 2026-11-14 08:55 (closed=7812)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[2026-11-14 08:55:59]  >> git push OK
+[2026-11-14 08:56:05]  >> published itr_live_state.json (459905 bytes)
+[2026-11-14 08:56:08]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-14 08:56:08]  >> platform publish OK (1 file(s) updated, closed=7812)
+[2026-11-14 08:56:08] PAGES PUSH rc=0
+[2026-11-14 08:56:08] cycle OK closed=7812 open=2542 updated=2026-11-14 08:55:49
+[2026-11-14 08:58:09] reused the sync's always-open browser (port 9222)
+[2026-11-14 08:58:09] LOGGED IN
+[2026-11-14 08:58:25] pulled off=0 n=4000 accum=4000
+[2026-11-14 08:58:38] pulled off=4000 n=4000 accum=8000
+[2026-11-14 08:58:59] pulled off=8000 n=4000 accum=12000
+[2026-11-14 08:59:12] pulled off=12000 n=2064 accum=14064
+[2026-11-14 08:59:12] task index refreshed (6350 asset tags)
+[2026-11-14 08:59:13] updated dashboard_data.json itr_summary.live
+[2026-11-14 08:59:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-14 08:59:14]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-14 08:59 (closed=7812) rc=0 [main 134a812] ITR live update 2026-11-14 08:59 (closed=7812)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-14 08:59:20]  >> git push OK
