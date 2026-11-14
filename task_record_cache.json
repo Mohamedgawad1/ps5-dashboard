@@ -9937,6 +9937,30 @@
   "task": "T-00035-1482",
   "asset": null,
   "type": "Conformity Check",
+  "state": "Started (not Completed)",
+  "via": "dalc"
+ },
+ "T-00035-1487": {
+  "record": "1251760",
+  "task": "T-00035-1487",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1488": {
+  "record": "1251761",
+  "task": "T-00035-1488",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "Started (not Completed)",
+  "via": "dalc"
+ },
+ "T-00035-1491": {
+  "record": "1251764",
+  "task": "T-00035-1491",
+  "asset": null,
+  "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
  }
