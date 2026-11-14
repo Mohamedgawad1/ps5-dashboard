@@ -52475,3 +52475,17 @@
 [2026-11-13 18:55:49] STARTED itr_online (PID 16428)
 [2026-11-13 19:26:35] RESTARTING itr_online
 [2026-11-13 19:26:35] STARTED itr_online (PID 5388)
+[2026-11-13 19:55:39] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-14 07:07:42] ==================================================
+[2026-11-14 07:07:42] Watchdog started - keeping everything alive
+[2026-11-14 07:07:42] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-14 07:07:42] STARTED server (PID 7852)
+[2026-11-14 07:07:43] STARTED auto_sync (PID 2100)
+[2026-11-14 07:07:44] STARTED cloud_sync (PID 1836)
+[2026-11-14 07:07:46] STARTED itr_online (PID 13640)
+[2026-11-14 07:07:47] STARTED tunnel_named (PID 2064)
+[2026-11-14 07:07:48] STARTED tunnel_backup (PID 12884)
+[2026-11-14 07:07:58] TUNNEL URL: https://basic-toronto-rent-aggregate.trycloudflare.com
+[2026-11-14 07:08:04] ITR data is 673 min old (limit 40 min) -> restarting itr_online
+[2026-11-14 07:08:07] STARTED itr_online (PID 13384)
+[2026-11-14 07:09:08] SC window was off-screen (-32000) -> moved back on screen & brought to front

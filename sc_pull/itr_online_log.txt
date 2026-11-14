@@ -74573,3 +74573,82 @@ Call log:
 [2026-11-13 19:39:29]  >> platform publish OK (1 file(s) updated, closed=7802)
 [2026-11-13 19:39:29] PAGES PUSH rc=0
 [2026-11-13 19:39:29] cycle OK closed=7802 open=2552 updated=2026-11-13 19:39:08
+[2026-11-13 19:41:31] reused the sync's always-open browser (port 9222)
+[2026-11-13 19:41:31] LOGGED IN
+[2026-11-13 19:41:53] pulled off=0 n=4000 accum=4000
+[2026-11-13 19:42:10] pulled off=4000 n=4000 accum=8000
+[2026-11-13 19:42:31] pulled off=8000 n=4000 accum=12000
+[2026-11-13 19:42:40] pulled off=12000 n=2064 accum=14064
+[2026-11-13 19:42:41] task index refreshed (6350 asset tags)
+[2026-11-13 19:42:41] updated dashboard_data.json itr_summary.live
+[2026-11-13 19:42:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-13 19:42:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-13 19:42 (closed=7803) rc=0 [main 5ab6472] ITR live update 2026-11-13 19:42 (closed=7803)
+ 1 file changed, 32 insertions(+), 32 deletions(-)
+[2026-11-13 19:43:10]  >> git push OK
+[2026-11-13 19:43:34]  .. itr_live_state.json publish hiccup (Remote end closed connection without response) - retrying
+[2026-11-13 19:43:52]  >> published itr_live_state.json (460309 bytes)
+[2026-11-13 19:43:57]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-13 19:43:57]  >> platform publish OK (1 file(s) updated, closed=7803)
+[2026-11-13 19:43:57] PAGES PUSH rc=0
+[2026-11-13 19:43:57] cycle OK closed=7803 open=2551 updated=2026-11-13 19:42:41
+[2026-11-13 19:45:58] reused the sync's always-open browser (port 9222)
+[2026-11-13 19:45:58] LOGGED IN
+[2026-11-13 19:46:11] pulled off=0 n=4000 accum=4000
+[2026-11-13 19:46:22] pulled off=4000 n=4000 accum=8000
+[2026-11-13 19:46:55] pulled off=8000 n=4000 accum=12000
+[2026-11-13 19:47:03] pulled off=12000 n=2064 accum=14064
+[2026-11-13 19:47:04] task index refreshed (6350 asset tags)
+[2026-11-13 19:47:04] updated dashboard_data.json itr_summary.live
+[2026-11-13 19:47:05]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-13 19:47:06]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-13 19:47 (closed=7805) rc=0 [main 63ed48f] ITR live update 2026-11-13 19:47 (closed=7805)
+ 1 file changed, 51 insertions(+), 51 deletions(-)
+[2026-11-13 19:47:13]  >> git push OK
+[2026-11-13 19:47:28]  >> published itr_live_state.json (460311 bytes)
+[2026-11-13 19:47:33]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-13 19:47:33]  >> platform publish OK (1 file(s) updated, closed=7805)
+[2026-11-13 19:47:33] PAGES PUSH rc=0
+[2026-11-13 19:47:33] cycle OK closed=7805 open=2549 updated=2026-11-13 19:47:04
+[2026-11-13 19:49:34] reused the sync's always-open browser (port 9222)
+[2026-11-13 19:49:34] LOGGED IN
+[2026-11-13 19:49:56] pulled off=0 n=4000 accum=4000
+[2026-11-13 19:50:23] pulled off=4000 n=4000 accum=8000
+[2026-11-13 19:50:36] pulled off=8000 n=4000 accum=12000
+[2026-11-13 19:50:55] pulled off=12000 n=2064 accum=14064
+[2026-11-13 19:50:55] task index refreshed (6350 asset tags)
+[2026-11-13 19:50:56] updated dashboard_data.json itr_summary.live
+[2026-11-13 19:50:57]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-13 19:50:57]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-13 19:50 (closed=7807) rc=0 [main 5653e71] ITR live update 2026-11-13 19:50 (closed=7807)
+ 1 file changed, 48 insertions(+), 48 deletions(-)
+[2026-11-13 19:51:04]  >> git push OK
+[2026-11-13 19:51:15]  >> published itr_live_state.json (460308 bytes)
+[2026-11-13 19:51:20]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-13 19:51:20]  >> platform publish OK (1 file(s) updated, closed=7807)
+[2026-11-13 19:51:20] PAGES PUSH rc=0
+[2026-11-13 19:51:20] cycle OK closed=7807 open=2547 updated=2026-11-13 19:50:56
+[2026-11-13 19:53:20] reused the sync's always-open browser (port 9222)
+[2026-11-13 19:53:20] LOGGED IN
+[2026-11-13 19:53:35] pulled off=0 n=4000 accum=4000
+[2026-11-13 19:53:50] pulled off=4000 n=4000 accum=8000
+[2026-11-13 19:54:06] pulled off=8000 n=4000 accum=12000
+[2026-11-13 19:54:17] pulled off=12000 n=2064 accum=14064
+[2026-11-13 19:54:17] task index refreshed (6350 asset tags)
+[2026-11-13 19:54:18] updated dashboard_data.json itr_summary.live
+[2026-11-13 19:54:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-13 19:54:20]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-13 19:54 (closed=7807) rc=0 [main e925a7b] ITR live update 2026-11-13 19:54 (closed=7807)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-13 19:54:27]  >> git push OK
+[2026-11-13 19:54:38]  >> published itr_live_state.json (460308 bytes)
+[2026-11-13 19:54:43]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-13 19:54:43]  >> platform publish OK (1 file(s) updated, closed=7807)
+[2026-11-13 19:54:43] PAGES PUSH rc=0
+[2026-11-13 19:54:43] cycle OK closed=7807 open=2547 updated=2026-11-13 19:54:18
+[2026-11-13 19:56:43] reused the sync's always-open browser (port 9222)
+[2026-11-13 19:56:43] LOGGED IN
+[2026-11-14 07:07:56] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-14 07:07:57] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-14 07:07:57] no pull tab this cycle - retrying in 120s
+[2026-11-14 07:08:10] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-14 07:08:11] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-14 07:08:11] no pull tab this cycle - retrying in 120s
+[2026-11-14 07:09:21] opened the one pull tab (none was open)
+[2026-11-14 07:09:21] reused the sync's always-open browser (port 9222)
