@@ -77447,3 +77447,19 @@ Call log:
 [2026-11-16 10:39:05]  >> platform publish OK (1 file(s) updated, closed=7877)
 [2026-11-16 10:39:05] PAGES PUSH rc=0
 [2026-11-16 10:39:05] cycle OK closed=7877 open=2477 updated=2026-11-16 10:38:37
+[2026-11-16 18:25:11] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-16 18:25:12] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-16 18:25:12] no pull tab this cycle - retrying in 120s
+[2026-11-16 18:25:29] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-16 18:25:30] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-16 18:25:30] no pull tab this cycle - retrying in 120s
+[2026-11-16 18:26:30] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-16 18:26:30] no pull tab this cycle - retrying in 120s
+[2026-11-16 18:27:30] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-16 18:27:30] no pull tab this cycle - retrying in 120s
+[2026-11-16 18:28:30] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-16 18:28:30] no pull tab this cycle - retrying in 120s
+[2026-11-16 18:29:30] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-16 18:29:30] no pull tab this cycle - retrying in 120s
+[2026-11-16 18:31:00] opened the one pull tab (none was open)
+[2026-11-16 18:31:00] reused the sync's always-open browser (port 9222)
