@@ -10435,5 +10435,165 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00023-5515": {
+  "record": "1063059",
+  "task": "T-00023-5515",
+  "asset": "PS5-61-IK-0006-CL24",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5510": {
+  "record": "1063054",
+  "task": "T-00023-5510",
+  "asset": "PS5-61-IK-0006-CL19",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5507": {
+  "record": "1063051",
+  "task": "T-00023-5507",
+  "asset": "PS5-61-IK-0006-CL16",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5511": {
+  "record": "1063055",
+  "task": "T-00023-5511",
+  "asset": "PS5-61-IK-0006-CL20",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5508": {
+  "record": "1063052",
+  "task": "T-00023-5508",
+  "asset": "PS5-61-IK-0006-CL17",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5509": {
+  "record": "1063053",
+  "task": "T-00023-5509",
+  "asset": "PS5-61-IK-0006-CL18",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5506": {
+  "record": "1063050",
+  "task": "T-00023-5506",
+  "asset": "PS5-61-IK-0006-CL15",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5512": {
+  "record": "1063056",
+  "task": "T-00023-5512",
+  "asset": "PS5-61-IK-0006-CL21",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5513": {
+  "record": "1063057",
+  "task": "T-00023-5513",
+  "asset": "PS5-61-IK-0006-CL22",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5514": {
+  "record": "1063058",
+  "task": "T-00023-5514",
+  "asset": "PS5-61-IK-0006-CL23",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5516": {
+  "record": "1063060",
+  "task": "T-00023-5516",
+  "asset": "PS5-61-IK-0006-CL25",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5517": {
+  "record": "1063061",
+  "task": "T-00023-5517",
+  "asset": "PS5-61-IK-0006-CL26",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5518": {
+  "record": "1063062",
+  "task": "T-00023-5518",
+  "asset": "PS5-61-IK-0006-CL27",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5519": {
+  "record": "1063063",
+  "task": "T-00023-5519",
+  "asset": "PS5-61-IK-0006-CL28",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5357": {
+  "record": "1062901",
+  "task": "T-00023-5357",
+  "asset": "PS5-61-IH-0004-CL15",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5358": {
+  "record": "1062902",
+  "task": "T-00023-5358",
+  "asset": "PS5-61-IH-0004-CL16",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5360": {
+  "record": "1062904",
+  "task": "T-00023-5360",
+  "asset": "PS5-61-IH-0004-CL18",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5361": {
+  "record": "1062905",
+  "task": "T-00023-5361",
+  "asset": "PS5-61-IH-0004-CL19",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5362": {
+  "record": "1062906",
+  "task": "T-00023-5362",
+  "asset": "PS5-61-IH-0004-CL20",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00023-5363": {
+  "record": "1062907",
+  "task": "T-00023-5363",
+  "asset": "PS5-61-IH-0004-CL21",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
