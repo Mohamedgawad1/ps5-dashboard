@@ -10708,3 +10708,20 @@
   "state": "To be completed",
   "via": "dalc"
  },
+ "T-00234-3677": {
+  "record": "1295909",
+  "task": "T-00234-3677",
+  "asset": "PS5-09-IES-8405A-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00234-3678": {
+  "record": "1295910",
+  "task": "T-00234-3678",
+  "asset": "PS5-09-IES-8405B-CD01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ }
+}
