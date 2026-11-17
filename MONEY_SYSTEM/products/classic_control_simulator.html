@@ -2416,8 +2416,16 @@ function motionOverlay(c){
     x += `<g class="mv ${spin}">`
       + [0,60,120,180,240,300].map(a => `<line x1="50" y1="50" x2="50" y2="29" transform="rotate(${a} 50 50)" stroke="#00E676" stroke-width="3.2" opacity=".92"/>`).join('')
       + `<circle cx="50" cy="50" r="10" fill="#0b1220" stroke="#00E676" stroke-width="3"/></g>`;
-    x += s.energized ? `<path d="M 33 50 A 17 17 0 0 1 50 33" fill="none" stroke="#00E676" stroke-width="2.6"/>`
-      + `<path d="M 50 28 L 44 36 L 56 36 Z" fill="#00E676" class="mv pulse"/>` : '';
+    if(s.energized){
+      /* rotation arrow follows the SAME direction as the spinning gear:
+         CW  -> arc sweeps left->top (sweep=1), head points CW
+         CCW -> mirrored arc (sweep=0), head points CCW */
+      const ccw = s.dir === 'CCW';
+      const arc = ccw ? 'M 67 50 A 17 17 0 0 0 50 33' : 'M 33 50 A 17 17 0 0 1 50 33';
+      const head = ccw ? 'M 50 28 L 56 36 L 44 36 Z' : 'M 50 28 L 44 36 L 56 36 Z';
+      x += `<path d="${arc}" fill="none" stroke="#00E676" stroke-width="2.6"/>`
+        + `<path d="${head}" fill="#00E676" class="mv pulse"/>`;
+    }
   } else if(t === 'contactor' || t === 'relay' || t === 'timer' || t === 'timer_off' || t === 'timer_sd' || t === 'flasher' || t === 'phase'){
     const cl = s.coil ? 'close' : 'open';
     x += [26,50,74].map(px => `<g class="mv ${cl}" style="transform-origin:${px}px 57px"><line x1="${px}" y1="57" x2="${px}" y2="73" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"/></g>`).join('');
