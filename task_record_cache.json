@@ -10723,5 +10723,29 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00023-10589": {
+  "record": "1964585",
+  "task": "T-00023-10589",
+  "asset": "PS5-25-DM-3100B-CG01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00023-10590": {
+  "record": "1964586",
+  "task": "T-00023-10590",
+  "asset": "PS5-25-DM-3100B-CG02",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00023-10591": {
+  "record": "1964587",
+  "task": "T-00023-10591",
+  "asset": "PS5-25-DM-3100C-CG01",
+  "type": "Conformity Check",
+  "state": "Closed",
+  "via": "dalc"
  }
 }
