@@ -10747,5 +10747,65 @@
   "type": "Conformity Check",
   "state": "Closed",
   "via": "dalc"
+ },
+ "T-00023-10592": {
+  "record": "1964588",
+  "task": "T-00023-10592",
+  "asset": "PS5-25-DM-3100C-CG02",
+  "type": "Conformity Check",
+  "state": null
+ },
+ "T-00610-0204": {
+  "record": "2052818",
+  "task": "T-00610-0204",
+  "asset": "PS5-28-HE-2200-CD01",
+  "type": "Conformity Check",
+  "state": null
+ },
+ "T-00608-0409": {
+  "record": "2051085",
+  "task": "T-00608-0409",
+  "asset": "PS5-28-HE-2200-CL01",
+  "type": "Conformity Check",
+  "state": null
+ },
+ "T-00023-4964": {
+  "record": "1062508",
+  "task": "T-00023-4964",
+  "asset": "PS5-28-HE-2200-CL02",
+  "type": "Conformity Check",
+  "state": null
+ },
+ "T-00035-1717": {
+  "record": "1251990",
+  "task": "T-00035-1717",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1718": {
+  "record": "1251991",
+  "task": "T-00035-1718",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1719": {
+  "record": "1251992",
+  "task": "T-00035-1719",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1519": {
+  "record": "1251792",
+  "task": "T-00035-1519",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
