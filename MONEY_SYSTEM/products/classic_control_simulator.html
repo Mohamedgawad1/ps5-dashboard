@@ -43,7 +43,7 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
 .zoomCtl button:hover{border-color:var(--accent);color:var(--accent)}
 .zoomCtl span{min-width:44px;text-align:center;font-size:10.5px;color:var(--muted);font-weight:700}
 .wires{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
-.comp{position:absolute;z-index:2;border-radius:10px;background:linear-gradient(180deg,rgba(30,41,59,.96),rgba(15,23,42,.96));box-shadow:0 3px 10px rgba(0,0,0,.55),inset 0 0 0 1px #334155;cursor:grab;user-select:none;touch-action:none}
+.comp{position:absolute;z-index:2;border-radius:7px;background:linear-gradient(145deg,#f1f5f9 0%,#cbd5e1 48%,#94a3b8 100%);box-shadow:0 4px 12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.85),inset 0 -2px 4px rgba(15,23,42,.35),inset 0 0 0 1px #64748b;cursor:grab;user-select:none;touch-action:none}
 .comp.selected{box-shadow:0 0 0 2px var(--accent),0 0 18px rgba(0,212,255,.45)}
 .comp .ch{position:absolute;display:none;z-index:20;touch-action:none}
 .comp.selected .ch{display:block}
@@ -55,10 +55,29 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
 @keyframes wireflow{to{stroke-dashoffset:-34}}
 .comp .sym{position:absolute;inset:0}
 .comp .sym svg{width:100%;height:100%;overflow:visible;display:block}
-.port{position:absolute;width:14px;height:14px;border-radius:50%;background:#475569;border:2px solid #94a3b8;z-index:5;cursor:crosshair;touch-action:none}
-.port:hover{background:var(--gold);border-color:#fde68a}
-.port.hot{background:var(--gold);border-color:#fde68a;box-shadow:0 0 9px var(--gold)}
-.port.pending{background:var(--accent);border-color:#fff;box-shadow:0 0 12px var(--accent)}
+/* realistic screw terminals — black = common, blue = NC, red = NO (as on real devices) */
+.port{position:absolute;width:14px;height:14px;border-radius:50%;background:#111827;border:2px solid #64748b;z-index:5;cursor:crosshair;touch-action:none;box-shadow:0 1px 2px rgba(0,0,0,.7),inset 0 1px 1px rgba(255,255,255,.4)}
+.port:before{content:'';position:absolute;left:2px;right:2px;top:5px;height:2px;border-radius:1px;background:rgba(255,255,255,.75);box-shadow:0 1px 0 rgba(0,0,0,.45);transform:rotate(-28deg)}
+.port:after{content:attr(data-term);position:absolute;font-size:8px;font-weight:800;font-family:Segoe UI,Arial;color:#e2e8f0;text-shadow:0 1px 2px #000,0 0 3px #000;white-space:nowrap;pointer-events:none}
+.port[data-side="l"]:after{right:17px;top:50%;transform:translateY(-50%)}
+.port[data-side="r"]:after{left:17px;top:50%;transform:translateY(-50%)}
+.port[data-side="t"]:after{bottom:17px;left:50%;transform:translateX(-50%)}
+.port[data-side="b"]:after{top:17px;left:50%;transform:translateX(-50%)}
+.port[data-kind="no"]{background:#dc2626;border-color:#fca5a5}
+.port[data-kind="nc"]{background:#2563eb;border-color:#93c5fd}
+.port[data-kind="common"]{background:#0b0f19;border-color:#94a3b8}
+.port[data-kind="coil"]{background:#475569;border-color:#cbd5e1}
+.port[data-kind="L1"]{background:#b45309;border-color:#fbbf24}
+.port[data-kind="L2"]{background:#475569;border-color:#cbd5e1}
+.port[data-kind="L3"]{background:#94a3b8;border-color:#e2e8f0}
+.port[data-kind="N"]{background:#3b82f6;border-color:#bfdbfe}
+.port[data-kind="PE"]{background:#22c55e;border-color:#bbf7d0}
+.port[data-kind="U"]{background:#b45309;border-color:#fbbf24}
+.port[data-kind="V"]{background:#475569;border-color:#cbd5e1}
+.port[data-kind="W"]{background:#94a3b8;border-color:#e2e8f0}
+.port:hover{outline:2px solid var(--gold);outline-offset:1px}
+.port.hot{box-shadow:0 0 10px 2px var(--gold),0 1px 2px rgba(0,0,0,.7)}
+.port.pending{outline:2px solid var(--accent);outline-offset:2px;box-shadow:0 0 12px var(--accent)}
 .wire{fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:stroke;cursor:pointer}
 .wire.sel{stroke-width:4;filter:drop-shadow(0 0 8px rgba(245,197,24,.95))}
 .wire.live{stroke-width:3;filter:drop-shadow(0 0 4px rgba(245,197,24,.8))}
@@ -326,7 +345,8 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
         &nbsp;&nbsp;• دلتا: وصّل أعمدة كونتاكتور الدلتا K2 بين خرج الموتور وأطراف الكونتاكتور الرئيسي K1: U2→V1، V2→W1، W2→U1 — لما K2 يشتغل يلف دلتا.<br>
         &nbsp;&nbsp;• لو K2 و K3 قفلوا مع بعض = قصر بين الأطوار والقاطع بيفصل فورًا — عشان كده اللوحات الحقيقية فيها interlock بتلامسات NC.<br>
         &nbsp;&nbsp;• للاختبار السريع: اربط الخرج بأسلاك مباشرة أو من خاصية Wiring. شوف مثالي Star-Delta Starter و Star-Delta Panel.<br>
-        10. المولدات والمحولات: محول التحكم 1 فاز يعزل دائرة التحكم تمامًا (ثانوي حي 230 فولت لما الابتدائي على 400 فولت). جرّب مثال Control Transformer ومثال AMF: عند سقوط المصدر تراقب KP1 الأطوار، وبعد تأخير بدء 3 ثوانٍ يبدأ المولد تلقائيًا وينقل الـATS الحمل، وعند رجوع المصدر يرجع الحمل بعد 5 ثوانٍ ثم يفصل المولد — كل التحكم متغذي من بطارية 24 فولت.
+        10. المولدات والمحولات: محول التحكم 1 فاز يعزل دائرة التحكم تمامًا (ثانوي حي 230 فولت لما الابتدائي على 400 فولت). جرّب مثال Control Transformer ومثال AMF: عند سقوط المصدر تراقب KP1 الأطوار، وبعد تأخير بدء 3 ثوانٍ يبدأ المولد تلقائيًا وينقل الـATS الحمل، وعند رجوع المصدر يرجع الحمل بعد 5 ثوانٍ ثم يفصل المولد — كل التحكم متغذي من بطارية 24 فولت.<br>
+        11. الأطراف الفيزيائية: كل منفذ عليه رقم طرف حقيقي (13 NO · 14 NO · 21 NC · 11 NC ...) ولون برغي زي الجهاز: <b>أحمر = NO</b>، <b>أزرق = NC</b>، <b>أسود = Common</b>، وده يسهّل مطابقة الرسم مع اللوحة.
       </div>
       <div class="hint en-only">
         1. Choose a component, then click on canvas to place it.<br>
@@ -342,7 +362,8 @@ body.lang-en .ar-only{display:none}body.lang-en .en-only{display:inline}
         &nbsp;&nbsp;• DELTA: wire the delta contactor (K2) poles between the motor outputs and the main contactor (K1) terminals: U2→V1, V2→W1, W2→U1 — with K2 closed it runs in delta.<br>
         &nbsp;&nbsp;• K2 and K3 closed together = phase-to-phase short and the breaker trips instantly — real panels interlock them with NC contacts.<br>
         &nbsp;&nbsp;• Quick test shortcut: direct wires between the leads, or the Wiring property. See the Star-Delta Starter and Star-Delta Panel examples.<br>
-        10. Transformers & generators: the 1Φ control transformer fully isolates the control circuit (live 230 V secondary while the primary sits on 400 V). Try the Control Transformer example, and the AMF example: on mains failure KP1 detects phase loss, after a 3 s start delay the genset auto-starts and the ATS transfers the load; when the mains returns the load switches back after 5 s and the genset shuts down — all control logic runs from a 24 V battery.
+        10. Transformers & generators: the 1Φ control transformer fully isolates the control circuit (live 230 V secondary while the primary sits on 400 V). Try the Control Transformer example, and the AMF example: on mains failure KP1 detects phase loss, after a 3 s start delay the genset auto-starts and the ATS transfers the load; when the mains returns the load switches back after 5 s and the genset shuts down — all control logic runs from a 24 V battery.<br>
+        11. Physical terminals: every port shows its real terminal number (13 NO · 14 NO · 21 NC · 11 NC ...) with a screw colour like the real device: <b>red = NO</b>, <b>blue = NC</b>, <b>black = Common</b> — makes matching the drawing to the panel easy.
       </div>
     </details>
   </aside>
@@ -934,6 +955,70 @@ const CL = {
   text:'#e8ecf4', muted:'#9aa3bf', hot:'#f5c518', cyan:'#00d4ff',
   green:'#22c55e', red:'#ef4444', blue:'#38bdf8', amber:'#f59e0b'
 };
+/* real-device model plates + IEC terminal numbers (like the CHNT devices on site) */
+const MODEL = {
+  power:'3~ 400 V', power_1ph:'1~ 230 V',
+  mcb:'C65 · MCB', mcb_3p:'C65H · 3P', mccb:'NSX · MCCB', mccb_3p:'NSX · 3P',
+  rccb:'RCCB 30mA', fuse:'NH00', spd:'T2 · SPD', isolator:'ISO · 3P',
+  contactor:'CJX2-18', relay:'RXM2 · 2CO', ol:'NR2-25',
+  timer:'ON-DELAY', timer_off:'OFF-DELAY', timer_sd:'STAR-DELTA', flasher:'BLINK',
+  phase:'PHASE RELAY', counter:'CNT-5', pb_no:'START · NO', pb_nc:'STOP · NC',
+  estop:'E-STOP', selector:'AUTO / MAN', lamp:'LED IND', alarm:'HORN 24V',
+  capbank:'PFC BANK', changeover:'ATS MAN', variac:'0-250 V', ct:'CT 200/5',
+  wattmeter:'kW METER', energymeter:'kWh METER', pfmeter:'cosφ METER',
+  freqmeter:'Hz METER', multimeter:'DMM', ammeter:'A METER', voltmeter:'V METER',
+  motor:'3~ IE3', motor_1ph:'1~ CAP', motor_dc:'DC MOTOR',
+  motor_stepper:'STEP MOTOR', motor_servo:'SERVO', generator:'GEN-set',
+  generator_3p:'3~ GEN', transformer:'CTRL TRF', transformer_3p:'3Φ TRF',
+  pt:'PT', pt_3p:'PT 3Φ', plc:'LOGO!', vfd:'VFD', float:'FLOAT SW',
+  pressure:'PRESS SW', thermostat:'THERMOSTAT', limit_switch:'LIMIT SW', proximity:'PROX SW',
+  resistor:'R', potentiometer:'VR', capacitor:'C', capacitor_elec:'CE',
+  inductor:'L', diode:'D', led:'LED', zener:'DZ', busbar:'BUS BAR', busbar_3p:'BUS 3Φ'
+};
+function termLabel(type, pid){
+  const aux = ['13','14','21','22','11','12','15','16','18','25','26','28','95','96','97','98'];
+  switch(type){
+    case 'pb_no':   return pid === '1' ? '13 NO' : '14 NO';
+    case 'pb_nc':
+    case 'estop':   return pid === '1' ? '11 NC' : '12 NC';
+    case 'selector':return pid === '1' ? '13' : '14';
+    case 'float': case 'pressure': case 'thermostat': case 'limit_switch': case 'proximity':
+      return pid === '1' ? 'COM' : 'NO';
+    case 'lamp': case 'alarm': case 'resistor': case 'potentiometer': case 'capacitor':
+    case 'capacitor_elec': case 'inductor': case 'diode': case 'led': case 'zener':
+    case 'ammeter': case 'voltmeter': case 'wattmeter': case 'energymeter':
+    case 'pfmeter': case 'freqmeter': case 'multimeter':
+      return pid === '1' ? '1' : '2';
+    default:
+      if(aux.includes(pid)){
+        if(['11','12','21','22','95','96'].includes(pid)) return pid + ' NC';
+        if(['13','14','97','98'].includes(pid)) return pid + ' NO';
+        return pid;
+      }
+      return pid;
+  }
+}
+function termKind(type, pid){
+  const lab = termLabel(type, pid);
+  if(/NO/.test(lab)) return 'no';
+  if(/NC/.test(lab)) return 'nc';
+  if(/^COM/.test(lab)) return 'common';
+  if(/^A[12]$/.test(lab)) return 'coil';
+  if(/^L1$|^U1$/.test(lab)) return 'L1';
+  if(/^L2$|^V1$/.test(lab)) return 'L2';
+  if(/^L3$|^W1$/.test(lab)) return 'L3';
+  if(/^N$/.test(lab)) return 'N';
+  if(/^PE$/.test(lab)) return 'PE';
+  if(/^U/.test(lab)) return 'U';
+  if(/^V/.test(lab)) return 'V';
+  if(/^W/.test(lab)) return 'W';
+  return 'common';
+}
+function termSide(t, p){
+  if(p.x < t.w * 0.35) return 'l';
+  if(p.x > t.w * 0.65) return 'r';
+  return p.y < t.h / 2 ? 't' : 'b';
+}
 function term(x,y){ return `<circle cx="${x}" cy="${y}" r="3" fill="${CL.metal}"/>`; }
 function contactH(x1,x2,y,closed){
   return `<line x1="${x1}" y1="${y}" x2="${x1+7}" y2="${y}" stroke="${CL.metal}" stroke-width="2"/>`
@@ -954,7 +1039,21 @@ function txt(x,y,s,size,fill,anchor){
 }
 function wrap(c, inner){
   const t = TYPES[c.type];
-  return `<svg width="${t.w}" height="${t.h}" viewBox="0 0 ${t.w} ${t.h}"><defs><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="2" dy="3" stdDeviation="2.5" flood-color="#000" flood-opacity="0.55"/></filter><linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient><linearGradient id="motorGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78836b"/><stop offset=".5" stop-color="#414b3c"/><stop offset="1" stop-color="#242b25"/></linearGradient><linearGradient id="genGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffbd21"/><stop offset="1" stop-color="#d86b00"/></linearGradient></defs><g filter="url(#sh)">${inner}</g></svg>`;
+  const model = MODEL[c.type];
+  let plate = '';
+  if(model && t.h >= 70){
+    const pw = Math.min(t.w - 12, Math.max(38, model.length * 4.6 + 10));
+    const ports = t.ports || [];
+    const topClash = ports.some(p => p.y < 22 && p.x > t.w - pw - 6);
+    const botClash = ports.some(p => p.y > t.h - 22 && p.x < pw + 6);
+    const px = topClash ? 6 : t.w - pw - 6;
+    const py = topClash && !botClash ? t.h - 18 : 5;
+    if(!(topClash && botClash)){
+      plate = `<rect x="${px}" y="${py}" width="${pw}" height="13" rx="2.5" fill="#0b1220" stroke="#64748b" stroke-width=".8" opacity=".92"/>`
+        + txt(px + pw / 2, py + 9.5, model, 6.5, '#cbd5e1');
+    }
+  }
+  return `<svg width="${t.w}" height="${t.h}" viewBox="0 0 ${t.w} ${t.h}"><defs><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="2" dy="3" stdDeviation="2.5" flood-color="#000" flood-opacity="0.55"/></filter><linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient><linearGradient id="motorGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78836b"/><stop offset=".5" stop-color="#414b3c"/><stop offset="1" stop-color="#242b25"/></linearGradient><linearGradient id="genGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffbd21"/><stop offset="1" stop-color="#d86b00"/></linearGradient></defs><g filter="url(#sh)">${inner}${plate}</g></svg>`;
 }
 
 /* ---------- Realistic component symbols ---------- */
@@ -2974,7 +3073,10 @@ function render(){
       const pd = document.createElement('div');
       pd.className = 'port';
       pd.dataset.comp = c.id; pd.dataset.port = p.id;
-      pd.title = c.label + ' · ' + p.id;
+      pd.dataset.term = termLabel(c.type, p.id);
+      pd.dataset.kind = termKind(c.type, p.id);
+      pd.dataset.side = termSide(t, p);
+      pd.title = c.label + ' · ' + termLabel(c.type, p.id);
       pd.style.left = (p.x - 7) + 'px';
       pd.style.top = (p.y - 7) + 'px';
       pd.addEventListener('pointerdown', ev => {
@@ -3933,8 +4035,9 @@ function inspectComp(id){
   $('inspectTitle').textContent = c.label + ' · ' + (t.label || c.type);
   const svg = svgFor(c);
   $('inspectSvg').innerHTML = svg;
-  const ports = t.ports.map(p => p.id).join('  ');
-  $('inspectTerms').textContent = 'Terminals: ' + ports;
+  const ports = t.ports.map(p => termLabel(c.type, p.id)).join('  ·  ');
+  $('inspectTerms').textContent = (MODEL[c.type] ? MODEL[c.type] + '   |   ' : '') + 'Terminals: ' + ports
+    + '   |   ● black COM  ● blue NC  ● red NO';
   $('inspectModal').classList.add('show');
 }
 function closeInspect(){ $('inspectModal').classList.remove('show'); $('inspectSvg').innerHTML = ''; }
