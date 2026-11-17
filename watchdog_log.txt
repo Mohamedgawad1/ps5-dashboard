@@ -52596,3 +52596,16 @@
 [2026-11-16 18:30:12] STARTED tunnel_backup (PID 11584)
 [2026-11-16 18:30:15] SC window was off-screen (-32000) -> moved back on screen & brought to front
 [2026-11-16 18:30:20] TUNNEL URL: https://squad-falling-archives-hold.trycloudflare.com
+[2026-11-16 19:26:02] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 08:30:56] ==================================================
+[2026-11-17 08:30:56] Watchdog started - keeping everything alive
+[2026-11-17 08:30:56] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 08:30:56] STARTED server (PID 17456)
+[2026-11-17 08:30:58] STARTED auto_sync (PID 17936)
+[2026-11-17 08:30:59] STARTED cloud_sync (PID 18088)
+[2026-11-17 08:31:00] STARTED itr_online (PID 4712)
+[2026-11-17 08:31:01] STARTED tunnel_named (PID 1984)
+[2026-11-17 08:31:03] STARTED tunnel_backup (PID 2364)
+[2026-11-17 08:31:10] TUNNEL URL: https://fares-sheep-qty-chess.trycloudflare.com
+[2026-11-17 08:31:19] ITR data is 786 min old (limit 40 min) -> restarting itr_online
+[2026-11-17 08:31:23] STARTED itr_online (PID 4556)
