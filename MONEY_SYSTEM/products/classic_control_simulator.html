@@ -1019,6 +1019,13 @@ function termLabel(type, pid){
     case 'pb_nc':
     case 'estop':   return pid === '1' ? '11 NC' : '12 NC';
     case 'selector':return pid === '1' ? '13' : '14';
+    case 'vfd':
+      /* real drive terminal markings, so every connection point is identifiable */
+      if(pid === 'DI1') return 'DI1 RUN';
+      if(pid === 'DI2') return 'DI2 REV';
+      if(pid === 'REF') return '+10V';
+      if(pid === 'AI1') return 'AI1 SPD';
+      return pid;
     case 'float': case 'pressure': case 'thermostat': case 'limit_switch': case 'proximity':
       return pid === '1' ? 'COM' : 'NO';
     case 'lamp': case 'alarm': case 'resistor': case 'potentiometer': case 'capacitor':
