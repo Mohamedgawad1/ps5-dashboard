@@ -4798,7 +4798,7 @@ function toggleMute(){
   if(muted) stopBeep(); else if(alarmActive()) startBeep();
   toast(muted ? 'Horn muted' : 'Horn on');
 }
-let LANG = (localStorage.getItem('cc_lang') || 'en');
+let LANG = (localStorage.getItem('cc_lang') || 'ar');
 function applyLang(){
   document.body.classList.toggle('lang-en', LANG === 'en');
   document.body.classList.toggle('lang-ar', LANG === 'ar');
