@@ -11391,5 +11391,21 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00284-0090": {
+  "record": "1099957",
+  "task": "T-00284-0090",
+  "asset": "PS5-71-FIT-0005",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00284-0089": {
+  "record": "1099956",
+  "task": "T-00284-0089",
+  "asset": "PS5-71-FIT-0012",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
