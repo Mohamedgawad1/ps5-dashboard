@@ -52620,3 +52620,152 @@
 [2026-11-17 09:44:05] STARTED tunnel_backup (PID 5148)
 [2026-11-17 09:44:35] TUNNEL URL: https://mercury-processes-britney-suggested.trycloudflare.com
 [2026-11-17 10:44:10] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 11:33:42] RESTARTING itr_online
+[2026-11-17 11:33:42] STARTED itr_online (PID 19044)
+[2026-11-17 11:44:16] Watchdog alive - 480 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 12:44:17] Watchdog alive - 720 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 13:34:32] RESTARTING itr_online
+[2026-11-17 13:34:32] STARTED itr_online (PID 13032)
+[2026-11-17 13:44:20] Watchdog alive - 960 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 14:44:21] Watchdog alive - 1200 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 15:04:07] RESTARTING itr_online
+[2026-11-17 15:04:07] STARTED itr_online (PID 17000)
+[2026-11-17 15:19:10] RESTARTING itr_online
+[2026-11-17 15:19:10] STARTED itr_online (PID 20192)
+[2026-11-17 15:44:32] Watchdog alive - 1440 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 16:46:32] Watchdog alive - 1680 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 18:30:34] ==================================================
+[2026-11-17 18:30:34] Watchdog started - keeping everything alive
+[2026-11-17 18:30:35] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-17 18:30:35] STARTED server (PID 17208)
+[2026-11-17 18:30:36] STARTED auto_sync (PID 12104)
+[2026-11-17 18:30:37] STARTED cloud_sync (PID 17400)
+[2026-11-17 18:30:38] STARTED itr_online (PID 13188)
+[2026-11-17 18:30:39] STARTED tunnel_named (PID 9416)
+[2026-11-17 18:30:40] STARTED tunnel_backup (PID 17476)
+[2026-11-17 18:30:56] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-17 18:30:56] RESTARTING tunnel_backup
+[2026-11-17 18:30:56] STARTED tunnel_backup (PID 18168)
+[2026-11-17 18:30:59] SC window was off-screen (-32000) -> moved back on screen & brought to front
+[2026-11-17 18:30:59] ITR data is 51 min old (limit 40 min) -> restarting itr_online
+[2026-11-17 18:31:03] STARTED itr_online (PID 4488)
+[2026-11-17 18:31:11] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-17 18:31:18] RESTARTING tunnel_backup
+[2026-11-17 18:31:18] STARTED tunnel_backup (PID 7736)
+[2026-11-17 18:31:33] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-17 18:31:36] RESTARTING tunnel_backup
+[2026-11-17 18:31:36] STARTED tunnel_backup (PID 12356)
+[2026-11-17 18:31:51] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-17 18:31:54] RESTARTING tunnel_backup
+[2026-11-17 18:31:54] STARTED tunnel_backup (PID 12348)
+[2026-11-17 18:31:58] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-17 18:32:12] RESTARTING tunnel_backup
+[2026-11-17 18:32:12] STARTED tunnel_backup (PID 3204)
+[2026-11-17 18:32:27] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-17 18:32:30] RESTARTING tunnel_backup
+[2026-11-17 18:32:30] STARTED tunnel_backup (PID 7628)
+[2026-11-17 18:32:45] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-17 18:32:48] RESTARTING tunnel_backup
+[2026-11-17 18:32:48] STARTED tunnel_backup (PID 17568)
+[2026-11-17 18:33:06] RESTARTING tunnel_backup
+[2026-11-17 18:33:06] STARTED tunnel_backup (PID 7404)
+[2026-11-17 18:33:12] TUNNEL URL: https://transmit-format-speeches-decreased.trycloudflare.com
+[2026-11-17 19:10:10] RESTARTING itr_online
+[2026-11-17 19:10:10] STARTED itr_online (PID 17388)
+[2026-11-18 07:27:29] ==================================================
+[2026-11-18 07:27:29] Watchdog started - keeping everything alive
+[2026-11-18 07:27:29] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 07:27:29] STARTED server (PID 16776)
+[2026-11-18 07:27:31] STARTED auto_sync (PID 14072)
+[2026-11-18 07:27:32] STARTED cloud_sync (PID 2392)
+[2026-11-18 07:27:34] STARTED itr_online (PID 3532)
+[2026-11-18 07:27:35] STARTED tunnel_named (PID 17336)
+[2026-11-18 07:27:37] STARTED tunnel_backup (PID 10940)
+[2026-11-18 07:27:46] TUNNEL URL: https://cups-richardson-revision-estimation.trycloudflare.com
+[2026-11-18 07:27:54] RESTARTING itr_online
+[2026-11-18 07:27:54] STARTED itr_online (PID 17716)
+[2026-11-18 07:27:57] ITR data is 723 min old (limit 40 min) -> restarting itr_online
+[2026-11-18 07:28:02] STARTED itr_online (PID 18368)
+[2026-11-18 07:28:17] RESTARTING itr_online
+[2026-11-18 07:28:17] STARTED itr_online (PID 14076)
+[2026-11-18 07:28:35] RESTARTING itr_online
+[2026-11-18 07:28:35] STARTED itr_online (PID 4508)
+[2026-11-18 07:28:54] RESTARTING itr_online
+[2026-11-18 07:28:54] STARTED itr_online (PID 10820)
+[2026-11-18 07:29:13] RESTARTING itr_online
+[2026-11-18 07:29:13] STARTED itr_online (PID 16108)
+[2026-11-18 07:29:31] RESTARTING itr_online
+[2026-11-18 07:29:31] STARTED itr_online (PID 11812)
+[2026-11-18 08:28:06] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 09:01:52] RESTARTING itr_online
+[2026-11-18 09:01:52] STARTED itr_online (PID 16872)
+[2026-11-18 09:28:10] Watchdog alive - 480 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 10:28:11] Watchdog alive - 720 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 11:06:17] RESTARTING itr_online
+[2026-11-18 11:06:17] STARTED itr_online (PID 20484)
+[2026-11-18 11:28:22] Watchdog alive - 960 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 12:28:31] Watchdog alive - 1200 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 13:28:53] Watchdog alive - 1440 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 13:33:38] RESTARTING itr_online
+[2026-11-18 13:33:38] STARTED itr_online (PID 5304)
+[2026-11-18 14:29:12] Watchdog alive - 1680 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 15:29:20] Watchdog alive - 1920 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 15:35:20] RESTARTING itr_online
+[2026-11-18 15:35:20] STARTED itr_online (PID 22268)
+[2026-11-18 16:29:23] Watchdog alive - 2160 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 17:22:54] RESTARTING itr_online
+[2026-11-18 17:22:54] STARTED itr_online (PID 22132)
+[2026-11-18 17:29:27] Watchdog alive - 2400 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 18:29:19] ==================================================
+[2026-11-18 18:29:19] Watchdog started - keeping everything alive
+[2026-11-18 18:29:19] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-18 18:29:19] STARTED server (PID 9808)
+[2026-11-18 18:29:20] STARTED auto_sync (PID 12132)
+[2026-11-18 18:29:21] STARTED cloud_sync (PID 16784)
+[2026-11-18 18:29:22] STARTED itr_online (PID 13340)
+[2026-11-18 18:29:23] STARTED tunnel_named (PID 16244)
+[2026-11-18 18:29:25] STARTED tunnel_backup (PID 17416)
+[2026-11-18 18:29:41] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-18 18:29:41] ITR data is 50 min old (limit 40 min) -> restarting itr_online
+[2026-11-18 18:29:44] STARTED itr_online (PID 11368)
+[2026-11-18 18:29:59] RESTARTING tunnel_backup
+[2026-11-18 18:29:59] STARTED tunnel_backup (PID 3360)
+[2026-11-18 18:30:14] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-18 18:30:17] RESTARTING tunnel_backup
+[2026-11-18 18:30:17] STARTED tunnel_backup (PID 7576)
+[2026-11-18 18:30:20] SC window was off-screen (-32000) -> moved back on screen & brought to front
+[2026-11-18 18:30:32] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-18 18:30:35] RESTARTING tunnel_backup
+[2026-11-18 18:30:35] STARTED tunnel_backup (PID 17292)
+[2026-11-18 18:30:44] TUNNEL URL: https://pix-walker-tracy-tan.trycloudflare.com
+[2026-11-18 19:29:39] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 07:49:43] ==================================================
+[2026-11-19 07:49:43] Watchdog started - keeping everything alive
+[2026-11-19 07:49:43] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 07:49:43] STARTED server (PID 17084)
+[2026-11-19 07:49:44] STARTED auto_sync (PID 17188)
+[2026-11-19 07:49:45] STARTED cloud_sync (PID 17368)
+[2026-11-19 07:49:47] STARTED itr_online (PID 7724)
+[2026-11-19 07:49:48] STARTED tunnel_named (PID 16556)
+[2026-11-19 07:49:49] STARTED tunnel_backup (PID 15612)
+[2026-11-19 07:49:57] TUNNEL URL: https://made-ministries-surgeons-forbes.trycloudflare.com
+[2026-11-19 07:50:05] ITR data is 735 min old (limit 40 min) -> restarting itr_online
+[2026-11-19 07:50:09] STARTED itr_online (PID 11104)
+[2026-11-19 07:50:54] SC window was off-screen (-32000) -> moved back on screen & brought to front
+[2026-11-19 08:49:56] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 09:41:42] RESTARTING itr_online
+[2026-11-19 09:41:42] STARTED itr_online (PID 7832)
+[2026-11-19 09:50:00] Watchdog alive - 480 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 10:34:46] RESTARTING itr_online
+[2026-11-19 10:34:46] STARTED itr_online (PID 15988)
+[2026-11-19 10:39:19] RESTARTING itr_online
+[2026-11-19 10:39:19] STARTED itr_online (PID 5224)
+[2026-11-19 10:50:07] Watchdog alive - 720 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 11:50:08] Watchdog alive - 960 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 12:50:44] Watchdog alive - 1200 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 13:35:36] RESTARTING itr_online
+[2026-11-19 13:35:37] STARTED itr_online (PID 1580)
+[2026-11-19 13:51:44] Watchdog alive - 1440 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 14:52:00] Watchdog alive - 1680 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-19 15:41:06] SC window was off-screen (-32000) -> moved back on screen & brought to front
+[2026-11-19 15:52:06] Watchdog alive - 1920 checks. URL: https://app.mohamedgawwad.is-a.dev
