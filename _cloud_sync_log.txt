@@ -15280,3 +15280,29 @@
 2026-11-19 08:36:34 [done] build in 2805s
 2026-11-19 10:31:47 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
 2026-11-19 10:36:48 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-20 08:05:31 ==================================================
+2026-11-20 08:05:31 cloud_auto_update started (interval 300s)
+2026-11-20 08:05:33 [trigger] state changed -> rebuilding downloads+pages
+2026-11-20 08:05:33 >> cloud->DPR
+2026-11-20 08:16:53    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-20 08:16:53    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-20 08:16:53    [guard] ok - 270 rows intact, 333 cell(s) written in mapped columns
+2026-11-20 08:16:53    sync 2026-11-20 08:16:46 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-20 08:16:53    written=333 notes=0 colors=1
+2026-11-20 08:16:53    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-20 08:16:53 >> local->DPR
+2026-11-20 08:28:32    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 84855 cells / 0 notes)
+2026-11-20 08:28:32      [summery-sync] OK -> 60348 cells, 0 notes written, 15612 skipped (no matching column)
+2026-11-20 08:28:32 >> explorer rebuild
+2026-11-20 08:32:30      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9733 rows, 17480 updates
+2026-11-20 08:32:30      Punch rows: 4465 | ITR rows: 23742 | RFC: 270 | Miles: 292
+2026-11-20 08:32:30      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-20 08:32:30      Carry-over: 0 notes, 0 colored rows, 23253 pinned cells
+2026-11-20 08:32:30    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-20 08:32:30    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-20 08:32:30 >> dashboard xlsm
+2026-11-20 08:38:24    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-20 08:38:24      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23742 | RFC 270
+2026-11-20 08:38:24      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 23365 pinned cells
+2026-11-20 08:38:24    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-20 08:38:24 >> platform full sync
