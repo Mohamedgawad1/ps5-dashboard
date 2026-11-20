@@ -84342,3 +84342,193 @@ Call log:
 [2026-11-20 08:59:07]  >> platform publish OK (1 file(s) updated, closed=8087)
 [2026-11-20 08:59:07] PAGES PUSH rc=0
 [2026-11-20 08:59:07] cycle OK closed=8087 open=2281 updated=2026-11-20 08:58:45
+[2026-11-20 09:01:08] reused the sync's always-open browser (port 9222)
+[2026-11-20 09:01:08] LOGGED IN
+[2026-11-20 09:01:24] pulled off=0 n=4000 accum=4000
+[2026-11-20 09:01:37] pulled off=4000 n=4000 accum=8000
+[2026-11-20 09:01:48] pulled off=8000 n=4000 accum=12000
+[2026-11-20 09:01:57] pulled off=12000 n=2078 accum=14078
+[2026-11-20 09:01:57] task index refreshed (6350 asset tags)
+[2026-11-20 09:01:58] updated dashboard_data.json itr_summary.live
+[2026-11-20 09:02:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-20 09:02:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-20 09:02 (closed=8087) rc=0 [main 4aa75641] ITR live update 2026-11-20 09:02 (closed=8087)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-20 09:02:07]  >> git push OK
+[2026-11-20 09:02:14]  >> published itr_live_state.json (459847 bytes)
+[2026-11-20 09:02:18]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-20 09:02:18]  >> platform publish OK (1 file(s) updated, closed=8087)
+[2026-11-20 09:02:18] PAGES PUSH rc=0
+[2026-11-20 09:02:18] cycle OK closed=8087 open=2281 updated=2026-11-20 09:01:58
+[2026-11-20 09:04:18] reused the sync's always-open browser (port 9222)
+[2026-11-20 09:04:18] LOGGED IN
+[2026-11-20 09:04:38] pulled off=0 n=4000 accum=4000
+[2026-11-20 09:04:55] pulled off=4000 n=4000 accum=8000
+[2026-11-20 09:05:23] pulled off=8000 n=4000 accum=12000
+[2026-11-20 09:05:48] pulled off=12000 n=2078 accum=14078
+[2026-11-20 09:05:48] task index refreshed (6350 asset tags)
+[2026-11-20 09:05:49] updated dashboard_data.json itr_summary.live
+[2026-11-20 09:05:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-20 09:05:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-20 09:05 (closed=8087) rc=0 [main 8fdecc55] ITR live update 2026-11-20 09:05 (closed=8087)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-20 09:06:10]  >> git push OK
+[2026-11-20 09:06:19]  >> published itr_live_state.json (459847 bytes)
+[2026-11-20 09:06:23]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-20 09:06:23]  >> platform publish OK (1 file(s) updated, closed=8087)
+[2026-11-20 09:06:23] PAGES PUSH rc=0
+[2026-11-20 09:06:23] cycle OK closed=8087 open=2281 updated=2026-11-20 09:05:49
+[2026-11-20 09:08:25] reused the sync's always-open browser (port 9222)
+[2026-11-20 09:08:25] LOGGED IN
+[2026-11-20 09:08:42] pulled off=0 n=4000 accum=4000
+[2026-11-20 09:08:56] pulled off=4000 n=4000 accum=8000
+[2026-11-20 09:09:26] pulled off=8000 n=4000 accum=12000
+[2026-11-20 09:09:42] pulled off=12000 n=2078 accum=14078
+[2026-11-20 09:09:42] task index refreshed (6350 asset tags)
+[2026-11-20 09:09:43] updated dashboard_data.json itr_summary.live
+[2026-11-20 09:09:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-20 09:09:45]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-20 09:09 (closed=8087) rc=0 [main c4e3d172] ITR live update 2026-11-20 09:09 (closed=8087)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-20 09:09:54]  >> git push OK
+[2026-11-20 09:10:09]  >> published itr_live_state.json (459847 bytes)
+[2026-11-20 09:10:12]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-20 09:10:12]  >> platform publish OK (1 file(s) updated, closed=8087)
+[2026-11-20 09:10:12] PAGES PUSH rc=0
+[2026-11-20 09:10:12] cycle OK closed=8087 open=2281 updated=2026-11-20 09:09:43
+[2026-11-20 09:12:14] reused the sync's always-open browser (port 9222)
+[2026-11-20 09:12:14] LOGGED IN
+[2026-11-20 09:12:48] pulled off=0 n=4000 accum=4000
+[2026-11-20 09:13:48] pulled off=4000 n=4000 accum=8000
+[2026-11-20 09:14:27] pulled off=8000 n=4000 accum=12000
+[2026-11-20 09:15:01] pulled off=12000 n=2078 accum=14078
+[2026-11-20 09:15:02] task index refreshed (6350 asset tags)
+[2026-11-20 09:15:23] updated dashboard_data.json itr_summary.live
+[2026-11-20 09:15:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-20 09:15:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-20 09:15 (closed=8087) rc=0 [main dd3c0013] ITR live update 2026-11-20 09:15 (closed=8087)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-20 09:15:40]  >> git push OK
+[2026-11-20 09:15:47]  >> published itr_live_state.json (459847 bytes)
+[2026-11-20 09:15:51]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-20 09:15:51]  >> platform publish OK (1 file(s) updated, closed=8087)
+[2026-11-20 09:15:51] PAGES PUSH rc=0
+[2026-11-20 09:15:51] cycle OK closed=8087 open=2281 updated=2026-11-20 09:15:22
+[2026-11-20 09:18:18] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:18:23] target list err: timed out
+[2026-11-20 09:18:23] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:18:26] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/1eb003 (fail 1/3)
+[2026-11-20 09:19:31] target list err: timed out
+[2026-11-20 09:19:52] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:19:57] target list err: timed out
+[2026-11-20 09:19:57] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:19:59] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/1eb003 (fail 2/3)
+[2026-11-20 09:21:21] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:21:27] target list err: timed out
+[2026-11-20 09:21:27] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:21:29] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/1eb003 (fail 3/3)
+[2026-11-20 09:21:29] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-20 09:21:55] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-20 09:22:01] target list err: timed out
+[2026-11-20 09:22:21] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:22:26] target list err: timed out
+[2026-11-20 09:22:26] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:22:29] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+ (fail 1/3)
+[2026-11-20 09:23:34] target list err: timed out
+[2026-11-20 09:23:55] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:24:00] target list err: timed out
+[2026-11-20 09:24:00] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:24:02] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+ (fail 2/3)
+[2026-11-20 09:25:29] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:25:34] target list err: timed out
+[2026-11-20 09:25:34] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:25:36] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/1eb003 (fail 3/3)
+[2026-11-20 09:25:36] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-20 09:25:51] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-20 09:25:56] target list err: timed out
+[2026-11-20 09:26:16] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:26:21] target list err: timed out
+[2026-11-20 09:26:21] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:26:23] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+  - <ws connecting> ws://127.0.0.1:9222/devtools/browser/1eb003 (fail 1/3)
+[2026-11-20 09:27:28] target list err: timed out
+[2026-11-20 09:27:48] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:27:53] target list err: timed out
+[2026-11-20 09:27:53] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:27:55] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+ (fail 2/3)
+[2026-11-20 09:29:01] target list err: timed out
+[2026-11-20 09:29:21] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:29:26] target list err: timed out
+[2026-11-20 09:29:26] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:29:28] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+ (fail 3/3)
+[2026-11-20 09:29:28] !! 3 cycles in a row failed - exiting so the watchdog restarts a clean session
+[2026-11-20 09:29:38] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-20 09:29:44] target list err: timed out
+[2026-11-20 09:30:04] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-20 09:30:09] target list err: timed out
+[2026-11-20 09:30:09] no frozen tab found -> will retry next cycle, no new window
+[2026-11-20 09:30:11] LOOP ERR: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+ (fail 1/3)
+[2026-11-20 09:31:33] close err: timed out
+[2026-11-20 09:41:46] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-20 09:41:47] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-20 09:41:47] no pull tab this cycle - retrying in 120s
+[2026-11-20 09:42:47] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-20 09:42:47] no pull tab this cycle - retrying in 120s
+[2026-11-20 09:43:47] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-20 09:43:47] no pull tab this cycle - retrying in 120s
+[2026-11-20 09:44:48] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-20 09:44:48] no pull tab this cycle - retrying in 120s
+[2026-11-20 09:45:48] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-20 09:45:48] no pull tab this cycle - retrying in 120s
+[2026-11-20 09:46:48] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-20 09:46:48] no pull tab this cycle - retrying in 120s
+[2026-11-20 09:58:27] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-20 09:58:27] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-20 09:58:27] no pull tab this cycle - retrying in 120s
+[2026-11-20 09:59:27] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-20 09:59:27] no pull tab this cycle - retrying in 120s

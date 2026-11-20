@@ -52784,3 +52784,23 @@
 [2026-11-20 08:05:49] TUNNEL URL: https://notebooks-consult-communicate-sculpture.trycloudflare.com
 [2026-11-20 08:05:50] ITR data is 870 min old (limit 40 min) -> restarting itr_online
 [2026-11-20 08:05:54] STARTED itr_online (PID 15228)
+[2026-11-20 09:05:41] Watchdog alive - 240 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-20 09:21:43] RESTARTING itr_online
+[2026-11-20 09:21:43] STARTED itr_online (PID 19256)
+[2026-11-20 09:25:47] RESTARTING itr_online
+[2026-11-20 09:25:47] STARTED itr_online (PID 20060)
+[2026-11-20 09:29:35] RESTARTING itr_online
+[2026-11-20 09:29:35] STARTED itr_online (PID 15908)
+[2026-11-20 09:41:29] ==================================================
+[2026-11-20 09:41:29] Watchdog started - keeping everything alive
+[2026-11-20 09:41:29] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-20 09:41:29] STARTED server (PID 17320)
+[2026-11-20 09:41:30] STARTED auto_sync (PID 13324)
+[2026-11-20 09:41:31] STARTED cloud_sync (PID 12088)
+[2026-11-20 09:41:32] STARTED itr_online (PID 4840)
+[2026-11-20 09:41:33] STARTED tunnel_named (PID 13412)
+[2026-11-20 09:41:34] STARTED tunnel_backup (PID 4828)
+[2026-11-20 09:41:42] TUNNEL URL: https://interaction-fancy-replies-searching.trycloudflare.com
+[2026-11-20 09:58:22] ITR data is 42 min old (limit 40 min) -> restarting itr_online
+[2026-11-20 09:58:25] STARTED itr_online (PID 18260)
+[2026-11-20 10:00:10] SC window was off-screen (-32000) -> moved back on screen & brought to front

@@ -15316,3 +15316,24 @@
 2026-11-20 08:52:22 [done] build in 2809s
 2026-11-20 08:57:23 [trigger] state changed -> rebuilding downloads+pages
 2026-11-20 08:57:23 >> cloud->DPR
+2026-11-20 09:07:41    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-20 09:07:41    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-20 09:07:41    [guard] ok - 270 rows intact, 333 cell(s) written in mapped columns
+2026-11-20 09:07:41    sync 2026-11-20 09:07:35 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-20 09:07:41    written=333 notes=0 colors=1
+2026-11-20 09:07:41    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-20 09:07:41 >> local->DPR
+2026-11-20 09:22:00    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 85153 cells / 0 notes)
+2026-11-20 09:22:00      [summery-sync] OK -> 60534 cells, 0 notes written, 15612 skipped (no matching column)
+2026-11-20 09:22:00 >> explorer rebuild
+2026-11-20 09:26:12      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9733 rows, 17480 updates
+2026-11-20 09:26:12      Punch rows: 4465 | ITR rows: 23742 | RFC: 270 | Miles: 292
+2026-11-20 09:26:12      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-20 09:26:12      Carry-over: 0 notes, 0 colored rows, 23365 pinned cells
+2026-11-20 09:26:12    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-20 09:26:12    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-20 09:26:12 >> dashboard xlsm
+2026-11-20 09:41:32 ==================================================
+2026-11-20 09:41:32 cloud_auto_update started (interval 300s)
+2026-11-20 09:41:33 [trigger] state changed -> rebuilding downloads+pages
+2026-11-20 09:41:33 [skip] another build in progress
