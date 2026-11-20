@@ -15337,3 +15337,5 @@
 2026-11-20 09:41:32 cloud_auto_update started (interval 300s)
 2026-11-20 09:41:33 [trigger] state changed -> rebuilding downloads+pages
 2026-11-20 09:41:33 [skip] another build in progress
+2026-11-20 10:12:21 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-20 10:17:21 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
