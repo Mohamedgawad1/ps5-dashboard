@@ -85749,3 +85749,47 @@ Call log:
 [2026-11-21 17:30:03] pre-cycle cleanup: 3 wedged tab(s) closed
 [2026-11-21 17:30:25] opened the one pull tab (none was open)
 [2026-11-21 17:30:25] reused the sync's always-open browser (port 9222)
+[2026-11-21 17:31:18] session expired -> auto-login
+[2026-11-21 17:31:25] ssologin click: ok
+[2026-11-21 17:31:35] sso handoff -> verify password page
+[2026-11-21 17:31:37] verify submit: submitted
+[2026-11-21 17:32:08] LOGGED IN
+[2026-11-21 17:32:42] pulled off=0 n=4000 accum=4000
+[2026-11-21 17:33:19] pulled off=4000 n=4000 accum=8000
+[2026-11-21 17:34:02] pulled off=8000 n=4000 accum=12000
+[2026-11-21 17:34:23] pulled off=12000 n=2076 accum=14076
+[2026-11-21 17:34:24] task index refreshed (6348 asset tags)
+[2026-11-21 17:34:24] milestone_map: 290 subsystems
+[2026-11-21 17:34:25] updated dashboard_data.json itr_summary.live
+[2026-11-21 17:34:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-21 17:34:28]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-21 17:34 (closed=8135) rc=0 [main 9e456333] ITR live update 2026-11-21 17:34 (closed=8135)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-21 17:34:41]  >> git push OK
+[2026-11-21 17:34:53]  >> published itr_live_state.json (459866 bytes)
+[2026-11-21 17:35:02]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-21 17:35:02]  >> platform publish OK (1 file(s) updated, closed=8135)
+[2026-11-21 17:35:02] PAGES PUSH rc=0
+[2026-11-21 17:35:02] cycle OK closed=8135 open=2231 updated=2026-11-21 17:34:25
+[2026-11-21 17:37:28] reuse failed: BrowserType.connect_over_cdp: Timeout 20000ms exceeded.
+Call log:
+  -  -> deep frozen-tab check
+[2026-11-21 17:37:32] closed frozen tab F516FEB5 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1
+[2026-11-21 17:37:37] closed frozen tab 19EBB9DB https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1
+[2026-11-21 17:37:41] closed frozen tab 95ADD63A https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/EditForm.aspx?ID=1
+[2026-11-21 17:37:49] reused the sync's always-open browser (port 9222)
+[2026-11-21 17:37:49] LOGGED IN
+[2026-11-21 17:38:34] pulled off=0 n=4000 accum=4000
+[2026-11-21 17:39:01] pulled off=4000 n=4000 accum=8000
+[2026-11-21 17:39:36] pulled off=8000 n=4000 accum=12000
+[2026-11-21 17:40:01] pulled off=12000 n=2076 accum=14076
+[2026-11-21 17:40:01] task index refreshed (6348 asset tags)
+[2026-11-21 17:40:02] updated dashboard_data.json itr_summary.live
+[2026-11-21 17:40:04]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-21 17:40:05]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-21 17:40 (closed=8136) rc=0 [main 2eb4b360] ITR live update 2026-11-21 17:40 (closed=8136)
+ 1 file changed, 41 insertions(+), 34 deletions(-)
+[2026-11-21 17:40:11]  >> git push OK
+[2026-11-21 17:40:27]  >> published itr_live_state.json (459990 bytes)
+[2026-11-21 17:40:31]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-21 17:40:31]  >> platform publish OK (1 file(s) updated, closed=8136)
+[2026-11-21 17:40:31] PAGES PUSH rc=0
+[2026-11-21 17:40:31] cycle OK closed=8136 open=2230 updated=2026-11-21 17:40:02

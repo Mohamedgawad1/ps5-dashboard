@@ -11375,5 +11375,85 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00254-11596": {
+  "record": "1295930",
+  "task": "T-00254-11596",
+  "asset": "PS5-09-AS-8211A-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11598": {
+  "record": "1295932",
+  "task": "T-00254-11598",
+  "asset": "PS5-09-AS-8211B-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11628": {
+  "record": "1295962",
+  "task": "T-00254-11628",
+  "asset": "PS5-09-AS-8411A-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11632": {
+  "record": "1295966",
+  "task": "T-00254-11632",
+  "asset": "PS5-09-AS-8412A-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11640": {
+  "record": "1295974",
+  "task": "T-00254-11640",
+  "asset": "PS5-09-AS-8432A-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11636": {
+  "record": "1295970",
+  "task": "T-00254-11636",
+  "asset": "PS5-09-AS-8421A-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11630": {
+  "record": "1295964",
+  "task": "T-00254-11630",
+  "asset": "PS5-09-AS-8411B-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11634": {
+  "record": "1295968",
+  "task": "T-00254-11634",
+  "asset": "PS5-09-AS-8412B-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11642": {
+  "record": "1295976",
+  "task": "T-00254-11642",
+  "asset": "PS5-09-AS-8432B-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11638": {
+  "record": "1295972",
+  "task": "T-00254-11638",
+  "asset": "PS5-09-AS-8421B-CU01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }

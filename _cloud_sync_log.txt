@@ -15363,3 +15363,12 @@
 2026-11-20 18:55:37 ==================================================
 2026-11-20 18:55:37 cloud_auto_update started (interval 300s)
 2026-11-20 18:55:50 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-21 17:31:35 [trigger] state changed -> rebuilding downloads+pages
+2026-11-21 17:31:35 >> cloud->DPR
+2026-11-21 17:40:54    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-21 17:40:54    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-21 17:40:54    [guard] ok - 270 rows intact, 333 cell(s) written in mapped columns
+2026-11-21 17:40:54    sync 2026-11-21 17:40:48 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-21 17:40:54    written=333 notes=0 colors=1
+2026-11-21 17:40:54    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-21 17:40:54 >> local->DPR
