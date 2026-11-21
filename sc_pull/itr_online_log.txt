@@ -85296,3 +85296,29 @@ Call log:
 [2026-11-21 13:48:47]  >> platform publish OK (1 file(s) updated, closed=8131)
 [2026-11-21 13:48:47] PAGES PUSH rc=0
 [2026-11-21 13:48:47] cycle OK closed=8131 open=2235 updated=2026-11-21 13:48:22
+[2026-11-21 13:50:48] reused the sync's always-open browser (port 9222)
+[2026-11-21 13:50:48] LOGGED IN
+[2026-11-21 13:51:35] pulled off=0 n=4000 accum=4000
+[2026-11-21 13:52:17] pulled off=4000 n=4000 accum=8000
+[2026-11-21 13:53:09] pulled off=8000 n=4000 accum=12000
+[2026-11-21 13:53:52] pulled off=12000 n=2076 accum=14076
+[2026-11-21 13:53:52] task index refreshed (6348 asset tags)
+[2026-11-21 13:53:53] updated dashboard_data.json itr_summary.live
+[2026-11-21 13:53:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-21 13:53:54]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-21 13:53 (closed=8131) rc=0 [main f2038a43] ITR live update 2026-11-21 13:53 (closed=8131)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-21 13:54:02]  >> git push OK
+[2026-11-21 13:54:27]  >> published itr_live_state.json (459888 bytes)
+[2026-11-21 13:54:34]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-21 13:54:34]  >> platform publish OK (1 file(s) updated, closed=8131)
+[2026-11-21 13:54:34] PAGES PUSH rc=0
+[2026-11-21 13:54:34] cycle OK closed=8131 open=2235 updated=2026-11-21 13:53:53
+[2026-11-21 13:56:35] reused the sync's always-open browser (port 9222)
+[2026-11-21 13:56:35] LOGGED IN
+[2026-11-21 13:57:19] pulled off=0 n=4000 accum=4000
+[2026-11-21 13:58:46] pulled off=4000 n=4000 accum=8000
+[2026-11-21 13:59:59] pulled off=8000 n=4000 accum=12000
+[2026-11-21 14:00:39] pulled off=12000 n=2076 accum=14076
+[2026-11-21 14:00:39] task index refreshed (6348 asset tags)
+[2026-11-21 14:00:40] updated dashboard_data.json itr_summary.live
+[2026-11-21 14:00:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
