@@ -11343,5 +11343,37 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00621-2801": {
+  "record": "2159098",
+  "task": "T-00621-2801",
+  "asset": "PS5-08-01BT-0003-CR02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00621-2803": {
+  "record": "2159100",
+  "task": "T-00621-2803",
+  "asset": "PS5-08-01BT-0004-CR02",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00621-2836": {
+  "record": "2159133",
+  "task": "T-00621-2836",
+  "asset": "PS5-08-01LS-0103-CR01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00621-2846": {
+  "record": "2159143",
+  "task": "T-00621-2846",
+  "asset": "PS5-08-01LS-0202-CR01",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
