@@ -52838,3 +52838,34 @@
 [2026-11-20 14:44:27] STARTED itr_online (PID 2516)
 [2026-11-21 14:20:16] Watchdog alive - 1200 checks. URL: https://app.mohamedgawwad.is-a.dev
 [2026-11-21 15:20:34] Watchdog alive - 1440 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-21 16:01:29] RESTARTING itr_online
+[2026-11-21 16:01:29] STARTED itr_online (PID 18908)
+[2026-11-21 16:20:47] Watchdog alive - 1680 checks. URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-21 16:35:32] RESTARTING itr_online
+[2026-11-21 16:35:32] STARTED itr_online (PID 12732)
+[2026-11-20 18:55:35] ==================================================
+[2026-11-20 18:55:35] Watchdog started - keeping everything alive
+[2026-11-20 18:55:35] Fixed URL: https://app.mohamedgawwad.is-a.dev
+[2026-11-20 18:55:35] STARTED server (PID 18328)
+[2026-11-20 18:55:36] STARTED auto_sync (PID 18348)
+[2026-11-20 18:55:37] STARTED cloud_sync (PID 18488)
+[2026-11-20 18:55:38] STARTED itr_online (PID 18600)
+[2026-11-20 18:55:39] STARTED tunnel_named (PID 18788)
+[2026-11-20 18:55:40] STARTED tunnel_backup (PID 18932)
+[2026-11-20 18:55:49] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-20 18:55:56] RESTARTING tunnel_named
+[2026-11-20 18:55:56] STARTED tunnel_named (PID 692)
+[2026-11-20 18:55:59] RESTARTING tunnel_backup
+[2026-11-20 18:55:59] STARTED tunnel_backup (PID 19904)
+[2026-11-20 18:56:00] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-20 18:56:18] RESTARTING tunnel_named
+[2026-11-20 18:56:18] STARTED tunnel_named (PID 9312)
+[2026-11-20 18:56:21] RESTARTING tunnel_backup
+[2026-11-20 18:56:21] STARTED tunnel_backup (PID 7628)
+[2026-11-20 18:56:21] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-21 17:27:23] RESTARTING tunnel_backup
+[2026-11-21 17:27:23] STARTED tunnel_backup (PID 21444)
+[2026-11-21 17:27:26] ITR data is 59 min old (limit 40 min) -> restarting itr_online
+[2026-11-21 17:27:31] STARTED itr_online (PID 19800)
+[2026-11-21 17:27:31] TUNNEL URL: https://bids-modules-tourism-bass.trycloudflare.com
+[2026-11-21 17:29:01] SC window was off-screen (-32000) -> moved back on screen & brought to front
