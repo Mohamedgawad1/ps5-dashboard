@@ -15377,3 +15377,8 @@
 2026-11-21 17:44:14 [warn] cloud fetch failed: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 2026-11-21 17:49:15 [trigger] state changed -> rebuilding downloads+pages
 2026-11-21 17:49:15 [skip] another build in progress
+2026-11-21 18:14:20 [warn] cloud fetch failed: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>
+2026-11-22 07:49:50 ==================================================
+2026-11-22 07:49:50 cloud_auto_update started (interval 300s)
+2026-11-22 07:49:51 [trigger] state changed -> rebuilding downloads+pages
+2026-11-22 07:49:52 >> cloud->DPR
