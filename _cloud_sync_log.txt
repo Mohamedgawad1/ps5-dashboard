@@ -15382,3 +15382,33 @@
 2026-11-22 07:49:50 cloud_auto_update started (interval 300s)
 2026-11-22 07:49:51 [trigger] state changed -> rebuilding downloads+pages
 2026-11-22 07:49:52 >> cloud->DPR
+2026-11-22 08:01:21    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-22 08:01:21    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-22 08:01:21    [guard] ok - 270 rows intact, 333 cell(s) written in mapped columns
+2026-11-22 08:01:21    sync 2026-11-22 08:01:15 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-22 08:01:21    written=333 notes=0 colors=1
+2026-11-22 08:01:21    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-22 08:01:21 >> local->DPR
+2026-11-22 08:08:00    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 85153 cells / 0 notes)
+2026-11-22 08:08:00      [summery-sync] OK -> 60534 cells, 0 notes written, 15612 skipped (no matching column)
+2026-11-22 08:08:00 >> explorer rebuild
+2026-11-22 08:09:51      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9733 rows, 17480 updates
+2026-11-22 08:09:51      Punch rows: 4465 | ITR rows: 23742 | RFC: 270 | Miles: 292
+2026-11-22 08:09:51      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-22 08:09:51      Carry-over: 0 notes, 0 colored rows, 23365 pinned cells
+2026-11-22 08:09:51    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-22 08:09:51    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-22 08:09:51 >> dashboard xlsm
+2026-11-22 08:12:58    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-22 08:12:58      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23742 | RFC 270
+2026-11-22 08:12:58      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 23365 pinned cells
+2026-11-22 08:12:58    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-22 08:12:58 >> platform full sync
+2026-11-22 08:29:24    >>> git commit / pull --rebase / push
+2026-11-22 08:29:24      committed the new build
+2026-11-22 08:29:24      rebased on origin/main
+2026-11-22 08:29:24      pushed to origin/main
+2026-11-22 08:29:24    
+2026-11-22 08:29:24    DONE - platform online + all downloads synced.
+2026-11-22 08:29:24 [mirror] PAGES -> _files
+2026-11-22 08:29:24 [done] build in 2373s

@@ -52927,3 +52927,7 @@
 [2026-11-22 07:49:59] TUNNEL URL: https://reached-favourite-oven-administrator.trycloudflare.com
 [2026-11-22 07:50:08] ITR data is 822 min old (limit 40 min) -> restarting itr_online
 [2026-11-22 07:50:12] STARTED itr_online (PID 6912)
+[2026-11-22 08:06:58] RESTARTING itr_online
+[2026-11-22 08:06:58] STARTED itr_online (PID 800)
+[2026-11-22 08:11:31] RESTARTING itr_online
+[2026-11-22 08:11:31] STARTED itr_online (PID 1924)
