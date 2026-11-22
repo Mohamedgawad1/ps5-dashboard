@@ -11455,5 +11455,45 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00254-11732": {
+  "record": "1296066",
+  "task": "T-00254-11732",
+  "asset": "PS5-09-LB-8331B-A-CC01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11733": {
+  "record": "1296067",
+  "task": "T-00254-11733",
+  "asset": "PS5-09-LB-8331B-B-CC01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11734": {
+  "record": "1296068",
+  "task": "T-00254-11734",
+  "asset": "PS5-09-LB-8341A-A-CC01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11735": {
+  "record": "1296069",
+  "task": "T-00254-11735",
+  "asset": "PS5-09-LB-8341A-B-CC01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00254-11597": {
+  "record": "1295931",
+  "task": "T-00254-11597",
+  "asset": "PS5-09-AS-8211A-CU02",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
  }
 }
