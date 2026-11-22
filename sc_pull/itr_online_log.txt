@@ -87689,3 +87689,24 @@ Call log:
 [2026-11-22 15:01:59]  >> platform publish OK (1 file(s) updated, closed=8163)
 [2026-11-22 15:01:59] PAGES PUSH rc=0
 [2026-11-22 15:01:59] cycle OK closed=8163 open=2203 updated=2026-11-22 15:01:40
+[2026-11-22 15:03:59] reused the sync's always-open browser (port 9222)
+[2026-11-22 15:03:59] LOGGED IN
+[2026-11-22 15:04:00] call err off=0: Page.evaluate: Connection closed while reading from the driver
+[2026-11-22 15:04:00] pull retry 2/3 - reloading Switchboard
+[2026-11-22 15:04:00] cycle got no complete data (fail 1/3)
+[2026-11-22 15:18:59] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-22 15:19:07] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-22 15:19:08] reused the sync's always-open browser (port 9222)
+[2026-11-22 15:19:08] LOGGED IN
+[2026-11-22 15:19:19] pulled off=0 n=4000 accum=4000
+[2026-11-22 15:19:27] pulled off=4000 n=4000 accum=8000
+[2026-11-22 15:19:34] pulled off=8000 n=4000 accum=12000
+[2026-11-22 15:19:40] pulled off=12000 n=2076 accum=14076
+[2026-11-22 15:19:40] task index refreshed (6348 asset tags)
+[2026-11-22 15:19:40] milestone_map: 290 subsystems
+[2026-11-22 15:19:40] updated dashboard_data.json itr_summary.live
+[2026-11-22 15:19:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-22 15:19:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-22 15:19 (closed=8163) rc=0 [main 1a0b9b85] ITR live update 2026-11-22 15:19 (closed=8163)
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+[2026-11-22 15:19:47]  >> git push OK
+[2026-11-22 15:19:52]  >> published itr_live_state.json (460390 bytes)
