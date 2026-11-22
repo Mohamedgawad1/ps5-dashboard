@@ -11261,7 +11261,7 @@
   "task": "T-00035-1489",
   "asset": null,
   "type": "Conformity Check",
-  "state": "To be completed",
+  "state": "Started (not Completed)",
   "via": "dalc"
  },
  "T-00284-0086": {
@@ -11621,6 +11621,30 @@
   "task": "T-00254-11631",
   "asset": "PS5-09-AS-8411B-CU02",
   "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1493": {
+  "record": "1251766",
+  "task": "T-00035-1493",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1495": {
+  "record": "1251768",
+  "task": "T-00035-1495",
+  "asset": null,
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00035-1549": {
+  "record": "1251822",
+  "task": "T-00035-1549",
+  "asset": null,
+  "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
  }
