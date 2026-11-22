@@ -15416,3 +15416,37 @@
 2026-11-22 09:56:36 cloud_auto_update started (interval 300s)
 2026-11-22 09:56:37 [trigger] state changed -> rebuilding downloads+pages
 2026-11-22 09:56:37 >> cloud->DPR
+2026-11-22 10:06:50    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-22 10:06:50    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-22 10:06:50    [guard] ok - 270 rows intact, 333 cell(s) written in mapped columns
+2026-11-22 10:06:50    sync 2026-11-22 10:06:45 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-22 10:06:50    written=333 notes=0 colors=1
+2026-11-22 10:06:50    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-22 10:06:50 >> local->DPR
+2026-11-22 10:15:59    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 85153 cells / 0 notes)
+2026-11-22 10:15:59      [summery-sync] OK -> 60534 cells, 0 notes written, 15612 skipped (no matching column)
+2026-11-22 10:15:59 >> explorer rebuild
+2026-11-22 10:18:52      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9733 rows, 17480 updates
+2026-11-22 10:18:52      Punch rows: 4465 | ITR rows: 23742 | RFC: 270 | Miles: 292
+2026-11-22 10:18:52      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-22 10:18:52      Carry-over: 0 notes, 0 colored rows, 23365 pinned cells
+2026-11-22 10:18:52    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-22 10:18:52    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-22 10:18:52 >> dashboard xlsm
+2026-11-22 10:24:07    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-22 10:24:07      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23742 | RFC 270
+2026-11-22 10:24:07      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 23365 pinned cells
+2026-11-22 10:24:07    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-22 10:24:07 >> platform full sync
+2026-11-22 10:34:14     main -> main (non-fast-forward)
+2026-11-22 10:34:14    error: failed to push some refs to 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git'
+2026-11-22 10:34:14    hint: Updates were rejected because the tip of your current branch is behind
+2026-11-22 10:34:14    hint: its remote counterpart. If you want to integrate the remote changes,
+2026-11-22 10:34:14    hint: use 'git pull' before pushing again.
+2026-11-22 10:34:14    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2026-11-22 10:34:14    !! C:\Python315\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+2026-11-22 10:34:14    !!   warn("Workbook contains no default style, apply openpyxl's default")
+2026-11-22 10:34:14    !! push failed - the live platform was NOT updated
+2026-11-22 10:34:14 !! platform full sync FAILED (rc=1)
+2026-11-22 10:34:14 [done] build in 2257s
+2026-11-22 10:39:50 [warn] cloud fetch failed: The read operation timed out
