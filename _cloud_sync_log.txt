@@ -15504,3 +15504,26 @@
 2026-11-23 09:33:46    written=333 notes=0 colors=1
 2026-11-23 09:33:46    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
 2026-11-23 09:33:46 >> local->DPR
+2026-11-23 09:40:36    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx  (edits: 85447 cells / 0 notes)
+2026-11-23 09:40:36      [summery-sync] OK -> 60647 cells, 0 notes written, 15612 skipped (no matching column)
+2026-11-23 09:40:36 >> explorer rebuild
+2026-11-23 09:42:19      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14009+9736 rows, 17746 updates
+2026-11-23 09:42:19      Punch rows: 4465 | ITR rows: 23745 | RFC: 270 | Miles: 292
+2026-11-23 09:42:19      Subsystems: 295 | max punch/sub: 196 | max itr/sub: 1153
+2026-11-23 09:42:19      Carry-over: 0 notes, 0 colored rows, 23533 pinned cells
+2026-11-23 09:42:19    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-23 09:42:19    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-23 09:42:19 >> dashboard xlsm
+2026-11-23 09:44:56    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-23 09:44:56      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 4465 | Detail I 23745 | RFC 270
+2026-11-23 09:44:56      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 23533 pinned cells
+2026-11-23 09:44:56    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-23 09:44:56 >> platform full sync
+2026-11-23 09:53:15    >>> git commit / pull --rebase / push
+2026-11-23 09:53:15      committed the new build
+2026-11-23 09:53:15      rebased on origin/main
+2026-11-23 09:53:15      pushed to origin/main
+2026-11-23 09:53:15    
+2026-11-23 09:53:15    DONE - platform online + all downloads synced.
+2026-11-23 09:53:16 [mirror] PAGES -> _files
+2026-11-23 09:53:16 [done] build in 1619s
