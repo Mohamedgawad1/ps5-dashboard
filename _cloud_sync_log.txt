@@ -15495,3 +15495,12 @@
 2026-11-23 09:21:15    !! push failed - the live platform was NOT updated
 2026-11-23 09:21:15 !! platform full sync FAILED (rc=1)
 2026-11-23 09:21:15 [done] build in 2726s
+2026-11-23 09:26:16 [trigger] state changed -> rebuilding downloads+pages
+2026-11-23 09:26:16 >> cloud->DPR
+2026-11-23 09:33:46    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-23 09:33:46    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-23 09:33:46    [guard] ok - 270 rows intact, 333 cell(s) written in mapped columns
+2026-11-23 09:33:46    sync 2026-11-23 09:33:41 -> PS-5 COMPLETIONS DPR SUMMARY -26-October-2026.xlsx
+2026-11-23 09:33:46    written=333 notes=0 colors=1
+2026-11-23 09:33:46    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-23 09:33:46 >> local->DPR
