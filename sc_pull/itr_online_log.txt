@@ -90618,3 +90618,37 @@ Call log:
 [2026-11-23 20:37:18] sso handoff -> verify password page
 [2026-11-23 20:37:20] verify submit: no-submit
 [2026-11-23 20:39:21] auto-login attempt 3 still not logged in
+[2026-11-23 20:42:30] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-23 20:42:57] opened the one pull tab (none was open)
+[2026-11-23 20:42:57] reused the sync's always-open browser (port 9222)
+[2026-11-23 20:43:51] session expired -> auto-login
+[2026-11-23 20:44:01] ssologin click: ok
+[2026-11-23 20:44:12] sso handoff -> verify password page
+[2026-11-23 20:44:14] verify submit: no-submit
+[2026-11-23 20:46:12] auto-login attempt 1 still not logged in
+[2026-11-23 20:46:22] ssologin click: ok
+[2026-11-23 20:46:32] sso handoff -> verify password page
+[2026-11-23 20:46:35] verify submit: submitted
+[2026-11-23 20:48:38] auto-login attempt 2 still not logged in
+[2026-11-23 20:48:49] ssologin click: ok
+[2026-11-23 20:48:59] sso handoff -> verify password page
+[2026-11-23 20:49:01] verify submit: submitted
+[2026-11-23 20:51:05] auto-login attempt 3 still not logged in
+[2026-11-23 20:57:30] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-23 20:57:45] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-23 20:57:57] opened the one pull tab (none was open)
+[2026-11-23 20:57:57] reused the sync's always-open browser (port 9222)
+[2026-11-23 20:59:01] session expired -> auto-login
+[2026-11-23 20:59:11] ssologin click: ok
+[2026-11-23 20:59:21] sso handoff -> verify password page
+[2026-11-23 20:59:23] verify submit: submitted
+[2026-11-23 21:01:48] auto-login attempt 1 still not logged in
+[2026-11-23 21:02:16] ssologin click: ok
+[2026-11-23 21:10:01] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-23 21:10:01] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-23 21:10:01] no pull tab this cycle - retrying in 120s
+[2026-11-23 21:10:33] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-23 21:10:44] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-23 21:10:44] no pull tab this cycle - retrying in 120s
+[2026-11-23 21:11:45] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-23 21:11:45] no pull tab this cycle - retrying in 120s
