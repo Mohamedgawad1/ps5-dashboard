@@ -15550,3 +15550,26 @@
 2026-11-23 19:52:28    [guard] REFUSING to write - 1 cell(s) outside the platform columns changed:
 2026-11-23 19:52:28    [guard]   PS5-60-03 col97: '46347' -> ''
 2026-11-23 19:52:28 >> local->DPR
+2026-11-23 20:03:09    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -23nov-2026 (1).xlsx  (edits: 85447 cells / 0 notes)
+2026-11-23 20:03:09      [summery-sync] OK -> 60863 cells, 0 notes written, 15617 skipped (no matching column)
+2026-11-23 20:03:09 >> explorer rebuild
+2026-11-23 20:05:38      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14094+9653 rows, 15969 updates
+2026-11-23 20:05:38      Punch rows: 5262 | ITR rows: 23747 | RFC: 270 | Miles: 292
+2026-11-23 20:05:38      Subsystems: 295 | max punch/sub: 197 | max itr/sub: 1153
+2026-11-23 20:05:38      Carry-over: 0 notes, 0 colored rows, 23533 pinned cells
+2026-11-23 20:05:38    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-23 20:05:38    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-23 20:05:38 >> dashboard xlsm
+2026-11-23 20:08:38    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -23nov-2026 (1).xlsx
+2026-11-23 20:08:38      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 5262 | Detail I 23747 | RFC 270
+2026-11-23 20:08:38      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 23556 pinned cells
+2026-11-23 20:08:38    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-23 20:08:38 >> platform full sync
+2026-11-23 20:22:20    >>> git commit / pull --rebase / push
+2026-11-23 20:22:20      committed the new build
+2026-11-23 20:22:20      rebased on origin/main
+2026-11-23 20:22:20      pushed to origin/main
+2026-11-23 20:22:20    
+2026-11-23 20:22:20    DONE - platform online + all downloads synced.
+2026-11-23 20:22:20 [mirror] PAGES -> _files
+2026-11-23 20:22:20 [done] build in 2477s
