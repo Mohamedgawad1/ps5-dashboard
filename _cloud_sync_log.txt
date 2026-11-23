@@ -15531,3 +15531,11 @@
 2026-11-23 15:27:14 cloud_auto_update started (interval 300s)
 2026-11-23 15:27:19 [trigger] state changed -> rebuilding downloads+pages
 2026-11-23 15:27:19 >> cloud->DPR
+2026-11-23 15:43:03    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -23nov-2026.xlsx
+2026-11-23 15:43:03    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-23 15:43:03    [guard] REFUSING to write - 1 cell(s) outside the platform columns changed:
+2026-11-23 15:43:03    [guard]   PS5-03-14 col97: '46347' -> ''
+2026-11-23 15:43:03 >> local->DPR
+2026-11-23 15:40:44 ==================================================
+2026-11-23 15:40:44 cloud_auto_update started (interval 300s)
+2026-11-23 15:40:56 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>

@@ -90115,3 +90115,6 @@ Call log:
 [2026-11-23 15:34:41] LOGGED IN
 [2026-11-23 15:35:51] pulled off=0 n=4000 accum=4000
 [2026-11-23 15:36:52] pulled off=4000 n=4000 accum=8000
+[2026-11-23 15:40:50] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-23 15:40:51] no browser on 9222 - skipping this cycle (open SmartCloud and it resumes)
+[2026-11-23 15:40:51] no pull tab this cycle - retrying in 120s
