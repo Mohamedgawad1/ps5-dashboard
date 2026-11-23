@@ -53140,3 +53140,9 @@
 [2026-11-23 15:41:05] RESTARTING tunnel_backup
 [2026-11-23 15:41:05] STARTED tunnel_backup (PID 15680)
 [2026-11-23 15:41:06] TUNNEL URL: https://api.trycloudflare.com
+[2026-11-23 15:53:31] RESTARTING tunnel_named
+[2026-11-23 15:53:31] STARTED tunnel_named (PID 21444)
+[2026-11-23 15:53:34] RESTARTING tunnel_backup
+[2026-11-23 15:53:34] STARTED tunnel_backup (PID 16276)
+[2026-11-23 15:53:42] TUNNEL URL: https://more-sentences-camcorders-jennifer.trycloudflare.com
+[2026-11-23 16:00:08] SC window was off-screen (-32000) -> moved back on screen & brought to front
