@@ -11647,5 +11647,21 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00254-11645": {
+  "record": "1295979",
+  "task": "T-00254-11645",
+  "asset": "PS5-09-BI-8111B-CU01",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
+ },
+ "T-00254-11771": {
+  "record": "1296105",
+  "task": "T-00254-11771",
+  "asset": "PS5-09-TIT-8403-CU01",
+  "type": "Static Test",
+  "state": "Closed",
+  "via": "dalc"
  }
 }
