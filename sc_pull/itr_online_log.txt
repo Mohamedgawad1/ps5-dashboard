@@ -89095,3 +89095,58 @@ Call log:
 [2026-11-23 10:38:52]  >> platform publish OK (1 file(s) updated, closed=8196)
 [2026-11-23 10:38:52] PAGES PUSH rc=0
 [2026-11-23 10:38:52] cycle OK closed=8196 open=2176 updated=2026-11-23 10:38:33
+[2026-11-23 10:40:52] reused the sync's always-open browser (port 9222)
+[2026-11-23 10:40:52] LOGGED IN
+[2026-11-23 10:41:01] pulled off=0 n=4000 accum=4000
+[2026-11-23 10:41:12] pulled off=4000 n=4000 accum=8000
+[2026-11-23 10:41:21] pulled off=8000 n=4000 accum=12000
+[2026-11-23 10:41:28] pulled off=12000 n=2082 accum=14082
+[2026-11-23 10:41:28] task index refreshed (6348 asset tags)
+[2026-11-23 10:41:29] updated dashboard_data.json itr_summary.live
+[2026-11-23 10:41:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-23 10:41:30]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-23 10:41 (closed=8196) rc=0 [main 17d1e579] ITR live update 2026-11-23 10:41 (closed=8196)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-23 10:41:36]  >> git push OK
+[2026-11-23 10:41:46]  >> published itr_live_state.json (460225 bytes)
+[2026-11-23 10:41:50]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-23 10:41:50]  >> platform publish OK (1 file(s) updated, closed=8196)
+[2026-11-23 10:41:50] PAGES PUSH rc=0
+[2026-11-23 10:41:50] cycle OK closed=8196 open=2176 updated=2026-11-23 10:41:29
+[2026-11-23 10:43:51] reused the sync's always-open browser (port 9222)
+[2026-11-23 10:43:51] LOGGED IN
+[2026-11-23 10:44:03] pulled off=0 n=4000 accum=4000
+[2026-11-23 10:44:17] pulled off=4000 n=4000 accum=8000
+[2026-11-23 10:44:28] pulled off=8000 n=4000 accum=12000
+[2026-11-23 10:44:38] pulled off=12000 n=2082 accum=14082
+[2026-11-23 10:44:38] task index refreshed (6348 asset tags)
+[2026-11-23 10:44:39] updated dashboard_data.json itr_summary.live
+[2026-11-23 10:44:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-23 10:44:42]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-23 10:44 (closed=8196) rc=0 [main a7984dc0] ITR live update 2026-11-23 10:44 (closed=8196)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-23 10:44:52]  >> git push OK
+[2026-11-23 10:45:07]  >> published itr_live_state.json (460225 bytes)
+[2026-11-23 10:45:11]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-23 10:45:11]  >> platform publish OK (1 file(s) updated, closed=8196)
+[2026-11-23 10:45:11] PAGES PUSH rc=0
+[2026-11-23 10:45:11] cycle OK closed=8196 open=2176 updated=2026-11-23 10:44:39
+[2026-11-23 10:47:12] reused the sync's always-open browser (port 9222)
+[2026-11-23 10:47:12] LOGGED IN
+[2026-11-23 10:47:35] pulled off=0 n=4000 accum=4000
+[2026-11-23 10:48:12] pulled off=4000 n=4000 accum=8000
+[2026-11-23 10:48:57] pulled off=8000 n=4000 accum=12000
+[2026-11-23 10:49:23] pulled off=12000 n=2082 accum=14082
+[2026-11-23 10:49:23] task index refreshed (6348 asset tags)
+[2026-11-23 10:49:23] updated dashboard_data.json itr_summary.live
+[2026-11-23 10:49:25]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-23 10:49:25]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-23 10:49 (closed=8196) rc=0 [main f9a5b67b] ITR live update 2026-11-23 10:49 (closed=8196)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-23 10:49:31]  >> git push OK
+[2026-11-23 10:49:39]  >> published itr_live_state.json (460225 bytes)
+[2026-11-23 10:49:43]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-23 10:49:43]  >> platform publish OK (1 file(s) updated, closed=8196)
+[2026-11-23 10:49:43] PAGES PUSH rc=0
+[2026-11-23 10:49:43] cycle OK closed=8196 open=2176 updated=2026-11-23 10:49:23
+[2026-11-23 10:51:43] reused the sync's always-open browser (port 9222)
+[2026-11-23 10:51:43] LOGGED IN
+[2026-11-23 10:52:28] pulled off=0 n=4000 accum=4000
+[2026-11-23 10:53:19] pulled off=4000 n=4000 accum=8000
