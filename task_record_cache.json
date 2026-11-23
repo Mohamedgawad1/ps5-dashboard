@@ -11735,5 +11735,29 @@
   "type": "Conformity Check",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00233-9713": {
+  "record": "1295799",
+  "task": "T-00233-9713",
+  "asset": "PS5-09-QX-8451A-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-9715": {
+  "record": "1295801",
+  "task": "T-00233-9715",
+  "asset": "PS5-09-QX-8451B-CL01",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00233-9716": {
+  "record": "1295802",
+  "task": "T-00233-9716",
+  "asset": "PS5-09-QX-8451B-CL02",
+  "type": "Static Test",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
