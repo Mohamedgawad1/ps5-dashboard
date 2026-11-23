@@ -89621,3 +89621,28 @@ Call log:
 [2026-11-23 13:20:53]  >> platform publish OK (1 file(s) updated, closed=8216)
 [2026-11-23 13:20:53] PAGES PUSH rc=0
 [2026-11-23 13:20:53] cycle OK closed=8216 open=2156 updated=2026-11-23 13:20:22
+[2026-11-23 13:22:54] reused the sync's always-open browser (port 9222)
+[2026-11-23 13:22:55] LOGGED IN
+[2026-11-23 13:37:53] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-23 13:38:05] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-23 13:38:10] closed pull tab (will reopen) D3C46F69 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-23 13:38:10] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-23 13:38:18] opened the one pull tab (none was open)
+[2026-11-23 13:38:18] reused the sync's always-open browser (port 9222)
+[2026-11-23 13:38:18] LOGGED IN
+[2026-11-23 13:38:27] pulled off=0 n=4000 accum=4000
+[2026-11-23 13:38:44] pulled off=4000 n=4000 accum=8000
+[2026-11-23 13:38:55] pulled off=8000 n=4000 accum=12000
+[2026-11-23 13:38:59] pulled off=12000 n=2082 accum=14082
+[2026-11-23 13:38:59] task index refreshed (6348 asset tags)
+[2026-11-23 13:38:59] milestone_map: 290 subsystems
+[2026-11-23 13:38:59] updated dashboard_data.json itr_summary.live
+[2026-11-23 13:39:00]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-23 13:39:01]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-23 13:39 (closed=8216) rc=0 [main 2791f71e] ITR live update 2026-11-23 13:39 (closed=8216)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-23 13:39:07]  >> git push OK
+[2026-11-23 13:39:22]  >> published itr_live_state.json (460467 bytes)
+[2026-11-23 13:39:26]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-23 13:39:26]  >> platform publish OK (1 file(s) updated, closed=8216)
+[2026-11-23 13:39:26] PAGES PUSH rc=0
+[2026-11-23 13:39:26] cycle OK closed=8216 open=2156 updated=2026-11-23 13:38:59
