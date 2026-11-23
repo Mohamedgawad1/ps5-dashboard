@@ -15600,3 +15600,7 @@
 2026-11-23 17:43:08 ==================================================
 2026-11-23 17:43:08 cloud_auto_update started (interval 300s)
 2026-11-23 17:43:08 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-11-23 21:24:31 ==================================================
+2026-11-23 21:24:31 cloud_auto_update started (interval 300s)
+2026-11-23 21:24:37 [trigger] state changed -> rebuilding downloads+pages
+2026-11-23 21:24:37 >> cloud->DPR
