@@ -92253,3 +92253,22 @@ Call log:
 [2026-11-24 13:59:12] cycle OK closed=8254 open=2118 updated=2026-11-24 13:57:04
 [2026-11-24 14:01:14] reused the sync's always-open browser (port 9222)
 [2026-11-24 14:01:14] LOGGED IN
+[2026-11-24 14:01:49] pulled off=0 n=4000 accum=4000
+[2026-11-24 14:02:16] pulled off=4000 n=4000 accum=8000
+[2026-11-24 14:02:28] pulled off=8000 n=4000 accum=12000
+[2026-11-24 14:02:33] pulled off=12000 n=2082 accum=14082
+[2026-11-24 14:02:33] task index refreshed (6348 asset tags)
+[2026-11-24 14:02:34] updated dashboard_data.json itr_summary.live
+[2026-11-24 14:02:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 14:02:37]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 14:02 (closed=8254) rc=0 [main 30600270] ITR live update 2026-11-24 14:02 (closed=8254)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-24 14:02:45]  >> git push OK
+[2026-11-24 14:03:07]  .. itr_live_state.json publish hiccup (IncompleteRead(583973 bytes read, 51174 more expected)) - retrying
+[2026-11-24 14:03:27]  .. itr_live_state.json publish hiccup (IncompleteRead(581233 bytes read, 53914 more expected)) - retrying
+[2026-11-24 14:04:22]  >> published itr_live_state.json (460285 bytes)
+[2026-11-24 14:04:27]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 14:04:27]  >> platform publish OK (1 file(s) updated, closed=8254)
+[2026-11-24 14:04:27] PAGES PUSH rc=0
+[2026-11-24 14:04:27] cycle OK closed=8254 open=2118 updated=2026-11-24 14:02:34
+[2026-11-24 14:06:28] reused the sync's always-open browser (port 9222)
+[2026-11-24 14:06:28] LOGGED IN
