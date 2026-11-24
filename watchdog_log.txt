@@ -53205,3 +53205,7 @@
 [2026-11-24 07:26:29] TUNNEL URL: https://msgstr-tampa-benchmark-knowing.trycloudflare.com
 [2026-11-24 07:26:32] ITR data is 684 min old (limit 40 min) -> restarting itr_online
 [2026-11-24 07:26:36] STARTED itr_online (PID 18316)
+[2026-11-24 08:12:08] RESTARTING itr_online
+[2026-11-24 08:12:08] STARTED itr_online (PID 10364)
+[2026-11-24 08:16:42] RESTARTING itr_online
+[2026-11-24 08:16:42] STARTED itr_online (PID 1300)

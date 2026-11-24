@@ -15618,3 +15618,27 @@
 2026-11-24 07:57:43    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -23nov-2026 (1).xlsx  (edits: 86386 cells / 0 notes)
 2026-11-24 07:57:43      [summery-sync] OK -> 61793 cells, 0 notes written, 15626 skipped (no matching column)
 2026-11-24 07:57:43 >> explorer rebuild
+2026-11-24 08:00:20      OV itr   : ovTasks_TestsPlanned_1369.xlsx -> 14094+9653 rows, 15969 updates
+2026-11-24 08:00:21      Punch rows: 5262 | ITR rows: 23747 | RFC: 270 | Miles: 292
+2026-11-24 08:00:21      Subsystems: 295 | max punch/sub: 197 | max itr/sub: 1153
+2026-11-24 08:00:21      Carry-over: 0 notes, 0 colored rows, 23556 pinned cells
+2026-11-24 08:00:21    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
+2026-11-24 08:00:21    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
+2026-11-24 08:00:21 >> dashboard xlsm
+2026-11-24 08:03:36    Source : C:\Users\mylap\Downloads\PS-5 COMPLETIONS DPR SUMMARY -23nov-2026 (1).xlsx
+2026-11-24 08:03:36      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 5262 | Detail I 23747 | RFC 270
+2026-11-24 08:03:36      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 23556 pinned cells
+2026-11-24 08:03:36    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-24 08:03:36 >> platform full sync
+2026-11-24 08:11:34      committed the new build
+2026-11-24 08:11:34      pull --rebase failed (1) - pushing our commit anyway
+2026-11-24 08:11:34    fatal: unable to access 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git/': Could not resolve host: github.com
+2026-11-24 08:11:34      push rejected (128) - rebasing and retrying
+2026-11-24 08:11:34      push rejected (128) - rebasing and retrying
+2026-11-24 08:11:34    fatal: unable to access 'https://github.com/Mohamedgawad1/PS5-COMPLETION-PLATFORM.git/': Could not resolve host: github.com
+2026-11-24 08:11:34    !! C:\Python315\Lib\site-packages\openpyxl\styles\stylesheet.py:237: UserWarning: Workbook contains no default style, apply openpyxl's default
+2026-11-24 08:11:34    !!   warn("Workbook contains no default style, apply openpyxl's default")
+2026-11-24 08:11:34    !! push failed - the live platform was NOT updated
+2026-11-24 08:11:34 !! platform full sync FAILED (rc=1)
+2026-11-24 08:11:34 [done] build in 2720s
+2026-11-24 08:16:35 [warn] cloud fetch failed: <urlopen error [Errno 11001] getaddrinfo failed>
