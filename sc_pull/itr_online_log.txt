@@ -91302,3 +91302,71 @@ Call log:
 [2026-11-24 09:39:20]  >> platform publish OK (1 file(s) updated, closed=8248)
 [2026-11-24 09:39:20] PAGES PUSH rc=0
 [2026-11-24 09:39:20] cycle OK closed=8248 open=2124 updated=2026-11-24 09:38:41
+[2026-11-24 09:41:20] reused the sync's always-open browser (port 9222)
+[2026-11-24 09:41:20] LOGGED IN
+[2026-11-24 09:41:40] pulled off=0 n=4000 accum=4000
+[2026-11-24 09:41:59] pulled off=4000 n=4000 accum=8000
+[2026-11-24 09:42:16] pulled off=8000 n=4000 accum=12000
+[2026-11-24 09:42:24] pulled off=12000 n=2082 accum=14082
+[2026-11-24 09:42:25] task index refreshed (6348 asset tags)
+[2026-11-24 09:42:25] updated dashboard_data.json itr_summary.live
+[2026-11-24 09:42:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 09:42:26]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 09:42 (closed=8248) rc=0 [main a9989878] ITR live update 2026-11-24 09:42 (closed=8248)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-24 09:42:32]  >> git push OK
+[2026-11-24 09:42:57]  >> published itr_live_state.json (460150 bytes)
+[2026-11-24 09:43:00]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 09:43:00]  >> platform publish OK (1 file(s) updated, closed=8248)
+[2026-11-24 09:43:00] PAGES PUSH rc=0
+[2026-11-24 09:43:00] cycle OK closed=8248 open=2124 updated=2026-11-24 09:42:25
+[2026-11-24 09:45:01] reused the sync's always-open browser (port 9222)
+[2026-11-24 09:45:01] LOGGED IN
+[2026-11-24 09:45:13] pulled off=0 n=4000 accum=4000
+[2026-11-24 09:45:23] pulled off=4000 n=4000 accum=8000
+[2026-11-24 09:45:33] pulled off=8000 n=4000 accum=12000
+[2026-11-24 09:45:38] pulled off=12000 n=2082 accum=14082
+[2026-11-24 09:45:38] task index refreshed (6348 asset tags)
+[2026-11-24 09:45:39] updated dashboard_data.json itr_summary.live
+[2026-11-24 09:45:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 09:45:41]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 09:45 (closed=8248) rc=0 [main fb5cdbfd] ITR live update 2026-11-24 09:45 (closed=8248)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-24 09:45:46]  >> git push OK
+[2026-11-24 09:46:35]  >> published itr_live_state.json (460150 bytes)
+[2026-11-24 09:46:39]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 09:46:39]  >> platform publish OK (1 file(s) updated, closed=8248)
+[2026-11-24 09:46:39] PAGES PUSH rc=0
+[2026-11-24 09:46:39] cycle OK closed=8248 open=2124 updated=2026-11-24 09:45:39
+[2026-11-24 09:48:39] reused the sync's always-open browser (port 9222)
+[2026-11-24 09:48:39] LOGGED IN
+[2026-11-24 09:48:57] pulled off=0 n=4000 accum=4000
+[2026-11-24 09:49:16] pulled off=4000 n=4000 accum=8000
+[2026-11-24 09:49:29] pulled off=8000 n=4000 accum=12000
+[2026-11-24 09:49:34] pulled off=12000 n=2082 accum=14082
+[2026-11-24 09:49:34] task index refreshed (6348 asset tags)
+[2026-11-24 09:49:34] updated dashboard_data.json itr_summary.live
+[2026-11-24 09:49:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 09:49:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 09:49 (closed=8248) rc=0 [main 13d1d8d8] ITR live update 2026-11-24 09:49 (closed=8248)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-24 09:49:41]  >> git push OK
+[2026-11-24 09:50:04]  >> published itr_live_state.json (460150 bytes)
+[2026-11-24 09:50:08]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 09:50:08]  >> platform publish OK (1 file(s) updated, closed=8248)
+[2026-11-24 09:50:08] PAGES PUSH rc=0
+[2026-11-24 09:50:08] cycle OK closed=8248 open=2124 updated=2026-11-24 09:49:34
+[2026-11-24 09:52:08] reused the sync's always-open browser (port 9222)
+[2026-11-24 09:52:08] LOGGED IN
+[2026-11-24 09:52:20] pulled off=0 n=4000 accum=4000
+[2026-11-24 09:52:31] pulled off=4000 n=4000 accum=8000
+[2026-11-24 09:52:41] pulled off=8000 n=4000 accum=12000
+[2026-11-24 09:52:46] pulled off=12000 n=2082 accum=14082
+[2026-11-24 09:52:46] task index refreshed (6348 asset tags)
+[2026-11-24 09:52:47] updated dashboard_data.json itr_summary.live
+[2026-11-24 09:52:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 09:52:48]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 09:52 (closed=8248) rc=0 [main 757fc285] ITR live update 2026-11-24 09:52 (closed=8248)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-24 09:52:54]  >> git push OK
+[2026-11-24 09:53:10]  >> published itr_live_state.json (460150 bytes)
+[2026-11-24 09:53:16]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 09:53:16]  >> platform publish OK (1 file(s) updated, closed=8248)
+[2026-11-24 09:53:16] PAGES PUSH rc=0
+[2026-11-24 09:53:16] cycle OK closed=8248 open=2124 updated=2026-11-24 09:52:47
