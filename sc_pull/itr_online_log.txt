@@ -92438,3 +92438,55 @@ Call log:
 [2026-11-24 14:57:43] reused the sync's always-open browser (port 9222)
 [2026-11-24 14:57:43] LOGGED IN
 [2026-11-24 14:59:01] pulled off=0 n=4000 accum=4000
+[2026-11-24 15:00:15] pulled off=4000 n=4000 accum=8000
+[2026-11-24 15:01:19] pulled off=8000 n=4000 accum=12000
+[2026-11-24 15:01:54] pulled off=12000 n=2082 accum=14082
+[2026-11-24 15:01:54] task index refreshed (6348 asset tags)
+[2026-11-24 15:01:54] updated dashboard_data.json itr_summary.live
+[2026-11-24 15:01:55]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 15:01:55]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 15:01 (closed=8254) rc=0 [main bc697944] ITR live update 2026-11-24 15:01 (closed=8254)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-24 15:02:02]  >> git push OK
+[2026-11-24 15:02:35]  >> published itr_live_state.json (460285 bytes)
+[2026-11-24 15:02:43]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 15:02:43]  >> platform publish OK (1 file(s) updated, closed=8254)
+[2026-11-24 15:02:43] PAGES PUSH rc=0
+[2026-11-24 15:02:43] cycle OK closed=8254 open=2118 updated=2026-11-24 15:01:54
+[2026-11-24 15:04:43] reused the sync's always-open browser (port 9222)
+[2026-11-24 15:04:43] LOGGED IN
+[2026-11-24 15:05:56] pulled off=0 n=4000 accum=4000
+[2026-11-24 15:07:03] pulled off=4000 n=4000 accum=8000
+[2026-11-24 15:08:23] pulled off=8000 n=4000 accum=12000
+[2026-11-24 15:09:02] pulled off=12000 n=2082 accum=14082
+[2026-11-24 15:09:02] task index refreshed (6348 asset tags)
+[2026-11-24 15:09:03] updated dashboard_data.json itr_summary.live
+[2026-11-24 15:09:04]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 15:09:04]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 15:09 (closed=8254) rc=0 [main 1db3c470] ITR live update 2026-11-24 15:09 (closed=8254)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-24 15:09:12]  >> git push OK
+[2026-11-24 15:10:20]  >> published itr_live_state.json (460285 bytes)
+[2026-11-24 15:10:25]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 15:10:25]  >> platform publish OK (1 file(s) updated, closed=8254)
+[2026-11-24 15:10:25] PAGES PUSH rc=0
+[2026-11-24 15:10:25] cycle OK closed=8254 open=2118 updated=2026-11-24 15:09:03
+[2026-11-24 15:12:27] reused the sync's always-open browser (port 9222)
+[2026-11-24 15:12:27] LOGGED IN
+[2026-11-24 15:13:51] pulled off=0 n=4000 accum=4000
+[2026-11-24 15:14:30] pulled off=4000 n=4000 accum=8000
+[2026-11-24 15:14:54] pulled off=8000 n=4000 accum=12000
+[2026-11-24 15:15:03] pulled off=12000 n=2082 accum=14082
+[2026-11-24 15:15:03] task index refreshed (6348 asset tags)
+[2026-11-24 15:15:04] updated dashboard_data.json itr_summary.live
+[2026-11-24 15:15:10]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 15:15:12]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 15:15 (closed=8254) rc=0 [main 1090834d] ITR live update 2026-11-24 15:15 (closed=8254)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-24 15:15:24]  >> git push OK
+[2026-11-24 15:15:51]  .. itr_live_state.json publish hiccup (IncompleteRead(583740 bytes read, 51407 more expected)) - retrying
+[2026-11-24 15:17:05]  >> published itr_live_state.json (460285 bytes)
+[2026-11-24 15:17:13]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 15:17:13]  >> platform publish OK (1 file(s) updated, closed=8254)
+[2026-11-24 15:17:13] PAGES PUSH rc=0
+[2026-11-24 15:17:13] cycle OK closed=8254 open=2118 updated=2026-11-24 15:15:04
+[2026-11-24 15:19:16] reused the sync's always-open browser (port 9222)
+[2026-11-24 15:19:16] LOGGED IN
+[2026-11-24 15:20:32] pulled off=0 n=4000 accum=4000

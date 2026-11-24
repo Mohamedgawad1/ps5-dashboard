@@ -11975,5 +11975,21 @@
   "type": "Static Test",
   "state": "To be completed",
   "via": "dalc"
+ },
+ "T-00067-2080": {
+  "record": "1099982",
+  "task": "T-00067-2080",
+  "asset": "PS5-71-LIT-4101",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
+ },
+ "T-00067-2082": {
+  "record": "1099984",
+  "task": "T-00067-2082",
+  "asset": "PS5-71-LIT-4102",
+  "type": "Conformity Check",
+  "state": "To be completed",
+  "via": "dalc"
  }
 }
