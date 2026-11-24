@@ -92532,3 +92532,56 @@ Call log:
 [2026-11-24 15:37:55] pulled off=0 n=4000 accum=4000
 [2026-11-24 15:39:09] pulled off=4000 n=4000 accum=8000
 [2026-11-24 15:40:04] pulled off=8000 n=4000 accum=12000
+[2026-11-24 15:40:49] pulled off=12000 n=2082 accum=14082
+[2026-11-24 15:40:49] task index refreshed (6348 asset tags)
+[2026-11-24 15:40:49] updated dashboard_data.json itr_summary.live
+[2026-11-24 15:40:50]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 15:40:51]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 15:40 (closed=8258) rc=0 [main ed175640] ITR live update 2026-11-24 15:40 (closed=8258)
+ 1 file changed, 66 insertions(+), 60 deletions(-)
+[2026-11-24 15:40:57]  >> git push OK
+[2026-11-24 15:41:08]  >> published itr_live_state.json (460573 bytes)
+[2026-11-24 15:41:18]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 15:41:18]  >> platform publish OK (1 file(s) updated, closed=8258)
+[2026-11-24 15:41:18] PAGES PUSH rc=0
+[2026-11-24 15:41:18] cycle OK closed=8258 open=2114 updated=2026-11-24 15:40:49
+[2026-11-24 15:43:20] reused the sync's always-open browser (port 9222)
+[2026-11-24 15:43:20] LOGGED IN
+[2026-11-24 15:44:44] pulled off=0 n=4000 accum=4000
+[2026-11-24 15:45:51] pulled off=4000 n=4000 accum=8000
+[2026-11-24 15:46:54] pulled off=8000 n=4000 accum=12000
+[2026-11-24 15:47:33] pulled off=12000 n=2082 accum=14082
+[2026-11-24 15:47:33] task index refreshed (6348 asset tags)
+[2026-11-24 15:47:34] updated dashboard_data.json itr_summary.live
+[2026-11-24 15:47:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 15:47:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 15:47 (closed=8264) rc=0 [main 2fd0c37e] ITR live update 2026-11-24 15:47 (closed=8264)
+ 1 file changed, 81 insertions(+), 81 deletions(-)
+[2026-11-24 15:47:42]  >> git push OK
+[2026-11-24 15:48:06]  .. itr_live_state.json publish hiccup (IncompleteRead(587421 bytes read, 48122 more expected)) - retrying
+[2026-11-24 15:48:35]  .. itr_live_state.json publish hiccup (<urlopen error [WinError 10054] An existing connection was forcibly closed by th) - retrying
+[2026-11-24 15:48:51]  >> published itr_live_state.json (460608 bytes)
+[2026-11-24 15:48:55]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 15:48:55]  >> platform publish OK (1 file(s) updated, closed=8264)
+[2026-11-24 15:48:55] PAGES PUSH rc=0
+[2026-11-24 15:48:55] cycle OK closed=8264 open=2108 updated=2026-11-24 15:47:33
+[2026-11-24 15:50:58] reused the sync's always-open browser (port 9222)
+[2026-11-24 15:50:58] LOGGED IN
+[2026-11-24 15:52:04] pulled off=0 n=4000 accum=4000
+[2026-11-24 15:53:13] pulled off=4000 n=4000 accum=8000
+[2026-11-24 15:54:25] pulled off=8000 n=4000 accum=12000
+[2026-11-24 15:54:32] pulled off=12000 n=2082 accum=14082
+[2026-11-24 15:54:33] task index refreshed (6348 asset tags)
+[2026-11-24 15:54:33] updated dashboard_data.json itr_summary.live
+[2026-11-24 15:54:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-24 15:54:34]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-24 15:54 (closed=8268) rc=0 [main 2e65a192] ITR live update 2026-11-24 15:54 (closed=8268)
+ 1 file changed, 62 insertions(+), 62 deletions(-)
+[2026-11-24 15:54:41]  >> git push OK
+[2026-11-24 15:54:49]  >> published itr_live_state.json (460644 bytes)
+[2026-11-24 15:54:55]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-24 15:54:55]  >> platform publish OK (1 file(s) updated, closed=8268)
+[2026-11-24 15:54:55] PAGES PUSH rc=0
+[2026-11-24 15:54:55] cycle OK closed=8268 open=2104 updated=2026-11-24 15:54:33
+[2026-11-24 15:57:12] reused the sync's always-open browser (port 9222)
+[2026-11-24 15:57:12] LOGGED IN
+[2026-11-24 15:58:27] pulled off=0 n=4000 accum=4000
+[2026-11-24 15:59:32] pulled off=4000 n=4000 accum=8000
+[2026-11-24 16:00:38] pulled off=8000 n=4000 accum=12000
