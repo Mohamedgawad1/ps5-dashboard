@@ -94127,3 +94127,36 @@ Call log:
 [2026-11-25 13:17:38] pulled off=0 n=4000 accum=4000
 [2026-11-25 13:18:43] pulled off=4000 n=4000 accum=8000
 [2026-11-25 13:19:53] pulled off=8000 n=4000 accum=12000
+[2026-11-25 13:20:27] pulled off=12000 n=2082 accum=14082
+[2026-11-25 13:20:27] task index refreshed (6348 asset tags)
+[2026-11-25 13:20:27] milestone_map: 290 subsystems
+[2026-11-25 13:20:28] updated dashboard_data.json itr_summary.live
+[2026-11-25 13:20:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-25 13:20:29]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-25 13:20 (closed=8289) rc=0 [main 595f6632] ITR live update 2026-11-25 13:20 (closed=8289)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-25 13:20:36]  >> git push OK
+[2026-11-25 13:20:45]  >> published itr_live_state.json (460824 bytes)
+[2026-11-25 13:20:51]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-25 13:20:51]  >> platform publish OK (1 file(s) updated, closed=8289)
+[2026-11-25 13:20:51] PAGES PUSH rc=0
+[2026-11-25 13:20:51] cycle OK closed=8289 open=2083 updated=2026-11-25 13:20:28
+[2026-11-25 13:22:51] reused the sync's always-open browser (port 9222)
+[2026-11-25 13:22:51] LOGGED IN
+[2026-11-25 13:23:37] pulled off=0 n=4000 accum=4000
+[2026-11-25 13:24:33] pulled off=4000 n=4000 accum=8000
+[2026-11-25 13:25:27] pulled off=8000 n=4000 accum=12000
+[2026-11-25 13:26:45] pulled off=12000 n=2082 accum=14082
+[2026-11-25 13:26:45] task index refreshed (6348 asset tags)
+[2026-11-25 13:26:46] updated dashboard_data.json itr_summary.live
+[2026-11-25 13:26:46]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-25 13:26:47]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-25 13:26 (closed=8289) rc=0 [main 51230566] ITR live update 2026-11-25 13:26 (closed=8289)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-25 13:26:52]  >> git push OK
+[2026-11-25 13:27:11]  .. itr_live_state.json publish hiccup (IncompleteRead(584842 bytes read, 51045 more expected)) - retrying
+[2026-11-25 13:27:38]  .. itr_live_state.json publish hiccup (IncompleteRead(583358 bytes read, 52529 more expected)) - retrying
+[2026-11-25 13:28:05]  .. itr_live_state.json publish hiccup (IncompleteRead(384938 bytes read, 250949 more expected)) - retrying
+[2026-11-25 13:28:49]  !! publish itr_live_state.json failed: IncompleteRead(583695 bytes read, 52192 more expected)
+[2026-11-25 13:28:49] PAGES PUSH rc=1
+[2026-11-25 13:28:49] cycle OK closed=8289 open=2083 updated=2026-11-25 13:26:45
+[2026-11-25 13:30:50] reused the sync's always-open browser (port 9222)
+[2026-11-25 13:30:50] LOGGED IN
