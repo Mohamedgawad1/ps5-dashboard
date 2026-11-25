@@ -93751,3 +93751,26 @@ Call log:
 [2026-11-25 10:39:24] reuse failed: BrowserType.connect_over_cdp: Connection closed while reading from the -> deep frozen-tab check
 [2026-11-25 10:39:25] no frozen tab found -> will retry next cycle, no new window
 [2026-11-25 10:39:27] LOOP ERR: BrowserType.connect_over_cdp: Connection closed while reading from the driver (fail 2/3)
+[2026-11-25 10:55:27] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-25 10:55:42] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-25 10:55:50] opened the one pull tab (none was open)
+[2026-11-25 10:55:50] reused the sync's always-open browser (port 9222)
+[2026-11-25 10:55:50] LOGGED IN
+[2026-11-25 10:56:41] pulled off=0 n=4000 accum=4000
+[2026-11-25 10:57:30] pulled off=4000 n=4000 accum=8000
+[2026-11-25 10:57:38] pulled off=8000 n=4000 accum=12000
+[2026-11-25 10:57:42] pulled off=12000 n=2082 accum=14082
+[2026-11-25 10:57:42] task index refreshed (6348 asset tags)
+[2026-11-25 10:57:42] milestone_map: 290 subsystems
+[2026-11-25 10:57:43] updated dashboard_data.json itr_summary.live
+[2026-11-25 10:57:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-25 10:57:44]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-25 10:57 (closed=8285) rc=0 [main c4516bae] ITR live update 2026-11-25 10:57 (closed=8285)
+ 1 file changed, 106 insertions(+), 100 deletions(-)
+[2026-11-25 10:57:50]  >> git push OK
+[2026-11-25 10:58:04]  >> published itr_live_state.json (460698 bytes)
+[2026-11-25 10:58:08]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-25 10:58:08]  >> platform publish OK (1 file(s) updated, closed=8285)
+[2026-11-25 10:58:08] PAGES PUSH rc=0
+[2026-11-25 10:58:08] cycle OK closed=8285 open=2087 updated=2026-11-25 10:57:43
+[2026-11-25 11:00:09] reused the sync's always-open browser (port 9222)
+[2026-11-25 11:00:09] LOGGED IN
