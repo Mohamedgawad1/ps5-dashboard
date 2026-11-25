@@ -94050,3 +94050,53 @@ Call log:
 [2026-11-25 12:38:04] reused the sync's always-open browser (port 9222)
 [2026-11-25 12:38:04] LOGGED IN
 [2026-11-25 12:39:18] pulled off=0 n=4000 accum=4000
+[2026-11-25 12:40:39] pulled off=4000 n=4000 accum=8000
+[2026-11-25 12:41:41] pulled off=8000 n=4000 accum=12000
+[2026-11-25 12:42:34] pulled off=12000 n=2082 accum=14082
+[2026-11-25 12:42:34] task index refreshed (6348 asset tags)
+[2026-11-25 12:42:35] updated dashboard_data.json itr_summary.live
+[2026-11-25 12:42:35]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-25 12:42:36]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-25 12:42 (closed=8289) rc=0 [main 1bf8b6dc] ITR live update 2026-11-25 12:42 (closed=8289)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-25 12:42:43]  >> git push OK
+[2026-11-25 12:43:14]  .. itr_live_state.json publish hiccup (IncompleteRead(330363 bytes read, 305524 more expected)) - retrying
+[2026-11-25 12:43:37]  >> published itr_live_state.json (460824 bytes)
+[2026-11-25 12:43:41]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-25 12:43:41]  >> platform publish OK (1 file(s) updated, closed=8289)
+[2026-11-25 12:43:41] PAGES PUSH rc=0
+[2026-11-25 12:43:41] cycle OK closed=8289 open=2083 updated=2026-11-25 12:42:35
+[2026-11-25 12:45:42] reused the sync's always-open browser (port 9222)
+[2026-11-25 12:45:42] LOGGED IN
+[2026-11-25 12:46:57] pulled off=0 n=4000 accum=4000
+[2026-11-25 12:48:02] pulled off=4000 n=4000 accum=8000
+[2026-11-25 12:49:25] pulled off=8000 n=4000 accum=12000
+[2026-11-25 12:50:01] pulled off=12000 n=2082 accum=14082
+[2026-11-25 12:50:01] task index refreshed (6348 asset tags)
+[2026-11-25 12:50:04] updated dashboard_data.json itr_summary.live
+[2026-11-25 12:50:09]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-25 12:50:12]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-25 12:50 (closed=8289) rc=0 [main 4fcc4e47] ITR live update 2026-11-25 12:50 (closed=8289)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-25 12:50:22]  >> git push OK
+[2026-11-25 12:50:38]  >> published itr_live_state.json (460824 bytes)
+[2026-11-25 12:50:44]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-25 12:50:44]  >> platform publish OK (1 file(s) updated, closed=8289)
+[2026-11-25 12:50:45] PAGES PUSH rc=0
+[2026-11-25 12:50:45] cycle OK closed=8289 open=2083 updated=2026-11-25 12:50:03
+[2026-11-25 12:52:46] reused the sync's always-open browser (port 9222)
+[2026-11-25 12:52:46] LOGGED IN
+[2026-11-25 12:54:17] pulled off=0 n=4000 accum=4000
+[2026-11-25 12:55:32] pulled off=4000 n=4000 accum=8000
+[2026-11-25 12:56:43] pulled off=8000 n=4000 accum=12000
+[2026-11-25 12:57:41] pulled off=12000 n=2082 accum=14082
+[2026-11-25 12:57:41] task index refreshed (6348 asset tags)
+[2026-11-25 12:57:41] updated dashboard_data.json itr_summary.live
+[2026-11-25 12:57:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-25 12:57:43]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-25 12:57 (closed=8289) rc=0 [main c74d1e00] ITR live update 2026-11-25 12:57 (closed=8289)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-25 12:57:50]  >> git push OK
+[2026-11-25 12:58:22]  .. itr_live_state.json publish hiccup (IncompleteRead(581232 bytes read, 54655 more expected)) - retrying
+[2026-11-25 12:59:13]  >> published itr_live_state.json (460824 bytes)
+[2026-11-25 12:59:17]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-25 12:59:17]  >> platform publish OK (1 file(s) updated, closed=8289)
+[2026-11-25 12:59:17] PAGES PUSH rc=0
+[2026-11-25 12:59:17] cycle OK closed=8289 open=2083 updated=2026-11-25 12:57:41
