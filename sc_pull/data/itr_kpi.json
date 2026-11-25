@@ -1,7 +1,7 @@
 {
   "source": "Smart Completions (live authenticated pull)",
   "scope": "PS5 / CPP AGI / PCOM (ITR tests) / E&I&T / vTasks_TestsPlanned",
-  "updated": "2026-11-25 10:57:43",
+  "updated": "2026-11-25 11:38:12",
   "total_tasks_ps5": 14082,
   "eit_total": 10372,
   "eit_by_discipline": {
@@ -9,17 +9,17 @@
     "E": 4683,
     "T": 1078
   },
-  "closed": 8285,
-  "open": 2087,
-  "today_closed": 11,
+  "closed": 8289,
+  "open": 2083,
+  "today_closed": 15,
   "closed_by_discipline": {
     "I": 3863,
-    "E": 4098,
+    "E": 4102,
     "T": 324
   },
   "open_by_discipline": {
     "I": 748,
-    "E": 585,
+    "E": 581,
     "T": 754
   },
   "daily": [
@@ -228,14 +228,14 @@
     },
     {
       "label": "2026-11-25",
-      "E": 0,
+      "E": 4,
       "I": 11,
       "T": 0,
-      "Total": 11
+      "Total": 15
     }
   ],
-  "closed_this_week": 89,
-  "closed_this_month": 1086,
+  "closed_this_week": 93,
+  "closed_this_month": 1090,
   "today_milestone": [
     {
       "milestone": "Milestone B",
@@ -254,9 +254,15 @@
       "disc": "I",
       "discipline": "Instrumentation (I)",
       "count": 1
+    },
+    {
+      "milestone": "Milestone G",
+      "disc": "E",
+      "discipline": "Electrical (E)",
+      "count": 4
     }
   ],
-  "today_milestone_total": 11,
+  "today_milestone_total": 15,
   "milestone_summary": [
     {
       "label": "Milestone A",
@@ -346,13 +352,13 @@
       "label": "Milestone G",
       "raw": "PS5 - Milestone G",
       "total": 907,
-      "closed": 830,
-      "remaining": 77,
-      "pct": 91.5,
+      "closed": 834,
+      "remaining": 73,
+      "pct": 92.0,
       "status": {
-        "Closed": 830,
+        "Closed": 834,
         "Submitted": 0,
-        "To be completed": 77,
+        "To be completed": 73,
         "Other": 0
       }
     },
@@ -360,12 +366,12 @@
       "label": "Milestone H",
       "raw": "PS5 - Milestone H",
       "total": 3261,
-      "closed": 3090,
-      "remaining": 171,
-      "pct": 94.8,
+      "closed": 3099,
+      "remaining": 162,
+      "pct": 95.0,
       "status": {
-        "Closed": 3090,
-        "Submitted": 20,
+        "Closed": 3099,
+        "Submitted": 11,
         "To be completed": 141,
         "Other": 10
       }
@@ -379,9 +385,9 @@
       "pct": 25.8,
       "status": {
         "Closed": 203,
-        "Submitted": 1,
+        "Submitted": 2,
         "To be completed": 577,
-        "Other": 7
+        "Other": 6
       }
     }
   ],
@@ -3905,9 +3911,9 @@
       "sid": "PS5-62-08",
       "name": "PS5-62-08 - Outdoor Normal Lighting  DB  - PS5-61-IG-0006",
       "total": 24,
-      "closed": 16,
-      "open": 8,
-      "pct": 66.7,
+      "closed": 20,
+      "open": 4,
+      "pct": 83.3,
       "status": "IN PROGRESS",
       "by_discipline": {
         "E": 24,
@@ -3915,7 +3921,7 @@
         "T": 0
       },
       "closed_by_discipline": {
-        "E": 16,
+        "E": 20,
         "I": 0,
         "T": 0
       }
@@ -13251,8 +13257,8 @@
     "T-00031-1309": "Closed",
     "T-00031-1310": "Closed",
     "T-00031-1311": "Closed",
-    "T-00031-1312": "Open",
-    "T-00031-1313": "Open",
+    "T-00031-1312": "Closed",
+    "T-00031-1313": "Closed",
     "T-00031-1314": "Open",
     "T-00031-1315": "Open",
     "T-00031-1316": "Closed",
@@ -13405,8 +13411,8 @@
     "T-00240-1309": "Closed",
     "T-00240-1310": "Closed",
     "T-00240-1311": "Closed",
-    "T-00240-1312": "Open",
-    "T-00240-1313": "Open",
+    "T-00240-1312": "Closed",
+    "T-00240-1313": "Closed",
     "T-00240-1314": "Open",
     "T-00240-1315": "Open",
     "T-00240-1316": "Closed",
@@ -15608,6 +15614,42 @@
   },
   "recent_closed": [
     {
+      "tag": "",
+      "task": "T-00240-1313",
+      "system": "PS5-62-08 - Outdoor Normal Lighting  DB  - PS5-61-IG-0006",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/25/2026 8:15:03 "
+    },
+    {
+      "tag": "",
+      "task": "T-00240-1312",
+      "system": "PS5-62-08 - Outdoor Normal Lighting  DB  - PS5-61-IG-0006",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/25/2026 8:13:55 "
+    },
+    {
+      "tag": "",
+      "task": "T-00031-1312",
+      "system": "PS5-62-08 - Outdoor Normal Lighting  DB  - PS5-61-IG-0006",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/25/2026 8:11:58 "
+    },
+    {
+      "tag": "",
+      "task": "T-00031-1313",
+      "system": "PS5-62-08 - Outdoor Normal Lighting  DB  - PS5-61-IG-0006",
+      "loop": "",
+      "disc": "E - Electrical",
+      "cat": "PCOM - Precommissioning",
+      "approved": "11/25/2026 8:11:43 "
+    },
+    {
       "tag": "PS5-09-LB-8211B-CC01",
       "task": "T-00069-11709",
       "system": "PS5-09-03 - HVAC for Generator Building",
@@ -16650,42 +16692,6 @@
       "disc": "I - Instrumentation",
       "cat": "PCOM - Precommissioning",
       "approved": "11/22/2026 6:42:17 "
-    },
-    {
-      "tag": "PS5-09-FD-0030-CU01",
-      "task": "T-00254-11705",
-      "system": "PS5-09-03 - HVAC for Generator Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/22/2026 6:40:59 "
-    },
-    {
-      "tag": "PS5-09-BI-8111B-CU01",
-      "task": "T-00254-11645",
-      "system": "PS5-09-03 - HVAC for Generator Building",
-      "loop": "",
-      "disc": "I - Instrumentation",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/22/2026 6:38:47 "
-    },
-    {
-      "tag": "PS5-86-OB-0003_Earthing",
-      "task": "T-00039-0314",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/22/2026 1:53:29 "
-    },
-    {
-      "tag": "PS5-86-OB-0002_Earthing",
-      "task": "T-00039-0313",
-      "system": "PS5-63-01 - Electrical Earthing",
-      "loop": "",
-      "disc": "E - Electrical",
-      "cat": "PCOM - Precommissioning",
-      "approved": "11/22/2026 1:48:39 "
     }
   ]
 }
