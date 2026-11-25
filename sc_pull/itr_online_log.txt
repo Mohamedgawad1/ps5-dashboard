@@ -94100,3 +94100,30 @@ Call log:
 [2026-11-25 12:59:17]  >> platform publish OK (1 file(s) updated, closed=8289)
 [2026-11-25 12:59:17] PAGES PUSH rc=0
 [2026-11-25 12:59:17] cycle OK closed=8289 open=2083 updated=2026-11-25 12:57:41
+[2026-11-25 13:01:19] reused the sync's always-open browser (port 9222)
+[2026-11-25 13:01:19] LOGGED IN
+[2026-11-25 13:02:40] pulled off=0 n=4000 accum=4000
+[2026-11-25 13:03:57] pulled off=4000 n=4000 accum=8000
+[2026-11-25 13:05:16] pulled off=8000 n=4000 accum=12000
+[2026-11-25 13:05:51] pulled off=12000 n=2082 accum=14082
+[2026-11-25 13:05:51] task index refreshed (6348 asset tags)
+[2026-11-25 13:05:52] updated dashboard_data.json itr_summary.live
+[2026-11-25 13:05:52]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard add -- itr_live_state.json live_itr.js itr_live.html index.html rc=0
+[2026-11-25 13:05:53]  >> git -C C:\Users\mylap\OneDrive\Desktop\dashboard commit -m ITR live update 2026-11-25 13:05 (closed=8289) rc=0 [main 69cab809] ITR live update 2026-11-25 13:05 (closed=8289)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[2026-11-25 13:05:58]  >> git push OK
+[2026-11-25 13:06:08]  >> published itr_live_state.json (460824 bytes)
+[2026-11-25 13:06:12]  .. platform index check failed: HTTP Error 501: Unsupported client range
+[2026-11-25 13:06:12]  >> platform publish OK (1 file(s) updated, closed=8289)
+[2026-11-25 13:06:12] PAGES PUSH rc=0
+[2026-11-25 13:06:12] cycle OK closed=8289 open=2083 updated=2026-11-25 13:05:52
+[2026-11-25 13:16:18] !! cycle exceeded 900s - exiting so the watchdog restarts a clean session
+[2026-11-25 13:16:32] LOOP READY (interval 120s, keep_open=True, cycle max 900s)
+[2026-11-25 13:16:36] closed pull tab (will reopen) CD329843 https://wly04-sc.intergraphsmartcloud.com/ISC/Tools/vDashboardsUsers/S
+[2026-11-25 13:16:36] pre-cycle cleanup: 1 wedged tab(s) closed
+[2026-11-25 13:16:41] opened the one pull tab (none was open)
+[2026-11-25 13:16:41] reused the sync's always-open browser (port 9222)
+[2026-11-25 13:16:42] LOGGED IN
+[2026-11-25 13:17:38] pulled off=0 n=4000 accum=4000
+[2026-11-25 13:18:43] pulled off=4000 n=4000 accum=8000
+[2026-11-25 13:19:53] pulled off=8000 n=4000 accum=12000
