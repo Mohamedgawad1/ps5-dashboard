@@ -15666,3 +15666,28 @@
 2026-11-25 07:59:19    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 SUBSYSTEM EXPLORER.xlsx
 2026-11-25 07:59:19    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\subsystem_explorer.html
 2026-11-25 07:59:19 >> dashboard xlsm
+2026-11-25 08:02:35    Source : C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS-5 COMPLETIONS DPR SUMMARY -23nov-2026.xlsx
+2026-11-25 08:02:35      ITR rows 12 | Punch disc 10 | Miles 292 | Detail P 5255 | Detail I 23751 | RFC 270
+2026-11-25 08:02:35      Carry-over: dash 1 notes | detail 0 notes | 1 colored rows | 0 platform colors | 23747 pinned cells
+2026-11-25 08:02:35    DONE -> C:\Users\mylap\Downloads\PS5 - CPP AGI Completion Progress Dashboard_files\PS5 DPR DASHBOARD.xlsm
+2026-11-25 08:02:35 >> platform full sync
+2026-11-25 08:10:55    >>> git commit / pull --rebase / push
+2026-11-25 08:10:55      committed the new build
+2026-11-25 08:10:55      rebased on origin/main
+2026-11-25 08:10:55      pushed to origin/main
+2026-11-25 08:10:55    
+2026-11-25 08:10:55    DONE - platform online + all downloads synced.
+2026-11-25 08:10:55 [mirror] PAGES -> _files
+2026-11-25 08:10:55 [done] build in 2518s
+2026-11-25 08:15:56 [trigger] state changed -> rebuilding downloads+pages
+2026-11-25 08:15:56 >> cloud->DPR
+2026-11-25 08:37:19    [sync] target : PS-5 COMPLETIONS DPR SUMMARY -23nov-2026.xlsx
+2026-11-25 08:37:19    [map] RFC PROGRESS columns verified: Priority=2, RFC BHMPS=3, RFC EIT=4, Baseline=5, Recovery=8, SIGNED=9, Milestone=10
+2026-11-25 08:37:19    [guard] ok - 270 rows intact, 333 cell(s) written in mapped columns
+2026-11-25 08:37:19    sync 2026-11-25 08:37:08 -> PS-5 COMPLETIONS DPR SUMMARY -23nov-2026.xlsx
+2026-11-25 08:37:19    written=333 notes=0 colors=1
+2026-11-25 08:37:19    derived(auto in Excel, not written): RFC PROGRESS:BALANCE (PS5-05-01)
+2026-11-25 08:37:19 >> local->DPR
+2026-11-25 08:50:48    [summery-sync] latest = PS-5 COMPLETIONS DPR SUMMARY -23nov-2026.xlsx  (edits: 86784 cells / 0 notes)
+2026-11-25 08:50:48      [summery-sync] OK -> 62021 cells, 0 notes written, 15627 skipped (no matching column)
+2026-11-25 08:50:48 >> explorer rebuild
